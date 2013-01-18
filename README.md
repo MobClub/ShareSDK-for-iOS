@@ -2,9 +2,9 @@
 ![image](http://www.sharesdk.cn/media/attached/sharesdk_2.png)
 ![image](http://www.sharesdk.cn/media/attached/sharesdk_3.png)
 
-*Share集成指南*
+# Share集成指南
 
-=====1．导入SDK
+*1．导入SDK*
     将ShareSDK文件夹到项目文件夹中夹并拖入项目中。
 
 
@@ -23,6 +23,7 @@
 ```ObjectiveC
 #import <ShareSDK/ShareConfig.h>
 ```
+
     如图：
     
     （P.S. 此头文件必须在此文件下导入，否则会导致编译不通过）
