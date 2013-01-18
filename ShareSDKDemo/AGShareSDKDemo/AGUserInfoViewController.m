@@ -1,0 +1,1194 @@
+//
+//  Created by ShareSDK.cn on 13-1-14.
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:1955211608
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
+//
+
+#import "AGUserInfoViewController.h"
+#import <AGCommon/UINavigationBar+Common.h>
+
+#define TABLE_CELL_ID @"tableCell"
+
+@interface AGUserInfoViewController (Private)
+
+- (void)loadImage:(NSString *)url;
+
+- (void)showUserIcon:(UIImage *)icon;
+
+/**
+ *	@brief	填充新浪微博用户信息
+ *
+ *	@param 	userInfo 	用户信息
+ */
+- (void)fillSinaWeiboUser:(id<ISSUserInfo>)userInfo;
+
+/**
+ *	@brief	填充腾讯微博用户信息
+ *
+ *	@param 	userInfo 	用户信息
+ */
+- (void)fillTecentWeiboUser:(id<ISSUserInfo>)userInfo;
+
+/**
+ *	@brief	填充搜狐微博用户信息
+ *
+ *	@param 	userInfo 	用户信息
+ */
+- (void)fillSohuWeiboUser:(id<ISSUserInfo>)userInfo;
+
+/**
+ *	@brief	填充网易微博用户信息
+ *
+ *	@param 	userInfo 	用户信息
+ */
+- (void)fill163WeiboUser:(id<ISSUserInfo>)userInfo;
+
+/**
+ *	@brief	填充豆瓣社区用户信息
+ *
+ *	@param 	userInfo 	用户信息
+ */
+- (void)fillDouBanUser:(id<ISSUserInfo>)userInfo;
+
+/**
+ *	@brief	填充QQ空间用户信息
+ *
+ *	@param 	userInfo 	用户信息
+ */
+- (void)fillQQSpaceUser:(id<ISSUserInfo>)userInfo;
+
+/**
+ *	@brief	填充人人网用户信息
+ *
+ *	@param 	userInfo 	用户信息
+ */
+- (void)fillRenRenUser:(id<ISSUserInfo>)userInfo;
+
+/**
+ *	@brief	填充开心网用户信息
+ *
+ *	@param 	userInfo 	用户信息
+ */
+- (void)fillKaiXinUser:(id<ISSUserInfo>)userInfo;
+
+
+@end
+
+@implementation AGUserInfoViewController
+
+- (id)initWithType:(ShareType)type;
+{
+    self = [super init];
+    if (self)
+    {
+        // Custom initialization
+        self.title = @"用户信息";
+        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"取消"
+                                                                                  style:UIBarButtonItemStyleBordered
+                                                                                 target:self
+                                                                                 action:@selector(cancelButtonClickHandler:)]
+                                                 autorelease];
+        
+        _infoDict = [[NSMutableDictionary alloc] init];
+        
+        _type = type;
+        
+        [ShareSDK getUserInfoWithType:_type
+                               result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                   if (result)
+                                   {
+                                       [_infoDict removeAllObjects];
+                                       
+                                       if ([userInfo icon])
+                                       {
+                                           [NSThread detachNewThreadSelector:@selector(loadImage:)
+                                                                    toTarget:self
+                                                                  withObject:[userInfo icon]];
+                                       }
+                                       
+                                       switch (_type)
+                                       {
+                                           case ShareTypeSinaWeibo:
+                                               //新浪微博
+                                               [self fillSinaWeiboUser:userInfo];
+                                               break;
+                                           case ShareTypeTencentWeibo:
+                                               //腾讯微博
+                                               [self fillTecentWeiboUser:userInfo];
+                                               break;
+                                           case ShareTypeSohuWeibo:
+                                               //搜狐微博
+                                               [self fillSohuWeiboUser:userInfo];
+                                               break;
+                                           case ShareType163Weibo:
+                                               //网易微博
+                                               [self fill163WeiboUser:userInfo];
+                                               break;
+                                           case ShareTypeDouBan:
+                                               //豆瓣社区
+                                               [self fillDouBanUser:userInfo];
+                                               break;
+                                           case ShareTypeQQSpace:
+                                               //QQ空间
+                                               [self fillQQSpaceUser:userInfo];
+                                               break;
+                                           case ShareTypeRenren:
+                                               //人人网
+                                               [self fillRenRenUser:userInfo];
+                                               break;
+                                           case ShareTypeKaixin:
+                                               //开心网
+                                               [self fillKaiXinUser:userInfo];
+                                               break;
+                                           default:
+                                               break;
+                                       }
+                                       
+                                       [_tableView reloadData];
+                                   }
+                                   else
+                                   {
+                                       UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                           message:error.errorDescription
+                                                                                          delegate:nil
+                                                                                 cancelButtonTitle:@"知道了"
+                                                                                 otherButtonTitles: nil];
+                                       [alertView show];
+                                       [alertView release];
+                                   }
+                               }];
+    }
+    return self;
+}
+
+- (id)initWithType:(ShareType)type name:(NSString *)name paramType:(UserParamType)paramType
+{
+    if (self = [super init])
+    {
+        self.title = @"用户信息";
+        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"取消"
+                                                                                  style:UIBarButtonItemStyleBordered
+                                                                                 target:self
+                                                                                 action:@selector(cancelButtonClickHandler:)]
+                                                 autorelease];
+        
+        _infoDict = [[NSMutableDictionary alloc] init];
+        _type = type;
+        
+        [ShareSDK getUserInfoWithType:type
+                                  uid:name
+                        parameterType:paramType
+                             autoAuth:YES
+                               result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                   if (result)
+                                   {
+                                       [_infoDict removeAllObjects];
+                                       
+                                       if ([userInfo icon])
+                                       {
+                                           [NSThread detachNewThreadSelector:@selector(loadImage:)
+                                                                    toTarget:self
+                                                                  withObject:[userInfo icon]];
+                                       }
+                                       
+                                       switch (_type)
+                                       {
+                                           case ShareTypeSinaWeibo:
+                                               //新浪微博
+                                               [self fillSinaWeiboUser:userInfo];
+                                               break;
+                                           case ShareTypeTencentWeibo:
+                                               //腾讯微博
+                                               [self fillTecentWeiboUser:userInfo];
+                                               break;
+                                           case ShareTypeSohuWeibo:
+                                               //搜狐微博
+                                               [self fillSohuWeiboUser:userInfo];
+                                               break;
+                                           case ShareType163Weibo:
+                                               //网易微博
+                                               [self fill163WeiboUser:userInfo];
+                                               break;
+                                           case ShareTypeDouBan:
+                                               //豆瓣社区
+                                               [self fillDouBanUser:userInfo];
+                                               break;
+                                           case ShareTypeQQSpace:
+                                               //QQ空间
+                                               [self fillQQSpaceUser:userInfo];
+                                               break;
+                                           case ShareTypeRenren:
+                                               //人人网
+                                               [self fillRenRenUser:userInfo];
+                                               break;
+                                           case ShareTypeKaixin:
+                                               //开心网
+                                               [self fillKaiXinUser:userInfo];
+                                               break;
+                                           default:
+                                               break;
+                                       }
+                                       
+                                       [_tableView reloadData];
+                                   }
+                                   else
+                                   {
+                                       UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                           message:error.errorDescription
+                                                                                          delegate:nil
+                                                                                 cancelButtonTitle:@"知道了"
+                                                                                 otherButtonTitles: nil];
+                                       [alertView show];
+                                       [alertView release];
+                                   }
+                               }];
+        
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    SAFE_RELEASE(_infoDict);
+    
+    [super dealloc];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavigationBarBG.png"]];
+    
+    _tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.width, self.view.height) style:UITableViewStyleGrouped] autorelease];
+    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
+    [_tableView release];
+}
+
+- (void)cancelButtonClickHandler:(id)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - Private
+
+- (void)fillSinaWeiboUser:(id<ISSUserInfo>)userInfo
+{
+    NSArray *keys = [userInfo.source allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [userInfo.source objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]])
+        {
+            if ([value respondsToSelector:@selector(stringValue)])
+            {
+                value = [value stringValue];
+            }
+            else
+            {
+                value = @"";
+            }
+        }
+        
+        if ([keyName isEqualToString:@"id"])
+        {
+            [_infoDict setObject:value forKey:@"UID"];
+        }
+        else if([keyName isEqualToString:@"idstr"])
+        {
+            [_infoDict setObject:value forKey:@"字符串型UID"];
+        }
+        else if([keyName isEqualToString:@"screen_name"])
+        {
+            [_infoDict setObject:value forKey:@"用户昵称"];
+        }
+        else if([keyName isEqualToString:@"name"])
+        {
+            [_infoDict setObject:value forKey:@"显示名称"];
+        }
+        else if([keyName isEqualToString:@"province"])
+        {
+            [_infoDict setObject:value forKey:@"省级ID"];
+        }
+        else if([keyName isEqualToString:@"city"])
+        {
+            [_infoDict setObject:value forKey:@"城市ID"];
+        }
+        else if([keyName isEqualToString:@"location"])
+        {
+            [_infoDict setObject:value forKey:@"所在地"];
+        }
+        else if([keyName isEqualToString:@"description"])
+        {
+            [_infoDict setObject:value forKey:@"个人描述"];
+        }
+        else if([keyName isEqualToString:@"url"])
+        {
+            [_infoDict setObject:value forKey:@"博客地址"];
+        }
+        else if([keyName isEqualToString:@"profile_image_url"])
+        {
+            [_infoDict setObject:value forKey:@"头像地址"];
+        }
+        else if([keyName isEqualToString:@"profile_url"])
+        {
+            [_infoDict setObject:value forKey:@"微博统一URL地址"];
+        }
+        else if([keyName isEqualToString:@"domain"])
+        {
+            [_infoDict setObject:value forKey:@"个性化域名"];
+        }
+        else if([keyName isEqualToString:@"weihao"])
+        {
+            [_infoDict setObject:value forKey:@"微号"];
+        }
+        else if([keyName isEqualToString:@"gender"])
+        {
+            [_infoDict setObject:value forKey:@"性别"];
+        }
+        else if([keyName isEqualToString:@"followers_count"])
+        {
+            [_infoDict setObject:value forKey:@"粉丝数"];
+        }
+        else if([keyName isEqualToString:@"friends_count"])
+        {
+            [_infoDict setObject:value forKey:@"关注数"];
+        }
+        else if([keyName isEqualToString:@"statuses_count"])
+        {
+            [_infoDict setObject:value forKey:@"微博数"];
+        }
+        else if([keyName isEqualToString:@"favourites_count"])
+        {
+            [_infoDict setObject:value forKey:@"收藏数"];
+        }
+        else if([keyName isEqualToString:@"created_at"])
+        {
+            [_infoDict setObject:value forKey:@"注册时间"];
+        }
+        else if([keyName isEqualToString:@"following"])
+        {
+            [_infoDict setObject:value forKey:@"following"];
+        }
+        else if([keyName isEqualToString:@"allow_all_act_msg"])
+        {
+            [_infoDict setObject:value forKey:@"是否允许给我发私信"];
+        }
+        else if([keyName isEqualToString:@"geo_enabled"])
+        {
+            [_infoDict setObject:value forKey:@"是否允许标识地理位置"];
+        }
+        else if([keyName isEqualToString:@"verified"])
+        {
+            [_infoDict setObject:value forKey:@"是否是微博认证用户"];
+        }
+        else if([keyName isEqualToString:@"verified_type"])
+        {
+            [_infoDict setObject:value forKey:@"verified_type"];
+        }
+        else if([keyName isEqualToString:@"remark"])
+        {
+            [_infoDict setObject:value forKey:@"备注信息"];
+        }
+        else if([keyName isEqualToString:@"allow_all_comment"])
+        {
+            [_infoDict setObject:value forKey:@"是否允许对我的微博进行评论"];
+        }
+        else if([keyName isEqualToString:@"avatar_large"])
+        {
+            [_infoDict setObject:value forKey:@"大头像地址"];
+        }
+        else if([keyName isEqualToString:@"verified_reason"])
+        {
+            [_infoDict setObject:value forKey:@"认证原因"];
+        }
+        else if([keyName isEqualToString:@"follow_me"])
+        {
+            [_infoDict setObject:value forKey:@"是否关注我"];
+        }
+        else if([keyName isEqualToString:@"online_status"])
+        {
+            [_infoDict setObject:value forKey:@"在线状态"];
+        }
+        else if([keyName isEqualToString:@"bi_followers_count"])
+        {
+            [_infoDict setObject:value forKey:@"互粉数"];
+        }
+        else if([keyName isEqualToString:@"lang"])
+        {
+            [_infoDict setObject:value forKey:@"语言版本"];
+        }
+    }
+}
+
+- (void)fillTecentWeiboUser:(id<ISSUserInfo>)userInfo
+{
+    NSArray *keys = [userInfo.source allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [userInfo.source objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]])
+        {
+            if ([value respondsToSelector:@selector(stringValue)])
+            {
+                value = [value stringValue];
+            }
+            else
+            {
+                value = @"";
+            }
+        }
+        
+        if ([keyName isEqualToString:@"birth_day"])
+        {
+            [_infoDict setObject:value forKey:@"出生天"];
+        }
+        else if ([keyName isEqualToString:@"birth_month"])
+        {
+            [_infoDict setObject:value forKey:@"出生月"];
+        }
+        else if ([keyName isEqualToString:@"birth_year"])
+        {
+            [_infoDict setObject:value forKey:@"出生年"];
+        }
+        else if ([keyName isEqualToString:@"city_code"])
+        {
+            [_infoDict setObject:value forKey:@"城市id"];
+        }
+        else if ([keyName isEqualToString:@"country_code"])
+        {
+            [_infoDict setObject:value forKey:@"国家id"];
+        }
+        else if ([keyName isEqualToString:@"fansnum"])
+        {
+            [_infoDict setObject:value forKey:@"听众数"];
+        }
+        else if ([keyName isEqualToString:@"favnum"])
+        {
+            [_infoDict setObject:value forKey:@"收藏数"];
+        }
+        else if ([keyName isEqualToString:@"head"])
+        {
+            [_infoDict setObject:value forKey:@"头像url"];
+        }
+        else if ([keyName isEqualToString:@"homecity_code"])
+        {
+            [_infoDict setObject:value forKey:@"家乡所在城市id"];
+        }
+        else if ([keyName isEqualToString:@"homecountry_code"])
+        {
+            [_infoDict setObject:value forKey:@"家乡所在国家id"];
+        }
+        else if ([keyName isEqualToString:@"homepage"])
+        {
+            [_infoDict setObject:value forKey:@"个人主页"];
+        }
+        else if ([keyName isEqualToString:@"homeprovince_code"])
+        {
+            [_infoDict setObject:value forKey:@"家乡所在省id"];
+        }
+        else if ([keyName isEqualToString:@"hometown_code"])
+        {
+            [_infoDict setObject:value forKey:@"家乡所在城镇id"];
+        }
+        else if ([keyName isEqualToString:@"idolnum"])
+        {
+            [_infoDict setObject:value forKey:@"收听的人数"];
+        }
+        else if ([keyName isEqualToString:@"industry_code"])
+        {
+            [_infoDict setObject:value forKey:@"行业id"];
+        }
+        else if ([keyName isEqualToString:@"introduction"])
+        {
+            [_infoDict setObject:value forKey:@"个人介绍"];
+        }
+        else if ([keyName isEqualToString:@"isent"])
+        {
+            [_infoDict setObject:value forKey:@"是否企业机构"];
+        }
+        else if ([keyName isEqualToString:@"ismyblack"])
+        {
+            [_infoDict setObject:value forKey:@"是否在当前用户的黑名单中"];
+        }
+        else if ([keyName isEqualToString:@"ismyfans"])
+        {
+            [_infoDict setObject:value forKey:@"是否是当前用户的听众"];
+        }
+        else if ([keyName isEqualToString:@"ismyidol"])
+        {
+            [_infoDict setObject:value forKey:@"是否是当前用户的偶像"];
+        }
+        else if ([keyName isEqualToString:@"isrealname"])
+        {
+            [_infoDict setObject:value forKey:@"是否实名认证"];
+        }
+        else if ([keyName isEqualToString:@"isvip"])
+        {
+            [_infoDict setObject:value forKey:@"是否认证用户"];
+        }
+        else if ([keyName isEqualToString:@"location"])
+        {
+            [_infoDict setObject:value forKey:@"所在地"];
+        }
+        else if ([keyName isEqualToString:@"mutual_fans_num"])
+        {
+            [_infoDict setObject:value forKey:@"互听好友数"];
+        }
+        else if ([keyName isEqualToString:@"name"])
+        {
+            [_infoDict setObject:value forKey:@"用户帐户名"];
+        }
+        else if ([keyName isEqualToString:@"nick"])
+        {
+            [_infoDict setObject:value forKey:@"用户昵称"];
+        }
+        else if ([keyName isEqualToString:@"openid"])
+        {
+            [_infoDict setObject:value forKey:@"用户唯一id"];
+        }
+        else if ([keyName isEqualToString:@"province_code"])
+        {
+            [_infoDict setObject:value forKey:@"地区id"];
+        }
+        else if ([keyName isEqualToString:@"regtime"])
+        {
+            [_infoDict setObject:value forKey:@"注册时间"];
+        }
+        else if ([keyName isEqualToString:@"send_private_flag"])
+        {
+            [_infoDict setObject:value forKey:@"是否允许所有人给当前用户发私信"];
+        }
+        else if ([keyName isEqualToString:@"sex"])
+        {
+            [_infoDict setObject:value forKey:@"用户性别"];
+        }
+        else if ([keyName isEqualToString:@"tweetnum"])
+        {
+            [_infoDict setObject:value forKey:@"发表的微博数"];
+        }
+        else if ([keyName isEqualToString:@"verifyinfo"])
+        {
+            [_infoDict setObject:value forKey:@"认证信息"];
+        }
+        else if ([keyName isEqualToString:@"exp"])
+        {
+            [_infoDict setObject:value forKey:@"经验值"];
+        }
+        else if ([keyName isEqualToString:@"level"])
+        {
+            [_infoDict setObject:value forKey:@"微博等级"];
+        }
+    }
+}
+
+- (void)fillSohuWeiboUser:(id<ISSUserInfo>)userInfo
+{
+    NSArray *keys = [userInfo.source allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [userInfo.source objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]])
+        {
+            if ([value respondsToSelector:@selector(stringValue)])
+            {
+                value = [value stringValue];
+            }
+            else
+            {
+                value = @"";
+            }
+        }
+        
+        if ([keyName isEqualToString:@"id"])
+        {
+            [_infoDict setObject:value forKey:@"用户ID"];
+        }
+        else if ([keyName isEqualToString:@"screen_name"])
+        {
+            [_infoDict setObject:value forKey:@"昵称"];
+        }
+        else if ([keyName isEqualToString:@"name"])
+        {
+            [_infoDict setObject:value forKey:@"姓名"];
+        }
+        else if ([keyName isEqualToString:@"location"])
+        {
+            [_infoDict setObject:value forKey:@"地区"];
+        }
+        else if ([keyName isEqualToString:@"description"])
+        {
+            [_infoDict setObject:value forKey:@"个人简介"];
+        }
+        else if ([keyName isEqualToString:@"url"])
+        {
+            [_infoDict setObject:value forKey:@"个人主页"];
+        }
+        else if ([keyName isEqualToString:@"profile_image_url"])
+        {
+            [_infoDict setObject:value forKey:@"用户头像"];
+        }
+        else if ([keyName isEqualToString:@"protected"])
+        {
+            [_infoDict setObject:value forKey:@"勿扰"];
+        }
+        else if ([keyName isEqualToString:@"followers_count"])
+        {
+            [_infoDict setObject:value forKey:@"粉丝数"];
+        }
+        else if ([keyName isEqualToString:@"profile_background_color"])
+        {
+            [_infoDict setObject:value forKey:@"背景颜色"];
+        }
+        else if ([keyName isEqualToString:@"profile_text_color"])
+        {
+            [_infoDict setObject:value forKey:@"文字颜色"];
+        }
+        else if ([keyName isEqualToString:@"profile_link_color"])
+        {
+            [_infoDict setObject:value forKey:@"profile_link_color"];
+        }
+        else if ([keyName isEqualToString:@"profile_sidebar_fill_color"])
+        {
+            [_infoDict setObject:value forKey:@"侧栏颜色"];
+        }
+        else if ([keyName isEqualToString:@"profile_sidebar_border_color"])
+        {
+            [_infoDict setObject:value forKey:@"profile_sidebar_border_color"];
+        }
+        else if ([keyName isEqualToString:@"friends_count"])
+        {
+            [_infoDict setObject:value forKey:@"关注数"];
+        }
+        else if ([keyName isEqualToString:@"created_at"])
+        {
+            [_infoDict setObject:value forKey:@"创建时间"];
+        }
+        else if ([keyName isEqualToString:@"favourites_count"])
+        {
+            [_infoDict setObject:value forKey:@"收藏数"];
+        }
+        else if ([keyName isEqualToString:@"utc_offset"])
+        {
+            [_infoDict setObject:value forKey:@"偏移值"];
+        }
+        else if ([keyName isEqualToString:@"time_zone"])
+        {
+            [_infoDict setObject:value forKey:@"时区"];
+        }
+        else if ([keyName isEqualToString:@"profile_background_image_url"])
+        {
+            [_infoDict setObject:value forKey:@"profile_background_image_url"];
+        }
+        else if ([keyName isEqualToString:@"notifications"])
+        {
+            [_infoDict setObject:value forKey:@"通知"];
+        }
+        else if ([keyName isEqualToString:@"geo_enabled"])
+        {
+            [_infoDict setObject:value forKey:@"是否支持地理位置"];
+        }
+        else if ([keyName isEqualToString:@"statuses_count"])
+        {
+            [_infoDict setObject:value forKey:@"微博数"];
+        }
+        else if ([keyName isEqualToString:@"following"])
+        {
+            [_infoDict setObject:value forKey:@"是否关注"];
+        }
+        else if ([keyName isEqualToString:@"verified"])
+        {
+            [_infoDict setObject:value forKey:@"是否认证"];
+        }
+        else if ([keyName isEqualToString:@"lang"])
+        {
+            [_infoDict setObject:value forKey:@"语言"];
+        }
+        else if ([keyName isEqualToString:@"contributors_enabled"])
+        {
+            [_infoDict setObject:value forKey:@"contributors_enabled"];
+        }
+    }
+}
+
+- (void)fill163WeiboUser:(id<ISSUserInfo>)userInfo
+{
+    NSArray *keys = [userInfo.source allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [userInfo.source objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]])
+        {
+            if ([value respondsToSelector:@selector(stringValue)])
+            {
+                value = [value stringValue];
+            }
+            else
+            {
+                value = @"";
+            }
+        }
+        
+        if ([keyName isEqualToString:@"columnIdNameWithCounts"])
+        {
+            [_infoDict setObject:value forKey:@"columnIdNameWithCounts"];
+        }
+        else if ([keyName isEqualToString:@"created_at"])
+        {
+            [_infoDict setObject:value forKey:@"注册时间"];
+        }
+        else if ([keyName isEqualToString:@"darenRec"])
+        {
+            [_infoDict setObject:value forKey:@"darenRec"];
+        }
+        else if ([keyName isEqualToString:@"description"])
+        {
+            [_infoDict setObject:value forKey:@"用户描述"];
+        }
+        else if ([keyName isEqualToString:@"email"])
+        {
+            [_infoDict setObject:value forKey:@"邮箱地址"];
+        }
+        else if ([keyName isEqualToString:@"favourites_count"])
+        {
+            [_infoDict setObject:value forKey:@"收藏数"];
+        }
+        else if ([keyName isEqualToString:@"followers_count"])
+        {
+            [_infoDict setObject:value forKey:@"被关注数"];
+        }
+        else if ([keyName isEqualToString:@"friends_count"])
+        {
+            [_infoDict setObject:value forKey:@"关注数"];
+        }
+        else if ([keyName isEqualToString:@"gender"])
+        {
+            [_infoDict setObject:value forKey:@"性别"];
+        }
+        else if ([keyName isEqualToString:@"geo_enable"])
+        {
+            [_infoDict setObject:value forKey:@"geo_enable"];
+        }
+        else if ([keyName isEqualToString:@"icorp"])
+        {
+            [_infoDict setObject:value forKey:@"icorp"];
+        }
+        else if ([keyName isEqualToString:@"id"])
+        {
+            [_infoDict setObject:value forKey:@"用户ID"];
+        }
+        else if ([keyName isEqualToString:@"location"])
+        {
+            [_infoDict setObject:value forKey:@"用户地址"];
+        }
+        else if ([keyName isEqualToString:@"name"])
+        {
+            [_infoDict setObject:value forKey:@"用户名称"];
+        }
+        else if ([keyName isEqualToString:@"profile_image_url"])
+        {
+            [_infoDict setObject:value forKey:@"用户头像URL"];
+        }
+        else if ([keyName isEqualToString:@"realName"])
+        {
+            [_infoDict setObject:value forKey:@"realName"];
+        }
+        else if ([keyName isEqualToString:@"screen_name"])
+        {
+            [_infoDict setObject:value forKey:@"个性网址"];
+        }
+        else if ([keyName isEqualToString:@"statuses_count"])
+        {
+            [_infoDict setObject:value forKey:@"发微博数"];
+        }
+        else if ([keyName isEqualToString:@"sysTag"])
+        {
+            [_infoDict setObject:value forKey:@"sysTag"];
+        }
+        else if ([keyName isEqualToString:@"url"])
+        {
+            [_infoDict setObject:value forKey:@"个人博客地址"];
+        }
+        else if ([keyName isEqualToString:@"userTag"])
+        {
+            [_infoDict setObject:value forKey:@"userTag"];
+        }
+        else if ([keyName isEqualToString:@"verified"])
+        {
+            [_infoDict setObject:value forKey:@"verified"];
+        }
+    }
+}
+
+- (void)fillDouBanUser:(id<ISSUserInfo>)userInfo
+{
+    NSArray *keys = [userInfo.source allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [userInfo.source objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]])
+        {
+            if ([value respondsToSelector:@selector(stringValue)])
+            {
+                value = [value stringValue];
+            }
+            else
+            {
+                value = @"";
+            }
+        }
+        
+        if ([keyName isEqualToString:@"desc"])
+        {
+            [_infoDict setObject:value forKey:@"描述"];
+        }
+        else if ([keyName isEqualToString:@"alt"])
+        {
+            [_infoDict setObject:value forKey:@"alt"];
+        }
+        else if ([keyName isEqualToString:@"avatar"])
+        {
+            [_infoDict setObject:value forKey:@"头像小图"];
+        }
+        else if ([keyName isEqualToString:@"created"])
+        {
+            [_infoDict setObject:value forKey:@"注册时间"];
+        }
+        else if ([keyName isEqualToString:@"loc_id"])
+        {
+            [_infoDict setObject:value forKey:@"城市id"];
+        }
+        else if ([keyName isEqualToString:@"loc_name"])
+        {
+            [_infoDict setObject:value forKey:@"所在地全称"];
+        }
+        else if ([keyName isEqualToString:@"name"])
+        {
+            [_infoDict setObject:value forKey:@"用户昵称"];
+        }
+        else if ([keyName isEqualToString:@"signature"])
+        {
+            [_infoDict setObject:value forKey:@"signature"];
+        }
+        else if ([keyName isEqualToString:@"id"])
+        {
+            [_infoDict setObject:value forKey:@"用户ID"];
+        }
+        else if ([keyName isEqualToString:@"large_avatar"])
+        {
+            [_infoDict setObject:value forKey:@"大头像"];
+        }
+        else if ([keyName isEqualToString:@"screen_name"])
+        {
+            [_infoDict setObject:value forKey:@"用户名号"];
+        }
+        else if ([keyName isEqualToString:@"small_avatar"])
+        {
+            [_infoDict setObject:value forKey:@"小头像"];
+        }
+        else if ([keyName isEqualToString:@"type"])
+        {
+            [_infoDict setObject:value forKey:@"类型"];
+        }
+        else if ([keyName isEqualToString:@"uid"])
+        {
+            [_infoDict setObject:value forKey:@"用户ID"];
+        }
+    }
+}
+
+- (void)fillQQSpaceUser:(id<ISSUserInfo>)userInfo
+{
+    NSArray *keys = [userInfo.source allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [userInfo.source objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]])
+        {
+            if ([value respondsToSelector:@selector(stringValue)])
+            {
+                value = [value stringValue];
+            }
+            else
+            {
+                value = @"";
+            }
+        }
+        
+        if ([keyName isEqualToString:@"figureurl"])
+        {
+            [_infoDict setObject:value forKey:@"30×30头像URL"];
+        }
+        else if ([keyName isEqualToString:@"figureurl_1"])
+        {
+            [_infoDict setObject:value forKey:@"50×50头像URL"];
+        }
+        else if ([keyName isEqualToString:@"figureurl_2"])
+        {
+            [_infoDict setObject:value forKey:@"100×100头像URL"];
+        }
+        else if ([keyName isEqualToString:@"gender"])
+        {
+            [_infoDict setObject:value forKey:@"性别"];
+        }
+        else if ([keyName isEqualToString:@"is_yellow_year_vip"])
+        {
+            [_infoDict setObject:value forKey:@"是否为年费黄钻用户"];
+        }
+        else if ([keyName isEqualToString:@"level"])
+        {
+            [_infoDict setObject:value forKey:@"黄钻等级"];
+        }
+        else if ([keyName isEqualToString:@"nickname"])
+        {
+            [_infoDict setObject:value forKey:@"昵称"];
+        }
+        else if ([keyName isEqualToString:@"vip"])
+        {
+            [_infoDict setObject:value forKey:@"是否为黄钻用户"];
+        }
+    }
+}
+
+- (void)fillRenRenUser:(id<ISSUserInfo>)userInfo
+{
+    NSArray *keys = [userInfo.source allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [userInfo.source objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]])
+        {
+            if ([value respondsToSelector:@selector(stringValue)])
+            {
+                value = [value stringValue];
+            }
+            else
+            {
+                value = @"";
+            }
+        }
+        
+        if ([keyName isEqualToString:@"uid"])
+        {
+            [_infoDict setObject:value forKey:@"用户id"];
+        }
+        else if ([keyName isEqualToString:@"name"])
+        {
+            [_infoDict setObject:value forKey:@"用户名"];
+        }
+        else if ([keyName isEqualToString:@"sex"])
+        {
+            [_infoDict setObject:value forKey:@"性别"];
+        }
+        else if ([keyName isEqualToString:@"star"])
+        {
+            [_infoDict setObject:value forKey:@"是否为星级用户"];
+        }
+        else if ([keyName isEqualToString:@"zidou"])
+        {
+            [_infoDict setObject:value forKey:@"是否为vip用户"];
+        }
+        else if ([keyName isEqualToString:@"vip"])
+        {
+            [_infoDict setObject:value forKey:@"vip用户等级"];
+        }
+        else if ([keyName isEqualToString:@"birthday"])
+        {
+            [_infoDict setObject:value forKey:@"出生时间"];
+        }
+        else if ([keyName isEqualToString:@"email_hash"])
+        {
+            [_infoDict setObject:value forKey:@"经过验证的email的信息"];
+        }
+        else if ([keyName isEqualToString:@"tinyurl"])
+        {
+            [_infoDict setObject:value forKey:@"头像链接 50*50"];
+        }
+        else if ([keyName isEqualToString:@"headurl"])
+        {
+            [_infoDict setObject:value forKey:@"头像链接 100*100"];
+        }
+        else if ([keyName isEqualToString:@"mainurl"])
+        {
+            [_infoDict setObject:value forKey:@"头像链接 200*200"];
+        }
+    }
+}
+
+- (void)fillKaiXinUser:(id<ISSUserInfo>)userInfo
+{
+    NSArray *keys = [userInfo.source allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [userInfo.source objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]])
+        {
+            if ([value respondsToSelector:@selector(stringValue)])
+            {
+                value = [value stringValue];
+            }
+            else
+            {
+                value = @"";
+            }
+        }
+        
+        if ([keyName isEqualToString:@"uid"])
+        {
+            [_infoDict setObject:value forKey:@"用户ID"];
+        }
+        else if ([keyName isEqualToString:@"name"])
+        {
+            [_infoDict setObject:value forKey:@"用户名"];
+        }
+        else if ([keyName isEqualToString:@"gender"])
+        {
+            [_infoDict setObject:value forKey:@"性别"];
+        }
+        else if ([keyName isEqualToString:@"hometown"])
+        {
+            [_infoDict setObject:value forKey:@"家乡"];
+        }
+        else if ([keyName isEqualToString:@"city"])
+        {
+            [_infoDict setObject:value forKey:@"现居住地"];
+        }
+        else if ([keyName isEqualToString:@"status"])
+        {
+            [_infoDict setObject:value forKey:@"状态"];
+        }
+        else if ([keyName isEqualToString:@"logo120"])
+        {
+            [_infoDict setObject:value forKey:@"头像120 x 120"];
+        }
+        else if ([keyName isEqualToString:@"logo50"])
+        {
+            [_infoDict setObject:value forKey:@"头像50 x 50"];
+        }
+        else if ([keyName isEqualToString:@"birthday"])
+        {
+            [_infoDict setObject:value forKey:@"生日"];
+        }
+        else if ([keyName isEqualToString:@"bodyform"])
+        {
+            [_infoDict setObject:value forKey:@"体型"];
+        }
+        else if ([keyName isEqualToString:@"blood"])
+        {
+            [_infoDict setObject:value forKey:@"血型"];
+        }
+        else if ([keyName isEqualToString:@"marriage"])
+        {
+            [_infoDict setObject:value forKey:@"婚姻状态"];
+        }
+        else if ([keyName isEqualToString:@"trainwith"])
+        {
+            [_infoDict setObject:value forKey:@"希望结交"];
+        }
+        else if ([keyName isEqualToString:@"interest"])
+        {
+            [_infoDict setObject:value forKey:@"兴趣爱好"];
+        }
+        else if ([keyName isEqualToString:@"favbook"])
+        {
+            [_infoDict setObject:value forKey:@"喜欢的书籍"];
+        }
+        else if ([keyName isEqualToString:@"favmovie"])
+        {
+            [_infoDict setObject:value forKey:@"喜欢的电影"];
+        }
+        else if ([keyName isEqualToString:@"favtv"])
+        {
+            [_infoDict setObject:value forKey:@"喜欢的电视剧"];
+        }
+        else if ([keyName isEqualToString:@"idol"])
+        {
+            [_infoDict setObject:value forKey:@"偶像"];
+        }
+        else if ([keyName isEqualToString:@"motto"])
+        {
+            [_infoDict setObject:value forKey:@"座右铭"];
+        }
+        else if ([keyName isEqualToString:@"wishlist"])
+        {
+            [_infoDict setObject:value forKey:@"愿望列表"];
+        }
+        else if ([keyName isEqualToString:@"intro"])
+        {
+            [_infoDict setObject:value forKey:@"介绍"];
+        }
+        else if ([keyName isEqualToString:@"isStar"])
+        {
+            [_infoDict setObject:value forKey:@"是否公共主页"];
+        }
+        else if ([keyName isEqualToString:@"pinyin"])
+        {
+            [_infoDict setObject:value forKey:@"姓名拼音"];
+        }
+        else if ([keyName isEqualToString:@"online"])
+        {
+            [_infoDict setObject:value forKey:@"是否在线"];
+        }
+    }
+}
+
+- (void)loadImage:(NSString *)url
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+    [self performSelectorOnMainThread:@selector(showUserIcon:) withObject:image waitUntilDone:NO];
+    
+    [pool release];
+}
+
+- (void)showUserIcon:(UIImage *)icon
+{
+    if (icon)
+    {
+        UIImageView *imageView = [[[UIImageView alloc] initWithImage:icon] autorelease];
+        imageView.frame = CGRectMake(0.0, 0.0, _tableView.width, imageView.height * _tableView.width / imageView.width);
+        _tableView.tableHeaderView = imageView;
+    }
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [[_infoDict allKeys] count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_CELL_ID];
+    if (cell == nil)
+    {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TABLE_CELL_ID] autorelease];
+    }
+    
+    if (indexPath.row < [[_infoDict allKeys] count])
+    {
+        NSString *keyName = [[_infoDict allKeys] objectAtIndex:indexPath.row];
+        cell.textLabel.text = keyName;
+        cell.detailTextLabel.text = [_infoDict objectForKey:keyName];
+    }
+    
+    return cell;
+}
+
+@end
