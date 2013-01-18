@@ -20,8 +20,9 @@
 *3．引入社区应用配置信息。*
     打开main.m文件加入
     
-<pre><code>#import &lt;ShareSDK/ShareConfig.h&gt;</code></pre>
-
+```ObjectiveC
+#import &lt;ShareSDK/ShareConfig.h&gt;</code></pre>
+```
     如图：
     
     （P.S. 此头文件必须在此文件下导入，否则会导致编译不通过）
