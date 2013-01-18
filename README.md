@@ -21,7 +21,7 @@
     打开main.m文件加入
     
 ```ObjectiveC
-#import &lt;ShareSDK/ShareConfig.h&gt;</code></pre>
+#import <ShareSDK/ShareConfig.h>
 ```
     如图：
     
