@@ -1,8 +1,12 @@
+![image](http://www.sharesdk.cn/media/attached/sharesdk_1.png)
+![image](http://www.sharesdk.cn/media/attached/sharesdk_2.png)
+![image](http://www.sharesdk.cn/media/attached/sharesdk_3.png)
+
 *Share集成指南*
 
 *1．导入SDK*
     将ShareSDK文件夹到项目文件夹中夹并拖入项目中。
-![image](http://www.sharesdk.cn/media/attached/sharesdk_1.png)
+
 
 *2. 添加依赖框架(Framework)*
     打开项目设置中的Build Phases页，在“Link Binary With Libraries”一栏中，点击左下角的“＋”号；在弹出窗口里面分别以下库加入到项目中：
@@ -11,13 +15,13 @@
     MessageUI.framework
     libicucore.dylib
 
-![image](http://www.sharesdk.cn/media/attached/sharesdk_2.png)
+
 
 *3．引入社区应用配置信息。*
     打开main.m文件加入
-<pre><code>#import <ShareSDK/ShareConfig.h></code></pre>
+<pre><code>#import &lt;ShareSDK/ShareConfig.h&gt;</code></pre>
     如图：
-![image](http://www.sharesdk.cn/media/attached/sharesdk_3.png)
+
 
     （P.S. 此头文件必须在此文件下导入，否则会导致编译不通过）
 
