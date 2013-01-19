@@ -50,41 +50,34 @@
     apiVC.title = @"接口";
     UINavigationController *navApiVC = [[[UINavigationController alloc] initWithRootViewController:apiVC] autorelease];
     navApiVC.tabBarItem.title = @"接口";
-    navApiVC.tabBarItem.image = [UIImage imageNamed:@"timeline_tab.png"];
+    navApiVC.tabBarItem.image = [UIImage imageNamed:@"HomeIcon.png"];
     [tabController addChildViewController:navApiVC];
     
     UIViewController *authVC = [[[AGAuthViewController alloc] init] autorelease];
     authVC.title = @"授权";
     UINavigationController *navAuthVC = [[[UINavigationController alloc] initWithRootViewController:authVC] autorelease];
     navAuthVC.tabBarItem.title = @"授权";
-    navAuthVC.tabBarItem.image = [UIImage imageNamed:@"profile_tab.png"];
+    navAuthVC.tabBarItem.image = [UIImage imageNamed:@"AuthIcon.png"];
     [tabController addChildViewController:navAuthVC];
     
     UIViewController *weixinVC = [[[WeiXInDemoViewController alloc] init] autorelease];
     ((WeiXInDemoViewController *)weixinVC).delegate = self;
     UINavigationController *navWeiXinVC = [[[UINavigationController alloc] initWithRootViewController:weixinVC] autorelease];
     navWeiXinVC.tabBarItem.title = @"微信";
-    navWeiXinVC.tabBarItem.image = [UIImage imageNamed:@"comments_tab.png"];
+    navWeiXinVC.tabBarItem.image = [UIImage imageNamed:@"WeiXinTabIcon.png"];
     [tabController addChildViewController:navWeiXinVC];
     
     UIViewController *qqVC = [[[QQDemoViewController alloc] init] autorelease];
     UINavigationController *navQQVC = [[[UINavigationController alloc] initWithRootViewController:qqVC] autorelease];
     navQQVC.tabBarItem.title = @"QQ";
-    navQQVC.tabBarItem.image = [UIImage imageNamed:@"mute_tab.png"];
+    navQQVC.tabBarItem.image = [UIImage imageNamed:@"QQTabIcon.png"];
     [tabController addChildViewController:navQQVC];
     
     UIViewController *shareVC = [[[AGViewController alloc] init] autorelease];
     UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
     navShareVC.tabBarItem.title = @"自定义";
-    navShareVC.tabBarItem.image = [UIImage imageNamed:@"favorites_tab.png"];
+    navShareVC.tabBarItem.image = [UIImage imageNamed:@"CustomIcon.png"];
     [tabController addChildViewController:navShareVC];
-    
-//    UIViewController *moreVC = [[[ShareSDKDemoMoreViewController alloc] init] autorelease];
-//    moreVC.title = @"更多";
-//    UINavigationController *navMoreVC = [[[UINavigationController alloc] initWithRootViewController:moreVC] autorelease];
-//    navMoreVC.tabBarItem.title = @"更多";
-//    navMoreVC.tabBarItem.image = [UIImage imageNamed:@"AuthorizeIcon.png"];
-//    [tabController addChildViewController:navMoreVC];
     
     self.viewController = tabController;
     self.window.rootViewController = self.viewController;

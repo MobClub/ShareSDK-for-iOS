@@ -46,9 +46,10 @@
         self.title = @"自定义";
         
         UIButton *btn = [[[UIButton alloc] init] autorelease];
-        [btn setBackgroundImage:[[UIImage imageNamed:@"navbar_normal_button-portrait.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:15 ] forState:UIControlStateNormal];
-        [btn setImage:[UIImage imageNamed:@"nav_action.png"] forState:UIControlStateNormal];
-        [btn setImage:[UIImage imageNamed:@"nav_action_highlighted.png"] forState:UIControlStateHighlighted];
+        [btn setBackgroundImage:[UIImage imageNamed:@"AGShareSDK/PublishEx/NavigationButtonBG.png" bundleName:@"Appgo"]
+                       forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"ShareButtonIcon.png"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"ShareButtonHighLightedIcon.png"] forState:UIControlStateHighlighted];
         btn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
         [btn addTarget:self action:@selector(actionClickHandler:) forControlEvents:UIControlEventTouchUpInside];
         

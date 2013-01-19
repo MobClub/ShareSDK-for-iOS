@@ -25,7 +25,10 @@
         // Custom initialization
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setBackgroundImage:[UIImage imageNamed:@"AGShareSDK/PublishEx/CancelButtonBG.png" bundleName:@"Appgo"] forState:UIControlStateNormal];
+        [button setBackgroundImage:[UIImage imageNamed:@"AGShareSDK/PublishEx/NavigationButtonBG.png" bundleName:@"Appgo"]
+                          forState:UIControlStateNormal];
+        [button setTitle:@"取消" forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:14];
         button.frame = CGRectMake(0.0, 0.0, 55.0, 32.0);
         [button addTarget:self action:@selector(cancelButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
         

@@ -11,6 +11,7 @@
 #import "AGShareCell.h"
 #import <AGCommon/UIImage+Common.h>
 #import <AGCommon/UINavigationBar+Common.h>
+#import <AGCommon/UIImage+Common.h>
 
 #define INPUT_CELL_ID @"inputCellId"
 #define PARAM_CELL_ID @"paramCellId"
@@ -23,7 +24,7 @@
     if (self = [super init])
     {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setBackgroundImage:[[UIImage imageNamed:@"navbar_normal_button-portrait"] stretchableImageWithLeftCapWidth:15 topCapHeight:15]
+        [btn setBackgroundImage:[UIImage imageNamed:@"AGShareSDK/PublishEx/NavigationButtonBG.png" bundleName:@"Appgo"]
                        forState:UIControlStateNormal];
         [btn setTitle:@"取消" forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -33,7 +34,7 @@
         self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:btn] autorelease];
         
         btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setBackgroundImage:[[UIImage imageNamed:@"navbar_normal_button-portrait"] stretchableImageWithLeftCapWidth:15 topCapHeight:15]
+        [btn setBackgroundImage:[UIImage imageNamed:@"AGShareSDK/PublishEx/NavigationButtonBG.png" bundleName:@"Appgo"]
                        forState:UIControlStateNormal];
         [btn setTitle:@"确定" forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:14];
