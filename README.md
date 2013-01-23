@@ -1,4 +1,4 @@
-![image](http://v.youku.com/v_show/id_XNTAyNjM5NDI0.html)
+[视频](http://v.youku.com/v_show/id_XNTAyNjM5NDI0.html)
 
 ![image](http://www.sharesdk.cn/media/attached/sharesdk_1.png)
 ![image](http://www.sharesdk.cn/media/attached/sharesdk_2.png)
