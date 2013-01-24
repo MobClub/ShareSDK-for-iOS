@@ -20,16 +20,12 @@ NSString *ssSinaAppKey = @"2279784657";
 NSString *ssSinaAppSecret = @"9927ab7d7d093782a3ebe0b987ad545d";
 NSString *ssSinaRedirectUri = @"http://sns.whalecloud.com/sina2/callback";
 
-//NSString *ssSinaAppKey = @"4149214310";
-//NSString *ssSinaAppSecret = @"c10a7eeaf0d3c0b11aa91076a338e6af";
-//NSString *ssSinaRedirectUri = @"http://www.zyk.com";
-
 #pragma mark - 腾讯微博应用配置信息
 //http://dev.t.qq.com上注册腾讯微博开放平台应用，并将相关信息填写到以下字段
 
-NSString *ssTecentAppKey = @"801298093";
-NSString *ssTecentAppSecret = @"e83eb72713732b9f2f978d846b54916e";
-NSString *ssTecentRedirectUri = @"http://www.appgo.cn";
+NSString *ssTecentAppKey = @"801307650";
+NSString *ssTecentAppSecret = @"ae36f4ee3946e1cbb98d6965b0b2ff5c";
+NSString *ssTecentRedirectUri = @"http://www.sharesdk.cn";
 
 
 #pragma mark - QQ空间应用配置信息
@@ -55,33 +51,22 @@ NSString *ssSohuConsumerSecret = @"dBaW3TzwtGf1u6)YuUY%TPR7y3mRCxv7vckX!dbW";
 #pragma mark - 豆瓣社区应用配置信息
 //http://developers.douban.com上注册豆瓣社区应用，并将相关信息填写到以下字段
 
-//NSString *ssDoubanAppKey = @"0bf735e2ffffdb7b23e5a1a8ffff9271";
-//NSString *ssDoubanAppSecret = @"e727e07710a5b6a5";
-//NSString *ssDoubanRedirectUri = @"http://www.appgo.cn";
-
-NSString *ssDoubanAppKey = @"06f58d9a44b0f8b814e0a8cece12ea28";
-NSString *ssDoubanAppSecret = @"c127754239616cbb";
-NSString *ssDoubanRedirectUri = @"http://www.baidu.com";
+NSString *ssDoubanAppKey = @"0bf735e2ffffdb7b23e5a1a8ffff9271";
+NSString *ssDoubanAppSecret = @"e727e07710a5b6a5";
+NSString *ssDoubanRedirectUri = @"http://www.appgo.cn";
 
 #pragma mark - 人人网应用配置信息
 //http://dev.renren.com上注册人人网开放平台应用，并将相关信息填写到以下字段
 
-//NSString *ssRenrenAppKey = @"cdcce6183a5f477795e801f74cdaf4b4";
-//NSString *ssRenrenAppSecret = @"c639e3b25d064200a2a064b0fb637b5a";
-
-NSString *ssRenrenAppKey = @"d2ab52f15e9d4fad9fa17d429890ba22";
-NSString *ssRenrenAppSecret = @"a3894464f72f428188d7af0a0ef25dd3";
+NSString *ssRenrenAppKey = @"cdcce6183a5f477795e801f74cdaf4b4";
+NSString *ssRenrenAppSecret = @"c639e3b25d064200a2a064b0fb637b5a";
 
 #pragma mark - 开心网应用配置信息
 //http://open.kaixin001.com上注册开心网开放平台应用，并将相关信息填写到以下字段
 
-//NSString *ssKaixinAppKey = @"806163508123c1500ccc77e02d3cdf7c";
-//NSString *ssKaixinAppSecret = @"a5840496c00dbd2e89386b17cc2a207b";
-//NSString *ssKaixinRedirectUri = @"http://www.appgo.cn/";
-
-NSString *ssKaixinAppKey = @"381137814429673f8ac51da3398b3302";
-NSString *ssKaixinAppSecret = @"d2efcac6b78515e47d7517f002486093";
-NSString *ssKaixinRedirectUri = @"http://www.zyk.com/";
+NSString *ssKaixinAppKey = @"806163508123c1500ccc77e02d3cdf7c";
+NSString *ssKaixinAppSecret = @"a5840496c00dbd2e89386b17cc2a207b";
+NSString *ssKaixinRedirectUri = @"http://www.appgo.cn/";
 
 #pragma mark - Instapaper应用配置信息
 //http://www.instapaper.com/main/request_oauth_consumer_token上注册Instapaper应用，并将相关信息填写到以下字段
