@@ -52,9 +52,6 @@
 		4100A63D16A3AED500813513 /* sharesdk_img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4100A61916A3AED500813513 /* sharesdk_img.jpg */; };
 		410F7C1516A0176B00833885 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410F7C1416A0176B00833885 /* QuartzCore.framework */; };
 		410F7C1B16A0368E00833885 /* AGWeiXinQQDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410F7C1A16A0368D00833885 /* AGWeiXinQQDemoController.m */; };
-		410F7CC516A05F3200833885 /* AGViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410F7CAD16A05F1E00833885 /* AGViewController_iPad.xib */; };
-		410F7CC616A05F3200833885 /* AGViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410F7CAF16A05F1E00833885 /* AGViewController_iPhone.xib */; };
-		410F7CC716A05F3200833885 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 410F7CB116A05F1E00833885 /* InfoPlist.strings */; };
 		412A40EA169531CC00F22340 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 412A40E9169531CC00F22340 /* MessageUI.framework */; };
 		412A410F1695BDD800F22340 /* ShareSDKDemoMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 412A410E1695BDD700F22340 /* ShareSDKDemoMoreViewController.m */; };
 		412A41311695CC6500F22340 /* AGShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 412A41301695CC6400F22340 /* AGShareButton.m */; };
@@ -71,16 +68,16 @@
 		41D40E9C16A92D33006F614A /* ShareButtonIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41D40E9016A92D33006F614A /* ShareButtonIcon@2x.png */; };
 		41D40E9D16A92D33006F614A /* WeiXinTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 41D40E9116A92D33006F614A /* WeiXinTabIcon.png */; };
 		41D40E9E16A92D33006F614A /* WeiXinTabIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41D40E9216A92D33006F614A /* WeiXinTabIcon@2x.png */; };
-		41D40EB116A92E3F006F614A /* AGCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D40EA916A92E3F006F614A /* AGCommon.framework */; };
-		41D40EB216A92E40006F614A /* Appgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 41D40EAA16A92E3F006F614A /* Appgo.bundle */; };
-		41D40EB316A92E40006F614A /* QQApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D40EAB16A92E3F006F614A /* QQApi.framework */; };
-		41D40EB416A92E40006F614A /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D40EAD16A92E3F006F614A /* libWeChatSDK_armv7_armv7s.a */; };
-		41D40EB516A92E40006F614A /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D40EB016A92E3F006F614A /* ShareSDK.framework */; };
 		41D4C689168D54A10093F94E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D4C688168D54A10093F94E /* SystemConfiguration.framework */; };
 		41D4C68C168D55CB0093F94E /* AGAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D4C68B168D55CB0093F94E /* AGAuthViewController.m */; };
 		41D4C68F168D56580093F94E /* AGShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D4C68E168D56580093F94E /* AGShareCell.m */; };
 		41D4C692168D7C7C0093F94E /* AGApiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D4C691168D7C7B0093F94E /* AGApiViewController.m */; };
 		41D4C695168D85A30093F94E /* AGUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D4C694168D85A20093F94E /* AGUserInfoViewController.m */; };
+		41E1B68B16B019CC00997A8D /* AGCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E1B68316B019CC00997A8D /* AGCommon.framework */; };
+		41E1B68C16B019CC00997A8D /* Appgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 41E1B68416B019CC00997A8D /* Appgo.bundle */; };
+		41E1B68D16B019CC00997A8D /* QQApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E1B68516B019CC00997A8D /* QQApi.framework */; };
+		41E1B68E16B019CC00997A8D /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E1B68716B019CC00997A8D /* libWeChatSDK_armv7_armv7s.a */; };
+		41E1B68F16B019CC00997A8D /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E1B68A16B019CC00997A8D /* ShareSDK.framework */; };
 		41F0668A16A79AD400437B24 /* AGInputUserNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F0668916A79AD400437B24 /* AGInputUserNameViewController.m */; };
 		41FE5E8F167CBAFF0096BFE9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FE5E8E167CBAFF0096BFE9 /* UIKit.framework */; };
 		41FE5E91167CBAFF0096BFE9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FE5E90167CBAFF0096BFE9 /* Foundation.framework */; };
@@ -92,8 +89,6 @@
 		41FE5EA3167CBAFF0096BFE9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41FE5EA2167CBAFF0096BFE9 /* Default@2x.png */; };
 		41FE5EA5167CBAFF0096BFE9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41FE5EA4167CBAFF0096BFE9 /* Default-568h@2x.png */; };
 		41FE5EA8167CBAFF0096BFE9 /* AGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FE5EA7167CBAFF0096BFE9 /* AGViewController.m */; };
-		41FE5EAB167CBB000096BFE9 /* AGViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41FE5EA9167CBB000096BFE9 /* AGViewController_iPhone.xib */; };
-		41FE5EAE167CBB000096BFE9 /* AGViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41FE5EAC167CBB000096BFE9 /* AGViewController_iPad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,9 +147,6 @@
 		410F7C1416A0176B00833885 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		410F7C1916A0368D00833885 /* AGWeiXinQQDemoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGWeiXinQQDemoController.h; sourceTree = "<group>"; };
 		410F7C1A16A0368D00833885 /* AGWeiXinQQDemoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGWeiXinQQDemoController.m; sourceTree = "<group>"; };
-		410F7CAE16A05F1E00833885 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = AGViewController_iPad.xib; sourceTree = "<group>"; };
-		410F7CB016A05F1E00833885 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = AGViewController_iPhone.xib; sourceTree = "<group>"; };
-		410F7CB216A05F1E00833885 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		412A40E9169531CC00F22340 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		412A410D1695BDD700F22340 /* ShareSDKDemoMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareSDKDemoMoreViewController.h; sourceTree = "<group>"; };
 		412A410E1695BDD700F22340 /* ShareSDKDemoMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareSDKDemoMoreViewController.m; sourceTree = "<group>"; };
@@ -173,13 +165,6 @@
 		41D40E9016A92D33006F614A /* ShareButtonIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShareButtonIcon@2x.png"; sourceTree = "<group>"; };
 		41D40E9116A92D33006F614A /* WeiXinTabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeiXinTabIcon.png; sourceTree = "<group>"; };
 		41D40E9216A92D33006F614A /* WeiXinTabIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WeiXinTabIcon@2x.png"; sourceTree = "<group>"; };
-		41D40EA916A92E3F006F614A /* AGCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGCommon.framework; sourceTree = "<group>"; };
-		41D40EAA16A92E3F006F614A /* Appgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Appgo.bundle; sourceTree = "<group>"; };
-		41D40EAB16A92E3F006F614A /* QQApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QQApi.framework; sourceTree = "<group>"; };
-		41D40EAD16A92E3F006F614A /* libWeChatSDK_armv7_armv7s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK_armv7_armv7s.a; sourceTree = "<group>"; };
-		41D40EAE16A92E3F006F614A /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		41D40EAF16A92E3F006F614A /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
-		41D40EB016A92E3F006F614A /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
 		41D4C688168D54A10093F94E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		41D4C68A168D55CB0093F94E /* AGAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGAuthViewController.h; sourceTree = "<group>"; };
 		41D4C68B168D55CB0093F94E /* AGAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGAuthViewController.m; sourceTree = "<group>"; };
@@ -189,6 +174,13 @@
 		41D4C691168D7C7B0093F94E /* AGApiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGApiViewController.m; sourceTree = "<group>"; };
 		41D4C693168D85A20093F94E /* AGUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGUserInfoViewController.h; sourceTree = "<group>"; };
 		41D4C694168D85A20093F94E /* AGUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGUserInfoViewController.m; sourceTree = "<group>"; };
+		41E1B68316B019CC00997A8D /* AGCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGCommon.framework; sourceTree = "<group>"; };
+		41E1B68416B019CC00997A8D /* Appgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Appgo.bundle; sourceTree = "<group>"; };
+		41E1B68516B019CC00997A8D /* QQApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QQApi.framework; sourceTree = "<group>"; };
+		41E1B68716B019CC00997A8D /* libWeChatSDK_armv7_armv7s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK_armv7_armv7s.a; sourceTree = "<group>"; };
+		41E1B68816B019CC00997A8D /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		41E1B68916B019CC00997A8D /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		41E1B68A16B019CC00997A8D /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
 		41F0668816A79AD300437B24 /* AGInputUserNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGInputUserNameViewController.h; sourceTree = "<group>"; };
 		41F0668916A79AD400437B24 /* AGInputUserNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGInputUserNameViewController.m; sourceTree = "<group>"; };
 		41FE5E8A167CBAFF0096BFE9 /* AGShareSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AGShareSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,8 +198,6 @@
 		41FE5EA4167CBAFF0096BFE9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		41FE5EA6167CBAFF0096BFE9 /* AGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGViewController.h; sourceTree = "<group>"; };
 		41FE5EA7167CBAFF0096BFE9 /* AGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGViewController.m; sourceTree = "<group>"; };
-		41FE5EAA167CBB000096BFE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AGViewController_iPhone.xib; sourceTree = "<group>"; };
-		41FE5EAD167CBB000096BFE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AGViewController_iPad.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,10 +212,10 @@
 				41FE5E8F167CBAFF0096BFE9 /* UIKit.framework in Frameworks */,
 				41FE5E91167CBAFF0096BFE9 /* Foundation.framework in Frameworks */,
 				41FE5E93167CBAFF0096BFE9 /* CoreGraphics.framework in Frameworks */,
-				41D40EB116A92E3F006F614A /* AGCommon.framework in Frameworks */,
-				41D40EB316A92E40006F614A /* QQApi.framework in Frameworks */,
-				41D40EB416A92E40006F614A /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
-				41D40EB516A92E40006F614A /* ShareSDK.framework in Frameworks */,
+				41E1B68B16B019CC00997A8D /* AGCommon.framework in Frameworks */,
+				41E1B68D16B019CC00997A8D /* QQApi.framework in Frameworks */,
+				41E1B68E16B019CC00997A8D /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
+				41E1B68F16B019CC00997A8D /* ShareSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,8 +353,6 @@
 				410F7C1A16A0368D00833885 /* AGWeiXinQQDemoController.m */,
 				41FE5EA6167CBAFF0096BFE9 /* AGViewController.h */,
 				41FE5EA7167CBAFF0096BFE9 /* AGViewController.m */,
-				41FE5EA9167CBB000096BFE9 /* AGViewController_iPhone.xib */,
-				41FE5EAC167CBB000096BFE9 /* AGViewController_iPad.xib */,
 				41D4C68A168D55CB0093F94E /* AGAuthViewController.h */,
 				41D4C68B168D55CB0093F94E /* AGAuthViewController.m */,
 				412A410D1695BDD700F22340 /* ShareSDKDemoMoreViewController.h */,
@@ -377,35 +365,25 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
-		410F7CAC16A05F1C00833885 /* en.lproj */ = {
+		41E1B68216B019CC00997A8D /* ShareSDK_v1.1.0 */ = {
 			isa = PBXGroup;
 			children = (
-				410F7CAD16A05F1E00833885 /* AGViewController_iPad.xib */,
-				410F7CAF16A05F1E00833885 /* AGViewController_iPhone.xib */,
-				410F7CB116A05F1E00833885 /* InfoPlist.strings */,
+				41E1B68316B019CC00997A8D /* AGCommon.framework */,
+				41E1B68416B019CC00997A8D /* Appgo.bundle */,
+				41E1B68516B019CC00997A8D /* QQApi.framework */,
+				41E1B68616B019CC00997A8D /* SDKExport */,
+				41E1B68A16B019CC00997A8D /* ShareSDK.framework */,
 			);
-			path = en.lproj;
+			name = ShareSDK_v1.1.0;
+			path = ../ShareSDK_v1.1.0;
 			sourceTree = "<group>";
 		};
-		41D40EA816A92E3F006F614A /* ShareSDK_v1.0.2 */ = {
+		41E1B68616B019CC00997A8D /* SDKExport */ = {
 			isa = PBXGroup;
 			children = (
-				41D40EA916A92E3F006F614A /* AGCommon.framework */,
-				41D40EAA16A92E3F006F614A /* Appgo.bundle */,
-				41D40EAB16A92E3F006F614A /* QQApi.framework */,
-				41D40EAC16A92E3F006F614A /* SDKExport */,
-				41D40EB016A92E3F006F614A /* ShareSDK.framework */,
-			);
-			name = ShareSDK_v1.0.2;
-			path = ../ShareSDK_v1.0.2;
-			sourceTree = "<group>";
-		};
-		41D40EAC16A92E3F006F614A /* SDKExport */ = {
-			isa = PBXGroup;
-			children = (
-				41D40EAD16A92E3F006F614A /* libWeChatSDK_armv7_armv7s.a */,
-				41D40EAE16A92E3F006F614A /* WXApi.h */,
-				41D40EAF16A92E3F006F614A /* WXApiObject.h */,
+				41E1B68716B019CC00997A8D /* libWeChatSDK_armv7_armv7s.a */,
+				41E1B68816B019CC00997A8D /* WXApi.h */,
+				41E1B68916B019CC00997A8D /* WXApiObject.h */,
 			);
 			path = SDKExport;
 			sourceTree = "<group>";
@@ -413,7 +391,7 @@
 		41FE5E7F167CBAFF0096BFE9 = {
 			isa = PBXGroup;
 			children = (
-				41D40EA816A92E3F006F614A /* ShareSDK_v1.0.2 */,
+				41E1B68216B019CC00997A8D /* ShareSDK_v1.1.0 */,
 				41FE5E94167CBAFF0096BFE9 /* AGShareSDKDemo */,
 				41FE5E8D167CBAFF0096BFE9 /* Frameworks */,
 				41FE5E8B167CBAFF0096BFE9 /* Products */,
@@ -448,7 +426,6 @@
 				41FE5E95167CBAFF0096BFE9 /* Supporting Files */,
 				4100A5A516A3AE7E00813513 /* External */,
 				4100A5F716A3AED500813513 /* Images */,
-				410F7CAC16A05F1C00833885 /* en.lproj */,
 				4100A64016A3AEE600813513 /* UI */,
 				41FE5E9D167CBAFF0096BFE9 /* AGAppDelegate.h */,
 				41FE5E9E167CBAFF0096BFE9 /* AGAppDelegate.m */,
@@ -526,11 +503,6 @@
 				41FE5EA1167CBAFF0096BFE9 /* Default.png in Resources */,
 				41FE5EA3167CBAFF0096BFE9 /* Default@2x.png in Resources */,
 				41FE5EA5167CBAFF0096BFE9 /* Default-568h@2x.png in Resources */,
-				41FE5EAB167CBB000096BFE9 /* AGViewController_iPhone.xib in Resources */,
-				41FE5EAE167CBB000096BFE9 /* AGViewController_iPad.xib in Resources */,
-				410F7CC516A05F3200833885 /* AGViewController_iPad.xib in Resources */,
-				410F7CC616A05F3200833885 /* AGViewController_iPhone.xib in Resources */,
-				410F7CC716A05F3200833885 /* InfoPlist.strings in Resources */,
 				4100A5D516A3AE7E00813513 /* audio.jpg in Resources */,
 				4100A5D716A3AE7E00813513 /* img.jpg in Resources */,
 				4100A5D816A3AE7E00813513 /* news.jpg in Resources */,
@@ -577,7 +549,7 @@
 				41D40E9C16A92D33006F614A /* ShareButtonIcon@2x.png in Resources */,
 				41D40E9D16A92D33006F614A /* WeiXinTabIcon.png in Resources */,
 				41D40E9E16A92D33006F614A /* WeiXinTabIcon@2x.png in Resources */,
-				41D40EB216A92E40006F614A /* Appgo.bundle in Resources */,
+				41E1B68C16B019CC00997A8D /* Appgo.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,52 +586,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		410F7CAD16A05F1E00833885 /* AGViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				410F7CAE16A05F1E00833885 /* en */,
-			);
-			name = AGViewController_iPad.xib;
-			sourceTree = "<group>";
-		};
-		410F7CAF16A05F1E00833885 /* AGViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				410F7CB016A05F1E00833885 /* en */,
-			);
-			name = AGViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		410F7CB116A05F1E00833885 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				410F7CB216A05F1E00833885 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		41FE5E97167CBAFF0096BFE9 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				41FE5E98167CBAFF0096BFE9 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		41FE5EA9167CBB000096BFE9 /* AGViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				41FE5EAA167CBB000096BFE9 /* en */,
-			);
-			name = AGViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		41FE5EAC167CBB000096BFE9 /* AGViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				41FE5EAD167CBB000096BFE9 /* en */,
-			);
-			name = AGViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -726,7 +658,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../ShareSDK_v1.0.2\"",
+					"\"$(SRCROOT)/../ShareSDK_v1.1.0\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AGShareSDKDemo/AGShareSDKDemo-Prefix.pch";
@@ -735,9 +667,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../ShareSDK_v1.0.2/SDKExport\"",
+					"\"$(SRCROOT)/../ShareSDK_v1.1.0/SDKExport\"",
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6E92C836-B868-494A-90E5-14FC5EBA29FB";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6E92C836-B868-494A-90E5-14FC5EBA29FB";
@@ -752,7 +684,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../ShareSDK_v1.0.2\"",
+					"\"$(SRCROOT)/../ShareSDK_v1.1.0\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AGShareSDKDemo/AGShareSDKDemo-Prefix.pch";
@@ -761,9 +693,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../ShareSDK_v1.0.2/SDKExport\"",
+					"\"$(SRCROOT)/../ShareSDK_v1.1.0/SDKExport\"",
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6E92C836-B868-494A-90E5-14FC5EBA29FB";
 				WRAPPER_EXTENSION = app;

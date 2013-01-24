@@ -123,6 +123,14 @@
                                   [NSNumber numberWithInteger:ShareTypeDouBan],
                                   @"type",
                                   nil],
+                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  @"Instapaper",
+                                  @"title",
+                                  [NSNumber numberWithBool:YES],
+                                  @"selected",
+                                  [NSNumber numberWithInteger:ShareTypeInstapaper],
+                                  @"type",
+                                  nil],
                                  nil];
         _shareTypeArray = [[NSMutableArray alloc] initWithObjects:
                            [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -243,6 +251,14 @@
                             [NSNumber numberWithBool:YES],
                             @"selected",
                             [NSNumber numberWithInteger:ShareTypeDouBan],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Instapaper",
+                            @"title",
+                            [NSNumber numberWithBool:YES],
+                            @"selected",
+                            [NSNumber numberWithInteger:ShareTypeInstapaper],
                             @"type",
                             nil],
                            nil];

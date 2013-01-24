@@ -45,69 +45,81 @@
                                    target:self
                                    action:@selector(userInfoUpdateHandler:)];
         
+        _shareTypeArray = [[NSMutableArray alloc] initWithObjects:
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"新浪微博",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeSinaWeibo],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"腾讯微博",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeTencentWeibo],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"搜狐微博",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeSohuWeibo],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"网易微博",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareType163Weibo],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"豆瓣社区",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeDouBan],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"QQ空间",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeQQSpace],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"人人网",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeRenren],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"开心网",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeKaixin],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Instapaper",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeInstapaper],
+                            @"type",
+                            nil],
+                           nil];
+        
         NSArray *authList = [NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()]];
         if (authList == nil)
         {
-            _shareTypeArray = [[NSMutableArray alloc] initWithObjects:
-                               [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                @"新浪微博",
-                                @"title",
-                                [NSNumber numberWithInteger:ShareTypeSinaWeibo],
-                                @"type",
-                                nil],
-                               [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                @"腾讯微博",
-                                @"title",
-                                [NSNumber numberWithInteger:ShareTypeTencentWeibo],
-                                @"type",
-                                nil],
-                               [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                @"搜狐微博",
-                                @"title",
-                                [NSNumber numberWithInteger:ShareTypeSohuWeibo],
-                                @"type",
-                                nil],
-                               [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                @"网易微博",
-                                @"title",
-                                [NSNumber numberWithInteger:ShareType163Weibo],
-                                @"type",
-                                nil],
-                               [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                @"豆瓣社区",
-                                @"title",
-                                [NSNumber numberWithInteger:ShareTypeDouBan],
-                                @"type",
-                                nil],
-                               [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                @"QQ空间",
-                                @"title",
-                                [NSNumber numberWithInteger:ShareTypeQQSpace],
-                                @"type",
-                                nil],
-                               [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                @"人人网",
-                                @"title",
-                                [NSNumber numberWithInteger:ShareTypeRenren],
-                                @"type",
-                                nil],
-                               [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                @"开心网",
-                                @"title",
-                                [NSNumber numberWithInteger:ShareTypeKaixin],
-                                @"type",
-                                nil],
-                               nil];
-            
             [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
         }
         else
         {
-            _shareTypeArray = [[NSMutableArray alloc] init];
             for (int i = 0; i < [authList count]; i++)
             {
-                NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[authList objectAtIndex:i]];
-                [_shareTypeArray addObject:dict];
+                NSDictionary *item = [authList objectAtIndex:i];
+                for (int j = 0; j < [_shareTypeArray count]; j++)
+                {
+                    if ([[[_shareTypeArray objectAtIndex:j] objectForKey:@"type"] integerValue] == [[item objectForKey:@"type"] integerValue])
+                    {
+                        [_shareTypeArray replaceObjectAtIndex:j withObject:[NSMutableDictionary dictionaryWithDictionary:item]];
+                        break;
+                    }
+                }
             }
         }
     }

@@ -16,6 +16,9 @@
 @private
     NSMutableDictionary *_infoDict;
     ShareType _type;
+    UserParamType _paramType;
+    NSInteger _flag;
+    NSString *_name;
     
     UITableView *_tableView;
 }

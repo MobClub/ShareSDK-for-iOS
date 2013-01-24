@@ -74,6 +74,13 @@
  */
 - (void)fillKaiXinUser:(id<ISSUserInfo>)userInfo;
 
+/**
+ *	@brief	填充Instapaper用户信息
+ *
+ *	@param 	userInfo 	用户信息
+ */
+- (void)fillInstapaperUser:(id<ISSUserInfo>)userInfo;
+
 
 @end
 
@@ -95,7 +102,59 @@
         _infoDict = [[NSMutableDictionary alloc] init];
         
         _type = type;
+        _flag = 0;
+    }
+    return self;
+}
+
+- (id)initWithType:(ShareType)type name:(NSString *)name paramType:(UserParamType)paramType
+{
+    if (self = [super init])
+    {
+        self.title = @"用户信息";
+        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"取消"
+                                                                                  style:UIBarButtonItemStyleBordered
+                                                                                 target:self
+                                                                                 action:@selector(cancelButtonClickHandler:)]
+                                                 autorelease];
         
+        _infoDict = [[NSMutableDictionary alloc] init];
+        _type = type;
+        _paramType = paramType;
+        _name = [name copy];
+        _flag = 1;
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    SAFE_RELEASE(_infoDict);
+    SAFE_RELEASE(_name);
+    
+    [super dealloc];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavigationBarBG.png"]];
+    
+    _tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.width, self.view.height) style:UITableViewStyleGrouped] autorelease];
+    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
+    [_tableView release];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (_flag == 0)
+    {
         [ShareSDK getUserInfoWithType:_type
                                result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                    if (result)
@@ -143,6 +202,10 @@
                                                //开心网
                                                [self fillKaiXinUser:userInfo];
                                                break;
+                                           case ShareTypeInstapaper:
+                                               //Instapaper
+                                               [self fillInstapaperUser:userInfo];
+                                               break;
                                            default:
                                                break;
                                        }
@@ -161,26 +224,11 @@
                                    }
                                }];
     }
-    return self;
-}
-
-- (id)initWithType:(ShareType)type name:(NSString *)name paramType:(UserParamType)paramType
-{
-    if (self = [super init])
+    else
     {
-        self.title = @"用户信息";
-        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"取消"
-                                                                                  style:UIBarButtonItemStyleBordered
-                                                                                 target:self
-                                                                                 action:@selector(cancelButtonClickHandler:)]
-                                                 autorelease];
-        
-        _infoDict = [[NSMutableDictionary alloc] init];
-        _type = type;
-        
-        [ShareSDK getUserInfoWithType:type
-                                  uid:name
-                        parameterType:paramType
+        [ShareSDK getUserInfoWithType:_type
+                                  uid:_name
+                        parameterType:_paramType
                              autoAuth:YES
                                result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                    if (result)
@@ -228,6 +276,10 @@
                                                //开心网
                                                [self fillKaiXinUser:userInfo];
                                                break;
+                                           case ShareTypeInstapaper:
+                                               //Instapaper
+                                               [self fillInstapaperUser:userInfo];
+                                               break;
                                            default:
                                                break;
                                        }
@@ -245,30 +297,7 @@
                                        [alertView release];
                                    }
                                }];
-        
     }
-    return self;
-}
-
-- (void)dealloc
-{
-    SAFE_RELEASE(_infoDict);
-    
-    [super dealloc];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavigationBarBG.png"]];
-    
-    _tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.width, self.view.height) style:UITableViewStyleGrouped] autorelease];
-    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    [self.view addSubview:_tableView];
-    [_tableView release];
 }
 
 - (void)cancelButtonClickHandler:(id)sender
@@ -1142,6 +1171,40 @@
         else if ([keyName isEqualToString:@"online"])
         {
             [_infoDict setObject:value forKey:@"是否在线"];
+        }
+    }
+}
+
+- (void)fillInstapaperUser:(id<ISSUserInfo>)userInfo
+{
+    NSArray *keys = [userInfo.source allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [userInfo.source objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]])
+        {
+            if ([value respondsToSelector:@selector(stringValue)])
+            {
+                value = [value stringValue];
+            }
+            else
+            {
+                value = @"";
+            }
+        }
+        
+        if ([keyName isEqualToString:@"user_id"])
+        {
+            [_infoDict setObject:value forKey:@"用户ID"];
+        }
+        else if ([keyName isEqualToString:@"username"])
+        {
+            [_infoDict setObject:value forKey:@"用户名"];
+        }
+        else if ([keyName isEqualToString:@"subscription_is_active"])
+        {
+            [_infoDict setObject:value forKey:@"subscription_is_active"];
         }
     }
 }
