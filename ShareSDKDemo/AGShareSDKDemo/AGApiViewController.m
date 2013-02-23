@@ -13,12 +13,16 @@
 #import <AGCommon/UIImage+Common.h>
 #import "ShareSDKDemoMoreViewController.h"
 #import "AGInputUserNameViewController.h"
+#import <AGCommon/UIColor+Common.h>
+#import <AGCommon/UIDevice+Common.h>
+#import "IIViewDeckController.h"
 
 #define TABLE_CELL_ID @"tableCell"
 
 #define ACTION_SHEET_GET_USER_INFO 200
 #define ACTION_SHEET_FOLLOW_USER 201
 #define ACTION_SHEET_GET_OTHER_USER_INFO 202
+#define ACTION_SHEET_GET_ACCESS_TOKEN 203
 #define ACTION_SHEET_PRINT_COPY 306
 
 #define LEFT_PADDING 10.0
@@ -40,28 +44,45 @@
     if (self)
     {
         // Custom initialization
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoLight];
-        button.frame = CGRectMake(0.0, 0.0, 43, 33);
-        [button addTarget:self action:@selector(moreButtonClickHanlder:) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
+        UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
+        [leftBtn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
+                           forState:UIControlStateNormal];
+        [leftBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
+        leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
+        [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
+        
+        if ([UIDevice currentDevice].isPad)
+        {
+            UILabel *label = [[UILabel alloc] init];
+            label.backgroundColor = [UIColor clearColor];
+            label.textColor = [UIColor whiteColor];
+            label.shadowColor = [UIColor grayColor];
+            label.font = [UIFont systemFontOfSize:22];
+            self.navigationItem.titleView = label;
+            [label release];
+        }
+        
+        _ssoEnable = YES;
     }
     return self;
+}
+
+- (void)setTitle:(NSString *)title
+{
+    [super setTitle:title];
+    ((UILabel *)self.navigationItem.titleView).text = title;
+    [self.navigationItem.titleView sizeToFit];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"AGShareSDK/PublishEx/NavigationBarBG.png" bundleName:@"Appgo"]];
-    self.view.backgroundColor = [UIColor whiteColor];
     
-//    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.width, self.view.height)
-//                                              style:UITableViewStylePlain];
-//    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    _tableView.dataSource = self;
-//    _tableView.delegate = self;
-//    [self.view addSubview:_tableView];
-//    [_tableView release];
+    self.view.backgroundColor = [UIColor colorWithRGB:0xe1e0de];
+    
+	// Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
     
     CGFloat top = VERTICAL_GAP;
     CGFloat buttonW = (self.view.width - LEFT_PADDING - RIGHT_PADDING - HORIZONTAL_GAP) / 2;
@@ -70,6 +91,7 @@
     scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"分享全部" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, self.view.width - LEFT_PADDING - RIGHT_PADDING, 45.0);
     [button addTarget:self action:@selector(shareAllButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -77,12 +99,14 @@
     
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"关注官方微博" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(followOfficerWeiboClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"获取用户资料" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
     [button addTarget:self action:@selector(getUserInfoClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -90,12 +114,14 @@
     
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"关注微信" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(followWeixinClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"获取其他用户信息" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
     [button addTarget:self action:@selector(getOtherUserInfoClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -103,12 +129,14 @@
     
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"分享到新浪微博" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(shareToSinaWeiboClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"分享到腾讯微博" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
     [button addTarget:self action:@selector(shareToTencentWeiboClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -116,93 +144,157 @@
     
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"分享给QQ好友" forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(shareToQQFriendClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:button];
-    
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"分享到QQ空间" forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(shareToQQSpaceClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
-    top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"分享给微信好友" forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(shareToWeixinSessionClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:button];
-    
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"分享到微信朋友圈" forState:UIControlStateNormal];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"分享到Facebook" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(shareToWeixinTimelineClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(shareToFacebookClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"分享到网易微博" forState:UIControlStateNormal];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"分享到Twitter" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(shareToTwitterClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"分享到网易微博" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
     [button addTarget:self action:@selector(shareTo163WeiboClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
+    top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"分享到搜狐微博" forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(shareToSohuWeiboClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
-    top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"分享到人人网" forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
     [button addTarget:self action:@selector(shareToRenRenClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
+    top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"分享到开心网" forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(shareToKaiXinClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
-    top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"分享到豆瓣我说" forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
     [button addTarget:self action:@selector(shareToDouBanClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
+    top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"分享到Instapaper" forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(shareToInstapaperClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
-    top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"短信分享" forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
     [button addTarget:self action:@selector(shareBySMSClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
+    top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"邮件分享" forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(shareByMailClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"打印、拷贝" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(shareByPrintOrCopyClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"打印、拷贝" forState:UIControlStateNormal];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"分享到有道云笔记" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(shareByPrintOrCopyClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(shareToYouDaoClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"获取AccessToken" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(getAccessTokenClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    top += button.height + VERTICAL_GAP;
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"设置AccessToken" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(customShareMenuClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"自定义分享菜单" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(customShareMenuClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     scrollView.contentSize = CGSizeMake(self.view.width, top += button.height + VERTICAL_GAP);
     [self.view addSubview:scrollView];
     [scrollView release];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self layoutView:self.interfaceOrientation];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return YES;
+}
+
+-(BOOL)shouldAutorotate
+{
+    //iOS6下旋屏方法
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    //iOS6下旋屏方法
+    return UIInterfaceOrientationMaskAll;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self layoutView:toInterfaceOrientation];
 }
 
 - (void)showUserInfoWithType:(ShareType)type
@@ -258,7 +350,7 @@
                                                        destructiveButtonTitle:nil
                                                             otherButtonTitles:@"新浪微博",@"腾讯微博",@"搜狐微博",@"网易微博",@"豆瓣社区",@"QQ空间",@"人人网",@"开心网", nil];
             actionSheet.tag = ACTION_SHEET_GET_USER_INFO;
-            [actionSheet showFromTabBar:self.tabBarController.tabBar];
+            [actionSheet showInView:self.view];
             [actionSheet release];
             break;
         }
@@ -270,7 +362,7 @@
                                                        destructiveButtonTitle:nil
                                                             otherButtonTitles:@"新浪微博",@"腾讯微博",nil];
             actionSheet.tag = ACTION_SHEET_FOLLOW_USER;
-            [actionSheet showFromTabBar:self.tabBarController.tabBar];
+            [actionSheet showInView:self.view];
             [actionSheet release];
             break;
         }
@@ -316,6 +408,15 @@
                     break;
                 case 8:
                     type = ShareTypeInstapaper;
+                    break;
+                case 9:
+                    type = ShareTypeYouDaoNote;
+                    break;
+                case 10:
+                    type = ShareTypeFacebook;
+                    break;
+                case 11:
+                    type = ShareTypeTwitter;
                     break;
                 default:
                     break;
@@ -374,6 +475,92 @@
                     break;
                 default:
                     break;
+            }
+            break;
+        }
+        case ACTION_SHEET_GET_ACCESS_TOKEN:
+        {
+            ShareType type = 0;
+            switch (buttonIndex)
+            {
+                case 0:
+                    type = ShareTypeSinaWeibo;
+                    break;
+                case 1:
+                    type = ShareTypeTencentWeibo;
+                    break;
+                case 2:
+                    type = ShareTypeSohuWeibo;
+                    break;
+                case 3:
+                    type = ShareType163Weibo;
+                    break;
+                case 4:
+                    type = ShareTypeDouBan;
+                    break;
+                case 5:
+                    type = ShareTypeQQSpace;
+                    break;
+                case 6:
+                    type = ShareTypeRenren;
+                    break;
+                case 7:
+                    type = ShareTypeKaixin;
+                    break;
+                case 8:
+                    type = ShareTypeInstapaper;
+                    break;
+                case 9:
+                    type = ShareTypeYouDaoNote;
+                    break;
+                case 10:
+                    type = ShareTypeFacebook;
+                    break;
+                case 11:
+                    type = ShareTypeTwitter;
+                    break;
+                default:
+                    break;
+            }
+            
+            if (type != 0)
+            {
+                id<IClientToken> token = [ShareSDK getClientTokenWithType:type];
+                if ([token conformsToProtocol:@protocol(IOAuth2ClientToken)])
+                {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                        message:[NSString stringWithFormat:
+                                                                                 @"AccessToken = %@",
+                                                                                 [(id<IOAuth2ClientToken>)token accessToken]]
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"知道了"
+                                                              otherButtonTitles:nil];
+                    [alertView show];
+                    [alertView release];
+                }
+                else if ([token conformsToProtocol:@protocol(IOAuthClientToken)])
+                {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                        message:[NSString stringWithFormat:
+                                                                                 @"OAuthToken = %@\nOAuthSecret = %@",
+                                                                                 [(id<IOAuthClientToken>)token oauthToken],
+                                                                                 [(id<IOAuthClientToken>)token oauthSecret]]
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"知道了"
+                                                              otherButtonTitles:nil];
+                    [alertView show];
+                    [alertView release];
+                }
+                else
+                {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                        message:@"此平台尚未授权!"
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"知道了"
+                                                              otherButtonTitles:nil];
+                    [alertView show];
+                    [alertView release];
+                }
             }
             break;
         }
@@ -440,26 +627,59 @@
     //定制短信分享内容
     [publishContent addSMSUnitWithContent:@"Hello SMS!"];
     
+    //定制有道云笔记分享内容
+    [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
+                                           title:@"ShareSDK分享"
+                                          author:@"ShareSDK"
+                                          source:@"http://www.sharesdk.cn"
+                                     attachments:INHERIT_VALUE];
     
     [ShareSDK showShareActionSheet:self
+                     iPadContainer:[ShareSDK iPadShareContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp]
                          shareList:nil
                            content:publishContent
                      statusBarTips:YES
-                   oneKeyShareList:[NSArray defaultOneKeyShareList]
-//                          autoAuth:YES                                  //委托SDK授权标识，YES：用户授权过期后自动弹出授权界面进行授权，NO：开发者自行处理
-//                        convertUrl:YES                                  //委托转换链接标识，YES：对分享链接进行转换，NO：对分享链接不进行转换，为此值时不进行回流统计。
-                    shareViewStyle:ShareViewStyleDefault
-                    shareViewTitle:@"内容分享"
+                        convertUrl:YES      //委托转换链接标识，YES：对分享链接进行转换，NO：对分享链接不进行转换，为此值时不进行回流统计。
+                       authOptions:nil
+                  shareViewOptions:[ShareSDK defaultShareViewOptionsWithTitle:@"内容分享"
+                                                              oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                               qqButtonHidden:NO
+                                                        wxSessionButtonHidden:NO
+                                                       wxTimelineButtonHidden:NO
+                                                         showKeyboardOnAppear:YES]
                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                 if (state == SSPublishContentStateSuccess)
                                 {
-                                    NSLog(@"发送成功");
+                                    NSLog(@"分享成功");
                                 }
-                                else
+                                else if (state == SSPublishContentStateFail)
                                 {
-                                    NSLog(@"发送失败");
+                                    NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
                                 }
                             }];
+    
+    //需要定制分享视图的显示属性，使用以下接口
+//    [ShareSDK showShareActionSheet:self
+//                         shareList:nil
+//                           content:publishContent
+//                     statusBarTips:YES
+//                          autoAuth:YES
+//                        convertUrl:YES
+//                  shareViewOptions:[ShareSDK defaultShareViewOptionsWithTitle:@"内容分享"
+//                                                              oneKeyShareList:[NSArray defaultOneKeyShareList]
+//                                                               qqButtonHidden:YES
+//                                                        wxSessionButtonHidden:YES
+//                                                       wxTimelineButtonHidden:YES]
+//                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+//                                if (state == SSPublishContentStateSuccess)
+//                                {
+//                                    NSLog(@"发送成功");
+//                                }
+//                                else
+//                                {
+//                                    NSLog(@"发送失败");
+//                                }
+//                            }];
 }
 
 /**
@@ -545,6 +765,15 @@
                                                               image:[UIImage imageNamed:IMAGE_NAME]
                                                        imageQuality:0.8
                                                           mediaType:SSPublishContentMediaTypeText];
+    [publishContent addQQSpaceUnitWithTitle:@"Hello QQ空间"
+                                        url:@"http://www.sharesdk.cn"
+                                    comment:INHERIT_VALUE
+                                    summary:CONTENT
+                                      image:INHERIT_VALUE
+                               imageQuality:INHERIT_VALUE
+                                       type:INHERIT_VALUE
+                                    playUrl:nil
+                                  syncWeibo:nil];
     
     [ShareSDK shareContentWithType:ShareTypeQQSpace
                            content:publishContent
@@ -594,19 +823,19 @@
                                                      defaultContent:@""
                                                               image:[UIImage imageNamed:IMAGE_NAME]
                                                        imageQuality:0.8
-                                                          mediaType:SSPublishContentMediaTypeText
+                                                          mediaType:SSPublishContentMediaTypeNews
                                                               title:@"ShareSDK"
-                                                                url:@"http://www.sharesdk.cn"
+                                                                url:@"http://www.baidu.com"
                                                        musicFileUrl:nil
                                                             extInfo:nil
                                                            fileData:nil];
     [ShareSDK shareContentWithType:ShareTypeWeixiTimeline
                            content:publishContent
                containerController:self
-                     statusBarTips:NO
-                   oneKeyShareList:nil
-                    shareViewStyle:ShareViewStyleDefault
-                    shareViewTitle:@"内容分享"
+                     statusBarTips:YES
+                          autoAuth:YES
+                        convertUrl:YES
+                  shareViewOptions:nil
                             result:nil];
 }
 
@@ -745,6 +974,53 @@
 }
 
 /**
+ *	@brief	分享到Facebook
+ *
+ *	@param 	sender  事件对象
+ */
+- (void)shareToFacebookClickHandler:(UIButton *)sender
+
+{
+    id<ISSPublishContent> publishContent = [ShareSDK publishContent:CONTENT
+                                                     defaultContent:@""
+                                                              image:[UIImage imageNamed:IMAGE_NAME]
+                                                       imageQuality:0.8
+                                                          mediaType:SSPublishContentMediaTypeText];
+    
+    [ShareSDK shareContentWithType:ShareTypeFacebook
+                           content:publishContent
+               containerController:self
+                     statusBarTips:YES
+                   oneKeyShareList:[NSArray defaultOneKeyShareList]
+                    shareViewStyle:ShareViewStyleDefault
+                    shareViewTitle:@"内容分享"
+                            result:nil];
+}
+
+/**
+ *	@brief	分享到Twitter
+ *
+ *	@param 	sender 	Twitter
+ */
+- (void)shareToTwitterClickHandler:(UIButton *)sender
+{
+    id<ISSPublishContent> publishContent = [ShareSDK publishContent:CONTENT
+                                                     defaultContent:@""
+                                                              image:[UIImage imageNamed:IMAGE_NAME]
+                                                       imageQuality:0.8
+                                                          mediaType:SSPublishContentMediaTypeText];
+    
+    [ShareSDK shareContentWithType:ShareTypeTwitter
+                           content:publishContent
+               containerController:self
+                     statusBarTips:YES
+                   oneKeyShareList:[NSArray defaultOneKeyShareList]
+                    shareViewStyle:ShareViewStyleDefault
+                    shareViewTitle:@"内容分享"
+                            result:nil];
+}
+
+/**
  *	@brief	短信分享
  *
  *	@param 	sender 	事件对象
@@ -839,8 +1115,37 @@
 {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"请选择" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"打印", @"拷贝", nil];
     actionSheet.tag = ACTION_SHEET_PRINT_COPY;
-    [actionSheet showFromTabBar:self.tabBarController.tabBar];
+    [actionSheet showInView:self.view];
     [actionSheet release];
+}
+
+/**
+ *	@brief	分享到有道云笔记
+ *
+ *	@param 	sender 	事件对象
+ */
+- (void)shareToYouDaoClickHandler:(UIButton *)sender
+{
+    id<ISSPublishContent> publishContent = [ShareSDK publishContent:CONTENT
+                                                     defaultContent:@""
+                                                              image:[UIImage imageNamed:IMAGE_NAME]
+                                                       imageQuality:0.8
+                                                          mediaType:SSPublishContentMediaTypeText];
+    [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
+                                           title:@"ShareSDK分享"
+                                          author:@"ShareSDK"
+                                          source:@"http://www.sharesdk.cn"
+                                     attachments:INHERIT_VALUE];
+    
+    [ShareSDK shareContentWithType:ShareTypeYouDaoNote
+                           content:publishContent
+               containerController:self
+                     statusBarTips:YES
+                   oneKeyShareList:[NSArray defaultOneKeyShareList]
+                    shareViewStyle:ShareViewStyleDefault
+                    shareViewTitle:@"内容分享"
+                            result:nil];
+    
 }
 
 /**
@@ -939,7 +1244,7 @@
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles:@"新浪微博",@"腾讯微博",nil];
     actionSheet.tag = ACTION_SHEET_FOLLOW_USER;
-    [actionSheet showFromTabBar:self.tabBarController.tabBar];
+    [actionSheet showInView:self.view];
     [actionSheet release];
 }
 
@@ -959,9 +1264,9 @@
                                                              delegate:self
                                                     cancelButtonTitle:@"取消"
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"新浪微博",@"腾讯微博",@"搜狐微博",@"网易微博",@"豆瓣社区",@"QQ空间",@"人人网",@"开心网",@"Instapaper", nil];
+                                                    otherButtonTitles:@"新浪微博",@"腾讯微博",@"搜狐微博",@"网易微博",@"豆瓣社区",@"QQ空间",@"人人网",@"开心网",@"Instapaper",@"有道云笔记",@"Facebook",@"Twitter", nil];
     actionSheet.tag = ACTION_SHEET_GET_USER_INFO;
-    [actionSheet showFromTabBar:self.tabBarController.tabBar];
+    [actionSheet showInView:self.view];
     [actionSheet release];
 }
 
@@ -974,7 +1279,99 @@
     [self presentModalViewController:navVC animated:YES];
 }
 
+/**
+ *	@brief	SSO登录开关按钮点击
+ *
+ *	@param 	sender 	事件对象
+ */
+- (void)ssoEnabledClickHandler:(UIButton *)sender
+{
+    _ssoEnable = !_ssoEnable;
+    [sender setTitle:[NSString stringWithFormat:@"SSO登录:%@", _ssoEnable ? @"YES" : @"NO"] forState:UIControlStateNormal];
+    [ShareSDK ssoEnabled:_ssoEnable];
+}
+
+/**
+ *	@brief	获取AccessToken按钮点击
+ *
+ *	@param 	sender 	事件对象
+ */
+- (void)getAccessTokenClickHandler:(UIButton *)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"取消"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"新浪微博",@"腾讯微博",@"搜狐微博",@"网易微博",@"豆瓣社区",@"QQ空间",@"人人网",@"开心网",@"Instapaper", @"有道云笔记", @"Facebook", @"Twitter", nil];
+    actionSheet.tag = ACTION_SHEET_GET_ACCESS_TOKEN;
+    [actionSheet showInView:self.view];
+    [actionSheet release];
+}
+
+/**
+ *	@brief	自定义分享菜单按钮点击
+ *
+ *	@param 	sender 	事件对象
+ */
+- (void)customShareMenuClickHandler:(UIButton *)sender
+{
+    id<ISSPublishContent> publishContent = [ShareSDK publishContent:CONTENT
+                                                     defaultContent:@""
+                                                              image:[UIImage imageNamed:IMAGE_NAME]
+                                                       imageQuality:0.8
+                                                          mediaType:SSPublishContentMediaTypeNews
+                                                              title:@"ShareSDK"
+                                                                url:@"http://www.sharesdk.cn"
+                                                       musicFileUrl:nil
+                                                            extInfo:nil
+                                                           fileData:nil];
+    
+    [ShareSDK showShareActionSheet:self
+                     iPadContainer:[ShareSDK iPadShareContainerWithView:self.view
+                                                                   rect:sender.frame
+                                                            arrowDirect:UIPopoverArrowDirectionDown]
+                         shareList:[ShareSDK customShareListWithType:
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    SHARE_TYPE_NUMBER(ShareTypeQQSpace),
+                                    SHARE_TYPE_NUMBER(ShareTypeWeixiSession),
+                                    SHARE_TYPE_NUMBER(ShareTypeWeixiTimeline),
+                                    [ShareSDK shareActionSheetItemWithTitle:@"自定义项"
+                                                                       icon:[UIImage imageNamed:@"qqicon.png"]
+                                                               clickHandler:^{
+                                                                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"自定义项被点击了!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                                                   [alertView show];
+                                                                   [alertView release];
+                                                               }],
+                                    nil]
+                           content:publishContent
+                     statusBarTips:YES
+                        convertUrl:YES      //委托转换链接标识，YES：对分享链接进行转换，NO：对分享链接不进行转换，为此值时不进行回流统计。
+                       authOptions:nil
+                  shareViewOptions:[ShareSDK defaultShareViewOptionsWithTitle:@"内容分享"
+                                                              oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                               qqButtonHidden:NO
+                                                        wxSessionButtonHidden:NO
+                                                       wxTimelineButtonHidden:NO
+                                                         showKeyboardOnAppear:YES]
+                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                if (state == SSPublishContentStateSuccess)
+                                {
+                                    NSLog(@"分享成功");
+                                }
+                                else if (state == SSPublishContentStateFail)
+                                {
+                                    NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                }
+                            }];
+}
+
 #pragma mark - Private
+
+- (void)leftButtonClickHandler:(id)sender
+{
+    [self.viewDeckController toggleLeftViewAnimated:YES];
+}
 
 - (void)moreButtonClickHanlder:(id)sender
 {
@@ -982,6 +1379,69 @@
     moreVC.title = @"更多";
     UINavigationController *navMoreVC = [[[UINavigationController alloc] initWithRootViewController:moreVC] autorelease];
     [self presentModalViewController:navMoreVC animated:YES];
+}
+
+- (void)layoutPortrait
+{
+    UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
+    btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
+    [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+                                     bundleName:BUNDLE_NAME]
+                   forState:UIControlStateNormal];
+    
+    if ([UIDevice currentDevice].isPad)
+    {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    }
+    else
+    {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    }
+}
+
+- (void)layoutLandscape
+{
+    if (![UIDevice currentDevice].isPad)
+    {
+        //iPhone
+        UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
+        btn.frame = CGRectMake(btn.left, btn.top, 48.0, 24.0);
+        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationButtonBG.png"
+                                         bundleName:BUNDLE_NAME]
+                       forState:UIControlStateNormal];
+        
+        if ([[UIDevice currentDevice] isPhone5])
+        {
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG-568h.png"
+                                                                                 bundleName:BUNDLE_NAME]];
+        }
+        else
+        {
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG.png"
+                                                                                 bundleName:BUNDLE_NAME]];
+        }
+    }
+    else
+    {
+        UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
+        btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
+        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+                                         bundleName:BUNDLE_NAME]
+                       forState:UIControlStateNormal];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad_Landscape/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    }
+}
+
+- (void)layoutView:(UIInterfaceOrientation)orientation
+{
+    if (UIInterfaceOrientationIsLandscape(orientation))
+    {
+        [self layoutLandscape];
+    }
+    else
+    {
+        [self layoutPortrait];
+    }
 }
 
 #pragma mark - UIAlertViewDelegate

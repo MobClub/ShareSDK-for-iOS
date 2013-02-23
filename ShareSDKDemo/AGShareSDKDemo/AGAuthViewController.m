@@ -12,6 +12,9 @@
 #import "AGShareCell.h"
 #import <AGCommon/UINavigationBar+Common.h>
 #import "ShareSDKDemoMoreViewController.h"
+#import <AGCommon/UIColor+Common.h>
+#import "IIViewDeckController.h"
+#import <AGCommon/UIDevice+Common.h>
 
 #define TARGET_CELL_ID @"targetCell"
 #define BASE_TAG 100
@@ -35,10 +38,24 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoLight];
-        button.frame = CGRectMake(0.0, 0.0, 43, 33);
-        [button addTarget:self action:@selector(moreButtonClickHanlder:) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
+        UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
+        [leftBtn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
+                           forState:UIControlStateNormal];
+        [leftBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
+        leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
+        [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
+        
+        if ([UIDevice currentDevice].isPad)
+        {
+            UILabel *label = [[UILabel alloc] init];
+            label.backgroundColor = [UIColor clearColor];
+            label.textColor = [UIColor whiteColor];
+            label.shadowColor = [UIColor grayColor];
+            label.font = [UIFont systemFontOfSize:22];
+            self.navigationItem.titleView = label;
+            [label release];
+        }
         
         //监听用户信息变更
         [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
@@ -83,6 +100,18 @@
                             @"type",
                             nil],
                            [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Facebook",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeFacebook],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Twitter",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeTwitter],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
                             @"人人网",
                             @"title",
                             [NSNumber numberWithInteger:ShareTypeRenren],
@@ -98,6 +127,12 @@
                             @"Instapaper",
                             @"title",
                             [NSNumber numberWithInteger:ShareTypeInstapaper],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"有道云笔记",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeYouDaoNote],
                             @"type",
                             nil],
                            nil];
@@ -134,21 +169,57 @@
     [super dealloc];
 }
 
+- (void)setTitle:(NSString *)title
+{
+    [super setTitle:title];
+    ((UILabel *)self.navigationItem.titleView).text = title;
+    [self.navigationItem.titleView sizeToFit];
+}
+
 - (void)loadView
 {
     [super loadView];
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"AGShareSDK/PublishEx/NavigationBarBG.png" bundleName:@"Appgo"]];
-    
+
     _tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.width, self.view.height)
                                                style:UITableViewStyleGrouped]
                   autorelease];
     _tableView.rowHeight = 50.0;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    _tableView.backgroundColor = [UIColor colorWithRGB:0xe1e0de];
+    _tableView.backgroundView = nil;
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
     [_tableView release];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self layoutView:self.interfaceOrientation];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return YES;
+}
+
+-(BOOL)shouldAutorotate
+{
+    //iOS6下旋屏方法
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    //iOS6下旋屏方法
+    return UIInterfaceOrientationMaskAll;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self layoutView:toInterfaceOrientation];
 }
 
 - (void)authSwitchChangeHandler:(UISwitch *)sender
@@ -208,9 +279,9 @@
         NSDictionary *item = [_shareTypeArray objectAtIndex:indexPath.row];
         
         UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:
-                                            @"AGShareSDK/Icon/sns_icon_%d.png",
+                                            @"Icon/sns_icon_%d.png",
                                             [[item objectForKey:@"type"] integerValue]]
-                                bundleName:@"Appgo"];
+                                bundleName:BUNDLE_NAME];
         cell.imageView.image = img;
         
         ((UISwitch *)cell.accessoryView).on = [ShareSDK hasAuthorizedWithType:[[item objectForKey:@"type"] integerValue]];
@@ -230,6 +301,11 @@
 }
 
 #pragma mark - Private
+
+- (void)leftButtonClickHandler:(id)sender
+{
+    [self.viewDeckController toggleLeftViewAnimated:YES];
+}
 
 - (void)moreButtonClickHanlder:(id)sender
 {
@@ -251,10 +327,72 @@
         if (type == plat)
         {
             [item setObject:[userInfo nickname] forKey:@"username"];
-            [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
-            
             [_tableView reloadData];
         }
+    }
+}
+
+- (void)layoutPortrait
+{
+    UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
+    btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
+    [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+                                     bundleName:BUNDLE_NAME]
+                   forState:UIControlStateNormal];
+    
+    if ([UIDevice currentDevice].isPad)
+    {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    }
+    else
+    {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    }
+}
+
+- (void)layoutLandscape
+{
+    if (![UIDevice currentDevice].isPad)
+    {
+        //iPhone
+        UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
+        btn.frame = CGRectMake(btn.left, btn.top, 48.0, 24.0);
+        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationButtonBG.png"
+                                         bundleName:BUNDLE_NAME]
+                       forState:UIControlStateNormal];
+        
+        if ([[UIDevice currentDevice] isPhone5])
+        {
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG-568h.png"
+                                                                                 bundleName:BUNDLE_NAME]];
+        }
+        else
+        {
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG.png"
+                                                                                 bundleName:BUNDLE_NAME]];
+        }
+    }
+    else
+    {
+        UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
+        btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
+        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+                                         bundleName:BUNDLE_NAME]
+                       forState:UIControlStateNormal];
+
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad_Landscape/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    }
+}
+
+- (void)layoutView:(UIInterfaceOrientation)orientation
+{
+    if (UIInterfaceOrientationIsLandscape(orientation))
+    {
+        [self layoutLandscape];
+    }
+    else
+    {
+        [self layoutPortrait];
     }
 }
 

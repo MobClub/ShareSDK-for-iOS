@@ -9,13 +9,13 @@
 
 #import <UIKit/UIKit.h>
 #import "QQDemoViewController.h"
-#import "SendMsgToWeChatViewController.h"
+#import "WeChatViewController.h"
 
 @interface AGWeiXinQQDemoController : UIViewController
 {
 @private
     QQDemoViewController *_qqViewController;
-    WeiXInDemoViewController *_weixinViewController;
+    WeChatViewController *_weixinViewController;
     
     UISegmentedControl *_segmentedController;
 }

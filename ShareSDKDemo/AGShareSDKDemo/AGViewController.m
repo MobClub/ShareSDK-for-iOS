@@ -14,10 +14,14 @@
 #import "AGShareCell.h"
 #import <AGCommon/UINavigationBar+Common.h>
 #import "AGShareButton.h"
+#import <AGCommon/UIColor+Common.h>
+#import "IIViewDeckController.h"
+#import <AGCommon/UIDevice+Common.h>
 
 #define TYPE_CELL_ID @"TypeCell"
 #define STYLE_CELL_ID @"StyleCell"
 #define TARGET_CELL_ID @"TargetCell"
+#define SSO_CELL_ID @"SSOCell"
 
 @interface AGViewController (Private)
 
@@ -43,10 +47,17 @@
 {
     if (self = [super init])
     {
-        self.title = @"自定义";
+        UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
+        [leftBtn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
+                       forState:UIControlStateNormal];
+        [leftBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
+        leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
+        [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+        
+        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
         
         UIButton *btn = [[[UIButton alloc] init] autorelease];
-        [btn setBackgroundImage:[UIImage imageNamed:@"AGShareSDK/PublishEx/NavigationButtonBG.png" bundleName:@"Appgo"]
+        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         [btn setImage:[UIImage imageNamed:@"ShareButtonIcon.png"] forState:UIControlStateNormal];
         [btn setImage:[UIImage imageNamed:@"ShareButtonHighLightedIcon.png"] forState:UIControlStateHighlighted];
@@ -56,7 +67,19 @@
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:btn]
                                                   autorelease];
         
+        if ([UIDevice currentDevice].isPad)
+        {
+            UILabel *label = [[UILabel alloc] init];
+            label.backgroundColor = [UIColor clearColor];
+            label.textColor = [UIColor whiteColor];
+            label.shadowColor = [UIColor grayColor];
+            label.font = [UIFont systemFontOfSize:22];
+            self.navigationItem.titleView = label;
+            [label release];
+        }
+        
         _curShareViewStyle = 0;
+        _curAuthViewStyle = 0;
         _curContentType = 2;
         _noneUIShareTypeArray = [[NSMutableArray alloc] initWithObjects:
                                  [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -81,6 +104,22 @@
                                   [NSNumber numberWithBool:YES],
                                   @"selected",
                                   [NSNumber numberWithInteger:ShareTypeQQSpace],
+                                  @"type",
+                                  nil],
+                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  @"Facebook",
+                                  @"title",
+                                  [NSNumber numberWithBool:YES],
+                                  @"selected",
+                                  [NSNumber numberWithInteger:ShareTypeFacebook],
+                                  @"type",
+                                  nil],
+                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  @"Twitter",
+                                  @"title",
+                                  [NSNumber numberWithBool:YES],
+                                  @"selected",
+                                  [NSNumber numberWithInteger:ShareTypeTwitter],
                                   @"type",
                                   nil],
                                  [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -129,6 +168,14 @@
                                   [NSNumber numberWithBool:YES],
                                   @"selected",
                                   [NSNumber numberWithInteger:ShareTypeInstapaper],
+                                  @"type",
+                                  nil],
+                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  @"有道云笔记",
+                                  @"title",
+                                  [NSNumber numberWithBool:YES],
+                                  @"selected",
+                                  [NSNumber numberWithInteger:ShareTypeYouDaoNote],
                                   @"type",
                                   nil],
                                  nil];
@@ -187,6 +234,22 @@
                             [NSNumber numberWithBool:YES],
                             @"selected",
                             [NSNumber numberWithInteger:ShareTypeQQ],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Facebook",
+                            @"title",
+                            [NSNumber numberWithBool:YES],
+                            @"selected",
+                            [NSNumber numberWithInteger:ShareTypeFacebook],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Twitter",
+                            @"title",
+                            [NSNumber numberWithBool:YES],
+                            @"selected",
+                            [NSNumber numberWithInteger:ShareTypeTwitter],
                             @"type",
                             nil],
                            [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -261,7 +324,17 @@
                             [NSNumber numberWithInteger:ShareTypeInstapaper],
                             @"type",
                             nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"有道云笔记",
+                            @"title",
+                            [NSNumber numberWithBool:YES],
+                            @"selected",
+                            [NSNumber numberWithInteger:ShareTypeYouDaoNote],
+                            @"type",
+                            nil],
                            nil];
+        
+        self.title = @"自定义";
     }
     
     return self;
@@ -274,16 +347,25 @@
     [super dealloc];
 }
 
+- (void)setTitle:(NSString *)title
+{
+    [super setTitle:title];
+    
+    ((UILabel *)self.navigationItem.titleView).text = title;
+    [self.navigationItem.titleView sizeToFit];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"AGShareSDK/PublishEx/NavigationBarBG.png" bundleName:@"Appgo"]];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.width, self.view.height) style:UITableViewStyleGrouped];
     _tableView.rowHeight = 50;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    _tableView.backgroundColor = [UIColor colorWithRGB:0xe1e0de];
+    _tableView.backgroundView = nil;
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
@@ -291,10 +373,33 @@
 
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewWillAppear:animated];
+    
+    [self layoutView:self.interfaceOrientation];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return YES;
+}
+
+-(BOOL)shouldAutorotate
+{
+    //iOS6下旋屏方法
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    //iOS6下旋屏方法
+    return UIInterfaceOrientationMaskAll;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self layoutView:toInterfaceOrientation];
 }
 
 #pragma mark - Private
@@ -383,8 +488,15 @@
                             }];
 }
 
+- (void)leftButtonClickHandler:(id)sender
+{
+    [self.viewDeckController toggleLeftViewAnimated:YES];
+}
+
 - (void)actionClickHandler:(id)sender
 {
+    [ShareSDK ssoEnabled:_ssoSwitch.on];
+    
     NSString *content = nil;
     NSString *url = nil;
     UIImage *image = nil;
@@ -433,18 +545,40 @@
                                                              extInfo:nil
                                                             fileData:nil]
                               statusBarTips:YES
-                                     result:nil];
+                                     result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                         NSLog(@"%@", [error errorDescription]);
+                                     }];
     }
     else
     {
-        ShareViewStyle  style = ShareViewStyleDefault;
+        id<IShareViewOptions> shareViewOptions = nil;
+        id<IAuthOptions> authOptions = nil;
+
+        switch (_curAuthViewStyle)
+        {
+            case 1:
+                authOptions = [ShareSDK authOptionsWithAutoAuth:YES authViewStyle:AuthViewStyleMadal];
+                break;
+            default:
+                authOptions = [ShareSDK authOptionsWithAutoAuth:YES authViewStyle:AuthViewStylePopup];
+                break;
+        }
+        
         switch (_curShareViewStyle)
         {
             case 1:
-                style = ShareViewStyleSimple;
+                shareViewOptions = [ShareSDK simpleShareViewOptionWithTitle:@"内容分享"];
                 break;
             case 2:
-                style = ShareViewStyleAppRecommend;
+                shareViewOptions = [ShareSDK appRecommendShareViewOptionWithTitle:@"内容分享"];
+                break;
+            default:
+                shareViewOptions = [ShareSDK defaultShareViewOptionsWithTitle:@"内容分享"
+                                                              oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                               qqButtonHidden:NO
+                                                        wxSessionButtonHidden:NO
+                                                       wxTimelineButtonHidden:NO
+                                                         showKeyboardOnAppear:YES];
                 break;
         }
         
@@ -461,6 +595,9 @@
         //显示分享选择菜单
         //其中第三个参数为分享内容，其为一个实现了ISSPublishContent协议的对象，可以通过调用ShareSDK的publishContent方法进行对象初始化
         [ShareSDK showShareActionSheet:self
+                         iPadContainer:[ShareSDK iPadShareContainerWithView:self.navigationController.view
+                                                                       rect:((UIButton *)sender).frame
+                                                                arrowDirect:UIPopoverArrowDirectionAny]
                              shareList:shareList
                                content:[ShareSDK publishContent:content
                                                  defaultContent:@""
@@ -473,9 +610,9 @@
                                                         extInfo:nil
                                                        fileData:nil]
                          statusBarTips:YES
-                       oneKeyShareList:[NSArray defaultOneKeyShareList]
-                        shareViewStyle:style
-                        shareViewTitle:@"内容分享"
+                            convertUrl:YES
+                           authOptions:authOptions
+                      shareViewOptions:shareViewOptions
                                 result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                     if (state == SSPublishContentStateSuccess)
                                     {
@@ -504,15 +641,98 @@
                                         }
                                     }
                                 }];
+        
     }
     
+}
+
+- (void)layoutPortrait
+{
+    UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
+    btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
+    [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+                                     bundleName:BUNDLE_NAME]
+                   forState:UIControlStateNormal];
+    
+    btn = (UIButton *)self.navigationItem.rightBarButtonItem.customView;
+    btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
+    [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+                                     bundleName:BUNDLE_NAME]
+                   forState:UIControlStateNormal];
+    
+    if ([UIDevice currentDevice].isPad)
+    {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    }
+    else
+    {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    }
+}
+
+- (void)layoutLandscape
+{
+    if (![UIDevice currentDevice].isPad)
+    {
+        //iPhone
+        UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
+        btn.frame = CGRectMake(btn.left, btn.top, 48.0, 24.0);
+        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationButtonBG.png"
+                                         bundleName:BUNDLE_NAME]
+                       forState:UIControlStateNormal];
+        
+        btn = (UIButton *)self.navigationItem.rightBarButtonItem.customView;
+        btn.frame = CGRectMake(btn.left, btn.top, 48.0, 24.0);
+        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationButtonBG.png"
+                                         bundleName:BUNDLE_NAME]
+                       forState:UIControlStateNormal];
+        
+        if ([[UIDevice currentDevice] isPhone5])
+        {
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG-568h.png"
+                                                                                 bundleName:BUNDLE_NAME]];
+        }
+        else
+        {
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG.png"
+                                                                                 bundleName:BUNDLE_NAME]];
+        }
+    }
+    else
+    {
+        UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
+        btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
+        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+                                         bundleName:BUNDLE_NAME]
+                       forState:UIControlStateNormal];
+        
+        btn = (UIButton *)self.navigationItem.rightBarButtonItem.customView;
+        btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
+        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+                                         bundleName:BUNDLE_NAME]
+                       forState:UIControlStateNormal];
+        
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad_Landscape/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    }
+}
+
+- (void)layoutView:(UIInterfaceOrientation)orientation
+{
+    if (UIInterfaceOrientationIsLandscape(orientation))
+    {
+        [self layoutLandscape];
+    }
+    else
+    {
+        [self layoutPortrait];
+    }
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 5;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -522,8 +742,12 @@
         case 0:
             return @"类型";
         case 1:
-            return @"分享视图样式";
+            return @"";
         case 2:
+            return @"授权视图样式";
+        case 3:
+            return @"分享视图样式";
+        case 4:
             return @"菜单内出现的分享项（可多选）";
         default:
             return nil;
@@ -537,8 +761,12 @@
         case 0:
             return 3;
         case 1:
-            return 4;
+            return 1;
         case 2:
+            return 2;
+        case 3:
+            return 4;
+        case 4:
             if (_curShareViewStyle == 3)
             {
                 return [_noneUIShareTypeArray count];
@@ -589,6 +817,52 @@
         }
         case 1:
         {
+            cell = [tableView dequeueReusableCellWithIdentifier:SSO_CELL_ID];
+            if (cell == nil)
+            {
+                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SSO_CELL_ID] autorelease];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.textLabel.text = @"SSO登录";
+                
+                _ssoSwitch = [[UISwitch alloc] init];
+                [_ssoSwitch sizeToFit];
+                cell.accessoryView = _ssoSwitch;
+                [_ssoSwitch release];
+            }
+            
+            break;
+        }
+        case 2:
+        {
+            cell = [tableView dequeueReusableCellWithIdentifier:STYLE_CELL_ID];
+            if (cell == nil)
+            {
+                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:STYLE_CELL_ID] autorelease];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            switch (indexPath.row)
+            {
+                case 0:
+                    cell.textLabel.text = @"Popup(默认)";
+                    break;
+                case 1:
+                    cell.textLabel.text = @"Modal";
+                    break;
+                default:
+                    break;
+            }
+            if (indexPath.row == _curAuthViewStyle)
+            {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            else
+            {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
+            break;
+        }
+        case 3:
+        {
             cell = [tableView dequeueReusableCellWithIdentifier:STYLE_CELL_ID];
             if (cell == nil)
             {
@@ -622,7 +896,7 @@
             }
             break;
         }
-        case 2:
+        case 4:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:TARGET_CELL_ID];
             if (cell == nil)
@@ -639,9 +913,9 @@
                     NSDictionary *item = [_noneUIShareTypeArray objectAtIndex:indexPath.row];
                     cell.textLabel.text = [item objectForKey:@"title"];
                     UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:
-                                                        @"AGShareSDK/Icon/sns_icon_%d.png",
+                                                        @"Icon/sns_icon_%d.png",
                                                         [[item objectForKey:@"type"] integerValue]]
-                                            bundleName:@"Appgo"];
+                                            bundleName:BUNDLE_NAME];
                     if (![[item objectForKey:@"selected"] boolValue])
                     {
                         //灰度化图片
@@ -663,9 +937,9 @@
                     NSDictionary *item = [_shareTypeArray objectAtIndex:indexPath.row];
                     cell.textLabel.text = [item objectForKey:@"title"];
                     UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:
-                                                        @"AGShareSDK/Icon/sns_icon_%d.png",
+                                                        @"Icon/sns_icon_%d.png",
                                                         [[item objectForKey:@"type"] integerValue]]
-                                            bundleName:@"Appgo"];
+                                            bundleName:BUNDLE_NAME];
                     if (![[item objectForKey:@"selected"] boolValue])
                     {
                         //灰度化图片
@@ -698,11 +972,15 @@
             _curContentType = indexPath.row;
             [tableView reloadData];
             break;
-        case 1:
+        case 2:
+            _curAuthViewStyle = indexPath.row;
+            [tableView reloadData];
+            break;
+        case 3:
             _curShareViewStyle = indexPath.row;
             [tableView reloadData];
             break;
-        case 2:
+        case 4:
             if (_curShareViewStyle == 3)
             {
                 if (indexPath.row < [_noneUIShareTypeArray count])

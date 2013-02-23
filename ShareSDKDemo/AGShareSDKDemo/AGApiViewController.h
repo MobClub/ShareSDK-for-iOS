@@ -18,6 +18,8 @@
 @private
     UITableView *_tableView;
     ShareType _followType;
+    
+    BOOL _ssoEnable;
 }
 
 @end

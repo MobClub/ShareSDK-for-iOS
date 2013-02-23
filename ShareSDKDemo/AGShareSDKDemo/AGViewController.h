@@ -15,9 +15,11 @@
 {
 @private
     UITableView *_tableView;
+    UISwitch *_ssoSwitch;
     
     NSInteger _curContentType;
     NSInteger _curShareViewStyle;
+    NSInteger _curAuthViewStyle;
     NSMutableArray *_shareTypeArray;
     NSMutableArray *_noneUIShareTypeArray;
 }

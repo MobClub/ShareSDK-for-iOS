@@ -10,21 +10,20 @@
 #import <UIKit/UIKit.h>
 #import "WXApi.h"
 #import <QQApi/QQApi.h>
-#import "SendMsgToWeChatViewController.h"
+#import "WeChatViewController.h"
 #import "RespForWeChatViewController.h"
+#import "IIViewDeckController.h"
 
 @class AGViewController;
 
 @interface AGAppDelegate : UIResponder <UIApplicationDelegate,
-                                        WXApiDelegate,
-                                        sendMsgToWeChatViewDelegate,
-                                        RespForWeChatViewDelegate>
+                                        WXApiDelegate>
 {
     enum WXScene _scene;
 }
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) UITabBarController *viewController;
+@property (strong, nonatomic) IIViewDeckController *viewController;
 
 @end

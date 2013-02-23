@@ -11,6 +11,8 @@
 #import <AGCommon/UINavigationBar+Common.h>
 #import "SVModalWebViewController.h"
 #import <AGCommon/UIImage+Common.h>
+#import <AGCommon/UIColor+Common.h>
+#import <ShareSDK/ShareSDK.h>
 
 @interface ShareSDKDemoMoreViewController ()
 
@@ -25,7 +27,7 @@
         // Custom initialization
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setBackgroundImage:[UIImage imageNamed:@"AGShareSDK/PublishEx/NavigationButtonBG.png" bundleName:@"Appgo"]
+        [button setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                           forState:UIControlStateNormal];
         [button setTitle:@"取消" forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -42,10 +44,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"AGShareSDK/PublishEx/NavigationBarBG.png" bundleName:@"Appgo"]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
     
     UITableView *tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped] autorelease];
     tableView.rowHeight = 50.0;
+    tableView.backgroundColor = [UIColor colorWithRGB:0xe1e0de];
+    tableView.backgroundView = nil;
     tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     tableView.dataSource = self;
     tableView.delegate = self;
@@ -66,7 +70,7 @@
     
     //版本信息
 	NSArray *aboutusArray = [NSArray arrayWithObjects:
-                              NSLocalizedString(@"SDK版本 v1.0.1 (2013-01-17更新)",nil),
+                              NSLocalizedString(@"SDK版本 v1.1.2 (2013-01-25更新)",nil),
                               nil];
 	NSDictionary *aboutusDict = [NSDictionary dictionaryWithObject:aboutusArray forKey:@"Countries"];
     [listOfItems addObject:infoDict];
@@ -142,7 +146,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     switch (indexPath.section)
     {
         case 0:
@@ -151,16 +156,83 @@
             {
                 case 0:
                 {
-                    SVModalWebViewController *vc = [[SVModalWebViewController alloc] initWithAddress:@"http://weibo.com/sharesdk"];
-                    [self presentModalViewController:vc animated:YES];
-                    [vc release];
+//                    SVModalWebViewController *vc = [[SVModalWebViewController alloc] initWithAddress:@"http://weibo.com/sharesdk"];
+//                    [self presentModalViewController:vc animated:YES];
+//                    [vc release];
+                    //关注用户
+                    [ShareSDK followUserWithName:@"ShareSDK"
+                                       shareType:ShareTypeSinaWeibo
+                                          result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                              NSString *msg = nil;
+                                              if (result)
+                                              {
+                                                  msg = @"关注成功";
+                                              }
+                                              else
+                                              {
+                                                  switch ([error errorCode])
+                                                  {
+                                                      case 20506:
+                                                          msg = @"已关注";
+                                                          break;
+                                                          
+                                                      default:
+                                                          msg = [NSString stringWithFormat:@"关注失败:%@", error.errorDescription];
+                                                          break;
+                                                  }
+                                              }
+                                              
+                                              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                                  message:msg
+                                                                                                 delegate:nil
+                                                                                        cancelButtonTitle:@"知道了"
+                                                                                        otherButtonTitles:nil];
+                                              [alertView show];
+                                              [alertView release];
+                                          }];
                     break;
                 }
                 case 1:
                 {
-                    SVModalWebViewController *vc = [[SVModalWebViewController alloc] initWithAddress:@"http://t.qq.com/ShareSDK"];
-                    [self presentModalViewController:vc animated:YES];
-                    [vc release];
+//                    SVModalWebViewController *vc = [[SVModalWebViewController alloc] initWithAddress:@"http://t.qq.com/ShareSDK"];
+//                    [self presentModalViewController:vc animated:YES];
+//                    [vc release];
+                    
+                    [ShareSDK followUserWithName:@"ShareSDK"
+                                       shareType:ShareTypeTencentWeibo
+                                          result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                              NSString *msg = nil;
+                                              if (result)
+                                              {
+                                                  msg = @"关注成功";
+                                              }
+                                              else
+                                              {
+                                                  switch ([error errorCode])
+                                                  {
+                                                      case 80103:
+                                                          msg = @"已关注";
+                                                          break;
+                                                          
+                                                      default:
+                                                          msg = [NSString stringWithFormat:@"关注失败:%@", error.errorDescription];
+                                                          break;
+                                                  }
+                                              }
+                                              
+                                              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                                  message:msg
+                                                                                                 delegate:nil
+                                                                                        cancelButtonTitle:@"知道了"
+                                                                                        otherButtonTitles:nil];
+                                              [alertView show];
+                                              [alertView release];
+                                          }];
+                    break;
+                }
+                case 2:
+                {
+                    [ShareSDK followWeixinUser:@"http://weixin.qq.com/r/HHURHl7EjmDxh099nyA4"];
                     break;
                 }
                 case 3:

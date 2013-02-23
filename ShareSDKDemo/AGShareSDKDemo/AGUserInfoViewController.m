@@ -9,6 +9,9 @@
 
 #import "AGUserInfoViewController.h"
 #import <AGCommon/UINavigationBar+Common.h>
+#import <AGCommon/UIColor+Common.h>
+#import <AGCommon/UIImage+Common.h>
+#import <AGCommon/UIDevice+Common.h>
 
 #define TABLE_CELL_ID @"tableCell"
 
@@ -93,11 +96,15 @@
     {
         // Custom initialization
         self.title = @"用户信息";
-        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"取消"
-                                                                                  style:UIBarButtonItemStyleBordered
-                                                                                 target:self
-                                                                                 action:@selector(cancelButtonClickHandler:)]
-                                                 autorelease];
+        
+        UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
+        [leftBtn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
+                           forState:UIControlStateNormal];
+        [leftBtn setTitle:@"取消" forState:UIControlStateNormal];
+        leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
+        [leftBtn addTarget:self action:@selector(cancelButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
         
         _infoDict = [[NSMutableDictionary alloc] init];
         
@@ -112,11 +119,15 @@
     if (self = [super init])
     {
         self.title = @"用户信息";
-        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"取消"
-                                                                                  style:UIBarButtonItemStyleBordered
-                                                                                 target:self
-                                                                                 action:@selector(cancelButtonClickHandler:)]
-                                                 autorelease];
+        
+        UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
+        [leftBtn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
+                           forState:UIControlStateNormal];
+        [leftBtn setTitle:@"取消" forState:UIControlStateNormal];
+        leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
+        [leftBtn addTarget:self action:@selector(cancelButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
         
         _infoDict = [[NSMutableDictionary alloc] init];
         _type = type;
@@ -143,10 +154,19 @@
     
     _tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.width, self.view.height) style:UITableViewStyleGrouped] autorelease];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _tableView.backgroundColor = [UIColor colorWithRGB:0xe1e0de];
+    _tableView.backgroundView = nil;
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
     [_tableView release];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self layoutView:self.interfaceOrientation];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -205,6 +225,18 @@
                                            case ShareTypeInstapaper:
                                                //Instapaper
                                                [self fillInstapaperUser:userInfo];
+                                               break;
+                                           case ShareTypeFacebook:
+                                               //Facebook
+                                               [self fillFacebookUser:userInfo];
+                                               break;
+                                           case ShareTypeTwitter:
+                                               //Twitter
+                                               [self fillTwitterUser:userInfo];
+                                               break;
+                                           case ShareTypeYouDaoNote:
+                                               //有道云笔记
+                                               [self fillYouDaoNoteUser:userInfo];
                                                break;
                                            default:
                                                break;
@@ -280,6 +312,18 @@
                                                //Instapaper
                                                [self fillInstapaperUser:userInfo];
                                                break;
+                                           case ShareTypeFacebook:
+                                               //Facebook
+                                               [self fillFacebookUser:userInfo];
+                                               break;
+                                           case ShareTypeTwitter:
+                                               //Twitter
+                                               [self fillTwitterUser:userInfo];
+                                               break;
+                                           case ShareTypeYouDaoNote:
+                                               //有道云笔记
+                                               [self fillYouDaoNoteUser:userInfo];
+                                               break;
                                            default:
                                                break;
                                        }
@@ -303,6 +347,28 @@
 - (void)cancelButtonClickHandler:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return YES;
+}
+
+-(BOOL)shouldAutorotate
+{
+    //iOS6下旋屏方法
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    //iOS6下旋屏方法
+    return UIInterfaceOrientationMaskAll;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self layoutView:toInterfaceOrientation];
 }
 
 #pragma mark - Private
@@ -1209,6 +1275,134 @@
     }
 }
 
+- (void)fillFacebookUser:(id<ISSUserInfo>)userInfo
+{
+    NSArray *keys = [userInfo.source allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [userInfo.source objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]])
+        {
+            if ([value respondsToSelector:@selector(stringValue)])
+            {
+                value = [value stringValue];
+            }
+            else
+            {
+                value = @"";
+            }
+        }
+        
+        if ([keyName isEqualToString:@"birthday"])
+        {
+            [_infoDict setObject:value forKey:@"生日"];
+        }
+        else if ([keyName isEqualToString:@"email"])
+        {
+            [_infoDict setObject:value forKey:@"邮箱"];
+        }
+        else if ([keyName isEqualToString:@"gender"])
+        {
+            [_infoDict setObject:value forKey:@"性别"];
+        }
+        else if ([keyName isEqualToString:@"first_name"])
+        {
+            [_infoDict setObject:value forKey:keyName];
+        }
+        else if ([keyName isEqualToString:@"id"])
+        {
+            [_infoDict setObject:value forKey:keyName];
+        }
+        else if ([keyName isEqualToString:@"installed"])
+        {
+            [_infoDict setObject:value forKey:keyName];
+        }
+        else if ([keyName isEqualToString:@"last_name"])
+        {
+            [_infoDict setObject:value forKey:keyName];
+        }
+        else if ([keyName isEqualToString:@"link"])
+        {
+            [_infoDict setObject:value forKey:keyName];
+        }
+        else if ([keyName isEqualToString:@"locale"])
+        {
+            [_infoDict setObject:value forKey:keyName];
+        }
+        else if ([keyName isEqualToString:@"name"])
+        {
+            [_infoDict setObject:value forKey:keyName];
+        }
+        else if ([keyName isEqualToString:@"third_party_id"])
+        {
+            [_infoDict setObject:value forKey:keyName];
+        }
+        else if ([keyName isEqualToString:@"timezone"])
+        {
+            [_infoDict setObject:value forKey:keyName];
+        }
+        else if ([keyName isEqualToString:@"updated_time"])
+        {
+            [_infoDict setObject:value forKey:keyName];
+        }
+        else if ([keyName isEqualToString:@"username"])
+        {
+            [_infoDict setObject:value forKey:keyName];
+        }
+        else if ([keyName isEqualToString:@"verified"])
+        {
+            [_infoDict setObject:value forKey:keyName];
+        }
+    }
+}
+
+- (void)fillTwitterUser:(id<ISSUserInfo>)userInfo
+{
+    NSArray *keys = [userInfo.source allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [userInfo.source objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]])
+        {
+            if ([value respondsToSelector:@selector(stringValue)])
+            {
+                value = [value stringValue];
+            }
+            else
+            {
+                value = @"";
+            }
+        }
+        
+        [_infoDict setObject:value forKey:keyName];
+    }
+}
+
+- (void)fillYouDaoNoteUser:(id<ISSUserInfo>)userInfo
+{
+    NSArray *keys = [userInfo.source allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [userInfo.source objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]])
+        {
+            if ([value respondsToSelector:@selector(stringValue)])
+            {
+                value = [value stringValue];
+            }
+            else
+            {
+                value = @"";
+            }
+        }
+        
+        [_infoDict setObject:value forKey:keyName];
+    }
+}
+
 - (void)loadImage:(NSString *)url
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
@@ -1226,6 +1420,81 @@
         UIImageView *imageView = [[[UIImageView alloc] initWithImage:icon] autorelease];
         imageView.frame = CGRectMake(0.0, 0.0, _tableView.width, imageView.height * _tableView.width / imageView.width);
         _tableView.tableHeaderView = imageView;
+    }
+}
+
+- (void)layoutPortrait
+{
+    UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
+    btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
+    [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+                                     bundleName:BUNDLE_NAME]
+                   forState:UIControlStateNormal];
+    
+    if ([UIDevice currentDevice].isPad)
+    {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    }
+    else
+    {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    }
+
+    UIImageView *imageView = [[(UIImageView *)_tableView.tableHeaderView retain] autorelease];
+    _tableView.tableHeaderView = nil;
+    imageView.frame = CGRectMake(0.0, 0.0, [UIScreen mainScreen].bounds.size.width, imageView.height * [UIScreen mainScreen].bounds.size.width / imageView.width);
+    _tableView.tableHeaderView = imageView;
+}
+
+- (void)layoutLandscape
+{
+    if (![UIDevice currentDevice].isPad)
+    {
+        //iPhone
+        UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
+        btn.frame = CGRectMake(btn.left, btn.top, 48.0, 24.0);
+        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationButtonBG.png"
+                                         bundleName:BUNDLE_NAME]
+                       forState:UIControlStateNormal];
+        
+        if ([[UIDevice currentDevice] isPhone5])
+        {
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG-568h.png"
+                                                                                 bundleName:BUNDLE_NAME]];
+        }
+        else
+        {
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG.png"
+                                                                                 bundleName:BUNDLE_NAME]];
+        }
+    }
+    else
+    {
+        UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
+        btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
+        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+                                         bundleName:BUNDLE_NAME]
+                       forState:UIControlStateNormal];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad_Landscape/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    }
+    
+    
+    
+    UIImageView *imageView = [[(UIImageView *)_tableView.tableHeaderView retain] autorelease];
+    _tableView.tableHeaderView = nil;
+    imageView.frame = CGRectMake(0.0, 0.0, [UIScreen mainScreen].bounds.size.height, imageView.height * [UIScreen mainScreen].bounds.size.height / imageView.width);
+    _tableView.tableHeaderView = imageView;
+}
+
+- (void)layoutView:(UIInterfaceOrientation)orientation
+{
+    if (UIInterfaceOrientationIsLandscape(orientation))
+    {
+        [self layoutLandscape];
+    }
+    else
+    {
+        [self layoutPortrait];
     }
 }
 

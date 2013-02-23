@@ -25,15 +25,16 @@
     {
         _segmentedController = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"微信", @"QQ", nil]];
         _segmentedController.frame = CGRectMake(0.0, 0.0, 200, 35);
-        _segmentedController.segmentedControlStyle = UISegmentedControlStyleBar;
+        _segmentedController.segmentedControlStyle = UISegmentedControlStyleBordered;
         _segmentedController.selectedSegmentIndex = 0;
         [_segmentedController addTarget:self action:@selector(segmentedControlChangeHandler:) forControlEvents:UIControlEventValueChanged];
         self.navigationItem.titleView = _segmentedController;
         [_segmentedController release];
         
         _qqViewController = [[QQDemoViewController alloc] initWithNibName:@"QQDemoViewController" bundle:nil];
-        _weixinViewController = [[WeiXInDemoViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
-        _weixinViewController.delegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
+        _weixinViewController = [[WeChatViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
+//        _weixinViewController.delegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
+        _weixinViewController.parentController = self;
     }
     return self;
 }
@@ -42,14 +43,20 @@
 {
     [super viewDidLoad];
     
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    
     switch (_segmentedController.selectedSegmentIndex)
     {
         case 0:
             [_qqViewController.view removeFromSuperview];
+            _weixinViewController.view.frame = CGRectMake(0.0, 0.0, self.view.width, self.view.height);
+            _weixinViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
             [self.view addSubview:_weixinViewController.view];
             break;
         case 1:
             [_weixinViewController.view removeFromSuperview];
+            _qqViewController.view.frame = CGRectMake(0.0, 0.0, self.view.width, self.view.height);
+            _qqViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
             [self.view addSubview:_qqViewController.view];
             break;
         default:
@@ -64,10 +71,14 @@
     {
         case 0:
             [_qqViewController.view removeFromSuperview];
+            _weixinViewController.view.frame = CGRectMake(0.0, 0.0, self.view.width, self.view.height);
+            _weixinViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
             [self.view addSubview:_weixinViewController.view];
             break;
         case 1:
             [_weixinViewController.view removeFromSuperview];
+            _qqViewController.view.frame = CGRectMake(0.0, 0.0, self.view.width, self.view.height);
+            _qqViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
             [self.view addSubview:_qqViewController.view];
             break;
         default:

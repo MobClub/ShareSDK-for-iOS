@@ -7,6 +7,9 @@
 //  https://github.com/samvermette/SVWebViewController
 
 #import "SVWebViewController.h"
+#import <AGCommon/UINavigationBar+Common.h>
+#import <AGCommon/UIImage+Common.h>
+#import "IIViewDeckController.h"
 
 @interface SVWebViewController () <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
@@ -91,10 +94,10 @@
 - (UIActionSheet *)pageActionSheet {
     
     if(!pageActionSheet) {
-        pageActionSheet = [[UIActionSheet alloc] 
+        pageActionSheet = [[UIActionSheet alloc]
                         initWithTitle:self.mainWebView.request.URL.absoluteString
                         delegate:self 
-                        cancelButtonTitle:nil   
+                        cancelButtonTitle:nil
                         destructiveButtonTitle:nil   
                         otherButtonTitles:nil]; 
 
@@ -123,11 +126,25 @@
 - (id)initWithURL:(NSURL*)pageURL {
     
     if(self = [super init]) {
+        
+        UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
+        [leftBtn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
+                           forState:UIControlStateNormal];
+        [leftBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
+        leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
+        [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
+        
         self.URL = pageURL;
         self.availableActions = SVWebViewControllerAvailableActionsOpenInSafari | SVWebViewControllerAvailableActionsMailLink;
     }
     
     return self;
+}
+
+- (void)leftButtonClickHandler:(id)sender
+{
+    [self.viewDeckController toggleLeftViewAnimated:YES];
 }
 
 #pragma mark - Memory management
@@ -152,6 +169,9 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    
+     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    
     [self updateToolbarItems];
 }
 

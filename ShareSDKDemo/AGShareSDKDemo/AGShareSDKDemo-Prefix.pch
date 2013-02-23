@@ -14,5 +14,7 @@
     #import <AGCommon/CoreDefinition.h>
 #endif
 
+#define BUNDLE_NAME @"ShareSDK"
+
 #define IMAGE_NAME @"sharesdk_img.jpg"
-#define CONTENT @"我使用的是ShareSDK社会化分享组件，它不仅集成简单、支持如QQ好友、微信、新浪微博、腾讯微博、人人网、开心网、豆瓣等所有社交平台，而且还有强大的统计分析管理后台，实时了解用户、信息流、回流率、传播效应等数据，详情见官网http://sharesdk.cn @ShareSDK"
+#define CONTENT @"ShareSDK不仅集成简单、支持如QQ好友、微信、新浪微博、腾讯微博等所有社交平台，而且还有强大的统计分析管理后台，实时了解用户、信息流、回流率、传播效应等数据，详情见官网http://sharesdk.cn @ShareSDK"
