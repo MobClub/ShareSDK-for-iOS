@@ -16,6 +16,7 @@
 #import "QQDemoViewController.h"
 #import "AGViewController.h"
 #import "AGLeftSideTableCell.h"
+#import "AGCustomViewController.h"
 
 #define TABLE_CELL @"tableCell"
 
@@ -80,7 +81,7 @@
 {
     switch (section) {
         case 0:
-            return 5;
+            return 6;
         case 1:
             return 5;
         default:
@@ -124,7 +125,10 @@
                     cell.textLabel.text = @"QQ";
                     break;
                 case 4:
-                    cell.textLabel.text = @"自定义";
+                    cell.textLabel.text = @"演示";
+                    break;
+                case 5:
+                    cell.textLabel.text = @"自定义分享界面";
                     break;
             }
             break;
@@ -260,6 +264,17 @@
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         UIViewController *shareVC = [[[AGViewController alloc] init] autorelease];
+                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
+                        self.viewDeckController.centerController = navShareVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                    break;
+                }
+                case 5:
+                {
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        UIViewController *shareVC = [[[AGCustomViewController alloc] init] autorelease];
                         UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
                         self.viewDeckController.centerController = navShareVC;
                         

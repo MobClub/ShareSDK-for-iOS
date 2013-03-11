@@ -334,7 +334,7 @@
                             nil],
                            nil];
         
-        self.title = @"自定义";
+        self.title = @"演示";
     }
     
     return self;
@@ -595,8 +595,7 @@
         //显示分享选择菜单
         //其中第三个参数为分享内容，其为一个实现了ISSPublishContent协议的对象，可以通过调用ShareSDK的publishContent方法进行对象初始化
         [ShareSDK showShareActionSheet:self
-                         iPadContainer:[ShareSDK iPadShareContainerWithView:self.navigationController.view
-                                                                       rect:((UIButton *)sender).frame
+                         iPadContainer:[ShareSDK iPadShareContainerWithBarButtonItem:self.navigationItem.rightBarButtonItem
                                                                 arrowDirect:UIPopoverArrowDirectionAny]
                              shareList:shareList
                                content:[ShareSDK publishContent:content

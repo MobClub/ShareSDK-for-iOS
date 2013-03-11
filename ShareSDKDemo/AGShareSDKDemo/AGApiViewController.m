@@ -100,6 +100,52 @@
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"分享全部(简单)" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING, top, self.view.width - LEFT_PADDING - RIGHT_PADDING, 45.0);
+    [button addTarget:self action:@selector(simpleShareAllButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    top += button.height + VERTICAL_GAP;
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"分享全部(无界面)" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING, top, self.view.width - LEFT_PADDING - RIGHT_PADDING, 45.0);
+    [button addTarget:self action:@selector(noneUIShareAllButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    top += button.height + VERTICAL_GAP;
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"设置AccessToken" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(setAccessTokenClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"分享GIF图片" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(shareGifPicClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    top += button.height + VERTICAL_GAP;
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"自定义分享菜单" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(customShareMenuClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"自定义分享菜单项" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(customShareMenuItemClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    top += button.height + VERTICAL_GAP;
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"关注官方微博" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(followOfficerWeiboClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -245,21 +291,6 @@
     [button setTitle:@"获取AccessToken" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
     [button addTarget:self action:@selector(getAccessTokenClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:button];
-    
-    top += button.height + VERTICAL_GAP;
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"设置AccessToken" forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(customShareMenuClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:button];
-    
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"自定义分享菜单" forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(customShareMenuClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     scrollView.contentSize = CGSizeMake(self.view.width, top += button.height + VERTICAL_GAP);
@@ -588,6 +619,24 @@
                                                        musicFileUrl:nil
                                                             extInfo:nil
                                                            fileData:nil];
+    //定制人人网分享
+    [publishContent addRenRenUnitWithName:@"Hello 人人网"
+                              description:@"这是一条测试信息"
+                                      url:INHERIT_VALUE
+                                  message:INHERIT_VALUE
+                              imageObject:INHERIT_VALUE
+                                  caption:nil];
+    
+    //定制QQ空间分享
+    [publishContent addQQSpaceUnitWithTitle:INHERIT_VALUE
+                                        url:INHERIT_VALUE
+                                    comment:INHERIT_VALUE
+                                    summary:@"Hello QQ空间"
+                                imageObject:INHERIT_VALUE
+                                       type:INHERIT_VALUE
+                                    playUrl:INHERIT_VALUE
+                                  syncWeibo:INHERIT_VALUE];
+    
     //定制微信好友内容
     [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
                                          content:@"Hello 微信好友!"
@@ -633,6 +682,11 @@
                                           author:@"ShareSDK"
                                           source:@"http://www.sharesdk.cn"
                                      attachments:INHERIT_VALUE];
+    
+    //定制Instapaper分享内容
+    [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
+                                          title:@"Hello Instapaper"
+                                    description:INHERIT_VALUE];
     
     [ShareSDK showShareActionSheet:self
                      iPadContainer:[ShareSDK iPadShareContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp]
@@ -680,6 +734,415 @@
 //                                    NSLog(@"发送失败");
 //                                }
 //                            }];
+}
+
+/**
+ *	@brief	简单分享全部
+ *
+ *	@param 	sender 	事件对象
+ */
+- (void)simpleShareAllButtonClickHandler:(id)sender
+{
+    id<ISSPublishContent> publishContent = [ShareSDK publishContent:CONTENT
+                                                     defaultContent:@""
+                                                              image:[UIImage imageNamed:IMAGE_NAME]
+                                                       imageQuality:0.8
+                                                          mediaType:SSPublishContentMediaTypeNews
+                                                              title:@"ShareSDK"
+                                                                url:@"http://www.sharesdk.cn"
+                                                       musicFileUrl:nil
+                                                            extInfo:nil
+                                                           fileData:nil];
+    //定制人人网分享
+    [publishContent addRenRenUnitWithName:@"Hello 人人网"
+                              description:@"这是一条测试信息"
+                                      url:INHERIT_VALUE
+                                  message:INHERIT_VALUE
+                              imageObject:INHERIT_VALUE
+                                  caption:nil];
+    
+    //定制QQ空间分享
+    [publishContent addQQSpaceUnitWithTitle:INHERIT_VALUE
+                                        url:INHERIT_VALUE
+                                    comment:INHERIT_VALUE
+                                    summary:@"Hello QQ空间"
+                                imageObject:INHERIT_VALUE
+                                       type:INHERIT_VALUE
+                                    playUrl:INHERIT_VALUE
+                                  syncWeibo:INHERIT_VALUE];
+    
+    //定制微信好友内容
+    [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
+                                         content:@"Hello 微信好友!"
+                                           title:INHERIT_VALUE
+                                             url:INHERIT_VALUE
+                                           image:INHERIT_VALUE
+                                    imageQuality:INHERIT_VALUE
+                                    musicFileUrl:INHERIT_VALUE
+                                         extInfo:INHERIT_VALUE
+                                        fileData:INHERIT_VALUE];
+    
+    //定制微信朋友圈内容
+    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
+                                          content:@"Hello 微信朋友圈!"
+                                            title:INHERIT_VALUE
+                                              url:@"http://y.qq.com/i/song.html#p=7B22736F6E675F4E616D65223A22E4BDA0E4B88DE698AFE79C9FE6ADA3E79A84E5BFABE4B990222C22736F6E675F5761704C69766555524C223A22687474703A2F2F74736D7573696332342E74632E71712E636F6D2F586B303051563558484A645574315070536F4B7458796931667443755A68646C2F316F5A4465637734356375386355672B474B304964794E6A3770633447524A574C48795333383D2F3634363232332E6D34613F7569643D32333230303738313038266469723D423226663D312663743D3026636869643D222C22736F6E675F5769666955524C223A22687474703A2F2F73747265616D31382E71716D757369632E71712E636F6D2F33303634363232332E6D7033222C226E657454797065223A2277696669222C22736F6E675F416C62756D223A22E5889BE980A0EFBC9AE5B08FE5B7A8E89B8B444E414C495645EFBC81E6BC94E594B1E4BC9AE5889BE7BAAAE5BD95E99FB3222C22736F6E675F4944223A3634363232332C22736F6E675F54797065223A312C22736F6E675F53696E676572223A22E4BA94E69C88E5A4A9222C22736F6E675F576170446F776E4C6F616455524C223A22687474703A2F2F74736D757369633132382E74632E71712E636F6D2F586C464E4D31354C5569396961495674593739786D436534456B5275696879366A702F674B65356E4D6E684178494C73484D6C6A307849634A454B394568572F4E3978464B316368316F37636848323568413D3D2F33303634363232332E6D70333F7569643D32333230303738313038266469723D423226663D302663743D3026636869643D2673747265616D5F706F733D38227D"
+                                            image:INHERIT_VALUE
+                                     imageQuality:INHERIT_VALUE
+                                     musicFileUrl:@"http://mp3.mwap8.com/destdir/Music/2009/20090601/ZuiXuanMinZuFeng20090601119.mp3"
+                                          extInfo:nil
+                                         fileData:nil];
+    
+    //定制QQ分享内容
+    [publishContent addQQUnitWithType:INHERIT_VALUE
+                              content:@"Hello QQ!"
+                                title:INHERIT_VALUE
+                                  url:INHERIT_VALUE
+                                image:INHERIT_VALUE
+                         imageQuality:INHERIT_VALUE];
+    
+    //定制邮件分享内容
+    [publishContent addMailUnitWithSubject:INHERIT_VALUE
+                                   content:@"<a href='http://sharesdk.cn'>Hello Mail</a>"
+                                    isHTML:[NSNumber numberWithBool:YES]
+                               attachments:INHERIT_VALUE];
+    
+    //定制短信分享内容
+    [publishContent addSMSUnitWithContent:@"Hello SMS!"];
+    
+    //定制有道云笔记分享内容
+    [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
+                                           title:@"ShareSDK分享"
+                                          author:@"ShareSDK"
+                                          source:@"http://www.sharesdk.cn"
+                                     attachments:INHERIT_VALUE];
+    
+    //定制Instapaper分享内容
+    [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
+                                          title:@"Hello Instapaper"
+                                    description:INHERIT_VALUE];
+    
+    [ShareSDK showShareActionSheet:self
+                     iPadContainer:[ShareSDK iPadShareContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp]
+                         shareList:nil
+                           content:publishContent
+                     statusBarTips:YES
+                        convertUrl:YES      //委托转换链接标识，YES：对分享链接进行转换，NO：对分享链接不进行转换，为此值时不进行回流统计。
+                       authOptions:nil
+                  shareViewOptions:[ShareSDK simpleShareViewOptionWithTitle:@"内容分享"]
+                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                if (state == SSPublishContentStateSuccess)
+                                {
+                                    NSLog(@"分享成功");
+                                }
+                                else if (state == SSPublishContentStateFail)
+                                {
+                                    NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                }
+                            }];
+}
+
+- (void)noneUIShareAllButtonClickHandler:(id)sender
+{
+    UIImage *shareImage = [UIImage imageNamed:@"sharesdk_img.jpg"];
+    id<ISSPublishContent> publishContent = [ShareSDK publishContent:CONTENT
+                                                     defaultContent:nil
+                                                        imageObject:[ShareSDK jpegImage:shareImage quality:0.8 fileName:nil]];
+    //定制人人网分享
+    [publishContent addRenRenUnitWithName:@"Hello 人人网"
+                              description:@"这是一条测试信息"
+                                      url:INHERIT_VALUE
+                                  message:INHERIT_VALUE
+                              imageObject:INHERIT_VALUE
+                                  caption:nil];
+    
+    //定制QQ空间分享
+    [publishContent addQQSpaceUnitWithTitle:INHERIT_VALUE
+                                        url:INHERIT_VALUE
+                                    comment:INHERIT_VALUE
+                                    summary:@"Hello QQ空间"
+                                imageObject:INHERIT_VALUE
+                                       type:INHERIT_VALUE
+                                    playUrl:INHERIT_VALUE
+                                  syncWeibo:INHERIT_VALUE];
+    
+    //定制微信好友内容
+    [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
+                                         content:@"Hello 微信好友!"
+                                           title:INHERIT_VALUE
+                                             url:INHERIT_VALUE
+                                           image:INHERIT_VALUE
+                                    imageQuality:INHERIT_VALUE
+                                    musicFileUrl:INHERIT_VALUE
+                                         extInfo:INHERIT_VALUE
+                                        fileData:INHERIT_VALUE];
+    
+    //定制微信朋友圈内容
+    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
+                                          content:@"Hello 微信朋友圈!"
+                                            title:INHERIT_VALUE
+                                              url:@"http://y.qq.com/i/song.html#p=7B22736F6E675F4E616D65223A22E4BDA0E4B88DE698AFE79C9FE6ADA3E79A84E5BFABE4B990222C22736F6E675F5761704C69766555524C223A22687474703A2F2F74736D7573696332342E74632E71712E636F6D2F586B303051563558484A645574315070536F4B7458796931667443755A68646C2F316F5A4465637734356375386355672B474B304964794E6A3770633447524A574C48795333383D2F3634363232332E6D34613F7569643D32333230303738313038266469723D423226663D312663743D3026636869643D222C22736F6E675F5769666955524C223A22687474703A2F2F73747265616D31382E71716D757369632E71712E636F6D2F33303634363232332E6D7033222C226E657454797065223A2277696669222C22736F6E675F416C62756D223A22E5889BE980A0EFBC9AE5B08FE5B7A8E89B8B444E414C495645EFBC81E6BC94E594B1E4BC9AE5889BE7BAAAE5BD95E99FB3222C22736F6E675F4944223A3634363232332C22736F6E675F54797065223A312C22736F6E675F53696E676572223A22E4BA94E69C88E5A4A9222C22736F6E675F576170446F776E4C6F616455524C223A22687474703A2F2F74736D757369633132382E74632E71712E636F6D2F586C464E4D31354C5569396961495674593739786D436534456B5275696879366A702F674B65356E4D6E684178494C73484D6C6A307849634A454B394568572F4E3978464B316368316F37636848323568413D3D2F33303634363232332E6D70333F7569643D32333230303738313038266469723D423226663D302663743D3026636869643D2673747265616D5F706F733D38227D"
+                                            image:INHERIT_VALUE
+                                     imageQuality:INHERIT_VALUE
+                                     musicFileUrl:@"http://mp3.mwap8.com/destdir/Music/2009/20090601/ZuiXuanMinZuFeng20090601119.mp3"
+                                          extInfo:nil
+                                         fileData:nil];
+    
+    //定制QQ分享内容
+    [publishContent addQQUnitWithType:INHERIT_VALUE
+                              content:@"Hello QQ!"
+                                title:INHERIT_VALUE
+                                  url:INHERIT_VALUE
+                                image:INHERIT_VALUE
+                         imageQuality:INHERIT_VALUE];
+    
+    //定制邮件分享内容
+    [publishContent addMailUnitWithSubject:INHERIT_VALUE
+                                   content:@"<a href='http://sharesdk.cn'>Hello Mail</a>"
+                                    isHTML:[NSNumber numberWithBool:YES]
+                               attachments:INHERIT_VALUE];
+    
+    //定制短信分享内容
+    [publishContent addSMSUnitWithContent:@"Hello SMS!"];
+    
+    //定制有道云笔记分享内容
+    [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
+                                           title:@"ShareSDK分享"
+                                          author:@"ShareSDK"
+                                          source:@"http://www.sharesdk.cn"
+                                     attachments:INHERIT_VALUE];
+    
+    
+    [ShareSDK showShareActionSheet:self
+                     iPadContainer:[ShareSDK iPadShareContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp]
+                         shareList:[ShareSDK customShareListWithType:
+                                    [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSinaWeibo]
+                                                                       icon:[ShareSDK getClientIconWithType:ShareTypeSinaWeibo]
+                                                               clickHandler:^{
+                                                                   [ShareSDK shareContentWithShareList:[ShareSDK getShareListWithType:ShareTypeSinaWeibo, nil]
+                                                                                               content:publishContent
+                                                                                         statusBarTips:YES
+                                                                                                result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                    if (state == SSPublishContentStateSuccess)
+                                                                                                    {
+                                                                                                        NSLog(@"分享成功");
+                                                                                                    }
+                                                                                                    else if (state == SSPublishContentStateFail)
+                                                                                                    {
+                                                                                                        NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                                    }
+                                                                                                }];
+                                                               }],
+                                    [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeTencentWeibo]
+                                                                       icon:[ShareSDK getClientIconWithType:ShareTypeTencentWeibo]
+                                                               clickHandler:^{
+                                                                   [ShareSDK shareContentWithShareList:[ShareSDK getShareListWithType:ShareTypeTencentWeibo,nil]
+                                                                                               content:publishContent
+                                                                                         statusBarTips:YES
+                                                                                                result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                    if (state == SSPublishContentStateSuccess)
+                                                                                                    {
+                                                                                                        NSLog(@"分享成功");
+                                                                                                    }
+                                                                                                    else if (state == SSPublishContentStateFail)
+                                                                                                    {
+                                                                                                        NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                                    }
+                                                                                                }];
+                                                               }],
+                                    SHARE_TYPE_NUMBER(ShareTypeSMS),
+                                    [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeQQSpace]
+                                                                       icon:[ShareSDK getClientIconWithType:ShareTypeQQSpace]
+                                                               clickHandler:^{
+                                                                   [ShareSDK shareContentWithShareList:[ShareSDK getShareListWithType:ShareTypeQQSpace,nil]
+                                                                                               content:publishContent
+                                                                                         statusBarTips:YES
+                                                                                                result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                    if (state == SSPublishContentStateSuccess)
+                                                                                                    {
+                                                                                                        NSLog(@"分享成功");
+                                                                                                    }
+                                                                                                    else if (state == SSPublishContentStateFail)
+                                                                                                    {
+                                                                                                        NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                                    }
+                                                                                                }];
+                                                               }],
+                                    SHARE_TYPE_NUMBER(ShareTypeWeixiSession),
+                                    SHARE_TYPE_NUMBER(ShareTypeWeixiTimeline),
+                                    SHARE_TYPE_NUMBER(ShareTypeQQ),
+                                    [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeFacebook]
+                                                                       icon:[ShareSDK getClientIconWithType:ShareTypeFacebook]
+                                                               clickHandler:^{
+                                                                   [ShareSDK shareContentWithShareList:[ShareSDK getShareListWithType:ShareTypeFacebook,nil]
+                                                                                               content:publishContent
+                                                                                         statusBarTips:YES
+                                                                                                result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                    if (state == SSPublishContentStateSuccess)
+                                                                                                    {
+                                                                                                        NSLog(@"分享成功");
+                                                                                                    }
+                                                                                                    else if (state == SSPublishContentStateFail)
+                                                                                                    {
+                                                                                                        NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                                    }
+                                                                                                }];
+                                                               }],
+                                    [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeTwitter]
+                                                                       icon:[ShareSDK getClientIconWithType:ShareTypeTwitter]
+                                                               clickHandler:^{
+                                                                   [ShareSDK shareContentWithShareList:[ShareSDK getShareListWithType:ShareTypeTwitter,nil]
+                                                                                               content:publishContent
+                                                                                         statusBarTips:YES
+                                                                                                result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                    if (state == SSPublishContentStateSuccess)
+                                                                                                    {
+                                                                                                        NSLog(@"分享成功");
+                                                                                                    }
+                                                                                                    else if (state == SSPublishContentStateFail)
+                                                                                                    {
+                                                                                                        NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                                    }
+                                                                                                }];
+                                                               }],
+                                    [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeRenren]
+                                                                       icon:[ShareSDK getClientIconWithType:ShareTypeRenren]
+                                                               clickHandler:^{
+                                                                   [ShareSDK shareContentWithShareList:[ShareSDK getShareListWithType:ShareTypeRenren,nil]
+                                                                                               content:publishContent
+                                                                                         statusBarTips:YES
+                                                                                                result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                    if (state == SSPublishContentStateSuccess)
+                                                                                                    {
+                                                                                                        NSLog(@"分享成功");
+                                                                                                    }
+                                                                                                    else if (state == SSPublishContentStateFail)
+                                                                                                    {
+                                                                                                        NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                                    }
+                                                                                                }];
+                                                               }],
+                                    [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeKaixin]
+                                                                       icon:[ShareSDK getClientIconWithType:ShareTypeKaixin]
+                                                               clickHandler:^{
+                                                                   [ShareSDK shareContentWithShareList:[ShareSDK getShareListWithType:ShareTypeKaixin,nil]
+                                                                                               content:publishContent
+                                                                                         statusBarTips:YES
+                                                                                                result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                    if (state == SSPublishContentStateSuccess)
+                                                                                                    {
+                                                                                                        NSLog(@"分享成功");
+                                                                                                    }
+                                                                                                    else if (state == SSPublishContentStateFail)
+                                                                                                    {
+                                                                                                        NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                                    }
+                                                                                                }];
+                                                               }],
+                                    SHARE_TYPE_NUMBER(ShareTypeMail),
+                                    SHARE_TYPE_NUMBER(ShareTypeAirPrint),
+                                    SHARE_TYPE_NUMBER(ShareTypeCopy),
+                                    [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuWeibo]
+                                                                       icon:[ShareSDK getClientIconWithType:ShareTypeSohuWeibo]
+                                                               clickHandler:^{
+                                                                   [ShareSDK shareContentWithShareList:[ShareSDK getShareListWithType:ShareTypeSohuWeibo,nil]
+                                                                                               content:publishContent
+                                                                                         statusBarTips:YES
+                                                                                                result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                    if (state == SSPublishContentStateSuccess)
+                                                                                                    {
+                                                                                                        NSLog(@"分享成功");
+                                                                                                    }
+                                                                                                    else if (state == SSPublishContentStateFail)
+                                                                                                    {
+                                                                                                        NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                                    }
+                                                                                                }];
+                                                               }],
+                                    [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareType163Weibo]
+                                                                       icon:[ShareSDK getClientIconWithType:ShareType163Weibo]
+                                                               clickHandler:^{
+                                                                   [ShareSDK shareContentWithShareList:[ShareSDK getShareListWithType:ShareType163Weibo,nil]
+                                                                                               content:publishContent
+                                                                                         statusBarTips:YES
+                                                                                                result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                    if (state == SSPublishContentStateSuccess)
+                                                                                                    {
+                                                                                                        NSLog(@"分享成功");
+                                                                                                    }
+                                                                                                    else if (state == SSPublishContentStateFail)
+                                                                                                    {
+                                                                                                        NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                                    }
+                                                                                                }];
+                                                               }],
+                                    [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeDouBan]
+                                                                       icon:[ShareSDK getClientIconWithType:ShareTypeDouBan]
+                                                               clickHandler:^{
+                                                                   [ShareSDK shareContentWithShareList:[ShareSDK getShareListWithType:ShareTypeDouBan,nil]
+                                                                                               content:publishContent
+                                                                                         statusBarTips:YES
+                                                                                                result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                    if (state == SSPublishContentStateSuccess)
+                                                                                                    {
+                                                                                                        NSLog(@"分享成功");
+                                                                                                    }
+                                                                                                    else if (state == SSPublishContentStateFail)
+                                                                                                    {
+                                                                                                        NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                                    }
+                                                                                                }];
+                                                               }],
+                                    [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeInstapaper]
+                                                                       icon:[ShareSDK getClientIconWithType:ShareTypeInstapaper]
+                                                               clickHandler:^{
+                                                                   [ShareSDK shareContentWithShareList:[ShareSDK getShareListWithType:ShareTypeInstapaper,nil]
+                                                                                               content:publishContent
+                                                                                         statusBarTips:YES
+                                                                                                result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                    if (state == SSPublishContentStateSuccess)
+                                                                                                    {
+                                                                                                        NSLog(@"分享成功");
+                                                                                                    }
+                                                                                                    else if (state == SSPublishContentStateFail)
+                                                                                                    {
+                                                                                                        NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                                    }
+                                                                                                }];
+                                                               }],
+                                    [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeYouDaoNote]
+                                                                       icon:[ShareSDK getClientIconWithType:ShareTypeYouDaoNote]
+                                                               clickHandler:^{
+                                                                   [ShareSDK shareContentWithShareList:[ShareSDK getShareListWithType:ShareTypeYouDaoNote,nil]
+                                                                                               content:publishContent
+                                                                                         statusBarTips:YES
+                                                                                                result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                    if (state == SSPublishContentStateSuccess)
+                                                                                                    {
+                                                                                                        NSLog(@"分享成功");
+                                                                                                    }
+                                                                                                    else if (state == SSPublishContentStateFail)
+                                                                                                    {
+                                                                                                        NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                                    }
+                                                                                                }];
+                                                               }],
+                                    nil]
+                           content:publishContent
+                     statusBarTips:YES
+                        convertUrl:YES
+                       authOptions:nil
+                  shareViewOptions:nil
+                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                if (state == SSPublishContentStateSuccess)
+                                {
+                                    NSLog(@"发表成功");
+                                }
+                                else if (state == SSPublishContentStateFail)
+                                {
+                                    NSLog(@"发布失败!error code == %d, error code == %@", [error errorCode], [error errorDescription]);
+                                }
+                            }];
 }
 
 /**
@@ -1308,12 +1771,67 @@
     [actionSheet release];
 }
 
+- (void)setAccessTokenClickHandler:(UIButton *)sender
+{
+    id<IClientToken> token = [ShareSDK getClientTokenWithType:ShareTypeSinaWeibo];
+    
+    //令牌数据可以为外部授权后取得的数据字典结构。
+    id<IClientToken> newToken = [ShareSDK clientTokenWithData:[token sourceData] type:ShareTypeSinaWeibo];
+    [ShareSDK setClientToken:newToken];
+}
+
 /**
- *	@brief	自定义分享菜单按钮点击
+ *	@brief	自定义分享菜单项按钮点击
  *
  *	@param 	sender 	事件对象
  */
 - (void)customShareMenuClickHandler:(UIButton *)sender
+{
+    NSArray *shareList = [ShareSDK getShareListWithType:ShareTypeTwitter, ShareTypeFacebook, ShareTypeSinaWeibo, ShareTypeTencentWeibo, ShareTypeRenren, ShareTypeKaixin, ShareTypeSohuWeibo, ShareType163Weibo, nil];
+    
+    id<ISSPublishContent> publishContent = [ShareSDK publishContent:CONTENT
+                                                     defaultContent:@""
+                                                              image:[UIImage imageNamed:IMAGE_NAME]
+                                                       imageQuality:0.8
+                                                          mediaType:SSPublishContentMediaTypeNews
+                                                              title:@"ShareSDK"
+                                                                url:@"http://www.sharesdk.cn"
+                                                       musicFileUrl:nil
+                                                            extInfo:nil
+                                                           fileData:nil];
+    
+    [ShareSDK showShareActionSheet:self
+                     iPadContainer:[ShareSDK iPadShareContainerWithView:sender
+                                                            arrowDirect:UIPopoverArrowDirectionDown]
+                         shareList:shareList
+                           content:publishContent
+                     statusBarTips:YES
+                        convertUrl:YES      //委托转换链接标识，YES：对分享链接进行转换，NO：对分享链接不进行转换，为此值时不进行回流统计。
+                       authOptions:nil
+                  shareViewOptions:[ShareSDK defaultShareViewOptionsWithTitle:@"内容分享"
+                                                              oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                               qqButtonHidden:NO
+                                                        wxSessionButtonHidden:NO
+                                                       wxTimelineButtonHidden:NO
+                                                         showKeyboardOnAppear:YES]
+                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                if (state == SSPublishContentStateSuccess)
+                                {
+                                    NSLog(@"分享成功");
+                                }
+                                else if (state == SSPublishContentStateFail)
+                                {
+                                    NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                }
+                            }];
+}
+
+/**
+ *	@brief	自定义分享菜单项按钮点击
+ *
+ *	@param 	sender 	事件对象
+ */
+- (void)customShareMenuItemClickHandler:(UIButton *)sender
 {
     id<ISSPublishContent> publishContent = [ShareSDK publishContent:CONTENT
                                                      defaultContent:@""
@@ -1327,23 +1845,157 @@
                                                            fileData:nil];
     
     [ShareSDK showShareActionSheet:self
-                     iPadContainer:[ShareSDK iPadShareContainerWithView:self.view
-                                                                   rect:sender.frame
+                     iPadContainer:[ShareSDK iPadShareContainerWithView:sender
                                                             arrowDirect:UIPopoverArrowDirectionDown]
                          shareList:[ShareSDK customShareListWithType:
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
-                                    SHARE_TYPE_NUMBER(ShareTypeQQSpace),
-                                    SHARE_TYPE_NUMBER(ShareTypeWeixiSession),
-                                    SHARE_TYPE_NUMBER(ShareTypeWeixiTimeline),
-                                    [ShareSDK shareActionSheetItemWithTitle:@"自定义项"
+                                    [ShareSDK shareActionSheetItemWithTitle:@"自定义项1"
                                                                        icon:[UIImage imageNamed:@"qqicon.png"]
                                                                clickHandler:^{
-                                                                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"自定义项被点击了!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                                                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"自定义项1被点击了!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                                                   [alertView show];
+                                                                   [alertView release];
+                                                               }],
+                                    [ShareSDK shareActionSheetItemWithTitle:@"自定义项2"
+                                                                       icon:[UIImage imageNamed:@"qqicon.png"]
+                                                               clickHandler:^{
+                                                                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"自定义项2被点击了!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                                                   [alertView show];
+                                                                   [alertView release];
+                                                               }],
+                                    [ShareSDK shareActionSheetItemWithTitle:@"自定义项3"
+                                                                       icon:[UIImage imageNamed:@"qqicon.png"]
+                                                               clickHandler:^{
+                                                                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"自定义项3被点击了!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                                                   [alertView show];
+                                                                   [alertView release];
+                                                               }],
+                                    [ShareSDK shareActionSheetItemWithTitle:@"自定义项4"
+                                                                       icon:[UIImage imageNamed:@"qqicon.png"]
+                                                               clickHandler:^{
+                                                                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"自定义项4被点击了!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                                                   [alertView show];
+                                                                   [alertView release];
+                                                               }],
+                                    [ShareSDK shareActionSheetItemWithTitle:@"自定义项5"
+                                                                       icon:[UIImage imageNamed:@"qqicon.png"]
+                                                               clickHandler:^{
+                                                                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"自定义项5被点击了!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                                                                    [alertView show];
                                                                    [alertView release];
                                                                }],
                                     nil]
+                           content:publishContent
+                     statusBarTips:YES
+                        convertUrl:YES      //委托转换链接标识，YES：对分享链接进行转换，NO：对分享链接不进行转换，为此值时不进行回流统计。
+                       authOptions:nil
+                  shareViewOptions:[ShareSDK defaultShareViewOptionsWithTitle:@"内容分享"
+                                                              oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                               qqButtonHidden:NO
+                                                        wxSessionButtonHidden:NO
+                                                       wxTimelineButtonHidden:NO
+                                                         showKeyboardOnAppear:YES]
+                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                if (state == SSPublishContentStateSuccess)
+                                {
+                                    NSLog(@"分享成功");
+                                }
+                                else if (state == SSPublishContentStateFail)
+                                {
+                                    NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                }
+                            }];
+}
+
+- (void)shareGifPicClickHandler:(id)sender
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"res6" ofType:@"gif"];
+    id<ISSPublishContent> publishContent = [ShareSDK publishContent:CONTENT
+                                                     defaultContent:nil
+                                                        imageObject:[ShareSDK gifImageWithData:[NSData dataWithContentsOfFile:path] fileName:nil]];
+//    [ShareSDK publishContent:CONTENT
+//                                                     defaultContent:@""
+//                                                              image:[UIImage imageNamed:IMAGE_NAME]
+//                                                       imageQuality:0.8
+//                                                          mediaType:SSPublishContentMediaTypeNews
+//                                                              title:@"ShareSDK"
+//                                                                url:@"http://www.sharesdk.cn"
+//                                                       musicFileUrl:nil
+//                                                            extInfo:nil
+//                                                           fileData:nil];
+    
+    
+    //定制人人网分享
+    [publishContent addRenRenUnitWithName:@"Hello 人人网"
+                              description:@"这是一条测试信息"
+                                      url:SHARE_URL
+                                  message:INHERIT_VALUE
+                              imageObject:INHERIT_VALUE
+                                  caption:nil];
+    
+    //定制QQ空间分享
+    [publishContent addQQSpaceUnitWithTitle:INHERIT_VALUE
+                                        url:SHARE_URL
+                                    comment:INHERIT_VALUE
+                                    summary:@"Hello QQ空间"
+                                imageObject:INHERIT_VALUE
+                                       type:INHERIT_VALUE
+                                    playUrl:INHERIT_VALUE
+                                  syncWeibo:INHERIT_VALUE];
+    
+    //定制微信好友内容
+    [publishContent addWeixinSessionUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeNews]
+                                         content:@"Hello 微信好友!"
+                                           title:INHERIT_VALUE
+                                             url:SHARE_URL
+                                           image:INHERIT_VALUE
+                                    imageQuality:INHERIT_VALUE
+                                    musicFileUrl:INHERIT_VALUE
+                                         extInfo:INHERIT_VALUE
+                                        fileData:INHERIT_VALUE];
+    
+    //定制微信朋友圈内容
+    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
+                                          content:@"Hello 微信朋友圈!"
+                                            title:INHERIT_VALUE
+                                              url:@"http://y.qq.com/i/song.html#p=7B22736F6E675F4E616D65223A22E4BDA0E4B88DE698AFE79C9FE6ADA3E79A84E5BFABE4B990222C22736F6E675F5761704C69766555524C223A22687474703A2F2F74736D7573696332342E74632E71712E636F6D2F586B303051563558484A645574315070536F4B7458796931667443755A68646C2F316F5A4465637734356375386355672B474B304964794E6A3770633447524A574C48795333383D2F3634363232332E6D34613F7569643D32333230303738313038266469723D423226663D312663743D3026636869643D222C22736F6E675F5769666955524C223A22687474703A2F2F73747265616D31382E71716D757369632E71712E636F6D2F33303634363232332E6D7033222C226E657454797065223A2277696669222C22736F6E675F416C62756D223A22E5889BE980A0EFBC9AE5B08FE5B7A8E89B8B444E414C495645EFBC81E6BC94E594B1E4BC9AE5889BE7BAAAE5BD95E99FB3222C22736F6E675F4944223A3634363232332C22736F6E675F54797065223A312C22736F6E675F53696E676572223A22E4BA94E69C88E5A4A9222C22736F6E675F576170446F776E4C6F616455524C223A22687474703A2F2F74736D757369633132382E74632E71712E636F6D2F586C464E4D31354C5569396961495674593739786D436534456B5275696879366A702F674B65356E4D6E684178494C73484D6C6A307849634A454B394568572F4E3978464B316368316F37636848323568413D3D2F33303634363232332E6D70333F7569643D32333230303738313038266469723D423226663D302663743D3026636869643D2673747265616D5F706F733D38227D"
+                                            image:INHERIT_VALUE
+                                     imageQuality:INHERIT_VALUE
+                                     musicFileUrl:@"http://mp3.mwap8.com/destdir/Music/2009/20090601/ZuiXuanMinZuFeng20090601119.mp3"
+                                          extInfo:nil
+                                         fileData:nil];
+    
+    //定制QQ分享内容
+    [publishContent addQQUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeNews]
+                              content:@"Hello QQ!"
+                                title:INHERIT_VALUE
+                                  url:SHARE_URL
+                                image:INHERIT_VALUE
+                         imageQuality:INHERIT_VALUE];
+    
+    //定制邮件分享内容
+    [publishContent addMailUnitWithSubject:INHERIT_VALUE
+                                   content:@"<a href='http://sharesdk.cn'>Hello Mail</a>"
+                                    isHTML:[NSNumber numberWithBool:YES]
+                               attachments:INHERIT_VALUE];
+    
+    //定制短信分享内容
+    [publishContent addSMSUnitWithContent:@"Hello SMS!"];
+    
+    //定制有道云笔记分享内容
+    [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
+                                           title:@"ShareSDK分享"
+                                          author:@"ShareSDK"
+                                          source:SHARE_URL
+                                     attachments:INHERIT_VALUE];
+    //定制Instapaper分享内容
+    [publishContent addInstapaperContentWithUrl:SHARE_URL
+                                          title:@"Hello Instapaper"
+                                    description:INHERIT_VALUE];
+    
+    [ShareSDK showShareActionSheet:self
+                     iPadContainer:[ShareSDK iPadShareContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp]
+                         shareList:nil
                            content:publishContent
                      statusBarTips:YES
                         convertUrl:YES      //委托转换链接标识，YES：对分享链接进行转换，NO：对分享链接不进行转换，为此值时不进行回流统计。
