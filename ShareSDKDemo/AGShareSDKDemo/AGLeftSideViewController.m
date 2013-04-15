@@ -17,6 +17,7 @@
 #import "AGViewController.h"
 #import "AGLeftSideTableCell.h"
 #import "AGCustomViewController.h"
+#import "AGAppDelegate.h"
 
 #define TABLE_CELL @"tableCell"
 
@@ -31,6 +32,8 @@
     self = [super init];
     if (self)
     {
+        _appDelegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
+        
         // Custom initialization
         
         _sectionView = [[AGSectionView alloc] initWithFrame:CGRectZero];
@@ -293,15 +296,22 @@
             {
                 case 0:
                 {
-                    [ShareSDK followUserWithName:@"ShareSDK"
-                                       shareType:ShareTypeSinaWeibo
-                                          result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                    [ShareSDK followUserWithType:ShareTypeSinaWeibo
+                                           field:@"ShareSDK"
+                                       fieldType:SSUserFieldTypeName
+                                     authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                                     allowCallback:YES
+                                                                     authViewStyle:SSAuthViewStyleModal
+                                                                      viewDelegate:_appDelegate.viewDelegate
+                                                           authManagerViewDelegate:_appDelegate.viewDelegate]
+                                    viewDelegate:_appDelegate.viewDelegate
+                                          result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                               NSString *msg = nil;
-                                              if (result)
+                                              if (state == SSResponseStateSuccess)
                                               {
                                                   msg = @"关注成功";
                                               }
-                                              else
+                                              else if (state == SSResponseStateFail)
                                               {
                                                   switch ([error errorCode])
                                                   {
@@ -315,27 +325,37 @@
                                                   }
                                               }
                                               
-                                              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                                  message:msg
-                                                                                                 delegate:nil
-                                                                                        cancelButtonTitle:@"知道了"
-                                                                                        otherButtonTitles:nil];
-                                              [alertView show];
-                                              [alertView release];
+                                              if (msg)
+                                              {
+                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                                      message:msg
+                                                                                                     delegate:nil
+                                                                                            cancelButtonTitle:@"知道了"
+                                                                                            otherButtonTitles:nil];
+                                                  [alertView show];
+                                                  [alertView release];
+                                              }
                                           }];
                     break;
                 }
                 case 1:
                 {
-                    [ShareSDK followUserWithName:@"ShareSDK"
-                                       shareType:ShareTypeTencentWeibo
-                                          result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                    [ShareSDK followUserWithType:ShareTypeTencentWeibo
+                                           field:@"ShareSDK"
+                                       fieldType:SSUserFieldTypeName
+                                     authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                                     allowCallback:YES
+                                                                     authViewStyle:SSAuthViewStyleModal
+                                                                      viewDelegate:_appDelegate.viewDelegate
+                                                           authManagerViewDelegate:_appDelegate.viewDelegate]
+                                    viewDelegate:_appDelegate.viewDelegate
+                                          result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                               NSString *msg = nil;
-                                              if (result)
+                                              if (state == SSResponseStateSuccess)
                                               {
                                                   msg = @"关注成功";
                                               }
-                                              else
+                                              else if (state == SSResponseStateFail)
                                               {
                                                   switch ([error errorCode])
                                                   {
@@ -349,13 +369,16 @@
                                                   }
                                               }
                                               
-                                              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                                  message:msg
-                                                                                                 delegate:nil
-                                                                                        cancelButtonTitle:@"知道了"
-                                                                                        otherButtonTitles:nil];
-                                              [alertView show];
-                                              [alertView release];
+                                              if (msg)
+                                              {
+                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                                      message:msg
+                                                                                                     delegate:nil
+                                                                                            cancelButtonTitle:@"知道了"
+                                                                                            otherButtonTitles:nil];
+                                                  [alertView show];
+                                                  [alertView release];
+                                              }
                                           }];
                     break;
                 }

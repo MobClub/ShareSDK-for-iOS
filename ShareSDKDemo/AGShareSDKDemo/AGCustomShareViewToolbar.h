@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <AGCommon/CMHTableView.h>
 
+@class AGAppDelegate;
+
 /**
  *	@brief	自定义分享视图工具栏
  */
@@ -20,6 +22,7 @@
     UILabel *_textLabel;
     
     NSMutableArray *_oneKeyShareListArray;
+    AGAppDelegate *_appDelegate;
 }
 
 /**

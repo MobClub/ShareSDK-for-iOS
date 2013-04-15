@@ -19,11 +19,14 @@
 
 @implementation AGAppDelegate
 
+@synthesize viewDelegate = _viewDelegate;
+
 - (id)init
 {
     if(self = [super init])
     {
         _scene = WXSceneSession;
+        _viewDelegate = [[AGViewDelegate alloc] init];
     }
     return self;
 }
@@ -32,14 +35,116 @@
 {
     [_window release];
     [_viewController release];
+    [_viewDelegate release];
     [super dealloc];
+}
+
+- (void)initializePlat
+{
+    /**
+     连接新浪微博开放平台应用以使用相关功能，此应用需要引用SinaWeiboConnection.framework
+     http://open.weibo.com上注册新浪微博开放平台应用，并将相关信息填写到以下字段
+    **/
+    [ShareSDK connectSinaWeiboWithAppKey:@"3201194191"
+                               appSecret:@"0334252914651e8f76bad63337b3b78f"
+                             redirectUri:@"http://appgo.cn"];
+    /**
+     连接腾讯微博开放平台应用以使用相关功能，此应用需要引用TencentWeiboConnection.framework
+     http://dev.t.qq.com上注册腾讯微博开放平台应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectTencentWeiboWithAppKey:@"801307650"
+                                  appSecret:@"ae36f4ee3946e1cbb98d6965b0b2ff5c"
+                                redirectUri:@"http://www.sharesdk.cn"];
+    /**
+     连接QQ空间应用以使用相关功能，此应用需要引用QZoneConnection.framework
+     http://connect.qq.com/intro/login/上申请加入QQ登录，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectQZoneWithAppKey:@"100371282"
+                           appSecret:@"aed9b0303e3ed1e27bae87c33761161d"];
+    /**
+     连接网易微博应用以使用相关功能，此应用需要引用T163WeiboConnection.framework
+     http://open.t.163.com上注册网易微博开放平台应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connect163WeiboWithAppKey:@"T5EI7BXe13vfyDuy"
+                              appSecret:@"gZxwyNOvjFYpxwwlnuizHRRtBRZ2lV1j"
+                            redirectUri:@"http://www.shareSDK.cn"];
+    /**
+     连接搜狐微博应用以使用相关功能，此应用需要引用SohuWeiboConnection.framework
+     http://open.t.sohu.com上注册搜狐微博开放平台应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectSohuWeiboWithConsumerKey:@"SAfmTG1blxZY3HztESWx"
+                               consumerSecret:@"yfTZf)!rVwh*3dqQuVJVsUL37!F)!yS9S!Orcsij"];
+    
+    /**
+     连接豆瓣应用以使用相关功能，此应用需要引用DouBanConnection.framework
+     http://developers.douban.com上注册豆瓣社区应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectDoubanWithAppKey:@"02e2cbe5ca06de5908a863b15e149b0b"
+                            appSecret:@"9f1e7b4f71304f2f"
+                          redirectUri:@"http://www.sharesdk.cn"];
+    
+    /**
+     连接人人网应用以使用相关功能，此应用需要引用RenRenConnection.framework
+     http://dev.renren.com上注册人人网开放平台应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectRenRenWithAppKey:@"fc5b8aed373c4c27a05b712acba0f8c3"
+                            appSecret:@"f29df781abdd4f49beca5a2194676ca4"];
+    /**
+     连接开心网应用以使用相关功能，此应用需要引用KaiXinConnection.framework
+     http://open.kaixin001.com上注册开心网开放平台应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectKaiXinWithAppKey:@"358443394194887cee81ff5890870c7c"
+                            appSecret:@"da32179d859c016169f66d90b6db2a23"
+                          redirectUri:@"http://www.sharesdk.cn/"];
+    /**
+     连接Instapaper应用以使用相关功能，此应用需要引用InstapaperConnection.framework
+     http://www.instapaper.com/main/request_oauth_consumer_token上注册Instapaper应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectInstapaperWithAppKey:@"4rDJORmcOcSAZL1YpqGHRI605xUvrLbOhkJ07yO0wWrYrc61FA"
+                                appSecret:@"GNr1GespOQbrm8nvd7rlUsyRQsIo3boIbMguAl9gfpdL0aKZWe"];
+    /**
+     连接有道云笔记应用以使用相关功能，此应用需要引用YouDaoNoteConnection.framework
+     http://note.youdao.com/open/developguide.html#app上注册应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectYouDaoNoteWithConsumerKey:@"dcde25dca105bcc36884ed4534dab940"
+                                consumerSecret:@"d98217b4020e7f1874263795f44838fe"
+                                   redirectUri:@"http://www.sharesdk.cn/"];
+    /**
+     连接Facebook应用以使用相关功能，此应用需要引用FacebookConnection.framework
+     https://developers.facebook.com上注册应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectFacebookWithAppKey:@"107704292745179"
+                              appSecret:@"38053202e1a5fe26c80c753071f0b573"];
+    
+    /**
+     连接Twitter应用以使用相关功能，此应用需要引用TwitterConnection.framework
+     https://dev.twitter.com上注册应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectTwitterWithConsumerKey:@"mnTGqtXk0TYMXYTN7qUxg"
+                             consumerSecret:@"ROkFqr8c3m1HXqS3rm3TJ0WkAJuwBOSaWhPbZ9Ojuc"
+                                redirectUri:@"http://www.sharesdk.cn"];
+    
+    /**
+     连接QQ应用以使用相关功能，此应用需要引用QQConnection.framework和QQApi.framework库
+     http://mobile.qq.com/api/上注册应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectQQWithAppId:@"QQ075BCD15" qqApiCls:[QQApi class]];
+    
+    /**
+     连接微信应用以使用相关功能，此应用需要引用WeChatConnection.framework和微信官方SDK
+     http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
+     **/
+    [ShareSDK connectWeChatWithAppId:@"wx6dd7a9b94f3dd72a" wechatCls:[WXApi class]];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [WXApi registerApp:@"wx6dd7a9b94f3dd72a"];
-    [QQApi registerPluginWithId:@"QQ075BCD15"];
+    /**
+     注册SDK应用，此应用请到http://www.sharesdk.cn中进行注册申请。
+     此方法必须在启动时调用，否则会限制SDK的使用。
+     **/
     [ShareSDK registerApp:@"520520test"];
+    [self initializePlat];
     
     //横屏设置
 //    [ShareSDK setInterfaceOrientationMask:UIInterfaceOrientationMaskLandscape];
@@ -80,14 +185,22 @@
     }
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+- (BOOL)application:(UIApplication *)application
+      handleOpenURL:(NSURL *)url
 {
-    return [ShareSDK handleOpenURL:url wxDelegate:self];
+    return [ShareSDK handleOpenURL:url
+                        wxDelegate:self];
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
 {
-    return  [ShareSDK handleOpenURL:url wxDelegate:self];
+    return [ShareSDK handleOpenURL:url
+                 sourceApplication:sourceApplication
+                        annotation:annotation
+                        wxDelegate:self];
 }
 
 - (void)userInfoUpdateHandler:(NSNotification *)notif

@@ -17,6 +17,7 @@
 #import <AGCommon/UIColor+Common.h>
 #import "IIViewDeckController.h"
 #import <AGCommon/UIDevice+Common.h>
+#import "AGAppDelegate.h"
 
 #define TYPE_CELL_ID @"TypeCell"
 #define STYLE_CELL_ID @"StyleCell"
@@ -47,8 +48,10 @@
 {
     if (self = [super init])
     {
+        _appDelegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
+        
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
-        [leftBtn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
+        [leftBtn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         [leftBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
         leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
@@ -57,7 +60,7 @@
         self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
         
         UIButton *btn = [[[UIButton alloc] init] autorelease];
-        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
+        [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         [btn setImage:[UIImage imageNamed:@"ShareButtonIcon.png"] forState:UIControlStateNormal];
         [btn setImage:[UIImage imageNamed:@"ShareButtonHighLightedIcon.png"] forState:UIControlStateHighlighted];
@@ -408,7 +411,7 @@
 {
     NSString *content = nil;
     NSString *url = nil;
-    UIImage *image = nil;
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     SSPublishContentMediaType mediaType = SSPublishContentMediaTypeText;
     switch (_curContentType)
     {
@@ -417,12 +420,10 @@
             break;
         case 1:
             content = @"图片分享";
-            image = [UIImage imageNamed:IMAGE_NAME];
             mediaType = SSPublishContentMediaTypeImage;
             break;
         case 2:
             content = CONTENT;
-            image = [UIImage imageNamed:IMAGE_NAME];
             url = @"http://www.sharesdk.cn";
             mediaType = SSPublishContentMediaTypeNews;
             break;
@@ -430,62 +431,74 @@
             break;
     }
     
-    ShareViewStyle  style = ShareViewStyleDefault;
+    SSShareViewStyle  style = SSShareViewStyleDefault;
     switch (_curShareViewStyle)
     {
         case 1:
-            style = ShareViewStyleSimple;
+            style = SSShareViewStyleSimple;
             break;
         case 2:
-            style = ShareViewStyleAppRecommend;
+            style = SSShareViewStyleAppRecommend;
             break;
     }
     
     NSInteger type = [[[_shareTypeArray objectAtIndex:sender.tag - 200] objectForKey:@"type"] integerValue];
-    [ShareSDK shareContentWithType:type
-                           content:[ShareSDK publishContent:content
-                                             defaultContent:@""
-                                                      image:image
-                                               imageQuality:0.8
-                                                  mediaType:mediaType
-                                                      title:@"ShareSDK"
-                                                        url:url
-                                               musicFileUrl:nil
-                                                    extInfo:nil
-                                                   fileData:nil]
-               containerController:self
-                     statusBarTips:YES
-                   oneKeyShareList:[NSArray defaultOneKeyShareList]
-                    shareViewStyle:style
-                    shareViewTitle:@"内容分享"
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                if (state == SSPublishContentStateSuccess)
-                                {
-                                    NSString *msg = nil;
-                                    switch (type)
-                                    {
-                                        case ShareTypeAirPrint:
-                                            msg = @"打印成功";
-                                            break;
-                                        case ShareTypeCopy:
-                                            msg = @"拷贝成功";
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                    
-                                    if (msg)
-                                    {
-                                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                            message:msg
-                                                                                           delegate:nil
-                                                                                  cancelButtonTitle:@"知道了"
-                                                                                  otherButtonTitles: nil];
-                                        [alertView show];
-                                        [alertView release];
-                                    }
-                                }
-                            }];
+    
+    id<ISSCAttachment> imageAttach = [ShareSDK imageWithPath:imagePath];
+    id<ISSContent> contentObj = [ShareSDK content:content
+                                   defaultContent:@""
+                                            image:imageAttach
+                                            title:@"ShareSDK"
+                                              url:url
+                                      description:@"这时一条测试数据"
+                                        mediaType:mediaType];
+    
+    [ShareSDK showShareViewWithType:type
+                          container:nil
+                            content:contentObj
+                      statusBarTips:YES
+                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                        allowCallback:YES
+                                                        authViewStyle:SSAuthViewStyleModal
+                                                         viewDelegate:_appDelegate.viewDelegate
+                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
+                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                            qqButtonHidden:NO
+                                                     wxSessionButtonHidden:NO
+                                                    wxTimelineButtonHidden:NO
+                                                      showKeyboardOnAppear:NO
+                                                         shareViewDelegate:_appDelegate.viewDelegate
+                                                       friendsViewDelegate:_appDelegate.viewDelegate
+                                                     picViewerViewDelegate:nil]
+                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 if (state == SSPublishContentStateSuccess)
+                                 {
+                                     NSString *msg = nil;
+                                     switch (type)
+                                     {
+                                         case ShareTypeAirPrint:
+                                             msg = @"打印成功";
+                                             break;
+                                         case ShareTypeCopy:
+                                             msg = @"拷贝成功";
+                                             break;
+                                         default:
+                                             break;
+                                     }
+                                     
+                                     if (msg)
+                                     {
+                                         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                             message:msg
+                                                                                            delegate:nil
+                                                                                   cancelButtonTitle:@"知道了"
+                                                                                   otherButtonTitles: nil];
+                                         [alertView show];
+                                         [alertView release];
+                                     }
+                                 }
+                             }];
 }
 
 - (void)leftButtonClickHandler:(id)sender
@@ -499,7 +512,7 @@
     
     NSString *content = nil;
     NSString *url = nil;
-    UIImage *image = nil;
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     SSPublishContentMediaType mediaType = SSPublishContentMediaTypeText;
     switch (_curContentType)
     {
@@ -508,12 +521,10 @@
             break;
         case 1:
             content = @"图片分享";
-            image = [UIImage imageNamed:IMAGE_NAME];
             mediaType = SSPublishContentMediaTypeImage;
             break;
         case 2:
             content = CONTENT;
-            image = [UIImage imageNamed:IMAGE_NAME];
             url = @"http://www.sharesdk.cn";
             mediaType = SSPublishContentMediaTypeNews;
             break;
@@ -533,52 +544,75 @@
             }
         }
         
-        [ShareSDK shareContentWithShareList:shareList
-                                    content:[ShareSDK publishContent:content
-                                                      defaultContent:@""
-                                                               image:image
-                                                        imageQuality:0.8
-                                                           mediaType:SSPublishContentMediaTypeNews
-                                                               title:@"ShareSDK"
-                                                                 url:url
-                                                        musicFileUrl:nil
-                                                             extInfo:nil
-                                                            fileData:nil]
-                              statusBarTips:YES
-                                     result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                         NSLog(@"%@", [error errorDescription]);
-                                     }];
+        id<ISSCAttachment> imageAttach = [ShareSDK imageWithPath:imagePath];
+        id<ISSContent> contentObj = [ShareSDK content:content
+                                       defaultContent:@""
+                                                image:imageAttach
+                                                title:@"ShareSDK"
+                                                  url:url
+                                          description:@"这时一条测试数据"
+                                            mediaType:mediaType];
+        
+        [ShareSDK oneKeyShareContent:contentObj
+                           shareList:shareList
+                         authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:_appDelegate.viewDelegate
+                                               authManagerViewDelegate:_appDelegate.viewDelegate]
+                       statusBarTips:YES
+                              result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                  if (state == SSPublishContentStateSuccess)
+                                  {
+                                      NSLog(@"分享成功");
+                                  }
+                                  else if (state == SSPublishContentStateFail)
+                                  {
+                                      NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                  }
+                              }];
     }
     else
     {
-        id<IShareViewOptions> shareViewOptions = nil;
-        id<IAuthOptions> authOptions = nil;
+        id<ISSShareOptions> shareViewOptions = nil;
+        id<ISSAuthOptions> authOptions = nil;
 
         switch (_curAuthViewStyle)
         {
             case 1:
-                authOptions = [ShareSDK authOptionsWithAutoAuth:YES authViewStyle:AuthViewStyleMadal];
+                authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                  allowCallback:YES
+                                                  authViewStyle:SSAuthViewStyleModal
+                                                   viewDelegate:_appDelegate.viewDelegate
+                                        authManagerViewDelegate:_appDelegate.viewDelegate];
                 break;
             default:
-                authOptions = [ShareSDK authOptionsWithAutoAuth:YES authViewStyle:AuthViewStylePopup];
+                authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                  allowCallback:YES
+                                                  authViewStyle:SSAuthViewStylePopup
+                                                   viewDelegate:_appDelegate.viewDelegate
+                                        authManagerViewDelegate:_appDelegate.viewDelegate];
                 break;
         }
         
         switch (_curShareViewStyle)
         {
             case 1:
-                shareViewOptions = [ShareSDK simpleShareViewOptionWithTitle:@"内容分享"];
+                shareViewOptions = [ShareSDK simpleShareOptionsWithTitle:@"内容分享" shareViewDelegate:nil];
                 break;
             case 2:
-                shareViewOptions = [ShareSDK appRecommendShareViewOptionWithTitle:@"内容分享"];
+                shareViewOptions = [ShareSDK appRecommendShareOptionsWithTile:@"内容分享" shareViewDelegate:nil];
                 break;
             default:
-                shareViewOptions = [ShareSDK defaultShareViewOptionsWithTitle:@"内容分享"
-                                                              oneKeyShareList:[NSArray defaultOneKeyShareList]
-                                                               qqButtonHidden:NO
-                                                        wxSessionButtonHidden:NO
-                                                       wxTimelineButtonHidden:NO
-                                                         showKeyboardOnAppear:YES];
+                shareViewOptions = [ShareSDK defaultShareOptionsWithTitle:@"内容分享"
+                                                          oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                           qqButtonHidden:NO
+                                                    wxSessionButtonHidden:NO
+                                                   wxTimelineButtonHidden:NO
+                                                     showKeyboardOnAppear:NO
+                                                        shareViewDelegate:_appDelegate.viewDelegate
+                                                      friendsViewDelegate:_appDelegate.viewDelegate
+                                                    picViewerViewDelegate:nil];
                 break;
         }
         
@@ -592,26 +626,27 @@
             }
         }
         
+        //创建容器
+        id<ISSContainer> container = [ShareSDK container];
+        [container setIPadContainerWithBarButtonItem:self.navigationItem.rightBarButtonItem arrowDirect:UIPopoverArrowDirectionAny];
+        
+        //创建内容
+        id<ISSCAttachment> imageAttach = [ShareSDK imageWithPath:imagePath];
+        id<ISSContent> contentObj = [ShareSDK content:content
+                                       defaultContent:@""
+                                                image:imageAttach
+                                                title:@"ShareSDK"
+                                                  url:@"http://www.sharesdk.com"
+                                          description:@"这是一条测试信息"
+                                            mediaType:SSPublishContentMediaTypeNews];
+        
         //显示分享选择菜单
-        //其中第三个参数为分享内容，其为一个实现了ISSPublishContent协议的对象，可以通过调用ShareSDK的publishContent方法进行对象初始化
-        [ShareSDK showShareActionSheet:self
-                         iPadContainer:[ShareSDK iPadShareContainerWithBarButtonItem:self.navigationItem.rightBarButtonItem
-                                                                arrowDirect:UIPopoverArrowDirectionAny]
+        [ShareSDK showShareActionSheet:container
                              shareList:shareList
-                               content:[ShareSDK publishContent:content
-                                                 defaultContent:@""
-                                                          image:image
-                                                   imageQuality:0.8
-                                                      mediaType:SSPublishContentMediaTypeNews
-                                                          title:@"ShareSDK"
-                                                            url:url
-                                                   musicFileUrl:nil
-                                                        extInfo:nil
-                                                       fileData:nil]
+                               content:contentObj
                          statusBarTips:YES
-                            convertUrl:YES
                            authOptions:authOptions
-                      shareViewOptions:shareViewOptions
+                          shareOptions:shareViewOptions
                                 result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                     if (state == SSPublishContentStateSuccess)
                                     {
@@ -640,7 +675,6 @@
                                         }
                                     }
                                 }];
-        
     }
     
 }
@@ -649,23 +683,23 @@
 {
     UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
     btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
-    [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+    [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png"
                                      bundleName:BUNDLE_NAME]
                    forState:UIControlStateNormal];
     
     btn = (UIButton *)self.navigationItem.rightBarButtonItem.customView;
     btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
-    [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+    [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png"
                                      bundleName:BUNDLE_NAME]
                    forState:UIControlStateNormal];
     
     if ([UIDevice currentDevice].isPad)
     {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPadNavigationBarBG.png"]];
     }
     else
     {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneNavigationBarBG.png"]];
     }
 }
 
@@ -676,42 +710,40 @@
         //iPhone
         UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
         btn.frame = CGRectMake(btn.left, btn.top, 48.0, 24.0);
-        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationButtonBG.png"
+        [btn setBackgroundImage:[UIImage imageNamed:@"Common_Landscape/NavigationButtonBG.png"
                                          bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         
         btn = (UIButton *)self.navigationItem.rightBarButtonItem.customView;
         btn.frame = CGRectMake(btn.left, btn.top, 48.0, 24.0);
-        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationButtonBG.png"
+        [btn setBackgroundImage:[UIImage imageNamed:@"Common_Landscape/NavigationButtonBG.png"
                                          bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         
         if ([[UIDevice currentDevice] isPhone5])
         {
-            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG-568h.png"
-                                                                                 bundleName:BUNDLE_NAME]];
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneLandscapeNavigationBarBG-568h.png"]];
         }
         else
         {
-            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG.png"
-                                                                                 bundleName:BUNDLE_NAME]];
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneLandscapeNavigationBarBG.png"]];
         }
     }
     else
     {
         UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
         btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
-        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+        [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png"
                                          bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         
         btn = (UIButton *)self.navigationItem.rightBarButtonItem.customView;
         btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
-        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+        [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png"
                                          bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad_Landscape/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPadLandscapeNavigationBarBG.png"]];
     }
 }
 

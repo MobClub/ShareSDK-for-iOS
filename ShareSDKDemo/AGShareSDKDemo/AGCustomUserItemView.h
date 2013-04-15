@@ -8,7 +8,7 @@
 
 #import <AGCommon/CMHTableViewItem.h>
 #import <ShareSDK/ShareSDK.h>
-#import <AGCommon/ImageCacheManager.h>
+#import <AGCommon/CMImageCacheManager.h>
 
 /**
  *	@brief	用户列表项
@@ -19,8 +19,8 @@
     NSMutableDictionary *_userInfo;
     BOOL _needLayout;
     ShareType _shareType;
-    ImageCacheManager *_imageCacheManager;
-    ImageLoader *_loader;
+    CMImageCacheManager *_imageCacheManager;
+    CMImageLoader *_loader;
     id _clickHandler;
 
     UIImageView *_iconImageView;
@@ -43,7 +43,7 @@
  *	@return	列表项
  */
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
-            imageCacheManager:(ImageCacheManager *)imageCacheManager
+            imageCacheManager:(CMImageCacheManager *)imageCacheManager
                     shareType:(ShareType)shareType
                  clickHandler:(void(^)(NSMutableDictionary *userInfo))clickHandler;
 

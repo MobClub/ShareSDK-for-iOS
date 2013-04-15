@@ -9,12 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "AGSectionView.h"
 
+@class AGAppDelegate;
+
 @interface AGLeftSideViewController : UIViewController <UITableViewDataSource,
                                                         UITableViewDelegate>
 {
 @private
     UITableView *_tableView;
     AGSectionView *_sectionView;
+    
+    AGAppDelegate *_appDelegate;
 }
 
 @end

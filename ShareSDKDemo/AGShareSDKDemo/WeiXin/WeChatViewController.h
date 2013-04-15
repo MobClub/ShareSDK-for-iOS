@@ -10,6 +10,8 @@
 #import "TextViewController.h"
 #import "WXApiObject.h"
 
+@class AGAppDelegate;
+
 @protocol sendMsgToWeChatViewDelegate <NSObject>
 - (void) sendTextContent:(NSString*)nsText;
 - (void) sendAppContent;
@@ -27,6 +29,7 @@
 {
     NSString* m_nsLastText;
     UIViewController *_parentController;
+    AGAppDelegate *_appDelegate;
 }
 
 @property (nonatomic, assign) id<sendMsgToWeChatViewDelegate> delegate;

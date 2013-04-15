@@ -128,7 +128,7 @@
     if(self = [super init]) {
         
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
-        [leftBtn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
+        [leftBtn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                            forState:UIControlStateNormal];
         [leftBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
         leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
@@ -170,7 +170,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneNavigationBarBG.png"]];
     
     [self updateToolbarItems];
 }

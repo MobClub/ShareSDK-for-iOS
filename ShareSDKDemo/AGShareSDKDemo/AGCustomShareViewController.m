@@ -12,6 +12,7 @@
 #import <AGCommon/UIDevice+Common.h>
 #import <AGCommon/UINavigationBar+Common.h>
 #import <AGCommon/UIColor+Common.h>
+#import "AGAppDelegate.h"
 
 #define IMAGE_WIDTH 80.0
 #define IMAGE_HEIGHT 80.0
@@ -49,6 +50,7 @@
     self = [self init];
     if (self)
     {
+        _appDelegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
         _image = [image retain];
         _content = [content copy];
     }
@@ -153,7 +155,7 @@
     [self.view addSubview:_picBG];
     [_picBG release];
     
-    _picImageView = [[ImageView alloc] initWithFrame:CGRectMake(_picBG.left + 3, _picBG.top + 3, _picBG.width - 6, _picBG.height - 6)];
+    _picImageView = [[CMImageView alloc] initWithFrame:CGRectMake(_picBG.left + 3, _picBG.top + 3, _picBG.width - 6, _picBG.height - 6)];
     _picImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     _picImageView.image = _image;
     [self.view addSubview:_picImageView];
@@ -499,17 +501,24 @@
         return;
     }
     
-    id<ISSPublishContent> publishContent = [ShareSDK publishContent:_textView.text
-                                                     defaultContent:nil
-                                                        imageObject:[ShareSDK jpegImage:_picImageView.image quality:1 fileName:nil]];
+    id<ISSContent> publishContent = [ShareSDK content:_textView.text
+                                       defaultContent:nil
+                                                image:[ShareSDK jpegImageWithImage:_picImageView.image quality:1]
+                                                title:@"ShareSDK"
+                                                  url:@"http://www.sharesdk.cn"
+                                          description:@"这是一条测试信息"
+                                            mediaType:SSPublishContentMediaTypeText];
+    
     [publishContent addQQSpaceUnitWithTitle:@"Hello QQ空间"
-                                        url:@"http://www.sharesdk.cn"
+                                        url:INHERIT_VALUE
+                                       site:nil
+                                    fromUrl:nil
                                     comment:INHERIT_VALUE
                                     summary:INHERIT_VALUE
-                                imageObject:INHERIT_VALUE
+                                      image:INHERIT_VALUE
                                        type:INHERIT_VALUE
                                     playUrl:nil
-                                  syncWeibo:nil];
+                                       nswb:nil];
     [publishContent addInstapaperContentWithUrl:@"http://www.sharesdk.cn"
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
@@ -527,14 +536,24 @@
         {
             needAuth = YES;
             [ShareSDK getUserInfoWithType:shareType
+                              authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                              allowCallback:YES
+                                                              authViewStyle:SSAuthViewStyleModal
+                                                               viewDelegate:_appDelegate.viewDelegate
+                                                    authManagerViewDelegate:_appDelegate.viewDelegate]
                                    result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                        if (result)
                                        {
-                                            //分享内容
-                                           [ShareSDK shareContentWithShareList:selectedClients
-                                                                       content:publishContent
-                                                                 statusBarTips:YES
-                                                                        result:nil];
+                                           //分享内容
+                                           [ShareSDK oneKeyShareContent:publishContent
+                                                              shareList:selectedClients
+                                                            authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                                                            allowCallback:YES
+                                                                                            authViewStyle:SSAuthViewStyleModal
+                                                                                             viewDelegate:_appDelegate.viewDelegate
+                                                                                  authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                          statusBarTips:YES
+                                                                 result:nil];
                                            
                                            [self dismissModalViewControllerAnimated:YES];
                                        }
@@ -555,10 +574,15 @@
     if (!needAuth)
     {
         //分享内容
-        [ShareSDK shareContentWithShareList:selectedClients
-                                    content:publishContent
-                              statusBarTips:YES
-                                     result:nil];
+        [ShareSDK oneKeyShareContent:publishContent
+                           shareList:selectedClients
+                         authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:_appDelegate.viewDelegate
+                                               authManagerViewDelegate:_appDelegate.viewDelegate]
+                       statusBarTips:YES
+                              result:nil];
         
         [self dismissModalViewControllerAnimated:YES];
     }

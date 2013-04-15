@@ -8,19 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import <ShareSDK/ShareSDK.h>
-#import <AGCommon/ImageView.h>
-#import <AGCommon/ImageCacheManager.h>
+#import <AGCommon/CMImageView.h>
+#import <AGCommon/CMImageCacheManager.h>
 
 @interface AGCustomUserInfoCell : UITableViewCell
 {
 @private
     NSDictionary *_userInfo;
     ShareType _shareType;
-    ImageCacheManager *_cacheManager;
-    ImageLoader *_loader;
+    CMImageCacheManager *_cacheManager;
+    CMImageLoader *_loader;
     
     UIActivityIndicatorView *_indicatorView;
-    ImageView *_iconImageView;
+    CMImageView *_iconImageView;
     
     UIImageView *_vipImageView;
     UIImageView *_sexImageView;
@@ -48,7 +48,7 @@
  */
 - (id)initWithStyle:(UITableViewCellStyle)style
     reuseIdentifier:(NSString *)reuseIdentifier
-  imageCacheManager:(ImageCacheManager *)imageCacheManager
+  imageCacheManager:(CMImageCacheManager *)imageCacheManager
           shareType:(ShareType)shareType;
 
 

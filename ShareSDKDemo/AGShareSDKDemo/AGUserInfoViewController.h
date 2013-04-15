@@ -10,17 +10,21 @@
 #import <UIKit/UIKit.h>
 #import <ShareSDK/ShareSDK.h>
 
+@class AGAppDelegate;
+
 @interface AGUserInfoViewController : UIViewController <UITableViewDataSource,
                                                         UITableViewDelegate>
 {
 @private
     NSMutableDictionary *_infoDict;
     ShareType _type;
-    UserParamType _paramType;
+    SSUserFieldType _paramType;
     NSInteger _flag;
     NSString *_name;
+    BOOL _initialized;
     
     UITableView *_tableView;
+    AGAppDelegate *_appDelegate;
 }
 
 /**
@@ -41,7 +45,7 @@
  *
  *	@return	视图控制器
  */
-- (id)initWithType:(ShareType)type name:(NSString *)name paramType:(UserParamType)paramType;
+- (id)initWithType:(ShareType)type name:(NSString *)name paramType:(SSUserFieldType)paramType;
 
 
 

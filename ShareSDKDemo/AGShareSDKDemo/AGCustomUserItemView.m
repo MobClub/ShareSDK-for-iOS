@@ -16,7 +16,7 @@
 @synthesize userInfo = _userInfo;
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
-            imageCacheManager:(ImageCacheManager *)imageCacheManager
+            imageCacheManager:(CMImageCacheManager *)imageCacheManager
                     shareType:(ShareType)shareType
                  clickHandler:(void(^)(NSMutableDictionary *userInfo))clickHandler
 {

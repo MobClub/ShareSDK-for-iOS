@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import <ShareSDK/ShareSDK.h>
 
+@class AGAppDelegate;
+
 @interface AGApiViewController : UIViewController <UITableViewDataSource,
                                                    UITableViewDelegate,
                                                    UIActionSheetDelegate,
@@ -18,6 +20,7 @@
 @private
     UITableView *_tableView;
     ShareType _followType;
+    AGAppDelegate *_appDelegate;
     
     BOOL _ssoEnable;
 }

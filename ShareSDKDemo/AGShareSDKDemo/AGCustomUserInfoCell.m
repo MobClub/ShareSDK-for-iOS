@@ -27,7 +27,7 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style
     reuseIdentifier:(NSString *)reuseIdentifier
-  imageCacheManager:(ImageCacheManager *)imageCacheManager
+  imageCacheManager:(CMImageCacheManager *)imageCacheManager
           shareType:(ShareType)shareType
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -37,7 +37,7 @@
         _cacheManager = [imageCacheManager retain];
         
         //头像
-        _iconImageView = [[ImageView alloc] initWithFrame:CGRectMake(LEFT_PADDING,
+        _iconImageView = [[CMImageView alloc] initWithFrame:CGRectMake(LEFT_PADDING,
                                                                      (self.contentView.height - ICON_HEIGHT) / 2,
                                                                      ICON_WIDTH,
                                                                      ICON_HEIGHT)];

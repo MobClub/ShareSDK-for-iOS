@@ -8,7 +8,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AGCommon/ImageHeaderTableView.h>
+#import <AGCommon/CMImageHeaderTableView.h>
+
+@class AGAppDelegate;
 
 @interface AGViewController : UIViewController <UITableViewDataSource,
                                                 UITableViewDelegate>
@@ -22,6 +24,8 @@
     NSInteger _curAuthViewStyle;
     NSMutableArray *_shareTypeArray;
     NSMutableArray *_noneUIShareTypeArray;
+    
+    AGAppDelegate *_appDelegate;
 }
 
 @end

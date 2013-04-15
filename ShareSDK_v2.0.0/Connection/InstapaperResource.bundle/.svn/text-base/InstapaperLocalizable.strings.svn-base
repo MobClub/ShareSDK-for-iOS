@@ -1,0 +1,18 @@
+/* 
+  InstapaperLocalizable.strings
+  InstapaperConnection
+
+  Created by 冯 鸿杰 on 13/3/24.
+  Copyright (c) 2013年 掌淘科技. All rights reserved.
+*/
+
+"INSTAPAPER_LOGIN_TITLE" = "绑定Instapaper";
+"INSTAPAPER_LOGIN_BUTTON" = "登录";
+"INSTAPAPER_ACCOUNT_INPUT_PLACEHOLDER" = "帐号,如name@example.com";
+"INSTAPAPER_PASS_INPUT_PLACEHOLDER" = "密码";
+"INSTAPAPER_ACCOUNT_INVALID" = "请输入登录帐号!";
+"INSTAPAPER_PASS_INVALID" = "请输入登录密码!";
+"INSTAPAPER_INVALID_USER" = "用户名或密码不正确";
+
+"ALTER_VIEW_TITLE" = "提示";
+"ALTER_VIEW_I_KNOWN_BUTTON" = "知道了";

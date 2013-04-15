@@ -13,6 +13,7 @@
 #import <AGCommon/UIImage+Common.h>
 #import <AGCommon/UIColor+Common.h>
 #import <ShareSDK/ShareSDK.h>
+#import "AGAppDelegate.h"
 
 @interface ShareSDKDemoMoreViewController ()
 
@@ -26,8 +27,10 @@
     if (self) {
         // Custom initialization
         
+        _appDelegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
+        
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
+        [button setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                           forState:UIControlStateNormal];
         [button setTitle:@"取消" forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -44,7 +47,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneNavigationBarBG.png"]];
     
     UITableView *tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped] autorelease];
     tableView.rowHeight = 50.0;
@@ -156,19 +159,23 @@
             {
                 case 0:
                 {
-//                    SVModalWebViewController *vc = [[SVModalWebViewController alloc] initWithAddress:@"http://weibo.com/sharesdk"];
-//                    [self presentModalViewController:vc animated:YES];
-//                    [vc release];
                     //关注用户
-                    [ShareSDK followUserWithName:@"ShareSDK"
-                                       shareType:ShareTypeSinaWeibo
-                                          result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                    [ShareSDK followUserWithType:ShareTypeSinaWeibo
+                                           field:@"ShareSDK"
+                                       fieldType:SSUserFieldTypeName
+                                     authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                                     allowCallback:YES
+                                                                     authViewStyle:SSAuthViewStyleModal
+                                                                      viewDelegate:_appDelegate.viewDelegate
+                                                           authManagerViewDelegate:_appDelegate.viewDelegate]
+                                    viewDelegate:_appDelegate.viewDelegate
+                                          result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                               NSString *msg = nil;
-                                              if (result)
+                                              if (state == SSResponseStateSuccess)
                                               {
                                                   msg = @"关注成功";
                                               }
-                                              else
+                                              else if (state == SSResponseStateFail)
                                               {
                                                   switch ([error errorCode])
                                                   {
@@ -182,35 +189,41 @@
                                                   }
                                               }
                                               
-                                              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                                  message:msg
-                                                                                                 delegate:nil
-                                                                                        cancelButtonTitle:@"知道了"
-                                                                                        otherButtonTitles:nil];
-                                              [alertView show];
-                                              [alertView release];
-                                          }];
+                                              if (msg)
+                                              {
+                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                                      message:msg
+                                                                                                     delegate:nil
+                                                                                            cancelButtonTitle:@"知道了"
+                                                                                            otherButtonTitles:nil];
+                                                  [alertView show];
+                                                  [alertView release];
+                                              }
+                    }];
                     break;
                 }
                 case 1:
                 {
-//                    SVModalWebViewController *vc = [[SVModalWebViewController alloc] initWithAddress:@"http://t.qq.com/ShareSDK"];
-//                    [self presentModalViewController:vc animated:YES];
-//                    [vc release];
-                    
-                    [ShareSDK followUserWithName:@"ShareSDK"
-                                       shareType:ShareTypeTencentWeibo
-                                          result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                    [ShareSDK followUserWithType:ShareTypeTencentWeibo
+                                           field:@"ShareSDK"
+                                       fieldType:SSUserFieldTypeName
+                                     authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                                     allowCallback:YES
+                                                                     authViewStyle:SSAuthViewStyleModal
+                                                                      viewDelegate:_appDelegate.viewDelegate
+                                                           authManagerViewDelegate:_appDelegate.viewDelegate]
+                                    viewDelegate:_appDelegate.viewDelegate
+                                          result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                               NSString *msg = nil;
-                                              if (result)
+                                              if (state == SSResponseStateSuccess)
                                               {
                                                   msg = @"关注成功";
                                               }
-                                              else
+                                              else if (state == SSResponseStateFail)
                                               {
                                                   switch ([error errorCode])
                                                   {
-                                                      case 80103:
+                                                      case 20506:
                                                           msg = @"已关注";
                                                           break;
                                                           
@@ -220,13 +233,16 @@
                                                   }
                                               }
                                               
-                                              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                                  message:msg
-                                                                                                 delegate:nil
-                                                                                        cancelButtonTitle:@"知道了"
-                                                                                        otherButtonTitles:nil];
-                                              [alertView show];
-                                              [alertView release];
+                                              if (msg)
+                                              {
+                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                                      message:msg
+                                                                                                     delegate:nil
+                                                                                            cancelButtonTitle:@"知道了"
+                                                                                            otherButtonTitles:nil];
+                                                  [alertView show];
+                                                  [alertView release];
+                                              }
                                           }];
                     break;
                 }

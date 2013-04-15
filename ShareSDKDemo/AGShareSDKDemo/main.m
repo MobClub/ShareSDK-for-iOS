@@ -8,7 +8,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ShareSDK/ShareConfig.h>
 #import "AGAppDelegate.h"
 
 int main(int argc, char *argv[])

@@ -16,7 +16,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import "ShareSDKDemoMoreViewController.h"
 #import "IIViewDeckController.h"
-
+#import "AGAppDelegate.h"
 
 @interface QQDemoViewController (TestMethods)
 - (BOOL)checkQQ;
@@ -45,8 +45,10 @@
 {
     if(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
     {
+        _appDelegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
+        
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
-        [leftBtn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
+        [leftBtn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                            forState:UIControlStateNormal];
         [leftBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
         leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
@@ -307,34 +309,32 @@
 {
     [self dismissModalViewControllerAnimated:YES];
     
-    id<ISSPublishContent> content = [ShareSDK publishContent:text
-                                              defaultContent:nil
-                                                       image:nil
-                                                imageQuality:0
-                                                   mediaType:SSPublishContentMediaTypeText
-                                                       title:nil
-                                                         url:nil
-                                                musicFileUrl:nil
-                                                     extInfo:nil
-                                                    fileData:nil];
-    
-    [ShareSDK shareContentWithType:ShareTypeQQ
-                           content:content
-               containerController:self
-                     statusBarTips:YES
-                          autoAuth:YES
-                        convertUrl:YES
-                  shareViewOptions:nil
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                if (state == SSPublishContentStateSuccess)
-                                {
-                                    NSLog(@"success");
-                                }
-                                else if (state == SSPublishContentStateFail)
-                                {
-                                    NSLog(@"fail");
-                                }
-                            }];
+    id<ISSContent> content = [ShareSDK content:text
+                                defaultContent:nil
+                                         image:nil
+                                         title:nil
+                                           url:nil
+                                   description:nil
+                                     mediaType:SSPublishContentMediaTypeText];
+
+    [ShareSDK shareContent:content
+                      type:ShareTypeQQ
+               authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                               allowCallback:YES
+                                               authViewStyle:SSAuthViewStyleModal
+                                                viewDelegate:_appDelegate.viewDelegate
+                                     authManagerViewDelegate:_appDelegate.viewDelegate]
+             statusBarTips:YES
+                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        if (state == SSPublishContentStateSuccess)
+                        {
+                            NSLog(@"success");
+                        }
+                        else if (state == SSPublishContentStateFail)
+                        {
+                            NSLog(@"fail");
+                        }
+                    }];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -343,34 +343,32 @@
     {
         UIImage * selImg = [info objectForKey:UIImagePickerControllerEditedImage];
         
-        id<ISSPublishContent> content = [ShareSDK publishContent:@"这是用户自选的图片哦！！！"
-                                                  defaultContent:nil
-                                                           image:selImg
-                                                    imageQuality:1
-                                                       mediaType:SSPublishContentMediaTypeImage
-                                                           title:@"图片消息标题"
-                                                             url:nil
-                                                    musicFileUrl:nil
-                                                         extInfo:nil
-                                                        fileData:nil];
-        
-        [ShareSDK shareContentWithType:ShareTypeQQ
-                               content:content
-                   containerController:self
-                         statusBarTips:YES
-                              autoAuth:YES
-                            convertUrl:YES
-                      shareViewOptions:nil
-                                result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                    if (state == SSPublishContentStateSuccess)
-                                    {
-                                        NSLog(@"success");
-                                    }
-                                    else if (state == SSPublishContentStateFail)
-                                    {
-                                        NSLog(@"fail");
-                                    }
-                                }];
+        id<ISSContent> content = [ShareSDK content:@"这是用户自选的图片哦！！！"
+                                    defaultContent:nil
+                                             image:[ShareSDK jpegImageWithImage:selImg quality:1]
+                                             title:@"图片消息标题"
+                                               url:nil
+                                       description:nil
+                                         mediaType:SSPublishContentMediaTypeImage];
+
+        [ShareSDK shareContent:content
+                          type:ShareTypeQQ
+                   authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                   allowCallback:YES
+                                                   authViewStyle:SSAuthViewStyleModal
+                                                    viewDelegate:_appDelegate.viewDelegate
+                                         authManagerViewDelegate:_appDelegate.viewDelegate]
+                 statusBarTips:YES
+                        result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                            if (state == SSPublishContentStateSuccess)
+                            {
+                                NSLog(@"success");
+                            }
+                            else if (state == SSPublishContentStateFail)
+                            {
+                                NSLog(@"fail");
+                            }
+                        }];
     }
     
     [picker dismissModalViewControllerAnimated:YES];
@@ -382,17 +380,17 @@
 {
     UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
     btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
-    [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+    [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png"
                                      bundleName:BUNDLE_NAME]
                    forState:UIControlStateNormal];
     
     if ([UIDevice currentDevice].isPad)
     {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPadNavigationBarBG.png"]];
     }
     else
     {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneNavigationBarBG.png"]];
     }
 }
 
@@ -403,18 +401,18 @@
         //iPhone
         UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
         btn.frame = CGRectMake(btn.left, btn.top, 48.0, 24.0);
-        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationButtonBG.png"
+        [btn setBackgroundImage:[UIImage imageNamed:@"Common_Landscape/NavigationButtonBG.png"
                                          bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         
         if ([[UIDevice currentDevice] isPhone5])
         {
-            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG-568h.png"
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneLandscapeNavigationBarBG-568h.png"
                                                                                  bundleName:BUNDLE_NAME]];
         }
         else
         {
-            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG.png"
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneLandscapeNavigationBarBG.png"
                                                                                  bundleName:BUNDLE_NAME]];
         }
     }
@@ -422,11 +420,11 @@
     {
         UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
         btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
-        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+        [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png"
                                          bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad_Landscape/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPadLandscapeNavigationBarBG.png"]];
     }
 }
 
@@ -470,34 +468,32 @@
 
 - (void) sendTextMessage
 {
-    id<ISSPublishContent> content = [ShareSDK publishContent:@"过去两年移动互联网有很多开放平台非常成功。事实上到现在来看，发展到现在一年多，最关键的开放平台是能不能真正从用户和经济回报中打造生态链。"
-                                              defaultContent:nil
-                                                       image:nil
-                                                imageQuality:0
-                                                   mediaType:SSPublishContentMediaTypeText
-                                                       title:nil
-                                                         url:nil
-                                                musicFileUrl:nil
-                                                     extInfo:nil
-                                                    fileData:nil];
+    id<ISSContent> content = [ShareSDK content:@"过去两年移动互联网有很多开放平台非常成功。事实上到现在来看，发展到现在一年多，最关键的开放平台是能不能真正从用户和经济回报中打造生态链。"
+                                defaultContent:nil
+                                         image:nil
+                                         title:nil
+                                           url:nil
+                                   description:nil
+                                     mediaType:SSPublishContentMediaTypeText];
     
-    [ShareSDK shareContentWithType:ShareTypeQQ
-                           content:content
-               containerController:self
-                     statusBarTips:YES
-                          autoAuth:YES
-                        convertUrl:YES
-                  shareViewOptions:nil
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                if (state == SSPublishContentStateSuccess)
-                                {
-                                    NSLog(@"success");
-                                }
-                                else if (state == SSPublishContentStateFail)
-                                {
-                                    NSLog(@"fail");
-                                }
-                            }];
+    [ShareSDK shareContent:content
+                      type:ShareTypeQQ
+               authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                               allowCallback:YES
+                                               authViewStyle:SSAuthViewStyleModal
+                                                viewDelegate:_appDelegate.viewDelegate
+                                     authManagerViewDelegate:_appDelegate.viewDelegate]
+             statusBarTips:YES
+                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        if (state == SSPublishContentStateSuccess)
+                        {
+                            NSLog(@"success");
+                        }
+                        else if (state == SSPublishContentStateFail)
+                        {
+                            NSLog(@"fail");
+                        }
+                    }];
 }
 
 - (void) sendImageMessage
@@ -506,34 +502,32 @@
     NSData* data = [NSData dataWithContentsOfFile:path];
     UIImage *image = [[[UIImage alloc] initWithData:data] autorelease];
     
-    id<ISSPublishContent> content = [ShareSDK publishContent:@"desc"
-                                              defaultContent:nil
-                                                       image:image
-                                                imageQuality:0.8
-                                                   mediaType:SSPublishContentMediaTypeImage
-                                                       title:@"test title"
-                                                         url:nil
-                                                musicFileUrl:nil
-                                                     extInfo:nil
-                                                    fileData:nil];
+    id<ISSContent> content = [ShareSDK content:@"desc"
+                                defaultContent:nil
+                                         image:[ShareSDK jpegImageWithImage:image quality:0.8]
+                                         title:@"test title"
+                                           url:nil
+                                   description:nil
+                                     mediaType:SSPublishContentMediaTypeImage];
     
-    [ShareSDK shareContentWithType:ShareTypeQQ
-                           content:content
-               containerController:self
-                     statusBarTips:YES
-                          autoAuth:YES
-                        convertUrl:YES
-                  shareViewOptions:nil
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                if (state == SSPublishContentStateSuccess)
-                                {
-                                    NSLog(@"success");
-                                }
-                                else if (state == SSPublishContentStateFail)
-                                {
-                                    NSLog(@"fail");
-                                }
-                            }];
+    [ShareSDK shareContent:content
+                      type:ShareTypeQQ
+               authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                               allowCallback:YES
+                                               authViewStyle:SSAuthViewStyleModal
+                                                viewDelegate:_appDelegate.viewDelegate
+                                     authManagerViewDelegate:_appDelegate.viewDelegate]
+             statusBarTips:YES
+                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        if (state == SSPublishContentStateSuccess)
+                        {
+                            NSLog(@"success");
+                        }
+                        else if (state == SSPublishContentStateFail)
+                        {
+                            NSLog(@"fail");
+                        }
+                    }];
 }
 
 - (void) sendNewsMessage
@@ -542,34 +536,32 @@
     NSData* data = [NSData dataWithContentsOfFile:path];
     UIImage *image = [[[UIImage alloc] initWithData:data] autorelease];
     
-    id<ISSPublishContent> content = [ShareSDK publishContent:@"目前国内在售的马自达6为第一代车型，其第二代车型在国内被称作睿翼。日前官方又再次发布了全新第三代马自达6的几张外观图片，新车的神秘面纱总算揭开。据悉，全新马自达6将在今年8月底的莫斯科车展上正式全球首发，随后还会在9月下旬的巴黎车展上亮相，并于明年初正式上市。"
-                                              defaultContent:nil
-                                                       image:image
-                                                imageQuality:1
-                                                   mediaType:SSPublishContentMediaTypeNews
-                                                       title:@"新一代马自达6发布"
-                                                         url:@"http://info.3g.qq.com/g/s?aid=auto_ss&id=auto_20120727000031&pos=F3G_09hwxc#"
-                                                musicFileUrl:nil
-                                                     extInfo:nil
-                                                    fileData:nil];
+    id<ISSContent> content = [ShareSDK content:@"目前国内在售的马自达6为第一代车型，其第二代车型在国内被称作睿翼。日前官方又再次发布了全新第三代马自达6的几张外观图片，新车的神秘面纱总算揭开。据悉，全新马自达6将在今年8月底的莫斯科车展上正式全球首发，随后还会在9月下旬的巴黎车展上亮相，并于明年初正式上市。"
+                                defaultContent:nil
+                                         image:[ShareSDK jpegImageWithImage:image quality:0.8]
+                                         title:@"新一代马自达6发布"
+                                           url:@"http://info.3g.qq.com/g/s?aid=auto_ss&id=auto_20120727000031&pos=F3G_09hwxc#"
+                                   description:nil
+                                     mediaType:SSPublishContentMediaTypeNews];
     
-    [ShareSDK shareContentWithType:ShareTypeQQ
-                           content:content
-               containerController:self
-                     statusBarTips:YES
-                          autoAuth:YES
-                        convertUrl:YES
-                  shareViewOptions:nil
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                if (state == SSPublishContentStateSuccess)
-                                {
-                                    NSLog(@"success");
-                                }
-                                else if (state == SSPublishContentStateFail)
-                                {
-                                    NSLog(@"fail");
-                                }
-                            }];
+    [ShareSDK shareContent:content
+                      type:ShareTypeQQ
+               authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                               allowCallback:YES
+                                               authViewStyle:SSAuthViewStyleModal
+                                                viewDelegate:_appDelegate.viewDelegate
+                                     authManagerViewDelegate:_appDelegate.viewDelegate]
+             statusBarTips:YES
+                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        if (state == SSPublishContentStateSuccess)
+                        {
+                            NSLog(@"success");
+                        }
+                        else if (state == SSPublishContentStateFail)
+                        {
+                            NSLog(@"fail");
+                        }
+                    }];
 }
 
 - (void) sendAudioMessage
@@ -578,34 +570,32 @@
     NSData* data = [NSData dataWithContentsOfFile:path];
     UIImage *image = [[[UIImage alloc] initWithData:data] autorelease];
     
-    id<ISSPublishContent> content = [ShareSDK publishContent:@"Avril Lavigne"
-                                              defaultContent:nil
-                                                       image:image
-                                                imageQuality:1
-                                                   mediaType:SSPublishContentMediaTypeMusic
-                                                       title:@"Wish You Were Here"
-                                                         url:@"http://wfmusic.3g.qq.com/s?g_f=0&fr=&aid=mu_detail&id=2511915"
-                                                musicFileUrl:nil
-                                                     extInfo:nil
-                                                    fileData:nil];
+    id<ISSContent> content = [ShareSDK content:@"Avril Lavigne"
+                                defaultContent:nil
+                                         image:[ShareSDK jpegImageWithImage:image quality:0.8]
+                                         title:@"Wish You Were Here"
+                                           url:@"http://wfmusic.3g.qq.com/s?g_f=0&fr=&aid=mu_detail&id=2511915"
+                                   description:nil
+                                     mediaType:SSPublishContentMediaTypeMusic];
     
-    [ShareSDK shareContentWithType:ShareTypeQQ
-                           content:content
-               containerController:self
-                     statusBarTips:YES
-                          autoAuth:YES
-                        convertUrl:YES
-                  shareViewOptions:nil
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                if (state == SSPublishContentStateSuccess)
-                                {
-                                    NSLog(@"success");
-                                }
-                                else if (state == SSPublishContentStateFail)
-                                {
-                                    NSLog(@"fail");
-                                }
-                            }];
+    [ShareSDK shareContent:content
+                      type:ShareTypeQQ
+               authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                               allowCallback:YES
+                                               authViewStyle:SSAuthViewStyleModal
+                                                viewDelegate:_appDelegate.viewDelegate
+                                     authManagerViewDelegate:_appDelegate.viewDelegate]
+             statusBarTips:YES
+                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        if (state == SSPublishContentStateSuccess)
+                        {
+                            NSLog(@"success");
+                        }
+                        else if (state == SSPublishContentStateFail)
+                        {
+                            NSLog(@"fail");
+                        }
+                    }];
 }
 
 - (void) sendVideoMessage
@@ -614,34 +604,32 @@
     NSData* data = [NSData dataWithContentsOfFile:path];
     UIImage *image = [[[UIImage alloc] initWithData:data] autorelease];
     
-    id<ISSPublishContent> content = [ShareSDK publishContent:@"在地球蛮荒时期，一切以武力来解决争斗。远古大陆上，两支兵强马壮的部落军队正在进行厮杀，而其中有一位勇敢的战士率领自己的部落获得了战争的胜利，他就是蛮王柯南（杰森·莫玛饰）。得胜归来的柯南受到了部落的爱戴，他诛杀可怕的怪物，为部落开拓疆土，但一场阴谋正在谋划当中……超自然的邪恶势力正意图侵蚀柯南的部落，它控制部落里的心腹，整个部落惨遭屠杀，连柯南的父亲科灵（朗·普尔曼饰）也未能幸免。意外活下来的柯南，将穿越西伯利亚冰原寻找盟友的帮助，他身负血海深仇，将用最原始、最野蛮的方式，为自己的父亲和同族报仇……"
-                                              defaultContent:nil
-                                                       image:image
-                                                imageQuality:1
-                                                   mediaType:SSPublishContentMediaTypeVideo
-                                                       title:@"王者之剑"
-                                                         url:@"http://v.youku.com/v_show/id_XNDI0NjA1MTA4.html"
-                                                musicFileUrl:nil
-                                                     extInfo:nil
-                                                    fileData:nil];
+    id<ISSContent> content = [ShareSDK content:@"在地球蛮荒时期，一切以武力来解决争斗。远古大陆上，两支兵强马壮的部落军队正在进行厮杀，而其中有一位勇敢的战士率领自己的部落获得了战争的胜利，他就是蛮王柯南（杰森·莫玛饰）。得胜归来的柯南受到了部落的爱戴，他诛杀可怕的怪物，为部落开拓疆土，但一场阴谋正在谋划当中……超自然的邪恶势力正意图侵蚀柯南的部落，它控制部落里的心腹，整个部落惨遭屠杀，连柯南的父亲科灵（朗·普尔曼饰）也未能幸免。意外活下来的柯南，将穿越西伯利亚冰原寻找盟友的帮助，他身负血海深仇，将用最原始、最野蛮的方式，为自己的父亲和同族报仇……"
+                                defaultContent:nil
+                                         image:[ShareSDK jpegImageWithImage:image quality:0.8]
+                                         title:@"王者之剑"
+                                           url:@"http://v.youku.com/v_show/id_XNDI0NjA1MTA4.html"
+                                   description:nil
+                                     mediaType:SSPublishContentMediaTypeVideo];
     
-    [ShareSDK shareContentWithType:ShareTypeQQ
-                           content:content
-               containerController:self
-                     statusBarTips:YES
-                          autoAuth:YES
-                        convertUrl:YES
-                  shareViewOptions:nil
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                if (state == SSPublishContentStateSuccess)
-                                {
-                                    NSLog(@"success");
-                                }
-                                else if (state == SSPublishContentStateFail)
-                                {
-                                    NSLog(@"fail");
-                                }
-                            }];
+    [ShareSDK shareContent:content
+                      type:ShareTypeQQ
+               authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                               allowCallback:YES
+                                               authViewStyle:SSAuthViewStyleModal
+                                                viewDelegate:_appDelegate.viewDelegate
+                                     authManagerViewDelegate:_appDelegate.viewDelegate]
+             statusBarTips:YES
+                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        if (state == SSPublishContentStateSuccess)
+                        {
+                            NSLog(@"success");
+                        }
+                        else if (state == SSPublishContentStateFail)
+                        {
+                            NSLog(@"fail");
+                        }
+                    }];
 }
 
 - (void)doEditText

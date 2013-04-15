@@ -29,7 +29,7 @@
     if (self = [super init])
     {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
+        [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         [btn setTitle:@"取消" forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -39,7 +39,7 @@
         self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:btn] autorelease];
         
         btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
+        [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         [btn setTitle:@"确定" forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -49,7 +49,7 @@
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:btn] autorelease];
         
         _shareType = ShareTypeSinaWeibo;
-        _paramType = UserParamTypeName;
+        _paramType = SSUserFieldTypeName;
     }
     return self;
 }
@@ -58,7 +58,7 @@
 {
     [super loadView];
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneNavigationBarBG.png"]];
     
 	// Do any additional setup after loading the view.
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.width, self.view.height)
@@ -123,22 +123,22 @@
 {
     UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
     btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
-    [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+    [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png"
                                      bundleName:BUNDLE_NAME]
                    forState:UIControlStateNormal];
     btn = (UIButton *)self.navigationItem.rightBarButtonItem.customView;
     btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
-    [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+    [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png"
                                      bundleName:BUNDLE_NAME]
                    forState:UIControlStateNormal];
     
     if ([UIDevice currentDevice].isPad)
     {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPadNavigationBarBG.png"]];
     }
     else
     {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneNavigationBarBG.png"]];
     }
     
     UIImageView *imageView = [[(UIImageView *)_tableView.tableHeaderView retain] autorelease];
@@ -154,40 +154,38 @@
         //iPhone
         UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
         btn.frame = CGRectMake(btn.left, btn.top, 48.0, 24.0);
-        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationButtonBG.png"
+        [btn setBackgroundImage:[UIImage imageNamed:@"Common_Landscape/NavigationButtonBG.png"
                                          bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         btn = (UIButton *)self.navigationItem.rightBarButtonItem.customView;
         btn.frame = CGRectMake(btn.left, btn.top, 48.0, 24.0);
-        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationButtonBG.png"
+        [btn setBackgroundImage:[UIImage imageNamed:@"Common_Landscape/NavigationButtonBG.png"
                                          bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         
         if ([[UIDevice currentDevice] isPhone5])
         {
-            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG-568h.png"
-                                                                                 bundleName:BUNDLE_NAME]];
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneLandscapeNavigationBarBG-568h.png"]];
         }
         else
         {
-            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG.png"
-                                                                                 bundleName:BUNDLE_NAME]];
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneLandscapeNavigationBarBG.png"]];
         }
     }
     else
     {
         UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
         btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
-        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+        [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png"
                                          bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         btn = (UIButton *)self.navigationItem.rightBarButtonItem.customView;
         btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
-        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+        [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png"
                                          bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad_Landscape/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPadLandscapeNavigationBarBG.png"]];
     }
     
     
@@ -254,7 +252,7 @@
                 [_textField release];
             }
             
-            if (_paramType == UserParamTypeName)
+            if (_paramType == SSUserFieldTypeName)
             {
                 cell.textLabel.text = @"用户昵称:";
             }
@@ -277,7 +275,7 @@
                 case 0:
                 {
                     cell.textLabel.text = @"用户昵称";
-                    if (_paramType == UserParamTypeName)
+                    if (_paramType == SSUserFieldTypeName)
                     {
                         cell.accessoryType = UITableViewCellAccessoryCheckmark;
                     }
@@ -290,7 +288,7 @@
                 case 1:
                 {
                     cell.textLabel.text = @"用户ID";
-                    if (_paramType == UserParamTypeUid)
+                    if (_paramType == SSUserFieldTypeUid)
                     {
                         cell.accessoryType = UITableViewCellAccessoryCheckmark;
                     }
@@ -404,10 +402,10 @@
             switch (indexPath.row)
             {
                 case 0:
-                    _paramType = UserParamTypeName;
+                    _paramType = SSUserFieldTypeName;
                     break;
                 case 1:
-                    _paramType = UserParamTypeUid;
+                    _paramType = SSUserFieldTypeUid;
                     break;
             }
             [_tableView reloadData];

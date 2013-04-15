@@ -12,6 +12,7 @@
 #import <AGCommon/UIColor+Common.h>
 #import <AGCommon/UIImage+Common.h>
 #import <AGCommon/UIDevice+Common.h>
+#import "AGAppDelegate.h"
 
 #define TABLE_CELL_ID @"tableCell"
 
@@ -94,11 +95,13 @@
     self = [super init];
     if (self)
     {
+        _appDelegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
+        
         // Custom initialization
         self.title = @"用户信息";
         
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
-        [leftBtn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
+        [leftBtn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                            forState:UIControlStateNormal];
         [leftBtn setTitle:@"取消" forState:UIControlStateNormal];
         leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -114,14 +117,16 @@
     return self;
 }
 
-- (id)initWithType:(ShareType)type name:(NSString *)name paramType:(UserParamType)paramType
+- (id)initWithType:(ShareType)type name:(NSString *)name paramType:(SSUserFieldType)paramType
 {
     if (self = [super init])
     {
+        _appDelegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
+        
         self.title = @"用户信息";
         
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
-        [leftBtn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
+        [leftBtn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                            forState:UIControlStateNormal];
         [leftBtn setTitle:@"取消" forState:UIControlStateNormal];
         leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -173,174 +178,188 @@
 {
     [super viewDidAppear:animated];
     
-    if (_flag == 0)
+    if (!_initialized)
     {
-        [ShareSDK getUserInfoWithType:_type
-                               result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
-                                   if (result)
-                                   {
-                                       [_infoDict removeAllObjects];
-                                       
-                                       if ([userInfo icon])
+        _initialized = YES;
+        
+        if (_flag == 0)
+        {
+            [ShareSDK getUserInfoWithType:_type
+                              authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                              allowCallback:YES
+                                                              authViewStyle:SSAuthViewStyleModal
+                                                               viewDelegate:_appDelegate.viewDelegate
+                                                    authManagerViewDelegate:_appDelegate.viewDelegate]
+                                   result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                       if (result)
                                        {
-                                           [NSThread detachNewThreadSelector:@selector(loadImage:)
-                                                                    toTarget:self
-                                                                  withObject:[userInfo icon]];
+                                           [_infoDict removeAllObjects];
+                                           
+                                           if ([userInfo icon])
+                                           {
+                                               [NSThread detachNewThreadSelector:@selector(loadImage:)
+                                                                        toTarget:self
+                                                                      withObject:[userInfo icon]];
+                                           }
+                                           
+                                           switch (_type)
+                                           {
+                                               case ShareTypeSinaWeibo:
+                                                   //新浪微博
+                                                   [self fillSinaWeiboUser:userInfo];
+                                                   break;
+                                               case ShareTypeTencentWeibo:
+                                                   //腾讯微博
+                                                   [self fillTecentWeiboUser:userInfo];
+                                                   break;
+                                               case ShareTypeSohuWeibo:
+                                                   //搜狐微博
+                                                   [self fillSohuWeiboUser:userInfo];
+                                                   break;
+                                               case ShareType163Weibo:
+                                                   //网易微博
+                                                   [self fill163WeiboUser:userInfo];
+                                                   break;
+                                               case ShareTypeDouBan:
+                                                   //豆瓣社区
+                                                   [self fillDouBanUser:userInfo];
+                                                   break;
+                                               case ShareTypeQQSpace:
+                                                   //QQ空间
+                                                   [self fillQQSpaceUser:userInfo];
+                                                   break;
+                                               case ShareTypeRenren:
+                                                   //人人网
+                                                   [self fillRenRenUser:userInfo];
+                                                   break;
+                                               case ShareTypeKaixin:
+                                                   //开心网
+                                                   [self fillKaiXinUser:userInfo];
+                                                   break;
+                                               case ShareTypeInstapaper:
+                                                   //Instapaper
+                                                   [self fillInstapaperUser:userInfo];
+                                                   break;
+                                               case ShareTypeFacebook:
+                                                   //Facebook
+                                                   [self fillFacebookUser:userInfo];
+                                                   break;
+                                               case ShareTypeTwitter:
+                                                   //Twitter
+                                                   [self fillTwitterUser:userInfo];
+                                                   break;
+                                               case ShareTypeYouDaoNote:
+                                                   //有道云笔记
+                                                   [self fillYouDaoNoteUser:userInfo];
+                                                   break;
+                                               default:
+                                                   break;
+                                           }
+                                           
+                                           [_tableView reloadData];
                                        }
-                                       
-                                       switch (_type)
+                                       else
                                        {
-                                           case ShareTypeSinaWeibo:
-                                               //新浪微博
-                                               [self fillSinaWeiboUser:userInfo];
-                                               break;
-                                           case ShareTypeTencentWeibo:
-                                               //腾讯微博
-                                               [self fillTecentWeiboUser:userInfo];
-                                               break;
-                                           case ShareTypeSohuWeibo:
-                                               //搜狐微博
-                                               [self fillSohuWeiboUser:userInfo];
-                                               break;
-                                           case ShareType163Weibo:
-                                               //网易微博
-                                               [self fill163WeiboUser:userInfo];
-                                               break;
-                                           case ShareTypeDouBan:
-                                               //豆瓣社区
-                                               [self fillDouBanUser:userInfo];
-                                               break;
-                                           case ShareTypeQQSpace:
-                                               //QQ空间
-                                               [self fillQQSpaceUser:userInfo];
-                                               break;
-                                           case ShareTypeRenren:
-                                               //人人网
-                                               [self fillRenRenUser:userInfo];
-                                               break;
-                                           case ShareTypeKaixin:
-                                               //开心网
-                                               [self fillKaiXinUser:userInfo];
-                                               break;
-                                           case ShareTypeInstapaper:
-                                               //Instapaper
-                                               [self fillInstapaperUser:userInfo];
-                                               break;
-                                           case ShareTypeFacebook:
-                                               //Facebook
-                                               [self fillFacebookUser:userInfo];
-                                               break;
-                                           case ShareTypeTwitter:
-                                               //Twitter
-                                               [self fillTwitterUser:userInfo];
-                                               break;
-                                           case ShareTypeYouDaoNote:
-                                               //有道云笔记
-                                               [self fillYouDaoNoteUser:userInfo];
-                                               break;
-                                           default:
-                                               break;
+                                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                               message:error.errorDescription
+                                                                                              delegate:nil
+                                                                                     cancelButtonTitle:@"知道了"
+                                                                                     otherButtonTitles: nil];
+                                           [alertView show];
+                                           [alertView release];
                                        }
-                                       
-                                       [_tableView reloadData];
-                                   }
-                                   else
-                                   {
-                                       UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                           message:error.errorDescription
-                                                                                          delegate:nil
-                                                                                 cancelButtonTitle:@"知道了"
-                                                                                 otherButtonTitles: nil];
-                                       [alertView show];
-                                       [alertView release];
-                                   }
-                               }];
-    }
-    else
-    {
-        [ShareSDK getUserInfoWithType:_type
-                                  uid:_name
-                        parameterType:_paramType
-                             autoAuth:YES
-                               result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
-                                   if (result)
-                                   {
-                                       [_infoDict removeAllObjects];
-                                       
-                                       if ([userInfo icon])
+                                   }];
+        }
+        else
+        {
+            [ShareSDK getUserInfoWithType:_type
+                                    field:_name
+                                fieldType:_paramType
+                              authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                              allowCallback:YES
+                                                              authViewStyle:SSAuthViewStyleModal
+                                                               viewDelegate:_appDelegate.viewDelegate
+                                                    authManagerViewDelegate:_appDelegate.viewDelegate]
+                                   result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                       if (result)
                                        {
-                                           [NSThread detachNewThreadSelector:@selector(loadImage:)
-                                                                    toTarget:self
-                                                                  withObject:[userInfo icon]];
+                                           [_infoDict removeAllObjects];
+                                           
+                                           if ([userInfo icon])
+                                           {
+                                               [NSThread detachNewThreadSelector:@selector(loadImage:)
+                                                                        toTarget:self
+                                                                      withObject:[userInfo icon]];
+                                           }
+                                           
+                                           switch (_type)
+                                           {
+                                               case ShareTypeSinaWeibo:
+                                                   //新浪微博
+                                                   [self fillSinaWeiboUser:userInfo];
+                                                   break;
+                                               case ShareTypeTencentWeibo:
+                                                   //腾讯微博
+                                                   [self fillTecentWeiboUser:userInfo];
+                                                   break;
+                                               case ShareTypeSohuWeibo:
+                                                   //搜狐微博
+                                                   [self fillSohuWeiboUser:userInfo];
+                                                   break;
+                                               case ShareType163Weibo:
+                                                   //网易微博
+                                                   [self fill163WeiboUser:userInfo];
+                                                   break;
+                                               case ShareTypeDouBan:
+                                                   //豆瓣社区
+                                                   [self fillDouBanUser:userInfo];
+                                                   break;
+                                               case ShareTypeQQSpace:
+                                                   //QQ空间
+                                                   [self fillQQSpaceUser:userInfo];
+                                                   break;
+                                               case ShareTypeRenren:
+                                                   //人人网
+                                                   [self fillRenRenUser:userInfo];
+                                                   break;
+                                               case ShareTypeKaixin:
+                                                   //开心网
+                                                   [self fillKaiXinUser:userInfo];
+                                                   break;
+                                               case ShareTypeInstapaper:
+                                                   //Instapaper
+                                                   [self fillInstapaperUser:userInfo];
+                                                   break;
+                                               case ShareTypeFacebook:
+                                                   //Facebook
+                                                   [self fillFacebookUser:userInfo];
+                                                   break;
+                                               case ShareTypeTwitter:
+                                                   //Twitter
+                                                   [self fillTwitterUser:userInfo];
+                                                   break;
+                                               case ShareTypeYouDaoNote:
+                                                   //有道云笔记
+                                                   [self fillYouDaoNoteUser:userInfo];
+                                                   break;
+                                               default:
+                                                   break;
+                                           }
+                                           
+                                           [_tableView reloadData];
                                        }
-                                       
-                                       switch (_type)
+                                       else
                                        {
-                                           case ShareTypeSinaWeibo:
-                                               //新浪微博
-                                               [self fillSinaWeiboUser:userInfo];
-                                               break;
-                                           case ShareTypeTencentWeibo:
-                                               //腾讯微博
-                                               [self fillTecentWeiboUser:userInfo];
-                                               break;
-                                           case ShareTypeSohuWeibo:
-                                               //搜狐微博
-                                               [self fillSohuWeiboUser:userInfo];
-                                               break;
-                                           case ShareType163Weibo:
-                                               //网易微博
-                                               [self fill163WeiboUser:userInfo];
-                                               break;
-                                           case ShareTypeDouBan:
-                                               //豆瓣社区
-                                               [self fillDouBanUser:userInfo];
-                                               break;
-                                           case ShareTypeQQSpace:
-                                               //QQ空间
-                                               [self fillQQSpaceUser:userInfo];
-                                               break;
-                                           case ShareTypeRenren:
-                                               //人人网
-                                               [self fillRenRenUser:userInfo];
-                                               break;
-                                           case ShareTypeKaixin:
-                                               //开心网
-                                               [self fillKaiXinUser:userInfo];
-                                               break;
-                                           case ShareTypeInstapaper:
-                                               //Instapaper
-                                               [self fillInstapaperUser:userInfo];
-                                               break;
-                                           case ShareTypeFacebook:
-                                               //Facebook
-                                               [self fillFacebookUser:userInfo];
-                                               break;
-                                           case ShareTypeTwitter:
-                                               //Twitter
-                                               [self fillTwitterUser:userInfo];
-                                               break;
-                                           case ShareTypeYouDaoNote:
-                                               //有道云笔记
-                                               [self fillYouDaoNoteUser:userInfo];
-                                               break;
-                                           default:
-                                               break;
+                                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                               message:error.errorDescription
+                                                                                              delegate:nil
+                                                                                     cancelButtonTitle:@"知道了"
+                                                                                     otherButtonTitles: nil];
+                                           [alertView show];
+                                           [alertView release];
                                        }
-                                       
-                                       [_tableView reloadData];
-                                   }
-                                   else
-                                   {
-                                       UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                           message:error.errorDescription
-                                                                                          delegate:nil
-                                                                                 cancelButtonTitle:@"知道了"
-                                                                                 otherButtonTitles: nil];
-                                       [alertView show];
-                                       [alertView release];
-                                   }
-                               }];
+                                   }];
+        }
     }
 }
 
@@ -375,11 +394,11 @@
 
 - (void)fillSinaWeiboUser:(id<ISSUserInfo>)userInfo
 {
-    NSArray *keys = [userInfo.source allKeys];
+    NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
     {
         NSString *keyName = [keys objectAtIndex:i];
-        id value = [userInfo.source objectForKey:keyName];
+        id value = [[userInfo sourceData] objectForKey:keyName];
         if (![value isKindOfClass:[NSString class]])
         {
             if ([value respondsToSelector:@selector(stringValue)])
@@ -525,11 +544,11 @@
 
 - (void)fillTecentWeiboUser:(id<ISSUserInfo>)userInfo
 {
-    NSArray *keys = [userInfo.source allKeys];
+    NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
     {
         NSString *keyName = [keys objectAtIndex:i];
-        id value = [userInfo.source objectForKey:keyName];
+        id value = [[userInfo sourceData] objectForKey:keyName];
         if (![value isKindOfClass:[NSString class]])
         {
             if ([value respondsToSelector:@selector(stringValue)])
@@ -687,11 +706,11 @@
 
 - (void)fillSohuWeiboUser:(id<ISSUserInfo>)userInfo
 {
-    NSArray *keys = [userInfo.source allKeys];
+    NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
     {
         NSString *keyName = [keys objectAtIndex:i];
-        id value = [userInfo.source objectForKey:keyName];
+        id value = [[userInfo sourceData] objectForKey:keyName];
         if (![value isKindOfClass:[NSString class]])
         {
             if ([value respondsToSelector:@selector(stringValue)])
@@ -817,11 +836,11 @@
 
 - (void)fill163WeiboUser:(id<ISSUserInfo>)userInfo
 {
-    NSArray *keys = [userInfo.source allKeys];
+    NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
     {
         NSString *keyName = [keys objectAtIndex:i];
-        id value = [userInfo.source objectForKey:keyName];
+        id value = [[userInfo sourceData] objectForKey:keyName];
         if (![value isKindOfClass:[NSString class]])
         {
             if ([value respondsToSelector:@selector(stringValue)])
@@ -927,11 +946,11 @@
 
 - (void)fillDouBanUser:(id<ISSUserInfo>)userInfo
 {
-    NSArray *keys = [userInfo.source allKeys];
+    NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
     {
         NSString *keyName = [keys objectAtIndex:i];
-        id value = [userInfo.source objectForKey:keyName];
+        id value = [[userInfo sourceData] objectForKey:keyName];
         if (![value isKindOfClass:[NSString class]])
         {
             if ([value respondsToSelector:@selector(stringValue)])
@@ -1005,11 +1024,11 @@
 
 - (void)fillQQSpaceUser:(id<ISSUserInfo>)userInfo
 {
-    NSArray *keys = [userInfo.source allKeys];
+    NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
     {
         NSString *keyName = [keys objectAtIndex:i];
-        id value = [userInfo.source objectForKey:keyName];
+        id value = [[userInfo sourceData] objectForKey:keyName];
         if (![value isKindOfClass:[NSString class]])
         {
             if ([value respondsToSelector:@selector(stringValue)])
@@ -1059,11 +1078,11 @@
 
 - (void)fillRenRenUser:(id<ISSUserInfo>)userInfo
 {
-    NSArray *keys = [userInfo.source allKeys];
+    NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
     {
         NSString *keyName = [keys objectAtIndex:i];
-        id value = [userInfo.source objectForKey:keyName];
+        id value = [[userInfo sourceData] objectForKey:keyName];
         if (![value isKindOfClass:[NSString class]])
         {
             if ([value respondsToSelector:@selector(stringValue)])
@@ -1125,11 +1144,11 @@
 
 - (void)fillKaiXinUser:(id<ISSUserInfo>)userInfo
 {
-    NSArray *keys = [userInfo.source allKeys];
+    NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
     {
         NSString *keyName = [keys objectAtIndex:i];
-        id value = [userInfo.source objectForKey:keyName];
+        id value = [[userInfo sourceData] objectForKey:keyName];
         if (![value isKindOfClass:[NSString class]])
         {
             if ([value respondsToSelector:@selector(stringValue)])
@@ -1243,11 +1262,11 @@
 
 - (void)fillInstapaperUser:(id<ISSUserInfo>)userInfo
 {
-    NSArray *keys = [userInfo.source allKeys];
+    NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
     {
         NSString *keyName = [keys objectAtIndex:i];
-        id value = [userInfo.source objectForKey:keyName];
+        id value = [[userInfo sourceData] objectForKey:keyName];
         if (![value isKindOfClass:[NSString class]])
         {
             if ([value respondsToSelector:@selector(stringValue)])
@@ -1277,11 +1296,11 @@
 
 - (void)fillFacebookUser:(id<ISSUserInfo>)userInfo
 {
-    NSArray *keys = [userInfo.source allKeys];
+    NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
     {
         NSString *keyName = [keys objectAtIndex:i];
-        id value = [userInfo.source objectForKey:keyName];
+        id value = [[userInfo sourceData] objectForKey:keyName];
         if (![value isKindOfClass:[NSString class]])
         {
             if ([value respondsToSelector:@selector(stringValue)])
@@ -1359,11 +1378,11 @@
 
 - (void)fillTwitterUser:(id<ISSUserInfo>)userInfo
 {
-    NSArray *keys = [userInfo.source allKeys];
+    NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
     {
         NSString *keyName = [keys objectAtIndex:i];
-        id value = [userInfo.source objectForKey:keyName];
+        id value = [[userInfo sourceData] objectForKey:keyName];
         if (![value isKindOfClass:[NSString class]])
         {
             if ([value respondsToSelector:@selector(stringValue)])
@@ -1382,11 +1401,11 @@
 
 - (void)fillYouDaoNoteUser:(id<ISSUserInfo>)userInfo
 {
-    NSArray *keys = [userInfo.source allKeys];
+    NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
     {
         NSString *keyName = [keys objectAtIndex:i];
-        id value = [userInfo.source objectForKey:keyName];
+        id value = [[userInfo sourceData] objectForKey:keyName];
         if (![value isKindOfClass:[NSString class]])
         {
             if ([value respondsToSelector:@selector(stringValue)])
@@ -1427,17 +1446,17 @@
 {
     UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
     btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
-    [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+    [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png"
                                      bundleName:BUNDLE_NAME]
                    forState:UIControlStateNormal];
     
     if ([UIDevice currentDevice].isPad)
     {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPadNavigationBarBG.png"]];
     }
     else
     {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneNavigationBarBG.png"]];
     }
 
     UIImageView *imageView = [[(UIImageView *)_tableView.tableHeaderView retain] autorelease];
@@ -1453,29 +1472,27 @@
         //iPhone
         UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
         btn.frame = CGRectMake(btn.left, btn.top, 48.0, 24.0);
-        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationButtonBG.png"
+        [btn setBackgroundImage:[UIImage imageNamed:@"Common_Landscape/NavigationButtonBG.png"
                                          bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
         
         if ([[UIDevice currentDevice] isPhone5])
         {
-            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG-568h.png"
-                                                                                 bundleName:BUNDLE_NAME]];
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneLandscapeNavigationBarBG-568h.png"]];
         }
         else
         {
-            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_Landscape/NavigationBarBG.png"
-                                                                                 bundleName:BUNDLE_NAME]];
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneLandscapeNavigationBarBG.png"]];
         }
     }
     else
     {
         UIButton *btn = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
         btn.frame = CGRectMake(btn.left, btn.top, 55.0, 32.0);
-        [btn setBackgroundImage:[UIImage imageNamed:@"PublishEx/NavigationButtonBG.png"
+        [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png"
                                          bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"PublishEx_iPad_Landscape/NavigationBarBG.png" bundleName:BUNDLE_NAME]];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPadLandscapeNavigationBarBG.png"]];
     }
     
     

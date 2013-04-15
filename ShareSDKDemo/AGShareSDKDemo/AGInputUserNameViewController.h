@@ -21,7 +21,7 @@
     UITableView *_tableView;
     UITextField *_textField;
     
-    UserParamType _paramType;
+    SSUserFieldType _paramType;
     ShareType _shareType;
     
     UITapGestureRecognizer *_gestureRecognizer;

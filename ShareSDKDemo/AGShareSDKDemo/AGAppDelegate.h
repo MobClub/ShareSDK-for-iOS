@@ -13,6 +13,7 @@
 #import "WeChatViewController.h"
 #import "RespForWeChatViewController.h"
 #import "IIViewDeckController.h"
+#import "AGViewDelegate.h"
 
 @class AGViewController;
 
@@ -20,10 +21,13 @@
                                         WXApiDelegate>
 {
     enum WXScene _scene;
+    AGViewDelegate *_viewDelegate;
 }
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) IIViewDeckController *viewController;
+
+@property (nonatomic,readonly) AGViewDelegate *viewDelegate;
 
 @end

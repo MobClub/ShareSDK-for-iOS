@@ -12,6 +12,7 @@
 #import <AGCommon/UINavigationBar+Common.h>
 #import "AGCustomUserInfoCell.h"
 #import "AGCustomMoreCell.h"
+#import "AGAppDelegate.h"
 
 #define USER_CELL_ID @"userCell"
 #define MORE_CELL_ID @"moreCell"
@@ -25,9 +26,10 @@
     self = [super init];
     if (self)
     {
+        _appDelegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
         _shareType = shareType;
         _changeHandler = [changeHandler copy];
-        _imageCacheManager = [[ImageCacheManager alloc] init];
+        _imageCacheManager = [[CMImageCacheManager alloc] init];
         _friendsArray = [[NSMutableArray alloc] init];
         _selectedArray = [[NSMutableArray alloc] init];
         
@@ -184,10 +186,10 @@
 {
     if ([ShareSDK hasAuthorizedWithType:_shareType])
     {
-        id<IPage> page = nil;
+        id<ISSPage> page = nil;
         if (_shareType == ShareTypeTwitter)
         {
-            page = [ShareSDK pageWithTwitterCursor:_page];
+            page = [ShareSDK pageWithCursor:_page];
         }
         else
         {
@@ -196,18 +198,22 @@
         
         [ShareSDK getFriendsWithType:_shareType
                                 page:page
-                         authOptions:[ShareSDK authOptionsWithAutoAuth:YES authViewStyle:AuthViewStyleMadal]
-                              result:^(BOOL result, NSArray *users, id<IPage> currPage, id<IPage> prevPage, id<IPage> nextPage, BOOL hasNext, id<ICMErrorInfo> error) {
+                         authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:_appDelegate.viewDelegate
+                                               authManagerViewDelegate:_appDelegate.viewDelegate]
+                              result:^(BOOL result, NSArray *users, id<ISSPage> currPage, id<ISSPage> prevPage, id<ISSPage> nextPage, BOOL hasNext, id<ICMErrorInfo> error) {
                                   if (result)
                                   {
                                       _hasNext = hasNext;
                                       switch (_shareType)
                                       {
                                           case ShareTypeTwitter:
-                                              _page = [(id<ITwitterPage>)nextPage cursor];
+                                              _page = [nextPage cursor];
                                               break;
                                           default:
-                                              _page = [(id<ICommPage>)nextPage pageNo];
+                                              _page = [nextPage pageNo];
                                               break;
                                       }
                                       
@@ -215,11 +221,11 @@
                                       for (int i = 0; i < [users count]; i++)
                                       {
                                           id<ISSUserInfo> userInfo = [users objectAtIndex:i];
-                                          NSMutableDictionary *userData = [NSMutableDictionary dictionaryWithDictionary:[userInfo source]];
+                                          NSMutableDictionary *userData = [NSMutableDictionary dictionaryWithDictionary:[userInfo sourceData]];
                                           [userData setObject:[NSNumber numberWithBool:[self hasSelected:userData]] forKey:@"selected"];
                                           [_friendsArray addObject:userData];
                                       }
-
+                                      
                                       //刷新表格
                                       [_tableView reloadData];
                                   }
@@ -229,52 +235,62 @@
     }
     else
     {
-        [ShareSDK getUserInfoWithType:_shareType result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
-            if (result)
-            {
-                id<IPage> page = nil;
-                if (_shareType == ShareTypeTwitter)
-                {
-                    page = [ShareSDK pageWithTwitterCursor:_page];
-                }
-                else
-                {
-                    page = [ShareSDK pageWithPageNo:(NSInteger)_page pageSize:0];
-                }
-                
-                [ShareSDK getFriendsWithType:_shareType
-                                        page:page
-                                 authOptions:[ShareSDK authOptionsWithAutoAuth:YES authViewStyle:AuthViewStyleMadal]
-                                      result:^(BOOL result, NSArray *users, id<IPage> currPage, id<IPage> prevPage, id<IPage> nextPage, BOOL hasNext, id<ICMErrorInfo> error) {
-                                          if (result)
-                                          {
-                                              _hasNext = hasNext;
-                                              switch (_shareType)
-                                              {
-                                                  case ShareTypeTwitter:
-                                                      _page = [(id<ITwitterPage>)nextPage cursor];
-                                                      break;
-                                                  default:
-                                                      _page = [(id<ICommPage>)nextPage pageNo];
-                                                      break;
-                                              }
-                                              
-                                              //对用户进行分类
-                                              for (int i = 0; i < [users count]; i++)
-                                              {
-                                                  id<ISSUserInfo> userInfo = [users objectAtIndex:i];
-                                                  NSMutableDictionary *userData = [NSMutableDictionary dictionaryWithDictionary:[userInfo source]];
-                                                  [userData setObject:[NSNumber numberWithBool:[self hasSelected:userData]] forKey:@"selected"];
-                                                  [_friendsArray addObject:userData];
-                                              }
-                                              
-                                              //刷新表格
-                                              [_tableView reloadData];
-                                          }
-                                          
-                                          [_refreshHeaderView refreshScrollViewDataSourceDidFinishedLoading:_tableView];
-                                      }];
-            }
+        [ShareSDK getUserInfoWithType:_shareType
+                          authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                          allowCallback:YES
+                                                          authViewStyle:SSAuthViewStyleModal
+                                                           viewDelegate:_appDelegate.viewDelegate
+                                                authManagerViewDelegate:_appDelegate.viewDelegate]
+                               result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                   if (result)
+                                   {
+                                       id<ISSPage> page = nil;
+                                       if (_shareType == ShareTypeTwitter)
+                                       {
+                                           page = [ShareSDK pageWithCursor:_page];
+                                       }
+                                       else
+                                       {
+                                           page = [ShareSDK pageWithPageNo:(NSInteger)_page pageSize:0];
+                                       }
+                                       
+                                       [ShareSDK getFriendsWithType:_shareType
+                                                               page:page
+                                                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                                                        allowCallback:YES
+                                                                                        authViewStyle:SSAuthViewStyleModal
+                                                                                         viewDelegate:_appDelegate.viewDelegate
+                                                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                             result:^(BOOL result, NSArray *users, id<ISSPage> currPage, id<ISSPage> prevPage, id<ISSPage> nextPage, BOOL hasNext, id<ICMErrorInfo> error) {
+                                                                 if (result)
+                                                                 {
+                                                                     _hasNext = hasNext;
+                                                                     switch (_shareType)
+                                                                     {
+                                                                         case ShareTypeTwitter:
+                                                                             _page = [nextPage cursor];
+                                                                             break;
+                                                                         default:
+                                                                             _page = [nextPage pageNo];
+                                                                             break;
+                                                                     }
+                                                                     
+                                                                     //对用户进行分类
+                                                                     for (int i = 0; i < [users count]; i++)
+                                                                     {
+                                                                         id<ISSUserInfo> userInfo = [users objectAtIndex:i];
+                                                                         NSMutableDictionary *userData = [NSMutableDictionary dictionaryWithDictionary:[userInfo sourceData]];
+                                                                         [userData setObject:[NSNumber numberWithBool:[self hasSelected:userData]] forKey:@"selected"];
+                                                                         [_friendsArray addObject:userData];
+                                                                     }
+                                                                     
+                                                                     //刷新表格
+                                                                     [_tableView reloadData];
+                                                                 }
+                                                                 
+                                                                 [_refreshHeaderView refreshScrollViewDataSourceDidFinishedLoading:_tableView];
+                                                             }];
+                                   }
         }];
     }
 }

@@ -11,6 +11,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import <AGCommon/UIImage+Common.h>
 #import <AGCommon/UIColor+Common.h>
+#import "AGAppDelegate.h"
 
 #define ITEM_ID @"item"
 
@@ -21,6 +22,8 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        _appDelegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
+        
         // Initialization code
         self.backgroundColor = [UIColor clearColor];
         
@@ -182,6 +185,11 @@
                                                                       else
                                                                       {
                                                                           [ShareSDK getUserInfoWithType:shareType
+                                                                                            authOptions:[ShareSDK authOptionsWithAutoAuth:YES
+                                                                                                                            allowCallback:YES
+                                                                                                                            authViewStyle:SSAuthViewStyleModal
+                                                                                                                             viewDelegate:_appDelegate.viewDelegate
+                                                                                                                  authManagerViewDelegate:_appDelegate.viewDelegate]
                                                                                                  result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                                                                                      if (result)
                                                                                                      {

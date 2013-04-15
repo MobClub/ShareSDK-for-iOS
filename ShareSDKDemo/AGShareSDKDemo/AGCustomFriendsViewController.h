@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <ShareSDK/ShareSDK.h>
-#import <AGCommon/ImageCacheManager.h>
+#import <AGCommon/CMImageCacheManager.h>
 #import <AGCommon/CMRefreshTableHeaderView.h>
 #import "AGCustomFriendListViewToolbar.h"
+
+@class AGAppDelegate;
 
 /**
  *	@brief	自定义好友列表视图控制器
@@ -27,11 +29,13 @@
     NSMutableArray *_friendsArray;
     NSMutableArray *_selectedArray;
     ShareType _shareType;
-    ImageCacheManager *_imageCacheManager;
+    CMImageCacheManager *_imageCacheManager;
     BOOL _refreshData;
     BOOL _hasNext;
     NSInteger _page;
     id _changeHandler;
+    
+    AGAppDelegate *_appDelegate;
 }
 
 /**

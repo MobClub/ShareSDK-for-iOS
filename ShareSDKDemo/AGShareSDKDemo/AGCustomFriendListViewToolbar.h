@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AGCommon/CMHTableView.h>
-#import <AGCommon/ImageCacheManager.h>
+#import <AGCommon/CMImageCacheManager.h>
 #import <ShareSDK/ShareSDK.h>
 
 @interface AGCustomFriendListViewToolbar : UIView <CMHTableViewDataSource,
@@ -20,7 +20,7 @@
     CMHTableView *_tableView;
     
     NSMutableArray *_selectedArray;
-    ImageCacheManager *_imageCacheManager;
+    CMImageCacheManager *_imageCacheManager;
     ShareType _shareType;
     id _itemClickHandler;
     id _completeHandler;
@@ -40,7 +40,7 @@
  */
 - (id)initWithFrame:(CGRect)frame
       selectedArray:(NSMutableArray *)selectedArray
-  imageCacheManager:(ImageCacheManager *)imageCacheManager
+  imageCacheManager:(CMImageCacheManager *)imageCacheManager
           shareType:(ShareType)shareType
    itemClickHandler:(void(^)(NSMutableDictionary *userInfo))itemClickHandler
     completeHandler:(void(^)())completeHandler;

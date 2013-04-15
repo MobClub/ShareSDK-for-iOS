@@ -15,7 +15,7 @@
 
 - (id)initWithFrame:(CGRect)frame
       selectedArray:(NSMutableArray *)selectedArray
-  imageCacheManager:(ImageCacheManager *)imageCacheManager
+  imageCacheManager:(CMImageCacheManager *)imageCacheManager
           shareType:(ShareType)shareType
    itemClickHandler:(void (^)(NSMutableDictionary *))itemClickHandler
     completeHandler:(void(^)())completeHandler

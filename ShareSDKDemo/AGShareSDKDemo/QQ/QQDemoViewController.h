@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "QQTextViewController.h"
 
+@class AGAppDelegate;
+
 @interface QQDemoViewController : UIViewController<UITableViewDataSource,
                                                    UITableViewDelegate,
                                                    UIImagePickerControllerDelegate,
@@ -20,6 +22,8 @@
     NSMutableArray* _featureNames;
     NSMutableArray* _featureNames2;
     NSMutableArray* _featureNames3;
+    
+    AGAppDelegate *_appDelegate;
 }
 
 @end

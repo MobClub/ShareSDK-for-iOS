@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class AGAppDelegate;
+
 @interface AGCustomViewController : UIViewController
+{
+@private
+    AGAppDelegate *_appDelegate;
+}
 
 @end

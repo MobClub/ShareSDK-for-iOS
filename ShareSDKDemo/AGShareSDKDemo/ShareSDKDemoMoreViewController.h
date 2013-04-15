@@ -9,8 +9,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class AGAppDelegate;
+
 @interface ShareSDKDemoMoreViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
     NSMutableArray *listOfItems;
+    AGAppDelegate *_appDelegate;
 }
 
 @end
