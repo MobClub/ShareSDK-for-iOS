@@ -22,6 +22,7 @@
 {
     enum WXScene _scene;
     AGViewDelegate *_viewDelegate;
+    SSInterfaceOrientationMask _interfaceOrientationMask;
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -29,5 +30,7 @@
 @property (strong, nonatomic) IIViewDeckController *viewController;
 
 @property (nonatomic,readonly) AGViewDelegate *viewDelegate;
+
+@property (nonatomic) SSInterfaceOrientationMask interfaceOrientationMask;
 
 @end

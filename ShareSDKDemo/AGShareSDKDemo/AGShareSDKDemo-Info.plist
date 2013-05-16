@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.0</string>
+	<string>2.1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2.0.0</string>
+	<string>2.1.1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -48,7 +48,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb107704292745179</string>
-				<string>sinaweibosso.3201194191</string>
+				<string>sinaweibosso.568898243</string>
 				<string>wx6dd7a9b94f3dd72a</string>
 				<string>QQ075BCD15</string>
 			</array>

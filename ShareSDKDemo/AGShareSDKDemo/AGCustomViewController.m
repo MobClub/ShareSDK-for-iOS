@@ -81,7 +81,7 @@
 - (NSUInteger)supportedInterfaceOrientations
 {
     //iOS6下旋屏方法
-    return UIInterfaceOrientationMaskAll;
+    return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -153,7 +153,9 @@
 
 - (void)buttonClickHandler:(id)sender
 {
-    AGCustomShareViewController *vc = [[[AGCustomShareViewController alloc] initWithImage:[UIImage imageNamed:@"sharesdk_img.jpg"] content:CONTENT] autorelease];
+    AGCustomShareViewController *vc = [[[AGCustomShareViewController alloc] initWithImage:[UIImage imageNamed:@"sharesdk_img.jpg"]
+                                                                                  content:CONTENT]
+                                       autorelease];
     UINavigationController *naVC = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
     
     if ([UIDevice currentDevice].isPad)
@@ -299,21 +301,34 @@
                           [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeYouDaoNote]
                                                              icon:[ShareSDK getClientIconWithType:ShareTypeYouDaoNote]
                                                      clickHandler:clickHandler],
+                          [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuKan]
+                                                             icon:[ShareSDK getClientIconWithType:ShareTypeSohuKan]
+                                                     clickHandler:clickHandler],
                           nil];
     
     //创建容器
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     [ShareSDK showShareActionSheet:container
                          shareList:shareList
                            content:publishContent
                      statusBarTips:YES
-                       authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                       allowCallback:YES
-                                                       authViewStyle:SSAuthViewStyleModal
-                                                        viewDelegate:_appDelegate.viewDelegate
-                                             authManagerViewDelegate:_appDelegate.viewDelegate]
+                       authOptions:authOptions
                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                            qqButtonHidden:NO

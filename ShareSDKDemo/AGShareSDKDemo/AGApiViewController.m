@@ -149,16 +149,16 @@
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"关注官方微博" forState:UIControlStateNormal];
+    [button setTitle:@"关注新浪微博" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(followOfficerWeiboClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(followSinaWeiboClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"获取用户资料" forState:UIControlStateNormal];
+    [button setTitle:@"关注腾讯微博" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(getUserInfoClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(followTencentWeiboClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     top += button.height + VERTICAL_GAP;
@@ -292,9 +292,9 @@
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"获取AccessToken" forState:UIControlStateNormal];
+    [button setTitle:@"分享到搜狐随身看" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(getAccessTokenClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(shareToSohuKanClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     scrollView.contentSize = CGSizeMake(self.view.width, top += button.height + VERTICAL_GAP);
@@ -324,7 +324,7 @@
 - (NSUInteger)supportedInterfaceOrientations
 {
     //iOS6下旋屏方法
-    return UIInterfaceOrientationMaskAll;
+    return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -453,6 +453,9 @@
                 case 11:
                     type = ShareTypeTwitter;
                     break;
+                case 12:
+                    type = ShareTypeSohuKan;
+                    break;
                 default:
                     break;
             }
@@ -460,38 +463,6 @@
             if (type != 0)
             {
                 [self showUserInfoWithType:type];
-            }
-            
-            break;
-        }
-        case ACTION_SHEET_FOLLOW_USER:
-        {
-            switch (buttonIndex)
-            {
-                case 0:
-                {
-                    _followType = ShareTypeSinaWeibo;
-                    break;
-                }
-                case 1:
-                {
-                    _followType = ShareTypeTencentWeibo;
-                    break;
-                }
-                default:
-                    _followType = 0;
-                    break;
-            }
-            
-            if (_followType != 0)
-            {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"关注"
-                                                                    message:@"您要关注ShareSDK吗?"
-                                                                   delegate:self
-                                                          cancelButtonTitle:@"取消"
-                                                          otherButtonTitles:@"关注", nil];
-                [alertView show];
-                [alertView release];
             }
             
             break;
@@ -553,6 +524,9 @@
                     break;
                 case 11:
                     type = ShareTypeTwitter;
+                    break;
+                case 12:
+                    type = ShareTypeSohuKan;
                     break;
                 default:
                     break;
@@ -700,6 +674,9 @@
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
     
+    //定制搜狐随身看信息
+    [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
+    
     //结束定制信息
     ////////////////////////
     
@@ -710,10 +687,16 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:NO
-                                                         authViewStyle:SSAuthViewStylePopup
-                                                          viewDelegate:_appDelegate.viewDelegate
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
-
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
     
     id<ISSShareOptions> shareOptions = [ShareSDK defaultShareOptionsWithTitle:@"内容分享"
                                                               oneKeyShareList:[NSArray defaultOneKeyShareList]
@@ -837,6 +820,9 @@
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
     
+    //定制搜狐随身看信息
+    [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
+    
     //结束定制信息
     ////////////////////////
     
@@ -847,9 +833,16 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:NO
-                                                         authViewStyle:SSAuthViewStylePopup
-                                                          viewDelegate:_appDelegate.viewDelegate
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
     
     id<ISSShareOptions> shareOptions = [ShareSDK simpleShareOptionsWithTitle:@"内容分享" shareViewDelegate:_appDelegate.viewDelegate];
     
@@ -960,6 +953,9 @@
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
     
+    //定制搜狐随身看信息
+    [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
+    
     //结束定制信息
     ////////////////////////
     
@@ -967,17 +963,27 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //自定义新浪微博分享菜单项
     id<ISSShareActionSheetItem> sinaItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSinaWeibo]
                                                                               icon:[ShareSDK getClientIconWithType:ShareTypeSinaWeibo]
                                                                       clickHandler:^{
                                                                           [ShareSDK shareContent:publishContent
                                                                                             type:ShareTypeSinaWeibo
-                                                                                     authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                                                                     allowCallback:YES
-                                                                                                                     authViewStyle:SSAuthViewStyleModal
-                                                                                                                      viewDelegate:_appDelegate.viewDelegate
-                                                                                                           authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                                                     authOptions:authOptions
                                                                                    statusBarTips:YES
                                                                                           result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                                                                               if (state == SSPublishContentStateSuccess)
@@ -996,11 +1002,7 @@
                                                                          clickHandler:^{
                                                                              [ShareSDK shareContent:publishContent
                                                                                                type:ShareTypeTencentWeibo
-                                                                                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                                                                        allowCallback:YES
-                                                                                                                        authViewStyle:SSAuthViewStyleModal
-                                                                                                                         viewDelegate:_appDelegate.viewDelegate
-                                                                                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                                                        authOptions:authOptions
                                                                                       statusBarTips:YES
                                                                                              result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                                                                                  if (state == SSPublishContentStateSuccess)
@@ -1019,11 +1021,7 @@
                                                                        clickHandler:^{
                                                                            [ShareSDK shareContent:publishContent
                                                                                              type:ShareTypeQQSpace
-                                                                                      authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                                                                      allowCallback:YES
-                                                                                                                      authViewStyle:SSAuthViewStyleModal
-                                                                                                                       viewDelegate:_appDelegate.viewDelegate
-                                                                                                            authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                                                      authOptions:authOptions
                                                                                     statusBarTips:YES
                                                                                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                                                                                if (state == SSPublishContentStateSuccess)
@@ -1043,11 +1041,7 @@
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
                                                                                           type:ShareTypeFacebook
-                                                                                   authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                                                                   allowCallback:YES
-                                                                                                                   authViewStyle:SSAuthViewStyleModal
-                                                                                                                    viewDelegate:_appDelegate.viewDelegate
-                                                                                                         authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                                                   authOptions:authOptions
                                                                                  statusBarTips:YES
                                                                                         result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                                                                             if (state == SSPublishContentStateSuccess)
@@ -1067,11 +1061,7 @@
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
                                                                                           type:ShareTypeTwitter
-                                                                                   authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                                                                   allowCallback:YES
-                                                                                                                   authViewStyle:SSAuthViewStyleModal
-                                                                                                                    viewDelegate:_appDelegate.viewDelegate
-                                                                                                         authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                                                   authOptions:authOptions
                                                                                  statusBarTips:YES
                                                                                         result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                                                                             if (state == SSPublishContentStateSuccess)
@@ -1091,11 +1081,7 @@
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
                                                                                           type:ShareTypeRenren
-                                                                                   authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                                                                   allowCallback:YES
-                                                                                                                   authViewStyle:SSAuthViewStyleModal
-                                                                                                                    viewDelegate:_appDelegate.viewDelegate
-                                                                                                         authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                                                   authOptions:authOptions
                                                                                  statusBarTips:YES
                                                                                         result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                                                                             if (state == SSPublishContentStateSuccess)
@@ -1115,11 +1101,7 @@
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
                                                                                           type:ShareTypeKaixin
-                                                                                   authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                                                                   allowCallback:YES
-                                                                                                                   authViewStyle:SSAuthViewStyleModal
-                                                                                                                    viewDelegate:_appDelegate.viewDelegate
-                                                                                                         authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                                                   authOptions:authOptions
                                                                                  statusBarTips:YES
                                                                                         result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                                                                             if (state == SSPublishContentStateSuccess)
@@ -1139,11 +1121,7 @@
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
                                                                                           type:ShareTypeSohuWeibo
-                                                                                   authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                                                                   allowCallback:YES
-                                                                                                                   authViewStyle:SSAuthViewStyleModal
-                                                                                                                    viewDelegate:_appDelegate.viewDelegate
-                                                                                                         authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                                                   authOptions:authOptions
                                                                                  statusBarTips:YES
                                                                                         result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                                                                             if (state == SSPublishContentStateSuccess)
@@ -1163,11 +1141,7 @@
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
                                                                                           type:ShareType163Weibo
-                                                                                   authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                                                                   allowCallback:YES
-                                                                                                                   authViewStyle:SSAuthViewStyleModal
-                                                                                                                    viewDelegate:_appDelegate.viewDelegate
-                                                                                                         authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                                                   authOptions:authOptions
                                                                                  statusBarTips:YES
                                                                                         result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                                                                             if (state == SSPublishContentStateSuccess)
@@ -1187,11 +1161,7 @@
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
                                                                                           type:ShareTypeDouBan
-                                                                                   authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                                                                   allowCallback:YES
-                                                                                                                   authViewStyle:SSAuthViewStyleModal
-                                                                                                                    viewDelegate:_appDelegate.viewDelegate
-                                                                                                         authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                                                   authOptions:authOptions
                                                                                  statusBarTips:YES
                                                                                         result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                                                                             if (state == SSPublishContentStateSuccess)
@@ -1211,11 +1181,26 @@
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
                                                                                           type:ShareTypeInstapaper
-                                                                                   authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                                                                   allowCallback:YES
-                                                                                                                   authViewStyle:SSAuthViewStyleModal
-                                                                                                                    viewDelegate:_appDelegate.viewDelegate
-                                                                                                         authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                                                   authOptions:authOptions
+                                                                                 statusBarTips:YES
+                                                                                        result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                            if (state == SSPublishContentStateSuccess)
+                                                                                            {
+                                                                                                NSLog(@"分享成功");
+                                                                                            }
+                                                                                            else if (state == SSPublishContentStateFail)
+                                                                                            {
+                                                                                                NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                            }
+                                                                                        }];
+                                                                    }];
+    //自定义有道云笔记分享菜单项
+    id<ISSShareActionSheetItem> ydItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeYouDaoNote]
+                                                                            icon:[ShareSDK getClientIconWithType:ShareTypeYouDaoNote]
+                                                                    clickHandler:^{
+                                                                        [ShareSDK shareContent:publishContent
+                                                                                          type:ShareTypeYouDaoNote
+                                                                                   authOptions:authOptions
                                                                                  statusBarTips:YES
                                                                                         result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                                                                             if (state == SSPublishContentStateSuccess)
@@ -1229,28 +1214,25 @@
                                                                                         }];
                                                                     }];
     
-    id<ISSShareActionSheetItem> ydItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeYouDaoNote]
-                                                                            icon:[ShareSDK getClientIconWithType:ShareTypeYouDaoNote]
-                                                                    clickHandler:^{
-                                                                        [ShareSDK shareContent:publishContent
-                                                                                          type:ShareTypeYouDaoNote
-                                                                                   authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                                                                   allowCallback:YES
-                                                                                                                   authViewStyle:SSAuthViewStyleModal
-                                                                                                                    viewDelegate:_appDelegate.viewDelegate
-                                                                                                         authManagerViewDelegate:_appDelegate.viewDelegate]
-                                                                                 statusBarTips:YES
-                                                                                        result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                                                                            if (state == SSPublishContentStateSuccess)
-                                                                                            {
-                                                                                                NSLog(@"分享成功");
-                                                                                            }
-                                                                                            else if (state == SSPublishContentStateFail)
-                                                                                            {
-                                                                                                NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
-                                                                                            }
-                                                                                        }];
-                                                                    }];
+    //自定义搜狐随身看分享菜单项
+    id<ISSShareActionSheetItem> shkItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuKan]
+                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeSohuKan]
+                                                                     clickHandler:^{
+                                                                         [ShareSDK shareContent:publishContent
+                                                                                           type:ShareTypeSohuKan
+                                                                                    authOptions:authOptions
+                                                                                  statusBarTips:YES
+                                                                                         result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                             if (state == SSPublishContentStateSuccess)
+                                                                                             {
+                                                                                                 NSLog(@"分享成功");
+                                                                                             }
+                                                                                             else if (state == SSPublishContentStateFail)
+                                                                                             {
+                                                                                                 NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                             }
+                                                                                         }];
+                                                                     }];
     
     //创建自定义分享列表
     NSArray *shareList = [ShareSDK customShareListWithType:
@@ -1273,17 +1255,14 @@
                           dbItem,
                           ipItem,
                           ydItem,
+                          shkItem,
                           nil];
     
     [ShareSDK showShareActionSheet:container
                          shareList:shareList
                            content:publishContent
                      statusBarTips:YES
-                       authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                       allowCallback:YES
-                                                       authViewStyle:SSAuthViewStyleModal
-                                                        viewDelegate:_appDelegate.viewDelegate
-                                             authManagerViewDelegate:_appDelegate.viewDelegate]
+                       authOptions:authOptions
                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                            qqButtonHidden:NO
@@ -1326,16 +1305,25 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeSinaWeibo
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -1378,16 +1366,25 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeTencentWeibo
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -1426,16 +1423,26 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeNews];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeQQ
                           container:nil
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -1478,16 +1485,25 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeQQSpace
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -1526,16 +1542,25 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeNews];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeWeixiSession
                           container:nil
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -1574,16 +1599,26 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeNews];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeWeixiTimeline
                           container:nil
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -1627,16 +1662,26 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareType163Weibo
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -1679,16 +1724,26 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeSohuWeibo
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -1731,16 +1786,26 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeRenren
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -1783,16 +1848,26 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeKaixin
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -1835,16 +1910,26 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeDouBan
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -1887,16 +1972,26 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeInstapaper
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -1940,16 +2035,26 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeFacebook
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -1992,16 +2097,26 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeTwitter
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -2043,16 +2158,26 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeSMS
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -2095,16 +2220,26 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeMail
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -2160,16 +2295,87 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeYouDaoNote
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
+                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
+                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                            qqButtonHidden:NO
+                                                     wxSessionButtonHidden:NO
+                                                    wxTimelineButtonHidden:NO
+                                                      showKeyboardOnAppear:NO
+                                                         shareViewDelegate:_appDelegate.viewDelegate
+                                                       friendsViewDelegate:_appDelegate.viewDelegate
+                                                     picViewerViewDelegate:nil]
+                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 if (state == SSPublishContentStateSuccess)
+                                 {
+                                     NSLog(@"发表成功");
+                                 }
+                                 else if (state == SSPublishContentStateFail)
+                                 {
+                                     NSLog(@"发布失败!error code == %d, error code == %@", [error errorCode], [error errorDescription]);
+                                 }
+                             }];
+}
+
+/**
+ *	@brief	分享到搜狐随身看
+ *
+ *	@param 	sender 	事件对象
+ */
+- (void)shareToSohuKanClickHandler:(id)sender
+{
+    //创建分享内容
+    id<ISSContent> publishContent = [ShareSDK content:nil
+                                       defaultContent:@""
+                                                image:nil
+                                                title:nil
+                                                  url:@"http://www.sharesdk.cn"
+                                          description:nil
+                                            mediaType:SSPublishContentMediaTypeText];
+    
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeSohuKan
+                          container:container
+                            content:publishContent
+                      statusBarTips:YES
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -2210,16 +2416,26 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:[self.view viewWithTag:10001] arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeAirPrint
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -2260,16 +2476,26 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:[self.view viewWithTag:10001] arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeCopy
                           container:container
                             content:publishContent
                       statusBarTips:YES
-                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                        allowCallback:YES
-                                                        authViewStyle:SSAuthViewStyleModal
-                                                         viewDelegate:_appDelegate.viewDelegate
-                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                        authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                            oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                             qqButtonHidden:NO
@@ -2292,42 +2518,108 @@
 }
 
 /**
- *	@brief	关注官方微博
+ *	@brief	关注新浪微博
  *
  *	@param 	sender 	事件对象
  */
-- (void)followOfficerWeiboClickHandler:(UIButton *)sender
+- (void)followSinaWeiboClickHandler:(UIButton *)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                             delegate:self
-                                                    cancelButtonTitle:@"取消"
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"新浪微博",@"腾讯微博",nil];
-    actionSheet.tag = ACTION_SHEET_FOLLOW_USER;
-    [actionSheet showInView:self.view];
-    [actionSheet release];
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
+    [ShareSDK followUserWithType:ShareTypeSinaWeibo
+                           field:@"ShareSDK"
+                       fieldType:SSUserFieldTypeName
+                     authOptions:authOptions
+                    viewDelegate:_appDelegate.viewDelegate
+                          result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                              NSString *msg = nil;
+                              if (state == SSResponseStateSuccess)
+                              {
+                                  msg = @"关注成功";
+                              }
+                              else if (state == SSResponseStateFail)
+                              {
+                                  msg = [NSString stringWithFormat:@"关注失败:%@", error.errorDescription];
+                              }
+                              
+                              if (msg)
+                              {
+                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                      message:msg
+                                                                                     delegate:nil
+                                                                            cancelButtonTitle:@"知道了"
+                                                                            otherButtonTitles:nil];
+                                  [alertView show];
+                                  [alertView release];
+                              }
+                          }];
+}
+
+/**
+ *	@brief	关注腾讯微博
+ *
+ *	@param 	sender 	事件对象
+ */
+- (void)followTencentWeiboClickHandler:(UIButton *)sender
+{
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
+    [ShareSDK followUserWithType:ShareTypeTencentWeibo
+                           field:@"ShareSDK"
+                       fieldType:SSUserFieldTypeName
+                     authOptions:authOptions
+                    viewDelegate:_appDelegate.viewDelegate
+                          result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                              NSString *msg = nil;
+                              if (state == SSResponseStateSuccess)
+                              {
+                                  msg = @"关注成功";
+                              }
+                              else if (state == SSResponseStateFail)
+                              {
+                                  msg = [NSString stringWithFormat:@"关注失败:%@", error.errorDescription];
+                              }
+                              
+                              if (msg)
+                              {
+                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                      message:msg
+                                                                                     delegate:nil
+                                                                            cancelButtonTitle:@"知道了"
+                                                                            otherButtonTitles:nil];
+                                  [alertView show];
+                                  [alertView release];
+                              }
+                          }];
 }
 
 - (void)followWeixinClickHandler:(UIButton *)sender
 {
     [ShareSDK followWeixinUser:@"http://weixin.qq.com/r/HHURHl7EjmDxh099nyA4"];
-}
-
-/**
- *	@brief	获取用户信息
- *
- *	@param 	sender 	事件对象
- */
-- (void)getUserInfoClickHandler:(UIButton *)sender
-{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                             delegate:self
-                                                    cancelButtonTitle:@"取消"
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"新浪微博",@"腾讯微博",@"搜狐微博",@"网易微博",@"豆瓣社区",@"QQ空间",@"人人网",@"开心网",@"Instapaper",@"有道云笔记",@"Facebook",@"Twitter", nil];
-    actionSheet.tag = ACTION_SHEET_GET_USER_INFO;
-    [actionSheet showInView:self.view];
-    [actionSheet release];
 }
 
 - (void)getOtherUserInfoClickHandler:(UIButton *)sender
@@ -2349,23 +2641,6 @@
     _ssoEnable = !_ssoEnable;
     [sender setTitle:[NSString stringWithFormat:@"SSO登录:%@", _ssoEnable ? @"YES" : @"NO"] forState:UIControlStateNormal];
     [ShareSDK ssoEnabled:_ssoEnable];
-}
-
-/**
- *	@brief	获取AccessToken按钮点击
- *
- *	@param 	sender 	事件对象
- */
-- (void)getAccessTokenClickHandler:(UIButton *)sender
-{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                             delegate:self
-                                                    cancelButtonTitle:@"取消"
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"新浪微博",@"腾讯微博",@"搜狐微博",@"网易微博",@"豆瓣社区",@"QQ空间",@"人人网",@"开心网",@"Instapaper", @"有道云笔记", @"Facebook", @"Twitter", nil];
-    actionSheet.tag = ACTION_SHEET_GET_ACCESS_TOKEN;
-    [actionSheet showInView:self.view];
-    [actionSheet release];
 }
 
 - (void)setAccessTokenClickHandler:(UIButton *)sender
@@ -2407,16 +2682,26 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareActionSheet:container
                          shareList:shareList
                            content:publishContent
                      statusBarTips:YES
-                       authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                       allowCallback:YES
-                                                       authViewStyle:SSAuthViewStyleModal
-                                                        viewDelegate:_appDelegate.viewDelegate
-                                             authManagerViewDelegate:_appDelegate.viewDelegate]
+                       authOptions:authOptions
                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                            qqButtonHidden:NO
@@ -2525,16 +2810,26 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     //显示分享菜单
     [ShareSDK showShareActionSheet:container
                          shareList:shareList
                            content:publishContent
                      statusBarTips:YES
-                       authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                       allowCallback:YES
-                                                       authViewStyle:SSAuthViewStyleModal
-                                                        viewDelegate:_appDelegate.viewDelegate
-                                             authManagerViewDelegate:_appDelegate.viewDelegate]
+                       authOptions:authOptions
                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                            qqButtonHidden:NO
@@ -2649,15 +2944,25 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     [ShareSDK showShareActionSheet:container
                          shareList:nil
                            content:publishContent
                      statusBarTips:YES
-                       authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                       allowCallback:YES
-                                                       authViewStyle:SSAuthViewStyleModal
-                                                        viewDelegate:_appDelegate.viewDelegate
-                                             authManagerViewDelegate:_appDelegate.viewDelegate]
+                       authOptions:authOptions
                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                            qqButtonHidden:NO
@@ -2761,15 +3066,25 @@
 {
     if (buttonIndex == 1)
     {
+        id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                             allowCallback:YES
+                                                             authViewStyle:SSAuthViewStyleModal
+                                                              viewDelegate:nil
+                                                   authManagerViewDelegate:_appDelegate.viewDelegate];
+        
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                        [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                        SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                        [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                        SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                        nil]];
+        
         //关注用户
         [ShareSDK followUserWithType:_followType
                                field:@"ShareSDK"
                            fieldType:SSUserFieldTypeName
-                         authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                         allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
-                                                          viewDelegate:_appDelegate.viewDelegate
-                                               authManagerViewDelegate:_appDelegate.viewDelegate]
+                         authOptions:authOptions
                         viewDelegate:_appDelegate.viewDelegate
                               result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                   NSString *msg = nil;

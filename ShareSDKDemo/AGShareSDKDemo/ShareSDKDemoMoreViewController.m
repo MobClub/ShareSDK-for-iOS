@@ -155,6 +155,20 @@
     {
         case 0:
         {
+            id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                                 allowCallback:YES
+                                                                 authViewStyle:SSAuthViewStyleModal
+                                                                  viewDelegate:nil
+                                                       authManagerViewDelegate:_appDelegate.viewDelegate];
+            
+            //在授权页面中添加关注官方微博
+            [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                            SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                            [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                            SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                            nil]];
+            
             switch (indexPath.row)
             {
                 case 0:
@@ -163,11 +177,7 @@
                     [ShareSDK followUserWithType:ShareTypeSinaWeibo
                                            field:@"ShareSDK"
                                        fieldType:SSUserFieldTypeName
-                                     authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                     allowCallback:YES
-                                                                     authViewStyle:SSAuthViewStyleModal
-                                                                      viewDelegate:_appDelegate.viewDelegate
-                                                           authManagerViewDelegate:_appDelegate.viewDelegate]
+                                     authOptions:authOptions
                                     viewDelegate:_appDelegate.viewDelegate
                                           result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                               NSString *msg = nil;
@@ -207,11 +217,7 @@
                     [ShareSDK followUserWithType:ShareTypeTencentWeibo
                                            field:@"ShareSDK"
                                        fieldType:SSUserFieldTypeName
-                                     authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                     allowCallback:YES
-                                                                     authViewStyle:SSAuthViewStyleModal
-                                                                      viewDelegate:_appDelegate.viewDelegate
-                                                           authManagerViewDelegate:_appDelegate.viewDelegate]
+                                     authOptions:authOptions
                                     viewDelegate:_appDelegate.viewDelegate
                                           result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                               NSString *msg = nil;

@@ -32,6 +32,7 @@
     CMImageCacheManager *_imageCacheManager;
     BOOL _refreshData;
     BOOL _hasNext;
+    BOOL _initialized;
     NSInteger _page;
     id _changeHandler;
     

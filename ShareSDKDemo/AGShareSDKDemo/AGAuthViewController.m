@@ -136,6 +136,12 @@
                             [NSNumber numberWithInteger:ShareTypeYouDaoNote],
                             @"type",
                             nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"搜狐随身看",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeSohuKan],
+                            @"type",
+                            nil],
                            nil];
         
         NSArray *authList = [NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()]];
@@ -214,7 +220,7 @@
 - (NSUInteger)supportedInterfaceOrientations
 {
     //iOS6下旋屏方法
-    return UIInterfaceOrientationMaskAll;
+    return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -236,12 +242,22 @@
             //用户用户信息
             ShareType type = [[item objectForKey:@"type"] integerValue];
             
+            id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                                 allowCallback:YES
+                                                                 authViewStyle:SSAuthViewStyleModal
+                                                                  viewDelegate:nil
+                                                       authManagerViewDelegate:appDelegate.viewDelegate];
+            
+            //在授权页面中添加关注官方微博
+            [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                            SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                            [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                            SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                            nil]];
+            
             [ShareSDK getUserInfoWithType:type
-                              authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                              allowCallback:YES
-                                                              authViewStyle:SSAuthViewStyleModal
-                                                               viewDelegate:appDelegate.viewDelegate
-                                                    authManagerViewDelegate:appDelegate.viewDelegate]
+                              authOptions:authOptions
                                    result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                        if (result)
                                        {

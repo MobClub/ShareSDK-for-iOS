@@ -45,9 +45,9 @@
      连接新浪微博开放平台应用以使用相关功能，此应用需要引用SinaWeiboConnection.framework
      http://open.weibo.com上注册新浪微博开放平台应用，并将相关信息填写到以下字段
     **/
-    [ShareSDK connectSinaWeiboWithAppKey:@"3201194191"
-                               appSecret:@"0334252914651e8f76bad63337b3b78f"
-                             redirectUri:@"http://appgo.cn"];
+    [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
+                               appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+                             redirectUri:@"http://www.sharesdk.cn"];
     /**
      连接腾讯微博开放平台应用以使用相关功能，此应用需要引用TencentWeiboConnection.framework
      http://dev.t.qq.com上注册腾讯微博开放平台应用，并将相关信息填写到以下字段
@@ -73,7 +73,8 @@
      http://open.t.sohu.com上注册搜狐微博开放平台应用，并将相关信息填写到以下字段
      **/
     [ShareSDK connectSohuWeiboWithConsumerKey:@"SAfmTG1blxZY3HztESWx"
-                               consumerSecret:@"yfTZf)!rVwh*3dqQuVJVsUL37!F)!yS9S!Orcsij"];
+                               consumerSecret:@"yfTZf)!rVwh*3dqQuVJVsUL37!F)!yS9S!Orcsij"
+                                  redirectUri:@"http://www.sharesdk.cn"];
     
     /**
      连接豆瓣应用以使用相关功能，此应用需要引用DouBanConnection.framework
@@ -125,6 +126,14 @@
                                 redirectUri:@"http://www.sharesdk.cn"];
     
     /**
+     连接搜狐随身看应用以使用相关功能，此应用需要引用SohuConnection.framework
+     https://open.sohu.com上注册应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectSohuKanWithAppKey:@"e16680a815134504b746c86e08a19db0"
+                             appSecret:@"b8eec53707c3976efc91614dd16ef81c"
+                           redirectUri:@"http://sharesdk.cn"];
+    
+    /**
      连接QQ应用以使用相关功能，此应用需要引用QQConnection.framework和QQApi.framework库
      http://mobile.qq.com/api/上注册应用，并将相关信息填写到以下字段
      **/
@@ -143,8 +152,11 @@
      注册SDK应用，此应用请到http://www.sharesdk.cn中进行注册申请。
      此方法必须在启动时调用，否则会限制SDK的使用。
      **/
-    [ShareSDK registerApp:@"520520test"];
+    [ShareSDK registerApp:@"api20"];
+    [ShareSDK convertUrlEnabled:YES];
     [self initializePlat];
+    
+    _interfaceOrientationMask = SSInterfaceOrientationMaskAll;
     
     //横屏设置
 //    [ShareSDK setInterfaceOrientationMask:UIInterfaceOrientationMaskLandscape];
@@ -283,6 +295,11 @@
     }
     
     [authList writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
+}
+
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return self.interfaceOrientationMask;
 }
 
 #pragma mark - WXApiDelegate

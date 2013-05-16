@@ -18,6 +18,10 @@
 #import "AGLeftSideTableCell.h"
 #import "AGCustomViewController.h"
 #import "AGAppDelegate.h"
+#import "AGSinaWeiboViewController.h"
+#import "AGGetUserInfoViewController.h"
+#import "AGGetCredentialViewController.h"
+#import "AGCallAPIViewController.h"
 
 #define TABLE_CELL @"tableCell"
 
@@ -84,7 +88,7 @@
 {
     switch (section) {
         case 0:
-            return 6;
+            return 10;
         case 1:
             return 5;
         default:
@@ -128,10 +132,22 @@
                     cell.textLabel.text = @"QQ";
                     break;
                 case 4:
-                    cell.textLabel.text = @"演示";
+                    cell.textLabel.text = @"新浪微博";
                     break;
                 case 5:
+                    cell.textLabel.text = @"演示";
+                    break;
+                case 6:
                     cell.textLabel.text = @"自定义分享界面";
+                    break;
+                case 7:
+                    cell.textLabel.text = @"获取用户信息";
+                    break;
+                case 8:
+                    cell.textLabel.text = @"获取授权信息";
+                    break;
+                case 9:
+                    cell.textLabel.text = @"调用API";
                     break;
             }
             break;
@@ -266,7 +282,7 @@
                 case 4:
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        UIViewController *shareVC = [[[AGViewController alloc] init] autorelease];
+                        UIViewController *shareVC = [[[AGSinaWeiboViewController alloc] init] autorelease];
                         UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
                         self.viewDeckController.centerController = navShareVC;
                         
@@ -277,7 +293,51 @@
                 case 5:
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        UIViewController *shareVC = [[[AGViewController alloc] init] autorelease];
+                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
+                        self.viewDeckController.centerController = navShareVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                    break;
+                }
+                case 6:
+                {
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         UIViewController *shareVC = [[[AGCustomViewController alloc] init] autorelease];
+                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
+                        self.viewDeckController.centerController = navShareVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                    break;
+                }
+                case 7:
+                {
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        UIViewController *shareVC = [[[AGGetUserInfoViewController alloc] init] autorelease];
+                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
+                        self.viewDeckController.centerController = navShareVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                    break;
+                }
+                case 8:
+                {
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        UIViewController *shareVC = [[[AGGetCredentialViewController alloc] init] autorelease];
+                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
+                        self.viewDeckController.centerController = navShareVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                    break;
+                }
+                case 9:
+                {
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        UIViewController *shareVC = [[[AGCallAPIViewController alloc] init] autorelease];
                         UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
                         self.viewDeckController.centerController = navShareVC;
                         
@@ -292,6 +352,20 @@
         }
         case 1:
         {
+            id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                                 allowCallback:YES
+                                                                 authViewStyle:SSAuthViewStyleModal
+                                                                  viewDelegate:nil
+                                                       authManagerViewDelegate:_appDelegate.viewDelegate];
+            
+            //在授权页面中添加关注官方微博
+            [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                            SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                            [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                            SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                            nil]];
+            
             switch (indexPath.row)
             {
                 case 0:
@@ -299,11 +373,7 @@
                     [ShareSDK followUserWithType:ShareTypeSinaWeibo
                                            field:@"ShareSDK"
                                        fieldType:SSUserFieldTypeName
-                                     authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                     allowCallback:YES
-                                                                     authViewStyle:SSAuthViewStyleModal
-                                                                      viewDelegate:_appDelegate.viewDelegate
-                                                           authManagerViewDelegate:_appDelegate.viewDelegate]
+                                     authOptions:authOptions
                                     viewDelegate:_appDelegate.viewDelegate
                                           result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                               NSString *msg = nil;
@@ -343,11 +413,7 @@
                     [ShareSDK followUserWithType:ShareTypeTencentWeibo
                                            field:@"ShareSDK"
                                        fieldType:SSUserFieldTypeName
-                                     authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                     allowCallback:YES
-                                                                     authViewStyle:SSAuthViewStyleModal
-                                                                      viewDelegate:_appDelegate.viewDelegate
-                                                           authManagerViewDelegate:_appDelegate.viewDelegate]
+                                     authOptions:authOptions
                                     viewDelegate:_appDelegate.viewDelegate
                                           result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                               NSString *msg = nil;

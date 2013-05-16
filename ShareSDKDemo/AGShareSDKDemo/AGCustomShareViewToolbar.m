@@ -121,6 +121,12 @@
                                   [NSNumber numberWithBool:NO],
                                   @"selected",
                                   nil],
+                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  SHARE_TYPE_NUMBER(ShareTypeSohuKan),
+                                  @"type",
+                                  [NSNumber numberWithBool:NO],
+                                  @"selected",
+                                  nil],
                                  nil];
         
         
@@ -184,12 +190,22 @@
                                                                       }
                                                                       else
                                                                       {
+                                                                          id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                                                                                               allowCallback:YES
+                                                                                                                               authViewStyle:SSAuthViewStyleModal
+                                                                                                                                viewDelegate:nil
+                                                                                                                     authManagerViewDelegate:_appDelegate.viewDelegate];
+                                                                          
+                                                                          //在授权页面中添加关注官方微博
+                                                                          [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                                                          [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                                                                                          SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                                                                                          [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                                                                                          SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                                                                                          nil]];
+                                                                          
                                                                           [ShareSDK getUserInfoWithType:shareType
-                                                                                            authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                                                                            allowCallback:YES
-                                                                                                                            authViewStyle:SSAuthViewStyleModal
-                                                                                                                             viewDelegate:_appDelegate.viewDelegate
-                                                                                                                  authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                                                            authOptions:authOptions
                                                                                                  result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                                                                                      if (result)
                                                                                                      {

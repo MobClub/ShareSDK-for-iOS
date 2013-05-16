@@ -117,8 +117,7 @@
                                                                                     0.0f - _tableView.bounds.size.height,
                                                                                     self.view.width,
                                                                                     _tableView.bounds.size.height)
-                                                              arrowImage:[UIImage imageNamed:@"RefreshHeader/BlueArrow.png"
-                                                                                  bundleName:BUNDLE_NAME]
+                                                              arrowImage:[UIImage imageNamed:@"BlueArrow.png"]
                                                                textColor:nil];
     _refreshHeaderView.delegate = self;
     [_tableView addSubview:_refreshHeaderView];
@@ -159,7 +158,11 @@
 {
     [super viewDidAppear:animated];
     
-    [self beginRefreshData];
+    if (!_initialized)
+    {
+        _initialized = YES;
+        [self beginRefreshData];
+    }
 }
 
 - (void)refreshData
@@ -196,13 +199,23 @@
             page = [ShareSDK pageWithPageNo:(NSInteger)_page pageSize:0];
         }
         
+        id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                             allowCallback:YES
+                                                             authViewStyle:SSAuthViewStyleModal
+                                                              viewDelegate:nil
+                                                   authManagerViewDelegate:_appDelegate.viewDelegate];
+        
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                        [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                        SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                        [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                        SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                        nil]];
+        
         [ShareSDK getFriendsWithType:_shareType
                                 page:page
-                         authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                         allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
-                                                          viewDelegate:_appDelegate.viewDelegate
-                                               authManagerViewDelegate:_appDelegate.viewDelegate]
+                         authOptions:authOptions
                               result:^(BOOL result, NSArray *users, id<ISSPage> currPage, id<ISSPage> prevPage, id<ISSPage> nextPage, BOOL hasNext, id<ICMErrorInfo> error) {
                                   if (result)
                                   {
@@ -235,12 +248,22 @@
     }
     else
     {
+        id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                             allowCallback:YES
+                                                             authViewStyle:SSAuthViewStyleModal
+                                                              viewDelegate:nil
+                                                   authManagerViewDelegate:_appDelegate.viewDelegate];
+        
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                        [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                        SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                        [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                        SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                        nil]];
+        
         [ShareSDK getUserInfoWithType:_shareType
-                          authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                          allowCallback:YES
-                                                          authViewStyle:SSAuthViewStyleModal
-                                                           viewDelegate:_appDelegate.viewDelegate
-                                                authManagerViewDelegate:_appDelegate.viewDelegate]
+                          authOptions:authOptions
                                result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                    if (result)
                                    {
@@ -254,13 +277,23 @@
                                            page = [ShareSDK pageWithPageNo:(NSInteger)_page pageSize:0];
                                        }
                                        
+                                       id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                                                            allowCallback:YES
+                                                                                            authViewStyle:SSAuthViewStyleModal
+                                                                                             viewDelegate:nil
+                                                                                  authManagerViewDelegate:_appDelegate.viewDelegate];
+                                       
+                                       //在授权页面中添加关注官方微博
+                                       [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                       [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                                                       SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                                                       [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                                                       SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                                                       nil]];
+                                       
                                        [ShareSDK getFriendsWithType:_shareType
                                                                page:page
-                                                        authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                                        allowCallback:YES
-                                                                                        authViewStyle:SSAuthViewStyleModal
-                                                                                         viewDelegate:_appDelegate.viewDelegate
-                                                                              authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                        authOptions:authOptions
                                                              result:^(BOOL result, NSArray *users, id<ISSPage> currPage, id<ISSPage> prevPage, id<ISSPage> nextPage, BOOL hasNext, id<ICMErrorInfo> error) {
                                                                  if (result)
                                                                  {
@@ -416,7 +449,7 @@
 - (NSUInteger)supportedInterfaceOrientations
 {
     //iOS6下旋屏方法
-    return UIInterfaceOrientationMaskAll;
+    return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

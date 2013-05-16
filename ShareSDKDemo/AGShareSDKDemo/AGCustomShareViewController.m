@@ -258,7 +258,7 @@
 - (NSUInteger)supportedInterfaceOrientations
 {
     //iOS6下旋屏方法
-    return UIInterfaceOrientationMaskAll;
+    return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -528,6 +528,20 @@
                                           source:@"http://www.sharesdk.cn"
                                      attachments:INHERIT_VALUE];
     
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleModal
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
     BOOL needAuth = NO;
     if ([selectedClients count] == 1)
     {
@@ -536,22 +550,14 @@
         {
             needAuth = YES;
             [ShareSDK getUserInfoWithType:shareType
-                              authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                              allowCallback:YES
-                                                              authViewStyle:SSAuthViewStyleModal
-                                                               viewDelegate:_appDelegate.viewDelegate
-                                                    authManagerViewDelegate:_appDelegate.viewDelegate]
+                              authOptions:authOptions
                                    result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                        if (result)
                                        {
                                            //分享内容
                                            [ShareSDK oneKeyShareContent:publishContent
                                                               shareList:selectedClients
-                                                            authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                                                            allowCallback:YES
-                                                                                            authViewStyle:SSAuthViewStyleModal
-                                                                                             viewDelegate:_appDelegate.viewDelegate
-                                                                                  authManagerViewDelegate:_appDelegate.viewDelegate]
+                                                            authOptions:authOptions
                                                           statusBarTips:YES
                                                                  result:nil];
                                            
@@ -576,11 +582,7 @@
         //分享内容
         [ShareSDK oneKeyShareContent:publishContent
                            shareList:selectedClients
-                         authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                         allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
-                                                          viewDelegate:_appDelegate.viewDelegate
-                                               authManagerViewDelegate:_appDelegate.viewDelegate]
+                         authOptions:authOptions
                        statusBarTips:YES
                               result:nil];
         

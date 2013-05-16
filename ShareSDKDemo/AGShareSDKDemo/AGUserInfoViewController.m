@@ -157,7 +157,7 @@
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavigationBarBG.png"]];
     
-    _tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.width, self.view.height) style:UITableViewStyleGrouped] autorelease];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.width, self.view.height) style:UITableViewStyleGrouped];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _tableView.backgroundColor = [UIColor colorWithRGB:0xe1e0de];
     _tableView.backgroundView = nil;
@@ -182,14 +182,24 @@
     {
         _initialized = YES;
         
+        id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                             allowCallback:YES
+                                                             authViewStyle:SSAuthViewStyleModal
+                                                              viewDelegate:nil
+                                                   authManagerViewDelegate:_appDelegate.viewDelegate];
+        
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                        [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                        SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                        [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                        SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                        nil]];
+        
         if (_flag == 0)
         {
             [ShareSDK getUserInfoWithType:_type
-                              authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                              allowCallback:YES
-                                                              authViewStyle:SSAuthViewStyleModal
-                                                               viewDelegate:_appDelegate.viewDelegate
-                                                    authManagerViewDelegate:_appDelegate.viewDelegate]
+                              authOptions:authOptions
                                    result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                        if (result)
                                        {
@@ -251,6 +261,10 @@
                                                case ShareTypeYouDaoNote:
                                                    //有道云笔记
                                                    [self fillYouDaoNoteUser:userInfo];
+                                                   break;
+                                               case ShareTypeSohuKan:
+                                                   //搜狐随身看
+                                                   [self fillSohuKanUser:userInfo];
                                                    break;
                                                default:
                                                    break;
@@ -275,11 +289,7 @@
             [ShareSDK getUserInfoWithType:_type
                                     field:_name
                                 fieldType:_paramType
-                              authOptions:[ShareSDK authOptionsWithAutoAuth:YES
-                                                              allowCallback:YES
-                                                              authViewStyle:SSAuthViewStyleModal
-                                                               viewDelegate:_appDelegate.viewDelegate
-                                                    authManagerViewDelegate:_appDelegate.viewDelegate]
+                              authOptions:authOptions
                                    result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                        if (result)
                                        {
@@ -341,6 +351,10 @@
                                                case ShareTypeYouDaoNote:
                                                    //有道云笔记
                                                    [self fillYouDaoNoteUser:userInfo];
+                                                   break;
+                                               case ShareTypeSohuKan:
+                                                   //搜狐随身看
+                                                   [self fillSohuKanUser:userInfo];
                                                    break;
                                                default:
                                                    break;
@@ -382,7 +396,7 @@
 - (NSUInteger)supportedInterfaceOrientations
 {
     //iOS6下旋屏方法
-    return UIInterfaceOrientationMaskAll;
+    return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -1400,6 +1414,29 @@
 }
 
 - (void)fillYouDaoNoteUser:(id<ISSUserInfo>)userInfo
+{
+    NSArray *keys = [[userInfo sourceData] allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [[userInfo sourceData] objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]])
+        {
+            if ([value respondsToSelector:@selector(stringValue)])
+            {
+                value = [value stringValue];
+            }
+            else
+            {
+                value = @"";
+            }
+        }
+        
+        [_infoDict setObject:value forKey:keyName];
+    }
+}
+
+- (void)fillSohuKanUser:(id<ISSUserInfo>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
