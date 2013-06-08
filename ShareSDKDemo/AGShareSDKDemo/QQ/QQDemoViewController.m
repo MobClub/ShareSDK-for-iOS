@@ -9,7 +9,7 @@
 #import "QQDemoViewController.h"
 #import "HeadView.h"
 #import "QQTextViewController.h"
-#import "QQApi/QQApi.h"
+#import <TencentOpenAPI/QQApi.h>
 #import <AGCommon/UINavigationBar+Common.h>
 #import <AGCommon/UIImage+Common.h>
 #import <AGCommon/UIDevice+Common.h>
@@ -319,7 +319,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -363,7 +363,7 @@
         
         id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                              allowCallback:YES
-                                                             authViewStyle:SSAuthViewStyleModal
+                                                             authViewStyle:SSAuthViewStyleFullScreenPopup
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:_appDelegate.viewDelegate];
         
@@ -498,7 +498,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -543,7 +543,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -588,7 +588,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -632,7 +632,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -676,7 +676,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     

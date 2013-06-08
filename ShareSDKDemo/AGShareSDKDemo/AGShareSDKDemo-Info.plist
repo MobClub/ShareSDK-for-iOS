@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.1.1</string>
+	<string>2.2.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2.1.1</string>
+	<string>2.2.1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -51,6 +51,9 @@
 				<string>sinaweibosso.568898243</string>
 				<string>wx6dd7a9b94f3dd72a</string>
 				<string>QQ075BCD15</string>
+				<string>pocketapp1234</string>
+				<string>tencent100371282</string>
+				<string>wb801307650</string>
 			</array>
 			<key>CFBundleURLName</key>
 			<string></string>
@@ -60,5 +63,7 @@
 	<true/>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackOpaque</string>
+	<key>UIStatusBarHidden</key>
+	<true/>
 </dict>
 </plist>

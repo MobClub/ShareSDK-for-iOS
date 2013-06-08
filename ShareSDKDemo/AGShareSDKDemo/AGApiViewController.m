@@ -119,9 +119,9 @@
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"设置AccessToken" forState:UIControlStateNormal];
+    [button setTitle:@"分享网络图片" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(setAccessTokenClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(shareWebPicClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -295,6 +295,29 @@
     [button setTitle:@"分享到搜狐随身看" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
     [button addTarget:self action:@selector(shareToSohuKanClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    top += button.height + VERTICAL_GAP;
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"分享到印象笔记" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(shareToEvernoteClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"分享到Pocket" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(shareToPocketClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    top += button.height + VERTICAL_GAP;
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"设置AccessToken" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(setAccessTokenClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     scrollView.contentSize = CGSizeMake(self.view.width, top += button.height + VERTICAL_GAP);
@@ -687,7 +710,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:NO
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     //在授权页面中添加关注官方微博
@@ -833,7 +856,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:NO
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     //在授权页面中添加关注官方微博
@@ -965,7 +988,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -1234,6 +1257,46 @@
                                                                                          }];
                                                                      }];
     
+    //自定义印象笔记分享菜单项
+    id<ISSShareActionSheetItem> evnItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeEvernote]
+                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeEvernote]
+                                                                     clickHandler:^{
+                                                                         [ShareSDK shareContent:publishContent
+                                                                                           type:ShareTypeEvernote
+                                                                                    authOptions:authOptions
+                                                                                  statusBarTips:YES
+                                                                                         result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                             if (state == SSPublishContentStateSuccess)
+                                                                                             {
+                                                                                                 NSLog(@"分享成功");
+                                                                                             }
+                                                                                             else if (state == SSPublishContentStateFail)
+                                                                                             {
+                                                                                                 NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                             }
+                                                                                         }];
+                                                                     }];
+    
+    //自定义Pocket分享菜单项
+    id<ISSShareActionSheetItem> pkItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypePocket]
+                                                                            icon:[ShareSDK getClientIconWithType:ShareTypePocket]
+                                                                    clickHandler:^{
+                                                                        [ShareSDK shareContent:publishContent
+                                                                                          type:ShareTypePocket
+                                                                                   authOptions:authOptions
+                                                                                 statusBarTips:YES
+                                                                                        result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                            if (state == SSPublishContentStateSuccess)
+                                                                                            {
+                                                                                                NSLog(@"分享成功");
+                                                                                            }
+                                                                                            else if (state == SSPublishContentStateFail)
+                                                                                            {
+                                                                                                NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                            }
+                                                                                        }];
+                                                                    }];
+    
     //创建自定义分享列表
     NSArray *shareList = [ShareSDK customShareListWithType:
                           sinaItem,
@@ -1253,6 +1316,8 @@
                           shItem,
                           wyItem,
                           dbItem,
+                          evnItem,
+                          pkItem,
                           ipItem,
                           ydItem,
                           shkItem,
@@ -1307,7 +1372,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     //在授权页面中添加关注官方微博
@@ -1368,7 +1433,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     //在授权页面中添加关注官方微博
@@ -1425,7 +1490,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -1487,7 +1552,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     //在授权页面中添加关注官方微博
@@ -1544,7 +1609,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     //在授权页面中添加关注官方微博
@@ -1601,7 +1666,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -1664,7 +1729,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -1726,7 +1791,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -1788,7 +1853,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -1850,7 +1915,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -1912,7 +1977,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -1974,7 +2039,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -2037,7 +2102,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -2099,7 +2164,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -2160,7 +2225,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -2222,7 +2287,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -2297,7 +2362,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -2358,7 +2423,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -2418,7 +2483,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -2478,7 +2543,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -2526,7 +2591,7 @@
 {
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -2576,7 +2641,7 @@
 {
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -2684,7 +2749,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -2812,7 +2877,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -2827,6 +2892,60 @@
     //显示分享菜单
     [ShareSDK showShareActionSheet:container
                          shareList:shareList
+                           content:publishContent
+                     statusBarTips:YES
+                       authOptions:authOptions
+                      shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
+                                                          oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                           qqButtonHidden:NO
+                                                    wxSessionButtonHidden:NO
+                                                   wxTimelineButtonHidden:NO
+                                                     showKeyboardOnAppear:NO
+                                                        shareViewDelegate:_appDelegate.viewDelegate
+                                                      friendsViewDelegate:_appDelegate.viewDelegate
+                                                    picViewerViewDelegate:nil]
+                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                if (state == SSPublishContentStateSuccess)
+                                {
+                                    NSLog(@"分享成功");
+                                }
+                                else if (state == SSPublishContentStateFail)
+                                {
+                                    NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                }
+                            }];
+}
+
+- (void)shareWebPicClickHandler:(id)sender
+{
+    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+                                       defaultContent:nil
+                                                image:[ShareSDK imageWithUrl:@"http://list.image.baidu.com/t/yingshi.jpg"]
+                                                title:@"ShareSDK"
+                                                  url:@"http://www.sharesdk.cn"
+                                          description:@"这是一条测试信息"
+                                            mediaType:SSPublishContentMediaTypeNews];
+    
+    //创建容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
+    [ShareSDK showShareActionSheet:container
+                         shareList:nil
                            content:publishContent
                      statusBarTips:YES
                        authOptions:authOptions
@@ -2946,7 +3065,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -2982,6 +3101,124 @@
                                     NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
                                 }
                             }];
+}
+
+/**
+ *	@brief	分享到印象笔记
+ *
+ *	@param 	sender 	事件对象
+ */
+- (void)shareToEvernoteClickHandler:(id)sender
+{
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+                                       defaultContent:@""
+                                                image:[ShareSDK imageWithPath:imagePath]
+                                                title:@"Hello 印象笔记"
+                                                  url:@"http://www.sharesdk.cn"
+                                          description:nil
+                                            mediaType:SSPublishContentMediaTypeText];
+    
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeEvernote
+                          container:container
+                            content:publishContent
+                      statusBarTips:YES
+                        authOptions:authOptions
+                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
+                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                            qqButtonHidden:NO
+                                                     wxSessionButtonHidden:NO
+                                                    wxTimelineButtonHidden:NO
+                                                      showKeyboardOnAppear:NO
+                                                         shareViewDelegate:_appDelegate.viewDelegate
+                                                       friendsViewDelegate:_appDelegate.viewDelegate
+                                                     picViewerViewDelegate:nil]
+                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 if (state == SSPublishContentStateSuccess)
+                                 {
+                                     NSLog(@"发表成功");
+                                 }
+                                 else if (state == SSPublishContentStateFail)
+                                 {
+                                     NSLog(@"发布失败!error code == %d, error code == %@", [error errorCode], [error errorDescription]);
+                                 }
+                             }];
+}
+
+- (void)shareToPocketClickHandler:(id)sender
+{
+    //创建分享内容
+    id<ISSContent> publishContent = [ShareSDK content:nil
+                                       defaultContent:@""
+                                                image:nil
+                                                title:@"Hello Pocket"
+                                                  url:@"http://www.sharesdk.cn"
+                                          description:nil
+                                            mediaType:SSPublishContentMediaTypeText];
+    
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypePocket
+                          container:container
+                            content:publishContent
+                      statusBarTips:YES
+                        authOptions:authOptions
+                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
+                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                            qqButtonHidden:NO
+                                                     wxSessionButtonHidden:NO
+                                                    wxTimelineButtonHidden:NO
+                                                      showKeyboardOnAppear:NO
+                                                         shareViewDelegate:_appDelegate.viewDelegate
+                                                       friendsViewDelegate:_appDelegate.viewDelegate
+                                                     picViewerViewDelegate:nil]
+                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 if (state == SSPublishContentStateSuccess)
+                                 {
+                                     NSLog(@"发表成功");
+                                 }
+                                 else if (state == SSPublishContentStateFail)
+                                 {
+                                     NSLog(@"发布失败!error code == %d, error code == %@", [error errorCode], [error errorDescription]);
+                                 }
+                             }];
 }
 
 #pragma mark - Private
@@ -3068,7 +3305,7 @@
     {
         id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                              allowCallback:YES
-                                                             authViewStyle:SSAuthViewStyleModal
+                                                             authViewStyle:SSAuthViewStyleFullScreenPopup
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:_appDelegate.viewDelegate];
         

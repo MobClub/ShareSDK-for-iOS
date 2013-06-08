@@ -111,7 +111,7 @@
         
         id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                              allowCallback:YES
-                                                             authViewStyle:SSAuthViewStyleModal
+                                                             authViewStyle:SSAuthViewStyleFullScreenPopup
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:appDelegate.viewDelegate];
         

@@ -475,7 +475,7 @@
     //调用获取评论列表方法，接口文档：http://open.weibo.com/wiki/2/comments/show
     //先获取相关平台的App对象
     id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
-    
+
     //构造参数
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
     [params addParameter:@"id" value:_sinaGetCmtStatusIdField.text];

@@ -110,6 +110,18 @@
                                   @"selected",
                                   nil],
                                  [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  SHARE_TYPE_NUMBER(ShareTypeEvernote),
+                                  @"type",
+                                  [NSNumber numberWithBool:NO],
+                                  @"selected",
+                                  nil],
+                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  SHARE_TYPE_NUMBER(ShareTypePocket),
+                                  @"type",
+                                  [NSNumber numberWithBool:NO],
+                                  @"selected",
+                                  nil],
+                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                   SHARE_TYPE_NUMBER(ShareTypeInstapaper),
                                   @"type",
                                   [NSNumber numberWithBool:NO],
@@ -192,7 +204,7 @@
                                                                       {
                                                                           id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                                                                                                allowCallback:YES
-                                                                                                                               authViewStyle:SSAuthViewStyleModal
+                                                                                                                               authViewStyle:SSAuthViewStyleFullScreenPopup
                                                                                                                                 viewDelegate:nil
                                                                                                                      authManagerViewDelegate:_appDelegate.viewDelegate];
                                                                           

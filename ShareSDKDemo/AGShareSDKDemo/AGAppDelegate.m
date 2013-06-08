@@ -51,16 +51,23 @@
     /**
      连接腾讯微博开放平台应用以使用相关功能，此应用需要引用TencentWeiboConnection.framework
      http://dev.t.qq.com上注册腾讯微博开放平台应用，并将相关信息填写到以下字段
+     
+     如果需要实现SSO，需要导入libWeiboSDK.a，并引入WBApi.h，将WBApi类型传入接口
      **/
     [ShareSDK connectTencentWeiboWithAppKey:@"801307650"
                                   appSecret:@"ae36f4ee3946e1cbb98d6965b0b2ff5c"
-                                redirectUri:@"http://www.sharesdk.cn"];
+                                redirectUri:@"http://www.sharesdk.cn"
+                                   wbApiCls:[WBApi class]];
     /**
      连接QQ空间应用以使用相关功能，此应用需要引用QZoneConnection.framework
      http://connect.qq.com/intro/login/上申请加入QQ登录，并将相关信息填写到以下字段
+     
+     如果需要实现SSO，需要导入TencentOpenAPI.framework,并引入QQApiInterface.h和TencentOAuth.h，将QQApiInterface和TencentOAuth的类型传入接口
      **/
     [ShareSDK connectQZoneWithAppKey:@"100371282"
-                           appSecret:@"aed9b0303e3ed1e27bae87c33761161d"];
+                           appSecret:@"aed9b0303e3ed1e27bae87c33761161d"
+                   qqApiInterfaceCls:[QQApiInterface class]
+                     tencentOAuthCls:[TencentOAuth class]];
     /**
      连接网易微博应用以使用相关功能，此应用需要引用T163WeiboConnection.framework
      http://open.t.163.com上注册网易微博开放平台应用，并将相关信息填写到以下字段
@@ -116,7 +123,7 @@
      **/
     [ShareSDK connectFacebookWithAppKey:@"107704292745179"
                               appSecret:@"38053202e1a5fe26c80c753071f0b573"];
-    
+
     /**
      连接Twitter应用以使用相关功能，此应用需要引用TwitterConnection.framework
      https://dev.twitter.com上注册应用，并将相关信息填写到以下字段
@@ -132,6 +139,21 @@
     [ShareSDK connectSohuKanWithAppKey:@"e16680a815134504b746c86e08a19db0"
                              appSecret:@"b8eec53707c3976efc91614dd16ef81c"
                            redirectUri:@"http://sharesdk.cn"];
+    
+    /**
+     连接Pocket应用以使用相关功能，此应用需要引用PocketConnection.framework
+     http://getpocket.com/developer/上注册应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectPocketWithConsumerKey:@"11496-de7c8c5eb25b2c9fcdc2b627"
+                               redirectUri:@"pocketapp1234"];
+
+    /**
+     连接印象笔记应用以使用相关功能，此应用需要引用EverNoteConnection.framework
+     http://dev.yinxiang.com上注册应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectEvernoteWithType:SSEverNoteTypeSandbox
+                          consumerKey:@"sharesdk-7807"
+                       consumerSecret:@"d05bf86993836004"];
     
     /**
      连接QQ应用以使用相关功能，此应用需要引用QQConnection.framework和QQApi.framework库
@@ -153,7 +175,7 @@
      此方法必须在启动时调用，否则会限制SDK的使用。
      **/
     [ShareSDK registerApp:@"api20"];
-    [ShareSDK convertUrlEnabled:YES];
+    [ShareSDK convertUrlEnabled:NO];
     [self initializePlat];
     
     _interfaceOrientationMask = SSInterfaceOrientationMaskAll;

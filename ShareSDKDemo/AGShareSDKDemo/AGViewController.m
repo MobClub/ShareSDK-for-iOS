@@ -166,6 +166,22 @@
                                   @"type",
                                   nil],
                                  [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  @"印象笔记",
+                                  @"title",
+                                  [NSNumber numberWithBool:YES],
+                                  @"selected",
+                                  [NSNumber numberWithInteger:ShareTypeEvernote],
+                                  @"type",
+                                  nil],
+                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  @"Pocket",
+                                  @"title",
+                                  [NSNumber numberWithBool:YES],
+                                  @"selected",
+                                  [NSNumber numberWithInteger:ShareTypePocket],
+                                  @"type",
+                                  nil],
+                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                   @"Instapaper",
                                   @"title",
                                   [NSNumber numberWithBool:YES],
@@ -328,6 +344,22 @@
                             @"type",
                             nil],
                            [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"印象笔记",
+                            @"title",
+                            [NSNumber numberWithBool:YES],
+                            @"selected",
+                            [NSNumber numberWithInteger:ShareTypeEvernote],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Pocket",
+                            @"title",
+                            [NSNumber numberWithBool:YES],
+                            @"selected",
+                            [NSNumber numberWithInteger:ShareTypePocket],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
                             @"Instapaper",
                             @"title",
                             [NSNumber numberWithBool:YES],
@@ -471,7 +503,7 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleModal
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
@@ -581,7 +613,7 @@
         
         id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                              allowCallback:YES
-                                                             authViewStyle:SSAuthViewStyleModal
+                                                             authViewStyle:SSAuthViewStyleFullScreenPopup
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:_appDelegate.viewDelegate];
         
@@ -614,7 +646,7 @@
         
         id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                              allowCallback:YES
-                                                             authViewStyle:SSAuthViewStyleModal
+                                                             authViewStyle:SSAuthViewStyleFullScreenPopup
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:_appDelegate.viewDelegate];
         
@@ -629,10 +661,13 @@
         switch (_curAuthViewStyle)
         {
             case 1:
+                [authOptions setViewStyle:SSAuthViewStylePopup];
+                break;
+            case 2:
                 [authOptions setViewStyle:SSAuthViewStyleModal];
                 break;
             default:
-                [authOptions setViewStyle:SSAuthViewStylePopup];
+                [authOptions setViewStyle:SSAuthViewStyleFullScreenPopup];
                 break;
         }
         
@@ -835,7 +870,7 @@
         case 1:
             return 1;
         case 2:
-            return 2;
+            return 3;
         case 3:
             return 4;
         case 4:
@@ -915,9 +950,12 @@
             switch (indexPath.row)
             {
                 case 0:
-                    cell.textLabel.text = @"Popup(默认)";
+                    cell.textLabel.text = @"FullScreenPopup(默认)";
                     break;
                 case 1:
+                    cell.textLabel.text = @"Popup";
+                    break;
+                case 2:
                     cell.textLabel.text = @"Modal";
                     break;
                 default:

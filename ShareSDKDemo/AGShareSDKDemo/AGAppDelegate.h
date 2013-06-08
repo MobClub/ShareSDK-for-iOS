@@ -9,7 +9,10 @@
 
 #import <UIKit/UIKit.h>
 #import "WXApi.h"
-#import <QQApi/QQApi.h>
+#import "WBApi.h"
+#import <TencentOpenAPI/QQApi.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
 #import "WeChatViewController.h"
 #import "RespForWeChatViewController.h"
 #import "IIViewDeckController.h"

@@ -125,6 +125,18 @@
                             @"type",
                             nil],
                            [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"印象笔记",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeEvernote],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Pocket",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypePocket],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
                             @"Instapaper",
                             @"title",
                             [NSNumber numberWithInteger:ShareTypeInstapaper],
@@ -244,7 +256,7 @@
             
             id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                                  allowCallback:YES
-                                                                 authViewStyle:SSAuthViewStyleModal
+                                                                 authViewStyle:SSAuthViewStyleFullScreenPopup
                                                                   viewDelegate:nil
                                                        authManagerViewDelegate:appDelegate.viewDelegate];
             

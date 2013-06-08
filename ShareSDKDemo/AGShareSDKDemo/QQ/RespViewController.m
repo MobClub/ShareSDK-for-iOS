@@ -8,7 +8,7 @@
 
 #import "RespViewController.h"
 #import "HeadView.h"
-#import "QQApi/QQApi.h"
+#import <TencentOpenAPI/QQApi.h>
 
 
 @implementation RespViewController
