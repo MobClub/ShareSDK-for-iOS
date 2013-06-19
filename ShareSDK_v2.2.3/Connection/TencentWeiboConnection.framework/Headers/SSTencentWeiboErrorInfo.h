@@ -14,6 +14,14 @@
  *	@brief	腾讯微博错误信息
  */
 @interface SSTencentWeiboErrorInfo : CMErrorInfo
+{
+@private
+    NSInteger _ret;
+}
 
+/**
+ *	@brief	返回值
+ */
+@property (nonatomic) NSInteger ret;
 
 @end

@@ -608,7 +608,7 @@
  *
  *	@return	用户信息字段
  */
-+ (id<ISSUserField>)userFieldWithType:(SSUserFieldType)type valeu:(NSString *)value;
++ (id<ISSUserField>)userFieldWithType:(SSUserFieldType)type value:(NSString *)value;
 
 /**
  *	@brief	显示顶部状态栏显示消息,此消息会一直显示，直到调用hideStatusbarMessage为止
