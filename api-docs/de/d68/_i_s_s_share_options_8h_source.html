@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.4"/>
+<title>ShareSDK: ShareSDK.framework/Headers/ISSShareOptions.h 源文件</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">ShareSDK
+   &#160;<span id="projectnumber">2.4.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.4 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>首页</span></a></li>
+      <li><a href="../../pages.html"><span>相关页面</span></a></li>
+      <li><a href="../../annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="../../files.html"><span>文件</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>文件列表</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>属性</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>页</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_a048ee4f0d9e3359f27cf101d6a8d320.html">ShareSDK.framework</a></li><li class="navelem"><a class="el" href="../../dir_7fd165803e9f4a5012ea48b6d90ccc2d.html">Headers</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ISSShareOptions.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//  Created by ShareSDK.cn on 13-1-14.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//  官网地址:http://www.ShareSDK.cn</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//  技术支持邮箱:support@sharesdk.cn</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//  商务QQ:4006852216</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#import &quot;ISSViewDelegate.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#import &quot;ISSShareViewDelegate.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html">   17</a></span>&#160;<span class="keyword">@protocol </span><a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html" title="分享选项协议 ">ISSShareOptions</a> &lt;NSObject&gt;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;- (NSArray *)<a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html#aeddf99b26df21c23bdd73b09d242fb86" title="获取一键分享列表 ">oneKeyShareList</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;- (void)setOneKeyShareList:(NSArray *)oneKeyShareList;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;- (NSString *)<a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html#aaf1b6754ad64c514039e375d32a6856c" title="获取分享视图标题 ">title</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;- (void)setTitle:(NSString *)title;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;- (BOOL)<a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html#aeff7ab040234886810efaac1adb54204" title="QQ分享按钮隐藏标识，默认NO, 样式为ShareViewStyleDefault时有效 ">qqButtonHidden</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;- (void)setQqButtonHidden:(BOOL)qqButtonHidden;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;- (BOOL)<a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html#a1fb5a5c81a5f57b5ee1ba23a653f0d06" title="微信好友分享按钮隐藏标识，默认NO, 样式为ShareViewStyleDefault时有效 ">wxSessionButtonHidden</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;- (void)setWxSessionButtonHidden:(BOOL)wxSessionButtonHidden;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;- (BOOL)<a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html#a94f666644aee86000456f559ad4456ae" title="微信朋友圈分享按钮隐藏标识，默认NO, 样式为ShareViewStyleDefault时有效 ">wxTimelineButtonHidden</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;- (void)setWxTimelineButtonHidden:(BOOL)wxTimelineButtonHidden;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;- (BOOL)<a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html#a82659cdf3af6f1875b76419e1ff3eaa0" title="拍照按钮隐藏标识，默认NO, 样式为ShareViewStyleDefault时有效 ">cameraButtonHidden</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;- (void)setCameraButtonHidden:(BOOL)cameraButtonHidden;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;- (BOOL)<a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html#aefe03048e6c14c136625d916e8081f30" title="@按钮隐藏标识，默认NO, 样式为ShareViewStyleDefault时有效 ">mentionButtonHidden</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;- (void)setMentionButtonHidden:(BOOL)mentionButtonHidden;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;- (BOOL)<a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html#a995a2a73ce6ceb52aa1984bc15638f86" title="话题按钮隐藏标识，默认NO, 样式为ShareViewStyleDefault时有效 ">topicButtonHidden</a>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;- (void)setTopicButtonHidden:(BOOL)mentionButtonHidden;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;- (BOOL)<a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html#a797c633e9a95d7d4b03ccbdf41b23826" title="是否在视图显示时显示键盘,默认NO。当一键分享列表为nil时，此值无效。 ">showKeyboardOnAppear</a>;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;- (void)setShowKeyboardOnAppear:(BOOL)showKeyboardOnAppear;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;- (id&lt;<a class="code" href="../../d6/d9d/protocol_i_s_s_share_view_delegate-p.html" title="分享视图委托 ">ISSShareViewDelegate</a>&gt;)<a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html#a6d4265eeb5b30e771114f071f5077e4d" title="获取分享视图委托 ">shareViewDelegate</a>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;- (void)setShareViewDelegate:(<span class="keywordtype">id</span>&lt;<a class="code" href="../../d6/d9d/protocol_i_s_s_share_view_delegate-p.html" title="分享视图委托 ">ISSShareViewDelegate</a>&gt;)shareViewDelegate;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;- (id&lt;<a class="code" href="../../db/df7/protocol_i_s_s_view_delegate-p.html" title="授权视图协议 ">ISSViewDelegate</a>&gt;)<a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html#ac551154e9c905bfe13f754662c8b37ce" title="获取好友视图委托,此委托仅使用在默认样式视图中弹出的好友列表 ">friendsViewDelegate</a>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;- (void)setFriendsViewDelegate:(<span class="keywordtype">id</span>&lt;<a class="code" href="../../db/df7/protocol_i_s_s_view_delegate-p.html" title="授权视图协议 ">ISSViewDelegate</a>&gt;)friendsViewDelegate;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;- (id&lt;<a class="code" href="../../db/df7/protocol_i_s_s_view_delegate-p.html" title="授权视图协议 ">ISSViewDelegate</a>&gt;)<a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html#a34f4e597a9d8c165c9fa2392e7d1c2e9" title="图片查看器视图委托,此委托仅使用在默认样式视图中图片查看器视图 ">picViewerViewDelegate</a>;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;- (void)setPicViewerViewDelegate:(<span class="keywordtype">id</span>&lt;<a class="code" href="../../db/df7/protocol_i_s_s_view_delegate-p.html" title="授权视图协议 ">ISSViewDelegate</a>&gt;)picViewerViewDelegate;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;- (id&lt;<a class="code" href="../../db/df7/protocol_i_s_s_view_delegate-p.html" title="授权视图协议 ">ISSViewDelegate</a>&gt;)<a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html#a16ee09052b0cddf906543723800416de" title="获取邮件视图委托 ">mailViewDelegate</a>;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;- (void)setMailViewDelegate:(<span class="keywordtype">id</span>&lt;<a class="code" href="../../db/df7/protocol_i_s_s_view_delegate-p.html" title="授权视图协议 ">ISSViewDelegate</a>&gt;)mailViewDelegate;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;- (id&lt;<a class="code" href="../../db/df7/protocol_i_s_s_view_delegate-p.html" title="授权视图协议 ">ISSViewDelegate</a>&gt;)<a class="code" href="../../d7/d53/protocol_i_s_s_share_options-p.html#a977ead2a03de5f29547b683f8064b68e" title="获取短信视图委托 ">smsViewDelegate</a>;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;- (void)setSmsViewDelegate:(<span class="keywordtype">id</span>&lt;<a class="code" href="../../db/df7/protocol_i_s_s_view_delegate-p.html" title="授权视图协议 ">ISSViewDelegate</a>&gt;)smsViewDelegate;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="keyword">@end</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2013年 八月 19日 星期一 19:04:36 , 为 ShareSDK使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="../../doxygen.png" alt="doxygen"/>
+</a> 1.8.4
+</small></address>
+</body>
+</html>

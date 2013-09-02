@@ -113,6 +113,12 @@
                             @"type",
                             nil],
                            [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Google+",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeGooglePlus],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
                             @"人人网",
                             @"title",
                             [NSNumber numberWithInteger:ShareTypeRenren],
@@ -128,6 +134,12 @@
                             @"印象笔记",
                             @"title",
                             [NSNumber numberWithInteger:ShareTypeEvernote],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"LinkedIn",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeLinkedIn],
                             @"type",
                             nil],
                            [NSMutableDictionary dictionaryWithObjectsAndKeys:

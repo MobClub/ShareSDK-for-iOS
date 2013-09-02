@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.4"/>
+<title>ShareSDK: Connection/PocketConnection.framework/Headers/SSPocketItem.h 源文件</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">ShareSDK
+   &#160;<span id="projectnumber">2.4.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.4 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>首页</span></a></li>
+      <li><a href="../../pages.html"><span>相关页面</span></a></li>
+      <li><a href="../../annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="../../files.html"><span>文件</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>文件列表</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>属性</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>页</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_35f5cfb664a149a16b14bfd6f7eab278.html">Connection</a></li><li class="navelem"><a class="el" href="../../dir_3a60ba910a3e032e38d7aba7021be6e1.html">PocketConnection.framework</a></li><li class="navelem"><a class="el" href="../../dir_394a6b1e6432575f73a288e04220897f.html">Headers</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">SSPocketItem.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//  Created by ShareSDK.cn on 13-1-14.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//  官网地址:http://www.ShareSDK.cn</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//  技术支持邮箱:support@sharesdk.cn</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//  商务QQ:4006852216</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#import &lt;ShareSDKCoreService/SSCDataObject.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html">   16</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="../../da/d06/interface_s_s_pocket_item.html" title="项目对象 ">SSPocketItem</a> : SSCDataObject</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#aef8db55c559943e161e0ba604857d934">   22</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#aef8db55c559943e161e0ba604857d934" title="项目ID ">itemId</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a94b60aa8539ae63c85a907a2952accf4">   27</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a94b60aa8539ae63c85a907a2952accf4" title="原始链接地址 ">normalUrl</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a38c2248b75e0d0784449d277df57b516">   33</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a38c2248b75e0d0784449d277df57b516" title="解决项ID ">resolvedId</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a33b05931a3945bab0ca1abc344ca2cab">   39</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a33b05931a3945bab0ca1abc344ca2cab" title="解决项URL ">resolvedUrl</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a2a8161bdb22dc59178e401a2d9943f1e">   45</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a2a8161bdb22dc59178e401a2d9943f1e" title="解决项URL域名ID ">domainId</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a460d0f8690385d7ae2cecbee8e4beac0">   50</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a460d0f8690385d7ae2cecbee8e4beac0" title="原始URL域名ID ">originDomainId</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a18d43e431d9f516dfb5f445588deab5c">   55</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSInteger <a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a18d43e431d9f516dfb5f445588deab5c" title="Pocket解析器尝试访问项目的回复状态 ">responseCode</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#aee06acfad18c5cde4c14091c28152745">   60</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#aee06acfad18c5cde4c14091c28152745" title="项目的MIME类型 ">mimeType</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a8c1e6e68a20f9eccfcf0fd34e9f62419">   65</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSInteger <a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a8c1e6e68a20f9eccfcf0fd34e9f62419" title="项目的内容长度 ">contentLength</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a860acf9d7f23dba8dde8faaba7112df7">   70</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a860acf9d7f23dba8dde8faaba7112df7" title="项目的编码 ">encoding</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#afc3e4174cad8230043518c325e99e41d">   75</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#afc3e4174cad8230043518c325e99e41d" title="解决项目生成时间 ">dateResolved</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#ab95d4ab845e2839e19710be3eda545be">   80</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#ab95d4ab845e2839e19710be3eda545be" title="发布时间 ">datePublished</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#ab3e0f0234dfba2d2eeb9c3397d18490a">   85</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#ab3e0f0234dfba2d2eeb9c3397d18490a" title="解决项URL的标题 ">title</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a08c69fba1de6cedab90458635d7533e7">   90</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a08c69fba1de6cedab90458635d7533e7" title="解决项URL的摘要 ">excerpt</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a4d2a2679982c1ef1401d2dcffc1aed11">   95</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSInteger <a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a4d2a2679982c1ef1401d2dcffc1aed11" title="文章字数 ">wordCount</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a89448cf809c681a0a6af8c6e01c917e1">  100</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSInteger <a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a89448cf809c681a0a6af8c6e01c917e1" title="是否包含图片:0 无图片； 1 图文； 2 纯图片 ">hasImage</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a2e3ee48c27ef6450e41f19d2c79567f2">  105</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSInteger <a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a2e3ee48c27ef6450e41f19d2c79567f2" title="是否包含视频：0 无视频，1 文章中包含视频；2 纯视频 ">hasVideo</a>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a8a9adf5a0c3274f38722099b9f48e44c">  110</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSInteger <a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a8a9adf5a0c3274f38722099b9f48e44c" title="是否为首页，0 不是； 1 是 ">isIndex</a>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a6c44d96abbd0db870f4734c1b8d6a832">  115</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSInteger <a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a6c44d96abbd0db870f4734c1b8d6a832" title="是否为文章，0 不是； 1 是 ">isArticle</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a3e0cfb21b656826ef73d28eeb9c07ee0">  120</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSArray *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a3e0cfb21b656826ef73d28eeb9c07ee0" title="文章的作者列表 ">authors</a>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a1ccfd160be108fe2ee3a45e85a8c14a8">  125</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSArray *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a1ccfd160be108fe2ee3a45e85a8c14a8" title="图片列表 ">images</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#ada8b2309936fa84b3462c4f2e39217c6">  130</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSArray *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#ada8b2309936fa84b3462c4f2e39217c6" title="视频列表 ">videos</a>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a3684894adc1697e86f4d04dfd19c813c">  135</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a3684894adc1697e86f4d04dfd19c813c" title="暂无 ">extendedItemId</a>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a0a7af6c6225206dd77856c30503d90c7">  140</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a0a7af6c6225206dd77856c30503d90c7" title="暂无 ">givenUrl</a>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a2996919a4e8f0d284bf969af1e0238eb">  145</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSInteger <a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a2996919a4e8f0d284bf969af1e0238eb" title="暂无 ">innerdomainRedirect</a>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#ad546d88c7edcaa941be81a0f97afe42c">  150</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSInteger <a class="code" href="../../da/d06/interface_s_s_pocket_item.html#ad546d88c7edcaa941be81a0f97afe42c" title="暂无 ">loginRequired</a>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a2965132aaab25162c180f8cdd83c1fed">  155</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a2965132aaab25162c180f8cdd83c1fed" title="暂无 ">resolvedNormalUrl</a>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a76c3b9ed0e29675c70820214d886881d">  160</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSInteger <a class="code" href="../../da/d06/interface_s_s_pocket_item.html#a76c3b9ed0e29675c70820214d886881d" title="暂无 ">usedFallback</a>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;+ (<a class="code" href="../../da/d06/interface_s_s_pocket_item.html" title="项目对象 ">SSPocketItem</a> *)itemWithResponse:(NSDictionary *)response;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keyword">@end</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2013年 八月 19日 星期一 19:04:36 , 为 ShareSDK使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="../../doxygen.png" alt="doxygen"/>
+</a> 1.8.4
+</small></address>
+</body>
+</html>

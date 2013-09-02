@@ -266,6 +266,14 @@
                                                    //搜狐随身看
                                                    [self fillSohuKanUser:userInfo];
                                                    break;
+                                                case ShareTypeLinkedIn:
+                                                   //LinkedIn
+                                                   [self fillLinkedInUser:userInfo];
+                                                   break;
+                                                case ShareTypeGooglePlus:
+                                                   //Google+
+                                                   [self fillGooglePlusUser:userInfo];
+                                                   break;
                                                default:
                                                    break;
                                            }
@@ -355,6 +363,14 @@
                                                case ShareTypeSohuKan:
                                                    //搜狐随身看
                                                    [self fillSohuKanUser:userInfo];
+                                                   break;
+                                               case ShareTypeLinkedIn:
+                                                   //LinkedIn
+                                                   [self fillLinkedInUser:userInfo];
+                                                   break;
+                                               case ShareTypeGooglePlus:
+                                                   //Google+
+                                                   [self fillGooglePlusUser:userInfo];
                                                    break;
                                                default:
                                                    break;
@@ -1437,6 +1453,52 @@
 }
 
 - (void)fillSohuKanUser:(id<ISSUserInfo>)userInfo
+{
+    NSArray *keys = [[userInfo sourceData] allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [[userInfo sourceData] objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]])
+        {
+            if ([value respondsToSelector:@selector(stringValue)])
+            {
+                value = [value stringValue];
+            }
+            else
+            {
+                value = @"";
+            }
+        }
+        
+        [_infoDict setObject:value forKey:keyName];
+    }
+}
+
+- (void)fillLinkedInUser:(id<ISSUserInfo>)userInfo
+{
+    NSArray *keys = [[userInfo sourceData] allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [[userInfo sourceData] objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]])
+        {
+            if ([value respondsToSelector:@selector(stringValue)])
+            {
+                value = [value stringValue];
+            }
+            else
+            {
+                value = @"";
+            }
+        }
+        
+        [_infoDict setObject:value forKey:keyName];
+    }
+}
+
+- (void)fillGooglePlusUser:(id<ISSUserInfo>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)

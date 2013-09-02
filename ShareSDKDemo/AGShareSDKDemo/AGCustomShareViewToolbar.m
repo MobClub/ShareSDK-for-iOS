@@ -116,6 +116,12 @@
                                   @"selected",
                                   nil],
                                  [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  SHARE_TYPE_NUMBER(ShareTypeLinkedIn),
+                                  @"type",
+                                  [NSNumber numberWithBool:NO],
+                                  @"selected",
+                                  nil],
+                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                   SHARE_TYPE_NUMBER(ShareTypePocket),
                                   @"type",
                                   [NSNumber numberWithBool:NO],

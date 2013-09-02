@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.4"/>
+<title>ShareSDK: Connection/EverNoteConnection.framework/Headers/SSEverNoteAccounting.h 源文件</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">ShareSDK
+   &#160;<span id="projectnumber">2.4.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.4 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>首页</span></a></li>
+      <li><a href="../../pages.html"><span>相关页面</span></a></li>
+      <li><a href="../../annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="../../files.html"><span>文件</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>文件列表</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>属性</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>页</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_35f5cfb664a149a16b14bfd6f7eab278.html">Connection</a></li><li class="navelem"><a class="el" href="../../dir_501f052b00623d8b72062c18844b5804.html">EverNoteConnection.framework</a></li><li class="navelem"><a class="el" href="../../dir_4754aa65366ba9278a742d4d08d0d76c.html">Headers</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">SSEverNoteAccounting.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//  SSEverNoteAccounting.h</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//  EverNoteConnection</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//  Created by vimfung on 13-5-8.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//  Copyright (c) 2013年 vimfung. All rights reserved.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#import &quot;SSEverNoteTypeDef.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#import &quot;ISSEverNoteDataOutput.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#import &lt;ShareSDKCoreService/SSCDataObject.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html">   17</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html" title="簿记用户订阅信息 ">SSEverNoteAccounting</a> : SSCDataObject</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a4897f1ee6365f1eb3ba7244bdfc160f9">   25</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a4897f1ee6365f1eb3ba7244bdfc160f9" title="The number of bytes that can be uploaded to the account in the current month. For new notes that are ...">uploadLimit</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#ad94617bc9ec0877b97faa5aad9481dcc">   32</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#ad94617bc9ec0877b97faa5aad9481dcc" title="The date and time when the current upload limit expires. At this time, the monthly upload count rever...">uploadLimitEnd</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a90a62c630de8986b2943063d7032e3f2">   38</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a90a62c630de8986b2943063d7032e3f2" title="When uploadLimitEnd is reached, the service will change uploadLimit to uploadLimitNextMonth. If a premium account is canceled, this mechanism will reset the quota appropriately. ">uploadLimitNextMonth</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#af9c408f625beadd68ea77e0db6cfd00a">   43</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) SSEverNotePremiumOrderStatus <a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#af9c408f625beadd68ea77e0db6cfd00a" title="Indicates the phases of a premium account during the billing process. ">premiumServiceStatus</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#ae47afaf282fc4bdd92c8936c6ce3138c">   48</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#ae47afaf282fc4bdd92c8936c6ce3138c" title="The order number used by the commerce system to process recurring payments. ">premiumOrderNumber</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a99ee157fb918b0e57a8344d4208dfb09">   53</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a99ee157fb918b0e57a8344d4208dfb09" title="The commerce system used (paypal, Google checkout, etc) ">premiumCommerceService</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a3873dfecb86b96fc24bf2914abd51bdc">   59</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a3873dfecb86b96fc24bf2914abd51bdc" title="The start date when this premium promotion began (this number will get overwritten if a premium servi...">premiumServiceStart</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#ac090118d25d137d2ab8d7a77b16849ca">   65</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#ac090118d25d137d2ab8d7a77b16849ca" title="The code associated with the purchase eg. monthly or annual purchase. Clients should interpret this v...">premiumServiceSKU</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a3fb5cfd8e3f01c6407f34267662b4b50">   70</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a3fb5cfd8e3f01c6407f34267662b4b50" title="Date the last time the user was charged. Null if never charged. ">lastSuccessfulCharge</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#ab993f611c1c35be754e1f0d55f678f6d">   75</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#ab993f611c1c35be754e1f0d55f678f6d" title="Date the last time a charge was attempted and failed. ">lastFailedCharge</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#ac015d9bc01a50c04cfebf4a3cddd8a67">   80</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#ac015d9bc01a50c04cfebf4a3cddd8a67" title="Reason provided for the charge failure. ">lastFailedChargeReason</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a5067854b8c56818bc252b5bf2eaaa367">   85</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a5067854b8c56818bc252b5bf2eaaa367" title="The end of the billing cycle. This could be in the past if there are failed charges. ">nextPaymentDue</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a76ff7cdb50e426639ed63faa3b3bce8b">   90</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a76ff7cdb50e426639ed63faa3b3bce8b" title="An internal variable to manage locking operations on the commerce variables. ">premiumLockUntil</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a4ca670984eabe12418f7c2b6970c7495">   95</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a4ca670984eabe12418f7c2b6970c7495" title="The date any modification where made to this record. ">updated</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a5c22a4ca0c45598405a07f99131e54f0">  100</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a5c22a4ca0c45598405a07f99131e54f0" title="The number number identifying the recurring subscription used to make the recurring charges...">premiumSubscriptionNumber</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a235385d407689306ec1d1861da592a8d">  105</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a235385d407689306ec1d1861da592a8d" title="Date charge last attempted. ">lastRequestedCharge</a>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a075aa8f406be5558e411a958a397ba10">  110</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a075aa8f406be5558e411a958a397ba10" title="ISO 4217 currency code. ">currency</a>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a3ee774d4629248b43c078f2b5309b1a0">  115</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">long</span> <a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a3ee774d4629248b43c078f2b5309b1a0" title="charge in the smallest unit of the currency (e.g. cents for USD) ">unitPrice</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#ab11ab23a8baca1c2fb293e8425c8c2d8">  121</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">long</span> <a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#ab11ab23a8baca1c2fb293e8425c8c2d8" title="If set, the ID of the Evernote Business account that the user is a member of. If not set...">businessId</a>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a1502a133d0ff50af1b6bbad649ba1ddd">  126</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a1502a133d0ff50af1b6bbad649ba1ddd" title="The human-readable name of the Evernote Business account that the user is a member of...">businessName</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a10c01ea562ee14fcb98cdf9d0f9bce0e">  131</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) SSEverNoteBusinessUserRole <a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html#a10c01ea562ee14fcb98cdf9d0f9bce0e" title="If set, the role of the user within the Evernote Business account that they are a member of...">businessRole</a>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;+ (<a class="code" href="../../d6/db5/interface_s_s_ever_note_accounting.html" title="簿记用户订阅信息 ">SSEverNoteAccounting</a> *)accountingWithResponse:(<span class="keywordtype">id</span>&lt;<a class="code" href="../../d4/d3f/protocol_i_s_s_ever_note_data_output-p.html" title="数据读取协议 ">ISSEverNoteDataOutput</a>&gt;)reader;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;- (void)parse:(<span class="keywordtype">id</span>&lt;<a class="code" href="../../d4/d3f/protocol_i_s_s_ever_note_data_output-p.html" title="数据读取协议 ">ISSEverNoteDataOutput</a>&gt;)reader;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keyword">@end</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2013年 八月 19日 星期一 19:04:36 , 为 ShareSDK使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="../../doxygen.png" alt="doxygen"/>
+</a> 1.8.4
+</small></address>
+</body>
+</html>

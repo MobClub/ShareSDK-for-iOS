@@ -164,6 +164,21 @@
     [button addTarget:self action:@selector(showSohuKanCredClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"Google+" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(showGooglePlusCredClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    top += button.height + VERTICAL_GAP;
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"LinkedIn" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(showLinkedInCredClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
     scrollView.contentSize = CGSizeMake(self.view.width, top += button.height + VERTICAL_GAP);
     [self.view addSubview:scrollView];
     [scrollView release];
@@ -437,6 +452,34 @@
 - (void)showSohuKanCredClickHandler:(id)sender
 {
     id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeSohuKan];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:[NSString stringWithFormat:
+                                                                 @"%@",
+                                                                 [credential sourceData]]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"知道了"
+                                              otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
+}
+
+- (void)showGooglePlusCredClickHandler:(id)sender
+{
+    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeGooglePlus];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:[NSString stringWithFormat:
+                                                                 @"%@",
+                                                                 [credential sourceData]]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"知道了"
+                                              otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
+}
+
+- (void)showLinkedInCredClickHandler:(id)sender
+{
+    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeLinkedIn];
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                         message:[NSString stringWithFormat:
                                                                  @"%@",

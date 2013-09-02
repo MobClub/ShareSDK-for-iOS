@@ -16,6 +16,10 @@
 #import "RespViewController.h"
 #import "AGWeiXinQQDemoController.h"
 #import "AGLeftSideViewController.h"
+#import <RennSDK/RennSDK.h>
+#import <GoogleOpenSource/GoogleOpenSource.h>
+#import <GooglePlus/GooglePlus.h>
+#import "WeiboSDK.h"
 
 @implementation AGAppDelegate
 
@@ -47,7 +51,8 @@
     **/
     [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
                                appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
-                             redirectUri:@"http://www.sharesdk.cn"];
+                             redirectUri:@"http://www.sharesdk.cn"
+                             weiboSDKCls:[WeiboSDK class]];
     /**
      连接腾讯微博开放平台应用以使用相关功能，此应用需要引用TencentWeiboConnection.framework
      http://dev.t.qq.com上注册腾讯微博开放平台应用，并将相关信息填写到以下字段
@@ -95,8 +100,10 @@
      连接人人网应用以使用相关功能，此应用需要引用RenRenConnection.framework
      http://dev.renren.com上注册人人网开放平台应用，并将相关信息填写到以下字段
      **/
-    [ShareSDK connectRenRenWithAppKey:@"fc5b8aed373c4c27a05b712acba0f8c3"
-                            appSecret:@"f29df781abdd4f49beca5a2194676ca4"];
+    [ShareSDK connectRenRenWithAppId:@"226427"
+                              appKey:@"fc5b8aed373c4c27a05b712acba0f8c3"
+                           appSecret:@"f29df781abdd4f49beca5a2194676ca4"
+                   renrenClientClass:[RennClient class]];
     /**
      连接开心网应用以使用相关功能，此应用需要引用KaiXinConnection.framework
      http://open.kaixin001.com上注册开心网开放平台应用，并将相关信息填写到以下字段
@@ -159,13 +166,59 @@
      连接QQ应用以使用相关功能，此应用需要引用QQConnection.framework和QQApi.framework库
      http://mobile.qq.com/api/上注册应用，并将相关信息填写到以下字段
      **/
-    [ShareSDK connectQQWithAppId:@"QQ075BCD15" qqApiCls:[QQApi class]];
+    
+    //旧版中申请的AppId（如：QQxxxxxx类型），可以通过下面方法进行初始化
+//    [ShareSDK connectQQWithAppId:@"QQ075BCD15" qqApiCls:[QQApi class]];
+    
+    [ShareSDK connectQQWithQZoneAppKey:@"100371282"
+                     qqApiInterfaceCls:[QQApiInterface class]
+                       tencentOAuthCls:[TencentOAuth class]];
     
     /**
      连接微信应用以使用相关功能，此应用需要引用WeChatConnection.framework和微信官方SDK
      http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
      **/
-    [ShareSDK connectWeChatWithAppId:@"wx6dd7a9b94f3dd72a" wechatCls:[WXApi class]];
+    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885" wechatCls:[WXApi class]];
+    
+    /**
+     连接LinkedIn应用以使用相关功能，此应用需要引用LinkedInConnection.framework库
+     https://www.linkedin.com/secure/developer上注册应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectLinkedInWithApiKey:@"ejo5ibkye3vo"
+                              secretKey:@"cC7B2jpxITqPLZ5M"
+                            redirectUri:@"http://sharesdk.cn"];
+
+    /**
+     连接Google+应用以使用相关功能，此应用需要引用GooglePlusConnection.framework、GooglePlus.framework和GoogleOpenSource.framework库
+     https://code.google.com/apis/console上注册应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectGooglePlusWithClientId:@"232554794995.apps.googleusercontent.com"
+                               clientSecret:@"PEdFgtrMw97aCvf0joQj7EMk"
+                                redirectUri:@"http://localhost"
+                                  signInCls:[GPPSignIn class]
+                                   shareCls:[GPPShare class]];
+}
+
+/**
+ *	@brief	托管模式下的初始化平台
+ */
+- (void)initializePlatForTrusteeship
+{
+    //导入QQ互联和QQ好友分享需要的外部库类型，如果不需要QQ空间SSO和QQ好友分享可以不调用此方法
+    [ShareSDK importQQClass:[QQApiInterface class] tencentOAuthCls:[TencentOAuth class]];
+    
+    //导入人人网需要的外部库类型,如果不需要人人网SSO可以不调用此方法
+    [ShareSDK importRenRenClass:[RennClient class]];
+    
+    //导入腾讯微博需要的外部库类型，如果不需要腾讯微博SSO可以不调用此方法
+    [ShareSDK importTencentWeiboClass:[WBApi class]];
+    
+    //导入微信需要的外部库类型，如果不需要微信分享可以不调用此方法
+    [ShareSDK importWeChatClass:[WXApi class]];
+    
+    //导入Google+需要的外部库类型，如果不需要Google＋分享可以不调用此方法
+    [ShareSDK importGooglePlusClass:[GPPSignIn class]
+                         shareClass:[GPPShare class]];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -174,12 +227,19 @@
      注册SDK应用，此应用请到http://www.sharesdk.cn中进行注册申请。
      此方法必须在启动时调用，否则会限制SDK的使用。
      **/
-    [ShareSDK registerApp:@"api20"];
-    [ShareSDK convertUrlEnabled:NO];
-    [self initializePlat];
+//    [ShareSDK registerApp:@"api20"];
+
+    //如果使用服务中配置的app信息，请把初始化代码改为下面的初始化方法。
+    [ShareSDK registerApp:@"api20" useAppTrusteeship:YES];
+    
+    //转换链接标记
+    [ShareSDK convertUrlEnabled:YES];
+//    [self initializePlat];
+    
+    //如果使用服务器中配置的app信息，请把初始化平台代码改为下面的方法
+    [self initializePlatForTrusteeship];
     
     _interfaceOrientationMask = SSInterfaceOrientationMaskAll;
-    
     //横屏设置
 //    [ShareSDK setInterfaceOrientationMask:UIInterfaceOrientationMaskLandscape];
     
@@ -285,11 +345,17 @@
         case ShareTypeYouDaoNote:
             platName = @"有道云笔记";
             break;
+        case ShareTypeGooglePlus:
+            platName = @"Google+";
+            break;
+        case ShareTypeLinkedIn:
+            platName = @"LinkedIn";
+            break;
         default:
             platName = @"未知";
     }
-    id<ISSUserInfo> userInfo = [[notif userInfo] objectForKey:SSK_USER_INFO];
     
+    id<ISSUserInfo> userInfo = [[notif userInfo] objectForKey:SSK_USER_INFO];
     BOOL hasExists = NO;
     for (int i = 0; i < [authList count]; i++)
     {

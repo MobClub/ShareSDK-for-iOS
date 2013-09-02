@@ -164,6 +164,21 @@
     [button addTarget:self action:@selector(showSohuKanUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"Google+" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(showGooglePlusUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    top += button.height + VERTICAL_GAP;
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"LinkedIn" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(showLinkedInUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
     scrollView.contentSize = CGSizeMake(self.view.width, top += button.height + VERTICAL_GAP);
     [self.view addSubview:scrollView];
     [scrollView release];
@@ -365,6 +380,22 @@
 - (void)showSohuKanUserClickHandler:(id)sender
 {
     AGUserInfoViewController *vc = [[AGUserInfoViewController alloc] initWithType:ShareTypeSohuKan];
+    UINavigationController *nvc = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
+    [self presentModalViewController:nvc animated:YES];
+    [vc release];
+}
+
+- (void)showGooglePlusUserClickHandler:(id)sender
+{
+    AGUserInfoViewController *vc = [[AGUserInfoViewController alloc] initWithType:ShareTypeGooglePlus];
+    UINavigationController *nvc = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
+    [self presentModalViewController:nvc animated:YES];
+    [vc release];
+}
+
+- (void)showLinkedInUserClickHandler:(id)sender
+{
+    AGUserInfoViewController *vc = [[AGUserInfoViewController alloc] initWithType:ShareTypeLinkedIn];
     UINavigationController *nvc = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
     [self presentModalViewController:nvc animated:YES];
     [vc release];

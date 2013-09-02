@@ -277,6 +277,7 @@
                           [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeTwitter]
                                                              icon:[ShareSDK getClientIconWithType:ShareTypeTwitter]
                                                      clickHandler:clickHandler],
+                          SHARE_TYPE_NUMBER(ShareTypeGooglePlus),
                           [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeRenren]
                                                              icon:[ShareSDK getClientIconWithType:ShareTypeRenren]
                                                      clickHandler:clickHandler],

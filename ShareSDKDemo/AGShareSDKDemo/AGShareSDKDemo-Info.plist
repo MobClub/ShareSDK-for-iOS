@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>cn.vimfung.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>cn.appgo.sharebyone</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.2.2</string>
+	<string>2.4.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2.2.2</string>
+	<string>2.4.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -43,17 +43,29 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleURLName</key>
+			<string>cn.appgo.sharebyone</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>cn.appgo.sharebyone</string>
+			</array>
+		</dict>
+		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb107704292745179</string>
-				<string>sinaweibosso.568898243</string>
-				<string>wx6dd7a9b94f3dd72a</string>
+				<string>wb568898243</string>
+				<string>wx4868b35061f87885</string>
+				<string>QQ05FB8B52</string>
 				<string>QQ075BCD15</string>
 				<string>pocketapp1234</string>
 				<string>tencent100371282</string>
 				<string>wb801307650</string>
+				<string>rm226427cn.appgo.sharebyone</string>
 			</array>
 			<key>CFBundleURLName</key>
 			<string></string>

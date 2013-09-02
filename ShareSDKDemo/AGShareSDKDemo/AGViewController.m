@@ -174,6 +174,14 @@
                                   @"type",
                                   nil],
                                  [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  @"LinkedIn",
+                                  @"title",
+                                  [NSNumber numberWithBool:YES],
+                                  @"selected",
+                                  [NSNumber numberWithInteger:ShareTypeLinkedIn],
+                                  @"type",
+                                  nil],
+                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                   @"Pocket",
                                   @"title",
                                   [NSNumber numberWithBool:YES],
@@ -280,6 +288,14 @@
                             @"type",
                             nil],
                            [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Google+",
+                            @"title",
+                            [NSNumber numberWithBool:YES],
+                            @"selected",
+                            [NSNumber numberWithInteger:ShareTypeGooglePlus],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
                             @"人人网",
                             @"title",
                             [NSNumber numberWithBool:YES],
@@ -349,6 +365,14 @@
                             [NSNumber numberWithBool:YES],
                             @"selected",
                             [NSNumber numberWithInteger:ShareTypeEvernote],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"LinkedIn",
+                            @"title",
+                            [NSNumber numberWithBool:YES],
+                            @"selected",
+                            [NSNumber numberWithInteger:ShareTypeLinkedIn],
                             @"type",
                             nil],
                            [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -674,10 +698,10 @@
         switch (_curShareViewStyle)
         {
             case 1:
-                shareViewOptions = [ShareSDK simpleShareOptionsWithTitle:@"内容分享" shareViewDelegate:nil];
+                shareViewOptions = [ShareSDK simpleShareOptionsWithTitle:@"内容分享" shareViewDelegate:_appDelegate.viewDelegate];
                 break;
             case 2:
-                shareViewOptions = [ShareSDK appRecommendShareOptionsWithTile:@"内容分享" shareViewDelegate:nil];
+                shareViewOptions = [ShareSDK appRecommendShareOptionsWithTile:@"内容分享" shareViewDelegate:_appDelegate.viewDelegate];
                 break;
             default:
                 shareViewOptions = [ShareSDK defaultShareOptionsWithTitle:@"内容分享"

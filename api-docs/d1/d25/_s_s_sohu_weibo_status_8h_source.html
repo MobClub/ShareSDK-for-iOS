@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.4"/>
+<title>ShareSDK: Connection/SohuWeiboConnection.framework/Headers/SSSohuWeiboStatus.h 源文件</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">ShareSDK
+   &#160;<span id="projectnumber">2.4.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.4 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>首页</span></a></li>
+      <li><a href="../../pages.html"><span>相关页面</span></a></li>
+      <li><a href="../../annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="../../files.html"><span>文件</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>文件列表</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>属性</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>页</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_35f5cfb664a149a16b14bfd6f7eab278.html">Connection</a></li><li class="navelem"><a class="el" href="../../dir_25eb4679235bcc8778e9559ff53eb167.html">SohuWeiboConnection.framework</a></li><li class="navelem"><a class="el" href="../../dir_c7c42713d8374e7da5ac34443082a8aa.html">Headers</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">SSSohuWeiboStatus.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//  Created by ShareSDK.cn on 13-1-14.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//  官网地址:http://www.ShareSDK.cn</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//  技术支持邮箱:support@sharesdk.cn</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//  商务QQ:4006852216</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#import &quot;SSSohuWeiboUser.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#import &lt;ShareSDKCoreService/ShareSDKCoreService.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html">   17</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html" title="微博信息 ">SSSohuWeiboStatus</a> : NSObject &lt;NSCoding,</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                                         ISSCDataObject&gt;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">@private</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    NSMutableDictionary *_sourceData;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSDate *createAt;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html#ae49a8edb33ce7c7986083efb87d7ff44">   28</a></span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *sid;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html#ae4fd2870efb6caff9cd23f128f25015c">   33</a></span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *text;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html#a8edaa05064060f74877188a83b2ba7dd">   38</a></span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *source;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html#aacac099b4397ce56219ed0dd7ba2920a">   43</a></span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) BOOL favorited;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html#ab652d478e2e8cd9e23b486c7272e4f38">   48</a></span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) BOOL truncated;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html#a5583799aa25790ad09ffa8cb187318b1">   53</a></span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *inReplyToStatusId;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html#ac868a37ca4337024411cbe34f7aa4303">   58</a></span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *inReplyToUserId;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html#aa5478c699d682e5324ff6443060da1af">   63</a></span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *inReplyToScreenName;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html#a8cbddab97471c7830c0854a5a71b6596">   68</a></span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *inReplyToStatusText;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html#a3e86e0f08505b17bf261135d9f0abad8">   73</a></span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *smallPic;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html#a64a193988415a1062425612243cd7d24">   78</a></span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *middlePic;</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html#af428870d2c705280e85793d3c37addbb">   83</a></span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *originalPic;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html#aa5a6c2cc5b94b2c986d4437389f085a2">   88</a></span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <a class="code" href="../../d0/d36/interface_s_s_sohu_weibo_user.html" title="用户信息 ">SSSohuWeiboUser</a> *userInfo;</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html#a1faf96f6e2d829083f78a69df749a5c6">   93</a></span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">@property</span> (nonatomic,retain) NSDictionary *sourceData;</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html#adb219c85c9b0d178acd952114d170dee">   98</a></span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;+ (<a class="code" href="../../d8/d37/interface_s_s_sohu_weibo_status.html" title="微博信息 ">SSSohuWeiboStatus</a> *)statusWithResponse:(NSDictionary *)response;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">@end</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2013年 八月 19日 星期一 19:04:36 , 为 ShareSDK使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="../../doxygen.png" alt="doxygen"/>
+</a> 1.8.4
+</small></address>
+</body>
+</html>

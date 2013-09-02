@@ -85,6 +85,13 @@
     btn4.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:btn4];
     [btn4 addTarget:self action:@selector(getUserInfoClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *btn5 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btn5 setTitle:@"客户端分享" forState:UIControlStateNormal];
+    btn5.frame = CGRectMake(LEFT_PADDING, btn4.bottom + VERTICAL_GAP, self.view.width - LEFT_PADDING - RIGHT_PADDING, 45.0);
+    btn5.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [self.view addSubview:btn5];
+    [btn5 addTarget:self action:@selector(clientShareClickHandler:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -150,6 +157,37 @@
     AGSinaWeiboUserDetailInfoViewController *vc = [[[AGSinaWeiboUserDetailInfoViewController alloc] initWithUserName:@"ShareSDK"] autorelease];
     UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
     [self presentModalViewController:navController animated:YES];
+}
+
+- (void)clientShareClickHandler:(id)sender
+{
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    
+    //构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+                                       defaultContent:@""
+                                                image:[ShareSDK imageWithPath:imagePath]
+                                                title:@"ShareSDK"
+                                                  url:@"http://www.sharesdk.cn"
+                                          description:@"这是一条测试信息"
+                                            mediaType:SSPublishContentMediaTypeNews];
+    
+    [ShareSDK shareContent:publishContent
+                      type:ShareTypeSinaWeibo
+               authOptions:nil
+             statusBarTips:YES
+                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        
+                        if (state == SSPublishContentStateSuccess)
+                        {
+                            NSLog(@"分享成功!");
+                        }
+                        else if (state == SSPublishContentStateFail)
+                        {
+                            NSLog(@"分享失败!");
+                        }
+                        
+                    }];
 }
 
 - (void)leftButtonClickHandler:(id)sender

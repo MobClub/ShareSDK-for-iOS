@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.4"/>
+<title>ShareSDK: Connection/GooglePlusConnection.framework/Headers/ISSGooglePlusApp.h 源文件</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">ShareSDK
+   &#160;<span id="projectnumber">2.4.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.4 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>首页</span></a></li>
+      <li><a href="../../pages.html"><span>相关页面</span></a></li>
+      <li><a href="../../annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="../../files.html"><span>文件</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>文件列表</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>属性</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>页</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_35f5cfb664a149a16b14bfd6f7eab278.html">Connection</a></li><li class="navelem"><a class="el" href="../../dir_b318db238a62f7bd3fa49cadfb706a85.html">GooglePlusConnection.framework</a></li><li class="navelem"><a class="el" href="../../dir_7577259698210d87dfe279415a61052d.html">Headers</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ISSGooglePlusApp.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//  ISSGooglePlusApp.h</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//  GooglePlusConnection</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//  Created by 冯 鸿杰 on 13-8-12.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//  Copyright (c) 2013年 掌淘科技. All rights reserved.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#import &lt;ShareSDKCoreService/ShareSDKCoreService.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#import &quot;ISSGooglePlusAuthSession.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#import &quot;SSGooglePlusUser.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#import &quot;SSGooglePlusErrorInfo.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#import &quot;SSGooglePlusCredential.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#import &quot;SSGooglePlusMoment.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#import &quot;SSGooglePlusShareInfo.h&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    SSGooglePlusRequestMethodGet = 0, </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    SSGooglePlusRequestMethodPost = 1, </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    SSGooglePlusRequestMethodMultipartPost = 2 </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;SSGooglePlusRequestMethod;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="../../db/d69/protocol_i_s_s_google_plus_app-p.html">   32</a></span>&#160;<span class="keyword">@protocol </span><a class="code" href="../../db/d69/protocol_i_s_s_google_plus_app-p.html" title="Google+应用协议 ">ISSGooglePlusApp</a> &lt;ISSCOpenApp&gt;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;- (id&lt;ISSCAccount&gt;)<a class="code" href="../../db/d69/protocol_i_s_s_google_plus_app-p.html#a101d4704536121c4bc81a55dc92869c6" title="获取授权帐号 ">account</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;- (NSString *)<a class="code" href="../../db/d69/protocol_i_s_s_google_plus_app-p.html#ac7aae14d4d9cc5108b309a1055361da7" title="获取应用Key ">clientId</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;- (NSString *)<a class="code" href="../../db/d69/protocol_i_s_s_google_plus_app-p.html#ada81d8beb7ac0d6a1c62897b5ff1c0ab" title="获取应用密钥 ">clientSecret</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;- (NSString *)<a class="code" href="../../db/d69/protocol_i_s_s_google_plus_app-p.html#a6da8d3e7879e26d7ccd4bcd160b00c07" title="获取应用回调地址 ">redirectUri</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;- (NSString *)<a class="code" href="../../db/d69/protocol_i_s_s_google_plus_app-p.html#aa62a6841316f83ae79676f26f9b61dbc" title="获取SSO回调地址列表 ">ssoCallbackUrl</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;- (BOOL)<a class="code" href="../../db/d69/protocol_i_s_s_google_plus_app-p.html#af41f1f6c19b895399eadd1dab70f63c6" title="SSO登录使能状态 ">ssoEnabled</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;- (void)setSsoEnabled:(BOOL)ssoEnabled;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;- (BOOL)<a class="code" href="../../db/d69/protocol_i_s_s_google_plus_app-p.html#ae85743cfac52fbb2917118e63db76eed" title="获取是否转换链接标识 ">convertUrlEnabled</a>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;- (void)setConvertUrlEnabled:(BOOL)enabled;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;- (id&lt;ISSGooglePlusAuthSession&gt;)<a class="code" href="../../db/d69/protocol_i_s_s_google_plus_app-p.html#a3e4f8bcd61b231106f433f606e141a82" title="授权应用 ">authorize</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;- (BOOL)registerUser:(<a class="code" href="../../d7/d8e/interface_s_s_google_plus_user.html" title="用户信息 ">SSGooglePlusUser</a> *)user;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;- (BOOL)unregisterUser:(<a class="code" href="../../d7/d8e/interface_s_s_google_plus_user.html" title="用户信息 ">SSGooglePlusUser</a> *)user;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;- (<a class="code" href="../../d7/d8e/interface_s_s_google_plus_user.html" title="用户信息 ">SSGooglePlusUser</a> *)getUser:(NSString *)uid;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;- (<a class="code" href="../../d7/d8e/interface_s_s_google_plus_user.html" title="用户信息 ">SSGooglePlusUser</a> *)<a class="code" href="../../db/d69/protocol_i_s_s_google_plus_app-p.html#a5273c95dce328b3f0d5550c5f6cb43f3" title="获取默认注册用户 ">defaultUser</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;- (void)setDefaultUser:(<a class="code" href="../../d7/d8e/interface_s_s_google_plus_user.html" title="用户信息 ">SSGooglePlusUser</a> *)defaultUser;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;- (BOOL)checkUnauthWithError:(<a class="code" href="../../d1/d3c/interface_s_s_google_plus_error_info.html">SSGooglePlusErrorInfo</a> *)error;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;- (void)setCredential:(<a class="code" href="../../d1/d70/interface_s_s_google_plus_credential.html" title="授权凭证 ">SSGooglePlusCredential</a> *)credential;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;- (BOOL)handleOpenURL:(NSURL *)url;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;- (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(<span class="keywordtype">id</span>)annotation;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;- (void)api:(NSString *)path</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;     method:(SSGooglePlusRequestMethod)method</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;     params:(<span class="keywordtype">id</span>)params</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;       user:(<a class="code" href="../../d7/d8e/interface_s_s_google_plus_user.html" title="用户信息 ">SSGooglePlusUser</a> *)user</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;     result:(<span class="keywordtype">void</span>(^)(<span class="keywordtype">id</span> responder))result</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      fault:(<span class="keywordtype">void</span>(^)(<a class="code" href="../../d1/d3c/interface_s_s_google_plus_error_info.html">SSGooglePlusErrorInfo</a> *error))fault;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;- (void)showMe:(<span class="keywordtype">void</span>(^)(BOOL result, <a class="code" href="../../d7/d8e/interface_s_s_google_plus_user.html" title="用户信息 ">SSGooglePlusUser</a> *userInfo, <a class="code" href="../../d1/d3c/interface_s_s_google_plus_error_info.html">SSGooglePlusErrorInfo</a> *error))result;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;- (void)shareWithUrl:(NSString *)url</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                text:(NSString *)text</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;              result:(<span class="keywordtype">void</span> (^)(SSCShareSessionState state, <a class="code" href="../../da/d74/interface_s_s_google_plus_share_info.html" title="分享信息 ">SSGooglePlusShareInfo</a> *status, <a class="code" href="../../d1/d3c/interface_s_s_google_plus_error_info.html">SSGooglePlusErrorInfo</a> *error))result;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;- (void)shareWithUrl:(NSString *)url</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                text:(NSString *)text</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;          deepLinkId:(NSString *)deepLinkId</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;               title:(NSString *)title</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;         description:(NSString *)description</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;           thumbnail:(NSString *)thumbnail</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;              result:(<span class="keywordtype">void</span> (^)(SSCShareSessionState, <a class="code" href="../../da/d74/interface_s_s_google_plus_share_info.html" title="分享信息 ">SSGooglePlusShareInfo</a> *status, <a class="code" href="../../d1/d3c/interface_s_s_google_plus_error_info.html">SSGooglePlusErrorInfo</a> *error))result;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="keyword">@end</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2013年 八月 19日 星期一 19:04:36 , 为 ShareSDK使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="../../doxygen.png" alt="doxygen"/>
+</a> 1.8.4
+</small></address>
+</body>
+</html>

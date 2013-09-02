@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.4"/>
+<title>ShareSDK: Connection/EverNoteConnection.framework/Headers/SSEverNoteNoteAttributes.h 源文件</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">ShareSDK
+   &#160;<span id="projectnumber">2.4.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.4 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>首页</span></a></li>
+      <li><a href="../../pages.html"><span>相关页面</span></a></li>
+      <li><a href="../../annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="../../files.html"><span>文件</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>文件列表</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>属性</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>页</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_35f5cfb664a149a16b14bfd6f7eab278.html">Connection</a></li><li class="navelem"><a class="el" href="../../dir_501f052b00623d8b72062c18844b5804.html">EverNoteConnection.framework</a></li><li class="navelem"><a class="el" href="../../dir_4754aa65366ba9278a742d4d08d0d76c.html">Headers</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">SSEverNoteNoteAttributes.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//  SSEverNoteNoteAttributes.h</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//  EverNoteConnection</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//  Created by 冯 鸿杰 on 13-5-23.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//  Copyright (c) 2013年 vimfung. All rights reserved.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#import &lt;ShareSDKCoreService/SSCDataObject.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#import &quot;SSEverNoteLazyMap.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#import &quot;ISSEverNoteDataOutput.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html">   16</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html" title="笔记属性列表 ">SSEverNoteNoteAttributes</a> : SSCDataObject</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a93d340458ba9390e92caa3629812712e">   21</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a93d340458ba9390e92caa3629812712e" title="time that the note refers to ">subjectDate</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a055c270282503936c68c4ebd017e10fd">   26</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">double</span> <a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a055c270282503936c68c4ebd017e10fd" title="the latitude where the note was taken ">latitude</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a90125dd87ca85971e29a3ffb27ecbd14">   31</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">double</span> <a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a90125dd87ca85971e29a3ffb27ecbd14" title="the longitude where the note was taken ">longitude</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#aa5f6d2b4fd59f92d9dbadba2de8f2bd6">   36</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">double</span> <a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#aa5f6d2b4fd59f92d9dbadba2de8f2bd6" title="the altitude where the note was taken ">altitude</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a99a339d682acb6890474b0bd3533f705">   41</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a99a339d682acb6890474b0bd3533f705" title="the author of the content of the note ">author</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a495144e03d6bc32647671a758147bcdb">   46</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a495144e03d6bc32647671a758147bcdb" title="the method that the note was added to the account, if the note wasn&#39;t directly authored in an Evernot...">source</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a16c71e391edd5344a7f4dba0e8a077a0">   51</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a16c71e391edd5344a7f4dba0e8a077a0" title="the original location where the resource was hosted. For web clips, this will be the URL of the page ...">sourceURL</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a059ad319de74ece5793a86de2fa0559f">   57</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a059ad319de74ece5793a86de2fa0559f" title="an identifying string for the application that created this note. This string does not have a guarant...">sourceApplication</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a99005b4c7402623be19cb9be2627a879">   64</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a99005b4c7402623be19cb9be2627a879" title="The date and time when this note was directly shared via its own URL. This is only set on notes that ...">shareDate</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#af49240ae9897e6416bf241ca5f81007f">   74</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#af49240ae9897e6416bf241ca5f81007f" title="Allows the user to assign a human-readable location name associated with a note. Users may assign val...">placeName</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a2ec98e1825e095f38b80a83e20b48ccc">   88</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#a2ec98e1825e095f38b80a83e20b48ccc" title="The class (or type) of note. This field is used to indicate to clients that special structured inform...">contentClass</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#ad61f817b0d7d9f79c2c252543e5a9eec">   98</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) <a class="code" href="../../db/de5/interface_s_s_ever_note_lazy_map.html" title="Lazy Map. ">SSEverNoteLazyMap</a> *<a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#ad61f817b0d7d9f79c2c252543e5a9eec" title="Provides a location for applications to store a relatively small (4kb) blob of data that is not meant...">applicationData</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#aa60497f9a161b9a3ed3dd192e3fd3681">  108</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSString *<a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#aa60497f9a161b9a3ed3dd192e3fd3681" title="An indication of who made the last change to the note. If you are accessing the note via a shared not...">lastEditedBy</a>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#ac690e869449410c7a84cc86927aad978">  114</a></span>&#160;<span class="keyword">@property</span> (nonatomic,readonly) NSDictionary *<a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html#ac690e869449410c7a84cc86927aad978" title="A map of classifications applied to the note by clients or by the Evernote service. The key is the string name of the classification type, and the value is a constant that begins with CLASSIFICATION_. ">classifications</a>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;+ (<a class="code" href="../../d5/dbc/interface_s_s_ever_note_note_attributes.html" title="笔记属性列表 ">SSEverNoteNoteAttributes</a> *)noteAttributesWithResponse:(<span class="keywordtype">id</span>&lt;<a class="code" href="../../d4/d3f/protocol_i_s_s_ever_note_data_output-p.html" title="数据读取协议 ">ISSEverNoteDataOutput</a>&gt;)reader;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;- (void)parse:(<span class="keywordtype">id</span>&lt;<a class="code" href="../../d4/d3f/protocol_i_s_s_ever_note_data_output-p.html" title="数据读取协议 ">ISSEverNoteDataOutput</a>&gt;)reader;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;- (void)putData:(<span class="keywordtype">id</span>&lt;<a class="code" href="../../d8/d22/protocol_i_s_s_ever_note_data_input-p.html" title="数据写入协议 ">ISSEverNoteDataInput</a>&gt;)writer;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="keyword">@end</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2013年 八月 19日 星期一 19:04:36 , 为 ShareSDK使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="../../doxygen.png" alt="doxygen"/>
+</a> 1.8.4
+</small></address>
+</body>
+</html>

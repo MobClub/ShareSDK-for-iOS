@@ -171,7 +171,7 @@
                 case 4:
                 {
                     NSBundle *bundle = [NSBundle mainBundle];
-                    cell.textLabel.text = [NSString stringWithFormat:@"Demo版本 ver%@",[[bundle infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey]];
+                    cell.textLabel.text = [NSString stringWithFormat:@"版本 ver%@",[[bundle infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey]];
                     break;
                 }
                 default:
