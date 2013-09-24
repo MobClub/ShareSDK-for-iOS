@@ -7,6 +7,7 @@
 //
 
 #import "QQTextViewController.h"
+#import <AGCommon/NSString+Common.h>
 
 @implementation QQTextViewController
 
@@ -42,6 +43,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+    }
     
     self.title = @"编辑文本消息";
     self.view.backgroundColor = [UIColor whiteColor];

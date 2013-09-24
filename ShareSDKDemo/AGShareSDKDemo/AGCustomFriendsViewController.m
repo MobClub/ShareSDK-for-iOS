@@ -13,6 +13,7 @@
 #import "AGCustomUserInfoCell.h"
 #import "AGCustomMoreCell.h"
 #import "AGAppDelegate.h"
+#import <AGCommon/NSString+Common.h>
 
 #define USER_CELL_ID @"userCell"
 #define MORE_CELL_ID @"moreCell"
@@ -100,6 +101,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+    }
     
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.view.backgroundColor = [UIColor whiteColor];

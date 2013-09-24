@@ -7,6 +7,7 @@
 //
 #import <QuartzCore/QuartzCore.h>
 #import "TextViewController.h"
+#import <AGCommon/NSString+Common.h>
 
 #define TABLECELLLEFTMARGIN 10
 #define TABLECELLRIGHTMARGIN 5
@@ -93,6 +94,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+    }
 	
 	self.title = @"编辑消息";
     self.view.backgroundColor = [UIColor whiteColor];

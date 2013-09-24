@@ -2,7 +2,7 @@
 //  WrappedController.m
 //  IIViewDeck
 //
-//  Copyright (C) 2011, Tom Adriaenssen
+//  Copyright (C) 2011-2013, Tom Adriaenssen
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy of
 //  this software and associated documentation files (the "Software"), to deal in
@@ -118,8 +118,8 @@
     if ([_wrappedController respondsToSelector:@selector(didMoveToParentViewController:)])
         [_wrappedController didMoveToParentViewController:nil];
 
-    _wrappedController = nil;
     II_RELEASE(_wrappedController);
+    _wrappedController = nil;
 
 #if !II_ARC_ENABLED
     [super dealloc];
@@ -288,8 +288,12 @@ static const char* wrapControllerKey = "WrapController";
 }
 
 + (void)load {
-    [super load];
-    [self wc_swizzle];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        @autoreleasepool {
+            [self wc_swizzle];
+        }
+    });
 }
 
 @end

@@ -16,6 +16,7 @@
 #import "IIViewDeckController.h"
 #import <AGCommon/UIDevice+Common.h>
 #import "AGAppDelegate.h"
+#import <AGCommon/NSString+Common.h>
 
 #define TARGET_CELL_ID @"targetCell"
 #define BASE_TAG 100
@@ -47,7 +48,7 @@
         [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
         
-        if ([UIDevice currentDevice].isPad)
+        if ([UIDevice currentDevice].isPad || [[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
         {
             UILabel *label = [[UILabel alloc] init];
             label.backgroundColor = [UIColor clearColor];
@@ -166,6 +167,24 @@
                             [NSNumber numberWithInteger:ShareTypeSohuKan],
                             @"type",
                             nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Tumblr",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeTumblr],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Flickr",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeFlickr],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Dropbox",
+                            @"title",
+                            [NSNumber numberWithInteger:ShareTypeDropbox],
+                            @"type",
+                            nil],
                            nil];
         
         NSArray *authList = [NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()]];
@@ -210,6 +229,12 @@
 - (void)loadView
 {
     [super loadView];
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+    }
 
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.width, self.view.height)
                                                style:UITableViewStyleGrouped];

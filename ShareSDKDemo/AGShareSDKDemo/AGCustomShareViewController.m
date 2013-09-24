@@ -12,6 +12,7 @@
 #import <AGCommon/UIDevice+Common.h>
 #import <AGCommon/UINavigationBar+Common.h>
 #import <AGCommon/UIColor+Common.h>
+#import <AGCommon/NSString+Common.h>
 #import "AGAppDelegate.h"
 
 #define IMAGE_WIDTH 80.0
@@ -123,6 +124,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+    }
     
     self.view.backgroundColor = [UIColor blackColor];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;

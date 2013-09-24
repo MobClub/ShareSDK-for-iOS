@@ -16,6 +16,7 @@
 #import "AGSinaWeiboFriendsViewController.h"
 #import "AGSinaWeiboUserDetailInfoViewController.h"
 #import <ShareSDK/ShareSDK.h>
+#import <AGCommon/NSString+Common.h>
 
 #define LEFT_PADDING 10.0
 #define RIGHT_PADDING 10.0
@@ -57,6 +58,12 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+    }
     
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [btn1 setTitle:@"个人主页" forState:UIControlStateNormal];
@@ -172,22 +179,19 @@
                                           description:@"这是一条测试信息"
                                             mediaType:SSPublishContentMediaTypeNews];
     
-    [ShareSDK shareContent:publishContent
-                      type:ShareTypeSinaWeibo
-               authOptions:nil
-             statusBarTips:YES
-                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                        
-                        if (state == SSPublishContentStateSuccess)
-                        {
-                            NSLog(@"分享成功!");
-                        }
-                        else if (state == SSPublishContentStateFail)
-                        {
-                            NSLog(@"分享失败!");
-                        }
-                        
-                    }];
+    [ShareSDK clientShareContent:publishContent
+                            type:ShareTypeSinaWeibo
+                   statusBarTips:YES
+                          result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                              if (state == SSPublishContentStateSuccess)
+                              {
+                                  NSLog(@"分享成功!");
+                              }
+                              else if (state == SSPublishContentStateFail)
+                              {
+                                  NSLog(@"分享失败!");
+                              }
+                          }];
 }
 
 - (void)leftButtonClickHandler:(id)sender

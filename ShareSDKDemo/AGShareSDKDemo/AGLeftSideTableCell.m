@@ -16,6 +16,7 @@
     if (self)
     {
         self.accessoryView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"AccessoryView.png"]] autorelease];
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }

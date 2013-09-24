@@ -12,6 +12,7 @@
 #import <AGCommon/UIColor+Common.h>
 #import <AGCommon/UIImage+Common.h>
 #import <AGCommon/UIDevice+Common.h>
+#import <AGCommon/NSString+Common.h>
 #import "AGAppDelegate.h"
 
 #define TABLE_CELL_ID @"tableCell"
@@ -97,6 +98,18 @@
     {
         _appDelegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
         
+        if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+        {
+            //改写导航栏标题样式
+            UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+            label.backgroundColor = [UIColor clearColor];
+            label.textColor = [UIColor whiteColor];
+            label.font = [UIFont boldSystemFontOfSize:18];
+            [label sizeToFit];
+            
+            self.navigationItem.titleView = label;
+        }
+        
         // Custom initialization
         self.title = @"用户信息";
         
@@ -122,6 +135,18 @@
     if (self = [super init])
     {
         _appDelegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
+        
+        if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+        {
+            //改写导航栏标题样式
+            UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+            label.backgroundColor = [UIColor clearColor];
+            label.textColor = [UIColor whiteColor];
+            label.font = [UIFont boldSystemFontOfSize:18];
+            [label sizeToFit];
+            
+            self.navigationItem.titleView = label;
+        }
         
         self.title = @"用户信息";
         
@@ -151,9 +176,26 @@
     [super dealloc];
 }
 
+- (void)setTitle:(NSString *)title
+{
+    [super setTitle:title];
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        ((UILabel *)self.navigationItem.titleView).text = title;
+        [(UILabel *)self.navigationItem.titleView sizeToFit];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+    }
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavigationBarBG.png"]];
     

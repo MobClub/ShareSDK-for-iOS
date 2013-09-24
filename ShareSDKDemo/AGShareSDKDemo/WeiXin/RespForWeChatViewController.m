@@ -7,6 +7,7 @@
 //
 
 #import "RespForWeChatViewController.h"
+#import <AGCommon/NSString+Common.h>
 
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 
@@ -115,6 +116,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+    }
     
     UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 135)];
     [headView setBackgroundColor:RGBCOLOR(0xe1, 0xe0, 0xde)];

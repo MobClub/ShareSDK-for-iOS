@@ -2,7 +2,7 @@
 //  IIViewDeckController.h
 //  IIViewDeck
 //
-//  Copyright (C) 2011, Tom Adriaenssen
+//  Copyright (C) 2011-2013, Tom Adriaenssen
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy of
 //  this software and associated documentation files (the "Software"), to deal in
@@ -24,6 +24,47 @@
 //
 
 #import <UIKit/UIKit.h>
+
+// thanks to http://stackoverflow.com/a/8594878/742176
+
+#ifdef __has_feature
+
+    #if __has_feature(objc_arc_weak)
+    #define __ii_weak        __weak
+    #define ii_weak_property weak
+    #elif __has_feature(objc_arc)
+    #define ii_weak_property unsafe_unretained
+    #define __ii_weak __unsafe_unretained
+    #else
+    #define ii_weak_property assign
+    #define __ii_weak
+    #endif
+
+#else
+
+    #if TARGET_OS_IPHONE && defined(__IPHONE_5_0) && (__IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_5_0) && __clang__ && (__clang_major__ >= 3)
+    #define II_SDK_SUPPORTS_WEAK 1
+    #elif TARGET_OS_MAC && defined(__MAC_10_7) && (MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_10_7) && __clang__ && (__clang_major__ >= 3)
+    #define II_SDK_SUPPORTS_WEAK 1
+    #else
+    #define II_SDK_SUPPORTS_WEAK 0
+    #endif
+
+    #if II_SDK_SUPPORTS_WEAK
+    #define __ii_weak        __weak
+    #define ii_weak_property weak
+    #else
+    #if __clang__ && (__clang_major__ >= 3)
+    #define __ii_weak __unsafe_unretained
+    #else
+    #define __ii_weak
+    #endif
+    #define ii_weak_property assign
+    #endif
+
+#endif
+
+
 
 @protocol IIViewDeckControllerDelegate;
 
@@ -47,7 +88,8 @@ enum {
     IIViewDeckNavigationBarPanning,   // panning only occurs when you start touching in the navigation bar (when the center controller is a UINavigationController with a visible navigation bar). Otherwise it will behave as IIViewDeckNoPanning. 
     IIViewDeckPanningViewPanning,      // panning only occurs when you start touching in a UIView set in panningView property
     IIViewDeckDelegatePanning,         // allows panning with a delegate
-    IIViewDeckNavigationBarOrOpenCenterPanning      //panning occurs when you start touching the navigation bar if the center controller is visible.  If the left or right controller is open, pannning occurs anywhere on the center controller, not just the navbar.
+    IIViewDeckNavigationBarOrOpenCenterPanning,      //panning occurs when you start touching the navigation bar if the center controller is visible.  If the left or right controller is open, pannning occurs anywhere on the center controller, not just the navbar.
+    IIViewDeckAllViewsPanning,        // you can pan anywhere in the viewdeck (including sideviews)
 };
 typedef UInt32 IIViewDeckPanningMode;
 
@@ -100,24 +142,30 @@ extern IIViewDeckOffsetOrientation IIViewDeckOffsetOrientationFromIIViewDeckSide
     BOOL _preRotationIsLandscape;
     IIViewDeckOffsetOrientation _offsetOrientation;
     UIInterfaceOrientation _willAppearShouldArrangeViewsAfterRotation;
+    CGPoint _willAppearOffset;
+    NSMutableArray* _finishTransitionBlocks;
+    int _disabledUserInteractions;
+    CALayer* _shadowLayer;
+    BOOL _needsAddPannersIfAllPannersAreInactive;
+    NSMutableSet* _disabledPanClasses;
 }
 
 typedef void (^IIViewDeckControllerBlock) (IIViewDeckController *controller, BOOL success);
 typedef void (^IIViewDeckControllerBounceBlock) (IIViewDeckController *controller);
 
-@property (nonatomic, assign) id<IIViewDeckControllerDelegate> delegate;
+@property (nonatomic, ii_weak_property) __ii_weak id<IIViewDeckControllerDelegate> delegate;
 @property (nonatomic, assign) IIViewDeckDelegateMode delegateMode;
 
 @property (nonatomic, readonly, retain) NSArray* controllers;
-@property (nonatomic, retain) UIViewController* centerController;
-@property (nonatomic, retain) UIViewController* leftController;
-@property (nonatomic, retain) UIViewController* rightController;
-@property (nonatomic, retain) UIViewController* topController;
-@property (nonatomic, retain) UIViewController* bottomController;
+@property (nonatomic, retain) IBOutlet UIViewController* centerController;
+@property (nonatomic, retain) IBOutlet UIViewController* leftController;
+@property (nonatomic, retain) IBOutlet UIViewController* rightController;
+@property (nonatomic, retain) IBOutlet UIViewController* topController;
+@property (nonatomic, retain) IBOutlet UIViewController* bottomController;
 @property (nonatomic, readonly, assign) UIViewController* slidingController;
 
-@property (nonatomic, retain) UIView* panningView;
-@property (nonatomic, assign) id<UIGestureRecognizerDelegate> panningGestureDelegate;
+@property (nonatomic, retain) IBOutlet UIView* panningView;
+@property (nonatomic, ii_weak_property) __ii_weak id<UIGestureRecognizerDelegate> panningGestureDelegate;
 @property (nonatomic, assign, getter=isEnabled) BOOL enabled;
 @property (nonatomic, assign, getter=isElastic) BOOL elastic;
 
@@ -134,8 +182,12 @@ typedef void (^IIViewDeckControllerBounceBlock) (IIViewDeckController *controlle
 @property (nonatomic, assign, readonly) CGFloat bottomViewSize;
 @property (nonatomic, assign, readonly) CGFloat bottomLedgeSize;
 @property (nonatomic, assign) CGFloat maxSize;
+@property (nonatomic, assign) CGFloat centerViewOpacity;
+@property (nonatomic, assign) CGFloat centerViewCornerRadius;
+@property (nonatomic, assign) BOOL shadowEnabled;
 @property (nonatomic, assign) BOOL resizesCenterView;
 @property (nonatomic, assign) IIViewDeckPanningMode panningMode;
+@property (nonatomic, assign) BOOL panningCancelsTouchesInView;
 @property (nonatomic, assign) IIViewDeckCenterHiddenInteractivity centerhiddenInteractivity;
 @property (nonatomic, assign) IIViewDeckNavigationControllerBehavior navigationControllerBehavior;
 @property (nonatomic, assign) BOOL automaticallyUpdateTabBarItems;
@@ -144,6 +196,10 @@ typedef void (^IIViewDeckControllerBounceBlock) (IIViewDeckController *controlle
 @property (nonatomic, assign) CGFloat bounceOpenSideDurationFactor; // Same as bounceDurationFactor, but if set, will give independent control of the bounce as the side opens fully (first half of the bounce)
 @property (nonatomic, assign) CGFloat openSlideAnimationDuration;
 @property (nonatomic, assign) CGFloat closeSlideAnimationDuration;
+@property (nonatomic, assign) CGFloat parallaxAmount;
+
+@property (nonatomic, strong) NSString *centerTapperAccessibilityLabel; // Voice over accessibility label for button to close side panel
+@property (nonatomic, strong) NSString *centerTapperAccessibilityHint;  // Voice over accessibility hint for button to close side panel
 
 - (id)initWithCenterViewController:(UIViewController*)centerController;
 - (id)initWithCenterViewController:(UIViewController*)centerController leftViewController:(UIViewController*)leftController;
@@ -247,6 +303,11 @@ typedef void (^IIViewDeckControllerBounceBlock) (IIViewDeckController *controlle
 
 - (IIViewDeckSide)sideForController:(UIViewController*)controller;
 
+- (void)disablePanOverViewsOfClass:(Class)viewClass;
+- (void)enablePanOverViewsOfClass:(Class)viewClass;
+- (BOOL)canPanOverViewsOfClass:(Class)viewClass;
+- (NSArray*)viewClassesWithDisabledPan;
+
 @end
 
 
@@ -277,6 +338,8 @@ typedef void (^IIViewDeckControllerBounceBlock) (IIViewDeckController *controlle
 
 - (CGFloat)viewDeckController:(IIViewDeckController*)viewDeckController changesLedge:(CGFloat)ledge forSide:(IIViewDeckSide)viewDeckSide;
 
+- (BOOL)viewDeckController:(IIViewDeckController*)viewDeckController shouldBeginPanOverView:(UIView*)view;
+
 @end
 
 
@@ -287,3 +350,5 @@ typedef void (^IIViewDeckControllerBounceBlock) (IIViewDeckController *controlle
 @property(nonatomic,readonly,retain) IIViewDeckController *viewDeckController; 
 
 @end
+
+

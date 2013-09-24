@@ -19,6 +19,7 @@
 #import "AGSinaWeiboFriendsViewController.h"
 #import "AGSinaWeiboUserDetailInfoViewController.h"
 #import "AGSinaWeiboPictureViewController.h"
+#import <AGCommon/NSString+Common.h>
 
 #define WEIBO_CELL @"weiboCell"
 #define MORE_CELL @"moreCell"
@@ -95,6 +96,12 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+    }
     
     if (!_initialized)
     {

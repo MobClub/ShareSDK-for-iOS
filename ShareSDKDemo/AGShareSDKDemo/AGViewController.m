@@ -18,6 +18,7 @@
 #import "IIViewDeckController.h"
 #import <AGCommon/UIDevice+Common.h>
 #import "AGAppDelegate.h"
+#import <AGCommon/NSString+Common.h>
 
 #define TYPE_CELL_ID @"TypeCell"
 #define STYLE_CELL_ID @"StyleCell"
@@ -70,7 +71,7 @@
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:btn]
                                                   autorelease];
         
-        if ([UIDevice currentDevice].isPad)
+        if ([UIDevice currentDevice].isPad || [[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
         {
             UILabel *label = [[UILabel alloc] init];
             label.backgroundColor = [UIColor clearColor];
@@ -211,6 +212,30 @@
                                   [NSNumber numberWithBool:YES],
                                   @"selected",
                                   [NSNumber numberWithInteger:ShareTypeSohuKan],
+                                  @"type",
+                                  nil],
+                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  @"Tumblr",
+                                  @"title",
+                                  [NSNumber numberWithBool:YES],
+                                  @"selected",
+                                  [NSNumber numberWithInteger:ShareTypeTumblr],
+                                  @"type",
+                                  nil],
+                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  @"Flickr",
+                                  @"title",
+                                  [NSNumber numberWithBool:YES],
+                                  @"selected",
+                                  [NSNumber numberWithInteger:ShareTypeFlickr],
+                                  @"type",
+                                  nil],
+                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  @"Dropbox",
+                                  @"title",
+                                  [NSNumber numberWithBool:YES],
+                                  @"selected",
+                                  [NSNumber numberWithInteger:ShareTypeDropbox],
                                   @"type",
                                   nil],
                                  nil];
@@ -407,6 +432,30 @@
                             [NSNumber numberWithInteger:ShareTypeSohuKan],
                             @"type",
                             nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Tumblr",
+                            @"title",
+                            [NSNumber numberWithBool:YES],
+                            @"selected",
+                            [NSNumber numberWithInteger:ShareTypeTumblr],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Flickr",
+                            @"title",
+                            [NSNumber numberWithBool:YES],
+                            @"selected",
+                            [NSNumber numberWithInteger:ShareTypeFlickr],
+                            @"type",
+                            nil],
+                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                            @"Dropbox",
+                            @"title",
+                            [NSNumber numberWithBool:YES],
+                            @"selected",
+                            [NSNumber numberWithInteger:ShareTypeDropbox],
+                            @"type",
+                            nil],
                            nil];
         
         self.title = @"演示";
@@ -433,6 +482,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+    }
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -698,10 +753,10 @@
         switch (_curShareViewStyle)
         {
             case 1:
-                shareViewOptions = [ShareSDK simpleShareOptionsWithTitle:@"内容分享" shareViewDelegate:_appDelegate.viewDelegate];
+                shareViewOptions = [ShareSDK simpleShareOptionsWithTitle:@"内容分享" shareViewDelegate:nil];
                 break;
             case 2:
-                shareViewOptions = [ShareSDK appRecommendShareOptionsWithTile:@"内容分享" shareViewDelegate:_appDelegate.viewDelegate];
+                shareViewOptions = [ShareSDK appRecommendShareOptionsWithTile:@"内容分享" shareViewDelegate:nil];
                 break;
             default:
                 shareViewOptions = [ShareSDK defaultShareOptionsWithTitle:@"内容分享"

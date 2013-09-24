@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.4.0</string>
+	<string>2.5.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2.4.0</string>
+	<string>2.5.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -66,6 +66,7 @@
 				<string>tencent100371282</string>
 				<string>wb801307650</string>
 				<string>rm226427cn.appgo.sharebyone</string>
+				<string>pin1432928</string>
 			</array>
 			<key>CFBundleURLName</key>
 			<string></string>
@@ -74,8 +75,6 @@
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleBlackOpaque</string>
-	<key>UIStatusBarHidden</key>
-	<false/>
+	<string>UIStatusBarStyleBlackTranslucent</string>
 </dict>
 </plist>

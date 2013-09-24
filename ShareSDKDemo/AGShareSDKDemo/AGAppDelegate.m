@@ -19,7 +19,7 @@
 #import <RennSDK/RennSDK.h>
 #import <GoogleOpenSource/GoogleOpenSource.h>
 #import <GooglePlus/GooglePlus.h>
-#import "WeiboSDK.h"
+#import <Pinterest/Pinterest.h>
 
 @implementation AGAppDelegate
 
@@ -51,8 +51,7 @@
     **/
     [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
                                appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
-                             redirectUri:@"http://www.sharesdk.cn"
-                             weiboSDKCls:[WeiboSDK class]];
+                             redirectUri:@"http://www.sharesdk.cn"];
     /**
      连接腾讯微博开放平台应用以使用相关功能，此应用需要引用TencentWeiboConnection.framework
      http://dev.t.qq.com上注册腾讯微博开放平台应用，并将相关信息填写到以下字段
@@ -197,6 +196,35 @@
                                 redirectUri:@"http://localhost"
                                   signInCls:[GPPSignIn class]
                                    shareCls:[GPPShare class]];
+    
+    /**
+     连接Pinterest应用以使用相关功能，此应用需要引用Pinterest.framework库
+     http://developers.pinterest.com/上注册应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectPinterestWithClientId:@"1432928"
+                              pinterestCls:[Pinterest class]];
+    
+    /**
+     连接Dropbox应用以使用相关功能，此应用需要引用DropboxConnection.framework库
+     https://www.dropbox.com/developers/apps上注册应用，并将相关信息填写以下字段。
+     **/
+    [ShareSDK connectDropboxWithAppKey:@"7janx53ilz11gbs"
+                             appSecret:@"c1hpx5fz6tzkm32"];
+    
+    /**
+     链接Flickr,此平台需要引用FlickrConnection.framework框架。
+     http://www.flickr.com/services/apps/create/上注册应用，并将相关信息填写以下字段。
+     **/
+    [ShareSDK connectFlickrWithApiKey:@"33d833ee6b6fca49943363282dd313dd"
+                            apiSecret:@"3a2c5b42a8fbb8bb"];
+    
+    /**
+     链接Tumblr,此平台需要引用TumblrConnection.framework框架
+     http://www.tumblr.com/oauth/apps上注册应用，并将相关信息填写以下字段。
+     **/
+    [ShareSDK connectTumblrWithConsumerKey:@"2QUXqO9fcgGdtGG1FcvML6ZunIQzAEL8xY6hIaxdJnDti2DYwM"
+                            consumerSecret:@"3Rt0sPFj7u2g39mEVB3IBpOzKnM3JnTtxX2bao2JKk4VV1gtNo"
+                               callbackUrl:@"http://sharesdk.cn"];
 }
 
 /**
@@ -219,6 +247,8 @@
     //导入Google+需要的外部库类型，如果不需要Google＋分享可以不调用此方法
     [ShareSDK importGooglePlusClass:[GPPSignIn class]
                          shareClass:[GPPShare class]];
+    //导入Pinterest需要的外部库类型，如果不需要Pinterest分享可以不调用此方法
+    [ShareSDK importPinterestClass:[Pinterest class]];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -227,17 +257,17 @@
      注册SDK应用，此应用请到http://www.sharesdk.cn中进行注册申请。
      此方法必须在启动时调用，否则会限制SDK的使用。
      **/
-//    [ShareSDK registerApp:@"api20"];
+    [ShareSDK registerApp:@"api20"];
 
     //如果使用服务中配置的app信息，请把初始化代码改为下面的初始化方法。
-    [ShareSDK registerApp:@"api20" useAppTrusteeship:YES];
+//    [ShareSDK registerApp:@"api20" useAppTrusteeship:YES];
     
     //转换链接标记
     [ShareSDK convertUrlEnabled:YES];
-//    [self initializePlat];
+    [self initializePlat];
     
     //如果使用服务器中配置的app信息，请把初始化平台代码改为下面的方法
-    [self initializePlatForTrusteeship];
+//    [self initializePlatForTrusteeship];
     
     _interfaceOrientationMask = SSInterfaceOrientationMaskAll;
     //横屏设置
@@ -261,6 +291,8 @@
     IIViewDeckController *vc = [[[IIViewDeckController alloc] initWithCenterViewController:navApiVC leftViewController:leftVC] autorelease];
     vc.leftSize = self.window.width - (320 - 44.0);
     self.viewController = vc;
+    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
     
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];

@@ -13,6 +13,7 @@
 #import "IIViewDeckController.h"
 #import <AGCommon/UIDevice+Common.h>
 #import <ShareSDK/ShareSDK.h>
+#import <AGCommon/NSString+Common.h>
 #import "AGAppDelegate.h"
 
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
@@ -41,7 +42,7 @@
         [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
         
-        if ([UIDevice currentDevice].isPad)
+        if ([UIDevice currentDevice].isPad || [[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
         {
             UILabel *label = [[UILabel alloc] init];
             label.backgroundColor = [UIColor clearColor];
@@ -966,6 +967,12 @@
     [super viewDidLoad];
     
     self.title = @"微信";
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+    }
     
     UIScrollView *footView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,
                                                                             0,

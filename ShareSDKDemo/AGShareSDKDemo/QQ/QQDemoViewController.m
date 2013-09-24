@@ -17,6 +17,7 @@
 #import "ShareSDKDemoMoreViewController.h"
 #import "IIViewDeckController.h"
 #import "AGAppDelegate.h"
+#import <AGCommon/NSString+Common.h>
 
 @interface QQDemoViewController (TestMethods)
 - (BOOL)checkQQ;
@@ -72,7 +73,7 @@
                           @"显示测试内容",
                           nil];
         
-        if ([UIDevice currentDevice].isPad)
+        if ([UIDevice currentDevice].isPad || [[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
         {
             UILabel *label = [[UILabel alloc] init];
             label.backgroundColor = [UIColor clearColor];
@@ -113,6 +114,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+    }
     
     self.title = @"QQ";
 

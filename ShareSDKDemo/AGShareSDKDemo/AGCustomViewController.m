@@ -13,6 +13,7 @@
 #import <AGCommon/UINavigationBar+Common.h>
 #import "IIViewDeckController.h"
 #import "AGAppDelegate.h"
+#import <AGCommon/NSString+Common.h>
 
 @implementation AGCustomViewController
 
@@ -40,6 +41,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+    }
     
     self.view.backgroundColor = [UIColor whiteColor];
     

@@ -12,6 +12,7 @@
 #import <AGCommon/UINavigationBar+Common.h>
 #import "IIViewDeckController.h"
 #import <ShareSDK/ShareSDK.h>
+#import <AGCommon/NSString+Common.h>
 
 #define LEFT_PADDING 10.0
 #define RIGHT_PADDING 10.0
@@ -32,7 +33,7 @@
         [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
         
-        if ([UIDevice currentDevice].isPad)
+        if ([UIDevice currentDevice].isPad || [[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
         {
             UILabel *label = [[UILabel alloc] init];
             label.backgroundColor = [UIColor clearColor];
@@ -58,6 +59,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+    }
 	
     self.view.backgroundColor = [UIColor whiteColor];
     

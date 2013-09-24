@@ -17,6 +17,7 @@
 #import <AGCommon/UINavigationBar+Common.h>
 #import <AGCommon/UIColor+Common.h>
 #import <AGCommon/UIDevice+Common.h>
+#import <AGCommon/NSString+Common.h>
 
 #define INPUT_CELL_ID @"inputCellId"
 #define PARAM_CELL_ID @"paramCellId"
@@ -28,6 +29,18 @@
 {
     if (self = [super init])
     {
+        if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+        {
+            //改写导航栏标题样式
+            UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+            label.backgroundColor = [UIColor clearColor];
+            label.textColor = [UIColor whiteColor];
+            label.font = [UIFont boldSystemFontOfSize:18];
+            [label sizeToFit];
+            
+            self.navigationItem.titleView = label;
+        }
+        
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
@@ -58,6 +71,12 @@
 {
     [super loadView];
     
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+    }
+    
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneNavigationBarBG.png"]];
     
 	// Do any additional setup after loading the view.
@@ -70,6 +89,17 @@
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:_tableView];
     [_tableView release];
+}
+
+- (void)setTitle:(NSString *)title
+{
+    [super setTitle:title];
+    
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        ((UILabel *)self.navigationItem.titleView).text = title;
+        [(UILabel *)self.navigationItem.titleView sizeToFit];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
