@@ -8,6 +8,7 @@
 
 #import "QQTextViewController.h"
 #import <AGCommon/NSString+Common.h>
+#import <Sharesdk/ShareSDK.h>
 
 @implementation QQTextViewController
 
@@ -46,8 +47,8 @@
     
     if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
     {
-        self.extendedLayoutIncludesOpaqueBars = NO;
-        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+        [self setExtendedLayoutIncludesOpaqueBars:NO];
+        [self setEdgesForExtendedLayout:SSRectEdgeBottom | SSRectEdgeLeft | SSRectEdgeRight];
     }
     
     self.title = @"编辑文本消息";

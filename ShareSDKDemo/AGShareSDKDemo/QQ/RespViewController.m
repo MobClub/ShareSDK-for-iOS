@@ -10,6 +10,7 @@
 #import "HeadView.h"
 #import <AGCommon/NSString+Common.h>
 #import <TencentOpenAPI/QQApi.h>
+#import <ShareSDK/ShareSDK.h>
 
 
 @implementation RespViewController
@@ -53,8 +54,8 @@
     
     if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
     {
-        self.extendedLayoutIncludesOpaqueBars = NO;
-        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+        [self setExtendedLayoutIncludesOpaqueBars:NO];
+        [self setEdgesForExtendedLayout:SSRectEdgeBottom | SSRectEdgeLeft | SSRectEdgeRight];
     }
     
     self.view.backgroundColor = [UIColor colorWithRed:0xe0/255.f green:0xe0/255.f blue:0xe0/255.f alpha:1.f];
