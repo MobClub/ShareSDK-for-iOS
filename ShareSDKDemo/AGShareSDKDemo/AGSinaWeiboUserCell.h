@@ -11,11 +11,12 @@
 #import <AGCommon/CMImageCacheManager.h>
 #import <AGCommon/CMImageView.h>
 #import <SinaWeiboConnection/SinaWeiboConnection.h>
+#import <SinaWeiboConnection/SSSinaWeiboUserInfoReader.h>
 
 @interface AGSinaWeiboUserCell : UITableViewCell
 {
 @private
-    SSSinaWeiboUser *_userInfo;
+    SSSinaWeiboUserInfoReader *_userInfo;
     CMImageCacheManager *_cacheManager;
     CMImageLoader *_loader;
     
@@ -34,7 +35,7 @@
 /**
  *	@brief	用户信息
  */
-@property (nonatomic,retain) SSSinaWeiboUser *userInfo;
+@property (nonatomic,retain) SSSinaWeiboUserInfoReader *userInfo;
 
 /**
  *	@brief	初始化表格单元格

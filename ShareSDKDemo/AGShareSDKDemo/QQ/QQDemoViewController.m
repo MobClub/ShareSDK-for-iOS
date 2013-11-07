@@ -342,7 +342,8 @@
                       type:ShareTypeQQ
                authOptions:authOptions
              statusBarTips:YES
-                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                    result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        
                         if (state == SSPublishContentStateSuccess)
                         {
                             NSLog(@"success");
@@ -386,7 +387,8 @@
                           type:ShareTypeQQ
                    authOptions:authOptions
                  statusBarTips:YES
-                        result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                            
                             if (state == SSPublishContentStateSuccess)
                             {
                                 NSLog(@"success");
@@ -522,7 +524,8 @@
                       type:ShareTypeQQ
                authOptions:authOptions
              statusBarTips:YES
-                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                    result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        
                         if (state == SSPublishContentStateSuccess)
                         {
                             NSLog(@"success");
@@ -567,7 +570,8 @@
                       type:ShareTypeQQ
                authOptions:authOptions
              statusBarTips:YES
-                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                    result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                       
                         if (state == SSPublishContentStateSuccess)
                         {
                             NSLog(@"success");
@@ -611,7 +615,8 @@
                       type:ShareTypeQQ
                authOptions:authOptions
              statusBarTips:YES
-                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                    result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        
                         if (state == SSPublishContentStateSuccess)
                         {
                             NSLog(@"success");
@@ -655,7 +660,8 @@
                       type:ShareTypeQQ
                authOptions:authOptions
              statusBarTips:YES
-                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                    result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        
                         if (state == SSPublishContentStateSuccess)
                         {
                             NSLog(@"success");
@@ -699,7 +705,8 @@
                       type:ShareTypeQQ
                authOptions:authOptions
              statusBarTips:YES
-                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                    result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        
                         if (state == SSPublishContentStateSuccess)
                         {
                             NSLog(@"success");

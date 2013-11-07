@@ -503,7 +503,7 @@
           [alertView show];
           [alertView release];
       }
-       fault:^(SSSinaWeiboErrorInfo *error) {
+       fault:^(CMErrorInfo *error) {
            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                                message:[NSString stringWithFormat:
                                                                         @"调用失败：%d:%@",
@@ -563,7 +563,7 @@
           [alertView show];
           [alertView release];
       }
-       fault:^(SSSinaWeiboErrorInfo *error) {
+       fault:^(CMErrorInfo *error) {
            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                                message:[NSString stringWithFormat:
                                                                         @"调用失败：%d:%@",
@@ -601,7 +601,7 @@
           [alertView show];
           [alertView release];
       }
-       fault:^(SSSinaWeiboErrorInfo *error) {
+       fault:^(CMErrorInfo *error) {
            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                                message:[NSString stringWithFormat:
                                                                         @"调用失败：%d:%@",
@@ -662,7 +662,7 @@
           [alertView show];
           [alertView release];
       }
-       fault:^(SSSinaWeiboErrorInfo *error) {
+       fault:^(CMErrorInfo *error) {
            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                                message:[NSString stringWithFormat:
                                                                         @"调用失败：%d:%@",
@@ -705,7 +705,7 @@
           [alertView show];
           [alertView release];
       }
-       fault:^(SSSinaWeiboErrorInfo *error) {
+       fault:^(CMErrorInfo *error) {
            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                                message:[NSString stringWithFormat:
                                                                         @"调用失败：%d:%@",
@@ -748,7 +748,7 @@
           [alertView show];
           [alertView release];
       }
-       fault:^(SSSinaWeiboErrorInfo *error) {
+       fault:^(CMErrorInfo *error) {
            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                                message:[NSString stringWithFormat:
                                                                         @"调用失败：%d:%@",
@@ -794,7 +794,8 @@
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
-      } fault:^(SSTencentWeiboErrorInfo *error) {
+      }
+       fault:^(CMErrorInfo *error) {
           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                               message:[NSString stringWithFormat:
                                                                        @"调用失败：%d:%@",
@@ -851,7 +852,7 @@
           }
           
          
-      } fault:^(SSTencentWeiboErrorInfo *error) {
+      } fault:^(CMErrorInfo *error) {
           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                               message:[NSString stringWithFormat:
                                                                        @"调用失败：%d:%@",
@@ -895,7 +896,8 @@
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
-      } fault:^(SSTencentWeiboErrorInfo *error) {
+      }
+       fault:^(CMErrorInfo *error) {
           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                               message:[NSString stringWithFormat:
                                                                        @"调用失败：%d:%@",
@@ -958,7 +960,7 @@
           [alertView show];
           [alertView release];
           
-      } fault:^(SSTencentWeiboErrorInfo *error) {
+      } fault:^(CMErrorInfo *error) {
           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                               message:[NSString stringWithFormat:
                                                                        @"调用失败：%d:%@",
@@ -1000,7 +1002,7 @@
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
-      } fault:^(SSTencentWeiboErrorInfo *error) {
+      } fault:^(CMErrorInfo *error) {
           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                               message:[NSString stringWithFormat:
                                                                        @"调用失败：%d:%@",
@@ -1042,7 +1044,7 @@
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
-      } fault:^(SSTencentWeiboErrorInfo *error) {
+      } fault:^(CMErrorInfo *error) {
           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                               message:[NSString stringWithFormat:
                                                                        @"调用失败：%d:%@",

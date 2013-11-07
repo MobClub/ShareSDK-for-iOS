@@ -591,27 +591,14 @@
             
             if (type != 0)
             {
-                id<ISSCredential> credential = [ShareSDK getCredentialWithType:type];
-                
-                if ([credential conformsToProtocol:@protocol(ISSOAuth2Credential)])
+                id<ISSPlatformCredential> credential = [ShareSDK getCredentialWithType:type];
+                if (credential)
                 {
                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                                         message:[NSString stringWithFormat:
-                                                                                 @"AccessToken = %@",
-                                                                                 [(id<ISSOAuth2Credential>)credential accessToken]]
-                                                                       delegate:nil
-                                                              cancelButtonTitle:@"知道了"
-                                                              otherButtonTitles:nil];
-                    [alertView show];
-                    [alertView release];
-                }
-                else if ([credential conformsToProtocol:@protocol(ISSOAuthCredential)])
-                {
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                        message:[NSString stringWithFormat:
-                                                                                 @"OAuthToken = %@\nOAuthSecret = %@",
-                                                                                 [(id<ISSOAuthCredential>)credential oauthToken],
-                                                                                 [(id<ISSOAuthCredential>)credential oauthTokenSecret]]
+                                                                                 @"token = %@\nsecret = %@",
+                                                                                 [credential token],
+                                                                                 [credential secret]]
                                                                        delegate:nil
                                                               cancelButtonTitle:@"知道了"
                                                               otherButtonTitles:nil];
@@ -647,6 +634,14 @@
 {
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
 
+//    id<ISSContent> publishContent = [ShareSDK content:nil
+//                                       defaultContent:nil
+//                                                image:nil
+//                                                title:nil
+//                                                  url:nil
+//                                          description:nil
+//                                            mediaType:SSPublishContentMediaTypeText];
+    
     //构造分享内容
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
@@ -735,7 +730,7 @@
     [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
     
     //定制Pinterest信息
-    [publishContent addPinterestUnitWithImage:[ShareSDK imageWithUrl:@"http://sharesdk.cn/Public/Frontend/images/logo.png"]
+    [publishContent addPinterestUnitWithImage:[ShareSDK imageWithUrl:@"http://img1.bdstatic.com/img/image/67037d3d539b6003af38f5c4c4f372ac65c1038b63f.jpg"]
                                           url:INHERIT_VALUE
                                   description:INHERIT_VALUE];
     
@@ -777,12 +772,13 @@
                      statusBarTips:YES
                        authOptions:authOptions
                       shareOptions:shareOptions
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                if (state == SSPublishContentStateSuccess)
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
+                                if (state == SSResponseStateSuccess)
                                 {
                                     NSLog(@"分享成功");
                                 }
-                                else if (state == SSPublishContentStateFail)
+                                else if (state == SSResponseStateFail)
                                 {
                                     NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
                                 }
@@ -915,7 +911,8 @@
                      statusBarTips:YES
                        authOptions:authOptions
                       shareOptions:shareOptions
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
                                 if (state == SSPublishContentStateSuccess)
                                 {
                                     NSLog(@"分享成功");
@@ -1047,7 +1044,8 @@
                                                                                             type:ShareTypeSinaWeibo
                                                                                      authOptions:authOptions
                                                                                    statusBarTips:YES
-                                                                                          result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                          result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                              
                                                                                               if (state == SSPublishContentStateSuccess)
                                                                                               {
                                                                                                   NSLog(@"分享成功");
@@ -1066,7 +1064,8 @@
                                                                                                type:ShareTypeTencentWeibo
                                                                                         authOptions:authOptions
                                                                                       statusBarTips:YES
-                                                                                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                            
                                                                                                  if (state == SSPublishContentStateSuccess)
                                                                                                  {
                                                                                                      NSLog(@"分享成功");
@@ -1085,7 +1084,8 @@
                                                                                              type:ShareTypeQQSpace
                                                                                       authOptions:authOptions
                                                                                     statusBarTips:YES
-                                                                                           result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                           result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                               
                                                                                                if (state == SSPublishContentStateSuccess)
                                                                                                {
                                                                                                    NSLog(@"分享成功");
@@ -1105,7 +1105,8 @@
                                                                                           type:ShareTypeFacebook
                                                                                    authOptions:authOptions
                                                                                  statusBarTips:YES
-                                                                                        result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                        result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                            
                                                                                             if (state == SSPublishContentStateSuccess)
                                                                                             {
                                                                                                 NSLog(@"分享成功");
@@ -1125,7 +1126,8 @@
                                                                                           type:ShareTypeTwitter
                                                                                    authOptions:authOptions
                                                                                  statusBarTips:YES
-                                                                                        result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                        result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                            
                                                                                             if (state == SSPublishContentStateSuccess)
                                                                                             {
                                                                                                 NSLog(@"分享成功");
@@ -1145,7 +1147,8 @@
                                                                                           type:ShareTypeRenren
                                                                                    authOptions:authOptions
                                                                                  statusBarTips:YES
-                                                                                        result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                        result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                            
                                                                                             if (state == SSPublishContentStateSuccess)
                                                                                             {
                                                                                                 NSLog(@"分享成功");
@@ -1165,7 +1168,8 @@
                                                                                           type:ShareTypeKaixin
                                                                                    authOptions:authOptions
                                                                                  statusBarTips:YES
-                                                                                        result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                        result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                            
                                                                                             if (state == SSPublishContentStateSuccess)
                                                                                             {
                                                                                                 NSLog(@"分享成功");
@@ -1185,7 +1189,8 @@
                                                                                           type:ShareTypeSohuWeibo
                                                                                    authOptions:authOptions
                                                                                  statusBarTips:YES
-                                                                                        result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                        result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                            
                                                                                             if (state == SSPublishContentStateSuccess)
                                                                                             {
                                                                                                 NSLog(@"分享成功");
@@ -1205,7 +1210,9 @@
                                                                                           type:ShareType163Weibo
                                                                                    authOptions:authOptions
                                                                                  statusBarTips:YES
-                                                                                        result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                        result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                               
+                                                                                            
                                                                                             if (state == SSPublishContentStateSuccess)
                                                                                             {
                                                                                                 NSLog(@"分享成功");
@@ -1225,7 +1232,8 @@
                                                                                           type:ShareTypeDouBan
                                                                                    authOptions:authOptions
                                                                                  statusBarTips:YES
-                                                                                        result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                        result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                            
                                                                                             if (state == SSPublishContentStateSuccess)
                                                                                             {
                                                                                                 NSLog(@"分享成功");
@@ -1245,7 +1253,8 @@
                                                                                           type:ShareTypeInstapaper
                                                                                    authOptions:authOptions
                                                                                  statusBarTips:YES
-                                                                                        result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                        result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                          
                                                                                             if (state == SSPublishContentStateSuccess)
                                                                                             {
                                                                                                 NSLog(@"分享成功");
@@ -1264,7 +1273,8 @@
                                                                                           type:ShareTypeYouDaoNote
                                                                                    authOptions:authOptions
                                                                                  statusBarTips:YES
-                                                                                        result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                        result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                            
                                                                                             if (state == SSPublishContentStateSuccess)
                                                                                             {
                                                                                                 NSLog(@"分享成功");
@@ -1284,7 +1294,8 @@
                                                                                            type:ShareTypeSohuKan
                                                                                     authOptions:authOptions
                                                                                   statusBarTips:YES
-                                                                                         result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                         result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                             
                                                                                              if (state == SSPublishContentStateSuccess)
                                                                                              {
                                                                                                  NSLog(@"分享成功");
@@ -1304,7 +1315,8 @@
                                                                                            type:ShareTypeEvernote
                                                                                     authOptions:authOptions
                                                                                   statusBarTips:YES
-                                                                                         result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                         result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                             
                                                                                              if (state == SSPublishContentStateSuccess)
                                                                                              {
                                                                                                  NSLog(@"分享成功");
@@ -1324,7 +1336,8 @@
                                                                                           type:ShareTypePocket
                                                                                    authOptions:authOptions
                                                                                  statusBarTips:YES
-                                                                                        result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                        result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                            
                                                                                             if (state == SSPublishContentStateSuccess)
                                                                                             {
                                                                                                 NSLog(@"分享成功");
@@ -1376,7 +1389,8 @@
                                                         shareViewDelegate:_appDelegate.viewDelegate
                                                       friendsViewDelegate:_appDelegate.viewDelegate
                                                     picViewerViewDelegate:nil]
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
                                 if (state == SSPublishContentStateSuccess)
                                 {
                                     NSLog(@"发表成功");
@@ -1437,7 +1451,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                          
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -1498,7 +1513,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -1556,7 +1572,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                               
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -1617,7 +1634,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -1674,7 +1692,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -1732,7 +1751,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -1795,7 +1815,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -1857,7 +1878,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -1919,7 +1941,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -1981,7 +2004,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -2043,7 +2067,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -2105,7 +2130,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -2168,7 +2194,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -2230,7 +2257,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -2291,7 +2319,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -2353,7 +2382,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -2428,7 +2458,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -2489,7 +2520,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -2537,7 +2569,8 @@
                       statusBarTips:YES
                         authOptions:authOptions
                        shareOptions:nil
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -2594,7 +2627,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -2654,7 +2688,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -2714,7 +2749,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -2752,7 +2788,8 @@
                        fieldType:SSUserFieldTypeName
                      authOptions:authOptions
                     viewDelegate:_appDelegate.viewDelegate
-                          result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                          result:^(SSResponseState state, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                              
                               NSString *msg = nil;
                               if (state == SSResponseStateSuccess)
                               {
@@ -2802,7 +2839,8 @@
                        fieldType:SSUserFieldTypeName
                      authOptions:authOptions
                     viewDelegate:_appDelegate.viewDelegate
-                          result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                          result:^(SSResponseState state, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                              
                               NSString *msg = nil;
                               if (state == SSResponseStateSuccess)
                               {
@@ -2854,17 +2892,25 @@
 
 - (void)setAccessTokenClickHandler:(UIButton *)sender
 {
-    //获取新浪微博授权凭证
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeSinaWeibo];
-    
-    //将授权凭证转换为Data可用于数据保存
-    NSData *credentialData = [ShareSDK dataWithCredential:credential];
-    
-    //将授权数据转换为新的授权凭证
-    id<ISSCredential> newCredential = [ShareSDK credentialWithData:credentialData type:ShareTypeSinaWeibo];
+    id<ISSPlatformCredential> newCredential = [ShareSDK credentialWithType:ShareTypeVKontakte
+                                                                       uid:@"226565899"
+                                                                     token:@"c45924982eb3c35fb6682b9cb6ece2750266e1b944647559136ef73439dd5af312e7828f810693df413c5"
+                                                                    secret:nil
+                                                                   expired:[NSDate dateWithTimeIntervalSince1970:1383806157.295929]
+                                                                   extInfo:nil];
+
+//    //获取新浪微博授权凭证
+//    id<ISSPlatformCredential> credential = [ShareSDK getCredentialWithType:ShareTypeVKontakte];
+//    NSLog(@"uid = %@, token = %@, secret = %@, expired = %f, extInfo = %@",[credential uid], [credential token], [ credential secret], [[credential expired] timeIntervalSince1970], [credential extInfo]);
+//    
+//    //将授权凭证转换为Data可用于数据保存
+//    NSData *credentialData = [ShareSDK dataWithCredential:credential];
+//    
+//    //将授权数据转换为新的授权凭证
+//    id<ISSPlatformCredential> newCredential = [ShareSDK credentialWithData:credentialData type:ShareTypeVKontakte];
     
     //设置新浪微博使用新的授权凭证
-    [ShareSDK setCredential:newCredential type:ShareTypeSinaWeibo];
+    [ShareSDK setCredential:newCredential type:ShareTypeVKontakte];
 }
 
 /**
@@ -2920,7 +2966,8 @@
                                                         shareViewDelegate:_appDelegate.viewDelegate
                                                       friendsViewDelegate:_appDelegate.viewDelegate
                                                     picViewerViewDelegate:nil]
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
                                 if (state == SSPublishContentStateSuccess)
                                 {
                                     NSLog(@"分享成功");
@@ -3048,7 +3095,8 @@
                                                         shareViewDelegate:_appDelegate.viewDelegate
                                                       friendsViewDelegate:_appDelegate.viewDelegate
                                                     picViewerViewDelegate:nil]
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
                                 if (state == SSPublishContentStateSuccess)
                                 {
                                     NSLog(@"分享成功");
@@ -3102,7 +3150,8 @@
                                                         shareViewDelegate:_appDelegate.viewDelegate
                                                       friendsViewDelegate:_appDelegate.viewDelegate
                                                     picViewerViewDelegate:nil]
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
                                 if (state == SSPublishContentStateSuccess)
                                 {
                                     NSLog(@"分享成功");
@@ -3235,7 +3284,8 @@
                                                         shareViewDelegate:_appDelegate.viewDelegate
                                                       friendsViewDelegate:_appDelegate.viewDelegate
                                                     picViewerViewDelegate:nil]
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
                                 if (state == SSPublishContentStateSuccess)
                                 {
                                     NSLog(@"分享成功");
@@ -3297,7 +3347,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -3353,7 +3404,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSLog(@"发表成功");
@@ -3434,7 +3486,8 @@
                                                                           [ShareSDK clientShareContent:publishContent
                                                                                                   type:ShareTypeSinaWeibo
                                                                                          statusBarTips:YES
-                                                                                                result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                   
                                                                                                     if (state == SSPublishContentStateSuccess)
                                                                                                     {
                                                                                                         NSLog(@"分享成功");
@@ -3452,7 +3505,8 @@
                                                                          [ShareSDK clientShareContent:publishContent
                                                                                                  type:ShareTypeWeixiSession
                                                                                         statusBarTips:YES
-                                                                                               result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                               result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                   
                                                                                                    if (state == SSPublishContentStateSuccess)
                                                                                                    {
                                                                                                        NSLog(@"分享成功");
@@ -3469,7 +3523,8 @@
                                                                          [ShareSDK clientShareContent:publishContent
                                                                                                  type:ShareTypeWeixiTimeline
                                                                                         statusBarTips:YES
-                                                                                               result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                               result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                          
                                                                                                    if (state == SSPublishContentStateSuccess)
                                                                                                    {
                                                                                                        NSLog(@"分享成功");
@@ -3486,7 +3541,8 @@
                                                                         [ShareSDK clientShareContent:publishContent
                                                                                                 type:ShareTypeQQ
                                                                                        statusBarTips:YES
-                                                                                              result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                              result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                              
                                                                                                   if (state == SSPublishContentStateSuccess)
                                                                                                   {
                                                                                                       NSLog(@"分享成功");
@@ -3504,7 +3560,8 @@
                                                                         [ShareSDK clientShareContent:publishContent
                                                                                                 type:ShareTypeGooglePlus
                                                                                        statusBarTips:YES
-                                                                                              result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                              result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                 
                                                                                                   if (state == SSPublishContentStateSuccess)
                                                                                                   {
                                                                                                       NSLog(@"分享成功");
@@ -3522,7 +3579,8 @@
                                                                          [ShareSDK clientShareContent:publishContent
                                                                                                  type:ShareTypePinterest
                                                                                         statusBarTips:YES
-                                                                                               result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                               result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                 
                                                                                                    if (state == SSPublishContentStateSuccess)
                                                                                                    {
                                                                                                        NSLog(@"分享成功");
@@ -3550,7 +3608,8 @@
                      statusBarTips:YES
                        authOptions:nil
                       shareOptions:nil
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
                                 if (state == SSPublishContentStateSuccess)
                                 {
                                     NSLog(@"发表成功");
@@ -3593,7 +3652,8 @@
                      statusBarTips:YES
                        authOptions:authOptions
                       shareOptions:nil
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                               
                                 if (state == SSPublishContentStateSuccess)
                                 {
                                     NSLog(@"发表成功");
@@ -3707,7 +3767,8 @@
                            fieldType:SSUserFieldTypeName
                          authOptions:authOptions
                         viewDelegate:_appDelegate.viewDelegate
-                              result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                              result:^(SSResponseState state, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                                  
                                   NSString *msg = nil;
                                   if (state == SSResponseStateSuccess)
                                   {

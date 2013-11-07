@@ -25,7 +25,7 @@
 
 @implementation AGSinaWeiboUserDetailInfoViewController
 
-- (id)initWithUser:(SSSinaWeiboUser *)user
+- (id)initWithUser:(SSSinaWeiboUserInfoReader *)user
 {
     if (self = [super init])
     {
@@ -134,9 +134,10 @@
                                 field:_userName
                             fieldType:SSUserFieldTypeName
                           authOptions:authOptions
-                               result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                               result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                                   
                                    SAFE_RELEASE(_user);
-                                   _user = [[userInfo localUser] retain];
+                                   _user = [[SSSinaWeiboUserInfoReader readerWithSourceData:[userInfo sourceData]] retain];
                                    
                                    //计算需要显示多少行
                                    [_rowInfoArray removeAllObjects];

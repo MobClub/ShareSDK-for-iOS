@@ -136,7 +136,7 @@
     [super dealloc];
 }
 
-- (void)setStatus:(SSSinaWeiboStatus *)status
+- (void)setStatus:(SSSinaWeiboStatusInfoReader *)status
 {
     [status retain];
     SAFE_RELEASE(_status);
@@ -146,7 +146,7 @@
     [self setNeedsLayout];
 }
 
-- (CGFloat)layoutThatStaus:(SSSinaWeiboStatus *)status isCalCellHeight:(BOOL)isCalCellHeight
+- (CGFloat)layoutThatStaus:(SSSinaWeiboStatusInfoReader *)status isCalCellHeight:(BOOL)isCalCellHeight
 {
     CGFloat height = 0;
     
@@ -154,7 +154,6 @@
     SAFE_RELEASE(_iconLoader);
     [_picLoader removeAllNotificationWithTarget:self];
     SAFE_RELEASE(_picLoader);
-    
     //头像
     _iconLoader = [[_imageCacheManager getImage:status.user.avatarLarge cornerRadius:5.0 size:_iconImageView.frame.size] retain];
     if (_iconLoader.state == ImageLoaderStateReady)

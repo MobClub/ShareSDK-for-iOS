@@ -85,378 +85,31 @@
         _curShareViewStyle = 0;
         _curAuthViewStyle = 0;
         _curContentType = 2;
-        _noneUIShareTypeArray = [[NSMutableArray alloc] initWithObjects:
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"新浪微博",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeSinaWeibo],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"腾讯微博",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeTencentWeibo],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"QQ空间",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeQQSpace],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"Facebook",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeFacebook],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"Twitter",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeTwitter],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"人人网",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeRenren],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"开心网",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeKaixin],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"搜狐微博",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeSohuWeibo],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"网易微博",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareType163Weibo],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"豆瓣社区",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeDouBan],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"印象笔记",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeEvernote],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"LinkedIn",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeLinkedIn],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"Pocket",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypePocket],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"Instapaper",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeInstapaper],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"有道云笔记",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeYouDaoNote],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"搜狐随身看",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeSohuKan],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"Tumblr",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeTumblr],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"Flickr",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeFlickr],
-                                  @"type",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  @"Dropbox",
-                                  @"title",
-                                  [NSNumber numberWithBool:YES],
-                                  @"selected",
-                                  [NSNumber numberWithInteger:ShareTypeDropbox],
-                                  @"type",
-                                  nil],
-                                 nil];
-        _shareTypeArray = [[NSMutableArray alloc] initWithObjects:
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"新浪微博",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeSinaWeibo],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"腾讯微博",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeTencentWeibo],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"短信分享",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeSMS],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"QQ空间",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeQQSpace],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"微信好友",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeWeixiSession],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"微信朋友圈",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeWeixiTimeline],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"QQ",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeQQ],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Facebook",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeFacebook],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Twitter",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeTwitter],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Google+",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeGooglePlus],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"人人网",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeRenren],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"开心网",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeKaixin],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"邮件分享",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeMail],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"打印",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeAirPrint],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"拷贝",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeCopy],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"搜狐微博",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeSohuWeibo],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"网易微博",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareType163Weibo],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"豆瓣社区",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeDouBan],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"印象笔记",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeEvernote],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"LinkedIn",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeLinkedIn],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Pocket",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypePocket],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Instapaper",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeInstapaper],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"有道云笔记",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeYouDaoNote],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"搜狐随身看",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeSohuKan],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Tumblr",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeTumblr],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Flickr",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeFlickr],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Dropbox",
-                            @"title",
-                            [NSNumber numberWithBool:YES],
-                            @"selected",
-                            [NSNumber numberWithInteger:ShareTypeDropbox],
-                            @"type",
-                            nil],
-                           nil];
+        
+        _shareTypeArray = [[NSMutableArray alloc] init];
+        _noneUIShareTypeArray = [[NSMutableArray alloc] init];
+        
+        NSArray *shareTypes = [ShareSDK connectedPlatformTypes];
+        for (int i = 0; i < [shareTypes count]; i++)
+        {
+            NSNumber *shareTypeNum = [shareTypes objectAtIndex:i];
+            ShareType type = [shareTypeNum integerValue];
+            
+            NSMutableDictionary *itemDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                             [NSNumber numberWithBool:YES],
+                                             @"selected",
+                                             shareTypeNum,
+                                             @"type",
+                                             nil];
+            
+            id<ISSPlatformApp> app = [ShareSDK getClientWithType:type];
+            if ([app isSupportOneKeyShare])
+            {
+                [_noneUIShareTypeArray addObject:itemDict];
+            }
+            
+            [_shareTypeArray addObject:itemDict];
+        }
         
         self.title = @"演示";
     }
@@ -608,7 +261,8 @@
                                                          shareViewDelegate:_appDelegate.viewDelegate
                                                        friendsViewDelegate:_appDelegate.viewDelegate
                                                      picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
                                  if (state == SSPublishContentStateSuccess)
                                  {
                                      NSString *msg = nil;
@@ -708,7 +362,8 @@
                            shareList:shareList
                          authOptions:authOptions
                        statusBarTips:YES
-                              result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                              result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                  
                                   if (state == SSPublishContentStateSuccess)
                                   {
                                       NSLog(@"分享成功");
@@ -802,7 +457,8 @@
                          statusBarTips:YES
                            authOptions:authOptions
                           shareOptions:shareViewOptions
-                                result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                    
                                     if (state == SSPublishContentStateSuccess)
                                     {
                                         NSString *msg = nil;
@@ -1100,7 +756,7 @@
                 {
                     ((UIButton *)cell.accessoryView).tag = 200 + indexPath.row;
                     NSDictionary *item = [_noneUIShareTypeArray objectAtIndex:indexPath.row];
-                    cell.textLabel.text = [item objectForKey:@"title"];
+                    cell.textLabel.text = [ShareSDK getClientNameWithType:[[item objectForKey:@"type"] integerValue]];
                     UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:
                                                         @"Icon/sns_icon_%d.png",
                                                         [[item objectForKey:@"type"] integerValue]]
@@ -1124,7 +780,7 @@
                 {
                     ((UIButton *)cell.accessoryView).tag = 200 + indexPath.row;
                     NSDictionary *item = [_shareTypeArray objectAtIndex:indexPath.row];
-                    cell.textLabel.text = [item objectForKey:@"title"];
+                    cell.textLabel.text = [ShareSDK getClientNameWithType:[[item objectForKey:@"type"] integerValue]];
                     UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:
                                                         @"Icon/sns_icon_%d.png",
                                                         [[item objectForKey:@"type"] integerValue]]

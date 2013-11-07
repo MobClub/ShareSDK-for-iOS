@@ -97,7 +97,7 @@
     [super dealloc];
 }
 
-- (void)setUserInfo:(SSSinaWeiboUser *)userInfo
+- (void)setUserInfo:(SSSinaWeiboUserInfoReader *)userInfo
 {
     [userInfo retain];
     SAFE_RELEASE(_userInfo);

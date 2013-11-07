@@ -16,6 +16,7 @@
 #import <AGCommon/UIImage+Common.h>
 #import <AGCommon/UINavigationBar+Common.h>
 #import <AGCommon/NSString+Common.h>
+#import <SinaWeiboConnection/SSSinaWeiboUserInfoReader.h>
 
 #define USER_CELL_ID @"userCell"
 #define MORE_CELL_ID @"moreCell"
@@ -199,7 +200,7 @@
                       id item = [value objectAtIndex:i];
                       if ([item isKindOfClass:[NSDictionary class]])
                       {
-                          SSSinaWeiboUser *user = [SSSinaWeiboUser userWithResponse:item];
+                          SSSinaWeiboUserInfoReader *user = [SSSinaWeiboUserInfoReader readerWithSourceData:item];
                           [_friendsArray addObject:user];
                       }
                   }
@@ -231,7 +232,7 @@
               
               [_refreshHeaderView refreshScrollViewDataSourceDidFinishedLoading:_tableView];
           }
-           fault:^(SSSinaWeiboErrorInfo *error) {
+           fault:^(CMErrorInfo *error) {
                _isGetting = NO;
                
                [_refreshHeaderView refreshScrollViewDataSourceDidFinishedLoading:_tableView];
@@ -268,7 +269,8 @@
                                     field:_userName
                                 fieldType:SSUserFieldTypeName
                               authOptions:authOptions
-                                   result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                   result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                                       
                                        if (result)
                                        {
                                            [self doGetFriends:page];
@@ -409,7 +411,7 @@
         
         if (indexPath.row < [_friendsArray count])
         {
-            SSSinaWeiboUser *userInfo = [_friendsArray objectAtIndex:indexPath.row];
+            SSSinaWeiboUserInfoReader *userInfo = [_friendsArray objectAtIndex:indexPath.row];
             ((AGSinaWeiboUserCell *)cell).userInfo = userInfo;
         }
     }

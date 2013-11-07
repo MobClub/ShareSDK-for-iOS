@@ -11,8 +11,8 @@
 #import <AGCommon/CMImageView.h>
 #import "AGSinaWeiboRefContentView.h"
 #import <AGCommon/CMImageCacheManager.h>
-#import <SinaWeiboConnection/SSSinaWeiboStatus.h>
-#import <SinaWeiboConnection/SSSinaWeiboUser.h>
+#import <SinaWeiboConnection/SSSinaWeiboStatusInfoReader.h>
+#import <SinaWeiboConnection/SSSinaWeiboUserInfoReader.h>
 
 @class AGSinaWeiboStatusCell;
 
@@ -51,7 +51,7 @@
     AGSinaWeiboRefContentView *_refContentView;
     
     CMImageCacheManager *_imageCacheManager;
-    SSSinaWeiboStatus *_status;
+    SSSinaWeiboStatusInfoReader *_status;
     BOOL _needLayout;
     CGFloat _cellHeight;
     CMImageLoader *_iconLoader;
@@ -63,7 +63,7 @@
 /**
  *	@brief	微博状态信息
  */
-@property (nonatomic,retain) SSSinaWeiboStatus *status;
+@property (nonatomic,retain) SSSinaWeiboStatusInfoReader *status;
 
 /**
  *	@brief	单元格高度
@@ -97,7 +97,7 @@
  *
  *	@return	单元格高度
  */
-- (CGFloat)layoutThatStaus:(SSSinaWeiboStatus *)status isCalCellHeight:(BOOL)isCalCellHeight;
+- (CGFloat)layoutThatStaus:(SSSinaWeiboStatusInfoReader *)status isCalCellHeight:(BOOL)isCalCellHeight;
 
 
 @end

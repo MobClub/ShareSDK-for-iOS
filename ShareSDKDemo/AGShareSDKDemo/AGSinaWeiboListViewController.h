@@ -27,7 +27,7 @@
     CMImageCacheManager *_imageCacheManager;
     NSMutableArray *_statusArray;
     NSMutableDictionary *_heightDict;
-    SSSinaWeiboUser *_user;
+    id<ISSPlatformUser> _user;
     BOOL _hasNext;
     NSInteger _page;
     BOOL _isGetting;

@@ -28,63 +28,63 @@
  *
  *	@param 	userInfo 	用户信息
  */
-- (void)fillSinaWeiboUser:(id<ISSUserInfo>)userInfo;
+- (void)fillSinaWeiboUser:(id<ISSPlatformUser>)userInfo;
 
 /**
  *	@brief	填充腾讯微博用户信息
  *
  *	@param 	userInfo 	用户信息
  */
-- (void)fillTecentWeiboUser:(id<ISSUserInfo>)userInfo;
+- (void)fillTecentWeiboUser:(id<ISSPlatformUser>)userInfo;
 
 /**
  *	@brief	填充搜狐微博用户信息
  *
  *	@param 	userInfo 	用户信息
  */
-- (void)fillSohuWeiboUser:(id<ISSUserInfo>)userInfo;
+- (void)fillSohuWeiboUser:(id<ISSPlatformUser>)userInfo;
 
 /**
  *	@brief	填充网易微博用户信息
  *
  *	@param 	userInfo 	用户信息
  */
-- (void)fill163WeiboUser:(id<ISSUserInfo>)userInfo;
+- (void)fill163WeiboUser:(id<ISSPlatformUser>)userInfo;
 
 /**
  *	@brief	填充豆瓣社区用户信息
  *
  *	@param 	userInfo 	用户信息
  */
-- (void)fillDouBanUser:(id<ISSUserInfo>)userInfo;
+- (void)fillDouBanUser:(id<ISSPlatformUser>)userInfo;
 
 /**
  *	@brief	填充QQ空间用户信息
  *
  *	@param 	userInfo 	用户信息
  */
-- (void)fillQQSpaceUser:(id<ISSUserInfo>)userInfo;
+- (void)fillQQSpaceUser:(id<ISSPlatformUser>)userInfo;
 
 /**
  *	@brief	填充人人网用户信息
  *
  *	@param 	userInfo 	用户信息
  */
-- (void)fillRenRenUser:(id<ISSUserInfo>)userInfo;
+- (void)fillRenRenUser:(id<ISSPlatformUser>)userInfo;
 
 /**
  *	@brief	填充开心网用户信息
  *
  *	@param 	userInfo 	用户信息
  */
-- (void)fillKaiXinUser:(id<ISSUserInfo>)userInfo;
+- (void)fillKaiXinUser:(id<ISSPlatformUser>)userInfo;
 
 /**
  *	@brief	填充Instapaper用户信息
  *
  *	@param 	userInfo 	用户信息
  */
-- (void)fillInstapaperUser:(id<ISSUserInfo>)userInfo;
+- (void)fillInstapaperUser:(id<ISSPlatformUser>)userInfo;
 
 
 @end
@@ -242,16 +242,17 @@
         {
             [ShareSDK getUserInfoWithType:_type
                               authOptions:authOptions
-                                   result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                   result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                                       
                                        if (result)
                                        {
                                            [_infoDict removeAllObjects];
                                            
-                                           if ([userInfo icon])
+                                           if ([userInfo profileImage])
                                            {
                                                [NSThread detachNewThreadSelector:@selector(loadImage:)
                                                                         toTarget:self
-                                                                      withObject:[userInfo icon]];
+                                                                      withObject:[userInfo profileImage]];
                                            }
                                            
                                            switch (_type)
@@ -340,16 +341,17 @@
                                     field:_name
                                 fieldType:_paramType
                               authOptions:authOptions
-                                   result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                   result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                                       
                                        if (result)
                                        {
                                            [_infoDict removeAllObjects];
                                            
-                                           if ([userInfo icon])
+                                           if ([userInfo profileImage])
                                            {
                                                [NSThread detachNewThreadSelector:@selector(loadImage:)
                                                                         toTarget:self
-                                                                      withObject:[userInfo icon]];
+                                                                      withObject:[userInfo profileImage]];
                                            }
                                            
                                            switch (_type)
@@ -464,7 +466,7 @@
 
 #pragma mark - Private
 
-- (void)fillSinaWeiboUser:(id<ISSUserInfo>)userInfo
+- (void)fillSinaWeiboUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
@@ -614,7 +616,7 @@
     }
 }
 
-- (void)fillTecentWeiboUser:(id<ISSUserInfo>)userInfo
+- (void)fillTecentWeiboUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
@@ -776,7 +778,7 @@
     }
 }
 
-- (void)fillSohuWeiboUser:(id<ISSUserInfo>)userInfo
+- (void)fillSohuWeiboUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
@@ -906,7 +908,7 @@
     }
 }
 
-- (void)fill163WeiboUser:(id<ISSUserInfo>)userInfo
+- (void)fill163WeiboUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
@@ -1016,7 +1018,7 @@
     }
 }
 
-- (void)fillDouBanUser:(id<ISSUserInfo>)userInfo
+- (void)fillDouBanUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
@@ -1094,7 +1096,7 @@
     }
 }
 
-- (void)fillQQSpaceUser:(id<ISSUserInfo>)userInfo
+- (void)fillQQSpaceUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
@@ -1148,7 +1150,7 @@
     }
 }
 
-- (void)fillRenRenUser:(id<ISSUserInfo>)userInfo
+- (void)fillRenRenUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
@@ -1214,7 +1216,7 @@
     }
 }
 
-- (void)fillKaiXinUser:(id<ISSUserInfo>)userInfo
+- (void)fillKaiXinUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
@@ -1332,7 +1334,7 @@
     }
 }
 
-- (void)fillInstapaperUser:(id<ISSUserInfo>)userInfo
+- (void)fillInstapaperUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
@@ -1366,7 +1368,7 @@
     }
 }
 
-- (void)fillFacebookUser:(id<ISSUserInfo>)userInfo
+- (void)fillFacebookUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
@@ -1448,7 +1450,7 @@
     }
 }
 
-- (void)fillTwitterUser:(id<ISSUserInfo>)userInfo
+- (void)fillTwitterUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
@@ -1471,7 +1473,7 @@
     }
 }
 
-- (void)fillYouDaoNoteUser:(id<ISSUserInfo>)userInfo
+- (void)fillYouDaoNoteUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
@@ -1494,7 +1496,7 @@
     }
 }
 
-- (void)fillSohuKanUser:(id<ISSUserInfo>)userInfo
+- (void)fillSohuKanUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
@@ -1517,7 +1519,7 @@
     }
 }
 
-- (void)fillLinkedInUser:(id<ISSUserInfo>)userInfo
+- (void)fillLinkedInUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)
@@ -1540,7 +1542,7 @@
     }
 }
 
-- (void)fillGooglePlusUser:(id<ISSUserInfo>)userInfo
+- (void)fillGooglePlusUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)

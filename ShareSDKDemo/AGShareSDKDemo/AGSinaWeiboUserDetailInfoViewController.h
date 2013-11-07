@@ -11,6 +11,7 @@
 #import <SinaWeiboConnection/SinaWeiboConnection.h>
 #import "AGSinaWeiboUserDescItemCell.h"
 #import "AGSinaWeiboUserInfoItemCell.h"
+#import <SinaWeiboConnection/SSSinaWeiboUserInfoReader.h>
 
 /**
  *	@brief	用户详细信息视图控制器
@@ -23,7 +24,7 @@
     AGSinaWeiboUserDescItemCell *_descCell;
     AGSinaWeiboUserInfoItemCell *_infoCell;
     
-    SSSinaWeiboUser *_user;
+    SSSinaWeiboUserInfoReader *_user;
     NSString *_userName;
     NSMutableArray *_rowInfoArray;
 }
@@ -35,7 +36,7 @@
  *
  *	@return	详细资料视图控制器
  */
-- (id)initWithUser:(SSSinaWeiboUser *)user;
+- (id)initWithUser:(SSSinaWeiboUserInfoReader *)user;
 
 /**
  *	@brief	初始化用户详细资料视图控制器

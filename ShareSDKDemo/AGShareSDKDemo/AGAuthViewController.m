@@ -64,128 +64,21 @@
                                    target:self
                                    action:@selector(userInfoUpdateHandler:)];
         
-        _shareTypeArray = [[NSMutableArray alloc] initWithObjects:
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"新浪微博",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeSinaWeibo],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"腾讯微博",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeTencentWeibo],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"搜狐微博",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeSohuWeibo],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"网易微博",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareType163Weibo],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"豆瓣社区",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeDouBan],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"QQ空间",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeQQSpace],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Facebook",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeFacebook],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Twitter",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeTwitter],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Google+",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeGooglePlus],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"人人网",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeRenren],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"开心网",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeKaixin],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"印象笔记",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeEvernote],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"LinkedIn",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeLinkedIn],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Pocket",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypePocket],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Instapaper",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeInstapaper],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"有道云笔记",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeYouDaoNote],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"搜狐随身看",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeSohuKan],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Tumblr",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeTumblr],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Flickr",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeFlickr],
-                            @"type",
-                            nil],
-                           [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @"Dropbox",
-                            @"title",
-                            [NSNumber numberWithInteger:ShareTypeDropbox],
-                            @"type",
-                            nil],
-                           nil];
+        _shareTypeArray = [[NSMutableArray alloc] init];
+
+        NSArray *shareTypes = [ShareSDK connectedPlatformTypes];
+        for (int i = 0; i < [shareTypes count]; i++)
+        {
+            NSNumber *typeNum = [shareTypes objectAtIndex:i];
+            ShareType type = [typeNum integerValue];
+            id<ISSPlatformApp> app = [ShareSDK getClientWithType:type];
+            
+            if ([app isSupportOneKeyShare] || type == ShareTypeInstagram || type == ShareTypeGooglePlus)
+            {
+                [_shareTypeArray addObject:[NSMutableDictionary dictionaryWithObject:[shareTypes objectAtIndex:i]
+                                                                              forKey:@"type"]];
+            }
+        }
         
         NSArray *authList = [NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()]];
         if (authList == nil)
@@ -307,7 +200,7 @@
             
             [ShareSDK getUserInfoWithType:type
                               authOptions:authOptions
-                                   result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                   result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
                                        if (result)
                                        {
                                            [item setObject:[userInfo nickname] forKey:@"username"];
@@ -392,7 +285,7 @@
 - (void)userInfoUpdateHandler:(NSNotification *)notif
 {
     NSInteger plat = [[[notif userInfo] objectForKey:SSK_PLAT] integerValue];
-    id<ISSUserInfo> userInfo = [[notif userInfo] objectForKey:SSK_USER_INFO];
+    id<ISSPlatformUser> userInfo = [[notif userInfo] objectForKey:SSK_USER_INFO];
     
     for (int i = 0; i < [_shareTypeArray count]; i++)
     {

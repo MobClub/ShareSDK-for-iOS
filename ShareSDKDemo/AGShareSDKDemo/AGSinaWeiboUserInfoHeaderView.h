@@ -50,7 +50,7 @@
     AGSinaWeiboSubtitleButton *_followerButton;
     AGSinaWeiboInfoButton *_infoButton;
     
-    SSSinaWeiboUser *_userInfo;
+    id<ISSPlatformUser> _userInfo;
     CMImageCacheManager *_imageCacheManager;
     CMImageLoader *_iconImageLoader;
     BOOL _needLayout;
@@ -95,6 +95,6 @@
  *
  *	@param 	userInfo 	用户信息
  */
-- (void)setUserInfo:(SSSinaWeiboUser *)userInfo;
+- (void)setUserInfo:(id<ISSPlatformUser>)userInfo;
 
 @end

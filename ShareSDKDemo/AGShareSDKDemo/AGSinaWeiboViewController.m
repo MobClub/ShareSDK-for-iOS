@@ -182,7 +182,8 @@
     [ShareSDK clientShareContent:publishContent
                             type:ShareTypeSinaWeibo
                    statusBarTips:YES
-                          result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                          result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                              
                               if (state == SSPublishContentStateSuccess)
                               {
                                   NSLog(@"分享成功!");

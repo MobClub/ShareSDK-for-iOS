@@ -11,6 +11,7 @@
 #import <AGCommon/UIColor+Common.h>
 #import <ShareSDK/ShareSDK.h>
 #import "AGAppDelegate.h"
+#import <SinaWeiboConnection/SSSinaWeiboUserInfoReader.h>
 
 #define ICON_WIDTH 40.0
 #define ICON_HEIGHT 40.0
@@ -158,7 +159,7 @@
     [super dealloc];
 }
 
-- (void)setUserInfo:(SSSinaWeiboUser *)userInfo
+- (void)setUserInfo:(id<ISSPlatformUser>)userInfo
 {
     [userInfo retain];
     SAFE_RELEASE(_userInfo);
@@ -176,37 +177,40 @@
     {
         _needLayout = NO;
         
-        if (_userInfo.statusesCount > 10000)
+        if ([_userInfo shareCount] > 10000)
         {
-            [_statusesButton setTitle:[NSString stringWithFormat:@"%d万", _userInfo.statusesCount / 10000] forState:UIControlStateNormal];
+            [_statusesButton setTitle:[NSString stringWithFormat:@"%d万", [_userInfo shareCount] / 10000] forState:UIControlStateNormal];
         }
         else
         {
-            [_statusesButton setTitle:[NSString stringWithFormat:@"%d", _userInfo.statusesCount] forState:UIControlStateNormal];
+            [_statusesButton setTitle:[NSString stringWithFormat:@"%d", [_userInfo shareCount]] forState:UIControlStateNormal];
         }
         
-        if (_userInfo.friendsCount > 10000)
+        if ([_userInfo friendCount] > 10000)
         {
-            [_friendsButton setTitle:[NSString stringWithFormat:@"%d万", _userInfo.friendsCount / 10000] forState:UIControlStateNormal];
+            [_friendsButton setTitle:[NSString stringWithFormat:@"%d万", [_userInfo friendCount] / 10000] forState:UIControlStateNormal];
         }
         else
         {
-            [_friendsButton setTitle:[NSString stringWithFormat:@"%d", _userInfo.friendsCount] forState:UIControlStateNormal];
+            [_friendsButton setTitle:[NSString stringWithFormat:@"%d", [_userInfo friendCount]] forState:UIControlStateNormal];
         }
         
-        if (_userInfo.followersCount > 10000)
+        if ([_userInfo followerCount] > 10000)
         {
-            [_followerButton setTitle:[NSString stringWithFormat:@"%d万", _userInfo.followersCount / 10000] forState:UIControlStateNormal];
+            [_followerButton setTitle:[NSString stringWithFormat:@"%d万", [_userInfo followerCount] / 10000] forState:UIControlStateNormal];
         }
         else
         {
-            [_followerButton setTitle:[NSString stringWithFormat:@"%d", _userInfo.followersCount] forState:UIControlStateNormal];
+            [_followerButton setTitle:[NSString stringWithFormat:@"%d", [_userInfo followerCount]] forState:UIControlStateNormal];
         }
+        
+        SSSinaWeiboUserInfoReader *userReader = [SSSinaWeiboUserInfoReader readerWithSourceData:[_userInfo sourceData]];
+        
         
         [_iconImageLoader removeAllNotificationWithTarget:self];
         SAFE_RELEASE(_iconImageLoader);
         
-        _iconImageLoader = [[_imageCacheManager getImage:_userInfo.avatarLarge cornerRadius:5.0 size:_iconImageView.frame.size] retain];
+        _iconImageLoader = [[_imageCacheManager getImage:[userReader avatarLarge] cornerRadius:5.0 size:_iconImageView.frame.size] retain];
         if (_iconImageLoader.state == ImageLoaderStateReady)
         {
             _iconImageView.image = _iconImageLoader.content;
@@ -222,7 +226,7 @@
                                                action:@selector(iconLoadErrorHandler:)];
         }
         
-        _nameLabel.text = _userInfo.screenName;
+        _nameLabel.text = userReader.screenName;
         [_nameLabel sizeToFit];
         CGFloat nameLabelWidth = _nameLabel.width;
         if (nameLabelWidth + GENDER_ICON_WIDTH > self.width - _iconImageView.right - ICON_HORIZONTAL_GAP)
@@ -234,11 +238,11 @@
                                       nameLabelWidth,
                                       _nameLabel.height);
         
-        if ([_userInfo.gender isEqualToString:@"m"])
+        if ([userReader.gender isEqualToString:@"m"])
         {
             _genderImageView.image = [UIImage imageNamed:@"MaleIcon.png"];
         }
-        else if ([_userInfo.gender isEqualToString:@"f"])
+        else if ([userReader.gender isEqualToString:@"f"])
         {
             _genderImageView.image = [UIImage imageNamed:@"FemaleIcon.png"];
         }
@@ -248,7 +252,7 @@
         }
         _genderImageView.frame = CGRectMake(_nameLabel.right, _nameLabel.top, GENDER_ICON_WIDTH, GENDER_ICON_HEIGHT);
         
-        _locationLabel.text = _userInfo.location;
+        _locationLabel.text = userReader.location;
         [_locationLabel sizeToFit];
         CGFloat locationLabelWidth = _locationLabel.width;
         if (locationLabelWidth > self.width - _iconImageView.right - ICON_HORIZONTAL_GAP)
@@ -260,11 +264,11 @@
                                           locationLabelWidth,
                                           _locationLabel.height);
         
-        if (_userInfo.verified)
+        if (userReader.verified)
         {
-            _descLabel.text = [NSString stringWithFormat:@"新浪认证:%@", _userInfo.verifiedReason];
+            _descLabel.text = [NSString stringWithFormat:@"新浪认证:%@", userReader.verifiedReason];
             
-            switch (_userInfo.verifiedType)
+            switch (userReader.verifiedType)
             {
                 case 0:
                     //个人认证
@@ -287,7 +291,7 @@
         {
             _descLabel.text = [NSString stringWithFormat:@"简介:%@", _userInfo.description];
             
-            if (_userInfo.verifiedType == 220)
+            if (userReader.verifiedType == 220)
             {
                 //达人
                 _vipImageView.image = [UIImage imageNamed:@"Grassroot.png"];
@@ -302,14 +306,14 @@
         _descLabel.frame = CGRectMake(LEFT_PADDING, _iconImageView.bottom + ICON_VETICAL_GAP, self.width, _descLabel.height);
         
         id<ISSSinaWeiboApp> sinaApp = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
-        if ([_userInfo.uid isEqualToString:[sinaApp defaultUser].uid])
+        if ([[_userInfo uid] isEqualToString:[[sinaApp currentUser] uid]])
         {
             _followButton.hidden = YES;
         }
         else
         {
             _followButton.hidden = NO;
-            if (_userInfo.following)
+            if (userReader.following)
             {
                 [_followButton setBackgroundImage:[[UIImage imageNamed:@"FollowedButton.png"] stretchableImageWithLeftCapWidth:4 topCapHeight:0]
                                          forState:UIControlStateNormal];
@@ -379,7 +383,8 @@
                            fieldType:SSUserFieldTypeUid
                          authOptions:authOptions
                         viewDelegate:nil
-                              result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                              result:^(SSResponseState state, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                                  
                                   if (state == SSResponseStateSuccess)
                                   {
                                       if ([_delegate conformsToProtocol:@protocol(AGSinaWeiboUserInfoHeaderViewDelegate)] &&

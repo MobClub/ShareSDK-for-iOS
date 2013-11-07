@@ -223,24 +223,17 @@
         [ShareSDK getFriendsWithType:_shareType
                                 page:page
                          authOptions:authOptions
-                              result:^(BOOL result, NSArray *users, id<ISSPage> currPage, id<ISSPage> prevPage, id<ISSPage> nextPage, BOOL hasNext, id<ICMErrorInfo> error) {
-                                  if (result)
+                              result:^(SSResponseState state, NSArray *users, long long curr, long long prev, long long next, BOOL hasNext, NSDictionary *extInfo, id<ICMErrorInfo> error) {
+                                  
+                                  if (state == SSResponseStateSuccess)
                                   {
                                       _hasNext = hasNext;
-                                      switch (_shareType)
-                                      {
-                                          case ShareTypeTwitter:
-                                              _page = [nextPage cursor];
-                                              break;
-                                          default:
-                                              _page = [nextPage pageNo];
-                                              break;
-                                      }
+                                      _page = next;
                                       
                                       //对用户进行分类
                                       for (int i = 0; i < [users count]; i++)
                                       {
-                                          id<ISSUserInfo> userInfo = [users objectAtIndex:i];
+                                          id<ISSPlatformUser> userInfo = [users objectAtIndex:i];
                                           NSMutableDictionary *userData = [NSMutableDictionary dictionaryWithDictionary:[userInfo sourceData]];
                                           [userData setObject:[NSNumber numberWithBool:[self hasSelected:userData]] forKey:@"selected"];
                                           [_friendsArray addObject:userData];
@@ -271,7 +264,8 @@
         
         [ShareSDK getUserInfoWithType:_shareType
                           authOptions:authOptions
-                               result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                               result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                                   
                                    if (result)
                                    {
                                        id<ISSPage> page = nil;
@@ -301,24 +295,17 @@
                                        [ShareSDK getFriendsWithType:_shareType
                                                                page:page
                                                         authOptions:authOptions
-                                                             result:^(BOOL result, NSArray *users, id<ISSPage> currPage, id<ISSPage> prevPage, id<ISSPage> nextPage, BOOL hasNext, id<ICMErrorInfo> error) {
+                                                             result:^(SSResponseState state, NSArray *users, long long curr, long long prev, long long next, BOOL hasNext, NSDictionary *extInfo, id<ICMErrorInfo> error) {
+                                                                 
                                                                  if (result)
                                                                  {
                                                                      _hasNext = hasNext;
-                                                                     switch (_shareType)
-                                                                     {
-                                                                         case ShareTypeTwitter:
-                                                                             _page = [nextPage cursor];
-                                                                             break;
-                                                                         default:
-                                                                             _page = [nextPage pageNo];
-                                                                             break;
-                                                                     }
+                                                                     _page = next;
                                                                      
                                                                      //对用户进行分类
                                                                      for (int i = 0; i < [users count]; i++)
                                                                      {
-                                                                         id<ISSUserInfo> userInfo = [users objectAtIndex:i];
+                                                                         id<ISSPlatformUser> userInfo = [users objectAtIndex:i];
                                                                          NSMutableDictionary *userData = [NSMutableDictionary dictionaryWithDictionary:[userInfo sourceData]];
                                                                          [userData setObject:[NSNumber numberWithBool:[self hasSelected:userData]] forKey:@"selected"];
                                                                          [_friendsArray addObject:userData];

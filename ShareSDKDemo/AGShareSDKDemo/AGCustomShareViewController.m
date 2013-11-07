@@ -558,7 +558,8 @@
             needAuth = YES;
             [ShareSDK getUserInfoWithType:shareType
                               authOptions:authOptions
-                                   result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                   result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                                       
                                        if (result)
                                        {
                                            //分享内容

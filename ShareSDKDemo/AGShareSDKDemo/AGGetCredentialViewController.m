@@ -286,216 +286,99 @@
     }
 }
 
+- (void)showCredentialWithType:(ShareType)type
+{
+    id<ISSPlatformCredential> credential = [ShareSDK getCredentialWithType:type];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:[NSString stringWithFormat:
+                                                                 @"uid = %@\ntoken = %@\nsecret = %@\n expired = %@\nextInfo = %@",
+                                                                 [credential uid],
+                                                                 [credential token],
+                                                                 [credential secret],
+                                                                 [credential expired],
+                                                                 [credential extInfo]]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"知道了"
+                                              otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
+}
+
 #pragma mark - 获取授权信息
 
 - (void)showSinaWeiboCredClickHandler:(id)sender
 {
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeSinaWeibo];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:[NSString stringWithFormat:
-                                                                 @"%@",
-                                                                 [credential sourceData]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    [self showCredentialWithType:ShareTypeSinaWeibo];
 }
 
 - (void)showTencentWeiboCredClickHandler:(id)sender
 {
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeTencentWeibo];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:[NSString stringWithFormat:
-                                                                 @"%@",
-                                                                 [credential sourceData]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    [self showCredentialWithType:ShareTypeTencentWeibo];
 }
 
 - (void)showSohuWeiboCredClickHandler:(id)sender
 {
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeSohuWeibo];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:[NSString stringWithFormat:
-                                                                 @"%@",
-                                                                 [credential sourceData]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    [self showCredentialWithType:ShareTypeSohuWeibo];
 }
 
 - (void)show163WeiboCredClickHandler:(id)sender
 {
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareType163Weibo];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:[NSString stringWithFormat:
-                                                                 @"%@",
-                                                                 [credential sourceData]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    [self showCredentialWithType:ShareType163Weibo];
 }
 
 - (void)showDoubanCredClickHandler:(id)sender
 {
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeDouBan];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:[NSString stringWithFormat:
-                                                                 @"%@",
-                                                                 [credential sourceData]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    [self showCredentialWithType:ShareTypeDouBan];
 }
 
 - (void)showQZoneCredClickHandler:(id)sender
 {
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeQQSpace];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:[NSString stringWithFormat:
-                                                                 @"%@",
-                                                                 [credential sourceData]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    [self showCredentialWithType:ShareTypeQQSpace];
 }
 
 - (void)showRenrenCredClickHandler:(id)sender
 {
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeRenren];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:[NSString stringWithFormat:
-                                                                 @"%@",
-                                                                 [credential sourceData]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    [self showCredentialWithType:ShareTypeRenren];
 }
 
 - (void)showKaixinCredClickHandler:(id)sender
 {
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeKaixin];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:[NSString stringWithFormat:
-                                                                 @"%@",
-                                                                 [credential sourceData]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    [self showCredentialWithType:ShareTypeKaixin];
 }
 
 - (void)showInstapaperCredClickHandler:(id)sender
 {
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeInstapaper];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:[NSString stringWithFormat:
-                                                                 @"%@",
-                                                                 [credential sourceData]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    [self showCredentialWithType:ShareTypeInstapaper];
 }
 
 - (void)showYoudaoNoteCredClickHandler:(id)sender
 {
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeYouDaoNote];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:[NSString stringWithFormat:
-                                                                 @"%@",
-                                                                 [credential sourceData]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    [self showCredentialWithType:ShareTypeYouDaoNote];
 }
 
 - (void)showFacebookCredClickHandler:(id)sender
 {
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeFacebook];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:[NSString stringWithFormat:
-                                                                 @"%@",
-                                                                 [credential sourceData]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    [self showCredentialWithType:ShareTypeFacebook];
 }
 
 - (void)showTwitterCredClickHandler:(id)sender
 {
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeTwitter];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:[NSString stringWithFormat:
-                                                                 @"%@",
-                                                                 [credential sourceData]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    [self showCredentialWithType:ShareTypeTwitter];
 }
 
 - (void)showSohuKanCredClickHandler:(id)sender
 {
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeSohuKan];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:[NSString stringWithFormat:
-                                                                 @"%@",
-                                                                 [credential sourceData]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    [self showCredentialWithType:ShareTypeSohuKan];
 }
 
 - (void)showGooglePlusCredClickHandler:(id)sender
 {
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeGooglePlus];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:[NSString stringWithFormat:
-                                                                 @"%@",
-                                                                 [credential sourceData]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    [self showCredentialWithType:ShareTypeGooglePlus];
 }
 
 - (void)showLinkedInCredClickHandler:(id)sender
 {
-    id<ISSCredential> credential = [ShareSDK getCredentialWithType:ShareTypeLinkedIn];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:[NSString stringWithFormat:
-                                                                 @"%@",
-                                                                 [credential sourceData]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    [self showCredentialWithType:ShareTypeLinkedIn];
 }
 
 @end

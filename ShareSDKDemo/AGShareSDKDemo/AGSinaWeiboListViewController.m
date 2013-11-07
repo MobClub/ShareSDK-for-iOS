@@ -61,11 +61,18 @@
 
 - (void)dealloc
 {
+    NSMutableArray *statusArray = [NSMutableArray array];
+    for (int i = 0; i < [_statusArray count]; i++)
+    {
+        SSSinaWeiboStatusInfoReader *status = [_statusArray objectAtIndex:i];
+        [statusArray addObject:[status sourceData]];
+    }
+    
     //对数据进行缓存
     NSDictionary *cacheData = [NSDictionary dictionaryWithObjectsAndKeys:
                                _user,
                                @"user",
-                               _statusArray,
+                               statusArray,
                                @"status",
                                [NSNumber numberWithBool:_hasNext],
                                @"hasnext",
@@ -121,7 +128,16 @@
                 value = [cacheDict objectForKey:@"status"];
                 if ([value isKindOfClass:[NSArray class]])
                 {
-                    [_statusArray addObjectsFromArray:value];
+                    for (int i = 0; i < [value count]; i++)
+                    {
+                        id item = [value objectAtIndex:i];
+                        if ([item isKindOfClass:[NSDictionary class]])
+                        {
+                            SSSinaWeiboStatusInfoReader *status = [SSSinaWeiboStatusInfoReader readerWithSourceData:item];
+                            [_statusArray addObject:status];
+                        }
+                    }
+                    
                 }
                 
                 value = [cacheDict objectForKey:@"hasnext"];
@@ -212,12 +228,13 @@
                                     field:USER_NAME
                                 fieldType:SSUserFieldTypeName
                               authOptions:authOptions
-                                   result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                   result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                                       
                                        if (result)
                                        {
                                            SAFE_RELEASE(_user);
-                                           _user = [[userInfo localUser] retain];
-                                           [_headerView setUserInfo:_user];
+                                           _user = [userInfo retain];
+                                           [_headerView setUserInfo:userInfo];
                                            
                                            //获取微博列表
                                            [self getTimelineWithPage:1];
@@ -360,7 +377,7 @@
                                id item = [value objectAtIndex:i];
                                if ([item isKindOfClass:[NSDictionary class]])
                                {
-                                   SSSinaWeiboStatus *status = [SSSinaWeiboStatus statusWithResponse:item];
+                                   SSSinaWeiboStatusInfoReader *status = [SSSinaWeiboStatusInfoReader readerWithSourceData:item];
                                    [_statusArray addObject:status];
                                }
                            }
@@ -390,7 +407,7 @@
                        
                        [_statusesTableView reloadData];
                    }
-                    fault:^(SSSinaWeiboErrorInfo *error) {
+                    fault:^(CMErrorInfo *error) {
                         _isGetting = NO;
                     }];
     }
@@ -417,11 +434,12 @@
                             field:USER_NAME
                         fieldType:SSUserFieldTypeName
                       authOptions:authOptions
-                           result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                           result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                               
                                if (result)
                                {
                                    SAFE_RELEASE(_user);
-                                   _user = [[userInfo localUser] retain];
+                                   _user = [userInfo retain];
                                    [_headerView setUserInfo:_user];
                                    
                                    //获取微博列表
@@ -460,7 +478,8 @@
 
 - (void)infoButtonClickHandler:(id)sender
 {
-    AGSinaWeiboUserDetailInfoViewController *vc = [[[AGSinaWeiboUserDetailInfoViewController alloc] initWithUser:_user] autorelease];
+    SSSinaWeiboUserInfoReader *user = [SSSinaWeiboUserInfoReader readerWithSourceData:[_user sourceData]];
+    AGSinaWeiboUserDetailInfoViewController *vc = [[[AGSinaWeiboUserDetailInfoViewController alloc] initWithUser:user] autorelease];
     UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
     [self presentModalViewController:navController animated:YES];
 }
@@ -607,11 +626,12 @@
                             field:USER_NAME
                         fieldType:SSUserFieldTypeName
                       authOptions:authOptions
-                           result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                           result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                               
                                if (result)
                                {
                                    SAFE_RELEASE(_user);
-                                   _user = [[userInfo localUser] retain];
+                                   _user = [userInfo retain];
                                    [_headerView setUserInfo:_user];
                                }
                            }];

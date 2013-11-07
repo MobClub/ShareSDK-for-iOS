@@ -179,7 +179,8 @@
                                        fieldType:SSUserFieldTypeName
                                      authOptions:authOptions
                                     viewDelegate:_appDelegate.viewDelegate
-                                          result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                          result:^(SSResponseState state, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                                              
                                               NSString *msg = nil;
                                               if (state == SSResponseStateSuccess)
                                               {
@@ -219,7 +220,8 @@
                                        fieldType:SSUserFieldTypeName
                                      authOptions:authOptions
                                     viewDelegate:_appDelegate.viewDelegate
-                                          result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                          result:^(SSResponseState state, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                                              
                                               NSString *msg = nil;
                                               if (state == SSResponseStateSuccess)
                                               {
@@ -254,7 +256,14 @@
                 }
                 case 2:
                 {
-                    [ShareSDK followWeixinUser:@"http://weixin.qq.com/r/HHURHl7EjmDxh099nyA4"];
+                    [ShareSDK followUserWithType:ShareTypeWeixiSession
+                                           field:@"http://weixin.qq.com/r/HHURHl7EjmDxh099nyA4"
+                                       fieldType:SSUserFieldTypePath
+                                     authOptions:Nil
+                                    viewDelegate:nil
+                                          result:^(SSResponseState state, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                                              NSLog(@"state == %d", state);
+                                          }];
                     break;
                 }
                 case 3:

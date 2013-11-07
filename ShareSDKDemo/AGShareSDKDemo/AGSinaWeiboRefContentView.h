@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <AGCommon/CMImageView.h>
 #import <AGCommon/CMImageCacheManager.h>
-#import <SinaWeiboConnection/SSSinaWeiboStatus.h>
+#import <SinaWeiboConnection/SSSinaWeiboStatusInfoReader.h>
 
 @class AGSinaWeiboRefContentView;
 
@@ -40,7 +40,7 @@
     CMImageView *_imageView;
     
     CMImageCacheManager *_imageCacheManager;
-    SSSinaWeiboStatus *_status;
+    SSSinaWeiboStatusInfoReader *_status;
     CMImageLoader *_imageLoader;
     
     id<AGSinaWeiboRefContentViewDelegate> _delegate;
@@ -54,7 +54,7 @@
 /**
  *	@brief	状态信息
  */
-@property (nonatomic,retain) SSSinaWeiboStatus *status;
+@property (nonatomic,retain) SSSinaWeiboStatusInfoReader *status;
 
 /**
  *	@brief	初始化引用内容视图

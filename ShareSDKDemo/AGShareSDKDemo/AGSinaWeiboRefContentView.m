@@ -61,7 +61,7 @@
     [super dealloc];
 }
 
-- (void)setStatus:(SSSinaWeiboStatus *)status
+- (void)setStatus:(SSSinaWeiboStatusInfoReader *)status
 {
     [status retain];
     SAFE_RELEASE(_status);
