@@ -633,14 +633,6 @@
 - (void)shareAllButtonClickHandler:(UIButton *)sender
 {
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
-
-//    id<ISSContent> publishContent = [ShareSDK content:nil
-//                                       defaultContent:nil
-//                                                image:nil
-//                                                title:nil
-//                                                  url:nil
-//                                          description:nil
-//                                            mediaType:SSPublishContentMediaTypeText];
     
     //构造分享内容
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
