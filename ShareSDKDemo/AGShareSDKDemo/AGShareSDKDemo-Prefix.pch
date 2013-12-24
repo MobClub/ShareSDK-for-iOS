@@ -12,6 +12,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <AGCommon/CoreDefinition.h>
+    #import "UIView+Common.h"
 #endif
 
 #define BUNDLE_NAME @"Resource"

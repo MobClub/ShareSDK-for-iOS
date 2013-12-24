@@ -20,6 +20,7 @@
 #import <GoogleOpenSource/GoogleOpenSource.h>
 #import <GooglePlus/GooglePlus.h>
 #import <Pinterest/Pinterest.h>
+#import "YXApi.h"
 
 @implementation AGAppDelegate
 
@@ -61,7 +62,7 @@
     [ShareSDK connectTencentWeiboWithAppKey:@"801307650"
                                   appSecret:@"ae36f4ee3946e1cbb98d6965b0b2ff5c"
                                 redirectUri:@"http://www.sharesdk.cn"
-                                   wbApiCls:[WBApi class]];
+                                   wbApiCls:[WeiboApi class]];
     
     //连接短信分享
     [ShareSDK connectSMS];
@@ -127,6 +128,7 @@
                               appKey:@"fc5b8aed373c4c27a05b712acba0f8c3"
                            appSecret:@"f29df781abdd4f49beca5a2194676ca4"
                    renrenClientClass:[RennClient class]];
+    
     /**
      连接开心网应用以使用相关功能，此应用需要引用KaiXinConnection.framework
      http://open.kaixin001.com上注册开心网开放平台应用，并将相关信息填写到以下字段
@@ -134,6 +136,13 @@
     [ShareSDK connectKaiXinWithAppKey:@"358443394194887cee81ff5890870c7c"
                             appSecret:@"da32179d859c016169f66d90b6db2a23"
                           redirectUri:@"http://www.sharesdk.cn/"];
+    
+    /**
+     连接易信应用以使用相关功能，此应用需要引用YiXinConnection.framework
+     http://open.yixin.im/上注册易信开放平台应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectYiXinWithAppId:@"yx0d9a9f9088ea44d78680f3274da1765f"
+                           yixinCls:[YXApi class]];
     
     //连接邮件
     [ShareSDK connectMail];
@@ -272,7 +281,7 @@
     [ShareSDK importRenRenClass:[RennClient class]];
     
     //导入腾讯微博需要的外部库类型，如果不需要腾讯微博SSO可以不调用此方法
-    [ShareSDK importTencentWeiboClass:[WBApi class]];
+    [ShareSDK importTencentWeiboClass:[WeiboApi class]];
     
     //导入微信需要的外部库类型，如果不需要微信分享可以不调用此方法
     [ShareSDK importWeChatClass:[WXApi class]];
@@ -280,8 +289,12 @@
     //导入Google+需要的外部库类型，如果不需要Google＋分享可以不调用此方法
     [ShareSDK importGooglePlusClass:[GPPSignIn class]
                          shareClass:[GPPShare class]];
+    
     //导入Pinterest需要的外部库类型，如果不需要Pinterest分享可以不调用此方法
     [ShareSDK importPinterestClass:[Pinterest class]];
+    
+    //导入易信需要的外部库类型，如果不需要易信分享可以不调用此方法
+    [ShareSDK importYiXinClass:[YXApi class]];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -294,15 +307,13 @@
 
     //如果使用服务中配置的app信息，请把初始化代码改为下面的初始化方法。
 //    [ShareSDK registerApp:@"iosv1101" useAppTrusteeship:YES];
-    
-    //转换链接标记
-    [ShareSDK convertUrlEnabled:YES];
     [self initializePlat];
     
     //如果使用服务器中配置的app信息，请把初始化平台代码改为下面的方法
 //    [self initializePlatForTrusteeship];
     
     _interfaceOrientationMask = SSInterfaceOrientationMaskAll;
+    
     //横屏设置
 //    [ShareSDK setInterfaceOrientationMask:UIInterfaceOrientationMaskLandscape];
     

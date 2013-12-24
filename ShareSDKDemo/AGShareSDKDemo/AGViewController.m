@@ -10,7 +10,6 @@
 #import "AGViewController.h"
 #import <ShareSDK/ShareSDK.h>
 #import <AGCommon/UIImage+Common.h>
-#import <AGCommon/UIView+Common.h>
 #import "AGShareCell.h"
 #import <AGCommon/UINavigationBar+Common.h>
 #import "AGShareButton.h"

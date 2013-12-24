@@ -73,7 +73,7 @@
             ShareType type = [typeNum integerValue];
             id<ISSPlatformApp> app = [ShareSDK getClientWithType:type];
             
-            if ([app isSupportOneKeyShare] || type == ShareTypeInstagram || type == ShareTypeGooglePlus)
+            if ([app isSupportOneKeyShare] || type == ShareTypeInstagram || type == ShareTypeGooglePlus || type == ShareTypeQQSpace)
             {
                 [_shareTypeArray addObject:[NSMutableDictionary dictionaryWithObject:[shareTypes objectAtIndex:i]
                                                                               forKey:@"type"]];

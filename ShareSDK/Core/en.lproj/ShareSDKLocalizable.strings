@@ -1,0 +1,164 @@
+/* 
+  ShareSDKLocalizable.strings
+  AppgoFramework
+
+
+  Created by ShareSDK.cn on 13-1-14.
+  官网地址:http://www.ShareSDK.cn
+  技术支持邮箱:support@sharesdk.cn
+  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+  商务QQ:4006852216
+  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
+
+*/
+
+"ERROR_DESC_UNREGISTER" = "SDK has not been initialized";
+"ERROR_DESC_INVALID_PARAM" = "Invalid parameter";
+"ERROR_DESC_API_NOT_SUPPORT" = "This api is not supported";
+"ERROR_DESC_UNKNOWN" = "Unknown error";
+"ERROR_DESC_WEIXIN_NOT_INTEGRATED" = "Not yet integrated WeChat SDK";
+"ERROR_DESC_WEIXIN_UNKNOWN_MEDIA_TYPE" = "Unknown media type";
+"ERROR_DESC_QQ_SEND_FAIL" = "Failed to send";
+"ERROR_DESC_QQ_NOT_INSTALLED" = "QQ is not installed";
+"ERROR_DESC_QQ_API_IS_NOT_SUPPORT" = "The current version does not support this api of QQ";
+"ERROR_DESC_QQ_UNKNOWN_MEDIA_TYPE" = "Unknown media type";
+"ERROR_DESC_UNAUTH" = "Not authorized";
+"ERROR_DESC_FACEBOOK_CANCEL_ADD_FRIEND" = "Cancel Add Friend";
+"ERROR_DESC_TWITTER_GET_FRIENDS_API_DEPRECATED" = "This method is deprecated, use getFriendsWithPage method instead";
+"ERROR_DESC_WEIXIN_NOT_INSTALL" = "WeChat is not installed";
+"ERROR_DESC_WEIXIN_API_IS_NOT_SUPPORT" = "The current version does not support this api of WeChat";
+"ERROR_DESC_WEIXIN_SEND_REQUEST_ERROR" = "WeChat OpenApi Request failed";
+"ERROR_DESC_QQ_NOT_INTEGRATED" = "Not yet integrated QQ SDK";
+"ERROR_DESC_PRINT_NOT_SUPPORT" = "The device does not allow for printing";
+"ERROR_DESC_SYS_VER_LOW_THAN" = "This feature does not support the iOS %@ following system version";
+"ERROR_DESC_MAIL_NOT_SUPPORT" = "The device does not support e-mail feature or have not yet set up a mail account";
+"ERROR_DESC_SMS_NOT_SUPPORT" = "The device does not support SMS feature";
+"ERROR_DESC_NOT_CONNECT" = "Not yet integrated the platform";
+"ERROR_DESC_NO_NETWORK" = "Device is not connected to the network";
+"ERROR_DESC_QQ_NOT_SET_URL_SCHEME" = "QQ's URL Scheme has not been set";
+"ERROR_DESC_WEIXIN_NOT_SET_URL_SCHEME" = "WeChat's URL Scheme has not been set";
+"ERROR_DESC_GOOGLE_PLUS_SEND_FAIL" = "Sharing Failed";
+"ERROR_DESC_SINA_WEIBO_NOT_INTEGRATED" = "Not yet integrated Sina Weibo SDK";
+"ERROR_DESC_SINA_WEIBO_NOT_INSTALL" = "Sina Weibo is not installed";
+"ERROR_DESC_SINA_WEIBO_IS_NOT_SUPPORT" = "The current version does not support this api of Sina Weibo";
+"ERROR_DESC_SINA_WEIBO_SEND_FAIL" = "Failed to send";
+"ERROR_DESC_PINTEREST_NOT_INTEGRATED" = "Not yet integrated Pinterest SDK";
+"ERROR_DESC_PINTEREST_NOT_INSTALL" = "Pinterest is not installed";
+"ERROR_DESC_PINTEREST_NOT_SET_URL_SCHEME" = "Pinterest's URL Scheme has not been set";
+"ERROR_DESC_DROPBOX_UPLOAD_FILE_FAIL" = "Failed to upload file";
+"ERROR_DESC_INSTAGRAM_NOT_INSTALL" = "Instagram is not installed";
+"ERROR_DESC_INSTAGRAM_SEND_FAIL" = "Failed to send";
+"ERROR_DESC_YIXIN_NOT_INTEGRATED" = "Not yet integrated YiXin SDK";
+"ERROR_DESC_YIXIN_UNKNOWN_MEDIA_TYPE" = "Unknown media type";
+"ERROR_DESC_YIXIN_NOT_INSTALL" = "YiXin is not installed";
+"ERROR_DESC_YIXIN_API_IS_NOT_SUPPORT" = "The current version does not support this api of YiXin";
+"ERROR_DESC_YIXIN_SEND_REQUEST_ERROR" = "YiXin OpenApi Request failed";
+"ERROR_DESC_YIXIN_NOT_SET_URL_SCHEME" = "YiXin's URL Scheme has not been set";
+
+"ShareType_1" = "Sina Weibo";
+"ShareType_2" = "腾讯微博";
+"ShareType_3" = "搜狐微博";
+"ShareType_4" = "网易微博";
+"ShareType_5" = "豆瓣";
+"ShareType_6" = "QZone";
+"ShareType_7" = "人人网";
+"ShareType_8" = "开心网";
+"ShareType_9" = "朋友网";
+"ShareType_10" = "Facebook";
+"ShareType_11" = "Twitter";
+"ShareType_12" = "Evernote";
+"ShareType_13" = "Foursquare";
+"ShareType_14" = "Google+";
+"ShareType_15" = "Instagram";
+"ShareType_16" = "LinkedIn";
+"ShareType_17" = "Tumblr";
+"ShareType_18" = "Mail";
+"ShareType_19" = "SMS";
+"ShareType_20" = "Print";
+"ShareType_21" = "Copy";
+"ShareType_22" = "微信好友";
+"ShareType_23" = "微信朋友圈";
+"ShareType_24" = "QQ";
+"ShareType_25" = "Instapaper";
+"ShareType_26" = "Pocket";
+"ShareType_27" = "有道云笔记";
+"ShareType_28" = "搜狐随身看";
+"ShareType_30" = "Pinterest";
+"ShareType_34" = "Flickr";
+"ShareType_35" = "Dropbox";
+"ShareType_36" = "VKontakte";
+"ShareType_37" = "微信收藏";
+"ShareType_38" = "易信好友";
+"ShareType_39" = "易信朋友圈";
+
+"ALTER_VIEW_TITLE" = "Message";
+"ALTER_VIEW_I_KNOWN_BUTTON" = "I know";
+
+"MSG_SHARE_SUCCESS" = "%@ share success";
+"MSG_SHARE_FAIL" = "%@ Sharing Failed! %@";
+"MSG_SHARE_FAIL_2" = "Sharing Failed!";
+"MSG_SENDING" = "sending...";
+"MSG_DEVICE_CAMERA_NOT_SUPPORT" = "The device does not support the camera feature";
+"MSG_DEVICE_ALBUM_NOT_SUPPORT" = "The device does not support the album feature";
+
+"PRINT_JOB_NAME" = "Share";
+
+"WEIXIN_SESSION_NAME" = "WeChat Session";
+"WEIXIN_TIMELINE_NAME" = "WeChat Timeline";
+"WEIXIN_MSG_SEND_SUCCESS" = "Send %@ Success!";
+"WEIXIN_MSG_SEND_FAIL" = "Fail to send %@: %@";
+
+"QQ_MSG_SEND_SUCCESS" = "QQ messages sent successfully";
+"QQ_MSG_SEND_FAIL" = "Failed to send QQ:%@";
+
+"SHARE_VIEW_CANCEL_BUTTON" = "Cancel";
+"SHARE_VIEW_PUBLISH_BUTTON" = "Publish";
+"SHARE_VIEW_MSG_INVALID_CONTENT" = "Please input share content";
+"SHARE_VIEW_MSG_INVALID_CLIENTS" = "Please select the target platform";
+"SHARE_VIEW_DEF_PIC_PUBLISH_CONTENT" = "图片分享";
+"SHARE_VIEW_ACTIONSHEET_CLEAR_CONTENT_ITEM" = "Clear";
+"SHARE_VIEW_ACTIONSHEET_OK_ITEM" = "OK";
+"SHARE_VIEW_ACTIONSHEET_CANCEL_ITEM" = "Cancel";
+"SHARE_VIEW_ACTIONSHEET_REMOVE_PHOTO_ITEM" = "Delete";
+"SHARE_VIEW_ACTIONSHEET_VIEW_PHOTO_ITEM" = "View";
+"SHARE_VIEW_ACTIONSHEET_TAKE_PHOTO_ITEM" = "Take photo...";
+"SHARE_VIEW_ACTIONSHEET_SELECT_PHOTO_ITEM" = "Select photo...";
+"SHARE_VIEW_AUTH_TITLE" = "Bind %@";
+"SHARE_VIEW_TITLE" = "Share";
+"SHARE_VIEW_ONE_KEY_LIST_TITLE" = "Share to";
+"SHARE_ACTION_SHEET_CANCEL_BUTTON" = "Cancel";
+"SHARE_VIEW_TOPIC" = "Topic";
+
+"FRIENDS_VIEW_TITLE" = "Contact";
+"FRIENDS_VIEW_CANCEL_BUTTON" = "Cancel";
+"FRIENDS_VIEW_SEARCHBAR_PLACEHOLDER" = "Search...";
+"FRIENDS_VIEW_SEARCH_RESULT_SECTION_TITLE" = "Results";
+"FRIENDS_VIEW_RECENT_SECTION_TITLE" = "Recent";
+
+"ACCOUNT_VIEW_OK_BUTTON" = "OK";
+"ACCOUNT_VIEW_TIPS_SECTION_TITLE" = "Authorization fails, please re-authorization";
+
+"AUTH_VIEW_CANCEL_BUTTON" = "Cancel";
+"AUTH_VIEW_TITLE_1" = "Sina Weibo";
+"AUTH_VIEW_TITLE_2" = "腾讯微博";
+"AUTH_VIEW_TITLE_3" = "搜狐微博";
+"AUTH_VIEW_TITLE_4" = "网易微博";
+"AUTH_VIEW_TITLE_5" = "豆瓣";
+"AUTH_VIEW_TITLE_6" = "QZone";
+"AUTH_VIEW_TITLE_7" = "人人网";
+"AUTH_VIEW_TITLE_8" = "开心网";
+"AUTH_VIEW_TITLE_10" = "Facebook";
+"AUTH_VIEW_TITLE_11" = "Twitter";
+"AUTH_VIEW_TITLE_12" = "Evernote";
+"AUTH_VIEW_TITLE_14" = "Google+";
+"AUTH_VIEW_TITLE_15" = "Instagram";
+"AUTH_VIEW_TITLE_16" = "LinkedIn";
+"AUTH_VIEW_TITLE_17" = "Tumblr";
+"AUTH_VIEW_TITLE_25" = "Instapaper";
+"AUTH_VIEW_TITLE_26" = "Pocket";
+"AUTH_VIEW_TITLE_27" = "有道云笔记";
+"AUTH_VIEW_TITLE_28" = "搜狐随身看";
+"AUTH_VIEW_TITLE_34" = "Flickr";
+"AUTH_VIEW_TITLE_35" = "Dropbox";
+"AUTH_VIEW_TITLE_36" = "VKontakte";
+"AUTH_VIEW_FOLLOW_ME" = "Follow Us";

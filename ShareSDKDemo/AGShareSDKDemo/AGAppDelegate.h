@@ -9,7 +9,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WXApi.h"
-#import "WBApi.h"
+#import "WeiboApi.h"
 #import <TencentOpenAPI/QQApi.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>

@@ -726,6 +726,29 @@
                                           url:INHERIT_VALUE
                                   description:INHERIT_VALUE];
     
+    //定制易信好友信息
+    [publishContent addYiXinSessionUnitWithType:INHERIT_VALUE
+                                        content:INHERIT_VALUE
+                                          title:INHERIT_VALUE
+                                            url:INHERIT_VALUE
+                                     thumbImage:[ShareSDK imageWithUrl:@"http://img1.bdstatic.com/img/image/67037d3d539b6003af38f5c4c4f372ac65c1038b63f.jpg"]
+                                          image:INHERIT_VALUE
+                                   musicFileUrl:INHERIT_VALUE
+                                        extInfo:INHERIT_VALUE
+                                       fileData:INHERIT_VALUE];
+    
+    
+    //定义易信朋友圈信息
+    [publishContent addYiXinTimelineUnitWithType:INHERIT_VALUE
+                                         content:INHERIT_VALUE
+                                           title:INHERIT_VALUE
+                                             url:INHERIT_VALUE
+                                      thumbImage:[ShareSDK imageWithUrl:@"http://img1.bdstatic.com/img/image/67037d3d539b6003af38f5c4c4f372ac65c1038b63f.jpg"]
+                                           image:INHERIT_VALUE
+                                    musicFileUrl:INHERIT_VALUE
+                                         extInfo:INHERIT_VALUE
+                                        fileData:INHERIT_VALUE];
+    
     //结束定制信息
     ////////////////////////
     
@@ -3584,11 +3607,69 @@
                                                                                                }];
                                                                      }];
     
+    id<ISSShareActionSheetItem> qzItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeQQSpace]
+                                                                            icon:[ShareSDK getClientIconWithType:ShareTypeQQSpace]
+                                                                    clickHandler:^{
+                                                                        [ShareSDK clientShareContent:publishContent
+                                                                                                type:ShareTypeQQSpace
+                                                                                       statusBarTips:YES
+                                                                                              result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                  
+                                                                                                  if (state == SSPublishContentStateSuccess)
+                                                                                                  {
+                                                                                                      NSLog(@"分享成功");
+                                                                                                  }
+                                                                                                  else if (state == SSPublishContentStateFail)
+                                                                                                  {
+                                                                                                      NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                                  }
+                                                                                              }];
+                                                                    }];
+    id<ISSShareActionSheetItem> yxsItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeYiXinSession]
+                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeYiXinSession]
+                                                                     clickHandler:^{
+                                                                         [ShareSDK clientShareContent:publishContent
+                                                                                                 type:ShareTypeYiXinSession
+                                                                                        statusBarTips:YES
+                                                                                               result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                   
+                                                                                                   if (state == SSPublishContentStateSuccess)
+                                                                                                   {
+                                                                                                       NSLog(@"分享成功");
+                                                                                                   }
+                                                                                                   else if (state == SSPublishContentStateFail)
+                                                                                                   {
+                                                                                                       NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                                   }
+                                                                                               }];
+                                                                     }];
+    id<ISSShareActionSheetItem> yxtItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeYiXinTimeline]
+                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeYiXinTimeline]
+                                                                     clickHandler:^{
+                                                                         [ShareSDK clientShareContent:publishContent
+                                                                                                 type:ShareTypeYiXinTimeline
+                                                                                        statusBarTips:YES
+                                                                                               result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                                                                   
+                                                                                                   if (state == SSPublishContentStateSuccess)
+                                                                                                   {
+                                                                                                       NSLog(@"分享成功");
+                                                                                                   }
+                                                                                                   else if (state == SSPublishContentStateFail)
+                                                                                                   {
+                                                                                                       NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                                                                                   }
+                                                                                               }];
+                                                                     }];
+    
     //创建自定义分享列表
     NSArray *shareList = [ShareSDK customShareListWithType:
                           sinaItem,
+                          qzItem,
                           wxsItem,
                           wxtItem,
+                          yxsItem,
+                          yxtItem,
                           qqItem,
                           gpItem,
                           pinItem,
