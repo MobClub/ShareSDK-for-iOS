@@ -62,12 +62,6 @@
                                   @"selected",
                                   nil],
                                  [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  SHARE_TYPE_NUMBER(ShareTypeQQSpace),
-                                  @"type",
-                                  [NSNumber numberWithBool:NO],
-                                  @"selected",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                   SHARE_TYPE_NUMBER(ShareType163Weibo),
                                   @"type",
                                   [NSNumber numberWithBool:NO],

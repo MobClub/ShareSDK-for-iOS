@@ -272,9 +272,7 @@
                                                              icon:[ShareSDK getClientIconWithType:ShareTypeTencentWeibo]
                                                      clickHandler:clickHandler],
                           SHARE_TYPE_NUMBER(ShareTypeSMS),
-                          [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeQQSpace]
-                                                             icon:[ShareSDK getClientIconWithType:ShareTypeQQSpace]
-                                                     clickHandler:clickHandler],
+                          SHARE_TYPE_NUMBER(ShareTypeQQSpace),
                           SHARE_TYPE_NUMBER(ShareTypeWeixiSession),
                           SHARE_TYPE_NUMBER(ShareTypeWeixiTimeline),
                           SHARE_TYPE_NUMBER(ShareTypeQQ),

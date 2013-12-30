@@ -1,0 +1,48 @@
+/* 
+  CommentLocalizable.strings
+  Comment
+
+  Created by 冯 鸿杰 on 13-11-18.
+  Copyright (c) 2013年 掌淘科技. All rights reserved.
+*/
+
+"MENU_ITEM_HOT_LIST" = "热门评论";
+"MENU_ITEM_LATEST_LIST" = "最新评论";
+
+"BUTTON_COMMENT" = "我来说两句";
+"BUTTON_CANCEL" = "取消";
+"BUTTON_SEND" = "发送";
+"BUTTON_REPLY" = "回复";
+"BUTTON_COPY" = "拷贝";
+"BUTTON_SHARE" = "分享";
+"BUTTON_KNOWN" = "知道了";
+"BUTTON_ADD_ACCOUNT" = "添加更多帐号";
+
+"TITLE_ACCOUNT_LOGIN" = "登录";
+"TITLE_SELECT_ACCOUNT" = "请选择登录方式";
+"TITLE_COMMENT" = "评论";
+"TITLE_TIP" = "提示";
+
+"PLACEHOLDER_DEFAULT_CONTENT" = "我来说两句";
+
+"TEXT_ANONYMOUS_USER" = "匿名用户";
+"TEXT_LOAD_MORE" = "正在加载更多...";
+"TEXT_CONTENT_OUT_OF_LENGTH" = "评论内容不能超过140个字";
+"TEXT_SHARE_SUCCESS" = "分享成功";
+"TEXT_SHARE_FAIL" = "分享失败";
+"TEXT_DATE_RECENT" = "刚刚";
+"TEXT_DATE_MINUTE_AGO" = "%.0f分钟前";
+"TEXT_DATE_HOUR_AGO" = "%.0f小时前";
+"TEXT_SHARE_TO" = "分享到:";
+"TEXT_BIND_FAIL" = "绑定失败!";
+"TEXT_SENDING" = "发送中...";
+"TEXT_COMMENT_SUC" = "评论成功!";
+"TEXT_COMMENT_FAI" = "评论失败!";
+"TEXT_CLICK_GET_MORE" = "点击展开更多评论";
+"TEXT_BIND_ACCOUNT" = "绑定帐号";
+"TEXT_CHANGE_ACCOUNT" = "更换帐号";
+"TEXT_COMMENT_SEND_FREQUENT" = "发送太频繁了！请稍后再试...";
+"TEXT_COMMENT_IN_REVIEW" = "提交成功，等待审核通过";
+"TEXT_COMMENT_SHIELDED" = "该评论已被屏蔽";
+"TEXT_BIND_ACCOUNT_FAIL" = "绑定帐号失败";
+
