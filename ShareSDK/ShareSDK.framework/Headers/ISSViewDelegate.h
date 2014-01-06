@@ -6,37 +6,36 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 #import "ShareSDKTypeDef.h"
 
 /**
- *	@brief	授权视图协议
+ *	@brief	视图委托协议
  */
 @protocol ISSViewDelegate <NSObject>
 
 @optional
 
 /**
- *	@brief	授权视图将要显示
+ *	@brief	视图将要显示
  *
- *	@param 	authView 	授权视图
+ *	@param 	viewController 	视图控制器
  *  @param  shareType   分享类型
  */
 - (void)viewOnWillDisplay:(UIViewController *)viewController shareType:(ShareType)shareType;
 
 /**
- *	@brief	授权视图将要关闭
+ *	@brief	视图将要关闭
  *
- *	@param 	authView 	授权视图
+ *	@param 	viewController 	视图控制器
  *  @param  shareType   分享类型
  */
 - (void)viewOnWillDismiss:(UIViewController *)viewController shareType:(ShareType)shareType;
 
 /**
- *	@brief	授权视图旋转到某个方向
+ *	@brief	视图旋转到某个方向
  *
- *  @param  authView    授权视图
+ *  @param  viewController    视图控制器
  *	@param 	toInterfaceOrientation 	设备方向
  *  @param  shareType   分享类型
  */

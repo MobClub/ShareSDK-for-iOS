@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 #import "ISSViewDelegate.h"
 #import "ISSShareViewDelegate.h"
@@ -22,7 +21,6 @@
  *	@return	一键分享列表
  */
 - (NSArray *)oneKeyShareList;
-
 
 /**
  *	@brief	设置一键分享列表

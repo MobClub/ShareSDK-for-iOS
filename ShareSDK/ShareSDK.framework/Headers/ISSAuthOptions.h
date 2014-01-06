@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 #import "ISSViewDelegate.h"
 
@@ -74,6 +73,8 @@
 
 /**
  *	@brief	授权管理视图协议委托
+ *
+ *  @return 协议委托
  */
 - (id<ISSViewDelegate>)authManagerViewDelegate;
 

@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 #import "ISSCAccount.h"
 #import "ISSCParameters.h"
@@ -30,7 +29,6 @@
  *	@param 	value   参数值
  */
 - (void)addHeader:(NSString *)header value:(NSString *)value;
-
 
 /**
  *	@brief	以GET方式进行数据提交
@@ -78,7 +76,7 @@
                 fault:(void(^)(NSError *error))fault;
 
 /**
- *	@brief	以DELETE方式进行数据体检
+ *	@brief	以DELETE方式进行数据提交
  *
  *	@param 	path 	提交路径
  *	@param 	parameters 	参数

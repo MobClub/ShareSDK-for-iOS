@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 
 /**
@@ -55,7 +54,6 @@
  *	@return	YES 表示为远程文件，NO 表示为本地文件
  */
 - (BOOL)isRemoteFile;
-
 
 /**
  *	@brief	加载附件信息

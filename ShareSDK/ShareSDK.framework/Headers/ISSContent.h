@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 #import "ShareSDKTypeDef.h"
 #import <ShareSDKCoreService/ShareSDKCoreService.h>
@@ -177,7 +176,6 @@
  */
 - (id<ISSPlatformShareContentEntity>)shareContentEntityWithType:(ShareType)type;
 
-
 /**
  *	@brief	设置分享内容实体
  *
@@ -283,7 +281,6 @@
                            type:(NSNumber *)type
                         playUrl:(NSString *)playUrl
                            nswb:(NSNumber *)nswb;
-
 
 /**
  *	@brief	添加有道云笔记内容单元。
@@ -521,7 +518,6 @@
                         image:(id<ISSCAttachment>)image
            locationCoordinate:(SSCLocationCoordinate2D *)locationCoordinate;
 
-
 /**
  *	@brief	添加开心网内容单元
  *
@@ -551,7 +547,6 @@
                                url:(NSString *)url
                              image:(id<ISSCAttachment>)image
                         visibility:(NSString *)visibility;
-
 /**
  *	@brief	添加Google+内容单元
  *
@@ -572,7 +567,6 @@
                             title:(NSString *)title
                       description:(NSString *)description
                         thumbnail:(NSString *)thumbnail;
-
 /**
  *	@brief	添加Pinterest内容单元
  *
@@ -762,6 +756,31 @@
                               extInfo:(NSString *)extInfo
                              fileData:(NSData *)fileData
                          emoticonData:(NSData *)emoticonData;
+
+/**
+ *	@brief	添加微信收藏内容单元，制定微信分享时的内容使用此参数，如果参数设置为INHERIT_VALUE则默认使用父级类型相关参数
+ *
+ *	@param 	type 	分享类型,请参考SSPublishContentMediaType
+ *	@param 	content 	分享内容
+ *	@param 	title 	标题
+ *	@param 	url 	URL地址
+ *  @param  thumbImage  缩略图
+ *	@param 	image 	分享图片
+ *  @param  musicFileUrl    音乐文件路径
+ *  @param  extInfo     扩展信息
+ *  @param  fileData    文件数据
+ *  @param  emoticonData    表情数据，用于存放Gif和非Gif图片数据
+ */
+- (void)addWeixinFavUnitWithType:(NSNumber *)type
+                         content:(NSString *)content
+                           title:(NSString *)title
+                             url:(NSString *)url
+                      thumbImage:(id<ISSCAttachment>)thumbImage
+                           image:(id<ISSCAttachment>)image
+                    musicFileUrl:(NSString *)musicFileUrl
+                         extInfo:(NSString *)extInfo
+                        fileData:(NSData *)fileData
+                    emoticonData:(NSData *)emoticonData;
 
 
 @end

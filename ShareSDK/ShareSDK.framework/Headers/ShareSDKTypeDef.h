@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <AGCommon/ICMErrorInfo.h>
 
 #ifndef ShareSDKInterface_ShareSDKTypeDef_h
@@ -113,7 +112,6 @@ typedef enum
 	SSResponseStateCancel = 3 /**< 取消 */
 }
 SSResponseState;
-
 
 /**
  *	@brief	授权视图样式

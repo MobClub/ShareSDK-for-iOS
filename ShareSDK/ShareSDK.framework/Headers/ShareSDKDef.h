@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import "SSInheritValue.h"
 
 #ifndef ShareSDKInterface_ShareSDKDef_h
@@ -20,7 +19,7 @@
 #define SHARE_TYPE_NUMBER(type) [NSNumber numberWithInteger:type]
 
 /**
- *	@brief	继承指
+ *	@brief	继承值
  */
 #define INHERIT_VALUE [SSInheritValue inherit]
 

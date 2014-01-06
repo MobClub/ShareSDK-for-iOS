@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 #import <AGCommon/CMErrorInfo.h>
 #import "SSCTypeDef.h"
@@ -174,7 +173,6 @@
  *	@return	服务器时间
  */
 - (NSTimeInterval)serverTimeIntervalWithClientTimeInterval:(NSTimeInterval)clientTimeInterval;
-
 
 /**
  *	@brief	更新平台配置信息

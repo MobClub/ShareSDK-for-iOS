@@ -9,10 +9,6 @@
 #import "SSCViewController.h"
 #import <Comment/Comment.h>
 
-@interface SSCViewController ()
-
-@end
-
 @implementation SSCViewController
 
 - (void)viewDidLoad

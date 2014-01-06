@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import "ShareSDKTypeDef.h"
 #import "ISSPage.h"
 #import "ShareSDKPlugin.h"

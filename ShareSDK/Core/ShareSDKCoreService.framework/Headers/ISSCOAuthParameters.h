@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 #import "ISSCParameters.h"
 
@@ -42,7 +41,6 @@
  *	@return	OAuth密钥
  */
 - (NSString *)oauthSecret;
-
 
 /**
  *	@brief	添加OAuth参数,仅用于OAuth1.0版本

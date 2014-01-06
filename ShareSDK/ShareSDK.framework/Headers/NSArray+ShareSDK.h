@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 
 /**
@@ -20,7 +19,6 @@
  *	@return	一键分享列表数组
  */
 + (NSArray *)defaultOneKeyShareList;
-
 
 /**
  *	@brief	不包含新浪微博的一键分享列表

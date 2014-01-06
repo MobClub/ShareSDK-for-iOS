@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 
 /**
@@ -48,7 +47,6 @@
  *	@return	菜单方向
  */
 - (UIPopoverArrowDirection)arrowDirection;
-
 
 /**
  *	@brief	设置菜单方向

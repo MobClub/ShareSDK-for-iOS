@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 #import <ShareSDKCoreService/ShareSDKCoreService.h>
 #import "NSArray+ShareSDK.h"
@@ -106,7 +105,6 @@
                        platform:(id<ISSPlatform>)platform
                         appInfo:(NSDictionary *)appInfo;
 
-
 /**
  *	@brief	连接新浪微博开放平台应用以使用相关功能，此应用需要引用SinaWeiboConnection.framework
  *          http://open.weibo.com上注册新浪微博开放平台应用，并将相关信息填写到以下字段
@@ -158,7 +156,7 @@
  *	@param 	appKey 	应用Key
  *	@param 	appSecret 	应用密钥
  *	@param 	redirectUri 	回调地址，此地址则为应用地址。
- *  @param  wbApiCls    腾讯微博Api类型，引入WBApi.h，并将[WBApi class]传入参数，注：不使用SSO时可以传入nil
+ *  @param  wbApiCls    腾讯微博Api类型，引入WeiboApi.h，并将[WBApi class]传入参数，注：不使用SSO时可以传入nil
  */
 + (void)connectTencentWeiboWithAppKey:(NSString *)appKey
                             appSecret:(NSString *)appSecret
@@ -189,7 +187,6 @@
                      appSecret:(NSString *)appSecret
              qqApiInterfaceCls:(Class)qqApiInterfaceCls
                tencentOAuthCls:(Class)tencentOAuthCls;
-
 
 /**
  *	@brief	连接网易微博应用以使用相关功能，此应用需要引用T163WeiboConnection.framework
@@ -333,7 +330,6 @@
                qqApiInterfaceCls:(Class)qqApiInterfaceCls
                  tencentOAuthCls:(Class)tencentOAuthCls;
 
-
 /**
  *	@brief	连接微信应用以使用相关功能，此应用需要引用WeChatConnection.framework和微信官方SDK
  *          http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
@@ -381,7 +377,6 @@
 + (void)connectEvernoteWithType:(SSEverNoteType)type
                     consumerKey:(NSString *)consumerKey
                  consumerSecret:(NSString *)consumerSecret;
-
 
 /**
  *	@brief	连接LinkedIn以使用相关功能，此平台需要引用LinkedInConnection.framework
@@ -518,7 +513,6 @@
 + (void)connectWeChatSessionWithAppId:(NSString *)appId
                             wechatCls:(Class)wechatCls;
 
-
 /**
  *	@brief	连接微信朋友圈
  *
@@ -551,7 +545,7 @@
                             yixinCls:(Class)yixinCls;
 
 /**
- *	@brief	链接易信好友
+ *	@brief	链接易信朋友圈
  *
  *  @since  ver2.7.0
  *
@@ -560,7 +554,6 @@
  */
 + (void)connectYiXinTimelineWithAppId:(NSString *)appId
                              yixinCls:(Class)yixinCls;
-
 
 /**
  *	@brief	连接易信应用以使用相关功能，此应用需要引用YiXinConnection.framework和易信官方SDK
@@ -581,7 +574,6 @@
  *	@return	YES 表示接受请求 NO 表示不接受
  */
 + (BOOL)handleOpenURL:(NSURL *)url wxDelegate:(id)wxDelegate;
-
 
 /**
  *	@brief	处理请求打开链接,如果集成新浪微博(SSO)、Facebook(SSO)、微信、QQ分享功能需要加入此方法
@@ -817,7 +809,6 @@
        locationCoordinate:(SSCLocationCoordinate2D *)locationCoordinate
                   groupId:(NSString *)groupId;
 
-
 /**
  *	@brief	获取图片信息
  *
@@ -867,7 +858,6 @@
 + (id<ISSCAttachment>)imageWithData:(NSData *)data
                            fileName:(NSString *)fileName
                            mimeType:(NSString *)mimeType;
-
 /**
  *	@brief	创建容器对象
  *
@@ -1010,7 +1000,6 @@
  *	@return	已连接平台列表，其元素为包含ShareType的NSNumber对象
  */
 + (NSArray *)connectedPlatformTypes;
-
 
 /**
  *	@brief	获取当前SDK版本号
@@ -1180,7 +1169,6 @@
  *
  */
 + (void)setCurrentAuthUser:(id<ISSPlatformUser>)user type:(ShareType)type;
-
 
 /**
  *	@brief	获取授权用户列表

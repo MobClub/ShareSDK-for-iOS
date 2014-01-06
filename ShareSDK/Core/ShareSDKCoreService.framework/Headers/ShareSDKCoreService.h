@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 #import "ISSCAccount.h"
 #import "ISSCRequest.h"
@@ -60,7 +59,6 @@
  */
 + (id<ISSCParameters>)parametersWithQuery:(NSString *)query;
 
-
 /**
  *	@brief	创建OAuth请求参数
  *
@@ -92,7 +90,6 @@
                                 oauthToken:(NSString *)oauthToken
                                oauthSecret:(NSString *)oauthSecret
                                      query:(NSString *)query;
-
 
 /**
  *	@brief	获取请求

@@ -1,11 +1,11 @@
 //
-//  ShareSDK+Utils.h
-//  ShareSDK
+//  Created by ShareSDK.cn on 13-1-14.
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by vimfung on 13-10-23.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <ShareSDK/ShareSDK.h>
 #import <CommonCrypto/CommonCrypto.h>
 #import "SSHTTPClient.h"
@@ -20,7 +20,6 @@ typedef enum
     SSNetworkTypeWifi = 2, /**< wifi */
 }
 SSNetworkType;
-
 
 /**
  *	@brief	ShareSDK工具类提供
@@ -91,7 +90,6 @@ SSNetworkType;
  *	@return	秒
  */
 + (NSInteger)getSecondWithDate:(NSDate *)date;
-
 
 /**
  *	@brief	根据字符串格式转换字符串为日期
@@ -415,6 +413,8 @@ SSNetworkType;
 
 /**
  *	@brief	使用MD5算法进行签名（16位）
+ *
+ *  @param  string  原字符串
  *
  *	@return	签名后字符串
  */

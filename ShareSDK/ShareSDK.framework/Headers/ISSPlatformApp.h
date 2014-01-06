@@ -1,11 +1,11 @@
 //
-//  ISSPlatformApp.h
-//  ShareSDK
+//  Created by ShareSDK.cn on 13-1-14.
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by vimfung on 13-10-14.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import "ISSContent.h"
 
@@ -35,7 +35,6 @@ typedef void(^SSFriendsResultEvent) (SSResponseState state, NSArray *users, long
  *	@brief	分享返回事件
  */
 typedef void(^SSShareResultEvent) (SSResponseState state, id<ISSPlatformShareInfo> status, CMErrorInfo *error);
-
 
 /**
  *	@brief	平台应用信息协议
@@ -89,7 +88,6 @@ typedef void(^SSShareResultEvent) (SSResponseState state, id<ISSPlatformShareInf
  */
 - (BOOL)isSharingNeedAuthWithClientShare:(BOOL)clientShare;
 
-
 /**
  *	@brief	获取当前用户
  *
@@ -125,7 +123,6 @@ typedef void(^SSShareResultEvent) (SSResponseState state, id<ISSPlatformShareInf
  */
 - (void)setSsoEnabled:(BOOL)enabled;
 
-
 /**
  *	@brief	创建授权凭证
  *
@@ -160,7 +157,6 @@ typedef void(^SSShareResultEvent) (SSResponseState state, id<ISSPlatformShareInf
  *	@return	用户信息对象
  */
 - (id<ISSPlatformUser>)userWithData:(NSDictionary *)data;
-
 
 /**
  *	@brief	通过原始数据来创建分享信息
@@ -293,7 +289,6 @@ typedef void(^SSShareResultEvent) (SSResponseState state, id<ISSPlatformShareInf
  *	@return	分享内容实体对象
  */
 - (id<ISSPlatformShareContentEntity>)shareContentEntityWithDictonary:(NSDictionary *)dictonary;
-
 
 /**
  *	@brief	将分享内容转换为平台的分享内容实体，在此方法中需要对分享实体中的描述值对象进行转换。

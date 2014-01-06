@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <AGCommon/ICMErrorInfo.h>
 
 #ifndef ShareSDKCoreService_SSCTypeDef_h
@@ -84,7 +83,6 @@ typedef enum
 	SSCStatPolicyLimitSize = 2 /**< 达到一定量数据时发送统计数据 */
 }
 SSCStatPolicy;
-
 
 /**
  *	@brief	授权会话返回事件
