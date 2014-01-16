@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 #import <ShareSDKCoreService/ShareSDKCoreService.h>
 #import "SSSinaWeiboUser.h"
@@ -14,7 +13,7 @@
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**
- *	@brief	新浪微博请求方式
+ *	@brief	请求方式
  */
 typedef enum
 {
@@ -68,6 +67,7 @@ SSSinaWeiboRequestMethod;
  *	@brief	调用开放平台API
  *
  *	@param 	path 	路径
+ *  @param  method  请求方式
  *	@param 	params 	请求参数
  *  @param  user    授权用户,如果传入nil则表示默认的授权用户
  *  @param  result  返回回调
@@ -146,7 +146,6 @@ SSSinaWeiboRequestMethod;
      webPageThumbnail:(id<ISSCAttachment>)webPageThumbnail
            webPageUrl:(NSString *)webPageUrl
                result:(SSShareResultEvent)result;
-
 
 /**
  *	@brief	获取默认授权用户的粉丝列表
@@ -257,7 +256,6 @@ SSSinaWeiboRequestMethod;
 - (void)commentStatusWithId:(long long)statusId
                     comment:(NSString *)comment
                      result:(void(^)(BOOL result, id comment, CMErrorInfo *error))result;
-
 
 /**
  *	@brief	评论微博

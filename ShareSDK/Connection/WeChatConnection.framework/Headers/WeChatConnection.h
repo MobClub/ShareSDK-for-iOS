@@ -6,14 +6,14 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 #import "ISSWeChatApp.h"
 #import <ShareSDK/ShareSDKPlugin.h>
 
+/**
+ *	@brief	微信连接器
+ */
 @interface WeChatConnection : NSObject <ISSPlatform>
-
-
 
 /**
  *	@brief	创建应用配置信息

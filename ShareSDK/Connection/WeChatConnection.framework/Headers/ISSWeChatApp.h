@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 #import <ShareSDKCoreService/ShareSDKCoreService.h>
 #import "SSWeChatErrorInfo.h"
@@ -38,7 +37,6 @@
  *	@param 	delegate 	委托对象
  */
 - (void)setDelegate:(id)delegate;
-
 
 /**
  *	@brief	发送文本消息
@@ -135,7 +133,6 @@
         extInfo:(NSString *)extInfo
        fileData:(NSData *)fileData
          result:(SSShareResultEvent)result;
-
 
 /**
  *	@brief	发送非Gif图

@@ -73,6 +73,13 @@
  *
  *	@return	用户昵称
  */
+- (NSString *)nickname;
+
+/**
+ *	@brief	获取用户个人头像
+ *
+ *	@return	个人头像路径
+ */
 - (NSString *)profileImage;
 
 /**

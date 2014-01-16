@@ -6,7 +6,6 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 #import "ISSSinaWeiboApp.h"
 #import <ShareSDKCoreService/ShareSDKCoreService.h>
