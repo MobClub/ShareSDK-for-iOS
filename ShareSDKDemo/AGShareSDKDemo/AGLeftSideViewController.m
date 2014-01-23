@@ -1,11 +1,11 @@
 //
-//  AGLeftSideViewController.m
-//  AGShareSDKDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-1-30.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import "AGLeftSideViewController.h"
 #import "AGAppDelegate.h"
 #import <AGCommon/UIColor+Common.h>
@@ -42,7 +42,7 @@
         // Custom initialization
         
         _sectionView = [[AGSectionView alloc] initWithFrame:CGRectZero];
-        _sectionView.titleLabel.text = @"更多";
+        _sectionView.titleLabel.text = NSLocalizedString(@"TEXT_MORE", @"更多");
     }
     return self;
 }
@@ -127,34 +127,34 @@
             switch (indexPath.row)
             {
                 case 0:
-                    cell.textLabel.text = @"接口";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_INTERFACE", @"接口");
                     break;
                 case 1:
-                    cell.textLabel.text = @"授权";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_AUTH", @"授权");
                     break;
                 case 2:
-                    cell.textLabel.text = @"微信";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_WECHAT", @"微信");
                     break;
                 case 3:
                     cell.textLabel.text = @"QQ";
                     break;
                 case 4:
-                    cell.textLabel.text = @"新浪微博";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_SINA_WEIBO", @"新浪微博");
                     break;
                 case 5:
-                    cell.textLabel.text = @"演示";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_DEMO", @"演示");
                     break;
                 case 6:
-                    cell.textLabel.text = @"自定义分享界面";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_CUSTOM_SHARE_VIEW", @"自定义分享界面");
                     break;
                 case 7:
-                    cell.textLabel.text = @"获取用户信息";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_GET_USER_INFO", @"获取用户信息");
                     break;
                 case 8:
-                    cell.textLabel.text = @"获取授权信息";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_GET_AUTH_INFO", @"获取授权信息");
                     break;
                 case 9:
-                    cell.textLabel.text = @"调用API";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_CALL_API", @"调用API");
                     break;
             }
             break;
@@ -164,21 +164,21 @@
             switch (indexPath.row)
             {
                 case 0:
-                    cell.textLabel.text = @"关注新浪微博";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_FOLLOW_SINA_WEIBO", @"关注新浪微博");
                     break;
                 case 1:
-                    cell.textLabel.text = @"关注腾讯微博";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_FOLLOW_TENCENT_WEIBO", @"关注腾讯微博");
                     break;
                 case 2:
-                    cell.textLabel.text = @"关注官方微信";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_FOLLOW_WECHAT", @"关注官方微信");
                     break;
                 case 3:
-                    cell.textLabel.text = @"访问官方网站";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_GO_TO_OFFICAL_WEBSITE", @"访问官方网站");
                     break;
                 case 4:
                 {
                     NSBundle *bundle = [NSBundle mainBundle];
-                    cell.textLabel.text = [NSString stringWithFormat:@"版本 ver%@",[[bundle infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey]];
+                    cell.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TEST_VERSION", @"版本 ver%@"),[[bundle infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey]];
                     break;
                 }
                 default:
@@ -196,7 +196,7 @@
     switch (section)
     {
         case 1:
-            return @"更多";
+            return NSLocalizedString(@"TEXT_MORE", @"更多");
         default:
             return nil;
     }
@@ -241,7 +241,7 @@
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         UIViewController *apiVC = [[[AGApiViewController alloc] init] autorelease];
-                        apiVC.title = @"接口";
+                        apiVC.title = NSLocalizedString(@"TEXT_INTERFACE", @"接口");
                         UINavigationController *navApiVC = [[[UINavigationController alloc] initWithRootViewController:apiVC] autorelease];
                         self.viewDeckController.centerController = navApiVC;
                         
@@ -253,7 +253,7 @@
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         UIViewController *authVC = [[[AGAuthViewController alloc] init] autorelease];
-                        authVC.title = @"授权";
+                        authVC.title = NSLocalizedString(@"TEXT_AUTH", @"授权");
                         UINavigationController *navAuthVC = [[[UINavigationController alloc] initWithRootViewController:authVC] autorelease];
                         self.viewDeckController.centerController = navAuthVC;
                         
@@ -365,7 +365,7 @@
                                                                   viewDelegate:nil
                                                        authManagerViewDelegate:_appDelegate.viewDelegate];
             
-            //在授权页面中添加关注官方微博
+                                    //Adding official Weibo concern in the authorization page
             [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                             SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
@@ -387,28 +387,28 @@
                                               NSString *msg = nil;
                                               if (state == SSResponseStateSuccess)
                                               {
-                                                  msg = @"关注成功";
+                                                  msg = NSLocalizedString(@"TEXT_FOLLOW_SUC", @"关注成功");
                                               }
                                               else if (state == SSResponseStateFail)
                                               {
                                                   switch ([error errorCode])
                                                   {
                                                       case 20506:
-                                                          msg = @"已关注";
+                                                          msg = NSLocalizedString(@"TEXT_FOLLOWED", @"已关注");
                                                           break;
                                                           
                                                       default:
-                                                          msg = [NSString stringWithFormat:@"关注失败:%@", error.errorDescription];
+                                                          msg = [NSString stringWithFormat:NSLocalizedString(@"TEXT_FOLLOW_FAI", @"关注失败:%@"), error.errorDescription];
                                                           break;
                                                   }
                                               }
                                               
                                               if (msg)
                                               {
-                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                                                       message:msg
                                                                                                      delegate:nil
-                                                                                            cancelButtonTitle:@"知道了"
+                                                                                            cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                                                             otherButtonTitles:nil];
                                                   [alertView show];
                                                   [alertView release];
@@ -428,28 +428,28 @@
                                               NSString *msg = nil;
                                               if (state == SSResponseStateSuccess)
                                               {
-                                                  msg = @"关注成功";
+                                                  msg = NSLocalizedString(@"TEXT_FOLLOW_SUC", @"关注成功");
                                               }
                                               else if (state == SSResponseStateFail)
                                               {
                                                   switch ([error errorCode])
                                                   {
                                                       case 80103:
-                                                          msg = @"已关注";
+                                                          msg = NSLocalizedString(@"TEXT_FOLLOWED", @"已关注");
                                                           break;
                                                           
                                                       default:
-                                                          msg = [NSString stringWithFormat:@"关注失败:%@", error.errorDescription];
+                                                          msg = [NSString stringWithFormat:NSLocalizedString(@"TEXT_FOLLOW_FAI", @"关注失败:%@"), error.errorDescription];
                                                           break;
                                                   }
                                               }
                                               
                                               if (msg)
                                               {
-                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                                                       message:msg
                                                                                                      delegate:nil
-                                                                                            cancelButtonTitle:@"知道了"
+                                                                                            cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                                                             otherButtonTitles:nil];
                                                   [alertView show];
                                                   [alertView release];
@@ -475,7 +475,7 @@
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         SVWebViewController *vc = [[SVWebViewController alloc] initWithAddress:@"http://shareSDK.cn"];
-                        vc.title = @"官方网站";
+                        vc.title = NSLocalizedString(@"TEXT_OFFICAL_WEIBO", @"官方网站");
                         UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
                         [vc release];
                         self.viewDeckController.centerController = navController;

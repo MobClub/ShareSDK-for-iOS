@@ -1,17 +1,17 @@
 //
-//  SSFlickrPhoto.h
-//  FlickrConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-9-4.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <ShareSDKCoreService/SSCDataObject.h>
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**
- *	@brief	照片信息
+ *	@brief	Photo information.
  */
 @interface SSFlickrPhoto : NSObject <ISSPlatformShareInfo,
                                      ISSCDataObject,
@@ -28,41 +28,41 @@
 }
 
 /**
- *	@brief	分享ID
+ *	@brief	Share id.
  */
 @property (nonatomic,copy) NSString *sid;
 
 /**
- *	@brief	分享内容
+ *	@brief	Share content string.
  */
 @property (nonatomic,copy) NSString *text;
 
 /**
- *	@brief	分享的链接列表
+ *	@brief	Share a link list
  */
 @property (nonatomic,retain) NSArray *urls;
 
 /**
- *	@brief	分享的图片列表
+ *	@brief	Share pictures list
  */
 @property (nonatomic,retain) NSArray *imgs;
 
 /**
- *	@brief	扩展信息
+ *	@brief	Extended Data
  */
 @property (nonatomic,retain) NSDictionary *extInfo;
 
 /**
- *	@brief	原始数据
+ *	@brief	Raw data.
  */
 @property (nonatomic,retain) NSDictionary *sourceData;
 
 /**
- *	@brief	创建照片信息
+ *	@brief	Create a photo.
  *
- *	@param 	response 	回复数据
+ *	@param 	response 	Response data.
  *
- *	@return	照片信息
+ *	@return	Photo object.
  */
 + (SSFlickrPhoto *)photoWithResponse:(id)response;
 

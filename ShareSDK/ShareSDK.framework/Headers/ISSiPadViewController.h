@@ -1,71 +1,71 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import <Foundation/Foundation.h>
 
 /**
- *	@brief	iPad视图控制器协议，用于描述iPad中显示容器
+ *	@brief	iPad view controller protocol，Used to describe the iPad display containers
  */
 @protocol ISSiPadViewController <NSObject>
 
 /**
- *	@brief	获取视图,表示弹出菜单显示在哪一个视图上
+ *	@brief	Get view, Said the pop-up menu which is displayed on a view.
  *
- *  @return 视图对象
+ *  @return View object
  */
 - (UIView *)view;
 
 /**
- *	@brief	设置视图
+ *	@brief	Set view
  *
- *	@param 	view 	视图对象
+ *	@param 	view 	View object
  */
 - (void)setView:(UIView *)view;
 
 /**
- *	@brief	获取按钮项，表示弹出菜单用于显示在哪一个导航按钮上
+ *	@brief	Get button item, which means that the pop-up menu, which is used to display on the navigation buttons
  *
- *  @return 按钮项对象
+ *  @return Button item object
  */
 - (UIBarButtonItem *)buttonItem;
 
 /**
- *	@brief	设置按钮项
+ *	@brief	Set button item
  *
- *	@param 	buttonItem 	按钮项对象
+ *	@param 	buttonItem 	Button item object.
  */
 - (void)setButtonItem:(UIBarButtonItem *)buttonItem;
 
 /**
- *	@brief	获取菜单方向
+ *	@brief	Get the menu direction
  *
- *	@return	菜单方向
+ *	@return	Menu direction
  */
 - (UIPopoverArrowDirection)arrowDirection;
 
 /**
- *	@brief	设置菜单方向
+ *	@brief	Set the menu direction
  *
- *	@param 	arrowDirection 	菜单方向
+ *	@param 	arrowDirection 	Menu direction
  */
 - (void)setArrowDirection:(UIPopoverArrowDirection)arrowDirection;
 
 /**
- *	@brief	获取容器显示区域
+ *	@brief	Get container display area
  *
- *	@return	区域对象
+ *	@return	Rect object.
  */
 - (CGRect)rect;
 
 /**
- *	@brief	设置容器显示区域
+ *	@brief	Set container display area
  *
- *	@param 	rect 	区域对象
+ *	@param 	rect 	Rect object.
  */
 - (void)setRect:(CGRect)rect;
 

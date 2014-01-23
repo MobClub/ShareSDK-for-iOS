@@ -1,35 +1,35 @@
 //
-//  ISSPinterestApp.h
-//  PinterestConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-8-29.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <ShareSDKCoreService/ShareSDKCoreService.h>
 #import "SSPinterestErrorInfo.h"
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**
- *	@brief	Pinterest应用协议
+ *	@brief	Pinterest App Protocol.
  */
 @protocol ISSPinterestApp <ISSPlatformApp>
 
 /**
- *	@brief	获取应用ID
+ *	@brief	Get client id.
  *
- *	@return	应用ID
+ *	@return	Client id.
  */
 - (NSString *)clientId;
 
 /**
- *	@brief	分享内容
+ *	@brief	Share content.
  *
- *	@param 	image 	图片，只允许网络图片路径
- *	@param 	url 	网址
- *	@param 	description 	描述
- *  @param  result  回调方法
+ *	@param 	image 	Image object，Pictures only allows network path
+ *	@param 	url 	URL string.
+ *	@param 	description 	Description.
+ *  @param  result  Result handler.
  */
 - (void)createPinWithImage:(id<ISSCAttachment>)image
                        url:(NSString *)url

@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import <Foundation/Foundation.h>
@@ -11,215 +11,215 @@
 #import "ISSShareViewDelegate.h"
 
 /**
- *	@brief	分享选项协议
+ *	@brief	Share options protocol
  */
 @protocol ISSShareOptions <NSObject>
 
 /**
- *	@brief	获取一键分享列表
+ *	@brief	Get one key share list.
  *
- *	@return	一键分享列表
+ *	@return	One key share list array.
  */
 - (NSArray *)oneKeyShareList;
 
 /**
- *	@brief	设置一键分享列表
+ *	@brief	Set one key share list.
  *
- *	@param 	oneKeyShareList 	一键分享列表
+ *	@param 	oneKeyShareList 	One key share list.
  */
 - (void)setOneKeyShareList:(NSArray *)oneKeyShareList;
 
 /**
- *	@brief	获取分享视图标题
+ *	@brief	Get share view title.
  *
- *	@return	分享视图标题
+ *	@return	Title string.
  */
 - (NSString *)title;
 
 /**
- *	@brief	设置分享视图标题
+ *	@brief	Set share view title
  *
- *	@param 	title 	分享视图标题
+ *	@param 	title 	Title string.
  */
 - (void)setTitle:(NSString *)title;
 
 /**
- *	@brief	QQ分享按钮隐藏标识，默认NO, 样式为ShareViewStyleDefault时有效
+ *	@brief	Get QQ Share button hidden flag，Default NO, Style is effective when ShareViewStyleDefault
  *
- *	@return	YES表示隐藏， NO表示显示
+ *	@return	YES indicate hidden, NO indicate display.
  */
 - (BOOL)qqButtonHidden;
 
 /**
- *	@brief	设置QQ分享按钮隐藏标识
+ *	@brief	Set QQ Share button hidden flag.
  *
- *	@param 	qqButtonHidden 	YES表示隐藏， NO表示显示
+ *	@param 	qqButtonHidden 	YES indicate hidden, NO indicate display.
  */
 - (void)setQqButtonHidden:(BOOL)qqButtonHidden;
 
 /**
- *	@brief	微信好友分享按钮隐藏标识，默认NO, 样式为ShareViewStyleDefault时有效
+ *	@brief	Get WeChat session share button hidden flag，Default NO, Style is effective when ShareViewStyleDefault
  *
- *	@return	YES表示隐藏， NO表示显示
+ *	@return	YES indicate hidden, NO indicate display.
  */
 - (BOOL)wxSessionButtonHidden;
 
 /**
- *	@brief	设置微信好友分享按钮隐藏标识
+ *	@brief	Set WeChat session share button flag.
  *
- *	@param 	wxSessionButtonHidden 	YES表示隐藏， NO表示显示
+ *	@param 	wxSessionButtonHidden 	YES indicate hidden, NO indicate display.
  */
 - (void)setWxSessionButtonHidden:(BOOL)wxSessionButtonHidden;
 
 /**
- *	@brief	微信朋友圈分享按钮隐藏标识，默认NO, 样式为ShareViewStyleDefault时有效
+ *	@brief	Get WeChat timeline share button hidden flag，Default NO, Style is effective when ShareViewStyleDefault
  *
- *  @return YES表示隐藏， NO表示显示
+ *  @return YES indicate hidden, NO indicate display.
  */
 - (BOOL)wxTimelineButtonHidden;
 
 /**
- *	@brief	设置微信朋友圈分享按钮隐藏标识
+ *	@brief	Set WeChat timeline share button hidden flag
  *
- *	@param 	wxTimelineButtonHidden 	YES表示隐藏， NO表示显示
+ *	@param 	wxTimelineButtonHidden 	YES indicate hidden, NO indicate display.
  */
 - (void)setWxTimelineButtonHidden:(BOOL)wxTimelineButtonHidden;
 
 /**
- *	@brief	拍照按钮隐藏标识，默认NO, 样式为ShareViewStyleDefault时有效
+ *	@brief	Get camera button hidden flag，Defulat NO, Style is effective when ShareViewStyleDefault
  *
  *  @since  ver2.2.0
  *
- *	@return	YES表示隐藏， NO表示显示
+ *	@return	YES indicate hidden, NO indicate display.
  */
 - (BOOL)cameraButtonHidden;
 
 /**
- *	@brief	拍照按钮隐藏标识
+ *	@brief	Set camera button hidden flag.
  *
  *  @since  ver2.2.0
  *
- *	@param 	cameraButtonHidden 	YES表示隐藏， NO表示显示
+ *	@param 	cameraButtonHidden 	YES indicate hidden, NO indicate display.
  */
 - (void)setCameraButtonHidden:(BOOL)cameraButtonHidden;
 
 /**
- *	@brief	@按钮隐藏标识，默认NO, 样式为ShareViewStyleDefault时有效
+ *	@brief	Get mention button hidden flag，Default NO, Style is effective when ShareViewStyleDefault
  *
  *  @since  ver2.2.0
  *
- *	@return	YES表示隐藏， NO表示显示
+ *	@return	YES indicate hidden, NO indicate display.
  */
 - (BOOL)mentionButtonHidden;
 
 /**
- *	@brief	@按钮隐藏标识
+ *	@brief	Set mention button hidden flag.
  *
  *  @since  ver2.2.0
  *
- *	@param 	mentionButtonHidden 	YES表示隐藏， NO表示显示
+ *	@param 	mentionButtonHidden 	YES indicate hidden, NO indicate display.
  */
 - (void)setMentionButtonHidden:(BOOL)mentionButtonHidden;
 
 /**
- *	@brief	话题按钮隐藏标识，默认NO, 样式为ShareViewStyleDefault时有效
+ *	@brief	Get topic button hidden flag，Default NO, Style is effective when ShareViewStyleDefault
  *
  *  @since  ver2.2.0
  *
- *	@return	YES表示隐藏， NO表示显示
+ *	@return	YES indicate hidden, NO indicate display.
  */
 - (BOOL)topicButtonHidden;
 
 /**
- *	@brief	话题按钮隐藏标识
+ *	@brief	Set topic button hidden flag.
  *
  *  @since  ver2.2.0
  *
- *	@param 	topicButtonHidden 	YES表示隐藏， NO表示显示
+ *	@param 	topicButtonHidden 	YES indicate hidden, NO indicate display.
  */
 - (void)setTopicButtonHidden:(BOOL)mentionButtonHidden;
 
 /**
- *	@brief	是否在视图显示时显示键盘,默认NO。当一键分享列表为nil时，此值无效。
+ *	@brief	Whether in view of the display when the keyboard is displayed, the default NO. When on key share list is nil, this value is invalid.
  *
- *  @return YES表示显示，NO表示不显示
+ *  @return YES indicates display. otherwise hidden.
  */
 - (BOOL)showKeyboardOnAppear;
 
 /**
- *	@brief	设置在视图显示时是否显示键盘
+ *	@brief	Set whether to display the keyboard when the view display
  *
- *	@param 	showKeyboardOnAppear 	YES表示显示，NO表示不显示
+ *	@param 	showKeyboardOnAppear 	YES indicates display. otherwise hidden.
  */
 - (void)setShowKeyboardOnAppear:(BOOL)showKeyboardOnAppear;
 
 /**
- *	@brief	获取分享视图委托
+ *	@brief	Get share view delegate.
  *
- *  @return 协议委托
+ *  @return Delegate object.
  */
 - (id<ISSShareViewDelegate>)shareViewDelegate;
 
 /**
- *	@brief	设置分享视图委托
+ *	@brief	Set share view delegate.
  *
- *	@param 	shareViewDelegate 	协议委托
+ *	@param 	shareViewDelegate 	Delegate object.
  */
 - (void)setShareViewDelegate:(id<ISSShareViewDelegate>)shareViewDelegate;
 
 /**
- *	@brief	获取好友视图委托,此委托仅使用在默认样式视图中弹出的好友列表
+ *	@brief	Get friends view delegate,only use the default sylte view friends list pop.
  *
- *  @return 协议委托
+ *  @return Delegate object.
  */
 - (id<ISSViewDelegate>)friendsViewDelegate;
 
 /**
- *	@brief	设置好友视图委托
+ *	@brief	Set friends view delegate.
  *
- *	@param 	friendsViewDelegate 	协议委托
+ *	@param 	friendsViewDelegate 	Delegate object.
  */
 - (void)setFriendsViewDelegate:(id<ISSViewDelegate>)friendsViewDelegate;
 
 /**
- *	@brief	图片查看器视图委托,此委托仅使用在默认样式视图中图片查看器视图
+ *	@brief	Get picture viewer view delegate.This delegate is only used in the default style view's picture viewer view.
  *
- *  @return 协议委托
+ *  @return Delegate object.
  */
 - (id<ISSViewDelegate>)picViewerViewDelegate;
 
 /**
- *	@brief	设置图片查看器视图委托
+ *	@brief	Set picture viewer view delegate.
  *
- *	@param 	picViewerViewDelegate 	协议委托
+ *	@param 	picViewerViewDelegate 	Delegate object.
  */
 - (void)setPicViewerViewDelegate:(id<ISSViewDelegate>)picViewerViewDelegate;
 
 /**
- *	@brief	获取邮件视图委托
+ *	@brief	Get mail view delegate.
  *
- *	@return	协议委托
+ *	@return	Delegate object.
  */
 - (id<ISSViewDelegate>)mailViewDelegate;
 
 /**
- *	@brief	设置邮件视图委托
+ *	@brief	Set mail view delegate.
  *
- *	@param 	mailViewDelegate 	协议委托
+ *	@param 	mailViewDelegate 	Delegate object.
  */
 - (void)setMailViewDelegate:(id<ISSViewDelegate>)mailViewDelegate;
 
 /**
- *	@brief	获取短信视图委托
+ *	@brief	Get SMS view delegate.
  *
- *	@return	协议委托
+ *	@return	Delegate object.
  */
 - (id<ISSViewDelegate>)smsViewDelegate;
 
 /**
- *	@brief	设置短信视图委托
+ *	@brief	Set SMS view delegate
  *
- *	@param 	smsViewDelegate 	协议委托
+ *	@param 	smsViewDelegate 	Delegate object.
  */
 - (void)setSmsViewDelegate:(id<ISSViewDelegate>)smsViewDelegate;
 

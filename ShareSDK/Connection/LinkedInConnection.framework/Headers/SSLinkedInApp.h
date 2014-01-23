@@ -1,11 +1,11 @@
 //
-//  SSLinkedInApp.h
-//  LinkedInConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-8-8.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import "ISSLinkedInApp.h"
 #import "SSLinkedInUserManager.h"
@@ -13,7 +13,7 @@
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**
- *	@brief	LinkedIn应用对象
+ *	@brief	LinkedIn App.
  */
 @interface SSLinkedInApp : NSObject <ISSLinkedInApp,
                                      SSLinkedInAuthSessionDelegate>
@@ -32,51 +32,50 @@
 }
 
 /**
- *	@brief	应用Key
+ *	@brief	Api key.
  */
 @property (nonatomic,readonly) NSString *apiKey;
 
 /**
- *	@brief	应用密钥
+ *	@brief	Secret key.
  */
 @property (nonatomic,readonly) NSString *secretKey;
 
 /**
- *	@brief	回调地址
+ *	@brief	Redirect uri.
  */
 @property (nonatomic,readonly) NSString *redirectUri;
 
 /**
- *	@brief	登录帐号
+ *	@brief	Acouunt object.
  */
 @property (nonatomic,retain) id<ISSCAccount> account;
 
 /**
- *	@brief	所属平台
+ *	@brief	The platform object.
  */
 @property (nonatomic,readonly) id<ISSPlatform> platform;
 
 /**
- *	@brief	转换URL标识
+ *	@brief	Convert URL enabled.
  */
 @property (nonatomic) BOOL convertUrlEnabled;
 
 /**
- *	@brief	默认注册用户
+ *	@brief	Current user.
  */
 @property (nonatomic,retain) id<ISSPlatformUser> currentUser;
 
-
 /**
- *	@brief	初始化应用
+ *	@brief	Initialize App.
  *
- *  @param  platform    平台
- *  @param  account 帐号
- *	@param 	appKey 	应用Key
- *	@param 	appSecret 	应用密钥
- *	@param 	redirectUri 	回调地址
+ *  @param  platform    Platform object.
+ *  @param  account Account object.
+ *	@param 	appKey 	App key.
+ *	@param 	appSecret 	App secret.
+ *	@param 	redirectUri 	Redirect uri
  *
- *	@return	应用对象
+ *	@return	App object.
  */
 - (id)initWithPlatform:(id<ISSPlatform>)platform
                account:(id<ISSCAccount>)account

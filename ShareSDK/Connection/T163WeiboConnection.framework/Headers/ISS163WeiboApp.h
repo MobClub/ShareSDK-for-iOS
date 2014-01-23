@@ -1,12 +1,11 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 #import <ShareSDKCoreService/ShareSDKCoreService.h>
 #import "SS163WeiboUser.h"
@@ -14,7 +13,7 @@
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**
- *	@brief	新浪微博请求方式
+ *	@brief	Request method.
  */
 typedef enum
 {
@@ -25,39 +24,40 @@ typedef enum
 SS163WeiboRequestMethod;
 
 /**
- *	@brief	网易微博应用协议
+ *	@brief	NetEase Weibo App.
  */
 @protocol ISS163WeiboApp <ISSPlatformApp>
 
 /**
- *	@brief	获取应用Key
+ *	@brief	Get app key.
  *
- *	@return	应用Key
+ *	@return	App key.
  */
 - (NSString *)appKey;
 
 /**
- *	@brief	获取应用密钥
+ *	@brief	Get app secret.
  *
- *	@return	应用密钥
+ *	@return	App secret.
  */
 - (NSString *)appSecret;
 
 /**
- *	@brief	获取应用回调地址
+ *	@brief	Get redirect uri.
  *
- *	@return	应用回调地址
+ *	@return	Redirect uri.
  */
 - (NSString *)redirectUri;
 
 /**
- *	@brief	调用开放平台API
+ *	@brief	Call API.
  *
- *	@param 	path 	路径
- *	@param 	params 	请求参数
- *  @param  user    授权用户,如果传入nil则表示默认的授权用户
- *  @param  result  返回回调
- *  @param  fault   失败回调
+ *	@param 	path 	API path.
+ *  @param  method  Request method.
+ *	@param 	params 	Request parameters.
+ *  @param  user    Authorized users, it means that if the incoming nil default authorized users
+ *  @param  result  Result handler.
+ *  @param  fault   Fault handler.
  */
 - (void)api:(NSString *)path
      method:(SS163WeiboRequestMethod)method
@@ -67,19 +67,19 @@ SS163WeiboRequestMethod;
       fault:(void(^)(CMErrorInfo *error))fault;
 
 /**
- *	@brief	发布微博信息
+ *	@brief	Update status.
  *
- *	@param 	status 	微博内容
- *  @param  result  返回回调
+ *	@param 	status 	Content string.
+ *  @param  result  Result handler.
  */
 - (void)updateWithStatus:(NSString *)status
                   result:(SSShareResultEvent)result;
 
 /**
- *	@brief	上传图片
+ *	@brief	Upload picture.
  *
- *	@param 	pic 	图片
- *  @param  result  返回回调
+ *	@param 	pic 	Image attachment.
+ *  @param  result  Result handler.
  */
 - (void)uploadPic:(id<ISSCAttachment>)pic
            result:(void(^)(BOOL result, NSString *uploadImageUrl, CMErrorInfo *error))result;

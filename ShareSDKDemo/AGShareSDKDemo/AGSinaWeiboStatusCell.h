@@ -1,12 +1,11 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 #import <AGCommon/CMImageView.h>
 #import "AGSinaWeiboRefContentView.h"
@@ -21,10 +20,10 @@
 @optional
 
 /**
- *	@brief	显示图片
+ *	@brief	Show picture.
  *
- *	@param 	cell 	状态单元
- *	@param 	url 	图片路径
+ *	@param 	cell 	Table view cell.
+ *	@param 	url 	Picture url.
  */
 - (void)cell:(AGSinaWeiboStatusCell *)cell onShowPic:(NSString *)url;
 
@@ -32,7 +31,7 @@
 @end
 
 /**
- *	@brief	微博状态单元格
+ *	@brief	Status Cell
  */
 @interface AGSinaWeiboStatusCell : UITableViewCell <AGSinaWeiboRefContentViewDelegate>
 {
@@ -61,41 +60,40 @@
 }
 
 /**
- *	@brief	微博状态信息
+ *	@brief	Status information.
  */
 @property (nonatomic,retain) SSSinaWeiboStatusInfoReader *status;
 
 /**
- *	@brief	单元格高度
+ *	@brief	Cell height.
  */
 @property (nonatomic,readonly) CGFloat cellHeight;
 
 /**
- *	@brief	协议委托
+ *	@brief	Delegate object.
  */
 @property (nonatomic,assign) id<AGSinaWeiboStatusCellDelegate> delegate;
 
-
 /**
- *	@brief	初始化单元格
+ *	@brief	Initialize Cell
  *
- *	@param 	style 	风格
- *	@param 	reuseIdentifier 	复用标识
- *	@param 	imageCacheManager 	图片缓存管理器
+ *	@param 	style 	Cell style.
+ *	@param 	reuseIdentifier 	Reuse identifier
+ *	@param 	imageCacheManager 	Image cache manager
  *
- *	@return	单元格
+ *	@return	Cell object.
  */
 - (id)initWithStyle:(UITableViewCellStyle)style
     reuseIdentifier:(NSString *)reuseIdentifier
   imageCacheManager:(CMImageCacheManager *)imageCacheManager;
 
 /**
- *	@brief	根据新浪状态信息排版
+ *	@brief	According to Sina status information typesetting
  *
- *	@param 	status 	状态信息
- *  @param  isCalCellHeight     是否计算高度标识，YES表示计算高度，将不对图片进行加载
+ *	@param 	status 	Status information.
+ *  @param  isCalCellHeight     Whether to calculate the height of cell, YES, said calculating height, the picture will not be loaded
  *
- *	@return	单元格高度
+ *	@return	Cell height.
  */
 - (CGFloat)layoutThatStaus:(SSSinaWeiboStatusInfoReader *)status isCalCellHeight:(BOOL)isCalCellHeight;
 

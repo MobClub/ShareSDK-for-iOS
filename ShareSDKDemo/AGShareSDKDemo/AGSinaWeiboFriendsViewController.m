@@ -1,12 +1,11 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import "AGSinaWeiboFriendsViewController.h"
 #import "AGAppDelegate.h"
 #import "AGSinaWeiboMoreCell.h"
@@ -47,7 +46,7 @@
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
         [leftBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
                            forState:UIControlStateNormal];
-        [leftBtn setTitle:@"返回" forState:UIControlStateNormal];
+        [leftBtn setTitle:NSLocalizedString(@"TEXT_BACK", @"返回") forState:UIControlStateNormal];
         leftBtn.titleLabel.font = [UIFont systemFontOfSize:13];
         leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
         [leftBtn addTarget:self action:@selector(backButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -58,10 +57,10 @@
         switch (_type)
         {
             case AGSinaWeiboFriendsTypeFriend:
-                self.title = @"关注";
+                self.title = NSLocalizedString(@"TEXT_FOLLOW", @"关注");
                 break;
             case AGSinaWeiboFriendsTypeFollower:
-                self.title = @"粉丝";
+                self.title = NSLocalizedString(@"TEXT_FANS", @"粉丝");
                 break;
             default:
                 break;
@@ -96,7 +95,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
     if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
     {
@@ -115,7 +113,7 @@
     [self.view addSubview:_tableView];
     [_tableView release];
     
-    //下拉刷新
+            //Drop down list
     _refreshHeaderView = [[CMRefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,
                                                                                     0.0f - _tableView.bounds.size.height,
                                                                                     self.view.width,
@@ -222,7 +220,7 @@
                       }
                   }
                   
-                  //刷新表格
+                                                      //Refresh table view.
                   [_tableView reloadData];
               }
               else
@@ -257,7 +255,7 @@
                                                                   viewDelegate:nil
                                                        authManagerViewDelegate:_appDelegate.viewDelegate];
             
-            //在授权页面中添加关注官方微博
+                                    //Adding official Weibo concern in the authorization page
             [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                             SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
@@ -283,7 +281,7 @@
 
 - (void)beginRefreshData
 {
-    //触发下拉刷新
+            //Trigger drop down refresh.
     _tableView.contentOffset = CGPointMake(_tableView.contentOffset.x, -65.0);
     [_refreshHeaderView refreshScrollViewDidEndDragging:_tableView];
 }
@@ -300,13 +298,13 @@
 
 -(BOOL)shouldAutorotate
 {
-    //iOS6下旋屏方法
+            //iOS6 Rotating screen method
     return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    //iOS6下旋屏方法
+            //iOS6 Rotating screen method
     return SSInterfaceOrientationMaskAll;
 }
 
@@ -388,7 +386,7 @@
     UITableViewCell *cell = nil;
     if (indexPath.row == [_friendsArray count])
     {
-        //显示加载更多
+                        //Display load more
         cell = [tableView dequeueReusableCellWithIdentifier:MORE_CELL_ID];
         if (cell == nil)
         {
@@ -425,7 +423,7 @@
 {
     if ([cell isKindOfClass:[AGSinaWeiboMoreCell class]])
     {
-        //加载更多
+                        //Load more
         if (_hasNext)
         {
             [self getFriends:_page + 1];

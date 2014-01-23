@@ -1,11 +1,11 @@
 //
-//  AGCallAPIViewController.m
-//  AGShareSDKDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-4-24.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import "AGCallAPIViewController.h"
 #import <AGCommon/UIImage+Common.h>
 #import <AGCommon/UIDevice+Common.h>
@@ -48,7 +48,7 @@
             [label release];
         }
         
-        self.title = @"调用API";
+        self.title = NSLocalizedString(@"TEXT_CALL_API", @"调用API");
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(keyboardShowHandler:)
@@ -89,7 +89,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, top, self.view.width, ITEM_HEIGHT)];
     label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     label.backgroundColor = [UIColor lightGrayColor];
-    label.text = @"获取新浪微博评论列表";
+    label.text = NSLocalizedString(@"TEXT_GET_SINA_WEIBO_COMMENTS", @"获取新浪微博评论列表");
     [_contentView addSubview:label];
     [label release];
     
@@ -97,7 +97,7 @@
     
     label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
-    label.text = @"微博ID:";
+    label.text = NSLocalizedString(@"TEXT_WEIBO_ID", @"微博ID:");
     [label sizeToFit];
     label.frame = CGRectMake(LEFT_PADDING, top, label.width, ITEM_HEIGHT);
     [_contentView addSubview:label];
@@ -113,14 +113,15 @@
     top += VERTICAL_GAP + ITEM_HEIGHT;
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn setTitle:@"调用方法" forState:UIControlStateNormal];
+    [btn setTitle:NSLocalizedString(@"TEXT_CALL_METHOD", @"调用方法")
+         forState:UIControlStateNormal];
     [btn sizeToFit];
     [btn addTarget:self action:@selector(getSinaWeiboCommentListHandler:) forControlEvents:UIControlEventTouchUpInside];
     btn.frame = CGRectMake(LEFT_PADDING, top, btn.width, ITEM_HEIGHT);
     [_contentView addSubview:btn];
     
     UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn2 setTitle:@"获取最新评论" forState:UIControlStateNormal];
+    [btn2 setTitle:NSLocalizedString(@"TEXT_GET_LAST_COMMENT", @"获取最新评论") forState:UIControlStateNormal];
     [btn2 sizeToFit];
     [btn2 addTarget:self action:@selector(getSinaWeiboLastCommentHandler:) forControlEvents:UIControlEventTouchUpInside];
     btn2.frame = CGRectMake(btn.right + HORIZONTAL_GAP, top, btn2.width, ITEM_HEIGHT);
@@ -131,21 +132,22 @@
     label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, top, self.view.width, ITEM_HEIGHT)];
     label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     label.backgroundColor = [UIColor lightGrayColor];
-    label.text = @"获取新浪微博收藏列表";
+    label.text = NSLocalizedString(@"TEXT_GET_SINA_WEIBO_FAV_LIST", @"获取新浪微博收藏列表");
     [_contentView addSubview:label];
     [label release];
     
     top += VERTICAL_GAP + ITEM_HEIGHT;
     
     btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn setTitle:@"调用方法" forState:UIControlStateNormal];
+    [btn setTitle:NSLocalizedString(@"TEXT_CALL_METHOD", @"调用方法") forState:UIControlStateNormal];
     [btn sizeToFit];
     [btn addTarget:self action:@selector(getSinaWeiboFavoriteListHandler:) forControlEvents:UIControlEventTouchUpInside];
     btn.frame = CGRectMake(LEFT_PADDING, top, btn.width, ITEM_HEIGHT);
     [_contentView addSubview:btn];
     
     btn2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn2 setTitle:@"获取最新收藏" forState:UIControlStateNormal];
+    [btn2 setTitle:NSLocalizedString(@"TEXT_GET_LAST_FAV", @"获取最新收藏")
+          forState:UIControlStateNormal];
     [btn2 sizeToFit];
     [btn2 addTarget:self action:@selector(getSinaWeiboLastFavoriteHandler:) forControlEvents:UIControlEventTouchUpInside];
     btn2.frame = CGRectMake(btn.right + HORIZONTAL_GAP, top, btn2.width, ITEM_HEIGHT);
@@ -156,7 +158,7 @@
     label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, top, self.view.width, ITEM_HEIGHT)];
     label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     label.backgroundColor = [UIColor lightGrayColor];
-    label.text = @"回复新浪微博评论";
+    label.text = NSLocalizedString(@"TEXT_REPLY_SINA_WEIBO_COMMENT", @"回复新浪微博评论");
     [_contentView addSubview:label];
     [label release];
     
@@ -164,7 +166,7 @@
     
     label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
-    label.text = @"微博ID:";
+    label.text = NSLocalizedString(@"TEXT_WEIBO_ID", @"微博ID:");
     [label sizeToFit];
     label.frame = CGRectMake(LEFT_PADDING, top, label.width, ITEM_HEIGHT);
     [_contentView addSubview:label];
@@ -181,7 +183,7 @@
     
     label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
-    label.text = @"评论ID:";
+    label.text = NSLocalizedString(@"TEXT_COMMENT_ID", @"评论ID:");
     [label sizeToFit];
     label.frame = CGRectMake(LEFT_PADDING, top, label.width, ITEM_HEIGHT);
     [_contentView addSubview:label];
@@ -199,7 +201,7 @@
     
     label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
-    label.text = @"评论内容:";
+    label.text = NSLocalizedString(@"TEXT_COMMENT_MSG", @"评论内容:");
     [label sizeToFit];
     label.frame = CGRectMake(LEFT_PADDING, top, label.width, ITEM_HEIGHT);
     [_contentView addSubview:label];
@@ -208,21 +210,21 @@
     _sinaReplyContentField = [[UITextField alloc] initWithFrame:CGRectMake(label.right + HORIZONTAL_GAP, top, self.view.width - label.right - HORIZONTAL_GAP - RIGHT_PADDING, ITEM_HEIGHT)];
     _sinaReplyContentField.delegate = self;
     _sinaReplyContentField.borderStyle = UITextBorderStyleRoundedRect;
-    _sinaReplyContentField.text = @"测试评论内容";
+    _sinaReplyContentField.text = NSLocalizedString(@"TEXT_TEST_COMMENT_MSG", @"测试评论内容");
     [_contentView addSubview:_sinaReplyContentField];
     [_sinaReplyContentField release];
     
     top += VERTICAL_GAP + ITEM_HEIGHT;
     
     btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn setTitle:@"调用方法" forState:UIControlStateNormal];
+    [btn setTitle:NSLocalizedString(@"TEXT_CALL_METHOD", @"调用方法") forState:UIControlStateNormal];
     [btn sizeToFit];
     [btn addTarget:self action:@selector(sinaReplyCommentHandler:) forControlEvents:UIControlEventTouchUpInside];
     btn.frame = CGRectMake(LEFT_PADDING, top, btn.width, ITEM_HEIGHT);
     [_contentView addSubview:btn];
     
     btn2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn2 setTitle:@"获取回复评论ID" forState:UIControlStateNormal];
+    [btn2 setTitle:NSLocalizedString(@"TEXT_GET_REPLY_COMMENT_ID", @"获取回复评论ID") forState:UIControlStateNormal];
     [btn2 sizeToFit];
     [btn2 addTarget:self action:@selector(getSinaReplyIdHandler:) forControlEvents:UIControlEventTouchUpInside];
     btn2.frame = CGRectMake(btn.right + HORIZONTAL_GAP, top, btn2.width, ITEM_HEIGHT);
@@ -233,7 +235,7 @@
     label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, top, self.view.width, ITEM_HEIGHT)];
     label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     label.backgroundColor = [UIColor lightGrayColor];
-    label.text = @"获取腾讯微博评论列表";
+    label.text = NSLocalizedString(@"TEXT_GET_TENCENT_WEIBO_COMMENTS", @"获取腾讯微博评论列表");
     [_contentView addSubview:label];
     [label release];
     
@@ -241,7 +243,7 @@
     
     label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
-    label.text = @"微博ID:";
+    label.text = NSLocalizedString(@"TEXT_WEIBO_ID", @"微博ID:");
     [label sizeToFit];
     label.frame = CGRectMake(LEFT_PADDING, top, label.width, ITEM_HEIGHT);
     [_contentView addSubview:label];
@@ -257,14 +259,14 @@
     top += VERTICAL_GAP + ITEM_HEIGHT;
     
     btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn setTitle:@"调用方法" forState:UIControlStateNormal];
+    [btn setTitle:NSLocalizedString(@"TEXT_CALL_METHOD", @"调用方法") forState:UIControlStateNormal];
     [btn sizeToFit];
     [btn addTarget:self action:@selector(getTencentWeiboCommentListHandler:) forControlEvents:UIControlEventTouchUpInside];
     btn.frame = CGRectMake(LEFT_PADDING, top, btn.width, ITEM_HEIGHT);
     [_contentView addSubview:btn];
     
     btn2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn2 setTitle:@"获取最新评论" forState:UIControlStateNormal];
+    [btn2 setTitle:NSLocalizedString(@"TEXT_GET_LAST_COMMENT", @"获取最新评论") forState:UIControlStateNormal];
     [btn2 sizeToFit];
     [btn2 addTarget:self action:@selector(getTencentWeiboLastCommentHandler:) forControlEvents:UIControlEventTouchUpInside];
     btn2.frame = CGRectMake(btn.right + HORIZONTAL_GAP, top, btn2.width, ITEM_HEIGHT);
@@ -275,21 +277,21 @@
     label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, top, self.view.width, ITEM_HEIGHT)];
     label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     label.backgroundColor = [UIColor lightGrayColor];
-    label.text = @"获取腾讯微博收藏列表";
+    label.text = NSLocalizedString(@"TEXT_GET_TENCENT_WEIBO_FAV_LIST", @"获取腾讯微博收藏列表");
     [_contentView addSubview:label];
     [label release];
     
     top += VERTICAL_GAP + ITEM_HEIGHT;
     
     btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn setTitle:@"调用方法" forState:UIControlStateNormal];
+    [btn setTitle:NSLocalizedString(@"TEXT_CALL_METHOD", @"调用方法") forState:UIControlStateNormal];
     [btn sizeToFit];
     [btn addTarget:self action:@selector(getTencentWeiboFavoriteListHandler:) forControlEvents:UIControlEventTouchUpInside];
     btn.frame = CGRectMake(LEFT_PADDING, top, btn.width, ITEM_HEIGHT);
     [_contentView addSubview:btn];
     
     btn2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn2 setTitle:@"获取最新收藏" forState:UIControlStateNormal];
+    [btn2 setTitle:NSLocalizedString(@"TEXT_GET_LAST_FAV", @"获取最新收藏") forState:UIControlStateNormal];
     [btn2 sizeToFit];
     [btn2 addTarget:self action:@selector(getTencentWeiboLastFavoriteHandler:) forControlEvents:UIControlEventTouchUpInside];
     btn2.frame = CGRectMake(btn.right + HORIZONTAL_GAP, top, btn2.width, ITEM_HEIGHT);
@@ -300,7 +302,7 @@
     label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, top, self.view.width, ITEM_HEIGHT)];
     label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     label.backgroundColor = [UIColor lightGrayColor];
-    label.text = @"回复腾讯微博";
+    label.text = NSLocalizedString(@"TEXT_REPLY_TENCENT_WEIBO", @"回复腾讯微博");
     [_contentView addSubview:label];
     [label release];
     
@@ -308,7 +310,7 @@
     
     label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
-    label.text = @"回复微博ID:";
+    label.text = NSLocalizedString(@"TEXT_REPLY_WEIBO_ID", @"回复微博ID:");
     [label sizeToFit];
     label.frame = CGRectMake(LEFT_PADDING, top, label.width, ITEM_HEIGHT);
     [_contentView addSubview:label];
@@ -325,7 +327,7 @@
     
     label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
-    label.text = @"回复内容:";
+    label.text = NSLocalizedString(@"TEXT_REPLY_CONTENT", @"回复内容:");
     [label sizeToFit];
     label.frame = CGRectMake(LEFT_PADDING, top, label.width, ITEM_HEIGHT);
     [_contentView addSubview:label];
@@ -341,14 +343,14 @@
     top += VERTICAL_GAP + ITEM_HEIGHT;
     
     btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn setTitle:@"调用方法" forState:UIControlStateNormal];
+    [btn setTitle:NSLocalizedString(@"TEXT_CALL_METHOD", @"调用方法") forState:UIControlStateNormal];
     [btn sizeToFit];
     [btn addTarget:self action:@selector(getTencentWeiboReplyHandler:) forControlEvents:UIControlEventTouchUpInside];
     btn.frame = CGRectMake(LEFT_PADDING, top, btn.width, ITEM_HEIGHT);
     [_contentView addSubview:btn];
     
     btn2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn2 setTitle:@"获取回复ID" forState:UIControlStateNormal];
+    [btn2 setTitle:NSLocalizedString(@"TEXT_GET_REPLY_ID", @"获取回复ID") forState:UIControlStateNormal];
     [btn2 sizeToFit];
     [btn2 addTarget:self action:@selector(getTencentWeiboLastReplyHandler:) forControlEvents:UIControlEventTouchUpInside];
     btn2.frame = CGRectMake(btn.right + HORIZONTAL_GAP, top, btn2.width, ITEM_HEIGHT);
@@ -373,13 +375,13 @@
 
 -(BOOL)shouldAutorotate
 {
-    //iOS6下旋屏方法
+            //iOS6 rotating screen method
     return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    //iOS6下旋屏方法
+            //iOS6 rotating screen method
     return SSInterfaceOrientationMaskAll;
 }
 
@@ -479,38 +481,38 @@
 {
     [_focusTextField resignFirstResponder];
     
-    //调用获取评论列表方法，接口文档：http://open.weibo.com/wiki/2/comments/show
-    //先获取相关平台的App对象
+            //Calling get list of comments method, api documentation: http://open.weibo.com/wiki/2/comments/show
+    //First,Get platform app object
     id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
 
-    //构造参数
+            //Structural parameters
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
     [params addParameter:@"id" value:_sinaGetCmtStatusIdField.text];
     
-    //调用接口
+            //Call api
     [app api:@"https://api.weibo.com/2/comments/show.json"
       method:SSSinaWeiboRequestMethodGet
       params:params
         user:nil
       result:^(id responder) {
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                               message:[NSString stringWithFormat:
                                                                        @"%@",
                                                                        responder]
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
       }
        fault:^(CMErrorInfo *error) {
-           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                message:[NSString stringWithFormat:
-                                                                        @"调用失败：%d:%@",
+                                                                        NSLocalizedString(@"TEXT_CALL_FAI", @"调用失败：%d:%@"),
                                                                         [error errorCode],
                                                                         [error errorDescription]]
                                                               delegate:nil
-                                                     cancelButtonTitle:@"知道了"
+                                                     cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                      otherButtonTitles:nil];
            [alertView show];
            [alertView release];
@@ -521,15 +523,15 @@
 {
     [_focusTextField resignFirstResponder];
     
-    //调用获取评论列表方法，接口文档：http://open.weibo.com/wiki/2/comments/show
-    //先获取相关平台的App对象
+            //Call get comment list method，API documentation：http://open.weibo.com/wiki/2/comments/show
+    //First,Get platform app object
     id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
     
-    //构造参数
+            //Structural parameters
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
     [params addParameter:@"id" value:_sinaGetCmtStatusIdField.text];
     
-    //调用接口
+            //Call api
     [app api:@"https://api.weibo.com/2/comments/show.json"
       method:SSSinaWeiboRequestMethodGet
       params:params
@@ -541,12 +543,12 @@
               id item = [value objectAtIndex:0];
               if ([item isKindOfClass:[NSDictionary class]])
               {
-                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                       message:[NSString stringWithFormat:
                                                                                @"%@",
                                                                                [item objectForKey:@"text"]]
                                                                      delegate:nil
-                                                            cancelButtonTitle:@"知道了"
+                                                            cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                             otherButtonTitles:nil];
                   [alertView show];
                   [alertView release];
@@ -555,22 +557,22 @@
               }
           }
           
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                              message:@"无评论"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
+                                                              message:NSLocalizedString(@"TEXT_NO_COMMENTS", @"无评论")
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
       }
        fault:^(CMErrorInfo *error) {
-           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                message:[NSString stringWithFormat:
-                                                                        @"调用失败：%d:%@",
+                                                                        NSLocalizedString(@"TEXT_CALL_FAI", @"调用失败：%d:%@"),
                                                                         [error errorCode],
                                                                         [error errorDescription]]
                                                               delegate:nil
-                                                     cancelButtonTitle:@"知道了"
+                                                     cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                      otherButtonTitles:nil];
            [alertView show];
            [alertView release];
@@ -581,34 +583,34 @@
 {
     [_focusTextField resignFirstResponder];
     
-    //调用获取收藏列表方法，接口文档：https://api.weibo.com/2/favorites.json
-    //先获取相关平台的App对象
+            //Call get favorites method，API documentation：https://api.weibo.com/2/favorites.json
+    //First,Get platform app object
     id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
     
-    //调用接口
+            //Call api
     [app api:@"https://api.weibo.com/2/favorites.json"
       method:SSSinaWeiboRequestMethodGet
       params:nil
         user:nil
       result:^(id responder) {
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                               message:[NSString stringWithFormat:
                                                                        @"%@",
                                                                        responder]
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
       }
        fault:^(CMErrorInfo *error) {
-           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                message:[NSString stringWithFormat:
-                                                                        @"调用失败：%d:%@",
+                                                                        NSLocalizedString(@"TEXT_CALL_FAI", @"调用失败：%d:%@"),
                                                                         [error errorCode],
                                                                         [error errorDescription]]
                                                               delegate:nil
-                                                     cancelButtonTitle:@"知道了"
+                                                     cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                      otherButtonTitles:nil];
            [alertView show];
            [alertView release];
@@ -620,11 +622,11 @@
 {
     [_focusTextField resignFirstResponder];
     
-    //调用获取收藏列表方法，接口文档：https://api.weibo.com/2/favorites.json
-    //先获取相关平台的App对象
+            //Call get favorites method，API documentation：https://api.weibo.com/2/favorites.json
+    //First,Get platform app object
     id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
     
-    //调用接口
+            //Call api
     [app api:@"https://api.weibo.com/2/favorites.json"
       method:SSSinaWeiboRequestMethodGet
       params:nil
@@ -639,12 +641,12 @@
                   item = [item objectForKey:@"status"];
                   if ([item isKindOfClass:[NSDictionary class]])
                   {
-                      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                           message:[NSString stringWithFormat:
                                                                                    @"%@",
                                                                                    [item objectForKey:@"text"]]
                                                                          delegate:nil
-                                                                cancelButtonTitle:@"知道了"
+                                                                cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                                 otherButtonTitles:nil];
                       [alertView show];
                       [alertView release];
@@ -654,22 +656,22 @@
               }
           }
           
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                              message:@"无收藏"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
+                                                              message:NSLocalizedString(@"TEXT_NO_FAV", @"无收藏")
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
       }
        fault:^(CMErrorInfo *error) {
-           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                message:[NSString stringWithFormat:
-                                                                        @"调用失败：%d:%@",
+                                                                        NSLocalizedString(@"TEXT_CALL_FAI", @"调用失败：%d:%@"),
                                                                         [error errorCode],
                                                                         [error errorDescription]]
                                                               delegate:nil
-                                                     cancelButtonTitle:@"知道了"
+                                                     cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                      otherButtonTitles:nil];
            [alertView show];
            [alertView release];
@@ -680,8 +682,8 @@
 {
     [_focusTextField resignFirstResponder];
     
-    //调用获取收藏列表方法，接口文档：https://api.weibo.com/2/comments/reply.json
-    //先获取相关平台的App对象
+            //Call reply comment method，API documentation：https://api.weibo.com/2/comments/reply.json
+    //First,Get platform app object
     id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
@@ -689,30 +691,30 @@
     [params addParameter:@"id" value:_sinaReplyStatusIdField.text];
     [params addParameter:@"comment" value:_sinaReplyContentField.text];
     
-    //调用接口
+            //Call api
     [app api:@"https://api.weibo.com/2/comments/reply.json"
       method:SSSinaWeiboRequestMethodPost
       params:params
         user:nil
       result:^(id responder) {
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                               message:[NSString stringWithFormat:
                                                                        @"%@",
                                                                        responder]
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
       }
        fault:^(CMErrorInfo *error) {
-           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                message:[NSString stringWithFormat:
-                                                                        @"调用失败：%d:%@",
+                                                                        NSLocalizedString(@"TEXT_CALL_FAI", @"调用失败：%d:%@"),
                                                                         [error errorCode],
                                                                         [error errorDescription]]
                                                               delegate:nil
-                                                     cancelButtonTitle:@"知道了"
+                                                     cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                      otherButtonTitles:nil];
            [alertView show];
            [alertView release];
@@ -723,8 +725,8 @@
 {
     [_focusTextField resignFirstResponder];
     
-    //调用获取收藏列表方法，接口文档：https://api.weibo.com/2/comments/reply.json
-    //先获取相关平台的App对象
+            //Call reply comment method，API documentation：https://api.weibo.com/2/comments/reply.json
+    //First,Get platform app object
     id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
@@ -732,30 +734,30 @@
     [params addParameter:@"id" value:_sinaReplyStatusIdField.text];
     [params addParameter:@"comment" value:_sinaReplyContentField.text];
     
-    //调用接口
+            //Call api
     [app api:@"https://api.weibo.com/2/comments/reply.json"
       method:SSSinaWeiboRequestMethodPost
       params:params
         user:nil
       result:^(id responder) {
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                               message:[NSString stringWithFormat:
                                                                        @"%@",
                                                                        [responder objectForKey:@"id"]]
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
       }
        fault:^(CMErrorInfo *error) {
-           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                message:[NSString stringWithFormat:
-                                                                        @"调用失败：%d:%@",
+                                                                        NSLocalizedString(@"TEXT_CALL_FAI", @"调用失败：%d:%@"),
                                                                         [error errorCode],
                                                                         [error errorDescription]]
                                                               delegate:nil
-                                                     cancelButtonTitle:@"知道了"
+                                                     cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                      otherButtonTitles:nil];
            [alertView show];
            [alertView release];
@@ -766,8 +768,8 @@
 {
     [_focusTextField resignFirstResponder];
     
-    //调用获取收藏列表方法，接口文档：http://wiki.open.t.qq.com/index.php/API文档/微博接口/获取单条微博的转发或评论列表
-    //先获取相关平台的App对象
+            //Call get comment list method，API documentation：http://wiki.open.t.qq.com/index.php/API文档/微博接口/获取单条微博的转发或评论列表
+    //First,Get platform app object
     id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
@@ -779,30 +781,30 @@
     [params addParameter:@"reqnum" value:@"20"];
     [params addParameter:@"twitterid" value:@"0"];
     
-    //调用接口
+            //Call api
     [app api:@"https://open.t.qq.com/api/t/re_list"
       method:SSTecentWeiboRequestMethodGet
       params:params
         user:nil
       result:^(id responder) {
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                               message:[NSString stringWithFormat:
                                                                        @"%@",
                                                                        responder]
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
       }
        fault:^(CMErrorInfo *error) {
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                               message:[NSString stringWithFormat:
-                                                                       @"调用失败：%d:%@",
+                                                                       NSLocalizedString(@"TEXT_CALL_FAI", @"调用失败：%d:%@"),
                                                                        [error errorCode],
                                                                        [error errorDescription]]
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
@@ -813,8 +815,8 @@
 {
     [_focusTextField resignFirstResponder];
     
-    //调用获取收藏列表方法，接口文档：http://wiki.open.t.qq.com/index.php/API文档/微博接口/获取单条微博的转发或评论列表
-    //先获取相关平台的App对象
+            //Call get comment list method，API documentation：http://wiki.open.t.qq.com/index.php/API文档/微博接口/获取单条微博的转发或评论列表
+    //First,Get platform app object
     id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
@@ -826,7 +828,7 @@
     [params addParameter:@"reqnum" value:@"20"];
     [params addParameter:@"twitterid" value:@"0"];
     
-    //调用接口
+            //Call api
     [app api:@"https://open.t.qq.com/api/t/re_list"
       method:SSTecentWeiboRequestMethodGet
       params:params
@@ -839,12 +841,12 @@
               id item = [value objectAtIndex:0];
               if ([item isKindOfClass:[NSDictionary class]])
               {
-                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                       message:[NSString stringWithFormat:
                                                                                @"%@",
                                                                                [item objectForKey:@"text"]]
                                                                      delegate:nil
-                                                            cancelButtonTitle:@"知道了"
+                                                            cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                             otherButtonTitles:nil];
                   [alertView show];
                   [alertView release];
@@ -853,13 +855,13 @@
           
          
       } fault:^(CMErrorInfo *error) {
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                               message:[NSString stringWithFormat:
-                                                                       @"调用失败：%d:%@",
+                                                                       NSLocalizedString(@"TEXT_CALL_FAI", @"调用失败：%d:%@"),
                                                                        [error errorCode],
                                                                        [error errorDescription]]
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
@@ -870,8 +872,8 @@
 {
     [_focusTextField resignFirstResponder];
     
-    //调用获取收藏列表方法，接口文档：http://wiki.open.t.qq.com/index.php/API文档/收藏接口/收藏的微博列表
-    //先获取相关平台的App对象
+            //Call get favorite list，API documentation：http://wiki.open.t.qq.com/index.php/API文档/收藏接口/收藏的微博列表
+    //First,Get platform app object
     id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
@@ -881,30 +883,30 @@
     [params addParameter:@"reqnum" value:@"20"];
     [params addParameter:@"lastid" value:@"0"];
     
-    //调用接口
+            //Call api
     [app api:@"https://open.t.qq.com/api/fav/list_t"
       method:SSTecentWeiboRequestMethodGet
       params:params
         user:nil
       result:^(id responder) {
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                               message:[NSString stringWithFormat:
                                                                        @"%@",
                                                                        responder]
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
       }
        fault:^(CMErrorInfo *error) {
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示") 
                                                               message:[NSString stringWithFormat:
-                                                                       @"调用失败：%d:%@",
+                                                                       NSLocalizedString(@"TEXT_SHARE_FAI", @"调用失败：%d:%@"),
                                                                        [error errorCode],
                                                                        [error errorDescription]]
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
@@ -915,8 +917,8 @@
 {
     [_focusTextField resignFirstResponder];
     
-    //调用获取收藏列表方法，接口文档：http://wiki.open.t.qq.com/index.php/API文档/收藏接口/收藏的微博列表
-    //先获取相关平台的App对象
+            //Call get favorite list，API documentation：http://wiki.open.t.qq.com/index.php/API文档/收藏接口/收藏的微博列表
+    //First,Get platform app object
     id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
@@ -926,7 +928,7 @@
     [params addParameter:@"reqnum" value:@"20"];
     [params addParameter:@"lastid" value:@"0"];
     
-    //调用接口
+            //Call api
     [app api:@"https://open.t.qq.com/api/fav/list_t"
       method:SSTecentWeiboRequestMethodGet
       params:params
@@ -938,12 +940,12 @@
               id item = [value objectAtIndex:0];
               if ([item isKindOfClass:[NSDictionary class]])
               {
-                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                       message:[NSString stringWithFormat:
                                                                                @"%@",
                                                                                [item objectForKey:@"text"]]
                                                                      delegate:nil
-                                                            cancelButtonTitle:@"知道了"
+                                                            cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                             otherButtonTitles:nil];
                   [alertView show];
                   [alertView release];
@@ -952,22 +954,22 @@
               }
           }
           
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                              message:@"无收藏!"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
+                                                              message:NSLocalizedString(@"TEXT_NO_FAV", @"无收藏!")
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
           
       } fault:^(CMErrorInfo *error) {
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                               message:[NSString stringWithFormat:
-                                                                       @"调用失败：%d:%@",
+                                                                       NSLocalizedString(@"TEXT_CALL_FAI", @"调用失败：%d:%@"),
                                                                        [error errorCode],
                                                                        [error errorDescription]]
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
@@ -978,8 +980,8 @@
 {
     [_focusTextField resignFirstResponder];
     
-    //调用获取收藏列表方法，接口文档：http://wiki.open.t.qq.com/index.php/API文档/微博接口/回复一条微博
-    //先获取相关平台的App对象
+            //Call reply status method，API documentation：http://wiki.open.t.qq.com/index.php/API文档/微博接口/回复一条微博
+    //First,Get platform app object
     id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
@@ -987,29 +989,29 @@
     [params addParameter:@"content" value:_tencentReplyContentField.text];
     [params addParameter:@"reid" value:_tencentReplyStatusIdField.text];
     
-    //调用接口
+            //Call api
     [app api:@"https://open.t.qq.com/api/t/reply"
       method:SSTecentWeiboRequestMethodPost
       params:params
         user:nil
       result:^(id responder) {
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                               message:[NSString stringWithFormat:
                                                                        @"%@",
                                                                        responder]
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
       } fault:^(CMErrorInfo *error) {
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                               message:[NSString stringWithFormat:
-                                                                       @"调用失败：%d:%@",
+                                                                       NSLocalizedString(@"TEXT_CALL_FAI", @"调用失败：%d:%@"),
                                                                        [error errorCode],
                                                                        [error errorDescription]]
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
@@ -1020,8 +1022,8 @@
 {
     [_focusTextField resignFirstResponder];
     
-    //调用获取收藏列表方法，接口文档：http://wiki.open.t.qq.com/index.php/API文档/微博接口/回复一条微博
-    //先获取相关平台的App对象
+            //Call replay status method，API documentation：http://wiki.open.t.qq.com/index.php/API文档/微博接口/回复一条微博
+    //First,Get platform app object
     id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
@@ -1029,29 +1031,29 @@
     [params addParameter:@"content" value:_tencentReplyContentField.text];
     [params addParameter:@"reid" value:_tencentReplyStatusIdField.text];
     
-    //调用接口
+            //Call api
     [app api:@"https://open.t.qq.com/api/t/reply"
       method:SSTecentWeiboRequestMethodPost
       params:params
         user:nil
       result:^(id responder) {
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                               message:[NSString stringWithFormat:
                                                                        @"%@",
                                                                        [responder objectForKey:@"id"]]
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];
       } fault:^(CMErrorInfo *error) {
-          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                               message:[NSString stringWithFormat:
-                                                                       @"调用失败：%d:%@",
+                                                                       NSLocalizedString(@"TEXT_CALL_FAI", @"调用失败：%d:%@"),
                                                                        [error errorCode],
                                                                        [error errorDescription]]
                                                              delegate:nil
-                                                    cancelButtonTitle:@"知道了"
+                                                    cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                     otherButtonTitles:nil];
           [alertView show];
           [alertView release];

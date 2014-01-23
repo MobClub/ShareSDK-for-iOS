@@ -1,11 +1,11 @@
 //
-//  AGCustomShareViewController.h
-//  AGShareSDKDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-3-5.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import <AGCommon/CMImageView.h>
 #import <ShareSDK/ShareSDK.h>
@@ -14,7 +14,7 @@
 @class AGAppDelegate;
 
 /**
- *	@brief	自定义分享视图控制器
+ *	@brief	Custom share view controller.
  */
 @interface AGCustomShareViewController : UIViewController <UITextViewDelegate>
 {
@@ -37,12 +37,12 @@
 }
 
 /**
- *	@brief	初始化视图控制器
+ *	@brief	Initialize share view controller
  *
- *	@param 	image 	图片
- *	@param 	content 	内容
+ *	@param 	image 	Image
+ *	@param 	content 	Content string
  *
- *	@return	视图控制器
+ *	@return	View controller.
  */
 - (id)initWithImage:(UIImage *)image
             content:(NSString *)content;

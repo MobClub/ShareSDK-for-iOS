@@ -1,27 +1,27 @@
 //
-//  VKontakteConnection.h
-//  VKontakteConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-11.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import "ISSVKontakteApp.h"
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**
- *	@brief	VKontakte连接器
+ *	@brief	VKontakte Connection.
  */
 @interface VKontakteConnection : NSObject <ISSPlatform>
 
 /**
- *	@brief	创建应用配置信息
+ *	@brief	Create a app configuration information.
  *
- *	@param 	applicationId 	应用标识
- *	@param 	secretKey 	应用密钥
+ *	@param 	applicationId 	App id.
+ *	@param 	secretKey 	Secret key.
  *
- *	@return	应用配置信息
+ *	@return	App configuration information.
  */
 - (NSDictionary *)appInfoWithApplicationId:(NSString *)applicationId
                                  secretKey:(NSString *)secretKey;

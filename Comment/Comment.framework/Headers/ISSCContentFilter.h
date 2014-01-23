@@ -1,57 +1,56 @@
 //
-//  ISSCContentFilter.h
-//  Comment
+//  Created by ShareSDK.cn on 13-1-14.
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-11-13.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 /**
- *	@brief	过滤事件，当条件达到时触发
+ *	@brief	Filtered Event，When the trigger condition is reached
  */
 typedef void(^SSCFilteredEvent)();
 
-
 /**
- *	@brief	内容过滤器，用于在提交评论内容时对内容进行过滤。
- *          通过继承此协议可以
+ *	@brief	Content filter. for submitting comments on the content filtering content.
+ *
  */
 @protocol ISSCContentFilter <NSObject>
 
 /**
- *	@brief	过滤内容
+ *	@brief	Filtering content
  *
- *	@param 	content 	内容
+ *	@param 	content 	Content
  *
- *	@return	YES 表示被过滤内容，NO 表示允许提交内容
+ *	@return	YES said filtered content, NO indicates allowed to submit content
  */
 - (BOOL)filteringContent:(NSString *)content;
 
 /**
- *	@brief	设置过滤事件处理器
+ *	@brief	Set filtered handler.
  *
- *	@param 	handler 	事件处理器
+ *	@param 	handler 	Event handler.
  */
 - (void)setFilteredHandler:(SSCFilteredEvent)handler;
 
 /**
- *	@brief	过滤事件，当达到过滤条件时触发
+ *	@brief	Filter events, triggered when it reaches the filter conditions
  */
 - (void)onFiltered;
 
 /**
- *	@brief	获取下一个内容过滤器
+ *	@brief	Get next content filter.
  *
- *	@return	内容过滤器
+ *	@return	Content filter.
  */
 - (id<ISSCContentFilter>)next;
 
 /**
- *	@brief	设置下一个内容过滤器
+ *	@brief	Set next content filter.
  *
- *	@param 	next 	内容过滤器
+ *	@param 	next 	Content filter.
  */
 - (void)setNext:(id<ISSCContentFilter>)next;
 

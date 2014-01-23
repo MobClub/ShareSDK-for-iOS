@@ -1,18 +1,15 @@
 //
-//  UIDevice+Common.h
-//
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 
 /**
- *	@brief	网络类型
+ *	@brief	Network type
  */
 typedef enum
 {
@@ -22,34 +19,36 @@ typedef enum
 }
 CMNetworkType;
 
-
+/**
+ *	@brief	UIDevice Category
+ */
 @interface UIDevice (Common)
 
 /**
- *	@brief	判断是否为iPhone5
+ *	@brief	Determine whether the iPhone5
  *
- *	@return	YES：是，NO：否
+ *	@return	YES：is iPhone5，NO：Not iPhone5
  */
 - (BOOL)isPhone5;
 
 /**
- *	@brief	获取系统越狱标识
+ *	@brief	Get System jailbreak flag
  *
- *	@return	YES表示已经越狱，否则没有越狱。
+ *	@return	YES said it had jailbreak, otherwise there is no jailbreak.
  */
 - (BOOL)isJailBroken;
 
 /**
- *	@brief	取得网卡的物理地址
+ *	@brief	Get MAC address.
  *
- *	@return	网卡物理地址
+ *	@return	MAC address.
  */
 - (NSString *)macAddress;
 
 /**
- *	@brief	获取设备型号
+ *	@brief	Get device model.
  *
- *	@return	设备型号：设备型号对照如下：
+ *	@return	Device model. Model follows：
  *  iPhone1,1  ->   iPhone (Original/EDGE)
  *  iPhone1,2  ->   iPhone 3G
  *  iPhone1,2* ->   iPhone 3G (China/No Wi-Fi)
@@ -88,37 +87,37 @@ CMNetworkType;
 - (NSString *)deviceModel;
 
 /**
- *	@brief	获取当前网络类型
+ *	@brief	Get current network type.
  *
- *	@return	网络类型
+ *	@return	Network type.
  */
 - (CMNetworkType)currentNetworkType;
 
 /**
- *	@brief	获取wifi的使能状态
+ *	@brief	Get the WIFI enabled
  *
- *	@return	YES wifi可用，NO wifi不可用
+ *	@return	YES indicates WIFI enabled，NO indicates WIFI disabled.
  */
 - (BOOL)isEnableWIFI;
 
 /**
- *	@brief	获取3G的使能状态
+ *	@brief	Get the 3G enabled
  *
- *	@return	YES 3G可用，NO 3G不可用
+ *	@return	YES indicates 3G enabled，NO indicates 3G disabled.
  */
 - (BOOL)isEnable3G;
 
 /**
- *	@brief	判断是否为iPad设备
+ *	@brief	Determine whether the iPad device
  *
- *	@return	YES：是，NO：否
+ *	@return	YES：is iPad，NO：Not iPad.
  */
 - (BOOL)isPad;
 
 /**
- *	@brief	获取运行进程
+ *	@brief	Get running processes information.
  *
- *	@return	运行进程
+ *	@return	Running processes information.
  */
 - (NSArray *)runningProcesses;
 

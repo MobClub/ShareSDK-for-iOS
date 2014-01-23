@@ -1,11 +1,11 @@
 //
-//  AGGetCredentialViewController.m
-//  AGShareSDKDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-4-24.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import "AGGetCredentialViewController.h"
 #import <AGCommon/UIDevice+Common.h>
 #import <AGCommon/UIImage+Common.h>
@@ -44,7 +44,7 @@
             [label release];
         }
         
-        self.title = @"获取授权信息";
+        self.title = NSLocalizedString(@"TEXT_GET_AUTH_INFO", @"获取授权信息");
     }
     return self;
 }
@@ -76,14 +76,14 @@
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"新浪微博" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"TEXT_SINA_WEIBO", @"新浪微博") forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(showSinaWeiboCredClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"腾讯微博" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"TEXT_TENCENT_WEIBO", @"腾讯微博") forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
     [button addTarget:self action:@selector(showTencentWeiboCredClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
@@ -91,14 +91,14 @@
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"搜狐微博" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"TEXT_SOHO_WEIBO", @"搜狐微博") forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(showSohuWeiboCredClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"网易微博" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"TEXT_NETEASE_WEIBO", @"网易微博") forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
     [button addTarget:self action:@selector(show163WeiboCredClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
@@ -106,14 +106,14 @@
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"豆瓣社区" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"TEXT_DOUBAN", @"豆瓣社区") forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(showDoubanCredClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"QQ空间" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"TEXT_QZONE", @"QQ空间") forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
     [button addTarget:self action:@selector(showQZoneCredClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
@@ -121,14 +121,14 @@
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"人人网" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"TEXT_RENREN", @"人人网") forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(showRenrenCredClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"开心网" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"TEXT_KAIXIN", @"开心网") forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
     [button addTarget:self action:@selector(showKaixinCredClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
@@ -143,7 +143,7 @@
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"有道云笔记" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"TEXT_YOUDAO_NOTE", @"有道云笔记") forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
     [button addTarget:self action:@selector(showYoudaoNoteCredClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
@@ -166,7 +166,7 @@
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:@"搜狐随身看" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"TEXT_SOHU_KAN", @"搜狐随身看") forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(showSohuKanCredClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
@@ -205,13 +205,14 @@
 
 -(BOOL)shouldAutorotate
 {
-    //iOS6下旋屏方法
+            //iOS6 Rotating screen method
+    
     return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    //iOS6下旋屏方法
+            //iOS6 Rotating screen method
     return SSInterfaceOrientationMaskAll;
 }
 
@@ -289,7 +290,7 @@
 - (void)showCredentialWithType:(ShareType)type
 {
     id<ISSPlatformCredential> credential = [ShareSDK getCredentialWithType:type];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                         message:[NSString stringWithFormat:
                                                                  @"uid = %@\ntoken = %@\nsecret = %@\n expired = %@\nextInfo = %@",
                                                                  [credential uid],
@@ -298,7 +299,7 @@
                                                                  [credential expired],
                                                                  [credential extInfo]]
                                                        delegate:nil
-                                              cancelButtonTitle:@"知道了"
+                                              cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了") 
                                               otherButtonTitles:nil];
     [alertView show];
     [alertView release];

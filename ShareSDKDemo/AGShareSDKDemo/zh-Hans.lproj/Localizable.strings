@@ -1,0 +1,376 @@
+//
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
+//
+"TEXT_SHARE_ALL" = "分享全部";
+"TEXT_SHARE_ALL_SIMPLE" = "分享全部(简单)";
+"TEXT_SHARE_ALL_NONE_UI" = "分享全部(无界面)";
+"TEXT_SHARE_WEB_IMAGE" = "分享网络图片";
+"TEXT_SHARE_GIF_PIC" = "分享GIF图片";
+"TEXT_CUSTOM_SHARE_MENU" = "自定义分享菜单";
+"TEXT_CUSTOM_SHARE_MENU_ITEM" = "自定义分享菜单项";
+"TEXT_FOLLOW_SINA_WEIBO" = "关注新浪微博";
+"TEXT_FOLLOW_TENCENT_WEIBO" = "关注腾讯微博";
+"TEXT_GET_OTHER_USER_INFO" = "获取其他用户信息";
+"TEXT_SHARE_TO_SINA_WEIBO" = "分享到新浪微博";
+"TEXT_SHARE_TO_TENCENT_WEIBO" = "分享到腾讯微博";
+"TEXT_SHARE_TO_QZONE" = "分享到QQ空间";
+"TEXT_SHARE_TO_FACEBOOK" = "分享到Facebook";
+"TEXT_SHARE_TO_TWITTER" = "分享到Twitter";
+"TEXT_SHARE_TO_NETEASE_WEIBO" = "分享到网易微博";
+"TEXT_SHARE_TO_SOHO_WEIBO" = "分享到搜狐微博";
+"TEXT_SHARE_TO_RENREN" = "分享到人人网";
+"TEXT_SHARE_TO_KAIXIN" = "分享到开心网";
+"TEXT_SHARE_TO_DOUBAN" = "分享到豆瓣我说";
+"TEXT_SHARE_TO_INSTAPAPER" = "分享到Instapaper";
+"TEXT_SHARE_TO_SMS" = "短信分享";
+"TEXT_SHARE_TO_MAIL" = "邮件分享";
+"TEXT_SHARE_TO_PRINT_OR_COPY" = "打印、拷贝";
+"TEXT_SHARE_TO_YOUDAONOTE" = "分享到有道云笔记";
+"TEXT_SHARE_TO_SOHOKAN" = "分享到搜狐随身看";
+"TEXT_SHARE_TO_EVERNOTE" = "分享到印象笔记";
+"TEXT_SHARE_TO_POCKET" = "分享到Pocket";
+"TEXT_SHARE_TO_GOOGLEPLUS" = "分享到Google+";
+"TEXT_SHARE_TO_LINKEDIN" = "分享到LinkedIn";
+"TEXT_SHARE_BY_CLIENT" = "客户端分享";
+"TEXT_SHARE_WITH_LOCATION" = "地理位置分享";
+"TEXT_SET_ACCESS_TOKEN" = "设置AccessToken";
+"TEXT_GET_USER_INFO" = "获取用户信息";
+"TEXT_FOLLOW" = "关注";
+"TEXT_CANCEL" = "取消";
+"TEXT_SINA_WEIBO" = "新浪微博";
+"TEXT_TENCENT_WEIBO" = "腾讯微博";
+"TEXT_SOHO_WEIBO" = "搜狐微博";
+"TEXT_NETEASE_WEIBO" = "网易微博";
+"TEXT_DOUBAN" = "豆瓣社区";
+"TEXT_QZONE" = "QQ空间";
+"TEXT_RENREN" = "人人网";
+"TEXT_KAIXIN" = "开心网";
+"TEXT_YOUDAO_NOTE" = "有道云笔记";
+"TEXT_SOHU_KAN" = "搜狐随身看";
+"TEXT_TIPS" = "提示";
+"TEXT_KNOW" = "知道了";
+"TEXT_UNAUTH" = "此平台尚未授权!";
+"TEXT_UNAUTH_2" = "尚未授权";
+"TEXT_TEST_MSG" = "这是一条测试信息";
+"TEXT_HELLO_RENREN" = "Hello 人人网";
+"TEXT_HELLO_QZONE" = "Hello QQ空间";
+"TEXT_HELLO_WECHAT_SESSION" = "Hello 微信好友!";
+"TEXT_HELLO_WECHAT_TIMELINE" = "Hello 微信朋友圈!";
+"TEXT_HELLO_WECHAT_FAV" = "Hello 微信收藏!";
+"TEXT_HELLO_YOUDAO_NOTE" = "Hello 有道云笔记";
+"TEXT_HELLO_EVERNOTE" = "Hello 印象笔记";
+"TEXT_SHARE_TITLE" = "内容分享";
+"TEXT_ShARE_SUC" = "分享成功";
+"TEXT_ShARE_FAI" = "分享失败,错误码:%d,错误描述:%@";
+"TEXT_SELECT" = "请选择";
+"TEXT_PRINT" = "打印";
+"TEXT_COPY" = "拷贝";
+"TEXT_FOLLOW_SUC" = "关注成功";
+"TEXT_FOLLOW_FAI" = "关注失败:%@";
+"TEXT_SSO_LOGIN" = "SSO登录:%@";
+"TEXT_SSO_LOGIN_2" = "SSO登录";
+"TEXT_CUSTOM_ITEM_1" = "自定义项1";
+"TEXT_CUSTOM_ITEM_2" = "自定义项2";
+"TEXT_CUSTOM_ITEM_3" = "自定义项3";
+"TEXT_CUSTOM_ITEM_4" = "自定义项4";
+"TEXT_CUSTOM_ITEM_5" = "自定义项5";
+"TEXT_CUSTOM_ITEM_1_CLICK" = "自定义项1被点击了!";
+"TEXT_CUSTOM_ITEM_2_CLICK" = "自定义项2被点击了!";
+"TEXT_CUSTOM_ITEM_3_CLICK" = "自定义项3被点击了!";
+"TEXT_CUSTOM_ITEM_4_CLICK" = "自定义项4被点击了!";
+"TEXT_CUSTOM_ITEM_5_CLICK" = "自定义项5被点击了!";
+"TEXT_OK" = "确定";
+"TEXT_MORE" = "更多";
+"TEXT_INTERFACE" = "接口";
+"TEXT_UNKNOWN" = "未知";
+"TEXT_CALL_API" = "调用API";
+"TEXT_GET_SINA_WEIBO_COMMENTS" = "获取新浪微博评论列表";
+"TEXT_WEIBO_ID" = "微博ID:";
+"TEXT_CALL_METHOD" = "调用方法";
+"TEXT_GET_LAST_COMMENT" = "获取最新评论";
+"TEXT_GET_SINA_WEIBO_FAV_LIST" = "获取新浪微博收藏列表";
+"TEXT_GET_LAST_FAV" = "获取最新收藏";
+"TEXT_REPLY_SINA_WEIBO_COMMENT" = "回复新浪微博评论";
+"TEXT_COMMENT_ID" = "评论ID:";
+"TEXT_COMMENT_MSG" = "评论内容:";
+"TEXT_GET_REPLY_COMMENT_ID" = "获取回复评论ID";
+"TEXT_GET_TENCENT_WEIBO_COMMENTS" = "获取腾讯微博评论列表";
+"TEXT_GET_TENCENT_WEIBO_FAV_LIST" = "获取腾讯微博收藏列表";
+"TEXT_REPLY_TENCENT_WEIBO" = "回复腾讯微博";
+"TEXT_REPLY_WEIBO_ID" = "回复微博ID:";
+"TEXT_REPLY_CONTENT" = "回复内容:";
+"TEXT_GET_REPLY_ID" = "获取回复ID";
+"TEXT_CALL_FAI" = "调用失败：%d:%@";
+"TEXT_NO_COMMENTS" = "无评论";
+"TEXT_NO_FAV" = "无收藏";
+"TEXT_MENTION_FRIEND" = "@微博好友";
+"TEXT_ENTER_FRIEND_LIST" = "点击进入%@好友列表";
+"TEXT_COMPLETE" = "完成(0/20)";
+"TEXT_COMPLETE_2" = "完成(%d/20)";
+"TEXT_COMPLETE_3" = "完成";
+"TEXT_BACK" = "返回";
+"TEXT_MENTION_SINA_WEIBO_FRIENDS" = "@新浪微博好友";
+"TEXT_MENTION_TENCENT_WEIBO_FRIEND" = "@腾讯微博好友";
+"TEXT_MENTION_TWITTER_FRIEND" = "@Twitter好友";
+"TEXT_MAX_FRIENDS" = "最多可以@20个好友";
+"TEXT_LOADING" = "加载中...";
+"TEXT_PUBLISH" = "发布";
+"TEXT_REMINE_VIEW" = "提醒微博好友查看";
+"TEXT_SELECT_PLATFORM" = "请选择要发布的平台!";
+"TEXT_SEND_FAI" = "发送失败!%@";
+"TEXT_SHARE_TO" = "分享到:";
+"TEXT_BING_FAI" = "绑定失败!";
+"TEXT_CUSTOM_SHARE" = "自定义分享";
+"TEXT_SDK_SHARE" = "ShareSDK分享";
+"TEXT_GET_AUTH_INFO" = "获取授权信息";
+"TEXT_NICKNAME" = "用户昵称:";
+"TEXT_USERID" = "用户ID:";
+"TEXT_AUTH" = "授权";
+"TEXT_WECHAT" = "微信";
+"TEXT_DEMO" = "演示";
+"TEXT_CUSTOM_SHARE_VIEW" = "自定义分享界面";
+"TEXT_FOLLOW_TENCENT_WEIBO" = "关注腾讯微博";
+"TEXT_FOLLOW_WECHAT" = "关注官方微信";
+"TEXT_GO_TO_OFFICAL_WEBSITE" = "访问官方网站";
+"TEST_VERSION" = "版本 ver%@";
+"TEXT_FOLLOWED" = "已关注";
+"TEXT_OFFICAL_WEIBO" = "官方网站";
+"TEXT_SHARE_CONTENT" = "ShareSDK不仅集成简单、支持如QQ好友、微信、新浪微博、腾讯微博等所有社交平台，而且还有强大的统计分析管理后台，实时了解用户、信息流、回流率、传播效应等数据，详情见官网http://sharesdk.cn @ShareSDK";
+"TEXT_FANS" = "粉丝";
+"TEXT_DETAIL_INFO" = "详细资料";
+"TEXT_PERSONAL_HOMEPAGE" = "个人主页";
+"TEXT_UNKNOWN_APP" = "未知应用";
+"TEXT_SOURCE" = "来自 %@";
+"TEXT_COMMENT" = "评论:%d";
+"TEXT_REPOSE" = "转发:%d";
+"TEXT_VERIFIED_INFO" = "认证信息";
+"TEXT_BASIC_INFO" = "基础信息";
+"TEXT_SINA_WEIBO_VERIFIED" = "新浪认证";
+"TEXT_NICKNAME_2" = "昵称";
+"TEXT_GENDER" = "性别";
+"TEXT_MALE" = "男";
+"TEXT_FEMALE" = "女";
+"TEXT_LOCATION" = "所在地";
+"TEXT_PROFILE" = "简介";
+"TEXT_PROFILE_1" = "简介:%@";
+"TEXT_WEIBO" = "微博";
+"TEXT_TEN_THOUSAND" = "%d万";
+"TEXT_SINA_WEIBO_VERIFIED_1" = "新浪认证:%@";
+"TEXT_ADD_FOLLOW" = "加关注";
+"TEXT_GET_USER_FOLLOW_LIST" = "获取用户关注列表";
+"TEXT_GET_USER_FANS_LIST" = "获取用户粉丝列表";
+"TEXT_USER_INFO" = "用户信息";
+"TEXT_UID_STR" = "字符串型UID";
+"TEXT_SCREEN_NAME" = "显示名称";
+"TEXT_PROVINCE_ID" = "省级ID";
+"TEXT_CITY_ID" = "城市ID";
+"TEXT_DESCRIPTION" = "个人描述";
+"TEXT_BLOG_URL" = "博客地址";
+"TEXT_WEIBO_URL" = "微博统一URL地址";
+"TEXT_CUSTOM_DOMAIN" = "个性化域名";
+"TEXT_WEIHAO" = "微号";
+"TEXT_FANS_COUNT" = "粉丝数";
+"TEXT_FANS_COUNT_2" = "听众数";
+"TEXT_FOLLOW_COUNT" = "关注数";
+"TEXT_WEIBO_COUNT" = "微博数";
+"TEXT_FAV_COUNT" = "收藏数";
+"TEXT_REG_TIME" = "注册时间";
+"TEXT_ALLOW_SEND_LETTER" = "是否允许给我发私信";
+"TEXT_ALLOW_GEO" = "是否允许标识地理位置";
+"TEXT_IS_WEIBO_VERIFIED_USER" = "是否是微博认证用户";
+"TEXT_REMARK" = "备注信息";
+"TEXT_ALLOW_COMMENT_STATUS" = "是否允许对我的微博进行评论";
+"TEXT_LARGE_AVATAR_URL" = "大头像地址";
+"TEXT_VERIFIED_REASON" = "认证原因";
+"TEXT_FOLLOW_ME" = "是否关注我";
+"TEXT_ONLINE_STATUS" = "在线状态";
+"TEXT_BI_FOLLOWER_COUNT" = "互粉数";
+"TEXT_LANG" = "语言版本";
+"TEXT_BIRTH_DAY" = "出生天";
+"TEXT_BIRTH_MONTH" = "出生月";
+"TEXT_BIRTH_YEAR" = "出生年";
+"TEXT_COUNTRY_ID" = "国家id";
+"TEXT_AVATAR_URL" = "头像url";
+"TEXT_HOMETOWN_CITY_ID" = "家乡所在城市id";
+"TEXT_HOMETOWN_COUNTRY_ID" = "家乡所在国家id";
+"TEXT_HOMETOWN_PROVINCE_ID" = "家乡所在省id";
+"TEXT_HOMETOWN_ID" = "家乡所在城镇id";
+"TEXT_IDOL_COUNT" = "收听的人数";
+"TEXT_INDUSTRY_ID" = "行业id";
+"TEXT_INTRODUCATION" = "个人介绍";
+"TEXT_IS_ENT" = "是否企业机构";
+"TEXT_CUR_USER_IN_BLACK_LIST" = "是否在当前用户的黑名单中";
+"TEXT_IS_MY_FANS" = "是否是当前用户的听众";
+"TEXT_IS_MY_IDOL" = "是否是当前用户的偶像";
+"TEXT_IS_REAL_NAME" = "是否实名认证";
+"TEXT_IS_VIP" = "是否认证用户";
+"TEXT_MUTUAL_FANS_NUM" = "互听好友数";
+"TEXT_NAME" = "用户帐户名";
+"TEXT_OPEN_ID" = "用户唯一id";
+"TEXT_SEND_LETTER" = "是否允许所有人给当前用户发私信";
+"TEXT_TWEET_NUM" = "发表的微博数";
+"TEXT_EXP" = "经验值";
+"TEXT_LEVEL" = "微博等级";
+"TEXT_USER_ID" = "用户ID";
+"TEXT_AVATAR" = "用户头像";
+"TEXT_PROTECTED" = "勿扰";
+"TEXT_PROFILE_BACKGROUND_COLOR" = "背景颜色";
+"TEXT_PROFILE_TEXT_COLOR" = "文字颜色";
+"TEXT_PROFILE_SIDEBAR_FILL_COLOR" = "侧栏颜色";
+"TEXT_CREATED_AT" = "创建时间";
+"TEXT_UTC_OFFSET" = "偏移值";
+"TEXT_TIME_ZONE" = "时区";
+"TEXT_NOTIFICATIONS" = "通知";
+"TEXT_GEO_ENABLED" = "是否支持地理位置";
+"TEXT_STATUS_COUNT" = "微博数";
+"TEXT_FOLLOWING" = "是否关注";
+"TEXT_VERIFIED" = "是否认证";
+"TEXT_MAIL_ADDR" = "邮箱地址";
+"TEXT_SMALL_AVATAR_URL" = "小头像";
+"TEXT_TYPE" = "类型";
+"TEXT_FIGURE_URL" = "30×30头像URL";
+"TEXT_FIGURE_URL_1" = "50×50头像URL";
+"TEXT_FIGURE_URL_2" = "100×100头像URL";
+"TEXT_IS_YELLOW_YEAR_VIP" = "是否为年费黄钻用户";
+"TEXT_YELLOW_LEVEL" = "黄钻等级";
+"TEXT_YELLOW_VIP" = "是否为黄钻用户";
+"TEXT_IS_STAR" = "是否为星级用户";
+"TEXT_VIP_LEVEL" = "vip用户等级";
+"TEXT_BIRTHDAY" = "出生时间";
+"TEXT_EMAIL_HASH" = "经过验证的email的信息";
+"TEXT_TINY_AVATAR_URL" = "头像链接 50*50";
+"TEXT_HEAD_AVATAR_URL" = "头像链接 100*100";
+"TEXT_MAIN_AVATAR_URL" = "头像链接 200*200";
+"TEXT_HOMETOWN" = "家乡";
+"TEXT_STATUS" = "状态";
+"TEXT_AVATAR_120" = "头像120 x 120";
+"TEXT_AVATAR_50" = "头像50 x 50";
+"TEXT_BODY_FORM" = "体型";
+"TEXT_BLOOD" = "血型";
+"TEXT_MARRIAGE" = "婚姻状态";
+"TEXT_TRAIN_WITH" = "希望结交";
+"TEXT_INTEREST" = "兴趣爱好";
+"TEXT_FAV_BOOK" = "喜欢的书籍";
+"TEXT_FAV_MOVIE" = "喜欢的电影";
+"TEXT_FAV_TV" = "喜欢的电视剧";
+"TEXT_IDOL" = "偶像";
+"TEXT_MOTTO" = "座右铭";
+"TEXT_WISH_LIST" = "愿望列表";
+"TEXT_IS_PUBLISH" = "是否公共主页";
+"TEXT_PINYIN" = "姓名拼音";
+"TEXT_ONLINE" = "是否在线";
+"TEXT_USER_NAME" = "用户名";
+"TEXT_SHARE_IMAGE" = "图片分享";
+"TEXT_PRINT_SUC" = "打印成功";
+"TEXT_COPY_SUC" = "拷贝成功";
+"TEXT_AUTH_STYLE" = "授权视图样式";
+"TEXT_SHARE_STYLE" = "分享视图样式";
+"TEXT_SHARE_MENU_ITEMS" = "菜单内出现的分享项（可多选）";
+"TEXT_TYPE_TEXT" = "文字";
+"TEXT_TYPE_IMAGE" = "图片";
+"TEXT_TYPE_IMAGE_AND_TEXT" = "图文";
+"TEXT_DEFAULT" = "默认";
+"TEXT_SIMPLE" = "简单";
+"TEXT_APP_RECOMMEND" = "应用推荐";
+"TEXT_NONE_UI" = "无界面";
+"TEXT_MOBILE_QQ_DEMO" = "手机QQ OpenAPI Demo";
+"TEXT_SEND_TEXT_TYPE" = "发送文本消息";
+"TEXT_SEND_IMAGE_TYPE" = "发送图片消息";
+"TEXT_SEND_NEWS_TYPE" = "发送新闻消息";
+"TEXT_SEND_AUDIO_TYPE" = "发送音频消息";
+"TEXT_SEND_VIDEO_TYPE" = "发送视频消息";
+"TEXT_EDIT_SEND_TEXT" = "编辑发送文本";
+"TEXT_SELECT_IMAGE" = "选择发送图片";
+"TEXT_SHOW_TEST_CONTENT" = "显示测试内容";
+"TEXT_USER_IMAGE" = "这是用户自选的图片哦！！！";
+"TEXT_IMAGE_MSG_TITLE" = "图片消息标题";
+"TEXT_WECHAT_TEXT" = "过去两年移动互联网有很多开放平台非常成功。事实上到现在来看，发展到现在一年多，最关键的开放平台是能不能真正从用户和经济回报中打造生态链。";
+"TEXT_WECHAT_NEWS_TEXT" = "目前国内在售的马自达6为第一代车型，其第二代车型在国内被称作睿翼。日前官方又再次发布了全新第三代马自达6的几张外观图片，新车的神秘面纱总算揭开。据悉，全新马自达6将在今年8月底的莫斯科车展上正式全球首发，随后还会在9月下旬的巴黎车展上亮相，并于明年初正式上市。";
+"TEXT_WECHAT_NEWS_TITLE" = "新一代马自达6发布";
+"TEXT_WECHAT_VIDEO_MSG" = "在地球蛮荒时期，一切以武力来解决争斗。远古大陆上，两支兵强马壮的部落军队正在进行厮杀，而其中有一位勇敢的战士率领自己的部落获得了战争的胜利，他就是蛮王柯南（杰森·莫玛饰）。得胜归来的柯南受到了部落的爱戴，他诛杀可怕的怪物，为部落开拓疆土，但一场阴谋正在谋划当中……超自然的邪恶势力正意图侵蚀柯南的部落，它控制部落里的心腹，整个部落惨遭屠杀，连柯南的父亲科灵（朗·普尔曼饰）也未能幸免。意外活下来的柯南，将穿越西伯利亚冰原寻找盟友的帮助，他身负血海深仇，将用最原始、最野蛮的方式，为自己的父亲和同族报仇……";
+"TEXT_WECHAT_VIDEO_TITLE" = "王者之剑";
+"TEXT_EDIT_TEXT" = "编辑文本消息";
+"TEXT_QQ_TEXT" = "你见，或者不见我\
+我就在那里\
+不悲不喜\
+你念，或者不念我\
+情就在那里\
+不来不去\
+你爱，或者不爱我\
+爱就在那里\
+不增不减\
+你跟，或者不跟我\
+我的手就在你手里\
+不舍不弃\
+来我的怀里\
+或者\
+让我住进你的心里\
+默然相爱\
+寂静欢喜";
+"TEXT_WECHAT_DEMO" = "微信OpenAPI Sample Demo";
+"TEXT_RESPONSE_WECHAT_TEXT" = "回应文本消息给微信";
+"TEXT_RESPONSE_WECHAT_PHOTO" = "回应Photo消息给微信";
+"TEXT_RESPONSE_WECHAT_MUSIC" = "回应Music消息给微信";
+"TEXT_RESPONSE_WECHAT_NEWS" = "回应News消息给微信";
+"TEXT_RESPONSE_WECHAT_VIDEO" = "回应Video消息给微信";
+"TEXT_RESPONSE_WECHAT_APP" = "回应App消息给微信";
+"TEXT_RESPONSE_WECHAT_NON_GIF" = "回应非gif消息给微信";
+"TEXT_RESPONSE_WECHAT_GIF" = "回应gif消息给微信";
+"TEXT_LAST_TEXT" = "完善的跨终端即时通讯能力，使得Mac可以与PC、手机、Pad等终端的QQ进行无缝沟通，让您的交流更畅快。 完善的跨终端即时通讯能力，使得Mac可以与PC、手机、Pad等终端的QQ进行无缝沟通，让您的交流更畅快。 ";
+"TEXT_RESP_QQ_TEXT" = "响应文本消息";
+"TEXT_RESP_QQ_IMAGE" = "响应图片消息";
+"TEXT_RESP_QQ_NEWS" = "响应新闻消息";
+"TEXT_RESP_QQ_MUSIC" = "响应音频消息";
+"TEXT_RESP_QQ_VIDEO" = "响应视频消息";
+"TEXT_QQ_TEXT" = "过去两年移动互联网有很多开放平台非常成功。事实上到现在来看，发展到现在一年多，最关键的开放平台是能不能真正从用户和经济回报中打造生态链。";
+"TEXT_QQ_NEWS_TITLE" = "天公作美伦敦奥运圣火点燃成功 火炬传递开启";
+"TEXT_QQ_NEWS_DESC" = "腾讯体育讯 当地时间5月10日中午，阳光和全世界的目光聚焦于希腊最高女祭司手中的火炬上，5秒钟内世界屏住呼吸。火焰骤然升腾的瞬间，古老的号角声随之从赫拉神庙传出——第30届伦敦夏季奥运会圣火在古奥林匹亚遗址点燃。取火仪式前，国际奥委会主席罗格、希腊奥委会主席卡普拉洛斯和伦敦奥组委主席塞巴斯蒂安-科互赠礼物，男祭司继北京奥运会后，再度出现在采火仪式中。";
+"TEXT_QQ_MUSIC_TITLE" = "那些年	胡夏";
+"TEXT_QQ_MUSIC_DESC" = "又回到最初的起点\
+记忆中你青涩的脸\
+我们终於来到了这一天\
+桌垫下的老照片\
+无数回忆连结\
+今天男孩要赴女孩最后的约\
+又回到最初的起点\
+呆呆地站在镜子前\
+笨拙系上红色领带的结\
+将头发梳成大人模样\
+穿上一身帅气西装\
+等会儿见你一定比想像美";
+"TEXT_QQ_VIDEO_TITLE" = "腾讯暗黑风动作新游《天刹》国服视频曝光";
+"TEXT_QQ_VIDEO_DESC" = "你觉得正在玩的动作游戏的打击感不够好？战斗不够真实缺乏技巧？PVP索然无味完全是比谁装备好？那么现在有款新游戏或许能满足你的胃口！ 《天刹》是由韩国nse公司开发，腾讯全球代理中国首发的3D锁视角动作游戏，是一款有着暗黑写实风格、东方奇幻题材的游戏，具备打击感十足的动作体验、策略多变的战斗方式，游戏操作不难但有足够的深度，在动作游戏领域首次引入了手动格挡格斗机制，构建快速攻防转换体系。 官方网站：tian.qq.com 官方微博：http://t.qq.com/tiancha001";
+"TEXT_SDK_SINA_WEIBO" = "ShareSDK新浪微博";
+"TEXT_SDK_TENCENT_WEIBO" = "ShareSDK腾迅微博";
+"TEXT_SDK_WECHAT" = "ShareSDK微信号:ShareSDK";
+"TEXT_OFFICAL_WEBSITE" = "官方网站http://shareSDK.cn";
+"TEXT_SDK_QQ" = "商务合作QQ:1955211608";
+"TEXT_SDK_VERSION" = "SDK版本 v1.1.2 (2013-01-25更新)";
+"TEXT_SDK_NEWS" = "通过以下方式获得SDK最新消息";
+"TEXT_VERSION" = "版本信息";
+"TEXT_WECHAT_APP_CONTENT" = "你看不懂啊， 看不懂啊， 看不懂！";
+"TEXT_WECHAT_APP_TITLE" = "这是App消息";
+"TEXT_WECHAT_MUSIC_CONTENT" = "人群中哭着你只想变成透明的颜色 你再也不会梦或痛或心动了 你已经决定了你已经决定了 你静静忍着紧紧把昨天在拳心握着 而回忆越是甜就是越伤人 越是在手心留下密密麻麻深深浅浅的刀割 你不是真正的快乐 你的笑只是你穿的保护色 你决定不恨了也决定不爱了 把你的灵魂关在永远锁上的躯壳 这世界笑了于是你合群的一起笑了 当生存是规则不是你的选择 于是你含着眼泪飘飘荡荡跌跌撞撞地走着 你不是真正的快乐 你的笑只是你穿的保护色 你决定不恨了也决定不爱了 把你的灵魂关在永远锁上的躯壳 你不是真正的快乐 你的伤从不肯完全的愈合 我站在你左侧却像隔着银河 难道就真的抱着遗憾一直到老了 然后才后悔着 你不是真正的快乐 你的笑只是你穿的保护色 你决定不恨了也决定不爱了 把你的灵魂关在永远锁上的躯壳 你不是真正的快乐 你的伤从不肯完全的愈合 我站在你左侧却像隔着银河 难道就真的抱着遗憾一直到老了 你值得真正的快乐 你应该脱下你穿的保护色 为什么失去了还要被惩罚呢 能不能就让悲伤全部结束在此刻 重新开始活着";
+"TEXT_WECHAT_MUSIC_TITLE" = "五月天<后青春期的诗>";
+"TEXT_WECHAT_VIDEO_CONTENT" = "只能说胡戈是中国广告界的一朵奇葩！！！这次真的很多人给跪了、、、";
+"TEXT_WECHAT_VIDEO_TITLE" = "步步惊奇";
+"TEXT_WECHAT_NEWS_CONTENT" = "3.15晚会播出当晚，麦当劳该店所在辖区的卫生、工商部门就连夜登门调查，并对腾讯财经等媒体公布初步结果；而尽管未接到闭店处罚通知，麦当劳中国总部还是在发布道歉声明后暂停了该店营业。\r\n不得不承认，麦当劳“销售过期食品”固然是事实，但这个“过期”仅仅是他们自己定义的过期，普通中国家庭也不会把刚炸出来30分钟的鸡翅拿去扔掉。麦当劳在食品卫生上的严格程度，不仅远远超出了一般国内企业，而且也超出了一般中国民众的心理预期和生活想象。大多数人以前并不知道，麦当劳厨房的食品架上还有计时器，辣鸡翅等大多数食品存放半个小时之后，按规定就应该扔掉。也正因如此，甚至有网友认为央视3.15晚会的曝光是给麦当劳做的软广告。\r\n央视视频中反映的情况，除了掉到地上的的食品未经任何处理继续加工显得很过分外，其它的问题都源于麦当劳自己制定的标准远远超出了国内一般快餐店的标准。比如北京市卫生监督所相关负责人介绍，麦当劳内部要求熟菜在70℃环境下保存2小时，是为了保存食品风味，属于企业内部卫生规范。目前的检查结果显示，麦当劳的保温盒温度在93℃，但在这种环境下保存的熟菜即便超过2小时，对公众也没有危害。也就是说麦当劳的一些保持时间标准是基于保持其食品的独特风味的要求，并非食品发生变质可能损害消费者身体健康的标准，麦当劳这家门店超时存放食品的行为，违反的是企业制定的内部标准，并不违反食品安全规定，政府应该依据法律法规来监管食品卫生，而不是按照食品公司自己制定的标准，从这个角度来看，麦当劳在食品卫生上没有责任（除了使用掉在地上的食物）。…[详细]\r\n但三里屯麦当劳的行为确实违背了诚信\r\n麦当劳的内部卫生规定虽然并未被作为卖点进行宣扬，但洋快餐在中国是便捷和卫生的代名词，却是不争的事实。谁也不是活雷锋，麦当劳制定的严苛内部标准，为的是树立自己的品牌优势，进而在市场定位上取得明显的价格优势，或者说让自己“贵得有理由”。但如果他的员工在执行上不能贯彻这一企业标准，相对于其价格水平而言，就有欺诈和损害消费者权益之嫌，这也是不言而喻的。从这个意义上来说，央视曝光麦当劳的问题并无不妥，麦当劳至少涉嫌消费欺诈，因为它没有向消费者提供它向人们承诺的标准的食品。也就是说，工商部门而非食品卫生监管部门约谈麦当劳，也并非师出无名。";
+"TEXT_WECHAT_NEWS_TITLE" = "麦当劳“销售过期食品”其实不是卫生问题";
+"TEXT_SHARE_TO_FRIEND" = "分享好友";
+"TEXT_WECHAT_SEND_TEXT" = "发送文本消息给微信";
+"TEXT_WECHAT_SEND_PHOTO" = "发送Photo消息给微信";
+"TEXT_WECHAT_SEND_MUSIC" = "发送Music消息给微信";
+"TEXT_WECHAT_SEND_NEWS" = "发送News消息给微信";
+"TEXT_WECHAT_SEND_VIDEO" = "发送Video消息给微信";
+"TEXT_WECHAT_SEND_APP" = "发送App消息给微信";
+"TEXT_WECHAT_SEND_NON_GIF" = "发送非gif消息给微信";
+"TEXT_WECHAT_SEND_GIF" = "发送gif消息给微信";
+"TEXT_SHARE_TO_TIMELINE" = "分享朋友圈";
+"TEXT_FAV" = "收藏";
+
+

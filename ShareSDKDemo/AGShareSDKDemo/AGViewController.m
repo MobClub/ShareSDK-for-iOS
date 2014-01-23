@@ -1,12 +1,11 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:1955211608
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import "AGViewController.h"
 #import <ShareSDK/ShareSDK.h>
 #import <AGCommon/UIImage+Common.h>
@@ -27,16 +26,16 @@
 @interface AGViewController (Private)
 
 /**
- *	@brief	分享点击
+ *	@brief	Share button click handler
  *
- *	@param 	sender 	事件对象
+ *	@param 	sender 	Event object.
  */
 - (void)actionClickHandler:(id)sender;
 
 /**
- *	@brief	分享按钮点击事件
+ *	@brief	Share button click handler.
  *
- *	@param 	sender 	事件对象
+ *	@param 	sender 	Event object.
  */
 - (void)shareButtonClickHandler:(UIButton *)sender;
 
@@ -110,7 +109,7 @@
             [_shareTypeArray addObject:itemDict];
         }
         
-        self.title = @"演示";
+        self.title = NSLocalizedString(@"TEXT_DEMO", @"演示");
     }
     
     return self;
@@ -169,13 +168,13 @@
 
 -(BOOL)shouldAutorotate
 {
-    //iOS6下旋屏方法
+            //iOS6 rotating screen method
     return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    //iOS6下旋屏方法
+            //iOS6 rotating screen method
     return SSInterfaceOrientationMaskAll;
 }
 
@@ -198,7 +197,7 @@
             content = CONTENT;
             break;
         case 1:
-            content = @"图片分享";
+            content = NSLocalizedString(@"TEXT_SHARE_IMAGE", @"图片分享");
             mediaType = SSPublishContentMediaTypeImage;
             break;
         case 2:
@@ -229,7 +228,7 @@
                                             image:imageAttach
                                             title:@"ShareSDK"
                                               url:url
-                                      description:@"这时一条测试数据"
+                                      description:NSLocalizedString(@"TEXT_TEST_MSG", @"这时一条测试数据")
                                         mediaType:mediaType];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -238,7 +237,7 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-    //在授权页面中添加关注官方微博
+            //Adding official Weibo concern in the authorization page
     [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
@@ -268,10 +267,10 @@
                                      switch (type)
                                      {
                                          case ShareTypeAirPrint:
-                                             msg = @"打印成功";
+                                             msg = NSLocalizedString(@"TEXT_PRINT_SUC", @"打印成功");
                                              break;
                                          case ShareTypeCopy:
-                                             msg = @"拷贝成功";
+                                             msg = NSLocalizedString(@"TEXT_COPY_SUC", @"拷贝成功");
                                              break;
                                          default:
                                              break;
@@ -279,10 +278,10 @@
                                      
                                      if (msg)
                                      {
-                                         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                                              message:msg
                                                                                             delegate:nil
-                                                                                   cancelButtonTitle:@"知道了"
+                                                                                   cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了") 
                                                                                    otherButtonTitles: nil];
                                          [alertView show];
                                          [alertView release];
@@ -310,7 +309,7 @@
             content = CONTENT;
             break;
         case 1:
-            content = @"图片分享";
+            content = NSLocalizedString(@"TEXT_SHARE_IMAGE", @"图片分享");
             mediaType = SSPublishContentMediaTypeImage;
             break;
         case 2:
@@ -340,7 +339,7 @@
                                                 image:imageAttach
                                                 title:@"ShareSDK"
                                                   url:url
-                                          description:@"这时一条测试数据"
+                                          description:NSLocalizedString(@"TEXT_TEST_MSG", @"这时一条测试数据")
                                             mediaType:mediaType];
         
         id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -349,7 +348,7 @@
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:_appDelegate.viewDelegate];
         
-        //在授权页面中添加关注官方微博
+                        //Adding official Weibo concern in the authorization page
         [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                         SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
@@ -365,11 +364,11 @@
                                   
                                   if (state == SSPublishContentStateSuccess)
                                   {
-                                      NSLog(@"分享成功");
+                                      NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"分享成功"));
                                   }
                                   else if (state == SSPublishContentStateFail)
                                   {
-                                      NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                      NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
                                   }
                               }];
     }
@@ -383,7 +382,7 @@
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:_appDelegate.viewDelegate];
         
-        //在授权页面中添加关注官方微博
+                        //Adding official Weibo concern in the authorization page
         [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                         SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
@@ -407,13 +406,13 @@
         switch (_curShareViewStyle)
         {
             case 1:
-                shareViewOptions = [ShareSDK simpleShareOptionsWithTitle:@"内容分享" shareViewDelegate:nil];
+                shareViewOptions = [ShareSDK simpleShareOptionsWithTitle:NSLocalizedString(@"TEXT_SHARE_TITLE", @"内容分享") shareViewDelegate:nil];
                 break;
             case 2:
-                shareViewOptions = [ShareSDK appRecommendShareOptionsWithTile:@"内容分享" shareViewDelegate:nil];
+                shareViewOptions = [ShareSDK appRecommendShareOptionsWithTile:NSLocalizedString(@"TEXT_SHARE_TITLE", @"内容分享") shareViewDelegate:nil];
                 break;
             default:
-                shareViewOptions = [ShareSDK defaultShareOptionsWithTitle:@"内容分享"
+                shareViewOptions = [ShareSDK defaultShareOptionsWithTitle:NSLocalizedString(@"TEXT_SHARE_TITLE", @"内容分享")
                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                            qqButtonHidden:NO
                                                     wxSessionButtonHidden:NO
@@ -435,21 +434,21 @@
             }
         }
         
-        //创建容器
+                        //Create a container.
         id<ISSContainer> container = [ShareSDK container];
         [container setIPadContainerWithBarButtonItem:self.navigationItem.rightBarButtonItem arrowDirect:UIPopoverArrowDirectionAny];
         
-        //创建内容
+                        //Create a content
         id<ISSCAttachment> imageAttach = [ShareSDK imageWithPath:imagePath];
         id<ISSContent> contentObj = [ShareSDK content:content
                                        defaultContent:@""
                                                 image:imageAttach
                                                 title:@"ShareSDK"
                                                   url:@"http://www.sharesdk.com"
-                                          description:@"这是一条测试信息"
+                                          description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
         
-        //显示分享选择菜单
+                        //Share menu display
         [ShareSDK showShareActionSheet:container
                              shareList:shareList
                                content:contentObj
@@ -464,10 +463,10 @@
                                         switch (type)
                                         {
                                             case ShareTypeAirPrint:
-                                                msg = @"打印成功";
+                                                msg = NSLocalizedString(@"TEXT_PRINT_SUC", @"打印成功");
                                                 break;
                                             case ShareTypeCopy:
-                                                msg = @"拷贝成功";
+                                                msg = NSLocalizedString(@"TEXT_COPY_SUC", @"拷贝成功");
                                                 break;
                                             default:
                                                 break;
@@ -475,10 +474,10 @@
                                         
                                         if (msg)
                                         {
-                                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                                                 message:msg
                                                                                                delegate:nil
-                                                                                      cancelButtonTitle:@"知道了"
+                                                                                      cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                                                       otherButtonTitles: nil];
                                             [alertView show];
                                             [alertView release];
@@ -581,15 +580,15 @@
     switch (section)
     {
         case 0:
-            return @"类型";
+            return NSLocalizedString(@"TEXT_TYPE", @"类型");
         case 1:
             return @"";
         case 2:
-            return @"授权视图样式";
+            return NSLocalizedString(@"TEXT_AUTH_STYLE", @"授权视图样式");
         case 3:
-            return @"分享视图样式";
+            return NSLocalizedString(@"TEXT_SHARE_STYLE", @"分享视图样式");
         case 4:
-            return @"菜单内出现的分享项（可多选）";
+            return NSLocalizedString(@"TEXT_SHARE_MENU_ITEMS", @"菜单内出现的分享项（可多选）");
         default:
             return nil;
     }
@@ -635,13 +634,13 @@
             switch (indexPath.row)
             {
                 case 0:
-                    cell.textLabel.text = @"文字";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_TYPE_TEXT", @"文字");
                     break;
                 case 1:
-                    cell.textLabel.text = @"图片";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_TYPE_IMAGE", @"图片");
                     break;
                 case 2:
-                    cell.textLabel.text = @"图文";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_TYPE_IMAGE_AND_TEXT", @"图文");
                     break;
                 default:
                     break;
@@ -663,7 +662,7 @@
             {
                 cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SSO_CELL_ID] autorelease];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.textLabel.text = @"SSO登录";
+                cell.textLabel.text = NSLocalizedString(@"TEXT_SSO_LOGIN_2", @"SSO登录");
                 
                 _ssoSwitch = [[UISwitch alloc] init];
                 [_ssoSwitch sizeToFit];
@@ -716,16 +715,16 @@
             switch (indexPath.row)
             {
                 case 0:
-                    cell.textLabel.text = @"默认";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_DEFAULT", @"默认");
                     break;
                 case 1:
-                    cell.textLabel.text = @"简单";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_SIMPLE", @"简单");
                     break;
                 case 2:
-                    cell.textLabel.text = @"应用推荐";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_APP_RECOMMEND", @"应用推荐");
                     break;
                 case 3:
-                    cell.textLabel.text = @"无界面";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_NONE_UI", @"无界面");
                     break;
                 default:
                     break;
@@ -762,7 +761,7 @@
                                             bundleName:BUNDLE_NAME];
                     if (![[item objectForKey:@"selected"] boolValue])
                     {
-                        //灰度化图片
+                                                                        //Grayscale image
                         img = img.grayImage;
                         cell.accessoryType = UITableViewCellAccessoryNone;
                     }
@@ -786,7 +785,7 @@
                                             bundleName:BUNDLE_NAME];
                     if (![[item objectForKey:@"selected"] boolValue])
                     {
-                        //灰度化图片
+                                                                        //Grayscale image
                         img = img.grayImage;
                         cell.accessoryType = UITableViewCellAccessoryNone;
                     }

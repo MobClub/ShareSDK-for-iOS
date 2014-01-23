@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import <ShareSDK/ShareSDK.h>
@@ -11,7 +11,7 @@
 #import "SSHTTPClient.h"
 
 /**
- *	@brief	网络类型
+ *	@brief	Network type
  */
 typedef enum
 {
@@ -22,117 +22,117 @@ typedef enum
 SSNetworkType;
 
 /**
- *	@brief	ShareSDK工具类提供
+ *	@brief	ShareSDK Utils
  */
 @interface ShareSDK (Utils)
 
 #pragma mark - ViewController
 
 /**
- *	@brief	获取当前视图控制器
+ *	@brief	Get current view controller.
  *
- *	@return	视图控制器
+ *	@return	View controller.
  */
 + (UIViewController *)currentViewController;
 
 #pragma mark - Date
 
 /**
- *	@brief	获取NSDate的年份部分
+ *	@brief	Get the year part of the NSDate
  *
- *	@param 	date 	日期对象
+ *	@param 	date 	Date object
  *
- *	@return	年份
+ *	@return	Year
  */
 + (NSInteger)getFullYearWithDate:(NSDate *)date;
 
 /**
- *	@brief	获取NSDate的月份部分
+ *	@brief	Get the month part of the NSDate
  *
- *	@param 	date 	日期对象
+ *	@param 	date 	Date object
  *
- *	@return	月份
+ *	@return	Month
  */
 + (NSInteger)getMonthWithDate:(NSDate *)date;
 
 /**
- *	@brief	获取NSDate的日期部分
+ *	@brief	Get the date part of the NSDate
  *
- *	@param 	date 	日期对象
+ *	@param 	date 	Date object.
  *
- *	@return	日期
+ *	@return	Date
  */
 + (NSInteger)getDayWithDate:(NSDate *)date;
 
 /**
- *	@brief	获取NSDate的小时部分
+ *	@brief	Get the hour part of the NSDate
  *
- *	@param 	date 	日期对象
+ *	@param 	date 	Date object
  *
- *	@return	小时
+ *	@return	Hour
  */
 + (NSInteger)getHourWithDate:(NSDate *)date;
 
 /**
- *	@brief	获取NSDate的分钟部分
+ *	@brief	Get the minute part of the NSDate
  *
- *	@param 	date 	日期对象
+ *	@param 	date 	Date object.
  *
- *	@return	分钟
+ *	@return Minute
  */
 + (NSInteger)getMinuteWithDate:(NSDate *)date;
 
 /**
- *	@brief	获取NSDate的秒部分
+ *	@brief	Get the second part of the NSDate
  *
- *	@param 	date 	日期对象
+ *	@param 	date 	Date object.
  *
- *	@return	秒
+ *	@return	Seconds
  */
 + (NSInteger)getSecondWithDate:(NSDate *)date;
 
 /**
- *	@brief	根据字符串格式转换字符串为日期
+ *	@brief	According to format string convert the string to a date
  *
- *	@param 	format 	日期格式字符串
- *	@param 	dateString 	日期字符串
+ *	@param 	format 	Date format string.
+ *	@param 	dateString 	Date string.
  *
- *	@return	日期对象
+ *	@return	Date object.
  */
 + (NSDate *)dateWithFormat:(NSString *)format dateString:(NSString *)dateString;
 
 /**
- *	@brief	根据字符串格式转换字符串为日期
+ *	@brief	According to format string convert the string to a date
  *
- *	@param 	format 	日期格式字符串
- *	@param 	dateString 	日期字符串
- *	@param 	locale 	本地化参数
+ *	@param 	format 	Date format string.
+ *	@param 	dateString 	Date string.
+ *	@param 	locale 	Localization parameters
  *
- *	@return	日期对象
+ *	@return	Date object.
  */
 + (NSDate *)dateWithFormat:(NSString *)format dateString:(NSString *)dateString locale:(NSLocale *)locale;
 
 /**
- *	@brief	根据字符串格式转换日期为字符串
+ *	@brief	According to string format conversion date to a string
  *
- *	@param 	format 	日期格式字符串
- *	@param 	date 	日期对象
+ *	@param 	format 	date format string.
+ *	@param 	date 	Date object
  *
- *	@return	日期字符串
+ *	@return	date string.
  */
 + (NSString *)stringWithFormat:(NSString *)format data:(NSDate *)date;
 
 /**
- *	@brief	根据年月日返回日期
+ *	@brief	According to Year，month, date return date object.
  *
- *	@param 	year 	年份
- *	@param 	month 	月份
- *	@param 	date 	日期
- *	@param 	hour 	小时
- *	@param 	minute 	分钟
- *	@param 	second 	秒
+ *	@param 	year 	Year
+ *	@param 	month 	Month
+ *	@param 	date 	Date
+ *	@param 	hour 	Hour
+ *	@param 	minute 	Minute
+ *	@param 	second 	seconds
  *
- *	@return	日期对象
+ *	@return	Date object.
  */
 + (NSDate *)dateWithYear:(NSInteger)year
                    month:(NSInteger)month
@@ -144,45 +144,45 @@ SSNetworkType;
 #pragma mark - Color
 
 /**
- *	@brief	获取颜色对象
+ *	@brief	Get color object.
  *
- *	@param 	rgb 	RGB颜色值
+ *	@param 	rgb 	RGB color value.
  *
- *	@return	颜色对象
+ *	@return	Color object.
  */
 + (UIColor *)colorWithRGB:(NSUInteger)rgb;
 
 #pragma mark - Image
 
 /**
- *	@brief	获取图片对象
+ *	@brief	Get image object.
  *
- *	@param 	name 	图片名称
- *	@param 	bundleName 	Bundle名称
+ *	@param 	name 	Image name.
+ *	@param 	bundleName 	Bundle name.
  *
- *	@return	图片对象
+ *	@return	Image object.
  */
 + (UIImage *)imageNamed:(NSString *)name bundleName:(NSString *)bundleName;
 
 /**
- *	@brief	裁剪图片
+ *	@brief	Clip Image
  *
- *  @param  image   图片对象
- *	@param 	rect 	裁剪范围
+ *  @param  image   Image object.
+ *	@param 	rect 	Clip rect.
  *
- *	@return	裁剪后的图片对象
+ *	@return	Image object.
  */
 + (UIImage *)clipImageWithImage:(UIImage *)image rect:(CGRect)rect;
 
 /**
- *	@brief	创建圆角图片
+ *	@brief	Create a rounded image
  *
- *  @param  image   图片对象
- *	@param 	size 	圆角图像的图片尺寸
- *	@param 	ovalWidth 	圆角宽度
- *	@param 	ovalHeight 	圆角高度
+ *  @param  image   Image object.
+ *	@param 	size 	Image size.
+ *	@param 	ovalWidth 	oval width
+ *	@param 	ovalHeight 	oval height
  *
- *	@return	圆角图片对象引用
+ *	@return	Image object.
  */
 + (UIImage *)roundedRectImageWithImage:(UIImage *)image
                                   size:(CGSize)size
@@ -192,113 +192,113 @@ SSNetworkType;
 #pragma mark - Device
 
 /**
- *	@brief	比较版本字符串
+ *	@brief	Compare the version string
  *
- *	@param 	other 	需要对比的版本号
+ *	@param 	other 	Version string.
  *
- *	@return	NSOrderedAscending 表示大于指定版本 NSOrderedSame 表示两个版本相同  NSOrderedDescending 表示小于指定版本
+ *	@return	NSOrderedAscending means greater than the specified version. NSOrderedSame represent two versions of the same. NSOrderedDescending represents less than the specified version
  */
 + (NSComparisonResult)versionStringCompare:(NSString *)other;
 
 /**
- *	@brief	获取应用的Bundle标识
+ *	@brief	Get bundle identifier.
  *
- *	@return	Bundle标识
+ *	@return	Bundle identifier.
  */
 + (NSString *)bundleId;
 
 /**
- *	@brief	获取应用版本号
+ *	@brief	Get app version.
  *
- *	@return	版本号
+ *	@return	Version string.
  */
 + (NSString *)appVersion;
 
 /**
- *	@brief	获取当前网络类型
+ *	@brief	Get current network type.
  *
- *	@return	网络类型
+ *	@return	Network type.
  */
 + (SSNetworkType)currentNetworkType;
 
 /**
- *	@brief	获取设备型号
+ *	@brief	Get device model.
  *
- *	@return	设备型号
+ *	@return	Device model.
  */
 + (NSString *)deviceModel;
 
 /**
- *	@brief	获取手机运营商代码
+ *	@brief	Get mobile carrier code
  *
- *	@return	手机运营商代码
+ *	@return	Mobile carrier code
  */
 + (NSString *)carrier;
 
 #pragma mark - Http
 
 /**
- *	@brief	创建HTTP客户端
+ *	@brief	Create a HTTP client.
  *
- *	@param 	request 	请求对象
+ *	@param 	request 	Request object.
  *
- *	@return	HTTP客户端对象
+ *	@return	HTTP client object.
  */
 + (SSHTTPClient *)httpClientWithRequest:(NSMutableURLRequest *)request;
 
 /**
- *	@brief	创建HTTP客户端
+ *	@brief	Create a HTTP client.
  *
- *	@param 	url 	请求URL
+ *	@param 	url 	Request URL object.
  *
- *	@return	HTTP客户端对象
+ *	@return	HTTP client object.
  */
 + (SSHTTPClient *)httpClientWithURL:(NSURL *)url;
 
 /**
- *	@brief	创建HTTP客户端
+ *	@brief	Create a HTTP client.
  *
- *	@param 	urlString 	请求地址字符串
+ *	@param 	urlString 	Request url address.
  *
- *	@return	HTTP客户端对象
+ *	@return	HTTP client object.
  */
 + (SSHTTPClient *)httpClientWithURLString:(NSString *)urlString;
 
 #pragma mark - JSON
 
 /**
- *	@brief	将Data转换为JSON对象
+ *	@brief	Converts a data to JSON object
  *
- *	@param 	data 	数据
+ *	@param 	data 	Data
  *
- *	@return	JSON对象
+ *	@return	JSON object.
  */
 + (id)jsonObjectWithData:(NSData *)data;
 
 /**
- *	@brief	将字符串转换为JSON对象
+ *	@brief	Converts a string to JSON object
  *
- *	@param 	string 	字符串
+ *	@param 	string 	String
  *
- *	@return	JSON对象
+ *	@return	JSON object.
  */
 + (id)jsonObjectWithString:(NSString *)string;
 
 /**
- *	@brief	将对象转换为JSON字符串
+ *	@brief	Convert an object to JSON string.
  *
- *	@param 	object 	对象
+ *	@param 	object 	Object
  *
- *	@return	JSON字符串
+ *	@return	JSON string.
  */
 + (NSString *)jsonStringWithObject:(id)object;
 
 /**
- *	@brief	将对象转换为JSON数据
+ *	@brief	Convert an object to JSON data
  *
- *	@param 	object 	对象
+ *	@param 	object 	Object
  *
- *	@return	JSON数据
+ *	@return	JSON data.
  */
 + (NSData *)jsonDataWithObject:(id)object;
 
@@ -306,28 +306,28 @@ SSNetworkType;
 #pragma mark - Data
 
 /**
- *	@brief	GZip方式压缩数据
+ *	@brief	Compress data By GZip
  *
- *	@return	压缩后数据
+ *	@return	After compress data.
  */
 + (NSData *)gzipWithData:(NSData *)data;
 
 /**
- *	@brief	解压GZip数据
+ *	@brief	Extracting GZip data
  *
- *	@return	解压后GZip数据
+ *	@return	After extracting data.
  */
 + (NSData *)uncompressGZipWithData:(NSData *)data;
 
 /**
- *	@brief	AES128位加密
+ *	@brief	AES 128-bit encryption
  *
- *  @param  data    需要加密数据
- *	@param 	key 	密钥
- *	@param 	iv 	初始向量,允许为nil
- *  @param  encoding    字符编码
+ *  @param  data    Data
+ *	@param 	key 	Key
+ *	@param 	iv 	Initial vector, which allows to nil
+ *  @param  encoding    Encoding
  *
- *	@return	加密后数据
+ *	@return	After the encrypt data.
  */
 + (NSData *)dataUsingAES128EncryptWithData:(NSData *)data
                                        key:(NSString *)key
@@ -335,14 +335,14 @@ SSNetworkType;
                                   encoding:(NSStringEncoding)encoding;
 
 /**
- *	@brief	AES128位解密
+ *	@brief	AES 128-bit dencryption
  *
- *  @param  data    需要解密数据
- *	@param 	key 	密钥
- *	@param 	iv 	初始向量,允许为nil
- *  @param  encoding    字符编码
+ *  @param  data    Data
+ *	@param 	key 	Key
+ *	@param 	iv 	Initial vector, which allows to nil
+ *  @param  encoding    Encoding
  *
- *	@return	解密后数据
+ *	@return	After the decrypt data.
  */
 + (NSData *)dataUsingAES128DecryptWithData:(NSData *)data
                                        key:(NSString *)key
@@ -350,14 +350,14 @@ SSNetworkType;
                                   encoding:(NSStringEncoding)encoding;
 
 /**
- *	@brief	AES128位加密
+ *	@brief	AES 128-bit encryption
  *
- *  @param  data    需要加密数据
- *	@param 	key 	密钥
- *	@param 	iv 	初始向量,允许为nil
- *  @param  options     选项
+ *  @param  data    Data
+ *	@param 	key 	Key
+ *	@param 	iv 	Initial vector, which allows to nil
+ *  @param  options     Options
  *
- *	@return	加密后数据
+ *	@return	After the encrypt data.
  */
 + (NSData *)dataUsingAES128EncryptWithData:(NSData *)data
                                        key:(NSData *)key
@@ -365,14 +365,14 @@ SSNetworkType;
                                    options:(CCOptions)options;
 
 /**
- *	@brief	AES128位解密
+ *	@brief	AES 128-bit decryption
  *
- *  @param  data    需要解密数据
- *	@param 	key 	密钥
- *	@param 	iv 	初始向量,允许为nil
- *  @param  options     选项
+ *  @param  data    Data
+ *	@param 	key 	Key
+ *	@param 	iv 	Initial vector, which allows to nil
+ *  @param  options     Options
  *
- *	@return	解密后数据
+ *	@return	After the decrypt data.
  */
 + (NSData *)dataUsingAES128DecryptWithData:(NSData *)data
                                        key:(NSData *)key
@@ -380,11 +380,11 @@ SSNetworkType;
                                    options:(CCOptions)options;
 
 /**
- *	@brief	使用BASE64编码数据
+ *	@brief	Using BASE64 encoding data
  *
- *  @param  data    数据
+ *  @param  data    Data
  *
- *	@return	编码后字符串
+ *	@return	After the encoded string.
  */
 + (NSString *)stringUsingBase64EncodeWithData:(NSData *)data;
 
@@ -392,43 +392,43 @@ SSNetworkType;
 #pragma mark - String
 
 /**
- *	@brief	URL编码
+ *	@brief	URL encode.
  *
- *  @param  string      需要进行URL编码字符串
- *	@param 	encoding 	编码标准
+ *  @param  string      Needs to be URL encoded string
+ *	@param 	encoding 	Encoding
  *
- *	@return	编码后字符串
+ *	@return	After the encoded string.
  */
 + (NSString *)urlEncodeWithString:(NSString *)string encoding:(NSStringEncoding)encoding;
 
 /**
- *	@brief	URL解码
+ *	@brief	URL decode.
  *
- *  @param  string      需要进行URL解码字符串
- *	@param 	encoding 	编码标准
+ *  @param  string      Needs to be URL decoded string
+ *	@param 	encoding 	Encoding
  *
- *	@return	解码后字符串
+ *	@return	After the decoded string.
  */
 + (NSString *)urlDecodeWithString:(NSString *)string encoding:(NSStringEncoding)encoding;
 
 /**
- *	@brief	使用MD5算法进行签名（16位）
+ *	@brief	Use MD5 signature algorithm (16-bit)
  *
- *  @param  string  原字符串
+ *  @param  string  Raw string.
  *
- *	@return	签名后字符串
+ *	@return	After the signature string
  */
 + (NSString *)hexDigestStringUsingMD5WithString:(NSString *)string;
 
 #pragma mark - Regex
 
 /**
- *	@brief	字符串是否匹配
+ *	@brief	Whether the string matches
  *
- *	@param 	string 	字符串
- *	@param 	regex 	正则表达式
+ *	@param 	string 	String object.
+ *	@param 	regex 	Regex string.
  *
- *	@return	YES 表示匹配， NO 表示不匹配
+ *	@return	YES means to match, NO means no match
  */
 + (BOOL)isMatchWithString:(NSString *)string regex:(NSString *)regex;
 

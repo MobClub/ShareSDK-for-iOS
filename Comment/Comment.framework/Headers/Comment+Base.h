@@ -1,11 +1,11 @@
 //
-//  Comment+Base.h
-//  Comment
+//  Created by ShareSDK.cn on 13-1-14.
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-11-13.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import "Comment.h"
 #import "SSCCommentMenuItem.h"
 #import "SSCCommentListView.h"
@@ -21,16 +21,16 @@
 #pragma mark - 评论、称赞、分享（含UI）
 
 /**
- *	@brief	创建评论视图
+ *	@brief	Create a comment view.
  *
- *	@param 	contentId 	内容唯一标识
- *	@param 	title 	标题
- *	@param 	comment 	被评论的评论内容，如果为nil，则表示对主题进行评论
- *	@param 	shareDesc 	分享操作相关设置
- *	@param 	viewDesc 	视图描述，用于定义视图样式、显示方式等
- *  @param  resultHandler   返回事件回调
+ *	@param 	contentId 	Content id.
+ *	@param 	title 	Title
+ *	@param 	comment 	Peer-reviewed content, if it is nil, it means to comment on the topic
+ *	@param 	shareDesc 	Share operate related settings
+ *	@param 	viewDesc 	View description for defining view styles, etc.
+ *  @param  resultHandler   Result handler.
  *
- *	@return	评论视图控制器
+ *	@return	Comment view.
  */
 + (SSCCommentViewController *)commentViewWithContentId:(NSString *)contentId
                                                  title:(NSString *)title
@@ -42,16 +42,16 @@
 
 
 /**
- *	@brief	创建评论列表页面
+ *	@brief	Create comment list view page.
  *
- *	@param 	container 	视图容器，指定列表视图在那个视图中显示。
- *	@param 	contentId 	内容唯一标识
- *	@param 	title 	标题
- *	@param 	contentView 	内容视图
- *  @param  shareDesc   分享操作相关设置
- *	@param 	viewDesc 	视图描述，用于定义视图样式、显示方式等。
+ *	@param 	container 	View of the container, specify the list view is displayed in the view.
+ *	@param 	contentId 	Content id.
+ *	@param 	title 	Title string.
+ *	@param 	contentView 	Content view.
+ *  @param  shareDesc   Share operate related settings
+ *	@param 	viewDesc 	View description for defining view styles, etc.
  *
- *	@return	评论列表页面视图控制器
+ *	@return	Comment list view page.
  */
 + (SSCCommentListViewController *)commentListViewPageWithContentId:(NSString *)contentId
                                                              title:(NSString *)title
@@ -60,16 +60,16 @@
                                                           viewDesc:(SSCViewDesc *)viewDesc;
 
 /**
- *	@brief	创建复合评论列表视图
+ *	@brief	Create a complex comment list view.
  *
- *	@param 	contentId 	内容唯一标识
- *  @param  title   标题
- *	@param 	menuItems 	菜单项集合
- *	@param 	frame 	显示范围
- *  @param  shareDesc   分享操作相关设置
- *	@param 	viewDesc 	视图描述，用于定义视图样式等
+ *	@param 	contentId 	Content id.
+ *  @param  title   Title string.
+ *	@param 	menuItems 	Menu items.
+ *	@param 	frame 	Display rect.
+ *  @param  shareDesc   Share operate related settings
+ *	@param 	viewDesc 	View description for defining view styles, etc.
  *
- *	@return	评论列表视图
+ *	@return	Comment list view.
  */
 + (SSCCommentListView *)complexCommentListViewWithContentId:(NSString *)contentId
                                                       title:(NSString *)title
@@ -78,18 +78,17 @@
                                                   shareDesc:(SSCShareDesc *)shareDesc
                                                    viewDesc:(SSCViewDesc *)viewDesc;
 
-
 /**
- *	@brief	创建评论列表视图
+ *	@brief	Create a comment list view.
  *
- *	@param 	cotentId 	内容唯一标识
- *  @param  title   标题
- *	@param 	order 	排序方法
- *  @param  frame   显示范围
- *  @param  shareDesc   分享操作相关设置
- *	@param 	viewDesc 	视图描述，用于定义视图样式等
+ *	@param 	cotentId 	Content id.
+ *  @param  title   Title
+ *	@param 	order 	Order method.
+ *  @param  frame   Display rect.
+ *  @param  shareDesc   Share operate related settings
+ *	@param 	viewDesc 	View description for defining view styles, etc.
  *
- *	@return	评论列表视图
+ *	@return	Comment list view.
  */
 + (SSCCommentListView *)commentListViewWithContentId:(NSString *)contentId
                                                title:(NSString *)title
@@ -97,17 +96,16 @@
                                                frame:(CGRect)frame
                                            shareDesc:(SSCShareDesc *)shareDesc
                                             viewDesc:(SSCViewDesc *)viewDesc;
-
 /**
- *	@brief	创建评论工具栏
+ *	@brief	Create a comment toolbar.
  *
- *	@param 	contentId 	内容唯一标识
- *  @param  title   标题
- *  @param  frame   显示范围
- *  @param  shareDesc   分享操作相关设置
- *	@param 	viewDesc 	视图描述，用于定义视图样式等（暂未使用）
+ *	@param 	contentId 	Content id.
+ *  @param  title   Title
+ *  @param  frame   Display rect
+ *  @param  shareDesc   Share operate related settings
+ *	@param 	viewDesc 	View description for defining view styles, etc. (Not used)
  *
- *	@return	评论工具栏
+ *	@return	Comment toolbar.
  */
 + (SSCCommentToolbar *)commentToolbarWithContentId:(NSString *)contentId
                                              title:(NSString *)title
@@ -116,18 +114,18 @@
                                           viewDesc:(SSCViewDesc *)viewDesc;
 
 /**
- *	@brief	显示分享菜单
+ *	@brief	Share menu display
  *
- *	@param 	container 	用于显示分享界面的容器，如果只显示在iPhone客户端可以传入nil。如果需要在iPad上显示需要指定容器。
- *	@param 	shareList 	平台类型列表
- *	@param 	contentId 	内容唯一标识
- *	@param 	title 	标题
- *	@param 	comment 	评论信息对象，非nil，表示对评论进行分享，如果为nil，则表示对内容进行分享。
- *	@param 	contentEntity 	分享内容实体。用于定义各个平台分享评论时的内容。
- *  @param  statusBarTips   状态栏提示标识：YES：显示； NO：隐藏
- *  @param  authOptions 授权选项，用于指定接口在需要授权时的一些属性（如：是否自动授权，授权视图样式等），默认可传入nil
- *  @param  shareOptions    分享选项，用于定义分享视图部分属性（如：标题、一键分享列表、功能按钮等）,默认可传入nil
- *  @param  resultHandler  分享返回事件处理
+ *	@param 	container 	A container for the display share view, if only displayed in the iPhone client can pass nil. If you want to display on the iPad needs to be specified container.
+ *	@param 	shareList 	Platform type list.
+ *	@param 	contentId 	Content id.
+ *	@param 	title 	Title
+ *	@param 	comment 	Comment objects, non-nil, expressed comments to share, if it is nil, it means that the content is shared.
+ *	@param 	contentEntity 	Share content entity. Used to define the contents of each platform to share comments.
+ *  @param  statusBarTips   The status bar prompts flag: YES: Display; NO: Hidden
+ *  @param  authOptions     Auth options.
+ *  @param  shareOptions    Share options.
+ *  @param  resultHandler  Result handler.
  */
 + (id<ISSShareActionSheet>)showShareActionSheet:(id<ISSContainer>)container
                                       shareList:(NSArray *)shareList
@@ -144,36 +142,36 @@
 #pragma mark - 评论、称赞、分享（无UI）
 
 /**
- *	@brief	获取主题信息
+ *	@brief	Get Topic information
  *
- *	@param 	contentId 	内容唯一标识
- *	@param 	resultHandler 	返回处理器，在接口返回时触发。
+ *	@param 	contentId 	Content id.
+ *	@param 	resultHandler 	Result handler. trigger interface returns.
  */
 + (void)topicWithContentId:(NSString *)contentId
                     result:(SSCGetTopicResultEvent)resultHandler;
 
 /**
- *	@brief	获取评论列表
+ *	@brief	Get comment list.
  *
- *	@param 	contentId 	内容唯一标识
- *	@param 	title 	标题
- *	@param 	order 	排序方法
+ *	@param 	contentId 	Content id.
+ *	@param 	title 	Title string.
+ *	@param 	order 	Order method
  *
- *	@return	评论列表对象
+ *	@return	Comment list.
  */
 + (id<ISSCCommentList>)commentListWithContentId:(NSString *)contentId
                                           title:(NSString *)title
                                           order:(NSComparator)order;
 
 /**
- *	@brief	对内容/评论进行评论
+ *	@brief	The content / comment comment
  *
- *	@param 	contentId 	内容唯一标识
- *	@param 	title 	标题
- *	@param 	comment 	评论信息对象，非nil，表示对评论进行评论，如果为nil，则表示对内容进行评论。
- *	@param 	message 	评论内容
- *  @param  user    评论用户，此项必填。为社交平台授权用户信息。
- *	@param 	resultHandler 	返回处理器，在接口返回时触发。
+ *	@param 	contentId 	Content id.
+ *	@param 	title 	Title
+ *	@param 	comment 	Comment objects, if it is non-nil, expressed comments to comment, if it is nil, it means that the content is comment.
+ *	@param 	message 	Comment content.
+ *  @param  user    Comments user, this is required. For the social platform authorized user information.
+ *	@param 	resultHandler 	Result handler, trigger interface returns.
  */
 + (void)commentWithContentId:(NSString *)contentId
                        title:(NSString *)title
@@ -183,13 +181,13 @@
                       result:(SSCReplyResultEvent)resultHandler;
 
 /**
- *	@brief	对内容／评论进行称赞
+ *	@brief	Contents / comments be liked
  *
- *	@param 	contentId 	内容唯一标识
- *	@param 	title 	标题
- *	@param 	comment 	评论信息对象，非nil，表示对评论进行评论，如果为nil，则表示对内容进行评论。
- *  @param  user    称赞用户，如果为nil，则为匿名用户。应传入社交平台授权用户信息。
- *	@param 	statusHandler 	状态处理器，对于称赞过程中的状态变更由此回调进行捕获。
+ *	@param 	contentId 	Content id
+ *	@param 	title 	Title
+ *	@param 	comment 	Comment objects, if it is non-nil, expressed comments to like, if it is nil, it means that the content is liked.
+ *  @param  user    Praised user, if it is nil, compared to anonymous users. Should pass information to authorized users.
+ *	@param 	statusHandler 	Result handler， a callback to capture state changes.
  */
 + (void)likeWithContentId:(NSString *)contentId
                     title:(NSString *)title
@@ -198,17 +196,17 @@
                    result:(SSCLikeResultEvent)resultHandler;
 
 /**
- *	@brief	一键分享内容
+ *	@brief	One key share content.
  *
- *  @param  shareList   分享列表（邮件、短信、微信、QQ、Pinterest、Google+、打印、拷贝除外）
- *  @param  contentId   内容标识
- *  @param  title       标题
- *  @param  comment     评论信息对象，非nil，表示对评论进行分享，如果为nil，则表示对内容进行分享。
- *	@param 	contentEntity 	分享内容实体。用于定义各个平台分享评论时的内容。
- *  @param  statusBarTips   状态栏提示
- *	@param 	authOptions 	授权选项，用于指定接口在需要授权时的一些属性（如：是否自动授权，授权视图样式等）,设置未nil则表示采用默认选项
- *  @param  shareOptions    分享选项
- *	@param 	resultHandler 	返回事件
+ *  @param  shareList   Platform type list（E-mail, SMS, WeChat, QQ, Pinterest, Google+, print, copy except）
+ *  @param  contentId   Content id.
+ *  @param  title       Title
+ *  @param  comment     Comment objects, if it is non-nil, expressed comments to share, if it is nil, it means that the content is shared.
+ *	@param 	contentEntity 	Share content entity. Used to define the contents of each platform to share comments.
+ *  @param  statusBarTips   The status bar prompts flag: YES: Display; NO: Hidden
+ *	@param 	authOptions 	Auth options.
+ *  @param  shareOptions    Share options.
+ *	@param 	resultHandler 	Result handler，callback to capture state changes
  */
 + (void)oneKeyShareContentWithShareList:(NSArray *)shareList
                               contentId:(NSString *)contentId
@@ -221,17 +219,17 @@
                                  result:(SSPublishContentEventHandler)resultHandler;
 
 /**
- *	@brief	对内容／评论进行分享
+ *	@brief	Contents / comments to share
  *
- *  @param  type        分享类型
- *	@param 	contentId 	内容唯一标识
- *	@param 	title 	标题
- *	@param 	comment 	评论信息对象，非nil，表示对评论进行分享，如果为nil，则表示对内容进行分享。
- *  @param  contentEntity   分享内容实体。用于定义各个平台分享评论时的内容。
- *  @param  statusBarTips   状态栏提示标识：YES：显示； NO：隐藏
- *  @param  authOptions     授权选项
- *  @param  shareOptions    分享选项
- *	@param 	resultHandler 	状态处理器，对于分享过程中的状态变更由此回调进行捕获
+ *  @param  type        Platform type.
+ *	@param 	contentId 	Content id.
+ *	@param 	title 	Title
+ *	@param 	comment 	Comment objects, if it is non-nil, expressed comments to share, if it is nil, it means that the content is shared.
+ *  @param  contentEntity   Share content entity. Used to define the contents of each platform to share comments.
+ *  @param  statusBarTips   The status bar prompts flag: YES: Display; NO: Hidden
+ *  @param  authOptions     Auth options.
+ *  @param  shareOptions    Share options.
+ *	@param 	resultHandler 	Result handler，callback to capture state changes
  */
 + (void)shareContentWithType:(ShareType)type
                    contentId:(NSString *)contentId
@@ -246,65 +244,65 @@
 #pragma mark - 其他
 
 /**
- *	@brief	根据排序规则名称创建排序规则
+ *	@brief	Creating a collation based on the collation name
  *
- *	@param 	name 	名称
+ *	@param 	name 	Collation name
  *
- *	@return	排序规则
+ *	@return	Collation object
  */
 + (NSComparator)orderWithName:(SSCCommentListOrderName)name;
 
 /**
- *	@brief	创建评论菜单项
+ *	@brief	Create a comment menu item.
  *
- *	@param 	title 	标题
- *	@param 	order 	排序
+ *	@param 	title 	Title
+ *	@param 	order 	Order
  *
- *	@return	菜单项对象
+ *	@return	Comment menu item.
  */
 + (SSCCommentMenuItem *)commentMenuItemWithTitle:(NSString *)title
                                            order:(NSComparator)order;
 
 /**
- *	@brief	设置评论内容过滤器
+ *	@brief	Set Content Filter
  *
- *	@param 	filter 	内容过滤器对象
+ *	@param 	filter 	Content filter object
  */
 + (void)setContentFilter:(id<ISSCContentFilter>)filter;
 
 /**
- *	@brief	设置评论内容超过长度事件处理器，如果不设置则使用默认提示。
+ *	@brief	Set review content exceeds the length of the event handler. If not set, the default prompt.
  *
- *	@param 	handler 	事件处理器
+ *	@param 	handler 	Event handler.
  */
 + (void)setContentOutOfMaxLengthEvent:(SSCContentOutOfMaxLengthEvent)handler;
 
 /**
- *	@brief	设置是否启用状态栏消息提示。如果为YES则表示在评论和分享时会在状态栏显示提示信息。默认为YES
+ *	@brief	Set whether the status bar message prompts enabled. If YES, said in the status bar displays a prompt message in the comments and sharing time. The default is YES
  *
- *	@param 	enabled 	YES 表示启用，NO 表示不启用。
+ *	@param 	enabled 	YES means enable, NO indicates disabled.
  */
 + (void)setStatusBarTipsEnabled:(BOOL)enabled;
 
 /**
- *	@brief	创建内容过滤器
+ *	@brief	Create a content filter
  *
- *	@param 	regex 	正则表达式
- *  @param  filteredHandler 过滤事件处理器，当满足过滤条件时触发。
+ *	@param 	regex 	Regex
+ *  @param  filteredHandler Filter event handler is triggered when the meet the filter criteria.
  *
- *	@return	过滤器对象
+ *	@return	Filter object.
  */
 + (id<ISSCContentFilter>)contentFilterWithRegex:(NSString *)regex
                                 filteredHandler:(SSCFilteredEvent)filteredHandler;
 
 /**
- *	@brief	创建内容长度过滤器
+ *	@brief	Create a content-length filter
  *
- *	@param 	maxlength 	最大长度
- *	@param 	minLength 	最小长度
- *	@param 	filteredHandler 	过滤事件处理器，当满足过滤条件时触发。
+ *	@param 	maxlength 	The maximum length
+ *	@param 	minLength 	The minimum length
+ *	@param 	filteredHandler 	Filter event handler is triggered when the meet the filter criteria.
  *
- *	@return	过滤器对象
+ *	@return	Filter object
  */
 + (id<ISSCContentFilter>)contentFilterWithMaxLength:(NSInteger)maxlength
                                           minLength:(NSInteger)minLength

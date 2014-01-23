@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import <Foundation/Foundation.h>
@@ -13,163 +13,163 @@
 @protocol ISSPlatformCredential;
 
 /**
- *	@brief	平台用户协议
+ *	@brief	User protocol
  */
 @protocol ISSPlatformUser <NSObject>
 
 @required
 
 /**
- *	@brief	获取用户所属应用
+ *	@brief	Get an app.
  *
- *	@return	应用信息对象
+ *	@return	app object.
  */
 - (id<ISSPlatformApp>)app;
 
 /**
- *	@brief	获取授权凭证
+ *	@brief	Get credential.
  *
- *	@return	授权凭证
+ *	@return	Credential object.
  */
 - (id<ISSPlatformCredential>)credential;
 
 /**
- *	@brief	设置授权凭证
+ *	@brief	Set credential.
  *
- *	@param 	credential 	授权凭证信息
+ *	@param 	credential 	Credential object.
  */
 - (void)setCredential:(id<ISSPlatformCredential>)credential;
 
 /**
- *	@brief	获取用户的原始数据信息，与各个平台定义的用户信息结构相同
+ *	@brief	Get user's raw data, define the structure consistent with the platform
  *
- *	@return	原始数据信息
+ *	@return	Raw data dicationary.
  */
 - (NSDictionary *)sourceData;
 
 /**
- *	@brief	设置用户的原始数据信息
+ *	@brief	Set user's raw data.
  *
- *	@param 	sourceData 	原始数据信息
+ *	@param 	sourceData 	Raw data.
  */
 - (void)setSourceData:(NSDictionary *)sourceData;
 
 /**
- *	@brief	获取用户所属平台类型
+ *	@brief	Get platform type.
  *
- *	@return	平台类型
+ *	@return	Platform type. please see ShareType.
  */
 - (ShareType)type;
 
 /**
- *	@brief	获取用户ID
+ *	@brief	Get user id.
  *
- *	@return	用户ID
+ *	@return	User id.
  */
 - (NSString *)uid;
 
 /**
- *	@brief	获取用户昵称
+ *	@brief	Get user nickname.
  *
- *	@return	用户昵称
+ *	@return	User nickname
  */
 - (NSString *)nickname;
 
 /**
- *	@brief	获取用户个人头像
+ *	@brief	Get User profile image.
  *
- *	@return	个人头像路径
+ *	@return	User profile image url.
  */
 - (NSString *)profileImage;
 
 /**
- *	@brief	获取用户性别
+ *	@brief	Get gender
  *
- *	@return	性别：0 男； 1 女； 2 未知
+ *	@return	Gender：0 Male； 1 Female； 2 Unknown
  */
 - (NSInteger)gender;
 
 /**
- *	@brief	获取用户个人主页
+ *	@brief	Get user's personal homepage
  *
- *	@return	个人主页地址
+ *	@return	Personal homepage
  */
 - (NSString *)url;
 
 /**
- *	@brief	获取用户个人简介
+ *	@brief	Get User Profile
  *
- *	@return	个人简介
+ *	@return	User Profile
  */
 - (NSString *)aboutMe;
 
 /**
- *	@brief	获取用户认证类型
+ *	@brief	Get user verify type.
  *
- *	@return	认证类型：－1 未知； 0 未认证； 1 认证。
+ *	@return	Verfify type：－1 Unknown； 0 Not Authenticate； 1 Authenticate。
  */
 - (NSInteger)verifyType;
 
 /**
- *	@brief	获取用户认证信息
+ *	@brief	Get user verify reason.
  *
- *	@return	认证信息
+ *	@return	Verify reason.
  */
 - (NSString *)verifyReason;
 
 /**
- *	@brief	获取用户生日（单位：秒）
+ *	@brief	Get users birthday (unit: seconds)
  *
- *	@return	生日
+ *	@return	Birthday.
  */
 - (NSString *)birthday;
 
 /**
- *	@brief	获取用户粉丝数
+ *	@brief	Get fans count.
  *
- *	@return	粉丝数量
+ *	@return	Fans count.
  */
 - (NSInteger)followerCount;
 
 /**
- *	@brief	获取用户关注数
+ *	@brief	Get friends count.
  *
- *	@return	关注数量
+ *	@return	Friends count.
  */
 - (NSInteger)friendCount;
 
 /**
- *	@brief	获取用户分享数
+ *	@brief	Get share count.
  *
- *	@return	分享数量
+ *	@return	Share count.
  */
 - (NSInteger)shareCount;
 
 /**
- *	@brief	获取用户的注册时间（单位：秒）
+ *	@brief	Get the user's registration time (unit: seconds)
  *
- *	@return	注册时间
+ *	@return	Registration time
  */
 - (NSTimeInterval)regAt;
 
 /**
- *	@brief	获取用户等级
+ *	@brief	Get user level
  *
- *	@return	等级
+ *	@return	Level
  */
 - (NSInteger)level;
 
 /**
- *	@brief	获取用户的教育信息列表
+ *	@brief	Get a list of user education information
  *
- *	@return	教育信息列表
+ *	@return	Education List
  */
 - (NSArray *)educations;
 
 /**
- *	@brief	获取用户的职业信息列表
+ *	@brief	Get a list of the user's occupation information
  *
- *	@return	职业信息列表
+ *	@return	Occupation List
  */
 - (NSArray *)works;
 

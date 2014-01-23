@@ -1,16 +1,16 @@
 //
-//  SSInstapaperShareContentEntity.h
-//  InstapaperConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-28.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**
- *	@brief	分享内容实体
+ *	@brief	Share Content Entity.
  */
 @interface SSInstapaperShareContentEntity : NSObject <ISSPlatformShareContentEntity,
                                                       NSCoding>
@@ -20,24 +20,24 @@
 }
 
 /**
- *	@brief	链接
+ *	@brief	URL string.
  */
 @property (nonatomic,copy) NSString *url;
 
 /**
- *	@brief	标题
+ *	@brief	Title.
  */
 @property (nonatomic,copy) NSString *title;
 
 /**
- *	@brief	描述
+ *	@brief	Description.
  */
 @property (nonatomic,copy) NSString *description;
 
 /**
- *	@brief	通过分享内容解析实体数据
+ *	@brief	Parsed entity data by sharing content
  *
- *	@param 	content 	分享内容
+ *	@param 	content 	Share content object.
  */
 - (void)parseWithContent:(id<ISSContent>)content;
 

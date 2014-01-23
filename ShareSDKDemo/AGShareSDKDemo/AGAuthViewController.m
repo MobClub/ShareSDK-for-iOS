@@ -1,12 +1,11 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:1955211608
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import "AGAuthViewController.h"
 #import <AGCommon/UIImage+Common.h>
 #import "AGShareCell.h"
@@ -24,10 +23,10 @@
 @interface AGAuthViewController (Private)
 
 /**
- *	@brief	用户信息更新
- *
- *	@param 	notif 	通知
- */
+*	@brief	User information update handler.
+*
+*	@param 	notif 	Notification
+*/
 - (void)userInfoUpdateHandler:(NSNotification *)notif;
 
 
@@ -59,7 +58,7 @@
             [label release];
         }
         
-        //监听用户信息变更
+                        //Monitor change user information
         [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
                                    target:self
                                    action:@selector(userInfoUpdateHandler:)];
@@ -155,13 +154,13 @@
 
 -(BOOL)shouldAutorotate
 {
-    //iOS6下旋屏方法
+            //iOS6 rotating screen method
     return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    //iOS6下旋屏方法
+            //iOS6 rotating screen method
     return SSInterfaceOrientationMaskAll;
 }
 
@@ -181,7 +180,7 @@
         NSMutableDictionary *item = [_shareTypeArray objectAtIndex:index];
         if (sender.on)
         {
-            //用户用户信息
+                                    //User information.
             ShareType type = [[item objectForKey:@"type"] integerValue];
             
             id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -190,7 +189,7 @@
                                                                   viewDelegate:nil
                                                        authManagerViewDelegate:appDelegate.viewDelegate];
             
-            //在授权页面中添加关注官方微博
+                                    //Adding official Weibo concern in the authorization page
             [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                             SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
@@ -212,7 +211,7 @@
         }
         else
         {
-            //取消授权
+                                    //Cancel authorized.
             [ShareSDK cancelAuthWithType:[[item objectForKey:@"type"] integerValue]];
             [_tableView reloadData];
         }
@@ -260,7 +259,7 @@
         }
         else
         {
-            cell.textLabel.text = @"尚未授权";
+            cell.textLabel.text = NSLocalizedString(@"TEXT_UNAUTH_2", @"尚未授权");
         }
     }
     
@@ -277,7 +276,7 @@
 - (void)moreButtonClickHanlder:(id)sender
 {
     UIViewController *moreVC = [[[ShareSDKDemoMoreViewController alloc] init] autorelease];
-    moreVC.title = @"更多";
+    moreVC.title = NSLocalizedString(@"TEXT_MORE", @"更多");
     UINavigationController *navMoreVC = [[[UINavigationController alloc] initWithRootViewController:moreVC] autorelease];
     [self presentModalViewController:navMoreVC animated:YES];
 }

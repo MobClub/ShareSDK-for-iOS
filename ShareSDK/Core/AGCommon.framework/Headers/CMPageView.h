@@ -1,101 +1,116 @@
 //
-//  PageView.h
-//
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 #import "ICMPageContentView.h"
 
 @class CMPageView;
 
+/**
+ *	@brief	Page control style.
+ */
 typedef enum
 {
-    PageControlStyleNone,
-    PageControlStyleTop,
-    PageControlStyleBottom
+	PageControlStyleNone, /**< 无分页控制器 */
+	PageControlStyleTop, /**< 分页控制器在顶部 */
+	PageControlStyleBottom /**< 分页控制器在底部 */
 }PageControlStyle;
 
+/**
+ *	@brief	Page view data source.
+ */
 @protocol CMPageViewDataSource <NSObject>
 
 @required
 
 /**
-	返回页面数量
-	@param pageView 页面视图
-	@returns 页面数量
+ *	@brief	Return page number.
+ *
+ *	@param 	pageView 	Page view object.
+ *
+ *	@return	Page number.
  */
 - (NSInteger)pageViewNumberOfPage:(CMPageView *)pageView;
 
+
 /**
-	返回分页内容
-	@param pageView 页面视图
-	@param indexPath 索引位置
-	@returns 页面内容
+ *	@brief	Return a page content view.
+ *
+ *	@param 	pageView 	Page view object.
+ *	@param 	indexPath 	Index path.
+ *
+ *	@return	Page content view.
  */
 - (UIView<ICMPageContentView> *)pageView:(CMPageView *)pageView pageForIndexPath:(NSIndexPath *)indexPath;
 
-
-
 @end
 
+/**
+ *	@brief	Page view delegate.
+ */
 @protocol CMPageViewDelegate <NSObject>
 
 @optional
 
 /**
-	页面将要显示
-	@param pageView 页面视图
-	@param contentView 页面内容视图
-	@param indexPath 索引位置
+ *	@brief	Will display page.
+ *
+ *	@param 	pageView 	Page view.
+ *	@param 	contentView 	Content view.
+ *	@param 	indexPath 	Index path.
  */
 - (void)pageView:(CMPageView *)pageView
   willDiplayPage:(UIView<ICMPageContentView> *)contentView
        indexPath:(NSIndexPath *)indexPath;
 
+
 /**
-	页面显示
-	@param pageView 页面视图
-	@param contentView 页面内容视图
-	@param indexPath 索引位置
+ *	@brief	Did show page.
+ *
+ *	@param 	pageView 	Page view object.
+ *	@param 	contentView 	Content view object.
+ *	@param 	indexPath 	Index path.
  */
 - (void)pageView:(CMPageView *)pageView
      didShowPage:(UIView<ICMPageContentView> *)contentView
        indexPath:(NSIndexPath *)indexPath;
 
+
 /**
- *	@brief	视图滚动
+ *	@brief	Page view did scroll.
  *
- *	@param 	pageView 	页面视图
+ *	@param 	pageView 	Page view.
  */
 - (void)pageViewDidScroll:(CMPageView *)pageView;
 
 /**
- *	@brief	视图停止拖动
+ *	@brief	Page view did end dragging.
  *
- *	@param 	pageView    页面视图
- *	@param 	decelerate 	减速标识
+ *	@param 	pageView    Page view object.
+ *	@param 	decelerate 	Decelerate flag.
  */
 - (void)pageViewDidEndDragging:(CMPageView *)pageView
                 willDecelerate:(BOOL)decelerate;
 
-
 /**
- *	@brief	分页内容尺寸
+ *	@brief	Size for page content view.
  *
- *	@param 	pageView 	分页视图
+ *	@param 	pageView 	Page view object.
  *
- *	@return	分页尺寸
+ *	@return	Page size.
  */
 - (CGSize)sizeForPageContentView:(CMPageView *)pageView;
 
 @end
 
+/**
+ *	@brief	Page View
+ */
 @interface CMPageView : UIView <UIScrollViewDelegate>
 {
 @private
@@ -115,58 +130,68 @@ typedef enum
 }
 
 /**
-	分页控制器样式
+ *	@brief	Page control style.
  */
 @property (nonatomic) PageControlStyle pageControlStyle;
 
+
 /**
-	当前页面索引
+ *	@brief	Current page index.
  */
 @property (nonatomic,readonly) NSInteger iCurrentPageIndex;
 
+
 /**
- *	@brief	内容视图
+ *	@brief	Content view.
  */
 @property (nonatomic,readonly) UIScrollView *contentView;
 
 /**
-	数据源
+ *	@brief	Data source.
  */
 @property (nonatomic,assign) id<CMPageViewDataSource> dataSource;
 
+
 /**
-	委托
+ *	@brief	Delegate object.
  */
 @property (nonatomic,assign) id<CMPageViewDelegate> delegate;
 
+
 /**
-	滚动使能标识
+ *	@brief	Scroll enabled.
  */
 @property (nonatomic,assign) BOOL scrollEnabled;
 
+
 /**
- *	@brief	当前分页内容视图
+ *	@brief	Current page content view.
  */
 @property (nonatomic,readonly) UIView<ICMPageContentView> *currentPageContentView;
 
-
 /**
-	根据标识值获取可用的页面视图
-	@param identifier 标识值
-	@returns 页面视图
+ *	@brief	Dequeue reusable page.
+ *
+ *	@param 	identifier 	Page identifier.
+ *
+ *	@return	Page content view.
  */
 - (UIView<ICMPageContentView> *)dequeueReusablePageWithIdentifier:(NSString *)identifier;
 
+
 /**
-    滚动到指定页
-    @param pageIndex 页面索引
-    @param animated 动画过度标识
+ *	@brief	Scroll to page.
+ *
+ *	@param 	pageIndex 	Page index.
+ *	@param 	animated 	Animated.
  */
 - (void)scrollToPage:(NSUInteger)pageIndex animated:(BOOL)animated;
 
+
 /**
-	重新加载数据
+ *	@brief	Reload data.
  */
 - (void)reloadData;
+
 
 @end

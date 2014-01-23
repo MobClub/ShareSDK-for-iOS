@@ -1,11 +1,11 @@
 //
-//  ISSVKontakteApp.h
-//  VKontakteConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-11.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <ShareSDKCoreService/ShareSDKCoreService.h>
 #import "SSVKontakteUser.h"
@@ -15,7 +15,7 @@
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**
- *	@brief	新浪微博请求方式
+ *	@brief	VKontakte request method
  */
 typedef enum
 {
@@ -25,30 +25,34 @@ typedef enum
 }
 SSVKontakteRequestMethod;
 
+/**
+ *	@brief	VKontakte App
+ */
 @protocol ISSVKontakteApp <ISSPlatformApp>
 
+
 /**
- *	@brief	获取应用Key
+ *	@brief	 Get app key
  *
- *	@return	应用Key
+ *	@return	App key
  */
 - (NSString *)appKey;
 
 /**
- *	@brief	获取应用密钥
+ *	@brief	Get secret key
  *
- *	@return	应用密钥
+ *	@return	Secret key.
  */
 - (NSString *)secretKey;
 
 /**
- *	@brief	调用开放平台API
+ *	@brief	Call API
  *
- *	@param 	path 	路径
- *	@param 	params 	请求参数
- *  @param  user    授权用户,如果传入nil则表示默认的授权用户
- *  @param  result  返回回调
- *  @param  fault   失败回调
+ *	@param 	path 	API path string.
+ *	@param 	params 	Request parameters.
+ *  @param  user    Authorized users, it means that if the incoming nil default authorized users
+ *  @param  result  Result handler.
+ *  @param  fault   Fault handler.
  */
 - (void)api:(NSString *)path
      method:(SSVKontakteRequestMethod)method
@@ -58,15 +62,15 @@ SSVKontakteRequestMethod;
       fault:(void(^)(CMErrorInfo *error))fault;
 
 /**
- *	@brief	发布文章到用户墙上
+ *	@brief	Publish a Wall Post.
  *
- *	@param 	message 	内容，如果附件没有设置则为必填项
- *	@param 	attachments 	附件，如果内容没有设置则为必填项
- *  @param  url     链接地址
- *  @param  groupId     组标识,当设置了attachments参数时必填。
- *	@param 	friendsOnly 	是否仅允许好友查看
- *	@param 	locationCoordinate 	发布文章时的位置
- *  @param  result    返回回调
+ *	@param 	message 	Content string, if not set attachments, was required.
+ *	@param 	attachments 	Attachment list，if not set message, was required.
+ *  @param  url     URL string.
+ *  @param  groupId     Group id,When setting up attachments parameters required。
+ *	@param 	friendsOnly 	Whether to allow only friends to view
+ *	@param 	locationCoordinate 	Position when publish post.
+ *  @param  result    Result hanlder.
  */
 - (void)wallPostWithMessage:(NSString *)message
                 attachments:(NSArray *)attachments

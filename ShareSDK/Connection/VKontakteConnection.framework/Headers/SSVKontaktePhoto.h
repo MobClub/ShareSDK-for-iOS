@@ -1,81 +1,80 @@
 //
-//  SSVKontaktePhoto.h
-//  VKontakteConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-12.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <ShareSDKCoreService/SSCDataObject.h>
 
 /**
- *	@brief	照片信息
+ *	@brief	Photo.
  */
 @interface SSVKontaktePhoto : SSCDataObject
 
 /**
- *	@brief	相册ID
+ *	@brief	Album id.
  */
 @property (nonatomic,readonly) NSInteger aid;
 
 /**
- *	@brief	创建时间
+ *	@brief	Created tiem.
  */
 @property (nonatomic,readonly) long long created;
 
 /**
- *	@brief	高度
+ *	@brief	Height.
  */
 @property (nonatomic,readonly) NSInteger height;
 
 /**
- *	@brief	标识
+ *	@brief	id.
  */
 @property (nonatomic,readonly) NSString *Id;
 
 /**
- *	@brief	所属用户ID
+ *	@brief	Belongs user id.
  */
 @property (nonatomic,readonly) NSInteger ownerId;
 
 /**
- *	@brief	照片标识
+ *	@brief	Photo id.
  */
 @property (nonatomic,readonly) NSInteger pid;
 
 /**
- *	@brief	路径
+ *	@brief	Path string.
  */
 @property (nonatomic,readonly) NSString *src;
 
 /**
- *	@brief	大图路径
+ *	@brief	The path of large picture.
  */
 @property (nonatomic,readonly) NSString *srcBig;
 
 /**
- *	@brief	小图路径
+ *	@brief	The path of Small picture.
  */
 @property (nonatomic,readonly) NSString *srcSmall;
 
 /**
- *	@brief	描述
+ *	@brief	Photo description.
  */
 @property (nonatomic,readonly) NSString *text;
 
 /**
- *	@brief	宽度
+ *	@brief	Width.
  */
 @property (nonatomic,readonly) NSInteger width;
 
-
 /**
- *	@brief	创建照片信息
+ *	@brief	Create a photo information.
  *
- *	@param 	response 	回复数据
+ *	@param 	response 	Response data.
  *
- *	@return	照片信息实例
+ *	@return	Photo object.
  */
 + (SSVKontaktePhoto *)photoWithResponse:(NSDictionary *)response;
 

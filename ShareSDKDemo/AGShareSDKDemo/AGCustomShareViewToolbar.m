@@ -1,11 +1,11 @@
 //
-//  AGCustomShareViewToolbar.m
-//  AGShareSDKDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-3-5.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import "AGCustomShareViewToolbar.h"
 #import "AGCustomShareItemView.h"
 #import <ShareSDK/ShareSDK.h>
@@ -30,7 +30,7 @@
         _textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _textLabel.backgroundColor = [UIColor clearColor];
         _textLabel.textColor = [UIColor colorWithRGB:0xd2d2d2];
-        _textLabel.text = @"分享到:";
+        _textLabel.text = NSLocalizedString(@"TEXT_SHARE_TO", @"分享到:");
         _textLabel.font = [UIFont boldSystemFontOfSize:12];
         [_textLabel sizeToFit];
         _textLabel.frame = CGRectMake(3.0, 0.0, _textLabel.width + 3, self.height);
@@ -208,7 +208,7 @@
                                                                                                                                 viewDelegate:nil
                                                                                                                      authManagerViewDelegate:_appDelegate.viewDelegate];
                                                                           
-                                                                          //在授权页面中添加关注官方微博
+                                                                                                                                                                                                                              //Adding official Weibo concern in the authorization page
                                                                           [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                                                           [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                                                                                           SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
@@ -229,7 +229,7 @@
                                                                                                      {
                                                                                                          if ([error errorCode] != -103)
                                                                                                          {
-                                                                                                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"绑定失败!" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+                                                                                                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")  message:NSLocalizedString(@"TEXT_BING_FAI", @"绑定失败!")  delegate:nil cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了") otherButtonTitles:nil];
                                                                                                              [alertView show];
                                                                                                              [alertView release];
                                                                                                          }

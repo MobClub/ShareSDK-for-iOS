@@ -1,11 +1,11 @@
 //
-//  AGCustomAtPlatListViewController.m
-//  AGShareSDKDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-3-5.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import "AGCustomAtPlatListViewController.h"
 
 #import "AGCustomFriendsViewController.h"
@@ -32,7 +32,7 @@
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
         [leftBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
                            forState:UIControlStateNormal];
-        [leftBtn setTitle:@"取消" forState:UIControlStateNormal];
+        [leftBtn setTitle:NSLocalizedString(@"TEXT_CANCEL", @"取消") forState:UIControlStateNormal];
         leftBtn.titleLabel.font = [UIFont systemFontOfSize:13];
         leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
         [leftBtn addTarget:self action:@selector(cancelButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -50,7 +50,7 @@
             [label release];
         }
         
-        self.title = @"@微博好友";
+        self.title = NSLocalizedString(@"TEXT_MENTION_FRIEND", @"@微博好友");
     }
     return self;
 }
@@ -126,13 +126,13 @@
 
 -(BOOL)shouldAutorotate
 {
-    //iOS6下旋屏方法
+            //iOS6 rotating screen method
     return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    //iOS6下旋屏方法
+            //iOS6 rotating screen method
     return SSInterfaceOrientationMaskAll;
 }
 
@@ -207,13 +207,13 @@
     {
         case 0:
         {
-            //新浪微博
+                                    //Sina Weibo
             shareType = ShareTypeSinaWeibo;
             break;
         }
         case 1:
         {
-            //腾讯微薄
+                                    //Tencent Weibo
             shareType = ShareTypeTencentWeibo;
             break;
         }
@@ -226,7 +226,7 @@
     
     cell.textLabel.text = [ShareSDK getClientNameWithType:shareType];
     cell.imageView.image = [ShareSDK getClientIconWithType:shareType];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"点击进入%@好友列表", cell.textLabel.text];
+    cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TEXT_ENTER_FRIEND_LIST", @"点击进入%@好友列表"), cell.textLabel.text];
     
     return cell;
 }

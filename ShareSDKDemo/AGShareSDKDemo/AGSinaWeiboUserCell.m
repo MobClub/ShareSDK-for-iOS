@@ -1,12 +1,11 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import "AGSinaWeiboUserCell.h"
 
 #define LEFT_PADDING 7.0
@@ -32,7 +31,7 @@
     {
         _cacheManager = imageCacheManager;
         
-        //头像
+                        //Avatar
         _iconImageView = [[CMImageView alloc] initWithFrame:CGRectMake(LEFT_PADDING,
                                                                        (self.contentView.height - ICON_HEIGHT) / 2,
                                                                        ICON_WIDTH,
@@ -41,7 +40,7 @@
         [self.contentView addSubview:_iconImageView];
         [_iconImageView release];
         
-        //Loading
+                        //Loading
         _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [_indicatorView sizeToFit];
         _indicatorView.frame = CGRectMake(_iconImageView.left + (_iconImageView.width - _indicatorView.width) / 2,
@@ -51,19 +50,19 @@
         [self.contentView addSubview:_indicatorView];
         [_indicatorView release];
         
-        //图标
+                        //Icon
         _vipImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, VIP_ICON_WIDTH, VIP_ICON_HEIGHT)];
         [self.contentView addSubview:_vipImageView];
         [_vipImageView release];
         
-        //昵称
+                        //Nickname
         _nickNameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _nickNameLabel.backgroundColor = [UIColor clearColor];
         _nickNameLabel.font = [UIFont systemFontOfSize:16];
         [self.contentView addSubview:_nickNameLabel];
         [_nickNameLabel release];
         
-        //描述
+                        //Description
         _descLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _descLabel.backgroundColor = [UIColor clearColor];
         _descLabel.font = [UIFont systemFontOfSize:13];
@@ -71,7 +70,7 @@
         [self.contentView addSubview:_descLabel];
         [_descLabel release];
         
-        //性别
+                        //Gender
         _sexImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, GENDER_ICON_WIDTH, GENDER_ICON_HEIGHT)];
         [self.contentView addSubview:_sexImageView];
         [_sexImageView release];
@@ -150,7 +149,7 @@
             _descLabel.text = _userInfo.description;
             if (_userInfo.verifiedType == 220)
             {
-                //达人
+                                                //Grassroot
                 _vipImageView.image = [UIImage imageNamed:@"Grassroot.png"];
                 _vipImageView.hidden = NO;
             }
@@ -166,14 +165,14 @@
             switch (_userInfo.verifiedType)
             {
                 case 0:
-                    //个人认证
+                                                            //Personal Certification
                     _vipImageView.image = [UIImage imageNamed:@"Vip.png"];
                     _vipImageView.hidden = NO;
                     break;
                 case 5:
                 case 2:
                 case 3:
-                    //企业认证
+                                                            //Enterprise Certification
                     _vipImageView.image = [UIImage imageNamed:@"EnterpriseVip.png"];
                     _vipImageView.hidden = NO;
                     break;

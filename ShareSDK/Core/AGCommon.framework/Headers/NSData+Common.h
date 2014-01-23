@@ -1,184 +1,183 @@
 //
-//  NSData+Common.h
-//
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonCrypto.h>
 
+/**
+ *	@brief	NSData Category.
+ */
 @interface NSData (Common)
 
+
 /**
- *	@brief	使用Key进行HMAC-SHA1加密
+ *	@brief	Using HMAC-SHA1 encryption with key.
  *
- *	@param 	key 	密钥
+ *	@param 	key 	Key
  *
- *	@return	加密后数据
+ *	@return	The encrypted data.
  */
 - (NSData *)dataByUsingHMacSHA1WithKey:(NSData *)key;
 
 /**
- *	@brief	使用BASE64编码数据
+ *	@brief	Using BASE64 encoding data
  *
- *	@return	编码后字符串
+ *	@return	The encoded string.
  */
 - (NSString *)stringWithBase64Encode;
 
 /**
- *	@brief	获取16进制字符串
+ *	@brief	Get a hexadecimal string
  *
- *	@return	16进制字符串
+ *	@return	Hexadecimal string
  */
 - (NSString *)hexString;
 
-
 /**
- *	@brief	AES128位加密
+ *	@brief	AES 128-bit encryption
  *
  *  @since  ver1.0.6
  *
- *	@param 	key 	密钥
- *	@param 	iv 	初始向量,允许为nil
- *  @param  encoding    字符编码
+ *	@param 	key 	Key
+ *	@param 	iv 	Initial vector, which allows to nil
+ *  @param  encoding    Encoding
  *
- *	@return	加密后数据
+ *	@return	The encrypted data.
  */
 - (NSData *)dataUsingAES128EncryptWithKey:(NSString *)key
                                        iv:(NSString *)iv
                                  encoding:(NSStringEncoding)encoding;
 
 /**
- *	@brief	AES128位解密
+ *	@brief	AES 128-bit decryption
  *
  *  @since  ver1.0.6
  *
- *	@param 	key 	密钥
- *	@param 	iv 	初始向量,允许为nil
- *  @param  encoding    字符编码
+ *	@param 	key 	Key
+ *	@param 	iv 	Initial vector, which allows to nil
+ *  @param  encoding    Encoding
  *
- *	@return	解密后数据
+ *	@return	The ecrypted data.
  */
 - (NSData *)dataUsingAES128DecryptWithKey:(NSString *)key
                                        iv:(NSString *)iv
                                  encoding:(NSStringEncoding)encoding;
 
 /**
- *	@brief	AES128位加密
+ *	@brief	AES 128-bit encryption
  *
  *  @since  ver1.0.11
  *
- *	@param 	key 	密钥
- *	@param 	iv 	初始向量,允许为nil
- *  @param  options     选项
+ *	@param 	key 	Key
+ *	@param 	iv 	Initial vector, which allows to nil
+ *  @param  options     Options
  *
- *	@return	加密后数据
+ *	@return	The encrypted data.
  */
 - (NSData *)dataUsingAES128EncryptWithKey:(NSData *)key
                                        iv:(NSData *)iv
                                   options:(CCOptions)options;
 
 /**
- *	@brief	AES128位解密
+ *	@brief	AES 128-bit decryption
  *
  *  @since  ver1.0.11
  *
- *	@param 	key 	密钥
- *	@param 	iv 	初始向量,允许为nil
- *  @param  options     选项
+ *	@param 	key 	Key
+ *	@param 	iv Initial vector, which allows to nil
+ *  @param  options     Options
  *
- *	@return	解密后数据
+ *	@return	The decrypted data.
  */
 - (NSData *)dataUsingAES128DecryptWithKey:(NSData *)key
                                        iv:(NSData *)iv
                                   options:(CCOptions)options;
 
-
 /**
- *	@brief	AES256位加密
+ *	@brief	AES 256-bit encryption
  *
  *  @since  ver1.0.6
  *
- *	@param 	key 	密钥
- *	@param 	iv 	初始向量,允许为nil
- *  @param  encoding    字符编码
+ *	@param 	key 	Key
+ *	@param 	iv 	Initial vector, which allows to nil
+ *  @param  encoding    Encoding
  *
- *	@return	加密后数据
+ *	@return	The encrypted data.
  */
 - (NSData *)dataUsingAES256EncryptWithKey:(NSString *)key
                                        iv:(NSString *)iv
                                  encoding:(NSStringEncoding)encoding;
 
 /**
- *	@brief	AES256位解密
+ *	@brief	AES 256-bit decryption
  *
  *  @since  ver1.0.6
  *
- *	@param 	key 	密钥
- *	@param 	iv 	初始向量,允许为nil
- *  @param  encoding    字符编码
+ *	@param 	key 	Key
+ *	@param 	iv 	Initial vector, which allows to nil
+ *  @param  encoding    Encoding
  *
- *	@return	解密后数据
+ *	@return	The decrypted data.
  */
 - (NSData *)dataUsingAES256DecryptWithKey:(NSString *)key
                                        iv:(NSString *)iv
                                  encoding:(NSStringEncoding)encoding;
 
 /**
- *	@brief	AES256位加密
+ *	@brief	AES 256-bit encryption
  *
  *  @since  ver1.0.11
  *
- *	@param 	key 	密钥
- *	@param 	iv 	初始向量,允许为nil
- *  @param  options     选项
+ *	@param 	key 	Key
+ *	@param 	iv 	Initial vector, which allows to nil
+ *  @param  options     Options
  *
- *	@return	加密后数据
+ *	@return	The encrypted data.
  */
 - (NSData *)dataUsingAES256EncryptWithKey:(NSData *)key
                                        iv:(NSData *)iv
                                   options:(CCOptions)options;
 
 /**
- *	@brief	AES256位解密
+ *	@brief	AES 256-bit decryption
  *
  *  @since  ver1.0.11
  *
- *	@param 	key 	密钥
- *	@param 	iv 	初始向量,允许为nil
- *  @param  options     选项
+ *	@param 	key 	Key
+ *	@param 	iv 	Initial vector, which allows to nil
+ *  @param  options     Options
  *
- *	@return	解密后数据
+ *	@return	The decrypted data.
  */
 - (NSData *)dataUsingAES256DecryptWithKey:(NSData *)key
                                        iv:(NSData *)iv
                                   options:(CCOptions)options;
 
 /**
- *	@brief	GZip方式压缩数据
+ *	@brief	Compress data by GZip
  *
- *	@return	压缩后数据
+ *	@return	The compressed data.
  */
 - (NSData *)gzipData;
 
 /**
- *	@brief	解压GZip数据
+ *	@brief	Decompress GZip data
  *
- *	@return	解压后GZip数据
+ *	@return	The decompressed data.
  */
 - (NSData *)uncompressGZipData;
 
 /**
- *	@brief	对数据进行MD5散列
+ *	@brief	MD5 hash for data
  *
  *  @since  ver1.0.10
  *
- *	@return	MD5后的数据
+ *	@return	Data object.
  */
 - (NSData *)dataByUsingMD5;
 

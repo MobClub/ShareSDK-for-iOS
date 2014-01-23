@@ -1,9 +1,10 @@
 //
-//  TextViewController.mm
-//  MicroMessenger
-//
-//  Created by Tencent on 12-3-21.
-//  Copyright 2012 Tecent. All rights reserved.
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import <QuartzCore/QuartzCore.h>
 #import "TextViewController.h"
@@ -101,12 +102,12 @@
         [self setEdgesForExtendedLayout:SSRectEdgeBottom | SSRectEdgeLeft | SSRectEdgeRight];
     }
 	
-	self.title = @"编辑消息";
+	self.title = NSLocalizedString(@"TEXT_EDIT_TEXT", @"编辑消息");
     self.view.backgroundColor = [UIColor whiteColor];
 	
 	[self initTextView];
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(OnDone)] autorelease];
-    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(OnBack)] autorelease];
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"TEXT_COMPLETE", @"完成") style:UIBarButtonItemStyleDone target:self action:@selector(OnDone)] autorelease];
+    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"TEXT_BACK", @"返回") style:UIBarButtonItemStyleDone target:self action:@selector(OnBack)] autorelease];
 }
 
 - (void)dealloc {

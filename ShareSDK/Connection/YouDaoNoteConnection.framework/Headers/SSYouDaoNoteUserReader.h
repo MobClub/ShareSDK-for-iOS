@@ -1,15 +1,15 @@
 //
-//  SSYouDaoNoteUserReader.h
-//  YouDaoNoteConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by vimfung on 13-10-28.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 /**
- *	@brief	用户信息读取器
+ *	@brief	User Reader.
  */
 @interface SSYouDaoNoteUserReader : NSObject
 {
@@ -18,65 +18,65 @@
 }
 
 /**
- *	@brief	源数据
+ *	@brief	Raw data.
  */
 @property (nonatomic,readonly) NSDictionary *sourceData;
 
 /**
- *	@brief	用户ID
+ *	@brief	User id.
  */
 @property (nonatomic,readonly) NSString *uid;
 
 /**
- *	@brief	用户注册时间，单位毫秒
+ *	@brief	User registration time, in milliseconds
  */
 @property (nonatomic,readonly) CGFloat registerTime;
 
 /**
- *	@brief	用户已经使用了的空间大小，单位字节
+ *	@brief	Used size，in byte.
  */
 @property (nonatomic,readonly) long usedSize;
 
 /**
- *	@brief	用户总的空间大小，单位字节
+ *	@brief	Total size, in byte.
  */
 @property (nonatomic,readonly) long totalSize;
 
 /**
- *	@brief	用户最后登录时间，单位毫秒
+ *	@brief	Last login time，in milliseconds
  */
 @property (nonatomic,readonly) CGFloat lastLoginTime;
 
 /**
- *	@brief	用户最后修改时间，单位毫秒
+ *	@brief	Last modified time，in milliseconds
  */
 @property (nonatomic,readonly) CGFloat lastModifyTime;
 
 /**
- *	@brief	该应用的默认笔记本
+ *	@brief	Default notebook.
  */
 @property (nonatomic,readonly) NSString *defaultNotebook;
 
 /**
- *	@brief	用户ID
+ *	@brief	User id.
  */
 @property (nonatomic,readonly) NSString *user;
 
 /**
- *	@brief	初始化读取器
+ *	@brief	Initialize reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 - (id)initWithSourceData:(NSDictionary *)sourceData;
 
 /**
- *	@brief	创建用户信息读取器
+ *	@brief	Create a user reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 + (SSYouDaoNoteUserReader *)readerWithSourceData:(NSDictionary *)sourceData;
 

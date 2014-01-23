@@ -1,108 +1,108 @@
 //
-//  ISSCComment.h
-//  Comment
+//  Created by ShareSDK.cn on 13-1-14.
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-11-13.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <ShareSDK/ShareSDK.h>
 #import "SSCommentTypeDef.h"
 
 /**
- *	@brief	评论信息
+ *	@brief	Comment information.
  */
 @protocol ISSCComment <NSObject>
 
 /**
- *	@brief	获取评论标识
+ *	@brief	Get comment id.
  *
- *	@return	标识
+ *	@return	Comment id.
  */
 - (NSString *)Id;
 
 /**
- *	@brief	获取社交平台类型
+ *	@brief	Get platform type.
  *
- *	@return	平台类型
+ *	@return	Platform type.
  */
 - (ShareType)platType;
 
 /**
- *	@brief	获取评论人性别, 0 男 1 女 2 未知
+ *	@brief	Get gender, 0 Male 1 Female 2 Unknown
  *
- *	@return	性别。
+ *	@return	Gender.
  */
 - (NSInteger)gender;
 
 /**
- *	@brief	获取评论人名称
+ *	@brief	Get user nickname
  *
- *	@return	评论人名称
+ *	@return	Nickname.
  */
 - (NSString *)nickname;
 
 /**
- *	@brief	获取评论人头像
+ *	@brief	Get comment icon.
  *
- *	@return	评论人头像
+ *	@return	Comment icon.
  */
 - (NSString *)icon;
 
 /**
- *	@brief	获取认证类型
+ *	@brief	Get verified type.
  *
- *	@return	认证类型
+ *	@return	Verified type.
  */
 - (NSInteger)verifyType;
 
 /**
- *	@brief	获取称赞数
+ *	@brief	Get like count.
  *
- *	@return	称赞数
+ *	@return	Like count.
  */
 - (NSInteger)likeCount;
 
 /**
- *	@brief	获取省份／国家
+ *	@brief	Get Province / State
  *
- *	@return	省份／国家
+ *	@return	Province / State
  */
 - (NSString *)region;
 
 /**
- *	@brief	获取评论内容
+ *	@brief	Get comment content.
  *
- *	@return	评论内容
+ *	@return	Comment content.
  */
 - (NSString *)content;
 
 /**
- *	@brief	获取评论时间
+ *	@brief	Get comment time.
  *
- *	@return	评论时间
+ *	@return	Comment time.
  */
 - (NSTimeInterval)datetime;
 
 /**
- *	@brief	获取楼层列表
+ *	@brief	Get a floor list.
  *
- *	@return	楼层列表
+ *	@return	floor list.
  */
 - (NSArray *)floors;
 
 /**
- *	@brief	获取是否称赞标识
+ *	@brief	Gets whether liked flag.
  *
- *	@return	YES 表示称赞，NO 表示尚未称赞
+ *	@return	YES liked, NO represents yet liked
  */
 - (BOOL)liked;
 
 /**
- *	@brief	获取评论状态
+ *	@brief	Get comment status.
  *
- *	@return	－2 驳回 －1 垃圾评论 1 审核通过
+ *	@return	-2 Dismissed  -1 Spam 1 Audit by
  */
 - (NSInteger)status;
 

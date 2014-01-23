@@ -1,15 +1,15 @@
 //
-//  SSDouBanAttachmentReader.h
-//  DouBanConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-22.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 /**
- *	@brief	物信息读取器
+ *	@brief	Attachment reader.
  */
 @interface SSDouBanAttachmentReader : NSObject
 {
@@ -18,61 +18,61 @@
 }
 
 /**
- *	@brief	源数据
+ *	@brief	Raw data.
  */
 @property (nonatomic,readonly) NSDictionary *sourceData;
 
 /**
- *	@brief	子标题
+ *	@brief	Caption string.
  */
 @property (nonatomic,readonly) NSString *caption;
 
 /**
- *	@brief	描述，可以为空，最大长度200字节（100汉字或200字母）
+ *	@brief	Description，Can be nil, the maximum length of 200 bytes (100 characters or 200 characters)
  */
 @property (nonatomic,readonly) NSString *description;
 
 /**
- *	@brief	链接，url最大长度1024，需要分析并展示网站域名
+ *	@brief	Links, url maximum length of 1024, you need to analyze and demonstrate Domain Name
  */
 @property (nonatomic,readonly) NSString *href;
 
 /**
- *	@brief	富媒体，允许 image, flash, music 单条广播所有[[BR]]图片无最小值限制，
- *  文件最大不超过3M[[BR]]缩略图：最大边150px[[BR]]点击展开后：宽度最大460px，高度不限[[BR]]原图大小无宽高限制
+ *	@brief	Rich media, allowing the image, flash, music single broadcast all Picture no minimum limit,
+ *  The maximum file size 3M. Thumbnail: Maximum side 150px. Click to expand post: maximum width 460px, height limitation. Original size without width and height restrictions
  */
 @property (nonatomic,readonly) NSArray *media;
 
 /**
- *	@brief	如果有分类，这里存放对应类别的详细数据，具体的字段由该类别自行定义
+ *	@brief	If has classification, corresponding to the categories detail data stored here, the specific field of the class defined by its own.
  */
 @property (nonatomic,readonly) id properties;
 
 /**
- *	@brief	标题，如果传空，会显示‘无标题’， 最大长度100字节（50汉字或100字母）
+ *	@brief	Title, if fill nil, will show 'no title', the maximum length of 100 bytes (50 characters or 100 characters)
  */
 @property (nonatomic,readonly) NSString *title;
 
 /**
- *	@brief	分类，预留字段
+ *	@brief	Classification, reserved field
  */
 @property (nonatomic,readonly) NSString *type;
 
 /**
- *	@brief	初始化读取器
+ *	@brief	Initialize reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 - (id)initWithSourceData:(NSDictionary *)sourceData;
 
 /**
- *	@brief	创建用户信息读取器
+ *	@brief	Create user reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	User reader object.
  */
 + (SSDouBanAttachmentReader *)readerWithSourceData:(NSDictionary *)sourceData;
 

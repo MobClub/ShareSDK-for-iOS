@@ -1,11 +1,11 @@
 //
-//  SSinstagramUser.h
-//  InstagramConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-9.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <ShareSDKCoreService/SSCDataObject.h>
 #import "SSInstagramCredential.h"
@@ -13,118 +13,118 @@
 #import <ShareSDKCoreService/ISSCUserDescriptor.h>
 
 /**
- *	@brief	用户信息
+ *	@brief	User
  */
 @interface SSInstagramUser : NSObject <ISSPlatformUser,
                                        NSCoding,
                                        ISSCDataObject>
 
 /**
- *	@brief	所属平台
+ *	@brief	The app object.
  */
 @property (nonatomic,assign) id<ISSPlatformApp> app;
 
 /**
- *	@brief	授权信息，如果为nil则表示非当前应用授权用户
+ *	@brief	Authorization information, if it is nil, said non-current authorized users
  */
 @property (nonatomic,retain) id<ISSPlatformCredential> credential;
 
 /**
- *	@brief	用户的原始数据信息，与各个平台定义的用户信息结构相同
+ *	@brief	Raw data，Information structure with the same user-defined for each platform
  */
 @property (nonatomic,retain) NSDictionary *sourceData;
 
 /**
- *	@brief	平台类型
+ *	@brief	Platform type.
  */
 @property (nonatomic,readonly) ShareType type;
 
 /**
- *	@brief	用户ID
+ *	@brief	User id.
  */
 @property (nonatomic,readonly) NSString *uid;
 
 /**
- *	@brief	用户昵称
+ *	@brief	Nickname
  */
 @property (nonatomic,readonly) NSString *nickname;
 
 /**
- *	@brief	个人头像路径
+ *	@brief	Avatar path string.
  */
 @property (nonatomic,readonly) NSString *profileImage;
 
 /**
- *	@brief	性别：0 男； 1 女； 2 未知
+ *	@brief	Gender：0 Male； 1 Female； 2 Unknown.
  */
 @property (nonatomic,readonly) NSInteger gender;
 
 /**
- *	@brief	个人主页地址
+ *	@brief	Personal homepage.
  */
 @property (nonatomic,readonly) NSString *url;
 
 /**
- *	@brief	个人简介
+ *	@brief	Profile
  */
 @property (nonatomic,readonly) NSString *aboutMe;
 
 /**
- *	@brief	认证类型：－1 未知； 0 未认证； 1 认证
+ *	@brief	Verify type：－1 Unknown； 0 Not certified； 1 certified
  */
 @property (nonatomic,readonly) NSInteger verifyType;
 
 /**
- *	@brief	认证信息
+ *	@brief	Verify reason.
  */
 @property (nonatomic,readonly) NSString *verifyReason;
 
 /**
- *	@brief	用户生日（单位：秒）
+ *	@brief	Birthday (unit: seconds)
  */
 @property (nonatomic,readonly) NSString *birthday;
 
 /**
- *	@brief	用户粉丝数
+ *	@brief	Fans count.
  */
 @property (nonatomic,readonly) NSInteger followerCount;
 
 /**
- *	@brief	用户关注数
+ *	@brief	Friends count.
  */
 @property (nonatomic,readonly) NSInteger friendCount;
 
 /**
- *	@brief	用户分享数
+ *	@brief	The number of user to share.
  */
 @property (nonatomic,readonly) NSInteger shareCount;
 
 /**
- *	@brief	用户的注册时间（单位：秒）
+ *	@brief	User registration time (unit: seconds)
  */
 @property (nonatomic,readonly) NSTimeInterval regAt;
 
 /**
- *	@brief	用户等级
+ *	@brief	User level.
  */
 @property (nonatomic,readonly) NSInteger level;
 
 /**
- *	@brief	用户的教育信息列表
+ *	@brief	Education information list of this person
  */
 @property (nonatomic,readonly) NSArray *educations;
 
 /**
- *	@brief	用户的职业信息列表
+ *	@brief	Career information list of this person
  */
 @property (nonatomic,readonly) NSArray *works;
 
 /**
- *	@brief	初始化化用户信息
+ *	@brief	Initialize user information.
  *
- *	@param 	app 	应用信息
+ *	@param 	app 	App object.
  *
- *	@return	用户信息对象
+ *	@return	User inforamtion object.
  */
 - (id)initWithApp:(id<ISSPlatformApp>)app;
 

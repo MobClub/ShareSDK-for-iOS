@@ -1,16 +1,16 @@
 //
-//  SSEverNoteTypeDef.h
-//  EverNoteConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by vimfung on 13-5-8.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #ifndef EverNoteConnection_SSEverNoteTypeDef_h
 #define EverNoteConnection_SSEverNoteTypeDef_h
 
 /**
- *	@brief	应用类型
+ *	@brief	App type.
  */
 typedef enum
 {
@@ -21,7 +21,7 @@ typedef enum
 SSEverNoteAppType;
 
 /**
- *	@brief	权限
+ *	@brief	Privilege level.
  */
 typedef enum
 {
@@ -69,7 +69,7 @@ typedef enum
 SSEverNoteSponsoredGroupRole;
 
 /**
- *	@brief	字段类型
+ *	@brief	Field type.
  */
 typedef enum
 {
@@ -90,7 +90,7 @@ typedef enum
 SSEverNoteFieldType;
 
 /**
- *	@brief	消息类型
+ *	@brief	Message type.
  */
 typedef enum
 {
@@ -102,7 +102,7 @@ typedef enum
 SSEverNoteMessageType;
 
 /**
- *	@brief	异常类型
+ *	@brief	Exception type.
  */
 typedef enum
 {

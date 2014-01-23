@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import <Foundation/Foundation.h>
@@ -11,7 +11,7 @@
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**
- *	@brief	分享信息
+ *	@brief	Share information.
  */
 @interface SSGooglePlusShareInfo : NSObject <ISSPlatformShareInfo,
                                              NSCoding,
@@ -27,41 +27,41 @@
 }
 
 /**
- *	@brief	分享ID
+ *	@brief	Share id.
  */
 @property (nonatomic,copy) NSString *sid;
 
 /**
- *	@brief	分享内容
+ *	@brief	Content string.
  */
 @property (nonatomic,copy) NSString *text;
 
 /**
- *	@brief	分享的链接列表
+ *	@brief	URL list.
  */
 @property (nonatomic,retain) NSArray *urls;
 
 /**
- *	@brief	分享的图片列表
+ *	@brief	Image list.
  */
 @property (nonatomic,retain) NSArray *imgs;
 
 /**
- *	@brief	扩展信息
+ *	@brief	Extended Information.
  */
 @property (nonatomic,retain) NSDictionary *extInfo;
 
 /**
- *	@brief	原始数据
+ *	@brief	Raw data.
  */
 @property (nonatomic,retain) NSDictionary *sourceData;
 
 /**
- *	@brief	创建分享信息
+ *	@brief	Create a share information.
  *
- *	@param 	response 	回复数据
+ *	@param 	response 	Response data.
  *
- *	@return	分享信息
+ *	@return	Share information object.
  */
 + (SSGooglePlusShareInfo *)shareInfoWithResponse:(NSDictionary *)response;
 

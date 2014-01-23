@@ -1,17 +1,17 @@
 //
-//  AGCustomUserItemView.h
-//  AGShareSDKDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-3-6.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import <AGCommon/CMHTableViewItem.h>
 #import <ShareSDK/ShareSDK.h>
 #import <AGCommon/CMImageCacheManager.h>
 
 /**
- *	@brief	用户列表项
+ *	@brief	Custome User item View.
  */
 @interface AGCustomUserItemView : CMHTableViewItem
 {
@@ -28,19 +28,19 @@
 }
 
 /**
- *	@brief	用户信息
+ *	@brief	User information.
  */
 @property (nonatomic,retain) NSMutableDictionary *userInfo;
 
 /**
- *	@brief	初始化列表项
+ *	@brief	Initialize custom user item view.
  *
- *	@param 	reuseIdentifier 	复用标识
- *	@param 	imageCacheManager 	图片缓存管理器
- *	@param 	shareType 	分享类型
- *  @param  clickHandler    点击事件处理器
+ *	@param 	reuseIdentifier 	Reuse identifier
+ *	@param 	imageCacheManager 	Image cache manager.
+ *	@param 	shareType 	Platform type
+ *  @param  clickHandler    Click handler.
  *
- *	@return	列表项
+ *	@return	Item view.
  */
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
             imageCacheManager:(CMImageCacheManager *)imageCacheManager

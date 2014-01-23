@@ -1,11 +1,11 @@
 //
-//  AGCustomFriendListViewToolbar.h
-//  AGShareSDKDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-3-6.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import <AGCommon/CMHTableView.h>
 #import <AGCommon/CMImageCacheManager.h>
@@ -27,16 +27,16 @@
 }
 
 /**
- *	@brief	初始化工具栏
+ *	@brief	Initialize toolbar.
  *
- *	@param 	frame 	显示范围
- *	@param 	selectedArray 	选中用户列表
- *  @param  imageCacheManager   图片缓存管理器
- *  @param  shareType   分享类型
- *  @param  itemClickHandler 列表项点击事件处理
- *  @param  completeHandler 完成事件处理
+ *	@param 	frame 	Display rect.
+ *	@param 	selectedArray 	Selected user list.
+ *  @param  imageCacheManager   Image cache manager.
+ *  @param  shareType   Platform type.
+ *  @param  itemClickHandler Item click handler.
+ *  @param  completeHandler Complete handler.
  *
- *	@return	工具栏视图
+ *	@return	Toolbar view.
  */
 - (id)initWithFrame:(CGRect)frame
       selectedArray:(NSMutableArray *)selectedArray
@@ -46,7 +46,7 @@
     completeHandler:(void(^)())completeHandler;
 
 /**
- *	@brief	重新加载数据
+ *	@brief	Reload data.
  */
 - (void)reloadData;
 

@@ -1,15 +1,15 @@
 //
-//  SSLinkedInPositionsReader.h
-//  LinkedInConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by vimfung on 13-10-26.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 /**
- *	@brief	职位列表读取器
+ *	@brief	Positions Reader.
  */
 @interface SSLinkedInPositionsReader : NSObject
 {
@@ -18,36 +18,35 @@
 }
 
 /**
- *	@brief	源数据
+ *	@brief	Raw data.
  */
 @property (nonatomic,readonly) NSDictionary *sourceData;
 
 /**
- *	@brief	总数量
+ *	@brief	Total.
  */
 @property (nonatomic,readonly) NSInteger _total;
 
 /**
- *	@brief	列表数据
+ *	@brief	Values.
  */
 @property (nonatomic,readonly) NSArray *values;
 
 /**
- *	@brief	初始化读取器
+ *	@brief	Initialize reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 - (id)initWithSourceData:(NSDictionary *)sourceData;
 
-
 /**
- *	@brief	创建职位列表信息读取器
+ *	@brief	Create a positions reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 + (SSLinkedInPositionsReader *)readerWithSourceData:(NSDictionary *)sourceData;
 

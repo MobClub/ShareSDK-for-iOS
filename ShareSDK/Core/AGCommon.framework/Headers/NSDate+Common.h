@@ -1,116 +1,115 @@
 //
-//  NSDate+Additions.h
-//
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 
-
+/**
+ *	@brief	NSDate Category
+ */
 @interface NSDate (Common)
 
+
 /**
- *	@brief	获取NSDate的年份部分
+ *	@brief	Get the year part of the NSDate
  *
- *	@param 	date 	日期对象
+ *	@param 	date 	Date object.
  *
- *	@return	年份
+ *	@return	year value.
  */
 + (NSInteger)getFullYear:(NSDate *)date;
 
 /**
- *	@brief	获取NSDate的月份部分
+ *	@brief	Get the month part of the NSDate
  *
- *	@param 	date 	日期对象
+ *	@param 	date 	Date object.
  *
- *	@return	月份
+ *	@return	Month value.
  */
 + (NSInteger)getMonth:(NSDate *)date;
 
 /**
- *	@brief	获取NSDate的日期部分
+ *	@brief	Get the date part of the NSDate.
  *
- *	@param 	date 	日期对象
+ *	@param 	date 	Date object.
  *
- *	@return	日期
+ *	@return	Date value.
  */
 + (NSInteger)getDate:(NSDate *)date;
 
 /**
- *	@brief	获取NSDate的小时部分
+ *	@brief	Get the hour part of the NSDate.
  *
- *	@param 	date 	日期对象
+ *	@param 	date 	Date object.
  *
- *	@return	小时
+ *	@return	Hour value.
  */
 + (NSInteger)getHour:(NSDate *)date;
 
 /**
- *	@brief	获取NSDate的分钟部分
+ *	@brief	Get the minute part of the NSDate.
  *
- *	@param 	date 	日期对象
+ *	@param 	date 	Date object.
  *
- *	@return	分钟
+ *	@return	Minute value.
  */
 + (NSInteger)getMinute:(NSDate *)date;
 
 /**
- *	@brief	获取NSDate的秒部分
+ *	@brief	Get the seconds part of the NSDate
  *
- *	@param 	date 	日期对象
+ *	@param 	date 	Date object.
  *
- *	@return	秒
+ *	@return	Seconds value.
  */
 + (NSInteger)getSecond:(NSDate *)date;
 
-
 /**
- *	@brief	根据字符串格式转换字符串为日期
+ *	@brief	According to date format convert the string to a date
  *
- *	@param 	format 	日期格式字符串
- *	@param 	dateString 	日期字符串
+ *	@param 	format 	Format string.
+ *	@param 	dateString 	Date string.
  *
- *	@return	日期对象
+ *	@return	Date object.
  */
 + (NSDate *)dateByStringFormat:(NSString *)format dateString:(NSString *)dateString;
 
 /**
- *	@brief	根据字符串格式转换字符串为日期
+ *	@brief	According to date format convert the string to a date
  *
- *	@param 	format 	日期格式字符串
- *	@param 	dateString 	日期字符串
- *	@param 	locale 	本地化参数
+ *	@param 	format 	Format string.
+ *	@param 	dateString 	Date string.
+ *	@param 	locale 	Locale
  *
- *	@return	日期对象
+ *	@return	Date object.
  */
 + (NSDate *)dateByStringFormat:(NSString *)format dateString:(NSString *)dateString locale:(NSLocale *)locale;
 
 /**
- *	@brief	根据字符串格式转换日期为字符串
+ *	@brief	According to date format conversion date to a string
  *
- *	@param 	format 	日期格式字符串
- *	@param 	date 	日期对象
+ *	@param 	format 	Format string.
+ *	@param 	date 	Date object.
  *
- *	@return	日期字符串
+ *	@return	String object.
  */
 + (NSString *)stringByStringFormat:(NSString *)format data:(NSDate *)date;
 
 /**
- *	@brief	根据年月日返回日期
+ *	@brief	According to year、month、day creation date
  *
- *	@param 	year 	年份
- *	@param 	month 	月份
- *	@param 	date 	日期
- *	@param 	hour 	小时
- *	@param 	minute 	分钟
- *	@param 	second 	秒
+ *	@param 	year 	Year
+ *	@param 	month 	Month
+ *	@param 	date 	Date
+ *	@param 	hour 	Hour
+ *	@param 	minute 	Minute
+ *	@param 	second 	Seconds
  *
- *	@return	日期对象
+ *	@return	Date object.
  */
 + (NSDate *)dateByYear:(NSInteger)year 
                  month:(NSInteger)month 

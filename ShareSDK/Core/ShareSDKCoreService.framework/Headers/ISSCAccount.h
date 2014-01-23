@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import <Foundation/Foundation.h>
@@ -11,173 +11,173 @@
 #import "SSCTypeDef.h"
 
 /**
- *	@brief	ShareSDK帐号协议接口
+ *	@brief	ShareSDK App protocol.
  */
 @protocol ISSCAccount <NSObject>
 
 /**
- *	@brief	获取应用标识
+ *	@brief	Get app key.
  *
- *	@return	应用标识
+ *	@return	App key.
  */
 - (NSString *)appKey;
 
 /**
- *	@brief	获取所有权限角色
+ *	@brief	Get all the permissions roles
  *
- *	@return	角色列表
+ *	@return	Roles list.
  */
 - (NSArray *)roles;
 
 /**
- *	@brief	检测角色权限
+ *	@brief	Detection role permissions
  *
- *	@param 	role 	角色类型
+ *	@param 	role 	Role object.
  *
- *	@return	YES 表示拥有此角色， NO 表示没有此角色权限
+ *	@return	YES means to have this role, NO means no permission for this role
  */
 - (BOOL)checkRole:(Class)role;
 
 /**
- *	@brief	获取缓存路径
+ *	@brief	Get cache path.
  *
- *	@return	缓存路径
+ *	@return	Path.
  */
 - (NSString *)cachePath;
 
 /**
- *	@brief	设置统计策略
+ *	@brief	Set statistical policy
  *
- *	@param 	policy 	策略
+ *	@param 	policy 	Policy
  */
 - (void)setStatPolicy:(SSCStatPolicy)policy;
 
 /**
- *	@brief	统计策略
+ *	@brief	Get statistical policy
  *
- *	@return	策略
+ *	@return	Policy
  */
 - (SSCStatPolicy)statPolicy;
 
 /**
- *	@brief	设置应用信息托管标识
+ *	@brief	Set app information hosting flag.
  *
  *  @since  ver1.0.7
  *
- *	@param 	enabled 	YES 表示使用服务器上的托管信息，否则使用本地代码配置信息
+ *	@param 	enabled 	YES that the use of the information on the server hosting, otherwise use native code configuration information
  */
 - (void)setUseAppTrusteeship:(BOOL)enabled;
 
 /**
- *	@brief	获取应用信息托管标识
+ *	@brief	Get app information hosting flag.
  *
  *  @since  ver1.0.7
  *
- *	@return	YES 表示使用服务器上的托管信息，否则使用本地代码配置信息
+ *	@return	YES that the use of the information on the server hosting, otherwise use native code configuration information
  */
 - (BOOL)useAppTrusteeship;
 
 /**
- *	@brief	设置SSO使能状态
+ *	@brief	Set SSO Login enabled.
  *
  *  @since  ver2.1.1
  *
- *	@param 	enabled 	使能状态
+ *	@param 	enabled 	Enabled status.
  */
 - (void)setSsoEnabled:(BOOL)enabled;
 
 /**
- *	@brief	获取SSO使能状态
+ *	@brief	Get SSO Login enabled.
  *
  *	@since  ver2.1.1
  *
- *	@return	YES 表示开启， NO 表示关闭
+ *	@return	YES indicates enabled， NO indicates disabled.
  */
 - (BOOL)ssoEnabled;
 
 /**
- *	@brief	设置是否转换短链
+ *	@brief	Set convert short-link status
  *
  *  @since  ver2.1.1
  *
- *	@param 	enabled 	使能状态
+ *	@param 	enabled 	Enabled status.
  */
 - (void)setConvertUrlEnabled:(BOOL)enabled;
 
 /**
- *	@brief	获取是否转换短链状态
+ *	@brief	Get convert short-link status
  *
  *  @since  ver2.1.1
  *
- *	@return	YES 表示转换，NO 表示不转换
+ *	@return	YES said conversion, NO means no conversion
  */
 - (BOOL)convertUrlEnabled;
 
 /**
- *	@brief	设置统计数据使能状态
+ *	@brief	Set statistical enabled flag.
  *
  *  @since  ver2.1.1
  *
- *  @param  enabled     使能状态
+ *  @param  enabled     Enabled.
  */
 - (void)setStatEnabled:(BOOL)enabled;
 
 /**
- *	@brief	获取统计数据使能状态
+ *	@brief	Get statistical enabled flag.
  *
  *  @since  ver2.1.1
  *
- *	@return	统计数据使能状态
+ *	@return	Statistical enabled flag
  */
 - (BOOL)statEnabled;
 
 /**
- *	@brief	获取统计设备信息使能状态
+ *	@brief	Get statistical device information enabled flag.
  *
- *  @since  ver2.1.1    设置为只读，状态由开发者后台设置
+ *  @since  ver2.1.1    Set readonly，State is set by the server.
  *
- *	@return	统计设备信息使能状态
+ *	@return Statistical device information enabled flag.
  */
 - (BOOL)statDevEnabled;
 
 /**
- *	@brief	获取统计分享信息使能状态
+ *	@brief	Get statistical share information enabled flag.
  *
- *  @since  ver2.1.1    设置为只读，状态由开发者后台设置
+ *  @since  ver2.1.1    Set readonly，State is set by the server.
  *
- *	@return	统计分享信息使能状态
+ *	@return	Statistical share information enabled flag.
  */
 - (BOOL)statShareEnabled;
 
 /**
- *	@brief	获取统计用户信息使能状态
+ *	@brief	Get statistical user information enabled flag.
  *
- *  @since  ver2.1.1    设置为只读，状态由开发者后台设置
+ *  @since  ver2.1.1    Set readonly，State is set by the server.
  *
- *	@return	统计用户信息使能状态
+ *	@return	Statistical user information enabled flag
  */
 - (BOOL)statUserEnabled;
 
 /**
- *	@brief	获取当前时间（经过服务器校正）
+ *	@brief	Get current time（After the server corrected）
  *
- *	@return	当前时间（单位：秒）
+ *	@return	Current time（unit：second）
  */
 - (NSTimeInterval)currentTimeInterval;
 
 /**
- *	@brief	将客户端时间转换成服务器时间
+ *	@brief	Client time converted into server time
  *
- *	@param 	clientTimeInterval 	客户端时间
+ *	@param 	clientTimeInterval 	Client time.
  *
- *	@return	服务器时间
+ *	@return	Server time.
  */
 - (NSTimeInterval)serverTimeIntervalWithClientTimeInterval:(NSTimeInterval)clientTimeInterval;
 
 /**
- *	@brief	更新平台配置信息
+ *	@brief	Upadate paltform setting.
  *
- *  @param  completeHandler     完成事件
+ *  @param  completeHandler     Completed handler.
  */
 - (void)updatePlatSetting:(void(^)(NSArray *settings))completeHandler;
 

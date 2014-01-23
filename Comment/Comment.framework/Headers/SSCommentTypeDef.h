@@ -1,11 +1,11 @@
 //
-//  SSCommentTypeDef.h
-//  Comment
+//  Created by ShareSDK.cn on 13-1-14.
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-11-13.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <ShareSDK/ShareSDK.h>
 
 #ifndef Comment_SSCommentTypeDef_h
@@ -15,7 +15,7 @@
 @protocol ISSCComment;
 
 /**
- *	@brief	评论列表排序名称
+ *	@brief	Comment list order name.
  */
 typedef enum
 {
@@ -24,49 +24,48 @@ typedef enum
 }
 SSCCommentListOrderName;
 
-
 /**
- *	@brief	获取评论ID列表返回事件
+ *	@brief	Get Comment ids result event.
  */
 typedef void(^SSCGetCommentIdsResultEvent) (SSResponseState state, NSArray *commentIds, NSError *error);
 
 /**
- *	@brief	获取评论信息返回事件
+ *	@brief	Get comment information result event.
  */
 typedef void(^SSCGetCommentInfoResultEvent) (SSResponseState state, NSArray *commentList, NSError *error);
 
 /**
- *	@brief	获取主题信息返回事件
+ *	@brief	Get topic result event.
  */
 typedef void(^SSCGetTopicResultEvent) (SSResponseState state, id<ISSCTopic> topic, NSError *error);
 
 /**
- *	@brief	回复内容/评论返回事件
+ *	@brief	Reply content / comment result event.
  */
 typedef void(^SSCReplyResultEvent) (SSResponseState state, id<ISSCComment> comment, NSError *error);
 
 /**
- *	@brief	称赞内容/评论返回事件
+ *	@brief	Liked content / comment result event.
  */
 typedef void(^SSCLikeResultEvent) (SSResponseState state, NSError *error);
 
 /**
- *	@brief	分享内容/评论返回事件
+ *	@brief	Share content / comment result event.
  */
 typedef void(^SSCShareResultEvent) (SSResponseState state, NSError *error);
 
 /**
- *	@brief	评论列表页面返回事件，当点击页面工具栏的返回按钮时回调
+ *	@brief	Comment list page back event. When you click the Back button on the toolbar callback
  */
 typedef void(^SSCCommentListPageBackEvent) ();
 
 /**
- *	@brief	超过最大内容长度事件
+ *	@brief	Content out of max length event.
  */
 typedef void(^SSCContentOutOfMaxLengthEvent) ();
 
 /**
- *	@brief	视图将要显示事件
+ *	@brief	View will display event.
  */
 typedef void(^SSCViewWillDiplayEvent) (UIViewController *viewController);
 

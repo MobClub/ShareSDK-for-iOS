@@ -1,11 +1,11 @@
 //
-//  RespForWeChatViewController.mm
-//  SDKSample
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by Tencent on 12-4-9.
-//  Copyright (c) 2012年 Tencent. All rights reserved.
-//
-
 #import "RespForWeChatViewController.h"
 #import <AGCommon/NSString+Common.h>
 
@@ -135,7 +135,7 @@
     [imageView release];
 
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, tly + image.size.height, 320, 40)];
-    [title setText:@"微信OpenAPI Sample Demo"];
+    [title setText:NSLocalizedString(@"TEXT_WECHAT_DEMO", @"微信OpenAPI Sample Demo")];
     title.font = [UIFont systemFontOfSize:17];
     title.textColor = RGBCOLOR(0x11, 0x11, 0x11);
     title.textAlignment = UITextAlignmentCenter;
@@ -162,7 +162,7 @@
     [footView setBackgroundColor:RGBCOLOR(0xef, 0xef, 0xef)];
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn setTitle:@"回应文本消息给微信" forState:UIControlStateNormal];
+    [btn setTitle:NSLocalizedString(@"TEXT_RESPONSE_WECHAT_TEXT", @"回应文本消息给微信") forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:14]; 
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn setFrame:CGRectMake(10, 25, 145, 40)];
@@ -170,7 +170,7 @@
     [footView addSubview:btn];
     
     UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn2 setTitle:@"回应Photo消息给微信" forState:UIControlStateNormal];
+    [btn2 setTitle:NSLocalizedString(@"TEXT_RESPONSE_WECHAT_PHOTO", @"回应Photo消息给微信") forState:UIControlStateNormal];
     btn2.titleLabel.font = [UIFont systemFontOfSize:14]; 
     [btn2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn2 setFrame:CGRectMake(165, 25, 145, 40)];
@@ -178,7 +178,7 @@
     [footView addSubview:btn2];
     
     UIButton *btn3 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn3 setTitle:@"回应Music消息给微信" forState:UIControlStateNormal];
+    [btn3 setTitle:NSLocalizedString(@"TEXT_RESPONSE_WECHAT_MUSIC", @"回应Music消息给微信") forState:UIControlStateNormal];
     btn3.titleLabel.font = [UIFont systemFontOfSize:14]; 
     [btn3 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn3 setFrame:CGRectMake(10, 80, 145, 40)];
@@ -186,7 +186,7 @@
     [footView addSubview:btn3];
     
     UIButton *btn4 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn4 setTitle:@"回应News消息给微信" forState:UIControlStateNormal];
+    [btn4 setTitle:NSLocalizedString(@"TEXT_RESPONSE_WECHAT_NEWS", @"回应News消息给微信") forState:UIControlStateNormal];
     btn4.titleLabel.font = [UIFont systemFontOfSize:14]; 
     [btn4 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn4 setFrame:CGRectMake(165, 80, 145, 40)];
@@ -194,7 +194,7 @@
     [footView addSubview:btn4];
     
     UIButton *btn5 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn5 setTitle:@"回应Video消息给微信" forState:UIControlStateNormal];
+    [btn5 setTitle:NSLocalizedString(@"TEXT_RESPONSE_WECHAT_VIDEO", @"回应Video消息给微信") forState:UIControlStateNormal];
     btn5.titleLabel.font = [UIFont systemFontOfSize:14]; 
     [btn5 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn5 setFrame:CGRectMake(10, 135, 145, 40)];
@@ -202,7 +202,7 @@
     [footView addSubview:btn5];
     
     UIButton *btn6 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn6 setTitle:@"回应App消息给微信" forState:UIControlStateNormal];
+    [btn6 setTitle:NSLocalizedString(@"TEXT_RESPONSE_WECHAT_APP", @"回应App消息给微信") forState:UIControlStateNormal];
     btn6.titleLabel.font = [UIFont systemFontOfSize:14]; 
     [btn6 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn6 setFrame:CGRectMake(165, 135, 145, 40)];
@@ -210,7 +210,7 @@
     [footView addSubview:btn6];
     
     UIButton *btn7 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn7 setTitle:@"回应非gif消息给微信" forState:UIControlStateNormal];
+    [btn7 setTitle:NSLocalizedString(@"TEXT_RESPONSE_WECHAT_NON_GIF", @"回应非gif消息给微信") forState:UIControlStateNormal];
     btn7.titleLabel.font = [UIFont systemFontOfSize:14];
     [btn7 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn7 setFrame:CGRectMake(10, 190, 145, 40)];
@@ -218,7 +218,7 @@
     [footView addSubview:btn7];
     
     UIButton *btn10 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn10 setTitle:@"回应gif消息给微信" forState:UIControlStateNormal];
+    [btn10 setTitle:NSLocalizedString(@"TEXT_RESPONSE_WECHAT_GIF", @"回应gif消息给微信") forState:UIControlStateNormal];
     btn10.titleLabel.font = [UIFont systemFontOfSize:14];
     [btn10 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn10 setFrame:CGRectMake(165, 190, 145, 40)];
@@ -236,7 +236,7 @@
     [self.view addSubview:footView];
     [footView release];
     
-    m_nsLastText = @"完善的跨终端即时通讯能力，使得Mac可以与PC、手机、Pad等终端的QQ进行无缝沟通，让您的交流更畅快。 完善的跨终端即时通讯能力，使得Mac可以与PC、手机、Pad等终端的QQ进行无缝沟通，让您的交流更畅快。 ";
+    m_nsLastText = NSLocalizedString(@"TEXT_LAST_TEXT", @"完善的跨终端即时通讯能力，使得Mac可以与PC、手机、Pad等终端的QQ进行无缝沟通，让您的交流更畅快。 完善的跨终端即时通讯能力，使得Mac可以与PC、手机、Pad等终端的QQ进行无缝沟通，让您的交流更畅快。 ");
     
 }
 

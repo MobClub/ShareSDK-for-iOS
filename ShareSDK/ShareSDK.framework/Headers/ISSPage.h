@@ -1,57 +1,57 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import <Foundation/Foundation.h>
 
 /**
- *	@brief	分页对象协议，用于获取分页数据时标识分页信息
+ *	@brief	Paging info protocol，Data is used to specify which pages to get
  */
 @protocol ISSPage <NSObject>
 
 /**
- *	@brief	获取页码
+ *	@brief	Get page No.
  *
- *	@return	页码
+ *	@return	Page No
  */
 - (NSInteger)pageNo;
 
 /**
- *	@brief	设置页码
+ *	@brief	Set page No.
  *
- *	@param 	pageNo 	页码
+ *	@param 	pageNo 	Page No.
  */
 - (void)setPageNo:(NSInteger)pageNo;
 
 /**
- *	@brief	获取分页大小
+ *	@brief	Get page size
  *
- *	@return	分页大小
+ *	@return	Page size
  */
 - (NSInteger)pageSize;
 
 /**
- *	@brief	设置分页大小
+ *	@brief	Set page size
  *
- *	@param 	pageSize 	分页大小
+ *	@param 	pageSize 	Page size
  */
 - (void)setPageSize:(NSInteger)pageSize;
 
 /**
- *	@brief	获取分页游标
+ *	@brief	Get cursor
  *
- *	@return	分页游标
+ *	@return	Cursor
  */
 - (long long)cursor;
 
 /**
- *	@brief	设置分页游标
+ *	@brief	Set cursor
  *
- *	@param 	cursor 	分页游标
+ *	@param 	cursor 	Cursor
  */
 - (void)setCursor:(long long)cursor;
 

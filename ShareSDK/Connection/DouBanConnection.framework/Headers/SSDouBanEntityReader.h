@@ -1,15 +1,15 @@
 //
-//  SSDouBanEntityReader.h
-//  DouBanConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-22.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 /**
- *	@brief	实体信息读取器
+ *	@brief	DouBan Entity reader.
  */
 @interface SSDouBanEntityReader : NSObject
 {
@@ -18,40 +18,40 @@
 }
 
 /**
- *	@brief	源数据
+ *	@brief	Raw data.
  */
 @property (nonatomic,readonly) NSDictionary *sourceData;
 
 /**
- *	@brief	暂无
+ *	@brief	None
  */
 @property (nonatomic,readonly) NSArray *topics;
 
 /**
- *	@brief	暂无
+ *	@brief	None
  */
 @property (nonatomic,readonly) NSArray *urls;
 
 /**
- *	@brief	暂无
+ *	@brief	None
  */
 @property (nonatomic,readonly) NSArray *userMentions;
 
 /**
- *	@brief	初始化读取器
+ *	@brief	Initialize reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 - (id)initWithSourceData:(NSDictionary *)sourceData;
 
 /**
- *	@brief	创建用户信息读取器
+ *	@brief	Create entity reader object.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 + (SSDouBanEntityReader *)readerWithSourceData:(NSDictionary *)sourceData;
 

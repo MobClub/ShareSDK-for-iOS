@@ -1,16 +1,16 @@
 //
-//  SSTwitterMediaReader.h
-//  TwitterConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-24.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import "SSTwitterSizesReader.h"
 
 /**
- *	@brief	媒体信息读取器
+ *	@brief	Media Reader.
  */
 @interface SSTwitterMediaReader : NSObject
 {
@@ -19,85 +19,85 @@
 }
 
 /**
- *	@brief	源数据
+ *	@brief	Raw data.
  */
 @property (nonatomic,readonly) NSDictionary *sourceData;
 
 /**
- *	@brief	客户端显示URL
+ *	@brief	Display URL.
  */
 @property (nonatomic,readonly) NSString *displayUrl;
 
 /**
- *	@brief	扩展版显示URL，链接到显示页面。
+ *	@brief	Extended of the display URL, link to display the page.
  */
 @property (nonatomic,readonly) NSString *expandedUrl;
 
 /**
- *	@brief	媒体ID
+ *	@brief	id
  */
 @property (nonatomic,readonly) long long Id;
 
 /**
- *	@brief	媒体ID字符串
+ *	@brief	id string.
  */
 @property (nonatomic,readonly) NSString *idStr;
 
 /**
- *	@brief	URL在Tweet文本中的起始位置和结束位置索引
+ *	@brief	URL start position and end position of the text index Tweet
  */
 @property (nonatomic,readonly) NSArray *indices;
 
 /**
- *	@brief	上传媒体文件的URL
+ *	@brief	Media URL.
  */
 @property (nonatomic,readonly) NSString *mediaUrl;
 
 /**
- *	@brief	基于HTTPS的上传媒体文件URL
+ *	@brief	Media URL HTTPs.
  */
 @property (nonatomic,readonly) NSString *mediaUrlHttps;
 
 /**
- *	@brief	媒体文件大小
+ *	@brief	Sizes.
  */
 @property (nonatomic,readonly) SSTwitterSizesReader *sizes;
 
 /**
- *	@brief	源Tweet的ID
+ *	@brief	source status id.
  */
 @property (nonatomic,readonly) long long sourceStatusId;
 
 /**
- *	@brief	源Tweet的ID字符串
+ *	@brief	source status id string.
  */
 @property (nonatomic,readonly) NSString *sourceStatusIdStr;
 
 /**
- *	@brief	类型
+ *	@brief	Type.
  */
 @property (nonatomic,readonly) NSString *type;
 
 /**
- *	@brief	媒体链接的URL
+ *	@brief	media link URL.
  */
 @property (nonatomic,readonly) NSString *url;
 
 /**
- *	@brief	初始化读取器
+ *	@brief	Initialize reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 - (id)initWithSourceData:(NSDictionary *)sourceData;
 
 /**
- *	@brief	创建媒体信息读取器
+ *	@brief	Create a media reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return Reader object.
  */
 + (SSTwitterMediaReader *)readerWithSourceData:(NSDictionary *)sourceData;
 

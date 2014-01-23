@@ -1,11 +1,11 @@
 //
-//  ISSInstagramApp.h
-//  InstagramConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-9.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <ShareSDKCoreService/ShareSDKCoreService.h>
 #import "SSInstagramUser.h"
@@ -14,7 +14,7 @@
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**
- *	@brief	新浪微博请求方式
+ *	@brief	Instagram request method.
  */
 typedef enum
 {
@@ -25,39 +25,39 @@ typedef enum
 SSInstagramRequestMethod;
 
 /**
- *	@brief	Instagram应用协议
+ *	@brief	Instagram App Protocol.
  */
 @protocol ISSInstagramApp <ISSPlatformApp>
 
 /**
- *	@brief	获取应用Key
+ *	@brief	Get client id.
  *
- *	@return	应用Key
+ *	@return	Client id string.
  */
 - (NSString *)clientId;
 
 /**
- *	@brief	获取应用密钥
+ *	@brief	Get client secret.
  *
- *	@return	应用密钥
+ *	@return	Client secret string.
  */
 - (NSString *)clientSecret;
 
 /**
- *	@brief	获取应用回调地址
+ *	@brief	Get redirect uri.
  *
- *	@return	应用回调地址
+ *	@return	Redirect uri string.
  */
 - (NSString *)redirectUri;
 
 /**
- *	@brief	调用开放平台API
+ *	@brief	Call api
  *
- *	@param 	path 	路径
- *	@param 	params 	请求参数
- *  @param  user    授权用户,如果传入nil则表示默认的授权用户
- *  @param  result  返回回调
- *  @param  fault   失败回调
+ *	@param 	path 	API path string.
+ *	@param 	params 	Request parameters.
+ *  @param  user    Authorized users, it means that if the incoming nil default authorized users
+ *  @param  result  Result handler.
+ *  @param  fault   Fault handler.
  */
 - (void)api:(NSString *)path
      method:(SSInstagramRequestMethod)method
@@ -66,21 +66,20 @@ SSInstagramRequestMethod;
      result:(void(^)(id responder))result
       fault:(void(^)(CMErrorInfo *error))fault;
 
-
 /**
- *	@brief 打开Instgaram的拍照功能
+ *	@brief Open call Instagram camera.
  *
- *  @return YES 表示
+ *  @return YES open success. otherwise open failure.
  */
 - (BOOL)openInstagramWithCamera;
 
 /**
- *	@brief	分享内容
+ *	@brief	Share content.
  *
- *	@param 	image 	图片
- *	@param 	title 	标题
- *  @param  containerController     容器控制器
- *  @param  result  返回回调
+ *	@param 	image 	Image attachment object.
+ *	@param 	title 	Title string.
+ *  @param  containerController     Container controller.
+ *  @param  result  Result handler.
  */
 - (void)shareWithImage:(id<ISSCAttachment>)image
                  title:(NSString *)title

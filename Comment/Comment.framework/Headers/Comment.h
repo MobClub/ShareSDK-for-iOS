@@ -1,11 +1,11 @@
 //
-//  Comment.h
-//  Comment
+//  Created by ShareSDK.cn on 13-1-14.
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-11-7.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <ShareSDK/ShareSDK.h>
@@ -18,91 +18,88 @@
 #import "SSCCommentViewController.h"
 
 /**
- *	@brief	评论称赞模块
+ *	@brief	Common & Like
  */
 @interface Comment : NSObject
 
 #pragma mark - 评论、称赞、分享（含UI）
 
 /**
- *	@brief	显示评论视图
+ *	@brief	Create a comment view controller.
  *
- *	@param 	contentId 	内容唯一标识
- *	@param 	title 	标题
- *	@param 	comment 	被评论的评论内容，如果为nil，则表示对主题进行评论
- *  @param  resultHandler       返回事件回调
- *  
- *  @return 评论视图控制器
+ *	@param 	contentId 	Content id
+ *	@param 	title 	Title
+ *	@param 	comment 	Peer-reviewed content, if it is nil, it means to comment on the topic
+ *  @param  resultHandler       Result handler.
+ *
+ *  @return Comment view controller.
  */
 + (SSCCommentViewController *)commentViewWithContentId:(NSString *)contentId
                                                  title:(NSString *)title
                                                comment:(id<ISSCComment>)comment
                                                 result:(SSCReplyResultEvent)resultHandler;
 
-
 /**
- *	@brief	创建评论列表页面
+ *	@brief	Create a comment list page view.
  *
- *	@param 	contentId 	内容唯一标识
- *	@param 	title 	标题
+ *	@param 	contentId 	Content id.
+ *	@param 	title 	Title
  *
- *	@return	评论列表页面视图控制器
+ *	@return	Comment list view controller.
  */
 + (SSCCommentListViewController *)commentListViewPageWithContentId:(NSString *)contentId
                                                              title:(NSString *)title;
 
 /**
- *	@brief	创建复合评论列表视图
+ *	@brief	Create a complex comment list view.
  *
- *	@param 	contentId 	内容唯一标识
- *  @param  title   标题
- *	@param 	menuItems 	菜单项集合
- *	@param 	frame 	显示范围
+ *	@param 	contentId 	Content id
+ *  @param  title   Title
+ *	@param 	menuItems 	Menu items
+ *	@param 	frame 	Display rect
  *
- *	@return	评论列表视图
+ *	@return	Comment list view.
  */
 + (SSCCommentListView *)complexCommentListViewWithContentId:(NSString *)contentId
                                                       title:(NSString *)title
                                                   menuItems:(NSArray *)menuItems
                                                       frame:(CGRect)frame;
 
-
 /**
- *	@brief	创建评论列表视图
+ *	@brief	Create a comment list view
  *
- *	@param 	cotentId 	内容唯一标识
- *  @param  title   标题
- *	@param 	order 	排序方法
- *  @param  frame   显示范围
+ *	@param 	cotentId 	Content id
+ *  @param  title   Title
+ *	@param 	order 	Order
+ *  @param  frame   Display rect
  *
- *	@return	评论列表视图
+ *	@return	Comment list view.
  */
 + (SSCCommentListView *)commentListViewWithContentId:(NSString *)contentId
                                                title:(NSString *)title
                                                order:(NSComparator)order
                                                frame:(CGRect)frame;
-
 /**
- *	@brief	创建评论工具栏
+ *	@brief	Create a comment toolbar.
  *
- *	@param 	contentId 	内容唯一标识
- *  @param  title   标题
- *  @param  frame   显示范围
+ *	@param 	contentId 	Content id.
+ *  @param  title   Title
+ *  @param  frame   Display rect.
  *
- *	@return	评论工具栏
+ *	@return	Comment toolbar object.
  */
 + (SSCCommentToolbar *)commentToolbarWithContentId:(NSString *)contentId
                                              title:(NSString *)title
                                              frame:(CGRect)frame;
 
 /**
- *	@brief	显示分享菜单
+ *	@brief	A share menu to display.
  *
- *	@param 	contentId 	内容唯一标识
- *	@param 	title 	标题
- *	@param 	comment 	评论信息对象，非nil，表示对评论进行分享，如果为nil，则表示对内容进行分享。
- *	@param 	contentEntity 	分享内容实体。用于定义各个平台分享评论时的内容。
- *  @param  resultHandler  分享返回事件处理
+ *	@param 	contentId 	Content id
+ *	@param 	title 	Title
+ *	@param 	comment 	Comment objects, if it is non-nil, expressed comments to share, if it is nil, it means that the content is shared.
+ *	@param 	contentEntity 	Share content entity. Used to define the contents of each platform to share comments.
+ *  @param  resultHandler  Result handler，callback to capture state changes
  */
 + (id<ISSShareActionSheet>)showShareActionSheetWithContentId:(NSString *)contentId
                                                        title:(NSString *)title
@@ -114,14 +111,14 @@
 #pragma mark - 评论、称赞、分享（无UI）
 
 /**
- *	@brief	一键分享内容
+ *	@brief	One key share content.
  *
- *  @param  shareList   分享列表（邮件、短信、微信、QQ、Pinterest、Google+、打印、拷贝除外）
- *  @param  contentId   内容标识
- *  @param  title       标题
- *  @param  comment     评论信息对象，非nil，表示对评论进行分享，如果为nil，则表示对内容进行分享。
- *	@param 	contentEntity 	分享内容实体。用于定义各个平台分享评论时的内容。
- *	@param 	resultHandler 	返回事件
+ *  @param  shareList   Platform type list,（E-mail, SMS, WeChat, QQ, Pinterest, Google+, print, copy except）
+ *  @param  contentId   Content id.
+ *  @param  title       Title
+ *  @param  comment     Comment objects, if it is non-nil, expressed comments to share, if it is nil, it means that the content is shared.
+ *	@param 	contentEntity 	Share content entity. Used to define the contents of each platform to share comments.
+ *	@param 	resultHandler 	Result handler，callback to capture state changes
  */
 + (void)oneKeyShareContentWithShareList:(NSArray *)shareList
                               contentId:(NSString *)contentId
@@ -131,14 +128,14 @@
                                  result:(SSPublishContentEventHandler)resultHandler;
 
 /**
- *	@brief	对内容／评论进行分享
+ *	@brief	Contents / comments to share
  *
- *  @param  type        分享类型
- *	@param 	contentId 	内容唯一标识
- *	@param 	title 	标题
- *	@param 	comment 	评论信息对象，非nil，表示对评论进行分享，如果为nil，则表示对内容进行分享。
- *  @param  contentEntity   分享内容实体。用于定义各个平台分享评论时的内容。
- *	@param 	resultHandler 	状态处理器，对于分享过程中的状态变更由此回调进行捕获
+ *  @param  type        Platform type.
+ *	@param 	contentId 	Content id.
+ *	@param 	title 	Title
+ *	@param 	comment 	Comment objects, if it is non-nil, expressed comments to share, if it is nil, it means that the content is shared.
+ *  @param  contentEntity   Share content entity. Used to define the contents of each platform to share comments.
+ *	@param 	resultHandler 	Result handler，callback to capture state changes
  */
 + (void)shareContentWithType:(ShareType)type
                    contentId:(NSString *)contentId

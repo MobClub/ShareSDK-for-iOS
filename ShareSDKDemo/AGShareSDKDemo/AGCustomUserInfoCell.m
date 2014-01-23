@@ -1,11 +1,11 @@
 //
-//  AGCustomUserInfoCell.m
-//  AGShareSDKDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-3-5.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import "AGCustomUserInfoCell.h"
 #import <AGCommon/UIImage+Common.h>
 
@@ -36,7 +36,7 @@
         _shareType = shareType;
         _cacheManager = [imageCacheManager retain];
         
-        //头像
+                        //Avatar
         _iconImageView = [[CMImageView alloc] initWithFrame:CGRectMake(LEFT_PADDING,
                                                                      (self.contentView.height - ICON_HEIGHT) / 2,
                                                                      ICON_WIDTH,
@@ -45,7 +45,7 @@
         [self.contentView addSubview:_iconImageView];
         [_iconImageView release];
         
-        //Loading
+                        //Loading
         _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [_indicatorView sizeToFit];
         _indicatorView.frame = CGRectMake(_iconImageView.left + (_iconImageView.width - _indicatorView.width) / 2,
@@ -55,19 +55,19 @@
         [self.contentView addSubview:_indicatorView];
         [_indicatorView release];
         
-        //图标
+                        //Icon
         _vipImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, VIP_ICON_WIDTH, VIP_ICON_HEIGHT)];
         [self.contentView addSubview:_vipImageView];
         [_vipImageView release];
         
-        //昵称
+                        //Nickname
         _nickNameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _nickNameLabel.backgroundColor = [UIColor clearColor];
         _nickNameLabel.font = [UIFont systemFontOfSize:16];
         [self.contentView addSubview:_nickNameLabel];
         [_nickNameLabel release];
         
-        //描述
+                        //Description
         _descLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _descLabel.backgroundColor = [UIColor clearColor];
         _descLabel.font = [UIFont systemFontOfSize:13];
@@ -75,7 +75,7 @@
         [self.contentView addSubview:_descLabel];
         [_descLabel release];
         
-        //性别
+                        //Gender
         _sexImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, GENDER_ICON_WIDTH, GENDER_ICON_HEIGHT)];
         [self.contentView addSubview:_sexImageView];
         [_sexImageView release];
@@ -289,7 +289,7 @@
             _descLabel.text = verify;
         }
         
-        //判断认证信息
+                        //Determine the authentication information
         if (!verifyType)
         {
             switch (_shareType)
@@ -299,7 +299,7 @@
                     NSNumber *verifiedTypeNum = [_userInfo objectForKey:@"verified_type"];
                     if ([verifiedTypeNum isKindOfClass:[NSNumber class]] && [verifiedTypeNum integerValue] == 220)
                     {
-                        //达人
+                                                                        //Grassroot
                         _vipImageView.image = [UIImage imageNamed:@"Grassroot.png"];
                         _vipImageView.hidden = NO;
                     }
@@ -327,13 +327,13 @@
                         switch ([verifiedTypeNum integerValue])
                         {
                             case 0:
-                                //个人认证
+                                                                                                //Personale Certification
                                 _vipImageView.image = [UIImage imageNamed:@"Vip.png"];
                                 break;
                             case 5:
                             case 2:
                             case 3:
-                                //企业认证
+                                                                                                //Enterprise Certification
                                 _vipImageView.image = [UIImage imageNamed:@"EnterpriseVip.png"];
                                 break;
                             default:

@@ -1,11 +1,11 @@
 //
-//  ISSDropboxApp.h
-//  DropboxConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-9-9.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <ShareSDKCoreService/ShareSDKCoreService.h>
 #import "SSDropboxUser.h"
@@ -15,7 +15,7 @@
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**
- *	@brief	请求方式
+ *	@brief	Request Method.
  */
 typedef enum
 {
@@ -26,32 +26,32 @@ typedef enum
 SSDropboxRequestMethod;
 
 /**
- *	@brief	Dropbox应用协议
+ *	@brief	Dropbox app protocol
  */
 @protocol ISSDropboxApp <ISSPlatformApp>
 
 /**
- *	@brief	获取消费者Key
+ *	@brief	Get Consumer key
  *
- *	@return	消费者Key
+ *	@return	Consumer key.
  */
 - (NSString *)consumerKey;
 
 /**
- *	@brief	获取消费者密钥
+ *	@brief	Get consumer secret.
  *
- *	@return	消费者密钥
+ *	@return	Consumer secret.
  */
 - (NSString *)consumerSecret;
 
 /**
- *	@brief	调用开放平台API
+ *	@brief	Call api
  *
- *	@param 	path 	路径
- *	@param 	params 	请求参数
- *  @param  user    授权用户,如果传入nil则表示默认的授权用户
- *  @param  result  返回回调
- *  @param  fault   失败回调
+ *	@param 	path 	Api path.
+ *	@param 	params 	Request parameters.
+ *  @param  user    Authorized users, it means that if the incoming nil default authorized users
+ *  @param  result  Result handler
+ *  @param  fault   Fault handler
  */
 - (void)api:(NSString *)path
      method:(SSDropboxRequestMethod)method
@@ -61,9 +61,9 @@ SSDropboxRequestMethod;
       fault:(void(^)(CMErrorInfo *error))fault;
 
 /**
- *	@brief	上传文件
+ *	@brief	Upload file
  *
- *	@param 	file 	文件对象
+ *	@param 	file 	File attachment object.
  */
 - (void)uploadFile:(id<ISSCAttachment>)file
             result:(SSShareResultEvent)result;

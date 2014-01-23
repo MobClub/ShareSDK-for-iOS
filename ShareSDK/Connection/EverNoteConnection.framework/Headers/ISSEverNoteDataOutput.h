@@ -1,170 +1,170 @@
 //
-//  ISSEverNoteDataOutput.h
-//  EverNoteConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by vimfung on 13-5-11.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 /**
- *	@brief	数据读取协议
+ *	@brief	Data output protocol.
  */
 @protocol ISSEverNoteDataOutput <NSObject>
 
 /**
- *	@brief	读取一个字符串
+ *	@brief	Read a string.
  *
- *	@return	字符串
+ *	@return	String object.
  */
 - (NSString *)readString;
 
 /**
- *	@brief	读取一个布尔值
+ *	@brief	Read a boolean.
  *
- *	@return	布尔值
+ *	@return	Boolean value.
  */
 - (BOOL)readBool;
 
 /**
- *	@brief	读取一个字节
+ *	@brief	Read a byte.
  *
- *	@return	字节
+ *	@return	Byte value.
  */
 - (unsigned char)readByte;
 
 /**
- *	@brief	读取一个短整型
+ *	@brief	Read a short integer.
  *
- *	@return	短整型值
+ *	@return	Short integer value.
  */
 - (short)readShort;
 
 /**
- *	@brief	读取一个32位整型值
+ *	@brief	Read a bit-32 integer.
  *
- *	@return	整型值
+ *	@return	Bit-32 integer value.
  */
 - (int32_t)readInt32;
 
 /**
- *	@brief	读取一个64位整型值
+ *	@brief	Read a bit-64 integer.
  *
- *	@return	整型值
+ *	@return	Bit-64 integer value.
  */
 - (int64_t)readInt64;
 
 /**
- *	@brief	读取一个双精度浮点型
+ *	@brief	Read a double.
  *
- *	@return	浮点型值 
+ *	@return	Double value.
  */
 - (double)readDouble;
 
 /**
- *	@brief	读取二进制流
+ *	@brief	Read binary.
  *
- *	@return	二进制流对象
+ *	@return	Binary object.
  */
 - (NSData *)readBinary;
 
 /**
- *	@brief	读取字节数组
+ *	@brief	Read bytes.
  *
- *	@param 	buf 	缓存区
- *	@param 	offset 	偏移位置，从缓存区的指定位置开始写入位置
- *	@param 	len 	读入长度
+ *	@param 	buf 	Buffer.
+ *	@param 	offset 	Offset，Specify the starting position of the buffer to write.
+ *	@param 	len 	Length.
  */
 - (void)readBytes:(uint8_t *)buf
            offset:(NSInteger)offset
               len:(NSInteger)len;
 
 /**
- *	@brief	开始读取消息
+ *	@brief	Begin read message.
  *
- *	@param 	name 	用于保存读取的消息名称指向
- *	@param 	type 	用于保存读取的消息类型指向
- *	@param 	sequenceID 	用于保存读取的消息序列指向
+ *	@param 	name 	Used to store the name's pointer
+ *	@param 	type 	Used to store the type's pointer
+ *	@param 	sequenceID 	Used to store the sequence id's pointer
  */
 - (void)beginReadMessage:(NSString **)name
                     type:(int *)type
               sequenceID:(int *)sequenceID;
-
+			  
 /**
- *	@brief	结束读取消息
+ *	@brief	End read message.
  */
 - (void)endReadMessage;
 
 /**
- *	@brief	开始读取结构
+ *	@brief	Begin read structure.
  *
- *	@param 	name 	用于保存读取的结构名称指向
+ *	@param 	name 	Used to store the name's pointer
  */
 - (void)beginReadStruct:(NSString **)name;
 
 /**
- *	@brief	结束读取结构
+ *	@brief	End read structure.
  */
 - (void)endReadStruct;
 
 /**
- *	@brief	开始读取字段信息
+ *	@brief	Begin read field
  *
- *	@param 	name 	用于保存字段名称指向
- *	@param 	type 	用于保存字段类型指向
- *	@param 	fieldID 	用于保存字段ID指向
+ *	@param 	name 	Used to store the field name's pointer
+ *	@param 	type 	Used to store the field type's pointer
+ *	@param 	fieldID 	Used to store the field id's pointer
  */
 - (void)beginReadField:(NSString **)name
                   type:(int *)type
                fieldID:(int *)fieldID;
-
+			   
 /**
- *	@brief	结束读取字段
+ *	@brief	End read field
  */
 - (void)endReadField;
 
 /**
- *	@brief	开始读取图信息
+ *	@brief	Begin read map.
  *
- *	@param 	keyType 	用于保存Key类型指向
- *	@param 	valueType 	用于保存Value类型指向
- *	@param 	size 	用于保存长度指向
+ *	@param 	keyType 	Used to store the key's pointer
+ *	@param 	valueType 	Used to store the value's pointer
+ *	@param 	size 	Used to store the size's pointer
  */
 - (void)beginReadMap:(int *)keyType
            valueType:(int *)valueType
                 size:(int *)size;
-
+				
 /**
- *	@brief	结束读取图信息
+ *	@brief	End read map.
  */
 - (void)endReadMap;
 
 /**
- *	@brief	开始读取集合
+ *	@brief	Begin read set.
  *
- *	@param 	elementType 	用于保存元素类型指向
- *	@param 	size 	用于保存长度指向
+ *	@param 	elementType 	Used to store the element type's pointer
+ *	@param 	size 	Used to store the Length pointer.
  */
 - (void)beginReadSet:(int *)elementType
                 size:(int *)size;
-
+				
 /**
- *	@brief	结束读取集合
+ *	@brief	End read set.
  */
 - (void)endReadSet;
 
 /**
- *	@brief	开始读取列表
+ *	@brief	Begin read list.
  *
- *	@param 	elementType 	用于保存元素类型指向
- *	@param 	size 	用于保存长度指向
+ *	@param 	elementType 	Used to store the element type's pointer
+ *	@param 	size 	Used to store the Length pointer.
  */
 - (void)beginReadList:(int *)elementType
                  size:(int *)size;
-
+				 
 /**
- *	@brief	结束读取列表
+ *	@brief	End read list.
  */
 - (void)endReadList;
 

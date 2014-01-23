@@ -1,17 +1,17 @@
 //
-//  SSLinkedInShare.h
-//  LinkedInConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by vimfung on 13-8-11.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <ShareSDKCoreService/SSCDataObject.h>
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**
- *	@brief	分享信息
+ *	@brief	Share Information.
  */
 @interface SSLinkedInShare : NSObject <ISSPlatformShareInfo,
                                        NSCoding,
@@ -27,41 +27,41 @@
 }
 
 /**
- *	@brief	分享ID
+ *	@brief	Share id.
  */
 @property (nonatomic,copy) NSString *sid;
 
 /**
- *	@brief	分享内容
+ *	@brief	Content string.
  */
 @property (nonatomic,copy) NSString *text;
 
 /**
- *	@brief	分享的链接列表
+ *	@brief	a list of URL
  */
 @property (nonatomic,retain) NSArray *urls;
 
 /**
- *	@brief	分享的图片列表
+ *	@brief	a list of image.
  */
 @property (nonatomic,retain) NSArray *imgs;
 
 /**
- *	@brief	扩展信息
+ *	@brief	Extended data.
  */
 @property (nonatomic,retain) NSDictionary *extInfo;
 
 /**
- *	@brief	原始数据
+ *	@brief	Raw data.
  */
 @property (nonatomic,retain) NSDictionary *sourceData;
 
 /**
- *	@brief	创建用户信息
+ *	@brief	Create a share information.
  *
- *	@param 	response 	服务器返回数据
+ *	@param 	response 	Response data.
  *
- *	@return	用户信息对象
+ *	@return	Share information.
  */
 + (SSLinkedInShare *)shareWithResponse:(NSDictionary *)response;
 

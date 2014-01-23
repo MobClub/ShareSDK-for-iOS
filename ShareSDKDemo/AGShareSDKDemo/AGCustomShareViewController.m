@@ -1,11 +1,11 @@
 //
-//  AGCustomShareViewController.m
-//  AGShareSDKDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-3-5.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import "AGCustomShareViewController.h"
 #import "AGCustomAtPlatListViewController.h"
 #import <AGCommon/UIImage+Common.h>
@@ -66,7 +66,7 @@
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
         [leftBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
                            forState:UIControlStateNormal];
-        [leftBtn setTitle:@"取消" forState:UIControlStateNormal];
+        [leftBtn setTitle:NSLocalizedString(@"TEXT_CANCEL", @"取消") forState:UIControlStateNormal];
         leftBtn.titleLabel.font = [UIFont systemFontOfSize:13];
         leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
         [leftBtn addTarget:self action:@selector(cancelButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -76,7 +76,7 @@
         UIButton *rightBtn = [[[UIButton alloc] init] autorelease];
         [rightBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
                            forState:UIControlStateNormal];
-        [rightBtn setTitle:@"发布" forState:UIControlStateNormal];
+        [rightBtn setTitle:NSLocalizedString(@"TEXT_PUBLISH", @"发布") forState:UIControlStateNormal];
         rightBtn.titleLabel.font = [UIFont systemFontOfSize:13];
         rightBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
         [rightBtn addTarget:self action:@selector(publishButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -94,7 +94,7 @@
             [label release];
         }
         
-        self.title = @"内容分享";
+        self.title = NSLocalizedString(@"TEXT_SHARE_TITLE", @"内容分享");
     }
     return self;
 }
@@ -155,7 +155,7 @@
     [self.view addSubview:_toolbarBG];
     [_toolbarBG release];
 	
-    //图片
+            //Image
     _picBG = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareImageBG.png"]];
     _picBG.frame = CGRectMake(self.view.width - IMAGE_PADDING_RIGHT - _picBG.width, IMAGE_PADDING_TOP, _picBG.width, _picBG.height);
     _picBG.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
@@ -174,7 +174,7 @@
     [self.view addSubview:_pinImageView];
     [_pinImageView release];
     
-    //文本框
+            //Text View
     _textView = [[UITextView alloc] initWithFrame:CGRectMake(PADDING_LEFT,
                                                              PADDING_TOP + 1,
                                                              _picBG.left - HORIZONTAL_GAP - PADDING_LEFT,
@@ -198,7 +198,7 @@
                                      _contentBG.bottom - AT_BUTTON_PADDING_BOTTOM - AT_BUTTON_HEIGHT - VERTICAL_GAP - 1);
     }
     
-    //工具栏
+            //Toolbar
     _toolbar = [[AGCustomShareViewToolbar alloc] initWithFrame:CGRectMake(_toolbarBG.left + 2, _toolbarBG.top, _toolbarBG.width - 4, _toolbarBG.height)];
     _toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:_toolbar];
@@ -215,7 +215,7 @@
     _atTipsLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     _atTipsLabel.backgroundColor = [UIColor clearColor];
     _atTipsLabel.textColor = [UIColor colorWithRGB:0xd2d2d2];
-    _atTipsLabel.text = @"提醒微博好友查看";
+    _atTipsLabel.text = NSLocalizedString(@"TEXT_REMINE_VIEW", @"提醒微博好友查看");
     _atTipsLabel.font = [UIFont boldSystemFontOfSize:12];
     [_atTipsLabel sizeToFit];
     _atTipsLabel.frame = CGRectMake(_atButton.right + AT_BUTTON_HORIZONTAL_GAP,
@@ -225,7 +225,7 @@
     [self.view addSubview:_atTipsLabel];
     [_atTipsLabel release];
     
-    //字数
+            //Word count
     _wordCountLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _wordCountLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     _wordCountLabel.backgroundColor = [UIColor clearColor];
@@ -258,13 +258,13 @@
 
 -(BOOL)shouldAutorotate
 {
-    //iOS6下旋屏方法
+            //iOS6 rotating screen method
     return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    //iOS6下旋屏方法
+            //iOS6 rotating screen method
     return SSInterfaceOrientationMaskAll;
 }
 
@@ -497,10 +497,10 @@
     NSArray *selectedClients = [_toolbar selectedClients];
     if ([selectedClients count] == 0)
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                            message:@"请选择要发布的平台!"
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
+                                                            message:NSLocalizedString(@"TEXT_SELECT_PLATFORM", @"请选择要发布的平台!")
                                                            delegate:nil
-                                                  cancelButtonTitle:@"知道了"
+                                                  cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                   otherButtonTitles: nil];
         [alertView show];
         [alertView release];
@@ -513,10 +513,10 @@
                                                 image:[ShareSDK jpegImageWithImage:_picImageView.image quality:1]
                                                 title:@"ShareSDK"
                                                   url:@"http://www.sharesdk.cn"
-                                          description:@"这是一条测试信息"
+                                          description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeText];
     
-    [publishContent addQQSpaceUnitWithTitle:@"Hello QQ空间"
+    [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间")
                                         url:INHERIT_VALUE
                                        site:nil
                                     fromUrl:nil
@@ -530,7 +530,7 @@
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
     [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
-                                           title:@"Hello 有道云笔记"
+                                           title:NSLocalizedString(@"TEXT_HELLO_YOUDAO_NOTE", @"Hello 有道云笔记") 
                                           author:INHERIT_VALUE
                                           source:@"http://www.sharesdk.cn"
                                      attachments:INHERIT_VALUE];
@@ -541,7 +541,7 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-    //在授权页面中添加关注官方微博
+            //Adding official Weibo concern in the authorization page
     [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
@@ -562,7 +562,7 @@
                                        
                                        if (result)
                                        {
-                                           //分享内容
+                                                                                                                                 //Share content.
                                            [ShareSDK oneKeyShareContent:publishContent
                                                               shareList:selectedClients
                                                             authOptions:authOptions
@@ -573,10 +573,10 @@
                                        }
                                        else
                                        {
-                                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                               message:[NSString stringWithFormat:@"发送失败!%@", [error errorDescription]]
+                                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
+                                                                                               message:[NSString stringWithFormat:NSLocalizedString(@"TEXT_SEND_FAI", @"发送失败!%@"), [error errorDescription]]
                                                                                               delegate:nil
-                                                                                     cancelButtonTitle:@"知道了"
+                                                                                     cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                                                      otherButtonTitles:nil];
                                            [alertView show];
                                            [alertView release];
@@ -587,7 +587,7 @@
     
     if (!needAuth)
     {
-        //分享内容
+                        //Share content.
         [ShareSDK oneKeyShareContent:publishContent
                            shareList:selectedClients
                          authOptions:authOptions

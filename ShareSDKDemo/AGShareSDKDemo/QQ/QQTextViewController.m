@@ -1,11 +1,11 @@
 //
-//  TextViewController.m
-//  QQApiDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by Tencent on 12-5-16.
-//  Copyright 2012年 Tencent. All rights reserved.
-//
-
 #import "QQTextViewController.h"
 #import <AGCommon/NSString+Common.h>
 #import <Sharesdk/ShareSDK.h>
@@ -51,7 +51,7 @@
         [self setEdgesForExtendedLayout:SSRectEdgeBottom | SSRectEdgeLeft | SSRectEdgeRight];
     }
     
-    self.title = @"编辑文本消息";
+    self.title = NSLocalizedString(@"TEXT_EDIT_TEXT", @"编辑文本消息");
     self.view.backgroundColor = [UIColor whiteColor];
     
     CGRect screenRect = [UIScreen mainScreen].bounds;
@@ -60,23 +60,23 @@
     
     _textView = [[UITextView alloc]initWithFrame:textViewRect];
 	_textView.clipsToBounds = YES;
-    _textView.text = @"你见，或者不见我\
-    我就在那里\
-    不悲不喜\
-    你念，或者不念我\
-    情就在那里\
-    不来不去\
-    你爱，或者不爱我\
-    爱就在那里\
-    不增不减\
-    你跟，或者不跟我\
-    我的手就在你手里\
-    不舍不弃\
-    来我的怀里\
-    或者\
-    让我住进你的心里\
-    默然相爱\
-    寂静欢喜";
+    _textView.text = NSLocalizedString(@"TEXT_QQ_TEXT", @"你见，或者不见我\
+                                       我就在那里\
+                                       不悲不喜\
+                                       你念，或者不念我\
+                                       情就在那里\
+                                       不来不去\
+                                       你爱，或者不爱我\
+                                       爱就在那里\
+                                       不增不减\
+                                       你跟，或者不跟我\
+                                       我的手就在你手里\
+                                       不舍不弃\
+                                       来我的怀里\
+                                       或者\
+                                       让我住进你的心里\
+                                       默然相爱\
+                                       寂静欢喜");
 	_textView.font = [UIFont systemFontOfSize:16];
 	_textView.textAlignment = UITextAlignmentLeft;
 	_textView.contentOffset = CGPointMake(0, 10);
@@ -100,8 +100,8 @@
     
     _textLenLabel.text = [NSString stringWithFormat:@"%d", [_textView.text length]];
     
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(doneAction:)] autorelease];
-    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(backAction:)] autorelease];
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"TEXT_COMPLETE_3", @"完成") style:UIBarButtonItemStyleDone target:self action:@selector(doneAction:)] autorelease];
+    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"TEXT_BACK", @"返回") style:UIBarButtonItemStyleDone target:self action:@selector(backAction:)] autorelease];
 }
 
 - (void)viewDidUnload

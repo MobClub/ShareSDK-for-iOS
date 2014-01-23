@@ -1,16 +1,16 @@
 //
-//  SSSohuShareContentEntity.h
-//  SohuConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-29.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**
- *	@brief	分享内容实体
+ *	@brief	Share Content Entity.
  */
 @interface SSSohuShareContentEntity : NSObject <ISSPlatformShareContentEntity,
                                                 NSCoding>
@@ -20,14 +20,14 @@
 }
 
 /**
- *	@brief	书签源链接
+ *	@brief	Bookmark URL string.
  */
 @property (nonatomic,copy) NSString *url;
 
 /**
- *	@brief	通过分享内容解析实体数据
+ *	@brief	Parsed entity data by sharing content
  *
- *	@param 	content 	分享内容
+ *	@param 	content 	Share content object.
  */
 - (void)parseWithContent:(id<ISSContent>)content;
 

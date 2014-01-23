@@ -1,15 +1,15 @@
 //
-//  SSTencentWeiboUserReader.h
-//  TencentWeiboConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by vimfung on 13-10-20.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 /**
- *	@brief	用户信息读取器
+ *	@brief	User Reader.
  */
 @interface SSTencentWeiboUserReader : NSObject
 {
@@ -18,227 +18,225 @@
 }
 
 /**
- *	@brief	源数据
+ *	@brief	Raw data.
  */
 @property (nonatomic,readonly) NSDictionary *sourceData;
 
-
 /**
- *	@brief	出生天
+ *	@brief	Birth day.
  */
 @property (nonatomic,readonly) NSInteger birthDay;
 
 /**
- *	@brief	出生月
+ *	@brief	Birth month.
  */
 @property (nonatomic,readonly) NSInteger birthMonth;
 
 /**
- *	@brief	出生年
+ *	@brief	Birth year.
  */
 @property (nonatomic,readonly) NSInteger birthYear;
 
 /**
- *	@brief	城市id
+ *	@brief	City code.
  */
 @property (nonatomic,readonly) NSString *cityCode;
 
 /**
- *	@brief	职业信息
+ *	@brief	Career list of this person.
  */
 @property (nonatomic, readonly) NSArray *comp;
 
 /**
- *	@brief	国家id
+ *	@brief	Country code.
  */
 @property (nonatomic,readonly) NSString *countryCode;
 
 /**
- *	@brief	教育信息
+ *	@brief	Education list of this person.
  */
 @property (nonatomic, readonly) NSArray *edu;
 
 /**
- *	@brief	邮箱
+ *	@brief	E-mail Address.
  */
 @property (nonatomic, readonly) NSString *email;
 
 /**
- *	@brief	经验值
+ *	@brief	Experience
  */
 @property (nonatomic,readonly) NSInteger exp;
 
 /**
- *	@brief	听众数
+ *	@brief	Fans number.
  */
 @property (nonatomic,readonly) NSInteger fansnum;
 
 /**
- *	@brief	收藏数
+ *	@brief	Favorited number.
  */
 @property (nonatomic,readonly) NSInteger favnum;
 
 /**
- *	@brief	头像url
+ *	@brief	Avatar URL.
  */
 @property (nonatomic,readonly) NSString *head;
 
 /**
- *	@brief	家乡所在城市id
+ *	@brief	Home city code.
  */
 @property (nonatomic,readonly) NSString *homecityCode;
 
 /**
- *	@brief	家乡所在国家id
+ *	@brief	Home country code.
  */
 @property (nonatomic,readonly) NSString *homecountryCode;
 
 /**
- *	@brief	个人主页
+ *	@brief	Homepage
  */
 @property (nonatomic,readonly) NSString *homepage;
 
 /**
- *	@brief	家乡所在省id
+ *	@brief	home Province code.
  */
 @property (nonatomic,readonly) NSString *homeprovinceCode;
 
 /**
- *	@brief	家乡所在城镇id
+ *	@brief	Hometown code.
  */
 @property (nonatomic,readonly) NSString *hometownCode;
 
 /**
- *	@brief	收听的人数
+ *	@brief	idol number.
  */
 @property (nonatomic,readonly) NSInteger idolnum;
 
 /**
- *	@brief	行业id
+ *	@brief	Industry code.
  */
 @property (nonatomic,readonly) NSInteger industryCode;
 
 /**
- *	@brief	个人介绍
+ *	@brief	Introduction
  */
 @property (nonatomic,readonly) NSString *introduction;
 
 /**
- *	@brief	是否企业机构
+ *	@brief	Are Enterprise?
  */
 @property (nonatomic,readonly) BOOL isent;
 
 /**
- *	@brief	是否在当前用户的黑名单中，0-不是，1-是
+ *	@brief	Whether the current user's blacklist, 0 - no, 1 - Yes
  */
 @property (nonatomic,readonly) BOOL ismyblack;
 
 /**
- *	@brief	是否是当前用户的听众，0-不是，1-是
+ *	@brief	If the current user's audience, 0 - no, 1 - Yes
  */
 @property (nonatomic,readonly) BOOL ismyfans;
 
 /**
- *	@brief	是否是当前用户的偶像，0-不是，1-是
+ *	@brief	Whether it is the current user's idol, 0 - no, 1 - Yes
  */
 @property (nonatomic,readonly) BOOL ismyidol;
 
 /**
- *	@brief	是否实名认证，1-已实名认证，2-未实名认证
+ *	@brief	Whether the real-name authentication 1 - has real-name authentication 2 - not real-name authentication
  */
 @property (nonatomic,readonly) NSInteger isrealname;
 
 /**
- *	@brief	是否认证用户，0-不是，1-是
+ *	@brief	Whether the VIP user, 0 - no, 1 - Yes
  */
 @property (nonatomic,readonly) BOOL isvip;
 
 /**
- *	@brief	微博等级
+ *	@brief	Level.
  */
 @property (nonatomic,readonly) NSInteger level;
 
 /**
- *	@brief	所在地
+ *	@brief	Location.
  */
 @property (nonatomic,readonly) NSString *location;
 
 /**
- *	@brief	互听好友数
+ *	@brief	Mutual fans number.
  */
 @property (nonatomic,readonly) NSInteger mutualFansNum;
 
 /**
- *	@brief	用户帐户名
+ *	@brief	Name.
  */
 @property (nonatomic,readonly) NSString *name;
 
 /**
- *	@brief	用户昵称
+ *	@brief	Nickname
  */
 @property (nonatomic,readonly) NSString *nick;
 
 /**
- *	@brief	用户唯一id，与name相对应
+ *	@brief	user id, and name the corresponding
  */
 @property (nonatomic,readonly) NSString *openid;
 
 /**
- *	@brief	地区id
+ *	@brief	Province code.
  */
 @property (nonatomic,readonly) NSString *provinceCode;
 
 /**
- *	@brief	注册时间
+ *	@brief	Registration Time
  */
 @property (nonatomic,readonly) NSTimeInterval regtime;
 
 /**
- *	@brief	是否允许所有人给当前用户发私信，0-仅有偶像，1-名人+听众，2-所有人
+ *	@brief	Whether to allow everyone to send private messages to the current user, 0 - only Idol 1 - Celebrity + audience 2 - everyone
  */
 @property (nonatomic,readonly) NSInteger sendPrivateFlag;
 
 /**
- *	@brief	用户性别，1-男，2-女，0-未填写
+ *	@brief	Gender，1-Male，2-Female，0-Not filled
  */
 @property (nonatomic,readonly) NSInteger sex;
 
 /**
- *	@brief	标签
+ *	@brief	Tag list.
  */
 @property (nonatomic,readonly) NSArray *tag;
 
 /**
- *	@brief	最近的一条原创微博信息
+ *	@brief	The last Tweet information.
  */
 @property (nonatomic,readonly) NSArray *tweetinfo;
 
 /**
- *	@brief	发表的微博数
+ *	@brief	Tweet number.
  */
 @property (nonatomic,readonly) NSInteger tweetnum;
 
 /**
- *	@brief	认证信息
+ *	@brief	Verify information.
  */
 @property (nonatomic,readonly) NSString *verifyinfo;
 
 /**
- *	@brief	初始化读取器
+ *	@brief	Initialize reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 - (id)initWithSourceData:(NSDictionary *)sourceData;
 
-
 /**
- *	@brief	创建用户信息读取器
+ *	@brief	Create a user reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 + (SSTencentWeiboUserReader *)readerWithSourceData:(NSDictionary *)sourceData;
 

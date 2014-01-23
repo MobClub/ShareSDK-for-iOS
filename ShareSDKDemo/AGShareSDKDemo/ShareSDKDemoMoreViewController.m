@@ -1,12 +1,11 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:1955211608
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import "ShareSDKDemoMoreViewController.h"
 #import <AGCommon/UINavigationBar+Common.h>
 #import "SVModalWebViewController.h"
@@ -32,7 +31,7 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                           forState:UIControlStateNormal];
-        [button setTitle:@"取消" forState:UIControlStateNormal];
+        [button setTitle:NSLocalizedString(@"TEXT_CANCEL", @"取消") forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:14];
         button.frame = CGRectMake(0.0, 0.0, 55.0, 32.0);
         [button addTarget:self action:@selector(cancelButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -59,21 +58,20 @@
     [self.view addSubview:tableView];
     
     listOfItems = [[NSMutableArray alloc] init];
-    //联系方式
+            //Contact
     NSArray *infoArray = [NSArray arrayWithObjects:
-                              NSLocalizedString(@"ShareSDK新浪微博",nil),
-                              NSLocalizedString(@"ShareSDK腾迅微博",nil),
-                              NSLocalizedString(@"ShareSDK微信号:ShareSDK",nil),
-                              NSLocalizedString(@"官方网站http://shareSDK.cn",nil),
-                              NSLocalizedString(@"商务合作QQ:1955211608",nil),
+                              NSLocalizedString(@"TEXT_SDK_SINA_WEIBO", @"ShareSDK新浪微博"),
+                              NSLocalizedString(@"TEXT_SDK_TENCENT_WEIBO", @"ShareSDK腾迅微博"),
+                              NSLocalizedString(@"TEXT_SDK_WECHAT", @"ShareSDK微信号:ShareSDK"),
+                              NSLocalizedString(@"TEXT_OFFICAL_WEBSITE", @"官方网站http://shareSDK.cn"),
+                              NSLocalizedString(@"TEXT_SDK_QQ", @"商务合作QQ:1955211608"),
                              
                               nil];
     NSDictionary *infoDict = [NSDictionary dictionaryWithObject:infoArray forKey:@"Countries"];
     
-    
-    //版本信息
+            //Version information
 	NSArray *aboutusArray = [NSArray arrayWithObjects:
-                              NSLocalizedString(@"SDK版本 v1.1.2 (2013-01-25更新)",nil),
+                              NSLocalizedString(@"TEXT_SDK_VERSION", @"SDK版本 v1.1.2 (2013-01-25更新)"),
                               nil];
 	NSDictionary *aboutusDict = [NSDictionary dictionaryWithObject:aboutusArray forKey:@"Countries"];
     [listOfItems addObject:infoDict];
@@ -103,10 +101,10 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {    
     switch (section) {
         case 0:
-            return NSLocalizedString(@"通过以下方式获得SDK最新消息",nil);
+            return NSLocalizedString(@"TEXT_SDK_NEWS", @"通过以下方式获得SDK最新消息");
             break;
         case 1:
-            return NSLocalizedString(@"版本信息",nil);
+            return NSLocalizedString(@"TEXT_VERSION", @"版本信息");
             break;
             
 		default:
@@ -161,7 +159,7 @@
                                                                   viewDelegate:nil
                                                        authManagerViewDelegate:_appDelegate.viewDelegate];
             
-            //在授权页面中添加关注官方微博
+                                    //Adding official Weibo concern in the authorization page
             [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                             SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
@@ -173,7 +171,7 @@
             {
                 case 0:
                 {
-                    //关注用户
+                                                            //Concerned users
                     [ShareSDK followUserWithType:ShareTypeSinaWeibo
                                            field:@"ShareSDK"
                                        fieldType:SSUserFieldTypeName
@@ -184,28 +182,28 @@
                                               NSString *msg = nil;
                                               if (state == SSResponseStateSuccess)
                                               {
-                                                  msg = @"关注成功";
+                                                  msg = NSLocalizedString(@"TEXT_FOLLOW_SUC", @"关注成功");
                                               }
                                               else if (state == SSResponseStateFail)
                                               {
                                                   switch ([error errorCode])
                                                   {
                                                       case 20506:
-                                                          msg = @"已关注";
+                                                          msg = NSLocalizedString(@"TEXT_FOLLOWED", @"已关注");
                                                           break;
                                                           
                                                       default:
-                                                          msg = [NSString stringWithFormat:@"关注失败:%@", error.errorDescription];
+                                                          msg = [NSString stringWithFormat:NSLocalizedString(@"TEXT_FOLLOW_FAI", @"关注失败:%@"), error.errorDescription];
                                                           break;
                                                   }
                                               }
                                               
                                               if (msg)
                                               {
-                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                                                       message:msg
                                                                                                      delegate:nil
-                                                                                            cancelButtonTitle:@"知道了"
+                                                                                            cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                                                             otherButtonTitles:nil];
                                                   [alertView show];
                                                   [alertView release];
@@ -225,28 +223,28 @@
                                               NSString *msg = nil;
                                               if (state == SSResponseStateSuccess)
                                               {
-                                                  msg = @"关注成功";
+                                                  msg = NSLocalizedString(@"TEXT_FOLLOW_SUC", @"关注成功");
                                               }
                                               else if (state == SSResponseStateFail)
                                               {
                                                   switch ([error errorCode])
                                                   {
                                                       case 20506:
-                                                          msg = @"已关注";
+                                                          msg = NSLocalizedString(@"TEXT_FOLLOWED", @"已关注");
                                                           break;
                                                           
                                                       default:
-                                                          msg = [NSString stringWithFormat:@"关注失败:%@", error.errorDescription];
+                                                          msg = [NSString stringWithFormat:NSLocalizedString(@"TEXT_FOLLOW_FAI", @"关注失败:%@"), error.errorDescription];
                                                           break;
                                                   }
                                               }
                                               
                                               if (msg)
                                               {
-                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
                                                                                                       message:msg
                                                                                                      delegate:nil
-                                                                                            cancelButtonTitle:@"知道了"
+                                                                                            cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了") 
                                                                                             otherButtonTitles:nil];
                                                   [alertView show];
                                                   [alertView release];

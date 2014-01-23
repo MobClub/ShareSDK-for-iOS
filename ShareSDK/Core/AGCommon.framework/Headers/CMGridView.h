@@ -1,34 +1,32 @@
 //
-//  ZGGridView.h
-//
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 #import "ICMGridItemView.h"
 
 @class CMGridView;
 
 /**
-	表格视图委托
+ *	@brief	Grid view delegate.
  */
 @protocol CMGridViewDelegate <NSObject>
+
 
 
 @required
 
 /**
- *	@brief	表格项渲染
+ *	@brief	Grid item renderer.
  *
- *	@param 	gridView 	表格视图
- *	@param 	itemRenderer 	表格项渲染器
- *	@param 	itemData 	表格项数据
- *	@param 	index 	位置索引
+ *	@param 	gridView 	Grid view.
+ *	@param 	itemRenderer 	Item renderer.
+ *	@param 	itemData 	Item data.
+ *	@param 	index 	Index.
  */
 - (void)gridView:(CMGridView *)gridView
     itemRenderer:(UIView<ICMGridItemView> *)itemRenderer
@@ -38,33 +36,33 @@
 @optional
 
 /**
- *	@brief	表格视图滚动
+ *	@brief	View did scroll
  *
- *	@param 	gridView 	表格视图
+ *	@param 	gridView 	Grid view.
  */
 - (void)gridViewDidScroll:(CMGridView *)gridView;
 
 /**
- *	@brief	表格视图停止拖动
+ *	@brief	View did end dragging.
  *
- *	@param 	quiltView 	表格视图
- *	@param 	decelerate 	减速运动标识，YES表示进行减速运动，否则不进行减速运动
+ *	@param 	gridView 	Grid view object.
+ *	@param 	decelerate 	Deceleration flag, YES indicates deceleration movement, or not decelerating motion
  */
 - (void)gridViewDidEndDragging:(CMGridView *)gridView willDecelerate:(BOOL)decelerate;
 
 /**
- *	@brief	表格视图页脚将要显示
+ *	@brief	Footer will display.
  *
- *	@param 	gridView 	表格视图
- *	@param 	cell 	页脚项
+ *	@param 	gridView 	Grid view object.
+ *	@param 	cell 	Footer cell.
  */
 - (void)gridView:(CMGridView *)gridView footerWillDisplay:(UITableViewCell *)cell;
 
 /**
- *	@brief	表格视图页脚被选中
+ *	@brief	Footer did selected.
  *
- *	@param 	gridView 	表格视图
- *	@param 	cell 	页脚项
+ *	@param 	gridView 	Grid view object.
+ *	@param 	cell 	Footer cell.
  */
 - (void)gridView:(CMGridView *)gridView footerDidSelected:(UITableViewCell *)cell;
 
@@ -72,7 +70,7 @@
 @end
 
 /**
-	表格视图
+ *	@brief	Grid View.
  */
 @interface CMGridView : UIView <UITableViewDataSource,
                                 UITableViewDelegate,
@@ -99,86 +97,93 @@
 }
 
 /**
-    列表数据
+ *	@brief	Data array.
  */
 @property (nonatomic,retain) NSArray *dataArray;
 
 /**
-	列表项类型
+ *	@brief	Item class
  */
 @property (nonatomic,assign) Class itemType;
 
+
 /**
-	列表项大小
+ *	@brief	Item size.
  */
 @property (nonatomic,assign) CGSize itemSize;
 
+
 /**
-	滚动标识
+ *	@brief	Scroll enable.
  */
 @property (nonatomic) BOOL scrollEnable;
 
+
 /**
-	左边距
+ *	@brief	Left padding.
  */
 @property (nonatomic,readonly) CGFloat fLeftPadding;
 
+
 /**
-	右边距
+ *	@brief	Right padding.
  */
 @property (nonatomic,readonly) CGFloat fRightPadding;
 
 /**
-	顶部边距
+ *	@brief	Top padding.
  */
 @property (nonatomic,readonly) CGFloat fTopPadding;
 
+
 /**
-	顶部边距
+ *	@brief	Bottom padding
  */
 @property (nonatomic,readonly) CGFloat fBottomPadding;
 
+
 /**
-	水平间距
+ *	@brief	Horizontal gap
  */
 @property (nonatomic,readonly) CGFloat fHorizontalGap;
 
+
 /**
-	垂直间距
+ *	@brief	Vertical gap.
  */
 @property (nonatomic,readonly) CGFloat fVerticalGap;
 
+
 /**
- *	@brief	内容偏移量
+ *	@brief	Content inset.
  */
 @property (nonatomic) UIEdgeInsets contentInset;
 
 /**
-	委托对象
+ *	@brief	Delegate object.
  */
 @property (nonatomic,assign) id<CMGridViewDelegate> delegate;
 
+
 /**
- *	@brief	内容视图
+ *	@brief	Content view.
  */
 @property (nonatomic,readonly) UITableView *contentView;
 
 /**
- *	@brief	页脚类型，如果为nil则不显示页脚
+ *	@brief	Footer class，If nil is not displayed footer
  */
 @property (nonatomic,assign) Class footerType;
 
-
-
-
 /**
-	设置表格边距及间距
-	@param topPadding 顶部边距
-	@param rightPadding 右边距
-	@param bottomPadding 底部边距
-	@param leftPadding 左边距
-	@param hGap 水平间距
-	@param vGap 垂直间距
+ *	@brief	Set grid padding and spacing
+ *
+ *	@param 	topPadding 	Top padding
+ *	@param 	rightPadding 	Right padding
+ *	@param 	bottomPadding 	Bottom padding
+ *	@param 	leftPadding 	Left padding
+ *	@param 	hGap 	Horizontal gap
+ *	@param 	vGap 	Vertical gap
  */
 - (void)setGridTopPadding:(CGFloat)topPadding
              rightPadding:(CGFloat)rightPadding
@@ -189,11 +194,14 @@
 
 
 /**
-	出队一个尚未使用的单元格
-	@param identifier 引用标识
-	@returns 单元格对象，如果没有尚未使用的则返回nil
+ *	@brief	Dequeue a reusable cell.
+ *
+ *	@param 	identifier 	Cell identifier.
+ *
+ *	@return	Cell object. If you has not reusable cell return nil
  */
 - (UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;
+
 
 
 @end

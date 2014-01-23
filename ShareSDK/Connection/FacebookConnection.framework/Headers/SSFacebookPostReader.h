@@ -1,17 +1,17 @@
 //
-//  SSFacebookPostReader.h
-//  FacebookConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-23.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 @class SSFacebookUserReader;
 
 /**
- *	@brief	文章信息读取器
+ *	@brief	Post reader
  */
 @interface SSFacebookPostReader : NSObject
 {
@@ -20,7 +20,7 @@
 }
 
 /**
- *	@brief	源数据
+ *	@brief	Source data
  */
 @property (nonatomic,readonly) NSDictionary *sourceData;
 
@@ -30,85 +30,85 @@
 @property (nonatomic,readonly) NSString *Id;
 
 /**
- *	@brief	文章ID
+ *	@brief	Post id
  */
 @property (nonatomic,readonly) NSString *postId;
 
 /**
- *	@brief	发送用户
+ *	@brief	Send user reader.
  */
 @property (nonatomic,readonly) SSFacebookUserReader *from;
 
 /**
- *	@brief	消息
+ *	@brief	Message
  */
 @property (nonatomic,readonly) NSString *message;
 
 /**
- *	@brief	更新时间
+ *	@brief	Updated time
  */
 @property (nonatomic,readonly) NSString *updatedTime;
 
 /**
- *	@brief	创建时间
+ *	@brief	Create time
  */
 @property (nonatomic,readonly) NSString *createdTime;
 
 /**
- *	@brief	图标
+ *	@brief	Icon
  */
 @property (nonatomic,readonly) NSString *icon;
 
 /**
- *	@brief	链接
+ *	@brief	Link
  */
 @property (nonatomic,readonly) NSString *link;
 
 /**
- *	@brief	照片名称
+ *	@brief	Name
  */
 @property (nonatomic,readonly) NSString *name;
 
 /**
- *	@brief	缩略图路径
+ *	@brief	picture path
  */
 @property (nonatomic,readonly) NSString *picture;
 
 /**
- *	@brief	源图路径
+ *	@brief	Source
  */
 @property (nonatomic,readonly) NSString *source;
 
 /**
- *	@brief	高度
+ *	@brief	Height
  */
 @property (nonatomic,readonly) NSInteger height;
 
 /**
- *	@brief	宽度
+ *	@brief	Width
  */
 @property (nonatomic,readonly) NSInteger width;
 
 /**
- *	@brief	图片信息
+ *	@brief	Images
  */
 @property (nonatomic,readonly) NSArray *images;
 
 /**
- *	@brief	初始化读取器
+ *	@brief	Initialize reader
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data
  *
- *	@return	读取器实例对象
+ *	@return	Reader object
  */
 - (id)initWithSourceData:(NSDictionary *)sourceData;
 
 /**
- *	@brief	创建文章信息读取器
+ *	@brief	Create Post reader
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data
  *
- *	@return	读取器实例对象
+ *	@return	Reader object
  */
 + (SSFacebookPostReader *)readerWithSourceData:(NSDictionary *)sourceData;
 

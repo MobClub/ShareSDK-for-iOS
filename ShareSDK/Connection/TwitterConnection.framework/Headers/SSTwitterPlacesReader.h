@@ -1,16 +1,16 @@
 //
-//  SSTwitterPlacesReader.h
-//  TwitterConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-24.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import "SSTwitterBoundingBoxReader.h"
 
 /**
- *	@brief	地方信息读取器
+ *	@brief	Places Reader.
  */
 @interface SSTwitterPlacesReader : NSObject
 {
@@ -19,32 +19,32 @@
 }
 
 /**
- *	@brief	源数据
+ *	@brief	Raw data.
  */
 @property (nonatomic,readonly) NSDictionary *sourceData;
 
 /**
- *	@brief	一个哈希表结构地方信息
+ *	@brief	attributes.
  */
 @property (nonatomic,readonly) id attributes;
 
 /**
- *	@brief	地方的边界坐标
+ *	@brief	Bounding box.
  */
 @property (nonatomic,readonly) SSTwitterBoundingBoxReader *boundingBox;
 
 /**
- *	@brief	所在国家
+ *	@brief	Country.
  */
 @property (nonatomic,readonly) NSString *country;
 
 /**
- *	@brief	所在国家编码
+ *	@brief	Country code.
  */
 @property (nonatomic,readonly) NSString *countryCode;
 
 /**
- *	@brief	完整的地方名称
+ *	@brief	Full name.
  */
 @property (nonatomic,readonly) NSString *fullName;
 
@@ -54,12 +54,12 @@
 @property (nonatomic,readonly) NSString *Id;
 
 /**
- *	@brief	地名
+ *	@brief	Name
  */
 @property (nonatomic,readonly) NSString *name;
 
 /**
- *	@brief	类型
+ *	@brief	Place type.
  */
 @property (nonatomic,readonly) NSString *placeType;
 
@@ -69,20 +69,20 @@
 @property (nonatomic,readonly) NSString *url;
 
 /**
- *	@brief	初始化读取器
+ *	@brief	Initialize reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 - (id)initWithSourceData:(NSDictionary *)sourceData;
 
 /**
- *	@brief	创建地点信息读取器
+ *	@brief	Create a places reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 + (SSTwitterPlacesReader *)readerWithSourceData:(NSDictionary *)sourceData;
 

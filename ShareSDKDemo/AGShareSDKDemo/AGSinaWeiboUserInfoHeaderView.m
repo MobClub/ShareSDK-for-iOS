@@ -1,12 +1,11 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import "AGSinaWeiboUserInfoHeaderView.h"
 #import <AGCommon/UIColor+Common.h>
 #import <ShareSDK/ShareSDK.h>
@@ -98,7 +97,7 @@
         [_statusesButton setTitle:@"0" forState:UIControlStateNormal];
         [_statusesButton setTitleColor:[UIColor colorWithRed:86/255.0 green:158/255.0 blue:218/255.0 alpha:1] forState:UIControlStateNormal];
         [_statusesButton setBackgroundImage:buttonBGImage forState:UIControlStateNormal];
-        [_statusesButton setSubtitle:@"微博"];
+        [_statusesButton setSubtitle:NSLocalizedString(@"TEXT_WEIBO", @"微博")];
         [self addSubview:_statusesButton];
         [_statusesButton release];
         
@@ -107,7 +106,7 @@
         [_friendsButton setTitle:@"0" forState:UIControlStateNormal];
         [_friendsButton setTitleColor:[UIColor colorWithRed:86/255.0 green:158/255.0 blue:218/255.0 alpha:1] forState:UIControlStateNormal];
         [_friendsButton setBackgroundImage:buttonBGImage forState:UIControlStateNormal];
-        [_friendsButton setSubtitle:@"关注"];
+        [_friendsButton setSubtitle:NSLocalizedString(@"TEXT_FOLLOW", @"关注")];
         [self addSubview:_friendsButton];
         [_friendsButton release];
         
@@ -116,12 +115,12 @@
         [_followerButton setTitle:@"0" forState:UIControlStateNormal];
         [_followerButton setTitleColor:[UIColor colorWithRed:86/255.0 green:158/255.0 blue:218/255.0 alpha:1] forState:UIControlStateNormal];
         [_followerButton setBackgroundImage:buttonBGImage forState:UIControlStateNormal];
-        [_followerButton setSubtitle:@"粉丝"];
+        [_followerButton setSubtitle:NSLocalizedString(@"TEXT_FANS", @"粉丝")];
         [self addSubview:_followerButton];
         [_followerButton release];
         
         _infoButton = [[AGSinaWeiboInfoButton alloc] initWithFrame:CGRectMake(_followerButton.right + HORIZONTAL_GAP, INFO_PANEL_HEIGHT + VERTICAL_GAP, ITEM_WIDTH, ITEM_HEIGHT)];
-        [_infoButton setTitle:@"详细资料" forState:UIControlStateNormal];
+        [_infoButton setTitle:NSLocalizedString(@"TEXT_DETAIL_INFO", @"详细资料") forState:UIControlStateNormal];
         [_infoButton setTitleColor:[UIColor colorWithRGB:0x666666] forState:UIControlStateNormal];
         [_infoButton setBackgroundImage:buttonBGImage forState:UIControlStateNormal];
         [self addSubview:_infoButton];
@@ -179,7 +178,7 @@
         
         if ([_userInfo shareCount] > 10000)
         {
-            [_statusesButton setTitle:[NSString stringWithFormat:@"%d万", [_userInfo shareCount] / 10000] forState:UIControlStateNormal];
+            [_statusesButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"TEXT_TEN_THOUSAND", @"%d万"), [_userInfo shareCount] / 10000] forState:UIControlStateNormal];
         }
         else
         {
@@ -188,7 +187,7 @@
         
         if ([_userInfo friendCount] > 10000)
         {
-            [_friendsButton setTitle:[NSString stringWithFormat:@"%d万", [_userInfo friendCount] / 10000] forState:UIControlStateNormal];
+            [_friendsButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"TEXT_TEN_THOUSAND", @"%d万"), [_userInfo friendCount] / 10000] forState:UIControlStateNormal];
         }
         else
         {
@@ -197,7 +196,7 @@
         
         if ([_userInfo followerCount] > 10000)
         {
-            [_followerButton setTitle:[NSString stringWithFormat:@"%d万", [_userInfo followerCount] / 10000] forState:UIControlStateNormal];
+            [_followerButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"TEXT_TEN_THOUSAND", @"%d万"), [_userInfo followerCount] / 10000] forState:UIControlStateNormal];
         }
         else
         {
@@ -266,7 +265,7 @@
         
         if (userReader.verified)
         {
-            _descLabel.text = [NSString stringWithFormat:@"新浪认证:%@", userReader.verifiedReason];
+            _descLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TEXT_SINA_WEIBO_VERIFIED_1", @"新浪认证:%@"), userReader.verifiedReason];
             
             switch (userReader.verifiedType)
             {
@@ -289,7 +288,7 @@
         }
         else
         {
-            _descLabel.text = [NSString stringWithFormat:@"简介:%@", _userInfo.description];
+            _descLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TEXT_PROFILE_1", @"简介:%@"), _userInfo.description];
             
             if (userReader.verifiedType == 220)
             {
@@ -317,7 +316,7 @@
             {
                 [_followButton setBackgroundImage:[[UIImage imageNamed:@"FollowedButton.png"] stretchableImageWithLeftCapWidth:4 topCapHeight:0]
                                          forState:UIControlStateNormal];
-                [_followButton setTitle:@"已关注" forState:UIControlStateNormal];
+                [_followButton setTitle:NSLocalizedString(@"TEXT_FOLLOWED", @"已关注") forState:UIControlStateNormal];
                 [_followButton setTitleColor:[UIColor colorWithRGB:0x818080] forState:UIControlStateNormal];
                 [_followButton setTitleShadowColor:[UIColor colorWithRGB:0x097600] forState:UIControlStateNormal];
                 [_followButton removeTarget:self action:@selector(followButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -326,7 +325,7 @@
             {
                 [_followButton setBackgroundImage:[[UIImage imageNamed:@"FollowButton.png"] stretchableImageWithLeftCapWidth:4 topCapHeight:0]
                                          forState:UIControlStateNormal];
-                [_followButton setTitle:@"加关注" forState:UIControlStateNormal];
+                [_followButton setTitle:NSLocalizedString(@"TEXT_ADD_FOLLOW", @"加关注")  forState:UIControlStateNormal];
                 [_followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 [_followButton setTitleShadowColor:[UIColor colorWithRGB:0x097600] forState:UIControlStateNormal];
                 [_followButton addTarget:self action:@selector(followButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -370,7 +369,7 @@
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:appDelegate.viewDelegate];
         
-        //在授权页面中添加关注官方微博
+                        //Adding official Weibo concern in the authorization page
         [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                         SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
@@ -395,10 +394,10 @@
                                   }
                                   else if (state == SSResponseStateFail)
                                   {
-                                      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                          message:[NSString stringWithFormat:@"关注失败!%@", [error errorDescription]]
+                                      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
+                                                                                          message:[NSString stringWithFormat:NSLocalizedString(@"TEXT_FOLLOW_FAI", @"关注失败!%@"), [error errorDescription]]
                                                                                          delegate:nil
-                                                                                cancelButtonTitle:@"知道了"
+                                                                                cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
                                                                                 otherButtonTitles: nil];
                                       [alertView show];
                                       [alertView release];

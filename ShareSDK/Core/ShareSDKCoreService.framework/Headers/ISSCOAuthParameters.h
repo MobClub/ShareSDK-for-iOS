@@ -1,89 +1,89 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import <Foundation/Foundation.h>
 #import "ISSCParameters.h"
 
 /**
- *	@brief	OAuth参数
+ *	@brief	OAuth parameters.
  */
 @protocol ISSCOAuthParameters <ISSCParameters>
 
 /**
- *	@brief	获取消费者Key
+ *	@brief	Get consumer key.
  *
- *	@return	消费者Key
+ *	@return	Consumer key.
  */
 - (NSString *)consumerKey;
 
 /**
- *	@brief	获取消费者密钥
+ *	@brief	Get consumer secret.
  *
- *	@return	消费者密钥
+ *	@return	Consumer secret.
  */
 - (NSString *)consumerSecret;
 
 /**
- *	@brief	获取OAuthToken
+ *	@brief	Get Oauth token.
  *
- *	@return	OAuthToken
+ *	@return	OAuth token.
  */
 - (NSString *)oauthToken;
 
 /**
- *	@brief	获取OAuth密钥
+ *	@brief	Get OAuth secret.
  *
- *	@return	OAuth密钥
+ *	@return	OAuth secret.
  */
 - (NSString *)oauthSecret;
 
 /**
- *	@brief	添加OAuth参数,仅用于OAuth1.0版本
+ *	@brief	Add OAuth parameters. Only for OAuth
  *
- *	@param 	name 	参数名称
- *	@param 	value 	参数值
+ *	@param 	name 	Parameter name.
+ *	@param 	value 	Parameter value.
  */
 - (void)addOAuthParameter:(NSString *)name value:(id)value;
 
 /**
- *	@brief	添加多个参数
+ *	@brief	Adding multiple parameters
  *
- *	@param 	parameters 	参数对象
+ *	@param 	parameters 	Parameters object.
  */
 - (void)addOAuthParameters:(id<ISSCOAuthParameters>)parameters;
 
 /**
- *	@brief	添加多个参数
+ *	@brief	Adding multiple parameters
  *
- *	@param 	dictionary 	参数字典
+ *	@param 	dictionary 	Parameters dictionary.
  */
 - (void)addOAuthParametersWithDictionary:(NSDictionary *)dictionary;
 
 /**
- *	@brief	获取OAuth参数值,仅用于OAuth1.0版本
+ *	@brief	Get OAuth parameter value, Only for OAuth.
  *
- *	@param 	name 	参数名称
+ *	@param 	name 	Parameter name.
  *
- *	@return	参数值
+ *	@return	Parameter value.
  */
 - (id)oauthParameterWithName:(NSString *)name;
 
 /**
- *	@brief	获取OAuth参数数量,仅用于OAuth1.0版本
+ *	@brief	Get parameters count. only for OAuth.
  *
- *	@return	参数数量
+ *	@return	Parameters count.
  */
 - (NSInteger)oauthParameterCount;
 
 /**
- *	@brief	获取OAuth字典结构数据
+ *	@brief	Get OAuth dictionary object.
  *
- *	@return	字典数据
+ *	@return	Dictionary object.
  */
 - (NSDictionary *)oauthDictionaryValue;
 

@@ -1,17 +1,17 @@
 //
-//  SSEverNoteResourceReader.h
-//  EverNoteConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by vimfung on 13-10-24.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import "SSEverNoteResourceDataReader.h"
 #import "SSEverNoteResourceAttributesReader.h"
 
 /**
- *	@brief	资源读取器
+ *	@brief	Resource reader.
  */
 @interface SSEverNoteResourceReader : NSObject
 {
@@ -20,86 +20,92 @@
 }
 
 /**
- *	@brief	源数据
+ *	@brief	Raw data.
  */
 @property (nonatomic,readonly) NSDictionary *sourceData;
 
 /**
- *	@brief	资源标识
+ *	@brief	The unique identifier of this resource.
+ *          Will be set whenever a resource is retrieved from the service, but may be null when a client is creating a resource.
  */
 @property (nonatomic,readonly) NSString *guid;
 
 /**
- *	@brief	笔记标识
+ *	@brief	The unique identifier of the Note that holds this Resource.
+ *          Will be set whenever the resource is retrieved from the service, but may be null when a client is creating a resource.
  */
 @property (nonatomic,readonly) NSString *noteGuid;
 
 /**
- *	@brief	资源内容
+ *	@brief	The contents of the resource.
  */
 @property (nonatomic,readonly) SSEverNoteResourceDataReader *data;
 
 /**
- *	@brief	MIME类型
+ *	@brief	The MIME type for the embedded resource. E.g. "image/gif"
  */
 @property (nonatomic,readonly) NSString *mime;
 
 /**
- *	@brief	宽度
+ *	@brief	If set, this contains the display width of this resource, in pixels.
  */
 @property (nonatomic,readonly) int16_t width;
 
 /**
- *	@brief	高度
+ *	@brief	If set, this contains the display height of this resource, in pixels.
  */
 @property (nonatomic,readonly) int16_t height;
 
 /**
- *	@brief	已过时：忽略
+ *	@brief	DEPRECATED: ignored.
  */
 @property (nonatomic,readonly) int16_t duration;
 
 /**
- *	@brief	已过时：忽略
+ *	@brief	DEPRECATED: ignored.
  */
 @property (nonatomic,readonly) BOOL active;
 
 /**
- *	@brief	提供搜索识别资源数据
+ *	@brief	If set, this will hold the encoded data that provides information on search and recognition within this resource.
  */
 @property (nonatomic,readonly) SSEverNoteResourceDataReader *recognition;
 
 
 /**
- *	@brief	资源属性
+ *	@brief	A list of the attributes for this resource.
  */
 @property (nonatomic,readonly) SSEverNoteResourceAttributesReader *attributes;
 
 /**
- *	@brief	最后修改此对象的事务标识
+ *	@brief	A number identifying the last transaction to modify the state of this object.
+ *          The USN values are sequential within an account, and can be used to compare the order of modifications within the service.
  */
 @property (nonatomic,readonly) NSInteger updateSequenceNum;
 
 /**
- *	@brief	备用数据
+ *	@brief	Some Resources may be assigned an alternate data format by the service
+ *          which may be more appropriate for indexing or rendering than the original data provided by the user.
+ *          In these cases, the alternate data form will be available via this Data element.
+ *          If a Resource has no alternate form, this field will be unset.
  */
 @property (nonatomic,readonly) SSEverNoteResourceDataReader *alternateData;
 
 /**
- *	@brief	初始化读取器
+ *	@brief	Initialize reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 - (id)initWithSourceData:(NSDictionary *)sourceData;
 
 /**
- *	@brief	创建资源信息读取器
+ *	@brief	Create a resource reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 + (SSEverNoteResourceReader *)readerWithSourceData:(NSDictionary *)sourceData;
 

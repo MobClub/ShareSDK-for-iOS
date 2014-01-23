@@ -246,6 +246,7 @@
 		41FE5EA3167CBAFF0096BFE9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41FE5EA2167CBAFF0096BFE9 /* Default@2x.png */; };
 		41FE5EA5167CBAFF0096BFE9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41FE5EA4167CBAFF0096BFE9 /* Default-568h@2x.png */; };
 		41FE5EA8167CBAFF0096BFE9 /* AGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FE5EA7167CBAFF0096BFE9 /* AGViewController.m */; };
+		A84F3E84188D5FB600677790 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A84F3E86188D5FB600677790 /* Localizable.strings */; };
 		A8A5657D18633027006FD991 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A8A5657C18633027006FD991 /* TencentOpenApi_IOS_Bundle.bundle */; };
 		A8D5D4451827EF85007D55D0 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D5D4441827EF85007D55D0 /* AssetsLibrary.framework */; };
 		A8D5D4471827EF9B007D55D0 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D5D4461827EF9B007D55D0 /* CoreText.framework */; };
@@ -558,6 +559,8 @@
 		41FE5EA4167CBAFF0096BFE9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		41FE5EA6167CBAFF0096BFE9 /* AGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGViewController.h; sourceTree = "<group>"; };
 		41FE5EA7167CBAFF0096BFE9 /* AGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGViewController.m; sourceTree = "<group>"; };
+		A84F3E85188D5FB600677790 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A84F3E87188D5FBA00677790 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A8A5657C18633027006FD991 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		A8D5D4441827EF85007D55D0 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		A8D5D4461827EF9B007D55D0 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -739,7 +742,7 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		411A03C316D4ABBE0069251F /* 接口 */ = {
+		411A03C316D4ABBE0069251F /* Interface (接口) */ = {
 			isa = PBXGroup;
 			children = (
 				41D4C690168D7C7B0093F94E /* AGApiViewController.h */,
@@ -749,10 +752,10 @@
 				41F0668816A79AD300437B24 /* AGInputUserNameViewController.h */,
 				41F0668916A79AD400437B24 /* AGInputUserNameViewController.m */,
 			);
-			name = "接口";
+			name = "Interface (接口)";
 			sourceTree = "<group>";
 		};
-		411A03C416D4ABC40069251F /* 授权 */ = {
+		411A03C416D4ABC40069251F /* Authorized (授权) */ = {
 			isa = PBXGroup;
 			children = (
 				41D4C68D168D56580093F94E /* AGShareCell.h */,
@@ -760,7 +763,7 @@
 				41D4C68A168D55CB0093F94E /* AGAuthViewController.h */,
 				41D4C68B168D55CB0093F94E /* AGAuthViewController.m */,
 			);
-			name = "授权";
+			name = "Authorized (授权)";
 			sourceTree = "<group>";
 		};
 		41284B8D16D6063100120FF5 /* QQ */ = {
@@ -779,7 +782,7 @@
 			path = QQ;
 			sourceTree = "<group>";
 		};
-		41284B9716D6063100120FF5 /* 微信 */ = {
+		41284B9716D6063100120FF5 /* WeChat (微信) */ = {
 			isa = PBXGroup;
 			children = (
 				41284B9A16D6063100120FF5 /* WeChatViewController.h */,
@@ -791,11 +794,11 @@
 				41284B9E16D6063100120FF5 /* ViewController_iPad.xib */,
 				41284B9F16D6063100120FF5 /* ViewController_iPhone.xib */,
 			);
-			name = "微信";
+			name = "WeChat (微信)";
 			path = WeiXin;
 			sourceTree = "<group>";
 		};
-		41284BAA16D6064900120FF5 /* 演示 */ = {
+		41284BAA16D6064900120FF5 /* Demo (演示) */ = {
 			isa = PBXGroup;
 			children = (
 				41FE5EA6167CBAFF0096BFE9 /* AGViewController.h */,
@@ -805,7 +808,7 @@
 				41081F2916B95E4B0004743F /* AGSectionView.h */,
 				41081F2A16B95E4B0004743F /* AGSectionView.m */,
 			);
-			name = "演示";
+			name = "Demo (演示)";
 			sourceTree = "<group>";
 		};
 		412A6B191827B3E8005B2BFF /* ShareSDK */ = {
@@ -987,7 +990,7 @@
 			path = TencentWeiboSDK;
 			sourceTree = "<group>";
 		};
-		416FB5F4171FD3EB0012D6B2 /* 新浪微博 */ = {
+		416FB5F4171FD3EB0012D6B2 /* Sina Weibo (新浪微博) */ = {
 			isa = PBXGroup;
 			children = (
 				416FB5F5171FD5020012D6B2 /* AGSinaWeiboListViewController.h */,
@@ -1019,7 +1022,7 @@
 				418F5334172149FE00B7BB1B /* AGSinaWeiboPictureViewController.h */,
 				418F5335172149FF00B7BB1B /* AGSinaWeiboPictureViewController.m */,
 			);
-			name = "新浪微博";
+			name = "Sina Weibo (新浪微博)";
 			sourceTree = "<group>";
 		};
 		416FB60D17201BDC0012D6B2 /* SinaWeibo */ = {
@@ -1059,31 +1062,31 @@
 			path = RefreshHeader;
 			sourceTree = "<group>";
 		};
-		41D68AF3172777A900516D1A /* 获取用户信息 */ = {
+		41D68AF3172777A900516D1A /* Get User Information (获取用户信息) */ = {
 			isa = PBXGroup;
 			children = (
 				41D68AF5172777FD00516D1A /* AGGetUserInfoViewController.h */,
 				41D68AF6172777FD00516D1A /* AGGetUserInfoViewController.m */,
 			);
-			name = "获取用户信息";
+			name = "Get User Information (获取用户信息)";
 			sourceTree = "<group>";
 		};
-		41D68AF4172777BD00516D1A /* 获取授权信息 */ = {
+		41D68AF4172777BD00516D1A /* Get Authorized Information (获取授权信息) */ = {
 			isa = PBXGroup;
 			children = (
 				41D68AF81727816700516D1A /* AGGetCredentialViewController.h */,
 				41D68AF91727816700516D1A /* AGGetCredentialViewController.m */,
 			);
-			name = "获取授权信息";
+			name = "Get Authorized Information (获取授权信息)";
 			sourceTree = "<group>";
 		};
-		41D68AFB1727934700516D1A /* 调用API */ = {
+		41D68AFB1727934700516D1A /* Call API (调用API) */ = {
 			isa = PBXGroup;
 			children = (
 				41D68AFC1727936800516D1A /* AGCallAPIViewController.h */,
 				41D68AFD1727936800516D1A /* AGCallAPIViewController.m */,
 			);
-			name = "调用API";
+			name = "Call API (调用API)";
 			sourceTree = "<group>";
 		};
 		41ED1E9916E88CAB005A56C7 /* Custom */ = {
@@ -1137,7 +1140,7 @@
 			path = PublishEx_Landscape;
 			sourceTree = "<group>";
 		};
-		41FA3C2716E58FA400826E69 /* 自定义分享界面 */ = {
+		41FA3C2716E58FA400826E69 /* Custom Share View (自定义分享界面) */ = {
 			isa = PBXGroup;
 			children = (
 				41FA3C3216E5E3A900826E69 /* AGCustomViewController.h */,
@@ -1161,7 +1164,7 @@
 				41F2CD4B16E744D2008186AF /* AGCustomMoreCell.h */,
 				41F2CD4C16E744D2008186AF /* AGCustomMoreCell.m */,
 			);
-			name = "自定义分享界面";
+			name = "Custom Share View (自定义分享界面)";
 			sourceTree = "<group>";
 		};
 		41FE5E7F167CBAFF0096BFE9 = {
@@ -1212,16 +1215,16 @@
 			children = (
 				414212E71862F7DE005E26F4 /* UIView+Common.h */,
 				414212E81862F7DE005E26F4 /* UIView+Common.m */,
-				41D68AFB1727934700516D1A /* 调用API */,
-				41D68AF4172777BD00516D1A /* 获取授权信息 */,
-				41D68AF3172777A900516D1A /* 获取用户信息 */,
-				416FB5F4171FD3EB0012D6B2 /* 新浪微博 */,
-				411A03C316D4ABBE0069251F /* 接口 */,
-				411A03C416D4ABC40069251F /* 授权 */,
-				41284B9716D6063100120FF5 /* 微信 */,
+				41D68AFB1727934700516D1A /* Call API (调用API) */,
+				41D68AF4172777BD00516D1A /* Get Authorized Information (获取授权信息) */,
+				41D68AF3172777A900516D1A /* Get User Information (获取用户信息) */,
+				416FB5F4171FD3EB0012D6B2 /* Sina Weibo (新浪微博) */,
+				411A03C316D4ABBE0069251F /* Interface (接口) */,
+				411A03C416D4ABC40069251F /* Authorized (授权) */,
+				41284B9716D6063100120FF5 /* WeChat (微信) */,
 				41284B8D16D6063100120FF5 /* QQ */,
-				41284BAA16D6064900120FF5 /* 演示 */,
-				41FA3C2716E58FA400826E69 /* 自定义分享界面 */,
+				41284BAA16D6064900120FF5 /* Demo (演示) */,
+				41FA3C2716E58FA400826E69 /* Custom Share View (自定义分享界面) */,
 				410F7C1916A0368D00833885 /* AGWeiXinQQDemoController.h */,
 				410F7C1A16A0368D00833885 /* AGWeiXinQQDemoController.m */,
 				412A410D1695BDD700F22340 /* ShareSDKDemoMoreViewController.h */,
@@ -1250,6 +1253,7 @@
 				41FE5EA0167CBAFF0096BFE9 /* Default.png */,
 				41FE5EA2167CBAFF0096BFE9 /* Default@2x.png */,
 				41FE5EA4167CBAFF0096BFE9 /* Default-568h@2x.png */,
+				A84F3E86188D5FB600677790 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1314,6 +1318,7 @@
 				4100A5E316A3AE7E00813513 /* SVWebViewController.bundle in Resources */,
 				4100A62216A3AED500813513 /* demo.jpg in Resources */,
 				4100A62516A3AED500813513 /* HomeIcon.png in Resources */,
+				412A6B831827B3E8005B2BFF /* Resource.bundle in Resources */,
 				4100A62616A3AED500813513 /* HomeIcon@2x.png in Resources */,
 				4100A62716A3AED500813513 /* Icon.png in Resources */,
 				4100A62816A3AED500813513 /* Icon@2x.png in Resources */,
@@ -1356,7 +1361,6 @@
 				41284C1D16D65BC400120FF5 /* news.jpg in Resources */,
 				41284C1E16D65BC400120FF5 /* qqicon.png in Resources */,
 				411209371876C83200EA5846 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
-				412A6B831827B3E8005B2BFF /* Resource.bundle in Resources */,
 				412A6B971827B3E9005B2BFF /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				41284C1F16D65BC400120FF5 /* qqicon@2x.png in Resources */,
 				41284C2016D65BC400120FF5 /* res1.jpg in Resources */,
@@ -1402,6 +1406,7 @@
 				41ED1EDF16E89C31005A56C7 /* SharePin.png in Resources */,
 				41ED1EE016E89C31005A56C7 /* SharePin@2x.png in Resources */,
 				4115097C16E9F95100A375CD /* UserIconBG.png in Resources */,
+				A84F3E84188D5FB600677790 /* Localizable.strings in Resources */,
 				4115097D16E9F95100A375CD /* UserIconBG@2x.png in Resources */,
 				417CF62C1717B2C4008F2CF4 /* iPadAuthViewNavigationBarBG.png in Resources */,
 				417CF62D1717B2C4008F2CF4 /* iPadAuthViewNavigationBarBG@2x.png in Resources */,
@@ -1519,6 +1524,15 @@
 				41FE5E98167CBAFF0096BFE9 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A84F3E86188D5FB600677790 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A84F3E85188D5FB600677790 /* en */,
+				A84F3E87188D5FBA00677790 /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

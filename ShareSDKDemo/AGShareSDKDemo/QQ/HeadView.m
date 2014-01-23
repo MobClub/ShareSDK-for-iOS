@@ -1,11 +1,11 @@
 //
-//  HeadView.m
-//  QQApiDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by Tencent on 12-5-7.
-//  Copyright 2012年 Tencent. All rights reserved.
-//
-
 #import "HeadView.h"
 
 @implementation HeadView
@@ -26,7 +26,7 @@
         
         UILabel* label = [[[UILabel alloc] initWithFrame:CGRectMake((self.width - 280) / 2, 75, 280, 30)] autorelease];
         label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        label.text = @"手机QQ OpenAPI Demo";
+        label.text = NSLocalizedString(@"TEXT_MOBILE_QQ_DEMO", @"手机QQ OpenAPI Demo");
         label.backgroundColor = [UIColor clearColor];
         label.textColor = [UIColor blackColor];
         label.textAlignment = UITextAlignmentCenter;

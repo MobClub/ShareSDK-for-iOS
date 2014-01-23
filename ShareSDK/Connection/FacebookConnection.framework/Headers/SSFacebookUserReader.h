@@ -1,11 +1,11 @@
 //
-//  SSFacebookUserReader.h
-//  FacebookConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-23.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import "SSFacebookAgeRangeReader.h"
 #import "SSFacebookCoverReader.h"
@@ -18,7 +18,7 @@
 #import "SSFacebookVideoUploadLimitsReader.h"
 
 /**
- *	@brief	用户信息读取器
+ *	@brief	User Reader.
  */
 @interface SSFacebookUserReader : NSObject
 {
@@ -27,184 +27,182 @@
 }
 
 /**
- *	@brief	源数据
+ *	@brief	Raw data.
  */
 @property (nonatomic,readonly) NSDictionary *sourceData;
 
-
 /**
- *	@brief	用户ID
+ *	@brief	User id.
  */
 @property (nonatomic,readonly) NSString *uid;
 
 /**
- *	@brief	用户姓名
+ *	@brief	Name
  */
 @property (nonatomic,readonly) NSString *name;
 
 /**
- *	@brief	名字
+ *	@brief	first name.
  */
 @property (nonatomic,readonly) NSString *firstName;
 
 /**
- *	@brief	中间名字
+ *	@brief	Middle name.
  */
 @property (nonatomic,readonly) NSString *middleName;
 
 /**
- *	@brief	姓
+ *	@brief	Last name.
  */
 @property (nonatomic,readonly) NSString *lastName;
 
 /**
- *	@brief	性别
+ *	@brief	Gender.
  */
 @property (nonatomic,readonly) NSString *gender;
 
 /**
- *	@brief	语言环境
+ *	@brief	Locale.
  */
 @property (nonatomic,readonly) NSString *locale;
 
 /**
- *	@brief	语言
+ *	@brief	language.
  */
 @property (nonatomic,readonly) NSArray *languages;
 
 /**
- *	@brief	个人主页链接
+ *	@brief	Personal homepage link.
  */
 @property (nonatomic,readonly) NSString *link;
 
 /**
- *	@brief	注册用户名称
+ *	@brief	User name.
  */
 @property (nonatomic,readonly) NSString *username;
 
 /**
- *	@brief	年龄范围
+ *	@brief	Age range.
  */
 @property (nonatomic,readonly) SSFacebookAgeRangeReader *ageRange;
 
 /**
- *	@brief	匿名用户标识
+ *	@brief	Third party id.
  */
 @property (nonatomic,readonly) NSString *thirdPartyId;
 
 /**
- *	@brief	按照应用标识
+ *	@brief	installed.
  */
 @property (nonatomic,readonly) BOOL installed;
 
 /**
- *	@brief	时区偏移值
+ *	@brief	Time zone.
  */
 @property (nonatomic,readonly) NSNumber *timezone;
 
 /**
- *	@brief	更新时间
+ *	@brief	Updated time.
  */
 @property (nonatomic,readonly) NSString *updatedTime;
 
 /**
- *	@brief	认证状态
+ *	@brief	Verified
  */
 @property (nonatomic,readonly) BOOL verified;
 
 /**
- *	@brief	用户描述
+ *	@brief	User description.
  */
 @property (nonatomic,readonly) NSString *bio;
 
 /**
- *	@brief	生日
+ *	@brief	Birthday
  */
 @property (nonatomic,readonly) NSString *birthday;
 
 /**
- *	@brief	照片封面
+ *	@brief	Cover information.
  */
 @property (nonatomic,readonly) SSFacebookCoverReader *cover;
 
 /**
- *	@brief	货币设置信息
+ *	@brief	Currency information.
  */
 @property (nonatomic,readonly) SSFacebookCurrencyReader *currency;
 
 /**
- *	@brief	设备信息
+ *	@brief	Devices.
  */
 @property (nonatomic,readonly) NSArray *devices;
 
 /**
- *	@brief	教育信息
+ *	@brief	Education.
  */
 @property (nonatomic,readonly) NSArray *education;
 
 /**
- *	@brief	电子邮件
+ *	@brief	E-mail.
  */
 @property (nonatomic,readonly) NSString *email;
 
 /**
- *	@brief	家乡
+ *	@brief	Hometown.
  */
 @property (nonatomic,readonly) SSFacebookHometownReader *hometown;
 
-
 /**
- *	@brief	 性取向
+ *	@brief	 Interested in.
  */
 @property (nonatomic,readonly) NSArray *interestedIn;
 
 /**
- *	@brief	所在城市
+ *	@brief	Location.
  */
 @property (nonatomic,readonly) SSFacebookLocationReader *location;
 
 /**
- *	@brief	政治观点
+ *	@brief	Political.
  */
 @property (nonatomic,readonly) NSString *political;
 
 /**
- *	@brief	支付价格点
+ *	@brief	Payment price points.
  */
 @property (nonatomic,readonly) SSFacebookPaymentPricePointReader *paymentPricepoints;
 
 /**
- *	@brief	喜欢的运动员
+ *	@brief	Favorite athletes.
  */
 @property (nonatomic,readonly) NSArray *favoriteAthletes;
 
 /**
- *	@brief	喜欢的球队
+ *	@brief	Favorite teams.
  */
 @property (nonatomic,readonly) NSArray *favoriteTeams;
 
 /**
- *	@brief	用户头像
+ *	@brief	Avatar.
  */
 @property (nonatomic,readonly) id picture;
 
 /**
- *	@brief	座右铭
+ *	@brief	Quotes.
  */
 @property (nonatomic,readonly) NSString *quotes;
 
 /**
- *	@brief	婚恋状态
+ *	@brief	Relationship status.
  */
 @property (nonatomic,readonly) NSString *relationshipStatus;
 
 /**
- *	@brief	宗教
+ *	@brief	Religion.
  */
 @property (nonatomic,readonly) NSString *religion;
 
 /**
- *	@brief	安全设置
+ *	@brief	secuity setting reader.
  */
 @property (nonatomic,readonly) SSFacebookSecuritySettingReader *securitySettings;
 
@@ -214,36 +212,35 @@
 @property (nonatomic,readonly) SSFacebookSignficantOtherReader *significantOther;
 
 /**
- *	@brief	视频上传限制
+ *	@brief	Video upload limits.
  */
 @property (nonatomic,readonly) SSFacebookVideoUploadLimitsReader *videoUploadLimits;
 
 /**
- *	@brief	个人主页
+ *	@brief	Personal homepage.
  */
 @property (nonatomic,readonly) NSString *website;
 
 /**
- *	@brief	职业信息
+ *	@brief	Career information.
  */
 @property (nonatomic,readonly) NSArray *work;
 
 /**
- *	@brief	初始化读取器
+ *	@brief	Initialize reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 - (id)initWithSourceData:(NSDictionary *)sourceData;
 
-
 /**
- *	@brief	创建用户信息读取器
+ *	@brief	Create user reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 + (SSFacebookUserReader *)readerWithSourceData:(NSDictionary *)sourceData;
 

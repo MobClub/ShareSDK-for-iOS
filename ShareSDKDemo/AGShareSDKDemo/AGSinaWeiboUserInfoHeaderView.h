@@ -1,12 +1,11 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 #import <AGCommon/CMImageView.h>
 #import <SinaWeiboConnection/SinaWeiboConnection.h>
@@ -21,9 +20,9 @@
 @optional
 
 /**
- *	@brief	添加好友成功
+ *	@brief	Add friend success event.
  *
- *	@param 	headerView 	表头视图
+ *	@param 	headerView 	header view.
  */
 - (void)headerViewOnAddFriend:(AGSinaWeiboUserInfoHeaderView *)headerView;
 
@@ -31,7 +30,7 @@
 @end
 
 /**
- *	@brief	用户信息表头
+ *	@brief	User information header view.
  */
 @interface AGSinaWeiboUserInfoHeaderView : UIView
 {
@@ -59,41 +58,40 @@
 }
 
 /**
- *	@brief	关注列表按钮
+ *	@brief	Friend list button.
  */
 @property (nonatomic,readonly) UIButton *friendsButton;
 
 /**
- *	@brief	粉丝列表按钮
+ *	@brief	Follower list button.
  */
 @property (nonatomic,readonly) UIButton *followerButton;
 
 /**
- *	@brief	详细信息按钮
+ *	@brief	Detail information button
  */
 @property (nonatomic,readonly) UIButton *infoButton;
 
 /**
- *	@brief	协议委托
+ *	@brief	Delegate object.
  */
 @property (nonatomic,assign) id<AGSinaWeiboUserInfoHeaderViewDelegate> delegate;
 
 
-
 /**
- *	@brief	初始化用户信息表头
+ *	@brief	Initialize user information header view.
  *
- *	@param 	frame 	显示范围
- *	@param 	imageCacheManager 	图片缓存管理器
+ *	@param 	frame 	Display rect.
+ *	@param 	imageCacheManager 	Image cache manager.
  *
- *	@return	表头视图
+ *	@return	Header view.
  */
 - (id)initWithFrame:(CGRect)frame imageCacheManager:(CMImageCacheManager *)imageCacheManager;
 
 /**
- *	@brief	设置用户信息
+ *	@brief	Set user information.
  *
- *	@param 	userInfo 	用户信息
+ *	@param 	userInfo 	User information.
  */
 - (void)setUserInfo:(id<ISSPlatformUser>)userInfo;
 

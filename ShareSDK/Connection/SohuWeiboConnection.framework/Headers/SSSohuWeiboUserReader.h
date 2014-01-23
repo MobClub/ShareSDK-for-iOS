@@ -1,15 +1,15 @@
 //
-//  SSSohuWeiboUserReader.h
-//  SohuWeiboConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-21.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 /**
- *	@brief	用户信息读取器
+ *	@brief	User Reader.
  */
 @interface SSSohuWeiboUserReader : NSObject
 {
@@ -18,166 +18,165 @@
 }
 
 /**
- *	@brief	源数据
+ *	@brief	Raw data.
  */
 @property (nonatomic,readonly) NSDictionary *sourceData;
 
 /**
- *	@brief	用户ID
+ *	@brief	User id.
  */
 @property (nonatomic,readonly) NSString *uid;
 
 /**
- *	@brief	昵称
+ *	@brief	Nickname.
  */
 @property (nonatomic,readonly) NSString *screenName;
 
 /**
- *	@brief	姓名（未使用，有可能会被作为个性域名使用）
+ *	@brief	Name (not used, it may be used as a personalized domain name).
  */
 @property (nonatomic,readonly) NSString *name;
 
 /**
- *	@brief	地区（暂无）
+ *	@brief	None.
  */
 @property (nonatomic,readonly) NSString *location;
 
 /**
- *	@brief	个人简介
+ *	@brief	Profile.
  */
 @property (nonatomic,readonly) NSString *description;
 
 /**
- *	@brief	个人主页（暂无）
+ *	@brief	None.
  */
 @property (nonatomic,readonly) NSString *url;
 
 /**
- *	@brief	用户头像
+ *	@brief	Avatar path.
  */
 @property (nonatomic,readonly) NSString *profileImageUrl;
 
 /**
- *	@brief	勿扰（暂无）
+ *	@brief	None.
  */
 @property (nonatomic,readonly) BOOL bProtected;
 
 /**
- *	@brief	粉丝数
+ *	@brief	Fans count.
  */
 @property (nonatomic,readonly) NSInteger followersCount;
 
 /**
- *	@brief	背景颜色（暂无）
+ *	@brief	None.
  */
 @property (nonatomic,readonly) NSString *profileBackgroundColor;
 
 /**
- *	@brief	文字颜色（暂无）
+ *	@brief	None.
  */
 @property (nonatomic,readonly) NSString *profileTextColor;
 
 /**
- *	@brief	暂无
+ *	@brief	None.
  */
 @property (nonatomic,readonly) NSString *profileLinkColor;
 
 /**
- *	@brief	侧栏颜色（暂无）
+ *	@brief	None.
  */
 @property (nonatomic,readonly) NSString *profileSidebarFillColor;
 
 /**
- *	@brief	暂无
+ *	@brief	None.
  */
 @property (nonatomic,readonly) NSString *profileSidebarBorderColor;
 
 /**
- *	@brief	关注数
+ *	@brief	Friends count.
  */
 @property (nonatomic,readonly) NSInteger friendsCount;
 
 /**
- *	@brief	创建时间
+ *	@brief	Created time.
  */
 @property (nonatomic,readonly) NSString *createdAt;
 
 /**
- *	@brief	收藏数
+ *	@brief	Favorites count.
  */
 @property (nonatomic,readonly) NSInteger favouritesCount;
 
 /**
- *	@brief	偏移值（暂无）
+ *	@brief	None
  */
 @property (nonatomic,readonly) NSString *utcOffset;
 
 /**
- *	@brief	时区（暂无）
+ *	@brief	None
  */
 @property (nonatomic,readonly) NSString *timeZone;
 
 /**
- *	@brief	暂无
+ *	@brief	None
  */
 @property (nonatomic,readonly) NSString *profileBackgroundImageUrl;
 
 /**
- *	@brief	通知（暂无）
+ *	@brief	None
  */
 @property (nonatomic,readonly) NSString *notifications;
 
 /**
- *	@brief	是否支持地理位置
+ *	@brief	Whether to support location
  */
 @property (nonatomic,readonly) BOOL geoEnabled;
 
 /**
- *	@brief	微博数
+ *	@brief	Statuses count.
  */
 @property (nonatomic,readonly) NSInteger statusesCount;
 
 /**
- *	@brief	是否关注
+ *	@brief	Following flag.
  */
 @property (nonatomic,readonly) BOOL following;
 
 /**
- *	@brief	是否认证
+ *	@brief	Whether verified.
  */
 @property (nonatomic,readonly) BOOL verified;
 
 /**
- *	@brief	语言
+ *	@brief	Language.
  */
 @property (nonatomic,readonly) NSString *lang;
 
 /**
- *	@brief	暂无
+ *	@brief	None.
  */
 @property (nonatomic,readonly) BOOL contributorsEnabled;
 
 /**
- *	@brief	性别,1 男  0  女。
+ *	@brief	Gender,1 Male  0  Female。
  */
 @property (nonatomic,readonly) NSInteger gender;
 
 /**
- *	@brief	初始化读取器
+ *	@brief	Initialize reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 - (id)initWithSourceData:(NSDictionary *)sourceData;
 
-
 /**
- *	@brief	创建用户信息读取器
+ *	@brief	Create a user reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 + (SSSohuWeiboUserReader *)readerWithSourceData:(NSDictionary *)sourceData;
 

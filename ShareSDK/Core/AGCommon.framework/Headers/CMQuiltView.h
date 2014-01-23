@@ -1,75 +1,72 @@
 //
-//  QuiltView.h
-//
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 #import "ICMQuiltItemView.h"
 
 @class CMQuiltView;
 
 /**
- *	@brief	瀑布流视图数据源
+ *	@brief	Quilt View Data Source.
  */
 @protocol QuiltViewDataSource <NSObject>
 
 @required
 
 /**
- *	@brief	返回
+ *	@brief	Return number of item.
  *
- *	@param 	quiltView 	瀑布流视图
+ *	@param 	quiltView 	Quilt View object.
  *
- *	@return	子项数量
+ *	@return	Items number.
  */
 - (NSInteger)quiltViewNumberOfItem:(CMQuiltView *)quiltView;
 
 /**
- *	@brief	返回子项内容
+ *	@brief	Return item view.
  *
- *	@param 	QuiltView 	瀑布流视图
- *	@param 	indexPath 	索引位置
+ *	@param 	QuiltView 	Quilt View object.
+ *	@param 	indexPath 	Index path.
  *
- *	@return	子项对象
+ *	@return	Item view.
  */
 - (UIView<ICMQuiltItemView> *)quiltView:(CMQuiltView *)quiltView itemForIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
 /**
- *	@brief	瀑布流视图协议
+ *	@brief	Quilt View Delegate.
  */
 @protocol QuiltViewDelegate <NSObject>
 
 @optional
 
 /**
- *	@brief	子项视图将要显示
+ *	@brief	Will display item view.
  *
- *	@param 	quiltView 	瀑布流视图
- *	@param 	itemView 	子项视图
- *	@param 	indexPath 	索引位置
+ *	@param 	quiltView 	Quilt View object.
+ *	@param 	itemView 	Item view.
+ *	@param 	indexPath 	Index path.
  */
 - (void)quiltView:(CMQuiltView *)quiltView willDisplayItemView:(UIView<ICMQuiltItemView> *)itemView indexPath:(NSIndexPath *)indexPath;
 
 /**
- *	@brief	瀑布流视图滚动
+ *	@brief	Did scroll.
  *
- *	@param 	quiltView 	瀑布流视图
+ *	@param 	quiltView 	Quilt View object.
  */
 - (void)quiltViewDidScroll:(CMQuiltView *)quiltView;
 
 /**
- *	@brief	瀑布流视图停止拖动
+ *	@brief	Did end dragging.
  *
- *	@param 	quiltView 	瀑布流视图
- *	@param 	decelerate 	减速运动标识，YES表示进行减速运动，否则不进行减速运动
+ *	@param 	quiltView 	Quilt View object.
+ *	@param 	decelerate 	Deceleration flag, YES indicates deceleration movement, or not decelerating motion
  */
 - (void)quiltViewDidEndDragging:(CMQuiltView *)quiltView willDecelerate:(BOOL)decelerate;
 
@@ -77,7 +74,7 @@
 @end
 
 /**
- *	@brief	瀑布流视图
+ *	@brief	Quilt View
  */
 @interface CMQuiltView : UIView <UIScrollViewDelegate,
                                 ICMQuiltItemViewConstructorDelegate>
@@ -106,57 +103,56 @@
 }
 
 /**
- *	@brief	数据源对象
+ *	@brief	Data source object.
  */
 @property (nonatomic,assign) id<QuiltViewDataSource> dataSource;
 
 /**
- *	@brief	协议对象
+ *	@brief	Delegate object.
  */
 @property (nonatomic,assign) id<QuiltViewDelegate> delegate;
 
 /**
- *	@brief	表头视图
+ *	@brief	Header view.
  */
 @property (nonatomic,retain) UIView *headerView;
 
 /**
- *	@brief	内容视图
+ *	@brief	Content view.
  */
 @property (nonatomic,readonly) UIScrollView *contentView;
 
 /**
- *	@brief	项宽度
+ *	@brief	Item width.
  */
 @property (nonatomic,readonly) CGFloat itemWidth;
 
 /**
- *	@brief	初始化瀑布流视图
+ *	@brief	Initialize quilt view.
  *
- *	@param 	frame 	显示区域
- *	@param 	itemWidth 	子项视图宽度
+ *	@param 	frame 	Display rect.
+ *	@param 	itemWidth 	Item width.
  *
- *	@return	瀑布流视图
+ *	@return	Quilt view.
  */
 - (id)initWithFrame:(CGRect)frame itemWidth:(CGFloat)itemWidth;
 
 /**
- *	@brief	重新加载数据
+ *	@brief	Reload data.
  */
 - (void)reloadData;
 
 /**
- *	@brief	初始化瀑布流，用于重新计算项目
+ *	@brief	Initialize quilt view，Used to recalculate all items.
  */
 - (void)clean;
 
-
 /**
- *	@brief	根据标识值获取可用的瀑布流子项视图
+ *	@brief	Dequeue reusable page.
  *
- *	@param 	identifier 	复用标识
+ *	@param 	identifier 	Item identifier.
  *
- *	@return	子项视图对象
+ *	@return	Item view object.
  */
 - (UIView<ICMQuiltItemView> *)dequeueReusablePageWithIdentifier:(NSString *)identifier;
 

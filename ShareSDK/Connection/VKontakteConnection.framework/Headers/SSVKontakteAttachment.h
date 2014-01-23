@@ -1,15 +1,15 @@
 //
-//  SSVKontakteAttachment.h
-//  VKontakteConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-12.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 /**
- *	@brief	附件信息
+ *	@brief	Attachment.
  */
 @interface SSVKontakteAttachment : NSObject
 {
@@ -20,28 +20,28 @@
 }
 
 /**
- *	@brief	附件类型
+ *	@brief	Attachment type.
  */
 @property (nonatomic,copy) NSString *type;
 
 /**
- *	@brief	媒体标识
+ *	@brief	Media id.
  */
 @property (nonatomic,copy) NSString *mediaId;
 
 /**
- *	@brief	媒体所属用户标识
+ *	@brief	Media belongs user ID.
  */
 @property (nonatomic,copy) NSString *ownerId;
 
 /**
- *	@brief	创建附件信息
+ *	@brief	Create an attachment.
  *
- *	@param 	type 	附件类型
- *	@param 	mediaId 	媒体标识
- *	@param 	ownerId 	媒体所属用户标识
+ *	@param 	type 	Attachment type.
+ *	@param 	mediaId 	Media id.
+ *	@param 	ownerId 	Media belongs user ID.
  *
- *	@return	附件信息
+ *	@return	Attachment object.
  */
 + (SSVKontakteAttachment *)attachmentWithType:(NSString *)type
                                       mediaId:(NSString *)mediaId

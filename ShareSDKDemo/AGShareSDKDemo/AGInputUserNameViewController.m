@@ -1,15 +1,11 @@
 //
-//  AGInputUserNameViewController.m
-//  AGShareSDKDemo
-//
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:1955211608
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import "AGInputUserNameViewController.h"
 #import "AGUserInfoViewController.h"
 #import "AGShareCell.h"
@@ -31,7 +27,7 @@
     {
         if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
         {
-            //改写导航栏标题样式
+                                    //Rewrite the navigation bar heading styles
             UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
             label.backgroundColor = [UIColor clearColor];
             label.textColor = [UIColor whiteColor];
@@ -44,7 +40,7 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
-        [btn setTitle:@"取消" forState:UIControlStateNormal];
+        [btn setTitle:NSLocalizedString(@"TEXT_CANCEL", @"取消") forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:14];
         btn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
         [btn addTarget:self action:@selector(cancelButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -54,7 +50,7 @@
         btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                        forState:UIControlStateNormal];
-        [btn setTitle:@"确定" forState:UIControlStateNormal];
+        [btn setTitle:NSLocalizedString(@"TEXT_OK", @"确定") forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:14];
         btn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
         [btn addTarget:self action:@selector(submitButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -115,13 +111,13 @@
 
 -(BOOL)shouldAutorotate
 {
-    //iOS6下旋屏方法
+            //iOS6 rotating screen method
     return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    //iOS6下旋屏方法
+            //iOS6 rotating screen method
     return SSInterfaceOrientationMaskAll;
 }
 
@@ -284,11 +280,11 @@
             
             if (_paramType == SSUserFieldTypeName)
             {
-                cell.textLabel.text = @"用户昵称:";
+                cell.textLabel.text = NSLocalizedString(@"TEXT_NICKNAME", @"用户昵称:");
             }
             else
             {
-                cell.textLabel.text = @"用户ID:";
+                cell.textLabel.text = NSLocalizedString(@"TEXT_USERID", @"用户ID:");
             }
             break;
         }
@@ -304,7 +300,7 @@
             {
                 case 0:
                 {
-                    cell.textLabel.text = @"用户昵称";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_NICKNAME", @"用户昵称:");
                     if (_paramType == SSUserFieldTypeName)
                     {
                         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -317,7 +313,7 @@
                 }
                 case 1:
                 {
-                    cell.textLabel.text = @"用户ID";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_USERID", @"用户ID:");
                     if (_paramType == SSUserFieldTypeUid)
                     {
                         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -343,7 +339,7 @@
             {
                 case 0:
                 {
-                    cell.textLabel.text = @"新浪微博";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_SINA_WEIBO", @"新浪微博");
                     cell.imageView.image = [UIImage imageNamed:@"Icon/sns_icon_1.png" bundleName:BUNDLE_NAME];
                     if (_shareType == ShareTypeSinaWeibo)
                     {
@@ -357,7 +353,7 @@
                 }
                 case 1:
                 {
-                    cell.textLabel.text = @"腾讯微博";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_TENCENT_WEIBO", @"腾讯微博");
                     cell.imageView.image = [UIImage imageNamed:@"Icon/sns_icon_2.png" bundleName:BUNDLE_NAME];
                     if (_shareType == ShareTypeTencentWeibo)
                     {
@@ -371,7 +367,7 @@
                 }
                 case 2:
                 {
-                    cell.textLabel.text = @"人人网";
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_RENREN", @"人人网");
                     cell.imageView.image = [UIImage imageNamed:@"Icon/sns_icon_7.png" bundleName:BUNDLE_NAME];
                     if (_shareType == ShareTypeRenren)
                     {

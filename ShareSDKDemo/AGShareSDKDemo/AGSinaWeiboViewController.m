@@ -1,12 +1,11 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import "AGSinaWeiboViewController.h"
 #import "AGSinaWeiboListViewController.h"
 #import <AGCommon/UIDevice+Common.h>
@@ -29,8 +28,7 @@
     self = [super init];
     if (self)
     {
-        // Custom initialization
-        self.title = @"新浪微博";
+        self.title = NSLocalizedString(@"TEXT_SINA_WEIBO", @"新浪微博");
         
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
         [leftBtn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
@@ -66,35 +64,35 @@
     }
     
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn1 setTitle:@"个人主页" forState:UIControlStateNormal];
+    [btn1 setTitle:NSLocalizedString(@"TEXT_PERSONAL_HOMEPAGE", @"个人主页") forState:UIControlStateNormal];
     btn1.frame = CGRectMake(LEFT_PADDING, VERTICAL_GAP, self.view.width - LEFT_PADDING - RIGHT_PADDING, 45.0);
     btn1.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:btn1];
     [btn1 addTarget:self action:@selector(getWeiboListClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn2 setTitle:@"获取用户关注列表" forState:UIControlStateNormal];
+    [btn2 setTitle:NSLocalizedString(@"TEXT_GET_USER_FOLLOW_LIST", @"获取用户关注列表")  forState:UIControlStateNormal];
     btn2.frame = CGRectMake(LEFT_PADDING, btn1.bottom + VERTICAL_GAP, self.view.width - LEFT_PADDING - RIGHT_PADDING, 45.0);
     btn2.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:btn2];
     [btn2 addTarget:self action:@selector(getFriendsClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *btn3 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn3 setTitle:@"获取用户粉丝列表" forState:UIControlStateNormal];
+    [btn3 setTitle:NSLocalizedString(@"TEXT_GET_USER_FANS_LIST", @"获取用户粉丝列表") forState:UIControlStateNormal];
     btn3.frame = CGRectMake(LEFT_PADDING, btn2.bottom + VERTICAL_GAP, self.view.width - LEFT_PADDING - RIGHT_PADDING, 45.0);
     btn3.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:btn3];
     [btn3 addTarget:self action:@selector(getFollowersClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *btn4 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn4 setTitle:@"获取用户资料" forState:UIControlStateNormal];
+    [btn4 setTitle:NSLocalizedString(@"TEXT_GET_USER_INFO", @"获取用户资料") forState:UIControlStateNormal];
     btn4.frame = CGRectMake(LEFT_PADDING, btn3.bottom + VERTICAL_GAP, self.view.width - LEFT_PADDING - RIGHT_PADDING, 45.0);
     btn4.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:btn4];
     [btn4 addTarget:self action:@selector(getUserInfoClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *btn5 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn5 setTitle:@"客户端分享" forState:UIControlStateNormal];
+    [btn5 setTitle:NSLocalizedString(@"TEXT_SHARE_BY_CLIENT", @"客户端分享") forState:UIControlStateNormal];
     btn5.frame = CGRectMake(LEFT_PADDING, btn4.bottom + VERTICAL_GAP, self.view.width - LEFT_PADDING - RIGHT_PADDING, 45.0);
     btn5.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:btn5];
@@ -115,13 +113,13 @@
 
 -(BOOL)shouldAutorotate
 {
-    //iOS6下旋屏方法
+            //iOS6 Rotating screen method
     return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    //iOS6下旋屏方法
+            //iOS6 Rotating screen method
     return SSInterfaceOrientationMaskAll;
 }
 
@@ -170,13 +168,13 @@
 {
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     
-    //构造分享内容
+            //Create a share content.
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
                                                   url:@"http://www.sharesdk.cn"
-                                          description:@"这是一条测试信息"
+                                          description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
     [ShareSDK clientShareContent:publishContent
@@ -186,11 +184,11 @@
                               
                               if (state == SSPublishContentStateSuccess)
                               {
-                                  NSLog(@"分享成功!");
+                                  NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"分享成功!"));
                               }
                               else if (state == SSPublishContentStateFail)
                               {
-                                  NSLog(@"分享失败!");
+                                  NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"分享失败!"), [error errorCode], [error errorDescription]);
                               }
                           }];
 }

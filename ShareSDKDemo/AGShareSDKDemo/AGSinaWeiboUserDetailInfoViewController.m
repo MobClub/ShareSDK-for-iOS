@@ -1,12 +1,11 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import "AGSinaWeiboUserDetailInfoViewController.h"
 #import <AGCommon/UIImage+Common.h>
 #import <AGCommon/UINavigationBar+Common.h>
@@ -29,7 +28,7 @@
 {
     if (self = [super init])
     {
-        self.title = @"详细资料";
+        self.title = NSLocalizedString(@"TEXT_DETAIL_INFO", @"详细资料");
         
         _user = [user retain];
         _rowInfoArray = [[NSMutableArray alloc] init];
@@ -40,7 +39,7 @@
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
         [leftBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
                            forState:UIControlStateNormal];
-        [leftBtn setTitle:@"返回" forState:UIControlStateNormal];
+        [leftBtn setTitle:NSLocalizedString(@"TEXT_BACK", @"返回") forState:UIControlStateNormal];
         leftBtn.titleLabel.font = [UIFont systemFontOfSize:13];
         leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
         [leftBtn addTarget:self action:@selector(backButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -55,7 +54,7 @@
 {
     if (self = [super init])
     {
-        self.title = @"详细资料";
+        self.title = NSLocalizedString(@"TEXT_DETAIL_INFO", @"详细资料");
         
         _userName = [userName copy];
         _rowInfoArray = [[NSMutableArray alloc] init];
@@ -66,7 +65,7 @@
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
         [leftBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
                            forState:UIControlStateNormal];
-        [leftBtn setTitle:@"返回" forState:UIControlStateNormal];
+        [leftBtn setTitle:NSLocalizedString(@"TEXT_BACK", @"返回") forState:UIControlStateNormal];
         leftBtn.titleLabel.font = [UIFont systemFontOfSize:13];
         leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
         [leftBtn addTarget:self action:@selector(backButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -122,7 +121,7 @@
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:appDelegate.viewDelegate];
         
-        //在授权页面中添加关注官方微博
+                        //Adding official Weibo concern in the authorization page
         [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                         SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
@@ -139,17 +138,17 @@
                                    SAFE_RELEASE(_user);
                                    _user = [[SSSinaWeiboUserInfoReader readerWithSourceData:[userInfo sourceData]] retain];
                                    
-                                   //计算需要显示多少行
+                                                                                                         //Calculate how many rows to be displayed
                                    [_rowInfoArray removeAllObjects];
                                    
-                                   //认证信息
+                                                                                                         //Verify information.
                                    if (_user.verified)
                                    {
-                                       [_rowInfoArray addObject:[NSArray arrayWithObjects:@"认证信息", VERIFIED_CELL, nil]];
+                                       [_rowInfoArray addObject:[NSArray arrayWithObjects:NSLocalizedString(@"TEXT_VERIFIED_INFO", @"认证信息"), VERIFIED_CELL, nil]];
                                    }
                                    
-                                   //基础信息
-                                   NSMutableArray *basicArr = [NSMutableArray arrayWithObject:@"基础信息"];
+                                                                                                         //Basic information.
+                                   NSMutableArray *basicArr = [NSMutableArray arrayWithObject:NSLocalizedString(@"TEXT_BASIC_INFO", @"基础信息")];
                                    [basicArr addObject:NICKNAME_CELL];
                                    [basicArr addObject:GENDER_CELL];
                                    [basicArr addObject:LOCATION_CELL];
@@ -161,17 +160,17 @@
     }
     else
     {
-        //计算需要显示多少行
+                        //Calculate how many rows to be displayed
         [_rowInfoArray removeAllObjects];
         
-        //认证信息
+                        //Verified information.
         if (_user.verified)
         {
-            [_rowInfoArray addObject:[NSArray arrayWithObjects:@"认证信息", VERIFIED_CELL, nil]];
+            [_rowInfoArray addObject:[NSArray arrayWithObjects:NSLocalizedString(@"TEXT_VERIFIED_INFO", @"认证信息"), VERIFIED_CELL, nil]];
         }
         
-        //基础信息
-        NSMutableArray *basicArr = [NSMutableArray arrayWithObject:@"基础信息"];
+                        //Basic information.
+        NSMutableArray *basicArr = [NSMutableArray arrayWithObject:NSLocalizedString(@"TEXT_BASIC_INFO", @"基础信息")];
         [basicArr addObject:NICKNAME_CELL];
         [basicArr addObject:GENDER_CELL];
         [basicArr addObject:LOCATION_CELL];
@@ -201,13 +200,13 @@
 
 -(BOOL)shouldAutorotate
 {
-    //iOS6下旋屏方法
+            //iOS6 rotating screen method
     return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    //iOS6下旋屏方法
+            //iOS6 rotating screen method
     return SSInterfaceOrientationMaskAll;
 }
 
@@ -320,38 +319,38 @@
         
         if ([cellId isEqualToString:VERIFIED_CELL])
         {
-            cell.textLabel.text = @"新浪认证";
+            cell.textLabel.text = NSLocalizedString(@"TEXT_SINA_WEIBO_VERIFIED", @"新浪认证");
             cell.detailTextLabel.text = _user.verifiedReason;
         }
         else if ([cellId isEqualToString:NICKNAME_CELL])
         {
-            cell.textLabel.text = @"昵称";
+            cell.textLabel.text = NSLocalizedString(@"TEXT_NICKNAME_2", @"昵称");
             cell.detailTextLabel.text = _user.screenName;
         }
         else if ([cellId isEqualToString:GENDER_CELL])
         {
-            cell.textLabel.text = @"性别";
+            cell.textLabel.text = NSLocalizedString(@"TEXT_GENDER", @"性别");
             if ([_user.gender isEqualToString:@"m"])
             {
-                cell.detailTextLabel.text = @"男";
+                cell.detailTextLabel.text = NSLocalizedString(@"TEXT_MALE", @"男");
             }
             else if ([_user.gender isEqualToString:@"f"])
             {
-                cell.detailTextLabel.text = @"女";
+                cell.detailTextLabel.text = NSLocalizedString(@"TEXT_FEMALE", @"女");
             }
             else
             {
-                cell.detailTextLabel.text = @"未知";
+                cell.detailTextLabel.text = NSLocalizedString(@"TEXT_UNKNOWN", @"未知");
             }
         }
         else if ([cellId isEqualToString:LOCATION_CELL])
         {
-            cell.textLabel.text = @"所在地";
+            cell.textLabel.text = NSLocalizedString(@"TEXT_LOCATION", @"所在地");
             cell.detailTextLabel.text = _user.location;
         }
         else if ([cellId isEqualToString:DESC_CELL])
         {
-            cell.textLabel.text = @"简介";
+            cell.textLabel.text = NSLocalizedString(@"TEXT_PROFILE", @"简介");
             cell.detailTextLabel.text = _user.description;
         }
     }
@@ -393,42 +392,42 @@
         
         if ([cellId isEqualToString:DESC_CELL])
         {
-            _descCell.textLabel.text = @"简介";
+            _descCell.textLabel.text = NSLocalizedString(@"TEXT_PROFILE", @"简介");
             _descCell.detailTextLabel.text = _user.description;
             return _descCell.cellHeight;
         }
         else if ([cellId isEqualToString:VERIFIED_CELL])
         {
-            _infoCell.textLabel.text = @"新浪认证";
+            _infoCell.textLabel.text = NSLocalizedString(@"TEXT_SINA_WEIBO_VERIFIED", @"新浪认证");
             _infoCell.detailTextLabel.text = _user.verifiedReason;
             return _infoCell.cellHeight;
         }
         else if ([cellId isEqualToString:NICKNAME_CELL])
         {
-            _infoCell.textLabel.text = @"昵称";
+            _infoCell.textLabel.text = NSLocalizedString(@"TEXT_NICKNAME", @"昵称");
             _infoCell.detailTextLabel.text = _user.screenName;
             return _infoCell.cellHeight;
         }
         else if ([cellId isEqualToString:GENDER_CELL])
         {
-            _infoCell.textLabel.text = @"性别";
+            _infoCell.textLabel.text = NSLocalizedString(@"TEXT_GENDER", @"性别");
             if ([_user.gender isEqualToString:@"m"])
             {
-                _infoCell.detailTextLabel.text = @"男";
+                _infoCell.detailTextLabel.text = NSLocalizedString(@"TEXT_MALE", @"男");
             }
             else if ([_user.gender isEqualToString:@"f"])
             {
-                _infoCell.detailTextLabel.text = @"女";
+                _infoCell.detailTextLabel.text = NSLocalizedString(@"TEXT_FEMALE", @"女");
             }
             else
             {
-                _infoCell.detailTextLabel.text = @"未知";
+                _infoCell.detailTextLabel.text = NSLocalizedString(@"TEXT_UNKNOWN", @"未知");
             }
             return _infoCell.cellHeight;
         }
         else if ([cellId isEqualToString:LOCATION_CELL])
         {
-            _infoCell.textLabel.text = @"所在地";
+            _infoCell.textLabel.text = NSLocalizedString(@"TEXT_LOCATION", @"所在地");
             _infoCell.detailTextLabel.text = _user.location;
             return _infoCell.cellHeight;
         }

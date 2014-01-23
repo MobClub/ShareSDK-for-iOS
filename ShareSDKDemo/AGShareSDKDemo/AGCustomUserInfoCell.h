@@ -1,11 +1,11 @@
 //
-//  AGCustomUserInfoCell.h
-//  AGShareSDKDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-3-5.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import <ShareSDK/ShareSDK.h>
 #import <AGCommon/CMImageView.h>
@@ -32,19 +32,19 @@
 }
 
 /**
- *	@brief	用户信息
+ *	@brief	User information.
  */
 @property (nonatomic,retain) NSDictionary *userInfo;
 
 /**
- *	@brief	初始化表格单元格
+ *	@brief	Initialize table view cell.
  *
- *	@param 	style 	样式
- *	@param 	reuseIdentifier 	复用标识
- *	@param 	imageCacheManager 	图片缓存管理器
- *  @param  shareType       分享类型
+ *	@param 	style 	Style
+ *	@param 	reuseIdentifier 	Reuse identifier.
+ *	@param 	imageCacheManager 	Image cache manager.
+ *  @param  shareType       Platform type.
  *
- *	@return	表格单元格
+ *	@return	Table view cell.
  */
 - (id)initWithStyle:(UITableViewCellStyle)style
     reuseIdentifier:(NSString *)reuseIdentifier

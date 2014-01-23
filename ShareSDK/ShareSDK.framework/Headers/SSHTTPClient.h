@@ -1,100 +1,100 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import <Foundation/Foundation.h>
 #import "SSHTTPParameters.h"
 
 /**
- *	@brief	HTTP返回事件
+ *	@brief	HTTP result event.
  */
 typedef void(^SSHTTPResultEvent) (NSHTTPURLResponse *response, NSData *responseData);
 
 /**
- *	@brief	HTTP错误事件
+ *	@brief	HTTP fault event.
  */
 typedef void(^SSHTTPFaultEvent) (NSError *error);
 
 /**
- *	@brief	HTTP客户端
+ *	@brief	HTTP Client
  */
 @interface SSHTTPClient : NSObject
 
 /**
- *	@brief	初始化HTTP客户端对象
+ *	@brief	Initialize HTTP Client.
  *
- *	@param 	url 	请求地址
+ *	@param 	url 	Request URL object.
  *
- *	@return	客户端对象
+ *	@return	HTTP Client object.
  */
 - (id)initWithURL:(NSURL *)url;
 
 /**
- *	@brief	初始化HTTP客户端对象
+ *	@brief	Initialize HTTP Client.
  *
- *	@param 	urlString 	请求地址字符串
+ *	@param 	urlString 	Request URL string.
  *
- *	@return	客户端对象
+ *	@return	HTTP Client object.
  */
 - (id)initWithURLString:(NSString *)urlString;
 
 /**
- *	@brief	初始化HTTP客户端对象
+ *	@brief	Initialize HTTP Client.
  *
- *	@param 	request 	请求对象
+ *	@param 	request 	Request object.
  *
- *	@return	客户端对象
+ *	@return	HTTP client object.
  */
 - (id)initWithRequest:(NSMutableURLRequest *)request;
 
 /**
- *	@brief	开始请求
+ *	@brief	Start request.
  *
- *  @param  resultHandler   返回事件处理
- *  @param  faultHandler    失败事件处理
+ *  @param  resultHandler   Result handler.
+ *  @param  faultHandler    Fault handler.
  */
 - (void)startWithResult:(SSHTTPResultEvent)resultHandler
                   fault:(SSHTTPFaultEvent)faultHandler;
 
 /**
- *	@brief	取消请求
+ *	@brief	Cancel request.
  */
 - (void)cancelRequest;
 
 /**
- *	@brief	设置请求方式
+ *	@brief	Set request method.
  *
- *	@param 	method 	请求方式
+ *	@param 	method 	Request method.
  */
 - (void)setMethod:(NSString *)method;
 
 /**
- *	@brief	启用Multipart形式提交
+ *	@brief	Enable Multipart forms submitted
  *
- *	@return	分隔字符串
+ *	@return	Boundary string.
  */
 - (NSString *)enableMultipart;
 
 /**
- *	@brief	添加参数
+ *	@brief	Add parameter.
  *
- *	@param 	name 	参数名称
- *	@param 	value 	参数值
+ *	@param 	name 	Parameter name.
+ *	@param 	value 	Parameter value.
  */
 - (void)addParameterWithName:(NSString *)name value:(id)value;
 
 /**
- *	@brief	添加文件参数
+ *	@brief	Add file parameter.
  *
- *	@param 	name 	参数名称
- *	@param 	fileName 	文件名称
- *	@param 	data 	文件数据
- *	@param 	contentType 	MIME类型
- *	@param 	transferEncoding 	传输编码
+ *	@param 	name 	Parameter name.
+ *	@param 	fileName 	File name.
+ *	@param 	data 	File data.
+ *	@param 	contentType 	MIME Type.
+ *	@param 	transferEncoding 	Transfer Encoding.
  */
 - (void)addPostedFileWithName:(NSString *)name
                      fileName:(NSString *)fileName
@@ -103,11 +103,11 @@ typedef void(^SSHTTPFaultEvent) (NSError *error);
              transferEncoding:(NSString *)transferEncoding;
 
 /**
- *	@brief	获取回复数据字符串
+ *	@brief	Get response string.
  *
- *	@param 	encoding 	编码
+ *	@param 	encoding 	Encoding.
  *
- *	@return	数据字符串
+ *	@return	Response string.
  */
 - (NSString *)responseString:(NSStringEncoding)encoding;
 

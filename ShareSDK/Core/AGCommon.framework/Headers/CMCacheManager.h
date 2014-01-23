@@ -1,16 +1,16 @@
 //
-//  CMCacheManager.h
-//  Common
+//  Created by ShareSDK.cn on 13-1-14.
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-6-6.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import "CMLoader.h"
 
 /**
- *	@brief	缓存管理器
+ *	@brief	Cache Manager.
  */
 @interface CMCacheManager : NSObject
 {
@@ -20,6 +20,14 @@
 	NSString *_cachePath;
 }
 
+/**
+ *	@brief	Load file.
+ *
+ *	@param 	url 	File URL object.
+ *
+ *	@return	Loader object.
+ */
 - (CMLoader *)load:(NSURL *)url;
+
 
 @end

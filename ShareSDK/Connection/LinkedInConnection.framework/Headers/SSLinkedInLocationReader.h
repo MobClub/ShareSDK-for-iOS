@@ -1,16 +1,16 @@
 //
-//  SSLinkedInLocationReader.h
-//  LinkedInConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by vimfung on 13-10-26.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import "SSLinkedInCountryReader.h"
 
 /**
- *	@brief	位置信息读取器
+ *	@brief	Location Reader.
  */
 @interface SSLinkedInLocationReader : NSObject
 {
@@ -19,36 +19,35 @@
 }
 
 /**
- *	@brief	源数据
+ *	@brief	Raw data.
  */
 @property (nonatomic,readonly) NSDictionary *sourceData;
 
 /**
- *	@brief	名称
+ *	@brief	Name.
  */
 @property (nonatomic,readonly) NSString *name;
 
 /**
- *	@brief	国家
+ *	@brief	Country reader.
  */
 @property (nonatomic,readonly) SSLinkedInCountryReader *country;
 
 /**
- *	@brief	初始化读取器
+ *	@brief	Initialize reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 - (id)initWithSourceData:(NSDictionary *)sourceData;
 
-
 /**
- *	@brief	创建读取器
+ *	@brief	Create a location reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 + (SSLinkedInLocationReader *)readerWithSourceData:(NSDictionary *)sourceData;
 

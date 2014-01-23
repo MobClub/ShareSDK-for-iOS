@@ -1,11 +1,11 @@
 //
-//  AGCustomFriendsViewController.h
-//  AGShareSDKDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-3-6.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import <ShareSDK/ShareSDK.h>
 #import <AGCommon/CMImageCacheManager.h>
@@ -15,7 +15,7 @@
 @class AGAppDelegate;
 
 /**
- *	@brief	自定义好友列表视图控制器
+ *	@brief	Custom Friends View Controller.
  */
 @interface AGCustomFriendsViewController : UIViewController <UITableViewDataSource,
                                                              UITableViewDelegate,
@@ -40,12 +40,12 @@
 }
 
 /**
- *	@brief	初始化视图控制器
+ *	@brief	Initialize view controller.
  *
- *	@param 	shareType 	分享类型
- *  @param  changeHandler   变更选中@用户列表事件处理器
+ *	@param 	shareType 	Platform type.
+ *  @param  changeHandler   Change selected mention user lists events
  *
- *	@return	视图控制器
+ *	@return	View controller.
  */
 - (id)initWithShareType:(ShareType)shareType changeHandler:(void(^)(NSArray *users, ShareType shareType))changeHandler;
 

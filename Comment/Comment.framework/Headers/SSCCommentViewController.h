@@ -1,40 +1,40 @@
 //
-//  SSCCommentViewController.h
-//  Comment
+//  Created by ShareSDK.cn on 13-1-14.
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-11-19.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import "ISSCComment.h"
 #import "SSCShareDesc.h"
 #import "SSCViewDesc.h"
 
 /**
- *	@brief	评论视图控制器
+ *	@brief	Comment View Controller.
  */
 @interface SSCCommentViewController : UIViewController <UITextViewDelegate>
 
 /**
- *	@brief	分享操作相关设置
+ *	@brief	Share operate related settings
  */
 @property (nonatomic,retain) SSCShareDesc *shareDesc;
 
 /**
- *	@brief	视图描述
+ *	@brief	View description.
  */
 @property (nonatomic,retain) SSCViewDesc *viewDesc;
 
 /**
- *	@brief	初始化视图控制器
+ *	@brief	Initialize comment view controller.
  *
- *	@param 	contentId 	内容标识
- *	@param 	topic 	标题
- *	@param 	comment 	被评论内容
- *  @param  resultHandler   返回回调
+ *	@param 	contentId 	Content id.
+ *	@param 	topic 	Title
+ *	@param 	comment 	Comment object.
+ *  @param  resultHandler   Result handler.
  *
- *	@return	视图控制器
+ *	@return	Comment view controller.
  */
 - (id)initWithContentId:(NSString *)contentId
                   topic:(NSString *)topic
@@ -42,9 +42,9 @@
                  result:(SSCReplyResultEvent)resultHandler;
 
 /**
- *	@brief	设置帐号来源，表示允许用户使用哪些平台进行登录授权来进行评论。默认为nil，表示使用ShareSDK中初始化的平台作为帐号来源。
+ *	@brief	Set account sources，Said platform which allows users to login using authorized to comment. The default is nil, that the use of ShareSDK initialized platform as the source account.
  *
- *	@param 	platforms 	平台列表，由ShareType组成。
+ *	@param 	platforms 	Platfrom list，Composed by the ShareType。
  */
 - (void)setAccountSources:(NSArray *)platforms;
 

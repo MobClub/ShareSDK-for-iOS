@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import <Foundation/Foundation.h>
@@ -11,7 +11,7 @@
 #import "SSSinaWeiboStatusInfoReader.h"
 
 /**
- *	@brief	评论信息读取器
+ *	@brief	Comment Reader.
  */
 @interface SSSinaWeiboCommentReader : NSObject
 {
@@ -20,70 +20,70 @@
 }
 
 /**
- *	@brief	源数据
+ *	@brief	Raw data.
  */
 @property (nonatomic,readonly) NSDictionary *sourceData;
 
 /**
- *	@brief	评论创建时间
+ *	@brief	Created time.
  */
 @property (nonatomic,readonly) NSString *createdAt;
 
 /**
- *	@brief	评论的ID
+ *	@brief	Comment id.
  */
 @property (nonatomic,readonly) long long Id;
 
 /**
- *	@brief	评论的内容
+ *	@brief	Comment text.
  */
 @property (nonatomic,readonly) NSString *text;
 
 /**
- *	@brief	评论的来源
+ *	@brief	Comment source
  */
 @property (nonatomic,readonly) NSString *source;
 
 /**
- *	@brief	评论作者的用户信息
+ *	@brief	Review of user information
  */
 @property (nonatomic,readonly) SSSinaWeiboUserInfoReader *user;
 
 /**
- *	@brief	评论的MID
+ *	@brief	Comment mid.
  */
 @property (nonatomic,readonly) NSString *mid;
 
 /**
- *	@brief	字符串型的评论ID
+ *	@brief	Comment id string
  */
 @property (nonatomic,readonly) NSString *idStr;
 
 /**
- *	@brief	评论的微博信息
+ *	@brief	Comments stuatus information
  */
 @property (nonatomic,readonly) SSSinaWeiboStatusInfoReader *status;
 
 /**
- *	@brief	评论来源评论，当本评论属于对另一评论的回复时返回此字段
+ *	@brief	Review source comments, return to this field when the comments are a reply to another comment
  */
 @property (nonatomic,readonly) SSSinaWeiboCommentReader *replyComment;
 
 /**
- *	@brief	初始化读取器
+ *	@brief	Initialize reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 - (id)initWithSourceData:(NSDictionary *)sourceData;
 
 /**
- *	@brief	创建评论信息读取器
+ *	@brief	Create a comment reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return Reader object.
  */
 + (SSSinaWeiboCommentReader *)readerWithSourceData:(NSDictionary *)sourceData;
 

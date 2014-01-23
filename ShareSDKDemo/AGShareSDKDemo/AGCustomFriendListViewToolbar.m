@@ -1,11 +1,11 @@
 //
-//  AGCustomFriendListViewToolbar.m
-//  AGShareSDKDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-3-6.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import "AGCustomFriendListViewToolbar.h"
 #import "AGCustomUserItemView.h"
 
@@ -36,7 +36,7 @@
         [_bgView release];
         
         _completeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [_completeButton setTitle:@"完成(0/20)" forState:UIControlStateNormal];
+        [_completeButton setTitle:NSLocalizedString(@"TEXT_COMPLETE", @"完成(0/20)") forState:UIControlStateNormal];
         _completeButton.titleLabel.font = [UIFont systemFontOfSize:13];
         [_completeButton sizeToFit];
         _completeButton.frame = CGRectMake(self.width - 70, (self.height - 30) / 2, 65, 30);
@@ -73,7 +73,7 @@
 
 - (void)reloadData
 {
-    [_completeButton setTitle:[NSString stringWithFormat:@"完成(%d/20)", [_selectedArray count]]
+    [_completeButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"TEXT_COMPLETE_2", @"完成(%d/20)"), [_selectedArray count]]
                      forState:UIControlStateNormal];
     [_tableView reloadData];
 }

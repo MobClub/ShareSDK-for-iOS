@@ -1,12 +1,11 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
-//  技术支持邮箱:support@sharesdk.cn
-//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-//  商务QQ:4006852216
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-
 #import "AGSinaWeiboStatusCell.h"
 #import <AGCommon/UIColor+Common.h>
 #import <AGCommon/NSDate+Common.h>
@@ -154,7 +153,8 @@
     SAFE_RELEASE(_iconLoader);
     [_picLoader removeAllNotificationWithTarget:self];
     SAFE_RELEASE(_picLoader);
-    //头像
+    
+            //Avatar
     _iconLoader = [[_imageCacheManager getImage:status.user.avatarLarge cornerRadius:5.0 size:_iconImageView.frame.size] retain];
     if (_iconLoader.state == ImageLoaderStateReady)
     {
@@ -170,21 +170,21 @@
                                       action:@selector(iconLoadErrorHandler:)];
     }
     
-    //认证类型
+            //Verified type
     if (status.user.verified)
     {
         
         switch (status.user.verifiedType)
         {
             case 0:
-                //个人认证
+                                                //Personal Certification
                 _vipImageView.image = [UIImage imageNamed:@"Vip.png"];
                 _vipImageView.hidden = NO;
                 break;
             case 5:
             case 2:
             case 3:
-                //企业认证
+                                                //Enterprise Certification
                 _vipImageView.image = [UIImage imageNamed:@"EnterpriseVip.png"];
                 _vipImageView.hidden = NO;
                 break;
@@ -197,7 +197,7 @@
     {
         if (status.user.verifiedType == 220)
         {
-            //达人
+                                    //Grassroot
             _vipImageView.image = [UIImage imageNamed:@"Grassroot.png"];
             _vipImageView.hidden = NO;
         }
@@ -207,7 +207,7 @@
         }
     }
     
-    //发布时间
+            //Published time
     NSDate *date = [NSDate dateByStringFormat:@"EEE MMM dd HH:mm:ss zzz yyyy"
                                    dateString:status.createdAt
                                        locale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease]];
@@ -217,7 +217,7 @@
     
     CGFloat left = _iconImageView.right + HORIZONTAL_GAP;
     
-    //发布人名称
+            //Publisher Name
     _nameLabel.text = status.user.name;
     [_nameLabel sizeToFit];
     CGFloat nameLabelWidth = _nameLabel.width;
@@ -240,7 +240,7 @@
         height = _contentLabel.bottom;
     }
     
-    //判断是否转发
+            //Determine whether to forward
     if (status.retweetedStatus)
     {
         _picImageView.hidden = YES;
@@ -262,10 +262,10 @@
     {
         _refContentView.hidden = YES;
         
-        //判断是否有图片
+                        //To determine whether there are picture
         if (status.thumbnailPic)
         {
-            //获取图片显示
+                                    //Get picture data and display.
             if (_picImageView == nil)
             {
                 _picImageView = [[CMImageView alloc] initWithFrame:CGRectMake(left, height + VERTICAL_GAP, IMAGE_WIDTH, IMaGE_HEIGHT)];
@@ -299,7 +299,7 @@
         }
     }
     
-    //来源
+            //Source
     NSString *source = [status.source stringByReplacingOccurrencesOfRegex:@"<a[^>]*>(.*)</a>"
                                                                usingBlock:^NSString *(NSInteger captureCount, NSString *const *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
                                                                    if (captureCount > 1)
@@ -307,28 +307,28 @@
                                                                        return capturedStrings[1];
                                                                    }
                                                                    
-                                                                   return @"未知应用";
+                                                                   return NSLocalizedString(@"TEXT_UNKNOWN_APP", @"未知应用");
                                                                }];
-    _sourceLabel.text = [NSString stringWithFormat:@"来自 %@", source];
+    _sourceLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TEXT_SOURCE", @"来自 %@"), source];
     [_sourceLabel sizeToFit];
     _sourceLabel.frame = CGRectMake(left, height + VERTICAL_GAP, _sourceLabel.width, _sourceLabel.height);
     
-    //评论
-    _commentLabel.text = [NSString stringWithFormat:@"评论:%d", status.commentsCount];
+            //Comment
+    _commentLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TEXT_COMMENT", @"评论:%d"), status.commentsCount];
     [_commentLabel sizeToFit];
     _commentLabel.frame = CGRectMake(self.width - RIGHT_PADDING - _commentLabel.width, height + VERTICAL_GAP, _commentLabel.width, _commentLabel.height);
     
-    //分隔线
+            //Divider
     _splitLabel.frame = CGRectMake(_commentLabel.left - _splitLabel.width, _commentLabel.top, _splitLabel.width, _splitLabel.height);
     
-    //转发
-    _replyLabel.text = [NSString stringWithFormat:@"转发:%d", status.repostsCount];
+            //Forwarding
+    _replyLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TEXT_REPOSE", @"转发:%d"), status.repostsCount];
     [_replyLabel sizeToFit];
     _replyLabel.frame = CGRectMake(_splitLabel.left - _replyLabel.width, _commentLabel.top, _replyLabel.width, _replyLabel.height);
     
     height = _sourceLabel.bottom;
     
-    //分隔线
+            //Divider
     _lineImageView.frame = CGRectMake((self.width - _lineImageView.width) / 2, height + BOTTOM_PADDING, _lineImageView.width, _lineImageView.height);
     height = _lineImageView.bottom;
     

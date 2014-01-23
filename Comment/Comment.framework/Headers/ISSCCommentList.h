@@ -1,63 +1,62 @@
 //
-//  ISSCCommentList.h
-//  Comment
+//  Created by ShareSDK.cn on 13-1-14.
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-11-13.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import "ISSCComment.h"
 
 /**
- *	@brief	更新评论列表返回事件
+ *	@brief	Update comment list result event.
  */
 typedef void(^SSCUpdateCommentListResultEvent) (SSResponseState state, NSError *error);
 
 /**
- *	@brief	获取评论详情返回事件
+ *	@brief	Get Comment detail information list result event.
  */
 typedef void(^SSCGetCommentDetailResultEvent) (SSResponseState state, NSError *error);
 
-
 /**
- *	@brief	评论列表
+ *	@brief	Comment List Protocol.
  */
 @protocol ISSCCommentList <NSObject>
 
 /**
- *	@brief	获取列表数据
+ *	@brief	Get list data.
  *
- *	@return	评论数组
+ *	@return	Comment list.
  */
 - (NSArray *)data;
 
 /**
- *	@brief	获取排序规则
+ *	@brief	Get order method
  *
- *	@return	排序规则
+ *	@return	Order method
  */
 - (NSComparator)order;
 
 /**
- *	@brief	设置列表排序规则
+ *	@brief	Set order method
  *
- *	@param 	order 	排序规则
+ *	@param 	order 	Order method
  */
 - (void)setOrder:(NSComparator)order;
 
 /**
- *	@brief	从服务器请求新的评论列表（只包含ID和部分信息）
+ *	@brief	Comments from the server requests a new list (and some contain only ID information)
  *
- *	@param 	result 	返回事件
+ *	@param 	result 	Result handler.
  */
 - (void)update:(SSCUpdateCommentListResultEvent)resultHandler;
 
 /**
- *	@brief	根据评论ID列表获取评论详情
+ *	@brief	Get Review Details list based on comment ids.
  *
- *	@param 	ids 	评论ID列表
- *  @param  resultHandler  返回事件回调
+ *	@param 	ids 	Comment ids.
+ *  @param  resultHandler  Result handler.
  */
 - (void)getCommentsDetailWithIds:(NSArray *)ids
                           result:(SSCGetCommentDetailResultEvent)resultHandler;

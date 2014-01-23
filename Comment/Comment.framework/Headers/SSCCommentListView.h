@@ -1,42 +1,41 @@
 //
-//  SSCommentListView.h
-//  Comment
+//  Created by ShareSDK.cn on 13-1-14.
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-11-13.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import "SSCommentTypeDef.h"
 #import "SSCShareDesc.h"
 #import "SSCViewDesc.h"
 
-
 /**
- *	@brief	评论列表视图
+ *	@brief	Comment List View
  */
 @interface SSCCommentListView : UIView <UITableViewDataSource,
                                         UITableViewDelegate>
 
 /**
- *	@brief	分享操作相关的设置
+ *	@brief	Share description.
  */
 @property (nonatomic,retain) SSCShareDesc *shareDesc;
 
 /**
- *	@brief	视图描述
+ *	@brief	View description
  */
 @property (nonatomic,retain) SSCViewDesc *viewDesc;
 
 /**
- *	@brief	初始化评论列表视图
+ *	@brief	Initialize comment list view.
  *
- *	@param 	contentId 	内容标识
- *  @param  title   标题
- *  @param  order   排序方法
- *	@param 	frame 	显示范围
+ *	@param 	contentId 	Content id.
+ *  @param  title   Title
+ *  @param  order   Order method
+ *	@param 	frame 	Display rect.
  *
- *	@return	视图对象
+ *	@return	Comment list view.
  */
 - (id)initWithContentId:(NSString *)contentId
                   title:(NSString *)title
@@ -44,14 +43,14 @@
                   frame:(CGRect)frame;
 
 /**
- *	@brief	初始化复合评论列表视图
+ *	@brief	Initialize complex comment list view.
  *
- *	@param 	contentId 	内容标志
- *	@param 	title 	标题
- *	@param 	menuItems 	菜单项集合
- *	@param 	frame 	显示范围
+ *	@param 	contentId 	Content id
+ *	@param 	title 	Title
+ *	@param 	menuItems 	Menu items.
+ *	@param 	frame 	Display rect.
  *
- *	@return	视图对象
+ *	@return	comment list view.
  */
 - (id)initWithContentId:(NSString *)contentId
                   title:(NSString *)title
@@ -59,21 +58,21 @@
                   frame:(CGRect)frame;
 
 /**
- *	@brief	设置帐号来源，表示允许用户使用哪些平台进行登录授权来进行评论。默认为nil，表示使用ShareSDK中初始化的平台作为帐号来源。
+ *	@brief	Set account sources，Said platform which allows users to login using authorized to comment. The default is nil, that the use of ShareSDK initialized platform as the source account.
  *
- *	@param 	platforms 	平台列表，由ShareType组成。
+ *	@param 	platforms 	Platform list，Composed by the ShareType。
  */
 - (void)setAccountSources:(NSArray *)platforms;
 
 /**
- *	@brief	设置评论列表表头视图
+ *	@brief	Set header view.
  *
- *	@param 	header 	表头视图
+ *	@param 	header 	Header view.
  */
 - (void)setHeaderView:(UIView *)headerView;
 
 /**
- *	@brief	重新加载数据
+ *	@brief	reload data.
  */
 - (void)reloadData;
 

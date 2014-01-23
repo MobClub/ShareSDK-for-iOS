@@ -1,11 +1,11 @@
 //
-//  SSCViewController.m
-//  CommentDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by vimfung on 13-12-22.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import "SSCViewController.h"
 #import <Comment/Comment.h>
 
@@ -42,8 +42,7 @@
     [pushCmtButton addTarget:self action:@selector(pushCmtButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:pushCmtButton];
     
-    
-    //显示工具栏
+            //Show toolbar.
     [self showCommentToolbarWithContentId:@"123456" title:@"文章标题"];
 }
 
@@ -51,19 +50,19 @@
 
 - (void)presentListButtonClickHandler:(id)sender
 {
-    //显示评论列表
+            //Show comment list view.
     [self presentCommentListViewControllerWithContentId:@"123456" title:@"文章标题" animated:YES];
 }
 
 - (void)pushListButtonClickHandler:(id)sender
 {
-    //显示评论列表
+            //Show comment list view.
     [self pushCommentListViewControllerWithContentId:@"123456" title:@"文章标题" animated:YES];
 }
 
 - (void)presentCmtButtonClickHandler:(id)sender
 {
-    //显示评论界面
+            //Show comment view
     [self presentCommentViewControllerWithContentId:@"123456"
                                               title:@"文章标题"
                                             comment:nil
@@ -84,7 +83,7 @@
 
 - (void)pushCmtButtonClickHandler:(id)sender
 {
-    //显示评论界面
+            //Show comment view
     [self pushCommentViewControllerWithContentId:@"123456"
                                            title:@"文章标题"
                                          comment:nil

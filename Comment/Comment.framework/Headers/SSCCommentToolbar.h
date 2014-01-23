@@ -1,60 +1,60 @@
 //
-//  SSCCommentToolbar.h
-//  Comment
+//  Created by ShareSDK.cn on 13-1-14.
+//  Website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-11-21.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import "SSCommentTypeDef.h"
 #import "SSCShareDesc.h"
 #import "SSCViewDesc.h"
 
 /**
- *	@brief	评论工具栏
+ *	@brief	Comment Toolbar
  */
 @interface SSCCommentToolbar : UIView
 
 /**
- *	@brief	分享操作相关设置
+ *	@brief	Share operate related settings
  */
 @property (nonatomic,retain) SSCShareDesc *shareDesc;
 
 /**
- *	@brief	视图描述
+ *	@brief	View description.
  */
 @property (nonatomic,retain) SSCViewDesc *viewDesc;
 
 /**
- *	@brief	返回按钮隐藏标识
+ *	@brief	Back button hidden.
  */
 @property (nonatomic) BOOL backButtonHidden;
 
 /**
- *	@brief	初始化评论工具栏
+ *	@brief	Initialize comment toolbar.
  *
- *	@param 	contentId 	内容标识
- *	@param 	title 	标题
- *	@param 	frame 	显示范围
+ *	@param 	contentId 	Content id.
+ *	@param 	title 	Title
+ *	@param 	frame 	Display rect.
  *
- *	@return	评论工具栏
+ *	@return	Comment toolbar.
  */
 - (id)initWithContentId:(NSString *)contentId
                   title:(NSString *)title
                   frame:(CGRect)frame;
 
 /**
- *	@brief	设置帐号来源，表示允许用户使用哪些平台进行登录授权来进行评论。默认为nil，表示使用ShareSDK中初始化的平台作为帐号来源。
+ *	@brief	Set account sources, which allows users to log in using the platform which authorized to comment. The default is nil, that the use of ShareSDK initialized platform as the source account.
  *
- *	@param 	platforms 	平台列表，由ShareType组成。
+ *	@param 	platforms 	Platform list, Composed by the ShareType.
  */
 - (void)setAccountSources:(NSArray *)platforms;
 
 /**
- *	@brief	设置返回事件,点击返回按钮时触发
+ *	@brief	Back event. click the Back button to trigger
  *
- *	@param 	handler 	事件处理器
+ *	@param 	handler 	Event handler.
  */
 - (void)setBackEvent:(SSCCommentListPageBackEvent)handler;
 

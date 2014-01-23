@@ -1,11 +1,11 @@
 //
-//  AGCustomMoreCell.m
-//  AGShareSDKDemo
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-3-6.
-//  Copyright (c) 2013年 vimfung. All rights reserved.
-//
-
 #import "AGCustomMoreCell.h"
 
 @implementation AGCustomMoreCell
@@ -24,7 +24,7 @@
         
         _label = [[UILabel alloc] initWithFrame:CGRectZero];
         _label.font = [UIFont systemFontOfSize:16];
-        _label.text = @"加载中...";
+        _label.text = NSLocalizedString(@"TEXT_LOADING", @"加载中...");
         [_label sizeToFit];
         [self.contentView addSubview:_label];
         [_label release];

@@ -1,17 +1,17 @@
 //
-//  SSLinkedInCredential.h
-//  LinkedInConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-8-8.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <ShareSDKCoreService/SSCDataObject.h>
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**
- *	@brief	授权凭证
+ *	@brief	Credential
  */
 @interface SSLinkedInCredential : NSObject <ISSPlatformCredential,
                                             NSCoding>
@@ -24,12 +24,12 @@
 }
 
 /**
- *	@brief	扩展数据
+ *	@brief	Extended Data
  */
 @property (nonatomic,retain) NSDictionary *extInfo;
 
 /**
- *	@brief	用户ID
+ *	@brief	User id.
  */
 @property (nonatomic,copy) NSString *uid;
 
@@ -39,21 +39,21 @@
 @property (nonatomic,copy) NSString *token;
 
 /**
- *	@brief	过期时间
+ *	@brief	Expires.
  */
 @property (nonatomic,retain) NSDate *expired;
 
 /**
- *	@brief	判断授权数据是否有效
+ *	@brief	Determine the validity of the authorization data
  */
 @property (nonatomic,readonly) BOOL available;
 
 /**
- *	@brief	使用原始数据创建授权凭证
+ *	@brief	Create a credential.
  *
- *	@param 	sourceData 	原始数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	授权凭证
+ *	@return Credential object.
  */
 + (SSLinkedInCredential *)credentialWithSourceData:(NSDictionary *)sourceData;
 

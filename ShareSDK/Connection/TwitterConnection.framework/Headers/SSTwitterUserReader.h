@@ -1,18 +1,18 @@
 //
-//  SSTwitterUserReader.h
-//  TwitterConnection
+//  Created by ShareSDK.cn on 13-1-14.
+//  website:http://www.ShareSDK.cn
+//  Support E-mail:support@sharesdk.cn
+//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
+//  Business QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-//  Created by 冯 鸿杰 on 13-10-24.
-//  Copyright (c) 2013年 掌淘科技. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import "SSTwitterEntitiesReader.h"
 
 @class SSTwitterTweetsReader;
 
 /**
- *	@brief	用户信息读取器
+ *	@brief	User Reader.
  */
 @interface SSTwitterUserReader : NSObject
 {
@@ -21,78 +21,77 @@
 }
 
 /**
- *	@brief	源数据
+ *	@brief	Raw data
  */
 @property (nonatomic,readonly) NSDictionary *sourceData;
 
-
 /**
- *	@brief	表示用户启用“贡献者模式”，让用户所发布的tweet同步到另一个帐户。
+ *	@brief	Said user to enable "contributor Mode", allowing users to synchronize tweet released to another account.
  */
 @property (nonatomic,readonly) BOOL contributorsEnabled;
 
 /**
- *	@brief	帐号创建时间
+ *	@brief	Created time.
  */
 @property (nonatomic,readonly) NSString *createdAt;
 
 /**
- *	@brief	如果为true，表示用户没有改变用户配置文件的主题或背景的。
+ *	@brief	If true, indicates that the user does not change the user profile theme or background.
  */
 @property (nonatomic,readonly) BOOL defaultProfile;
 
 /**
- *	@brief	如果为true，表示该用户还没有上传自己的头像,默认的鸡蛋头像代替。
+ *	@brief	If true, indicates that the user has not upload your own avatar, the default egg avatar instead.
  */
 @property (nonatomic,readonly) BOOL defaultProfileImage;
 
 /**
- *	@brief	用户描述
+ *	@brief	User description.
  */
 @property (nonatomic,readonly) NSString *description;
 
 /**
- *	@brief	已解析的URL或由用户定义的描述字段的实体。
+ *	@brief	URL parsed entity or by a user-defined description of the field.
  */
 @property (nonatomic,readonly) SSTwitterEntitiesReader *entities;
 
 /**
- *	@brief	收藏数量
+ *	@brief	Favourites number.
  */
 @property (nonatomic,readonly) NSInteger favouritesCount;
 
 /**
- *	@brief	如果为true，表示关注此用户时需要发送关注请求
+ *	@brief	If true, expressed the need to send a follow request Watch this user
  */
 @property (nonatomic,readonly) BOOL followRequestSent;
 
 /**
- *	@brief	如果为true，表示当前授权用户关注了此用户
+ *	@brief	If true, indicates that the current authorized user concerns of the user
  */
 @property (nonatomic,readonly) BOOL following;
 
 /**
- *	@brief	粉丝数量
+ *	@brief	Fans number.
  */
 @property (nonatomic,readonly) NSInteger followersCount;
 
 /**
- *	@brief	关注数量
+ *	@brief	Friends number.
  */
 @property (nonatomic,readonly) NSInteger friendsCount;
 
 /**
- *	@brief	启用地理位置标识，发送tweet时如果需要附带地理位置，则此值必须为true
+ *	@brief	Enable location identification, if necessary with a location, this value must be true when sending tweet
  */
 @property (nonatomic,readonly) BOOL geoEnabled;
 
 /**
- *	@brief	用户ID
+ *	@brief	User id.
  */
 @property (nonatomic,readonly) long long Id;
 
 /**
- *	@brief	用户ID字符串
+ *	@brief	User id string.
  */
 @property (nonatomic,readonly) NSString *idStr;
 
@@ -102,97 +101,97 @@
 @property (nonatomic,readonly) BOOL isTranslator;
 
 /**
- *	@brief	用户自定义的接口语言编码, 有可能会影响Tweet内容的编码
+ *	@brief	 user-defined interface language, may affect the Tweet content encoding
  */
 @property (nonatomic,readonly) NSString *lang;
 
 /**
- *	@brief	公共列表成员数量
+ *	@brief	listed count.
  */
 @property (nonatomic,readonly) NSInteger listedCount;
 
 /**
- *	@brief	在个人帐号中定义的位置信息
+ *	@brief	Location information as defined in the personal account
  */
 @property (nonatomic,readonly) NSString *location;
 
 /**
- *	@brief	用户名称
+ *	@brief	Name.
  */
 @property (nonatomic,readonly) NSString *name;
 
 /**
- *	@brief	已过时。表示授权用户是否选择了通过短信收到该用户的Tweets
+ *	@brief	Deprecated。Indicates whether the authorized user to receive the user's chosen via SMS Tweets
  */
 @property (nonatomic,readonly) BOOL notifications;
 
 /**
- *	@brief	个人资料页的背景颜色（16进制颜色值）
+ *	@brief	Profile background color（hexadecimal color value）
  */
 @property (nonatomic,readonly) NSString *profileBackgroundColor;
 
 /**
- *	@brief	个人资料页的背景图像(基于HTTP)
+ *	@brief	Profile background image URL(HTTP)
  */
 @property (nonatomic,readonly) NSString *profileBackgroundImageUrl;
 
 /**
- *	@brief	个人资料页的背景图像(基于HTTPS)
+ *	@brief	Profile background image URL(HTTPS)
  */
 @property (nonatomic,readonly) NSString *profileBackgroundImageUrlHttps;
 
 /**
- *	@brief	如果为true，表示该用户设置的profile_background_image_url应该是平铺显示。
+ *	@brief	If true, indicates that the user settings profile_background_image_url should be tiled.
  */
 @property (nonatomic,readonly) BOOL profileBackgroundTile;
 
 /**
- *	@brief	个人资料的Banner路径（基于HTTPS）
+ *	@brief	Profile banner URL（HTTPS）
  */
 @property (nonatomic,readonly) NSString *profileBannerUrl;
 
 /**
- *	@brief	用户头像(基于HTTP)
+ *	@brief	Profile image URL(HTTP)
  */
 @property (nonatomic,readonly) NSString *profileImageUrl;
 
 /**
- *	@brief	用户头像(基于HTTPS)
+ *	@brief	Profile image URL (HTTPS)
  */
 @property (nonatomic,readonly) NSString *profileImageUrlHttps;
 
 /**
- *	@brief	个人资料链接颜色（16进制颜色值）
+ *	@brief	Profile link color（hexadecimal color value）
  */
 @property (nonatomic,readonly) NSString *profileLinkColor;
 
 /**
- *	@brief	个人资料页侧栏边框线颜色（16进制颜色值）
+ *	@brief	Profile sidebar border color（hexadecimal color value）
  */
 @property (nonatomic,readonly) NSString *profileSidebarBorderColor;
 
 /**
- *	@brief	个人资料页侧栏填充颜色（16进制颜色值）
+ *	@brief	Profile page sidebar fill color (hexadecimal color value)
  */
 @property (nonatomic,readonly) NSString *profileSidebarFillColor;
 
 /**
- *	@brief	个人资料页的文本颜色（16进制颜色值）
+ *	@brief	Profile text color (hexadecimal color value)
  */
 @property (nonatomic,readonly) NSString *profileTextColor;
 
 /**
- *	@brief	为true时表示用户使用自己上传的背景图
+ *	@brief	Is true, said users upload their own background
  */
 @property (nonatomic,readonly) BOOL profileUseBackgroundImage;
 
 /**
- *	@brief	为true表示tweets将被保护
+ *	@brief	True to tweets will be protected
  */
 @property (nonatomic,readonly) BOOL Protected;
 
 /**
- *	@brief	屏幕显示名称，唯一
+ *	@brief	Screen name，Unique
  */
 @property (nonatomic,readonly) NSString *screenName;
 
@@ -202,32 +201,32 @@
 @property (nonatomic,readonly) BOOL showAllInlineMedia;
 
 /**
- *	@brief	最近一条Tweet或者Retweet
+ *	@brief	Recently a Tweet or Retweet
  */
 @property (nonatomic,readonly) SSTwitterTweetsReader *status;
 
 /**
- *	@brief	tweet数量
+ *	@brief	Statuses count.
  */
 @property (nonatomic,readonly) NSInteger statusesCount;
 
 /**
- *	@brief	时区
+ *	@brief	time zone
  */
 @property (nonatomic,readonly) NSString *timeZone;
 
 /**
- *	@brief	个人主页
+ *	@brief	Personal homepage.
  */
 @property (nonatomic,readonly) NSString *url;
 
 /**
- *	@brief	时区偏移量（单位：秒）
+ *	@brief	UTC offset（unit：seconds）
  */
 @property (nonatomic,readonly) NSInteger utcOffset;
 
 /**
- *	@brief	为ture表示认证帐号
+ *	@brief	Is true indicates verified.
  */
 @property (nonatomic,readonly) BOOL verified;
 
@@ -242,21 +241,20 @@
 @property (nonatomic,readonly) NSString *withheldScope;
 
 /**
- *	@brief	初始化读取器
+ *	@brief	Initialize reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 - (id)initWithSourceData:(NSDictionary *)sourceData;
 
-
 /**
- *	@brief	创建用户信息读取器
+ *	@brief	Create a user reader.
  *
- *	@param 	sourceData 	原数据
+ *	@param 	sourceData 	Raw data.
  *
- *	@return	读取器实例对象
+ *	@return	Reader object.
  */
 + (SSTwitterUserReader *)readerWithSourceData:(NSDictionary *)sourceData;
 
