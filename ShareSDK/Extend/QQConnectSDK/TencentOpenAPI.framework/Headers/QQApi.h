@@ -23,7 +23,13 @@ typedef enum
     EQQAPIMESSAGECONTENTINVALID = 5,
     EQQAPIAPPNOTREGISTED = 6,
     EQQAPIAPPSHAREASYNC = 7,
-    EQQAPISENDFAILD = -1
+    EQQAPISENDFAILD = -1,
+    
+    //qzone分享不支持text类型分享
+    EQQAPIQZONENOTSUPPORTTEXT = 10000,
+    //qzone分享不支持image类型分享
+    EQQAPIQZONENOTSUPPORTIMAGE = 10001,
+    
 } QQApiSendResultCode;
 
 
@@ -181,6 +187,7 @@ enum
 {
     kQQAPICtrlFlagQZoneShareOnStart = 0x01,
     kQQAPICtrlFlagQZoneShareForbid = 0x02,
+    kQQAPICtrlFlagShareWithoutReturn3rdApp = 0x04,
 };
 
 // QQApiObject
@@ -289,12 +296,11 @@ typedef enum QQApiURLTargetType{
 /**
  初始化方法
  @param data 数据内容
- @param previewImageData 用于预览的图片
  @param title 标题
  @param description 此对象，分享的描述
  @param imageDataArray 发送的多张图片队列
  */
-- (id)initWithData:(NSData*)data previewImageData:(NSData*)previewImageData title:(NSString*)title description:(NSString*)description imageDataArray:(NSArray*)imageDataArray;
+- (id)initWithData:(NSData *)data title:(NSString *)title description:(NSString *)description imageDataArray:(NSArray *)imageDataArray;
 
 /**
  helper方法获取一个autorelease的<code>QQApiExtendObject</code>对象

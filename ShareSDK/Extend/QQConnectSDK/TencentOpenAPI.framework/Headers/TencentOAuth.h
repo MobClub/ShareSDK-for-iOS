@@ -113,7 +113,7 @@
 
 
 /**
- * 登录授权 / DAU统计  <b>SDK 1.9版本以后，登录授权接口建议使用该接口，以前接口将会废弃 </b>
+ * 登录授权 / DAU统计  注意这个接口需要网络访问，否则会调用失败
  *
  * if:((openid != nil) && (accesstoken != nil)) ,进行统计DAU操作，并验证token是否有效
  * esle: 进行登录授权操作
@@ -191,14 +191,6 @@
 
 
 /**
- * 分享到QZone
- * \param params 参数字典,字典的关键字参见TencentOAuthObject.h中的\ref TCAddShareDic 
- * \return 处理结果，YES表示API调用成功，NO表示API调用失败，登录态失败，重新登录
- */
-- (BOOL)addShareWithParams:(NSMutableDictionary *)params;
-
-
-/**
  * 上传照片到QZone指定相册
  * \attention 需\ref apply_perm
  * \param params 参数字典,字典的关键字参见TencentOAuthObject.h中的\ref TCUploadPicDic
@@ -221,21 +213,6 @@
  */
 - (BOOL)checkPageFansWithParams:(NSMutableDictionary *)params;
 
-/**
- * 在QZone中发表一篇日志
- * \attention 需\ref apply_perm
- * \param params 参数字典,字典的关键字参见TencentOAuthObject.h中的\ref TCAddOneBlogDic
- * \return 处理结果，YES表示API调用成功，NO表示API调用失败，登录态失败，重新登录
- */
-- (BOOL)addOneBlogWithParams:(NSMutableDictionary *)params;
-
-/**
- * 在QZone中发表一条说说
- * \attention 需\ref apply_perm
- * \param params 参数字典,字典的关键字参见TencentOAuthObject.h中的\ref TCAddTopicDic
- * \return 处理结果，YES表示API调用成功，NO表示API调用失败，登录态失败，重新登录
- */
-- (BOOL)addTopicWithParams:(NSMutableDictionary *)params;
 
 /**
  * 获取QQ会员信息(仅包括是否为QQ会员,是否为年费QQ会员)
@@ -489,15 +466,6 @@
  *          错误返回示例: \snippet example/uploadPicResponse.exp fail
  */
 - (void)uploadPicResponse:(APIResponse*) response;
-
-
-/**
- * 在QZone中发表一篇日志回调
- * \param response API返回结果，具体定义参见sdkdef.h文件中\ref APIResponse
- * \remarks 正确返回示例: \snippet example/addOneBlogResponse.exp success
- *          错误返回示例: \snippet example/addOneBlogResponse.exp fail
- */
-- (void)addOneBlogResponse:(APIResponse*) response;
 
 /**
  * 在QZone中发表一条说说回调
