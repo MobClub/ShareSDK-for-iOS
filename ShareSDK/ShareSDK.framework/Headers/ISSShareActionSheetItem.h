@@ -7,11 +7,26 @@
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import <Foundation/Foundation.h>
+#import "ShareSDKEventHandlerDef.h"
 
 /**
  *	@brief	Share menu item protocol
  */
 @protocol ISSShareActionSheetItem <NSObject>
 
+/**
+ *	@brief	Title
+ */
+- (NSString *)title;
+
+/**
+ *	@brief	Icon image.
+ */
+- (UIImage *)icon;
+
+/**
+ *	@brief	Click menu item handler.
+ */
+- (SSShareActionSheetItemClickHandler)clickHandler;
 
 @end

@@ -22,6 +22,12 @@
  */
 + (id<ISSShareView>)create;
 
+/**
+ *	@brief	设置获取用户信息事件
+ *
+ *	@param 	result 	返回事件处理
+ */
++ (void)onGetUserInfoResult:(SSGetUserInfoEventHandler)result;
 
 
 @end

@@ -130,6 +130,12 @@ typedef enum
 }
 
 /**
+ *	@brief	Page control.
+ */
+@property (nonatomic,readonly) UIPageControl *pageControl;
+
+
+/**
  *	@brief	Page control style.
  */
 @property (nonatomic) PageControlStyle pageControlStyle;

@@ -8,6 +8,7 @@
 //
 #import <Foundation/Foundation.h>
 #import "ISSContainer.h"
+#import "ShareSDKTypeDef.h"
 
 /**
  *	@brief	Share menu protocol
@@ -15,11 +16,18 @@
 @protocol ISSShareActionSheet <NSObject>
 
 /**
- *	@brief	Show in container
+ *	@brief	Show share menu.
  *
- *	@param 	container 	Container object.
+ *	@param 	container 	Container.
+ *	@param 	items 	Share item list.
+ *  @param  itemClickHandler    Item click event handler.
+ *  @param  cancelHandler   Cancel button click event handler.
  */
-- (void)showInContainer:(id<ISSContainer>)container;
+- (void)showWithContainer:(id<ISSContainer>)container
+                    items:(NSArray *)items
+              onItemClick:(void (^)(ShareType shareType))itemClickHandler
+                 onCancel:(void(^)())cancelHandler;
+
 
 /**
  *	@brief	Dismiss menu.

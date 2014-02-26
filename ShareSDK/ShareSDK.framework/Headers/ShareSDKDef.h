@@ -30,5 +30,25 @@
  */
 #define MAPPING_VALUE(name) [SSInheritValue inheritWithName:name]
 
+/**
+ *	@brief	Get Coins Notification.
+ */
+#define SS_AWARD_NOTIF_GET_COINS @"get_coins"
+
+/**
+ *	@brief	Buy item notification
+ */
+#define SS_AWARD_NOTIF_BUY_ITEM @"buy_item"
+
+/**
+ *	@brief	Coins Key
+ */
+#define SS_AWARD_KEY_COINS @"coins"
+
+/**
+ *	@brief	Action Key
+ */
+#define SS_AWARD_KEY_ACTION @"action"
+
 
 #endif

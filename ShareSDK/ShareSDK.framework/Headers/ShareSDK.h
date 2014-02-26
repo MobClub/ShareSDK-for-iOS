@@ -21,6 +21,8 @@
 #import "ISSShareViewDelegate.h"
 #import "ISSShareActionSheetItem.h"
 #import "ISSUserField.h"
+#import "SSAwardViewController.h"
+#import "UIViewController+ShareSDK.h"
 
 /**
  *	@brief	ShareSDK function interface class, all functions performed by such offers (including sharing, authorization, etc.)
@@ -38,6 +40,9 @@
  *	@brief	Register app.
  *
  *  @since  ver2.2.6
+ *  @since  ver2.9.0 
+ *
+ *  @deprecated     Has deprecated, the default configuration will use both local and server hosting configuration. Its priority is: server hosting Configuration > Local Configuration
  *
  *	@param 	appKey 	App Key. Registered ShareSDK app in the official website and get an app key.
  *	@param 	useAppTrusteeship 	Whether to use the platform information hosting. If you get the information in the server platform configured for YES, NO, said access to the local configuration information.
@@ -1010,6 +1015,14 @@
  */
 + (NSString *)version;
 
+/**
+ *	@brief	Set UI style, Default is iOS7 Style.
+ *
+ *  @since  ver2.9.0
+ *
+ *	@param 	style 	UI style.
+ */
++ (void)setUIStyle:(SSUIStyle)style;
 
 
 #pragma mark 授权
@@ -1446,5 +1459,29 @@
                       type:(ShareType)type
              statusBarTips:(BOOL)statusBarTips
                     result:(SSPublishContentEventHandler)result;
+
+#pragma mark - 分享有奖
+
+/**
+ *	@brief	Create a share awards view controller.
+ *
+ *	@return	Awrads view controller.
+ */
++ (SSAwardViewController *)awardViewController;
+
+/**
+ *	@brief	Set obtain conins notification handler.
+ *
+ *	@param 	handler 	Handler object.
+ */
++ (void)setObtainCoinsHandler:(SSAwardObtainCoinsHandler)handler;
+
+/**
+ *	@brief	Set buy item notification handler.
+ *
+ *	@param 	handler 	Handler object.
+ */
++ (void)setBuyItemHandler:(SSAwardBuyItemHandler)handler;
+
 
 @end

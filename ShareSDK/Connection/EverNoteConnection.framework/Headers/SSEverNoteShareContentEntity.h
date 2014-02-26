@@ -35,6 +35,17 @@
 @property (nonatomic,retain) NSArray *resources;
 
 /**
+ *	@brief	Notebook id.
+ */
+@property (nonatomic,copy) NSString *notebookGuid;
+
+/**
+ *	@brief	Tag guid list.
+ */
+@property (nonatomic,retain) NSArray *tagsGuid;
+
+
+/**
  *	@brief	By sharing content parsed entity data
  *
  *	@param 	content 	Share content object

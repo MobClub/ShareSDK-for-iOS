@@ -76,6 +76,15 @@
 - (void)unregisterApp:(id<ISSPlatformApp>)app;
 
 /**
+ *	@brief	Determine whether the application has been registered
+ *
+ *	@param 	appInfo 	Application information
+ *
+ *	@return	YES said it had registered, NO indicates not registered
+ */
+- (BOOL)hasRegisteredWithAppInfo:(NSDictionary *)appInfo;
+
+/**
  *	@brief	Get registered application
  *
  *	@param 	key 	App key.

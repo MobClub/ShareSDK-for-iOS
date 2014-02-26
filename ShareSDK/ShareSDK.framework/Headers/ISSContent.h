@@ -380,6 +380,23 @@
                          resources:(NSArray *)resources;
 
 /**
+ *	@brief	Add EverNote content unit
+ *
+ *  @since  ver2.9.0
+ *
+ *	@param 	content 	Content string
+ *	@param 	title 	Title string
+ *	@param 	resources 	Image resource list，Element is ISSAttachment protocol object。If the parameter is set to INHERIT_VALUE. will using the parent's image parameter value.
+ *  @param  notebookGuid    Notebook guid
+ *  @param  tagsGuid        Tag guid list.
+ */
+- (void)addEvernoteUnitWithContent:(NSString *)content
+                             title:(NSString *)title
+                         resources:(NSArray *)resources
+                      notebookGuid:(NSString *)notebookGuid
+                          tagsGuid:(NSArray *)tagsGuid;
+
+/**
  *	@brief	Add Sina Weibo content unit.
  *
  *  @since  ver2.2.0

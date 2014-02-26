@@ -12,6 +12,7 @@
 #import "SSEverNoteErrorInfo.h"
 #import "SSEverNoteCredential.h"
 #import "SSEverNoteNote.h"
+#import "SSEverNoteTagReader.h"
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**
@@ -67,6 +68,46 @@ SSEverNoteRequestMethod;
              title:(NSString *)title
          resources:(NSArray *)resources
             result:(SSShareResultEvent)result;
+
+
+/**
+ *	@brief	Create note.
+ *
+ *  @since  v2.9.0
+ *
+ *	@param 	content 	Content string.
+ *  @param  title       Title string.
+ *  @param  resources      Resources list.
+ *  @param  notebookGuid    Notebook guid string.
+ *  @param  tagsGuid    Tag guid list.
+ *  @param  result      Result handler.
+ */
+- (void)createNote:(NSString *)content
+             title:(NSString *)title
+         resources:(NSArray *)resources
+      notebookGuid:(NSString *)noteBookGuid
+          tagsGuid:(NSArray *)tagsGuid
+            result:(SSShareResultEvent)result;
+
+/**
+ *	@brief	Create a tag.
+ *
+ *	@param 	tagName 	Tag name.
+ *	@param 	parentGuid 	Parent tag id.
+ *	@param 	result 	Result handler.
+ */
+- (void)createTagWithName:(NSString *)tagName
+               parentGuid:(NSString *)parentGuid
+                   result:(void(^)(SSResponseState state, SSEverNoteTagReader *tag, id<ICMErrorInfo> error))result;
+
+/**
+ *	@brief	Get tag list.
+ *
+ *  @param  notebookGuid    Notebook guid.
+ *  @param  result  Result handler.
+ */
+- (void)getTagsWithNotebookGuid:(NSString *)notebookGuid
+                         result:(void(^)(SSResponseState state, NSArray *tags, id<ICMErrorInfo> error))result;
 
 
 @end

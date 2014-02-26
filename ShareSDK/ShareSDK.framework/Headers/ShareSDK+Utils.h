@@ -152,6 +152,16 @@ SSNetworkType;
  */
 + (UIColor *)colorWithRGB:(NSUInteger)rgb;
 
+/**
+ *	@brief	Get color object.
+ *
+ *	@param 	rgb 	ARGB color value.
+ *
+ *	@return	Color object.
+ */
++ (UIColor *)colorWithARGB:(NSUInteger)argb;
+
+
 #pragma mark - Image
 
 /**
