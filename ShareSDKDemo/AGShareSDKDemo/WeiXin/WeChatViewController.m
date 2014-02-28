@@ -1732,7 +1732,7 @@
     footView.contentSize = CGSizeMake(self.view.width, btn35.bottom + 15);
     [footView release];
     
-    self.m_nsLastText = NSLocalizedString(@"TEXT_LAST_TEXT", @"完善的跨终端即时通讯能力，使得Mac可以与PC、手机、Pad等终端的QQ进行无缝沟通，让您的交流更畅快。 完善的跨终端即时通讯能力，使得Mac可以与PC、手机、Pad等终端的QQ进行无缝沟通，让您的交流更畅快。 ");
+    m_nsLastText = NSLocalizedString(@"TEXT_LAST_TEXT", @"完善的跨终端即时通讯能力，使得Mac可以与PC、手机、Pad等终端的QQ进行无缝沟通，让您的交流更畅快。 完善的跨终端即时通讯能力，使得Mac可以与PC、手机、Pad等终端的QQ进行无缝沟通，让您的交流更畅快。 ");
     
 }
 

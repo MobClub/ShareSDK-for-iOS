@@ -42,6 +42,12 @@
     [pushCmtButton addTarget:self action:@selector(pushCmtButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:pushCmtButton];
     
+    UIButton *setOtherUserButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [setOtherUserButton setTitle:@"设置第三方用户信息" forState:UIControlStateNormal];
+    setOtherUserButton.frame = CGRectMake((self.view.frame.size.width - 200) / 2, 320, 200, 50);
+    [setOtherUserButton addTarget:self action:@selector(setOtherUserButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:setOtherUserButton];
+    
             //Show toolbar.
     [self showCommentToolbarWithContentId:@"123456" title:@"文章标题"];
 }
@@ -100,6 +106,13 @@
                                               }
                                               
                                           }];
+}
+
+- (void)setOtherUserButtonClickHandler:(id)sender
+{
+    [Comment setUserInfoWithId:@"1234"
+                      nickname:@"第三方用户"
+                  profileImage:@"http://imgstatic.baidu.com/img/image/d833c895d143ad4bf450b6dd80025aafa40f06b4_%E5%89%AF%E6%9C%AC.jpg"];
 }
 
 @end

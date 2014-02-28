@@ -309,4 +309,12 @@
                                     filteredHandler:(SSCFilteredEvent)filteredHandler;
 
 
+/**
+ *	@brief	Set user information for third-party applications have their own user system, if you can call this interface to pass relevant user information. Once set this user as a comment, praise users.
+ *
+ *	@param 	userInfo 	User information
+ */
++ (void)setUserInfo:(id<ISSPlatformUser>)userInfo;
+
+
 @end

@@ -144,4 +144,18 @@
                contentEntity:(id<ISSContent>)contentEntity
                       result:(SSPublishContentEventHandler)resultHandler;
 
+#pragma mark - 其他
+
+/**
+ *	@brief	设置用户信息,对于第三方应用如果有自己的用户系统可以调用此接口传入相关用户信息。一旦设置则此用户将作为评论、称赞用户。
+ *
+ *	@param 	uid 	用户标识
+ *	@param 	nickname 	昵称
+ *	@param 	profileImage 	用户头像
+ */
++ (void)setUserInfoWithId:(NSString *)uid
+                 nickname:(NSString *)nickname
+             profileImage:(NSString *)profileImage;
+
+
 @end

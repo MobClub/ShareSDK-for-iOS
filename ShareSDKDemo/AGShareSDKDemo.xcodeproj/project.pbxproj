@@ -66,6 +66,9 @@
 		412A40EA169531CC00F22340 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 412A40E9169531CC00F22340 /* MessageUI.framework */; };
 		412A410F1695BDD800F22340 /* ShareSDKDemoMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 412A410E1695BDD700F22340 /* ShareSDKDemoMoreViewController.m */; };
 		412A41311695CC6500F22340 /* AGShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 412A41301695CC6400F22340 /* AGShareButton.m */; };
+		412BBF9B18C077850005DAEA /* ShareSDKFlatShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 412BBF9818C077850005DAEA /* ShareSDKFlatShareViewUI.bundle */; };
+		412BBF9C18C077850005DAEA /* ShareSDKFlatShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 412BBF9918C077850005DAEA /* ShareSDKFlatShareViewUI.framework */; };
+		412BBF9D18C077850005DAEA /* ShareSDKShareActionSheet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 412BBF9A18C077850005DAEA /* ShareSDKShareActionSheet.framework */; };
 		4133F12617C1E8E000B204A1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4133F12517C1E8E000B204A1 /* Security.framework */; };
 		413E3A9E167CD5370091644B /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 413E3A9D167CD5370091644B /* libicucore.dylib */; };
 		413FB711178FADAC00BC3FC8 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 413FB70F178FADAC00BC3FC8 /* Icon-72.png */; };
@@ -74,9 +77,6 @@
 		413FF65A17F0339000FD2131 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 413FF65617F0339000FD2131 /* IIViewDeckController.m */; };
 		413FF65B17F0339000FD2131 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 413FF65817F0339000FD2131 /* IIWrapController.m */; };
 		414212E91862F7DE005E26F4 /* UIView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 414212E81862F7DE005E26F4 /* UIView+Common.m */; };
-		4154C16318BCAAF500D07BEF /* ShareSDKFlatShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4154C16118BCAAF500D07BEF /* ShareSDKFlatShareViewUI.bundle */; };
-		4154C16418BCAAF500D07BEF /* ShareSDKFlatShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4154C16218BCAAF500D07BEF /* ShareSDKFlatShareViewUI.framework */; };
-		4154C16618BCAAFE00D07BEF /* ShareSDKShareActionSheet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4154C16518BCAAFE00D07BEF /* ShareSDKShareActionSheet.framework */; };
 		416A9113173A3356004CF72D /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 416A9112173A3356004CF72D /* libz.1.2.5.dylib */; };
 		416FB5F7171FD5020012D6B2 /* AGSinaWeiboListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 416FB5F6171FD5020012D6B2 /* AGSinaWeiboListViewController.m */; };
 		416FB5FA171FDAD70012D6B2 /* AGSinaWeiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 416FB5F9171FDAD70012D6B2 /* AGSinaWeiboViewController.m */; };
@@ -339,6 +339,9 @@
 		412A410E1695BDD700F22340 /* ShareSDKDemoMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareSDKDemoMoreViewController.m; sourceTree = "<group>"; };
 		412A412D1695CC0400F22340 /* AGShareButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGShareButton.h; sourceTree = "<group>"; };
 		412A41301695CC6400F22340 /* AGShareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGShareButton.m; sourceTree = "<group>"; };
+		412BBF9818C077850005DAEA /* ShareSDKFlatShareViewUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKFlatShareViewUI.bundle; sourceTree = "<group>"; };
+		412BBF9918C077850005DAEA /* ShareSDKFlatShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKFlatShareViewUI.framework; sourceTree = "<group>"; };
+		412BBF9A18C077850005DAEA /* ShareSDKShareActionSheet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKShareActionSheet.framework; sourceTree = "<group>"; };
 		4133F12517C1E8E000B204A1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		413E3A9D167CD5370091644B /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		413FB70F178FADAC00BC3FC8 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
@@ -351,9 +354,6 @@
 		413FF65817F0339000FD2131 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
 		414212E71862F7DE005E26F4 /* UIView+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Common.h"; sourceTree = "<group>"; };
 		414212E81862F7DE005E26F4 /* UIView+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Common.m"; sourceTree = "<group>"; };
-		4154C16118BCAAF500D07BEF /* ShareSDKFlatShareViewUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKFlatShareViewUI.bundle; sourceTree = "<group>"; };
-		4154C16218BCAAF500D07BEF /* ShareSDKFlatShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKFlatShareViewUI.framework; sourceTree = "<group>"; };
-		4154C16518BCAAFE00D07BEF /* ShareSDKShareActionSheet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKShareActionSheet.framework; sourceTree = "<group>"; };
 		416A9112173A3356004CF72D /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		416FB5F5171FD5020012D6B2 /* AGSinaWeiboListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSinaWeiboListViewController.h; sourceTree = "<group>"; };
 		416FB5F6171FD5020012D6B2 /* AGSinaWeiboListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSinaWeiboListViewController.m; sourceTree = "<group>"; };
@@ -629,14 +629,14 @@
 				41AF50421890AF0200B8E9E1 /* PocketConnection.framework in Frameworks */,
 				41AF50601890AF0200B8E9E1 /* libSinaWeiboSDK.a in Frameworks */,
 				41AF50591890AF0200B8E9E1 /* GooglePlus.framework in Frameworks */,
-				4154C16618BCAAFE00D07BEF /* ShareSDKShareActionSheet.framework in Frameworks */,
+				412BBF9D18C077850005DAEA /* ShareSDKShareActionSheet.framework in Frameworks */,
 				41AF50521890AF0200B8E9E1 /* YouDaoNoteConnection.framework in Frameworks */,
 				41AF503F1890AF0100B8E9E1 /* LinkedInConnection.framework in Frameworks */,
 				41AF50371890AF0100B8E9E1 /* EverNoteConnection.framework in Frameworks */,
 				41D4C689168D54A10093F94E /* SystemConfiguration.framework in Frameworks */,
 				413E3A9E167CD5370091644B /* libicucore.dylib in Frameworks */,
 				41AF50691890AF0200B8E9E1 /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */,
-				4154C16418BCAAF500D07BEF /* ShareSDKFlatShareViewUI.framework in Frameworks */,
+				412BBF9C18C077850005DAEA /* ShareSDKFlatShareViewUI.framework in Frameworks */,
 				41AF506E1890AF0200B8E9E1 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */,
 				41FE5E8F167CBAFF0096BFE9 /* UIKit.framework in Frameworks */,
 				41AF50501890AF0200B8E9E1 /* WeChatConnection.framework in Frameworks */,
@@ -1063,9 +1063,9 @@
 		41AF502A1890AF0100B8E9E1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				4154C16518BCAAFE00D07BEF /* ShareSDKShareActionSheet.framework */,
-				4154C16118BCAAF500D07BEF /* ShareSDKFlatShareViewUI.bundle */,
-				4154C16218BCAAF500D07BEF /* ShareSDKFlatShareViewUI.framework */,
+				412BBF9818C077850005DAEA /* ShareSDKFlatShareViewUI.bundle */,
+				412BBF9918C077850005DAEA /* ShareSDKFlatShareViewUI.framework */,
+				412BBF9A18C077850005DAEA /* ShareSDKShareActionSheet.framework */,
 				41AF502B1890AF0100B8E9E1 /* ShareSDKiPadDefaultShareViewUI.bundle */,
 				41AF502C1890AF0100B8E9E1 /* ShareSDKiPadDefaultShareViewUI.framework */,
 				41AF502D1890AF0100B8E9E1 /* ShareSDKiPadSimpleShareViewUI.bundle */,
@@ -1346,7 +1346,7 @@
 				41D40E9416A92D33006F614A /* AuthIcon@2x.png in Resources */,
 				41D40E9516A92D33006F614A /* CustomIcon.png in Resources */,
 				41D40E9616A92D33006F614A /* CustomIcon@2x.png in Resources */,
-				4154C16318BCAAF500D07BEF /* ShareSDKFlatShareViewUI.bundle in Resources */,
+				412BBF9B18C077850005DAEA /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				41D40E9716A92D33006F614A /* QQTabIcon.png in Resources */,
 				41D40E9816A92D33006F614A /* QQTabIcon@2x.png in Resources */,
 				41D40E9916A92D33006F614A /* ShareButtonHighLightedIcon.png in Resources */,
@@ -1628,7 +1628,6 @@
 					"$(SRCROOT)/../ShareSDK/Extend/RenRenSDK",
 					"$(SRCROOT)/../ShareSDK",
 					"$(SRCROOT)/../ShareSDK/UI",
-					"/Users/vim888/Documents/工作/ShareSDK_v2.8.4/release/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AGShareSDKDemo/AGShareSDKDemo-Prefix.pch";
@@ -1666,7 +1665,6 @@
 					"$(SRCROOT)/../ShareSDK/Extend/RenRenSDK",
 					"$(SRCROOT)/../ShareSDK",
 					"$(SRCROOT)/../ShareSDK/UI",
-					"/Users/vim888/Documents/工作/ShareSDK_v2.8.4/release/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AGShareSDKDemo/AGShareSDKDemo-Prefix.pch";
