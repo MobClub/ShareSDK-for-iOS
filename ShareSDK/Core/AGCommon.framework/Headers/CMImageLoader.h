@@ -1,3 +1,14 @@
+///#begin zh-cn
+//
+//  Created by ShareSDK.cn on 13-1-14.
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
+//
+///#end
+///#begin en
 //
 //  Created by ShareSDK.cn on 13-1-14.
 //  Website:http://www.ShareSDK.cn
@@ -6,52 +17,117 @@
 //  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
+///#end
+
 #import <UIKit/UIKit.h>
 #import "CMEventDispatcher.h"
 
+///#begin zh-cn
+/**
+ *	@brief	图片加载成功
+ */
+///#end
+///#begin en
 /**
  *	@brief	Image load complete notification.
  */
+///#end
 #define NOTIF_IMAGE_LOAD_COMPLETE @"imageLoadComplete"
 
+///#begin zh-cn
+/**
+ *	@brief	图片加载异常
+ */
+///#end
+///#begin en
 /**
  *	@brief	Image load error notification.
  */
+///#end
 #define NOTIF_IMAGE_LOAD_ERROR @"imageLoadError"
 
+///#begin zh-cn
+/**
+ *	@brief	图片加载进度
+ */
+///#end
+///#begin en
 /**
  *	@brief	Image load progress notification.
  */
+///#end
 #define NOTIF_IMAGE_LOAD_PROGRESS @"imageLoadProgress"
 
+///#begin zh-cn
+/**
+ *	@brief	图片数据
+ */
+///#end
+///#begin en
 /**
  *	@brief	Image data key.
  */
+///#end
 #define NOTIF_KEY_IMAGE_DATA @"imageData"
 
+///#begin zh-cn
+/**
+ *	@brief	异常
+ */
+///#end
+///#begin en
 /**
  *	@brief	Error key.
  */
+///#end
 #define NOTIF_KEY_IMAGE_ERROR @"error"
 
+///#begin zh-cn
+/**
+ *	@brief	图片回复
+ */
+///#end
+///#begin en
 /**
  *	@brief	Image response key.
  */
+///#end
 #define NOTIF_KEY_IMAGE_RESPONSE @"response"
 
+///#begin zh-cn
+/**
+ *	@brief	总字节数
+ */
+///#end
+///#begin en
 /**
  *	@brief	Total bytes key.
  */
+///#end
 #define NOTIF_KEY_TOTAL_BYTES @"totalBytes"
 
+///#begin zh-cn
+/**
+ *	@brief	加载字节数
+ */
+///#end
+///#begin en
 /**
  *	@brief	Loaded bytes key.
  */
+///#end
 #define NOTIF_KEY_LOADED_BYTES @"loadedBytes"
 
+///#begin zh-cn
+/**
+ *	@brief	加载器状态
+ */
+///#end
+///#begin en
 /**
  *	@brief	Image loader state.
  */
+///#end
 typedef enum
 {
 	ImageLoaderStateUnset,  /**< 未设置状态 */
@@ -59,9 +135,16 @@ typedef enum
     ImageLoaderStateReady   /**< 图片加载完毕，准备就绪 */
 }CMImageLoaderState;
 
+///#begin zh-cn
+/**
+ *	@brief	图片来源
+ */
+///#end
+///#begin en
 /**
  *	@brief	Image source type.
  */
+///#end
 typedef enum
 {
 	ImageLoaderSourceTypeCache, /**< 缓存 */
@@ -69,9 +152,16 @@ typedef enum
     ImageLoaderSourceTypeFile		/**< 文件 */
 }CMImageLoaderSourceType;
 
+///#begin zh-cn
+/**
+ *	@brief	图片裁剪类型
+ */
+///#end
+///#begin en
 /**
  *	@brief	Image clip type.
  */
+///#end
 typedef enum
 {
 	ImageClipTypeNone = 0, /**< 无裁剪 */
@@ -80,9 +170,16 @@ typedef enum
 	ImageClipTypeBottom /**< 从底部开始裁剪 */
 }CMImageClipType;
 
+///#begin zh-cn
+/**
+ *	@brief	图片加载器，带有图片加载状态，由ImageCacheManager管理分发。
+ */
+///#end
+///#begin en
 /**
  *	@brief	Image Loader，With pictures loaded state, the ImageCacheManager manage distribution.
  */
+///#end
 @interface CMImageLoader : CMEventDispatcher
 {
 @private
@@ -106,26 +203,65 @@ typedef enum
     
 }
 
+///#begin zh-cn
+/**
+ *	@brief	照片数据
+ */
+///#end
+///#begin en
 /**
  *	@brief	Image object.
  */
+///#end
 @property (nonatomic,retain,readonly) UIImage *content;
 
+///#begin zh-cn
+/**
+ *	@brief	照片状态
+ */
+///#end
+///#begin en
 /**
  *	@brief	Loader state.
  */
+///#end
 @property (nonatomic,readonly) CMImageLoaderState state;
 
+///#begin zh-cn
+/**
+ *	@brief	来源类型
+ */
+///#end
+///#begin en
 /**
  *	@brief	Source type.
  */
+///#end
 @property (nonatomic,readonly) CMImageLoaderSourceType sourceType;
 
+///#begin zh-cn
+/**
+ *	@brief	标志
+ */
+///#end
+///#begin en
 /**
  *	@brief	Tag
  */
+///#end
 @property (nonatomic,retain) NSString *tag;
 
+///#begin zh-cn
+/**
+ *	@brief	初始化图片加载器
+ *
+ *	@param 	clipSize 	裁剪尺寸
+ *	@param 	clipType 	裁剪类型
+ *
+ *	@return	加载器
+ */
+///#end
+///#begin en
 /**
  *	@brief	Initialize Image Loader.
  *
@@ -134,8 +270,19 @@ typedef enum
  *
  *	@return	Image Loader.
  */
+///#end
 - (id)initWithClipSize:(CGSize)clipSize clipType:(CMImageClipType)clipType;
 
+///#begin zh-cn
+/**
+ *	@brief	初始化图片加载器
+ *
+ *	@param 	cornerRadius 	圆角
+ *
+ *	@return	加载器
+ */
+///#end
+///#begin en
 /**
  *	@brief	Initialize Image Loader.
  *
@@ -143,8 +290,20 @@ typedef enum
  *
  *	@return	Image Loader object.
  */
+///#end
 - (id)initWithCornerRadius:(CGFloat)cornerRadius;
 
+///#begin zh-cn
+/**
+ *	@brief	初始化图片加载器
+ *
+ *	@param 	cornerRadius 	圆角
+ *	@param 	size 	实际显示尺寸
+ *
+ *	@return	加载器
+ */
+///#end
+///#begin en
 ///#end
 - (id)initWithCornerRadius:(CGFloat)cornerRadius
                       size:(CGSize)size;
@@ -159,6 +318,8 @@ typedef enum
  *
  *	@return	加载器
  */
+///#end
+///#begin en
 /**
  *	@brief	Initialize Image Loader.
  *
@@ -168,29 +329,57 @@ typedef enum
  *
  *	@return	Image Loader object.
  */
+///#end
 - (id)initWithClipSize:(CGSize)clipSize
               clipType:(CMImageClipType)clipType
           cornerRadius:(CGFloat)cornerRadius;
 
+///#begin zh-cn
+/**
+ *	@brief	加载网络图片对象
+ *
+ *	@param 	url 	图片URL
+ */
+///#end
+///#begin en
 /**
  *	@brief	Load image by URL
  *
  *	@param 	url 	Image URL string.
  */
+///#end
 - (void)loadImageByUrl:(NSString *)url;
 
+///#begin zh-cn
+/**
+ *	@brief	加载本地图片对象
+ *
+ *	@param 	filePath 	图片路径
+ */
+///#end
+///#begin en
 /**
  *	@brief	Load image by file path
  *
  *	@param 	filePath 	Image file path.
  */
+///#end
 - (void)loadImageByFilePath:(NSString *)filePath;
 
+///#begin zh-cn
+/**
+ *	@brief	加载缓存图片对象
+ *
+ *	@param 	image 	图片对象
+ */
+///#end
+///#begin en
 /**
  *	@brief	Load image by cache
  *
  *	@param 	image 	Image object.
  */
+///#end
 - (void)loadImageByCache:(UIImage *)image;
 
 
