@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  website:http://www.ShareSDK.cn
-//  Support E-mail:support@sharesdk.cn
-//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
-//  Business QQ:4006852216
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import "AGSinaWeiboListViewController.h"
@@ -67,15 +67,15 @@
         [statusArray addObject:[status sourceData]];
     }
     
-            //The data cache
-    NSDictionary *cacheData = [NSDictionary dictionaryWithObjectsAndKeys:
+        //对数据进行缓存
+        NSDictionary *cacheData = [NSDictionary dictionaryWithObjectsAndKeys:
                                _user,
                                @"user",
                                statusArray,
                                @"status",
                                [NSNumber numberWithBool:_hasNext],
                                @"hasnext",
-                               [NSNumber numberWithInt:_page],
+                               [NSNumber numberWithInteger:_page],
                                @"page",
                                nil];
     [NSKeyedArchiver archiveRootObject:cacheData toFile:[NSString stringWithFormat:CACHE_NAME, NSTemporaryDirectory(), USER_NAME]];
@@ -111,8 +111,8 @@
     
     if (!_initialized)
     {
-                        //Read cache
-        @try
+                //读取缓存
+                @try
         {
             NSString *cachePath = [NSString stringWithFormat:CACHE_NAME, NSTemporaryDirectory(), USER_NAME];
             NSDictionary *cacheDict = [NSKeyedUnarchiver unarchiveObjectWithFile:cachePath];
@@ -179,8 +179,8 @@
     [_headerView.infoButton addTarget:self action:@selector(infoButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [_headerView release];
     
-            //Drop down refresh
-    _refreshTableHeaderView = [[CMRefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,
+        //下拉刷新
+        _refreshTableHeaderView = [[CMRefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,
                                                                                     0.0f - _statusesTableView.bounds.size.height,
                                                                                     self.view.width,
                                                                                     _statusesTableView.bounds.size.height)
@@ -215,8 +215,8 @@
                                                                   viewDelegate:nil
                                                        authManagerViewDelegate:_appDelegate.viewDelegate];
             
-                                    //Adding official Weibo concern in the authorization page
-            [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                        //在授权页面中添加关注官方微博
+                        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                             SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                             [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -260,14 +260,14 @@
 
 -(BOOL)shouldAutorotate
 {
-            //iOS6 rotating screen method
-    return NO;
+        //iOS6下旋屏方法
+        return NO;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-            //iOS6 rotating screen method
-    return SSInterfaceOrientationMaskPortrait;
+        //iOS6下旋屏方法
+        return SSInterfaceOrientationMaskPortrait;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -421,8 +421,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -441,14 +441,14 @@
                                    _user = [userInfo retain];
                                    [_headerView setUserInfo:_user];
                                    
-                                                                                                         //Get weibo list.
-                                   [self getTimelineWithPage:1];
+                                                                      //获取微博列表
+                                                                      [self getTimelineWithPage:1];
                                }
                                
                                _isGetting = NO;
                                
-                                                                                             //End drop down.
-                               _refreshData = NO;
+                                                              //结束下拉
+                                                              _refreshData = NO;
                                [_refreshTableHeaderView refreshScrollViewDataSourceDidFinishedLoading:_statusesTableView];
                            }];
 
@@ -514,8 +514,8 @@
     }
     else
     {
-                        //Create more cell.
-        cell = [tableView dequeueReusableCellWithIdentifier:MORE_CELL];
+                //创建获取更多单元格
+                cell = [tableView dequeueReusableCellWithIdentifier:MORE_CELL];
         if (cell == nil)
         {
             cell = [[[AGSinaWeiboMoreCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MORE_CELL] autorelease];
@@ -552,8 +552,8 @@
 {
     if ([cell isKindOfClass:[AGSinaWeiboMoreCell class]])
     {
-                        //load next page.
-        if (_hasNext)
+                //加载下一页
+                if (_hasNext)
         {
             [self getTimelineWithPage:_page + 1];
         }
@@ -612,16 +612,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Reacquire user information
-    [ShareSDK getUserInfoWithType:ShareTypeSinaWeibo
+        //重新获取用户资料
+        [ShareSDK getUserInfoWithType:ShareTypeSinaWeibo
                             field:USER_NAME
                         fieldType:SSUserFieldTypeName
                       authOptions:authOptions

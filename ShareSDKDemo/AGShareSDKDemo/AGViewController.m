@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  website:http://www.ShareSDK.cn
-//  Support E-mail:support@sharesdk.cn
-//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
-//  Business QQ:4006852216
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import "AGViewController.h"
@@ -26,16 +26,16 @@
 @interface AGViewController (Private)
 
 /**
- *	@brief	Share button click handler
+ *	@brief	分享点击
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)actionClickHandler:(id)sender;
 
 /**
- *	@brief	Share button click handler.
+ *	@brief	分享按钮点击事件
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)shareButtonClickHandler:(UIButton *)sender;
 
@@ -91,7 +91,7 @@
         for (int i = 0; i < [shareTypes count]; i++)
         {
             NSNumber *shareTypeNum = [shareTypes objectAtIndex:i];
-            ShareType type = [shareTypeNum integerValue];
+            ShareType type = (ShareType)[shareTypeNum integerValue];
             
             NSMutableDictionary *itemDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                              [NSNumber numberWithBool:YES],
@@ -168,14 +168,14 @@
 
 -(BOOL)shouldAutorotate
 {
-            //iOS6 rotating screen method
-    return YES;
+        //iOS6下旋屏方法
+        return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-            //iOS6 rotating screen method
-    return SSInterfaceOrientationMaskAll;
+        //iOS6下旋屏方法
+        return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -237,15 +237,15 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-    [ShareSDK showShareViewWithType:type
+    [ShareSDK showShareViewWithType:(ShareType)type
                           container:nil
                             content:contentObj
                       statusBarTips:YES
@@ -348,8 +348,8 @@
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:_appDelegate.viewDelegate];
         
-                        //Adding official Weibo concern in the authorization page
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                //在授权页面中添加关注官方微博
+                [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                         SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -382,8 +382,8 @@
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:_appDelegate.viewDelegate];
         
-                        //Adding official Weibo concern in the authorization page
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                //在授权页面中添加关注官方微博
+                [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                         SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -434,12 +434,12 @@
             }
         }
         
-                        //Create a container.
-        id<ISSContainer> container = [ShareSDK container];
+                //创建容器
+                id<ISSContainer> container = [ShareSDK container];
         [container setIPadContainerWithBarButtonItem:self.navigationItem.rightBarButtonItem arrowDirect:UIPopoverArrowDirectionAny];
         
-                        //Create a content
-        id<ISSCAttachment> imageAttach = [ShareSDK imageWithPath:imagePath];
+                //创建内容
+                id<ISSCAttachment> imageAttach = [ShareSDK imageWithPath:imagePath];
         id<ISSContent> contentObj = [ShareSDK content:content
                                        defaultContent:@""
                                                 image:imageAttach
@@ -448,8 +448,8 @@
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
         
-                        //Share menu display
-        [ShareSDK showShareActionSheet:container
+                //显示分享选择菜单
+                [ShareSDK showShareActionSheet:container
                              shareList:shareList
                                content:contentObj
                          statusBarTips:YES
@@ -754,15 +754,15 @@
                 {
                     ((UIButton *)cell.accessoryView).tag = 200 + indexPath.row;
                     NSDictionary *item = [_noneUIShareTypeArray objectAtIndex:indexPath.row];
-                    cell.textLabel.text = [ShareSDK getClientNameWithType:[[item objectForKey:@"type"] integerValue]];
+                    cell.textLabel.text = [ShareSDK getClientNameWithType:(ShareType)[[item objectForKey:@"type"] integerValue]];
                     UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:
-                                                        @"Icon/sns_icon_%d.png",
-                                                        [[item objectForKey:@"type"] integerValue]]
+                                                        @"Icon/sns_icon_%ld.png",
+                                                        (long)[[item objectForKey:@"type"] integerValue]]
                                             bundleName:BUNDLE_NAME];
                     if (![[item objectForKey:@"selected"] boolValue])
                     {
-                                                                        //Grayscale image
-                        img = img.grayImage;
+                                                //灰度化图片
+                                                img = img.grayImage;
                         cell.accessoryType = UITableViewCellAccessoryNone;
                     }
                     else
@@ -778,15 +778,15 @@
                 {
                     ((UIButton *)cell.accessoryView).tag = 200 + indexPath.row;
                     NSDictionary *item = [_shareTypeArray objectAtIndex:indexPath.row];
-                    cell.textLabel.text = [ShareSDK getClientNameWithType:[[item objectForKey:@"type"] integerValue]];
+                    cell.textLabel.text = [ShareSDK getClientNameWithType:(ShareType)[[item objectForKey:@"type"] integerValue]];
                     UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:
-                                                        @"Icon/sns_icon_%d.png",
-                                                        [[item objectForKey:@"type"] integerValue]]
+                                                        @"Icon/sns_icon_%ld.png",
+                                                        (long)[[item objectForKey:@"type"] integerValue]]
                                             bundleName:BUNDLE_NAME];
                     if (![[item objectForKey:@"selected"] boolValue])
                     {
-                                                                        //Grayscale image
-                        img = img.grayImage;
+                                                //灰度化图片
+                                                img = img.grayImage;
                         cell.accessoryType = UITableViewCellAccessoryNone;
                     }
                     else

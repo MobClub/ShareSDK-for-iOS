@@ -54,6 +54,13 @@
 "ERROR_DESC_YIXIN_API_IS_NOT_SUPPORT" = "当前易信版本不支持该功能";
 "ERROR_DESC_YIXIN_SEND_REQUEST_ERROR" = "请求易信OpenApi失败";
 "ERROR_DESC_YIXIN_NOT_SET_URL_SCHEME" = "尚未设置易信的URL Scheme";
+"ERROR_DESC_INVALID_PLATFORM" = "无效的平台或者尚未初始化该平台!";
+"ERROR_DESC_LINE_NOT_INSTALL" = "尚未安装Line客户端";
+"ERROR_DESC_LINE_SEND_FAIL" = "分享Line内容失败";
+"ERROR_DESC_LINE_NOT_SUPPORTED_FOR_IOS7_PLUS" = "Line平台暂时不支持在iOS7以上分享图片";
+"ERROR_CODE_LINE_INVALID_UIPASTBOARD" = "无效UIPasteboard对象";
+"ERROR_DESC_WHATSAPP_NOT_INSTALL" = "尚未安装WhatsApp客户端";
+"ERROR_DESC_WHATSAPP_SEND_FAIL" = "分享WhatsApp内容失败";
 
 "ShareType_1" = "新浪微博";
 "ShareType_2" = "腾讯微博";
@@ -90,6 +97,9 @@
 "ShareType_37" = "微信收藏";
 "ShareType_38" = "易信好友";
 "ShareType_39" = "易信朋友圈";
+"ShareType_41" = "明道";
+"ShareType_42" = "Line";
+"ShareType_43" = "WhatsApp";
 
 "ALTER_VIEW_TITLE" = "提示";
 "ALTER_VIEW_I_KNOWN_BUTTON" = "知道了";
@@ -161,6 +171,7 @@
 "AUTH_VIEW_TITLE_34" = "Flickr";
 "AUTH_VIEW_TITLE_35" = "Dropbox";
 "AUTH_VIEW_TITLE_36" = "VKontakte";
+"AUTH_VIEW_TITLE_41" = "明道";
 "AUTH_VIEW_FOLLOW_ME" = "关注我们的微博";
 
 "AWARD_BACK_ITEM_TITLE" = "关闭";

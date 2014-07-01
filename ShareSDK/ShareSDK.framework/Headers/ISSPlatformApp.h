@@ -72,6 +72,14 @@ typedef void(^SSShareResultEvent) (SSResponseState state, id<ISSPlatformShareInf
 - (ShareType)type;
 
 /**
+ *	@brief	Determine whether to install the client
+ *
+ *	@return	YES means is installed, NO represents yet installed
+ */
+- (BOOL)isClientInstalled;
+
+
+/**
  *	@brief	Get whether to support a key sharing identity. If YES indicates the content editing interface can be opened and share it with other platforms.
  *
  *	@return	YES indicate support，NO indicate not support

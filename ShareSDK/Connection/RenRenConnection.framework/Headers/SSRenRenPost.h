@@ -10,6 +10,8 @@
 #import <ShareSDKCoreService/ShareSDKCoreService.h>
 #import <ShareSDK/ShareSDKPlugin.h>
 
+@class SSRenRenPhotoReader;
+
 /**
  *	@brief	Post
  */
@@ -64,5 +66,25 @@
  *	@return	Post information.
  */
 + (SSRenRenPost *)postWithResponse:(NSDictionary *)response;
+
+/**
+ *	@brief	Create a Post.
+ *
+ *	@param 	response 	Photo information reader.
+ *
+ *	@return	Post information.
+ */
++ (SSRenRenPost *)postWithPhotoReader:(SSRenRenPhotoReader *)photoReader;
+
+/**
+ *	@brief	Create a Post.
+ *
+ *	@param 	response 	share response.
+ *
+ *	@return	Post information.
+ */
++ (SSRenRenPost *)postWithShareResponse:(NSDictionary *)response;
+
+
 
 @end

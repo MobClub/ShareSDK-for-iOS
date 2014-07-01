@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  website:http://www.ShareSDK.cn
-//  Support E-mail:support@sharesdk.cn
-//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
-//  Business QQ:4006852216
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import "AGAuthViewController.h"
@@ -23,10 +23,10 @@
 @interface AGAuthViewController (Private)
 
 /**
-*	@brief	User information update handler.
-*
-*	@param 	notif 	Notification
-*/
+ *	@brief	用户信息更新
+ *
+ *	@param 	notif 	通知
+ */
 - (void)userInfoUpdateHandler:(NSNotification *)notif;
 
 
@@ -58,8 +58,8 @@
             [label release];
         }
         
-                        //Monitor change user information
-        [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
+                //监听用户信息变更
+                [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
                                    target:self
                                    action:@selector(userInfoUpdateHandler:)];
         
@@ -69,7 +69,7 @@
         for (int i = 0; i < [shareTypes count]; i++)
         {
             NSNumber *typeNum = [shareTypes objectAtIndex:i];
-            ShareType type = [typeNum integerValue];
+            ShareType type = (ShareType)[typeNum integerValue];
             id<ISSPlatformApp> app = [ShareSDK getClientWithType:type];
             
             if ([app isSupportOneKeyShare] || type == ShareTypeInstagram || type == ShareTypeGooglePlus || type == ShareTypeQQSpace)
@@ -154,14 +154,14 @@
 
 -(BOOL)shouldAutorotate
 {
-            //iOS6 rotating screen method
-    return YES;
+        //iOS6下旋屏方法
+        return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-            //iOS6 rotating screen method
-    return SSInterfaceOrientationMaskAll;
+        //iOS6下旋屏方法
+        return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -180,8 +180,8 @@
         NSMutableDictionary *item = [_shareTypeArray objectAtIndex:index];
         if (sender.on)
         {
-                                    //User information.
-            ShareType type = [[item objectForKey:@"type"] integerValue];
+                        //用户用户信息
+                        ShareType type = (ShareType)[[item objectForKey:@"type"] integerValue];
             
             id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                                  allowCallback:YES
@@ -189,8 +189,8 @@
                                                                   viewDelegate:nil
                                                        authManagerViewDelegate:appDelegate.viewDelegate];
             
-                                    //Adding official Weibo concern in the authorization page
-            [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                        //在授权页面中添加关注官方微博
+                        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                             SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                             [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -205,14 +205,14 @@
                                            [item setObject:[userInfo nickname] forKey:@"username"];
                                            [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
                                        }
-                                       NSLog(@"%d:%@",[error errorCode], [error errorDescription]);
+                                       NSLog(@"%ld:%@",(long)[error errorCode], [error errorDescription]);
                                        [_tableView reloadData];
                                    }];
         }
         else
         {
-                                    //Cancel authorized.
-            [ShareSDK cancelAuthWithType:[[item objectForKey:@"type"] integerValue]];
+                        //取消授权
+                        [ShareSDK cancelAuthWithType:(ShareType)[[item objectForKey:@"type"] integerValue]];
             [_tableView reloadData];
         }
         
@@ -245,12 +245,12 @@
         NSDictionary *item = [_shareTypeArray objectAtIndex:indexPath.row];
         
         UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:
-                                            @"Icon/sns_icon_%d.png",
-                                            [[item objectForKey:@"type"] integerValue]]
+                                            @"Icon/sns_icon_%ld.png",
+                                            (long)[[item objectForKey:@"type"] integerValue]]
                                 bundleName:BUNDLE_NAME];
         cell.imageView.image = img;
         
-        ((UISwitch *)cell.accessoryView).on = [ShareSDK hasAuthorizedWithType:[[item objectForKey:@"type"] integerValue]];
+        ((UISwitch *)cell.accessoryView).on = [ShareSDK hasAuthorizedWithType:(ShareType)[[item objectForKey:@"type"] integerValue]];
         ((UISwitch *)cell.accessoryView).tag = BASE_TAG + indexPath.row;
         
         if (((UISwitch *)cell.accessoryView).on)
@@ -289,7 +289,7 @@
     for (int i = 0; i < [_shareTypeArray count]; i++)
     {
         NSMutableDictionary *item = [_shareTypeArray objectAtIndex:i];
-        ShareType type = [[item objectForKey:@"type"] integerValue];
+        ShareType type = (ShareType)[[item objectForKey:@"type"] integerValue];
         if (type == plat)
         {
             [item setObject:[userInfo nickname] forKey:@"username"];

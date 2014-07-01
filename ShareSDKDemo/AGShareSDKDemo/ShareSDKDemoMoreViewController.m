@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  website:http://www.ShareSDK.cn
-//  Support E-mail:support@sharesdk.cn
-//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
-//  Business QQ:4006852216
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import "ShareSDKDemoMoreViewController.h"
@@ -58,8 +58,8 @@
     [self.view addSubview:tableView];
     
     listOfItems = [[NSMutableArray alloc] init];
-            //Contact
-    NSArray *infoArray = [NSArray arrayWithObjects:
+        //联系方式
+        NSArray *infoArray = [NSArray arrayWithObjects:
                               NSLocalizedString(@"TEXT_SDK_SINA_WEIBO", @"ShareSDK新浪微博"),
                               NSLocalizedString(@"TEXT_SDK_TENCENT_WEIBO", @"ShareSDK腾迅微博"),
                               NSLocalizedString(@"TEXT_SDK_WECHAT", @"ShareSDK微信号:ShareSDK"),
@@ -69,8 +69,8 @@
                               nil];
     NSDictionary *infoDict = [NSDictionary dictionaryWithObject:infoArray forKey:@"Countries"];
     
-            //Version information
-	NSArray *aboutusArray = [NSArray arrayWithObjects:
+        //版本信息
+    	NSArray *aboutusArray = [NSArray arrayWithObjects:
                               NSLocalizedString(@"TEXT_SDK_VERSION", @"SDK版本 v1.1.2 (2013-01-25更新)"),
                               nil];
 	NSDictionary *aboutusDict = [NSDictionary dictionaryWithObject:aboutusArray forKey:@"Countries"];
@@ -159,8 +159,8 @@
                                                                   viewDelegate:nil
                                                        authManagerViewDelegate:_appDelegate.viewDelegate];
             
-                                    //Adding official Weibo concern in the authorization page
-            [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                        //在授权页面中添加关注官方微博
+                        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                             SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                             [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -171,8 +171,8 @@
             {
                 case 0:
                 {
-                                                            //Concerned users
-                    [ShareSDK followUserWithType:ShareTypeSinaWeibo
+                                        //关注用户
+                                        [ShareSDK followUserWithType:ShareTypeSinaWeibo
                                            field:@"ShareSDK"
                                        fieldType:SSUserFieldTypeName
                                      authOptions:authOptions

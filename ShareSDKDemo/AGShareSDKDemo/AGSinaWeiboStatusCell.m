@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  website:http://www.ShareSDK.cn
-//  Support E-mail:support@sharesdk.cn
-//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
-//  Business QQ:4006852216
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import "AGSinaWeiboStatusCell.h"
@@ -154,8 +154,8 @@
     [_picLoader removeAllNotificationWithTarget:self];
     SAFE_RELEASE(_picLoader);
     
-            //Avatar
-    _iconLoader = [[_imageCacheManager getImage:status.user.avatarLarge cornerRadius:5.0 size:_iconImageView.frame.size] retain];
+        //头像
+        _iconLoader = [[_imageCacheManager getImage:status.user.avatarLarge cornerRadius:5.0 size:_iconImageView.frame.size] retain];
     if (_iconLoader.state == ImageLoaderStateReady)
     {
         _iconImageView.image = _iconLoader.content;
@@ -170,22 +170,22 @@
                                       action:@selector(iconLoadErrorHandler:)];
     }
     
-            //Verified type
-    if (status.user.verified)
+        //认证类型
+        if (status.user.verified)
     {
         
         switch (status.user.verifiedType)
         {
             case 0:
-                                                //Personal Certification
-                _vipImageView.image = [UIImage imageNamed:@"Vip.png"];
+                                //个人认证
+                                _vipImageView.image = [UIImage imageNamed:@"Vip.png"];
                 _vipImageView.hidden = NO;
                 break;
             case 5:
             case 2:
             case 3:
-                                                //Enterprise Certification
-                _vipImageView.image = [UIImage imageNamed:@"EnterpriseVip.png"];
+                                //企业认证
+                                _vipImageView.image = [UIImage imageNamed:@"EnterpriseVip.png"];
                 _vipImageView.hidden = NO;
                 break;
             default:
@@ -197,8 +197,8 @@
     {
         if (status.user.verifiedType == 220)
         {
-                                    //Grassroot
-            _vipImageView.image = [UIImage imageNamed:@"Grassroot.png"];
+                        //达人
+                        _vipImageView.image = [UIImage imageNamed:@"Grassroot.png"];
             _vipImageView.hidden = NO;
         }
         else
@@ -207,8 +207,8 @@
         }
     }
     
-            //Published time
-    NSDate *date = [NSDate dateByStringFormat:@"EEE MMM dd HH:mm:ss zzz yyyy"
+        //发布时间
+        NSDate *date = [NSDate dateByStringFormat:@"EEE MMM dd HH:mm:ss zzz yyyy"
                                    dateString:status.createdAt
                                        locale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease]];
     _pubDateLabel.text = [NSDate stringByStringFormat:@"yy-MM-dd" data:date];
@@ -217,8 +217,8 @@
     
     CGFloat left = _iconImageView.right + HORIZONTAL_GAP;
     
-            //Publisher Name
-    _nameLabel.text = status.user.name;
+        //发布人名称
+        _nameLabel.text = status.user.name;
     [_nameLabel sizeToFit];
     CGFloat nameLabelWidth = _nameLabel.width;
     if (nameLabelWidth > _pubDateLabel.left - left)
@@ -240,8 +240,8 @@
         height = _contentLabel.bottom;
     }
     
-            //Determine whether to forward
-    if (status.retweetedStatus)
+        //判断是否转发
+        if (status.retweetedStatus)
     {
         _picImageView.hidden = YES;
         
@@ -262,11 +262,11 @@
     {
         _refContentView.hidden = YES;
         
-                        //To determine whether there are picture
-        if (status.thumbnailPic)
+                //判断是否有图片
+                if (status.thumbnailPic)
         {
-                                    //Get picture data and display.
-            if (_picImageView == nil)
+                        //获取图片显示
+                        if (_picImageView == nil)
             {
                 _picImageView = [[CMImageView alloc] initWithFrame:CGRectMake(left, height + VERTICAL_GAP, IMAGE_WIDTH, IMaGE_HEIGHT)];
                 [self.contentView addSubview:_picImageView];
@@ -299,8 +299,8 @@
         }
     }
     
-            //Source
-    NSString *source = [status.source stringByReplacingOccurrencesOfRegex:@"<a[^>]*>(.*)</a>"
+        //来源
+        NSString *source = [status.source stringByReplacingOccurrencesOfRegex:@"<a[^>]*>(.*)</a>"
                                                                usingBlock:^NSString *(NSInteger captureCount, NSString *const *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
                                                                    if (captureCount > 1)
                                                                    {
@@ -313,23 +313,23 @@
     [_sourceLabel sizeToFit];
     _sourceLabel.frame = CGRectMake(left, height + VERTICAL_GAP, _sourceLabel.width, _sourceLabel.height);
     
-            //Comment
-    _commentLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TEXT_COMMENT", @"评论:%d"), status.commentsCount];
+        //评论
+        _commentLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TEXT_COMMENT", @"评论:%d"), status.commentsCount];
     [_commentLabel sizeToFit];
     _commentLabel.frame = CGRectMake(self.width - RIGHT_PADDING - _commentLabel.width, height + VERTICAL_GAP, _commentLabel.width, _commentLabel.height);
     
-            //Divider
-    _splitLabel.frame = CGRectMake(_commentLabel.left - _splitLabel.width, _commentLabel.top, _splitLabel.width, _splitLabel.height);
+        //分隔线
+        _splitLabel.frame = CGRectMake(_commentLabel.left - _splitLabel.width, _commentLabel.top, _splitLabel.width, _splitLabel.height);
     
-            //Forwarding
-    _replyLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TEXT_REPOSE", @"转发:%d"), status.repostsCount];
+        //转发
+        _replyLabel.text = [NSString stringWithFormat:NSLocalizedString(@"TEXT_REPOSE", @"转发:%d"), status.repostsCount];
     [_replyLabel sizeToFit];
     _replyLabel.frame = CGRectMake(_splitLabel.left - _replyLabel.width, _commentLabel.top, _replyLabel.width, _replyLabel.height);
     
     height = _sourceLabel.bottom;
     
-            //Divider
-    _lineImageView.frame = CGRectMake((self.width - _lineImageView.width) / 2, height + BOTTOM_PADDING, _lineImageView.width, _lineImageView.height);
+        //分隔线
+        _lineImageView.frame = CGRectMake((self.width - _lineImageView.width) / 2, height + BOTTOM_PADDING, _lineImageView.width, _lineImageView.height);
     height = _lineImageView.bottom;
     
     return height;

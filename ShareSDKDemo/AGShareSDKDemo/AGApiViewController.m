@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  website:http://www.ShareSDK.cn
-//  Support E-mail:support@sharesdk.cn
-//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
-//  Business QQ:4006852216
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import "AGApiViewController.h"
@@ -84,6 +84,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     
     if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
     {
@@ -360,26 +362,53 @@
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:NSLocalizedString(@"TEXT_SHARE_BY_CLIENT", @"客户端分享")
+    [button setTitle:NSLocalizedString(@"TEXT_SHARE_TO_MINGDAO", @"分享到明道")
             forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(clientShareClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(shareToMingDaoClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:NSLocalizedString(@"TEXT_SHARE_WITH_LOCATION", @"地理位置分享")
+    [button setTitle:NSLocalizedString(@"TEXT_SHARE_TO_LINE", @"分享到Line")
             forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(shareLocationClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(shareToLineClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:NSLocalizedString(@"TEXT_SET_ACCESS_TOKEN", @"设置AccessToken")
+    [button setTitle:NSLocalizedString(@"TEXT_SHARE_TO_WHATSAPP", @"分享到WhatsApp")
             forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(shareToWhatsAppClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    top += button.height + VERTICAL_GAP;
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:NSLocalizedString(@"TEXT_SHARE_BY_CLIENT", @"客户端分享")
+            forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(clientShareClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:NSLocalizedString(@"TEXT_SHARE_WITH_LOCATION", @"地理位置分享")
+            forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(shareLocationClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    top += button.height + VERTICAL_GAP;
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:NSLocalizedString(@"TEXT_SET_ACCESS_TOKEN", @"设置AccessToken")
+            forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(setAccessTokenClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
@@ -405,14 +434,14 @@
 
 -(BOOL)shouldAutorotate
 {
-            //iOS6 Rotating screen method.
-    return YES;
+        //iOS6下旋屏方法
+        return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-            //iOS6 Rotating screen method.
-    return SSInterfaceOrientationMaskAll;
+        //iOS6下旋屏方法
+        return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -560,12 +589,12 @@
             switch (buttonIndex)
             {
                 case 0:
-                                                            //Print
-                    [self airPrintShareContent];
+                                        //打印
+                                        [self airPrintShareContent];
                     break;
                 case 1:
-                                                            //Copy
-                    [self copyShareContent];
+                                        //拷贝
+                                        [self copyShareContent];
                     break;
                 default:
                     break;
@@ -657,16 +686,16 @@
 #pragma mark - ButtonHandler
 
 /**
- *	@brief	All share.
+ *	@brief	分享全部
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)shareAllButtonClickHandler:(UIButton *)sender
 {
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     
-            //Create a share content.
-    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+        //构造分享内容
+        id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
@@ -674,18 +703,19 @@
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
-            //The following information needs to be defined for a specific platform to share content, can be omitted if you do not need to add the following method
+        ///////////////////////
+    //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法
     
-    //Customized RenRen information
-    [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网")
+    //定制人人网信息
+        [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网")
                               description:INHERIT_VALUE
                                       url:INHERIT_VALUE
                                   message:INHERIT_VALUE
                                     image:INHERIT_VALUE
                                   caption:nil];
     
-            //Customized QZone information
-    [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间") 
+        //定制QQ空间信息
+        [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间") 
                                         url:INHERIT_VALUE
                                        site:nil
                                     fromUrl:nil
@@ -696,8 +726,8 @@
                                     playUrl:nil
                                        nswb:nil];
     
-            //Customized WeChat Session information
-    [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
+        //定制微信好友信息
+        [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
                                          content:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_WECHAT_SESSION", @"Hello 微信好友!") 
                                              url:INHERIT_VALUE
@@ -708,8 +738,8 @@
                                         fileData:nil
                                     emoticonData:nil];
     
-            //Customized WeChat Timeline information
-    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
+        //定制微信朋友圈信息
+        [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
                                           content:INHERIT_VALUE
                                             title:NSLocalizedString(@"TEXT_HELLO_WECHAT_TIMELINE", @"Hello 微信朋友圈!") 
                                               url:@"http://y.qq.com/i/song.html#p=7B22736F6E675F4E616D65223A22E4BDA0E4B88DE698AFE79C9FE6ADA3E79A84E5BFABE4B990222C22736F6E675F5761704C69766555524C223A22687474703A2F2F74736D7573696332342E74632E71712E636F6D2F586B303051563558484A645574315070536F4B7458796931667443755A68646C2F316F5A4465637734356375386355672B474B304964794E6A3770633447524A574C48795333383D2F3634363232332E6D34613F7569643D32333230303738313038266469723D423226663D312663743D3026636869643D222C22736F6E675F5769666955524C223A22687474703A2F2F73747265616D31382E71716D757369632E71712E636F6D2F33303634363232332E6D7033222C226E657454797065223A2277696669222C22736F6E675F416C62756D223A22E5889BE980A0EFBC9AE5B08FE5B7A8E89B8B444E414C495645EFBC81E6BC94E594B1E4BC9AE5889BE7BAAAE5BD95E99FB3222C22736F6E675F4944223A3634363232332C22736F6E675F54797065223A312C22736F6E675F53696E676572223A22E4BA94E69C88E5A4A9222C22736F6E675F576170446F776E4C6F616455524C223A22687474703A2F2F74736D757369633132382E74632E71712E636F6D2F586C464E4D31354C5569396961495674593739786D436534456B5275696879366A702F674B65356E4D6E684178494C73484D6C6A307849634A454B394568572F4E3978464B316368316F37636848323568413D3D2F33303634363232332E6D70333F7569643D32333230303738313038266469723D423226663D302663743D3026636869643D2673747265616D5F706F733D38227D"
@@ -720,8 +750,8 @@
                                          fileData:nil
                                      emoticonData:nil];
     
-            //Customized WeChat Favorited information
-    [publishContent addWeixinFavUnitWithType:INHERIT_VALUE
+        //定制微信收藏信息
+        [publishContent addWeixinFavUnitWithType:INHERIT_VALUE
                                      content:INHERIT_VALUE
                                        title:NSLocalizedString(@"TEXT_HELLO_WECHAT_FAV", @"Hello 微信收藏!")
                                          url:INHERIT_VALUE
@@ -732,15 +762,15 @@
                                     fileData:nil
                                 emoticonData:nil];
     
-            //Customized QQ information
-    [publishContent addQQUnitWithType:INHERIT_VALUE
+        //定制QQ分享信息
+        [publishContent addQQUnitWithType:INHERIT_VALUE
                               content:INHERIT_VALUE
                                 title:@"Hello QQ!"
                                   url:INHERIT_VALUE
                                 image:INHERIT_VALUE];
     
-            //Customized Mail information
-    [publishContent addMailUnitWithSubject:@"Hello Mail"
+        //定制邮件信息
+        [publishContent addMailUnitWithSubject:@"Hello Mail"
                                    content:INHERIT_VALUE
                                     isHTML:[NSNumber numberWithBool:YES]
                                attachments:INHERIT_VALUE
@@ -748,31 +778,31 @@
                                         cc:nil
                                        bcc:nil];
     
-            //Customized SMS information
-    [publishContent addSMSUnitWithContent:@"Hello SMS"];
+        //定制短信信息
+        [publishContent addSMSUnitWithContent:@"Hello SMS"];
     
-            //Customized YouDaoNote information
-    [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
+        //定制有道云笔记信息
+        [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_YOUDAO_NOTE", @"Hello 有道云笔记")
                                           author:@"ShareSDK"
                                           source:nil
                                      attachments:INHERIT_VALUE];
     
-            //Customized Instapaper information
-    [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
+        //定制Instapaper信息
+        [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
     
-            //Customized Sohu SuiShenKan information
-    [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
+        //定制搜狐随身看信息
+        [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
     
-            //Customized Pinterest information
-    [publishContent addPinterestUnitWithImage:[ShareSDK imageWithUrl:@"http://img1.bdstatic.com/img/image/67037d3d539b6003af38f5c4c4f372ac65c1038b63f.jpg"]
+        //定制Pinterest信息
+        [publishContent addPinterestUnitWithImage:[ShareSDK imageWithUrl:@"http://img1.bdstatic.com/img/image/67037d3d539b6003af38f5c4c4f372ac65c1038b63f.jpg"]
                                           url:INHERIT_VALUE
                                   description:INHERIT_VALUE];
     
-            //Customized YiXin Session information
-    [publishContent addYiXinSessionUnitWithType:INHERIT_VALUE
+        //定制易信好友信息
+        [publishContent addYiXinSessionUnitWithType:INHERIT_VALUE
                                         content:INHERIT_VALUE
                                           title:INHERIT_VALUE
                                             url:INHERIT_VALUE
@@ -782,8 +812,8 @@
                                         extInfo:INHERIT_VALUE
                                        fileData:INHERIT_VALUE];
     
-            //Customized YiXin Timeline information
-    [publishContent addYiXinTimelineUnitWithType:INHERIT_VALUE
+        //定义易信朋友圈信息
+        [publishContent addYiXinTimelineUnitWithType:INHERIT_VALUE
                                          content:INHERIT_VALUE
                                            title:INHERIT_VALUE
                                              url:INHERIT_VALUE
@@ -793,12 +823,19 @@
                                          extInfo:INHERIT_VALUE
                                         fileData:INHERIT_VALUE];
     
-            //End customized information
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        //7.0以上只允许发文字，定义Line信息
+        [publishContent addLineUnitWithContent:INHERIT_VALUE
+                                         image:nil];
+    }
+    
+        //结束定制信息
     ////////////////////////
     
     
-    //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+    //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -807,7 +844,7 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
+    //在授权页面中添加关注官方微博
     [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
@@ -815,7 +852,7 @@
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-    id<ISSShareOptions> shareOptions = [ShareSDK defaultShareOptionsWithTitle:NSLocalizedString(@"TEXT_SHARE_TITLE", @"内容分享") 
+    id<ISSShareOptions> shareOptions = [ShareSDK defaultShareOptionsWithTitle:NSLocalizedString(@"TEXT_SHARE_TITLE", @"内容分享")
                                                               oneKeyShareList:[NSArray defaultOneKeyShareList]
                                                                qqButtonHidden:YES
                                                         wxSessionButtonHidden:YES
@@ -825,8 +862,8 @@
                                                           friendsViewDelegate:_appDelegate.viewDelegate
                                                         picViewerViewDelegate:nil];
     
-            //Pop-up share menu
-    [ShareSDK showShareActionSheet:container
+        //弹出分享菜单
+        [ShareSDK showShareActionSheet:container
                          shareList:nil
                            content:publishContent
                      statusBarTips:YES
@@ -846,16 +883,16 @@
 }
 
 /**
- *	@brief	All simple sytle Share
+ *	@brief	简单分享全部
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)simpleShareAllButtonClickHandler:(id)sender
 {
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     
-            //Create a share content.
-    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+        //构造分享内容
+        id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
@@ -863,19 +900,19 @@
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息") 
                                             mediaType:SSPublishContentMediaTypeNews];
     
-            ///////////////////////
-    //The following information needs to be defined for a specific platform to share content, can be omitted if you do not need to add the following method
+        ///////////////////////
+    //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法
     
-    //Customized RenRen information
-    [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网") 
+    //定制人人网信息
+        [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网") 
                               description:INHERIT_VALUE
                                       url:INHERIT_VALUE
                                   message:INHERIT_VALUE
                                     image:INHERIT_VALUE
                                   caption:nil];
     
-            //Customized WeChat Session information
-    [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间")
+        //定制QQ空间信息
+        [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间")
                                         url:INHERIT_VALUE
                                        site:nil
                                     fromUrl:nil
@@ -886,8 +923,8 @@
                                     playUrl:nil
                                        nswb:nil];
     
-            //Customized WeChat Session information
-    [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
+        //定制微信好友信息
+        [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
                                          content:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_WECHAT_SESSION", @"Hello 微信好友!") 
                                              url:INHERIT_VALUE
@@ -898,8 +935,8 @@
                                         fileData:nil
                                     emoticonData:nil];
     
-            //Customized WeChat Timeline information
-    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
+        //定制微信朋友圈信息
+        [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
                                           content:INHERIT_VALUE
                                             title:NSLocalizedString(@"TEXT_HELLO_WECHAT_TIMELINE", @"Hello 微信朋友圈!") 
                                               url:@"http://y.qq.com/i/song.html#p=7B22736F6E675F4E616D65223A22E4BDA0E4B88DE698AFE79C9FE6ADA3E79A84E5BFABE4B990222C22736F6E675F5761704C69766555524C223A22687474703A2F2F74736D7573696332342E74632E71712E636F6D2F586B303051563558484A645574315070536F4B7458796931667443755A68646C2F316F5A4465637734356375386355672B474B304964794E6A3770633447524A574C48795333383D2F3634363232332E6D34613F7569643D32333230303738313038266469723D423226663D312663743D3026636869643D222C22736F6E675F5769666955524C223A22687474703A2F2F73747265616D31382E71716D757369632E71712E636F6D2F33303634363232332E6D7033222C226E657454797065223A2277696669222C22736F6E675F416C62756D223A22E5889BE980A0EFBC9AE5B08FE5B7A8E89B8B444E414C495645EFBC81E6BC94E594B1E4BC9AE5889BE7BAAAE5BD95E99FB3222C22736F6E675F4944223A3634363232332C22736F6E675F54797065223A312C22736F6E675F53696E676572223A22E4BA94E69C88E5A4A9222C22736F6E675F576170446F776E4C6F616455524C223A22687474703A2F2F74736D757369633132382E74632E71712E636F6D2F586C464E4D31354C5569396961495674593739786D436534456B5275696879366A702F674B65356E4D6E684178494C73484D6C6A307849634A454B394568572F4E3978464B316368316F37636848323568413D3D2F33303634363232332E6D70333F7569643D32333230303738313038266469723D423226663D302663743D3026636869643D2673747265616D5F706F733D38227D"
@@ -910,8 +947,8 @@
                                          fileData:nil
                                      emoticonData:nil];
     
-            //Customized WeChat Favorited information
-    [publishContent addWeixinFavUnitWithType:INHERIT_VALUE
+        //定制微信收藏信息
+        [publishContent addWeixinFavUnitWithType:INHERIT_VALUE
                                      content:INHERIT_VALUE
                                        title:NSLocalizedString(@"TEXT_HELLO_WECHAT_FAV", @"Hello 微信收藏!")
                                          url:INHERIT_VALUE
@@ -922,15 +959,15 @@
                                     fileData:nil
                                 emoticonData:nil];
     
-            //Customized QQ information
-    [publishContent addQQUnitWithType:INHERIT_VALUE
+        //定制QQ分享信息
+        [publishContent addQQUnitWithType:INHERIT_VALUE
                               content:INHERIT_VALUE
                                 title:@"Hello QQ!"
                                   url:INHERIT_VALUE
                                 image:INHERIT_VALUE];
     
-            //Customized Mail information
-    [publishContent addMailUnitWithSubject:@"Hello Mail"
+        //定制邮件信息
+        [publishContent addMailUnitWithSubject:@"Hello Mail"
                                    content:INHERIT_VALUE
                                     isHTML:[NSNumber numberWithBool:YES]
                                attachments:INHERIT_VALUE
@@ -938,30 +975,30 @@
                                         cc:nil
                                        bcc:nil];
     
-            //Customized SMS information
-    [publishContent addSMSUnitWithContent:@"Hello SMS"];
+        //定制短信信息
+        [publishContent addSMSUnitWithContent:@"Hello SMS"];
     
-            //Customized YouDaoNote information
-    [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
+        //定制有道云笔记信息
+        [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_YOUDAO_NOTE", @"Hello 有道云笔记")
                                           author:@"ShareSDK"
                                           source:nil
                                      attachments:INHERIT_VALUE];
     
-            //Customized Instapaper information
-    [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
+        //定制Instapaper信息
+        [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
     
-            //Customized Sohu SuiShenKan information
-    [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
+        //定制搜狐随身看信息
+        [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
     
-            //End customized information
+        //结束定制信息
     ////////////////////////
     
     
-    //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+    //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -970,8 +1007,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -981,8 +1018,8 @@
     id<ISSShareOptions> shareOptions = [ShareSDK simpleShareOptionsWithTitle:NSLocalizedString(@"TEXT_SHARE_TITLE", @"内容分享")
                                                            shareViewDelegate:_appDelegate.viewDelegate];
     
-            //Pop-up share menu
-    [ShareSDK showShareActionSheet:container
+        //弹出分享菜单
+        [ShareSDK showShareActionSheet:container
                          shareList:nil
                            content:publishContent
                      statusBarTips:YES
@@ -1005,8 +1042,8 @@
 {
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     
-            //Create a share content.
-    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+        //构造分享内容
+        id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
@@ -1014,19 +1051,19 @@
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
-            ///////////////////////
-    //The following information needs to be defined for a specific platform to share content, can be omitted if you do not need to add the following method
+        ///////////////////////
+    //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法
     
-    //Customized RenRen information
-    [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网") 
+    //定制人人网信息
+        [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网") 
                               description:INHERIT_VALUE
                                       url:INHERIT_VALUE
                                   message:INHERIT_VALUE
                                     image:INHERIT_VALUE
                                   caption:nil];
     
-            //Customized QZone information
-    [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间") 
+        //定制QQ空间信息
+        [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间") 
                                         url:INHERIT_VALUE
                                        site:nil
                                     fromUrl:nil
@@ -1037,8 +1074,8 @@
                                     playUrl:nil
                                        nswb:nil];
     
-            //Customized WeChat Session information
-    [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
+        //定制微信好友信息
+        [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
                                          content:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_WECHAT_SESSION", @"Hello 微信好友!")
                                              url:INHERIT_VALUE
@@ -1049,8 +1086,8 @@
                                         fileData:nil
                                     emoticonData:nil];
     
-            //Customized WeChat Timeline information
-    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
+        //定制微信朋友圈信息
+        [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
                                           content:INHERIT_VALUE
                                             title:NSLocalizedString(@"TEXT_HELLO_WECHAT_TIMELINE", @"Hello 微信朋友圈!") 
                                               url:@"http://y.qq.com/i/song.html#p=7B22736F6E675F4E616D65223A22E4BDA0E4B88DE698AFE79C9FE6ADA3E79A84E5BFABE4B990222C22736F6E675F5761704C69766555524C223A22687474703A2F2F74736D7573696332342E74632E71712E636F6D2F586B303051563558484A645574315070536F4B7458796931667443755A68646C2F316F5A4465637734356375386355672B474B304964794E6A3770633447524A574C48795333383D2F3634363232332E6D34613F7569643D32333230303738313038266469723D423226663D312663743D3026636869643D222C22736F6E675F5769666955524C223A22687474703A2F2F73747265616D31382E71716D757369632E71712E636F6D2F33303634363232332E6D7033222C226E657454797065223A2277696669222C22736F6E675F416C62756D223A22E5889BE980A0EFBC9AE5B08FE5B7A8E89B8B444E414C495645EFBC81E6BC94E594B1E4BC9AE5889BE7BAAAE5BD95E99FB3222C22736F6E675F4944223A3634363232332C22736F6E675F54797065223A312C22736F6E675F53696E676572223A22E4BA94E69C88E5A4A9222C22736F6E675F576170446F776E4C6F616455524C223A22687474703A2F2F74736D757369633132382E74632E71712E636F6D2F586C464E4D31354C5569396961495674593739786D436534456B5275696879366A702F674B65356E4D6E684178494C73484D6C6A307849634A454B394568572F4E3978464B316368316F37636848323568413D3D2F33303634363232332E6D70333F7569643D32333230303738313038266469723D423226663D302663743D3026636869643D2673747265616D5F706F733D38227D"
@@ -1061,8 +1098,8 @@
                                          fileData:nil
                                      emoticonData:nil];
     
-            //Customized Wehat Favorited information
-    [publishContent addWeixinFavUnitWithType:INHERIT_VALUE
+        //定制微信收藏信息
+        [publishContent addWeixinFavUnitWithType:INHERIT_VALUE
                                      content:INHERIT_VALUE
                                        title:NSLocalizedString(@"TEXT_HELLO_WECHAT_FAV", @"Hello 微信收藏!")
                                          url:INHERIT_VALUE
@@ -1073,15 +1110,15 @@
                                     fileData:nil
                                 emoticonData:nil];
     
-            //Customized QQ information
-    [publishContent addQQUnitWithType:INHERIT_VALUE
+        //定制QQ分享信息
+        [publishContent addQQUnitWithType:INHERIT_VALUE
                               content:INHERIT_VALUE
                                 title:@"Hello QQ!"
                                   url:INHERIT_VALUE
                                 image:INHERIT_VALUE];
     
-            //Customized Mail information
-    [publishContent addMailUnitWithSubject:@"Hello Mail"
+        //定制邮件信息
+        [publishContent addMailUnitWithSubject:@"Hello Mail"
                                    content:INHERIT_VALUE
                                     isHTML:[NSNumber numberWithBool:YES]
                                attachments:INHERIT_VALUE
@@ -1089,29 +1126,29 @@
                                         cc:nil
                                        bcc:nil];
     
-            //Customized SMS information
-    [publishContent addSMSUnitWithContent:@"Hello SMS"];
+        //定制短信信息
+        [publishContent addSMSUnitWithContent:@"Hello SMS"];
     
-            //Customized YouDaoNote information
-    [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
+        //定制有道云笔记信息
+        [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_YOUDAO_NOTE", @"Hello 有道云笔记")
                                           author:@"ShareSDK"
                                           source:nil
                                      attachments:INHERIT_VALUE];
     
-            //Customized Instapaper information
-    [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
+        //定制Instapaper信息
+        [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
     
-            //Customized Sohu SuiShenKan information
-    [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
+        //定制搜狐随身看信息
+        [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
     
-            //End customized information
+        //结束定制信息
     ////////////////////////
     
-    //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+    //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -1120,16 +1157,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Custom Sina Weibo Share menu items
-    id<ISSShareActionSheetItem> sinaItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSinaWeibo]
+        //自定义新浪微博分享菜单项
+        id<ISSShareActionSheetItem> sinaItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSinaWeibo]
                                                                               icon:[ShareSDK getClientIconWithType:ShareTypeSinaWeibo]
                                                                       clickHandler:^{
                                                                           [ShareSDK shareContent:publishContent
@@ -1149,8 +1186,8 @@
                                                                                           }];
                                                                       }];
     
-            //Custom Tencent Weibo Share menu items
-    id<ISSShareActionSheetItem> tencentItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeTencentWeibo]
+        //自定义腾讯微博分享菜单项
+        id<ISSShareActionSheetItem> tencentItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeTencentWeibo]
                                                                                  icon:[ShareSDK getClientIconWithType:ShareTypeTencentWeibo]
                                                                          clickHandler:^{
                                                                              [ShareSDK shareContent:publishContent
@@ -1170,8 +1207,8 @@
                                                                                              }];
                                                                          }];
     
-            //Custom QZone Share menu items
-    id<ISSShareActionSheetItem> qzoneItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeQQSpace]
+        //自定义QQ空间分享菜单项
+        id<ISSShareActionSheetItem> qzoneItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeQQSpace]
                                                                                icon:[ShareSDK getClientIconWithType:ShareTypeQQSpace]
                                                                        clickHandler:^{
                                                                            [ShareSDK shareContent:publishContent
@@ -1191,8 +1228,8 @@
                                                                                            }];
                                                                        }];
     
-            //Custom Facebook Share menu items
-    id<ISSShareActionSheetItem> fbItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeFacebook]
+        //自定义Facebook分享菜单项
+        id<ISSShareActionSheetItem> fbItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeFacebook]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeFacebook]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1212,8 +1249,8 @@
                                                                                         }];
                                                                     }];
     
-            //Custom Twitter Share menu items
-    id<ISSShareActionSheetItem> twItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeTwitter]
+        //自定义Twitter分享菜单项
+        id<ISSShareActionSheetItem> twItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeTwitter]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeTwitter]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1233,8 +1270,8 @@
                                                                                         }];
                                                                     }];
     
-            //Custom RenRen Share menu items
-    id<ISSShareActionSheetItem> rrItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeRenren]
+        //自定义人人网分享菜单项
+        id<ISSShareActionSheetItem> rrItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeRenren]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeRenren]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1254,8 +1291,8 @@
                                                                                         }];
                                                                     }];
     
-            //Custom KaiXin Share menu items
-    id<ISSShareActionSheetItem> kxItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeKaixin]
+        //自定义开心网分享菜单项
+        id<ISSShareActionSheetItem> kxItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeKaixin]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeKaixin]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1275,8 +1312,8 @@
                                                                                         }];
                                                                     }];
     
-            //Custom Sohu Weibo Share menu items
-    id<ISSShareActionSheetItem> shItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuWeibo]
+        //自定义搜狐微博分享菜单项
+        id<ISSShareActionSheetItem> shItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuWeibo]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeSohuWeibo]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1296,8 +1333,8 @@
                                                                                         }];
                                                                     }];
     
-            //Custom NetEase Weibo Share menu items
-    id<ISSShareActionSheetItem> wyItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareType163Weibo]
+        //自定义网易微博分享菜单项
+        id<ISSShareActionSheetItem> wyItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareType163Weibo]
                                                                             icon:[ShareSDK getClientIconWithType:ShareType163Weibo]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1318,8 +1355,8 @@
                                                                                         }];
                                                                     }];
     
-            //Custom Douban Share menu items
-    id<ISSShareActionSheetItem> dbItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeDouBan]
+        //自定义豆瓣分享菜单项
+        id<ISSShareActionSheetItem> dbItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeDouBan]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeDouBan]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1339,8 +1376,8 @@
                                                                                         }];
                                                                     }];
     
-            //Custom Instapaper Share menu items
-    id<ISSShareActionSheetItem> ipItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeInstapaper]
+        //自定义Instapaper分享菜单项
+        id<ISSShareActionSheetItem> ipItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeInstapaper]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeInstapaper]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1360,8 +1397,8 @@
                                                                                         }];
                                                                     }];
     
-            //Custom YouDaoNote Share menu items
-    id<ISSShareActionSheetItem> ydItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeYouDaoNote]
+        //自定义有道云笔记分享菜单项
+        id<ISSShareActionSheetItem> ydItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeYouDaoNote]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeYouDaoNote]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1381,8 +1418,8 @@
                                                                                         }];
                                                                     }];
     
-            //Custom Sohu SuiShenKan Share menu items
-    id<ISSShareActionSheetItem> shkItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuKan]
+        //自定义搜狐随身看分享菜单项
+        id<ISSShareActionSheetItem> shkItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuKan]
                                                                              icon:[ShareSDK getClientIconWithType:ShareTypeSohuKan]
                                                                      clickHandler:^{
                                                                          [ShareSDK shareContent:publishContent
@@ -1402,8 +1439,8 @@
                                                                                          }];
                                                                      }];
     
-            //Custom EverNote Share menu items
-    id<ISSShareActionSheetItem> evnItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeEvernote]
+        //自定义印象笔记分享菜单项
+        id<ISSShareActionSheetItem> evnItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeEvernote]
                                                                              icon:[ShareSDK getClientIconWithType:ShareTypeEvernote]
                                                                      clickHandler:^{
                                                                          [ShareSDK shareContent:publishContent
@@ -1423,8 +1460,8 @@
                                                                                          }];
                                                                      }];
     
-            //Custom Pocket Share menu items
-    id<ISSShareActionSheetItem> pkItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypePocket]
+        //自定义Pocket分享菜单项
+        id<ISSShareActionSheetItem> pkItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypePocket]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypePocket]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1444,8 +1481,8 @@
                                                                                         }];
                                                                     }];
     
-            //Create a custom share list
-    NSArray *shareList = [ShareSDK customShareListWithType:
+        //创建自定义分享列表
+        NSArray *shareList = [ShareSDK customShareListWithType:
                           sinaItem,
                           tencentItem,
                           SHARE_TYPE_NUMBER(ShareTypeSMS),
@@ -1498,14 +1535,14 @@
 }
 
 /**
- *	@brief	Share to Sina Weibo
+ *	@brief	分享到新浪微博
  *
- *	@param 	sender 	Event object
+ *	@param 	sender 	事件对象
  */
 - (void)shareToSinaWeiboClickHandler:(UIButton *)sender
 {
-            //Create a pop-up menu container
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -1514,8 +1551,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -1524,16 +1561,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Share menu display
-    [ShareSDK showShareViewWithType:ShareTypeSinaWeibo
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeSinaWeibo
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -1561,14 +1598,14 @@
 }
 
 /**
- *	@brief	Share to Tencent Weibo
+ *	@brief	分享到腾讯微博
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)shareToTencentWeiboClickHandler:(UIButton *)sender
 {
-            //Create a share content
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -1577,8 +1614,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -1587,16 +1624,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Share menu display
-    [ShareSDK showShareViewWithType:ShareTypeTencentWeibo
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeTencentWeibo
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -1624,14 +1661,14 @@
 }
 
 /**
- *	@brief	Share to QQ
+ *	@brief	分享给QQ好友
  *
- *	@param 	sender 	Event object
+ *	@param 	sender 	事件对象
  */
 - (void)shareToQQFriendClickHandler:(UIButton *)sender
 {
-            //Create a share content
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -1646,16 +1683,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Share menu display
-    [ShareSDK showShareViewWithType:ShareTypeQQ
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeQQ
                           container:nil
                             content:publishContent
                       statusBarTips:YES
@@ -1683,14 +1720,14 @@
 }
 
 /**
- *	@brief	Share to QZone
+ *	@brief	分享到QQ空间
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)shareToQQSpaceClickHandler:(UIButton *)sender
 {
-            //Create a share content
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -1699,8 +1736,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -1709,16 +1746,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Share menu display
-    [ShareSDK showShareViewWithType:ShareTypeQQSpace
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeQQSpace
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -1746,14 +1783,14 @@
 }
 
 /**
- *	@brief	Share to WeChat Session
+ *	@brief	分享给微信好友
  *
- *	@param 	sender 	Event object
+ *	@param 	sender 	事件对象
  */
 - (void)shareToWeixinSessionClickHandler:(UIButton *)sender
 {
-            //Create a share content.
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -1768,16 +1805,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Share menu display
-    [ShareSDK showShareViewWithType:ShareTypeWeixiSession
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeWeixiSession
                           container:nil
                             content:publishContent
                       statusBarTips:YES
@@ -1805,14 +1842,14 @@
 }
 
 /**
- *	@brief	Share to WeChat Timeline
+ *	@brief	分享给微信朋友圈
  *
- *	@param 	sender 	Event object
+ *	@param 	sender 	事件对象
  */
 - (void)shareToWeixinTimelineClickHandler:(UIButton *)sender
 {
-            //Create a share content
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -1827,16 +1864,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Share menu display
-    [ShareSDK showShareViewWithType:ShareTypeWeixiTimeline
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeWeixiTimeline
                           container:nil
                             content:publishContent
                       statusBarTips:YES
@@ -1864,14 +1901,14 @@
 }
 
 /**
- *	@brief	Share to NetEase Weibo
+ *	@brief	分享到网易微博
  *
- *	@param 	sender 	Event object
+ *	@param 	sender 	事件对象
  */
 - (void)shareTo163WeiboClickHandler:(UIButton *)sender
 {
-            //Create a share content
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -1880,8 +1917,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -1890,16 +1927,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Share menu display
-    [ShareSDK showShareViewWithType:ShareType163Weibo
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareType163Weibo
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -1927,14 +1964,14 @@
 }
 
 /**
- *	@brief	Share to Souhu Weibo
+ *	@brief	分享到搜狐微博
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)shareToSohuWeiboClickHandler:(UIButton *)sender
 {
-            //Create a share content
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -1943,8 +1980,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -1953,16 +1990,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Share menu display
-    [ShareSDK showShareViewWithType:ShareTypeSohuWeibo
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeSohuWeibo
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -1990,14 +2027,14 @@
 }
 
 /**
- *	@brief	Share to RenRen
+ *	@brief	分享到人人网
  *
- *	@param 	sender 	Event object
+ *	@param 	sender 	事件对象
  */
 - (void)shareToRenRenClickHandler:(UIButton *)sender
 {
-            //Creating a share content
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -2006,8 +2043,8 @@
                                           description:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网") 
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2016,16 +2053,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareViewWithType:ShareTypeRenren
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeRenren
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2053,14 +2090,14 @@
 }
 
 /**
- *	@brief	Share to KaiXin
+ *	@brief	分享到开心网
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)shareToKaiXinClickHandler:(UIButton *)sender
 {
-            //Create a share menu.
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -2069,8 +2106,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2079,16 +2116,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareViewWithType:ShareTypeKaixin
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeKaixin
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2116,14 +2153,14 @@
 }
 
 /**
- *	@brief	Share to DouBan click handler.
+ *	@brief	分享到豆瓣我说
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)shareToDouBanClickHandler:(UIButton *)sender
 {
-            //Create a share content.
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -2132,8 +2169,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2142,16 +2179,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareViewWithType:ShareTypeDouBan
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeDouBan
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2179,14 +2216,14 @@
 }
 
 /**
- *	@brief	Share to Instapaper
+ *	@brief	分享到Instapaper
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)shareToInstapaperClickHandler:(UIButton *)sender
 {
-            //Create a share content.
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -2195,8 +2232,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2205,16 +2242,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareViewWithType:ShareTypeInstapaper
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeInstapaper
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2242,14 +2279,14 @@
 }
 
 /**
- *	@brief	Share to Facebook
+ *	@brief	分享到Facebook
  *
- *	@param 	sender  Event object
+ *	@param 	sender  事件对象
  */
 - (void)shareToFacebookClickHandler:(UIButton *)sender
 {
-            //Create a share content.
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -2258,8 +2295,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2268,16 +2305,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareViewWithType:ShareTypeFacebook
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeFacebook
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2305,14 +2342,14 @@
 }
 
 /**
- *	@brief	Share to Twitter
+ *	@brief	分享到Twitter
  *
  *	@param 	sender 	Twitter
  */
 - (void)shareToTwitterClickHandler:(UIButton *)sender
 {
-            //Create a share content.
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -2321,8 +2358,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2331,16 +2368,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareViewWithType:ShareTypeTwitter
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeTwitter
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2368,14 +2405,14 @@
 }
 
 /**
- *	@brief	Share by SMS
+ *	@brief	短信分享
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)shareBySMSClickHandler:(UIButton *)sender
 {
-            //Create a share content.
-    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+        //创建分享内容
+        id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:nil
                                                 title:nil
@@ -2383,8 +2420,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2393,16 +2430,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareViewWithType:ShareTypeSMS
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeSMS
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2430,14 +2467,14 @@
 }
 
 /**
- *	@brief	Share by mail.
+ *	@brief	邮件分享
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)shareByMailClickHandler:(UIButton *)sender
 {
-            //Create a share content.
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -2446,8 +2483,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2456,16 +2493,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareViewWithType:ShareTypeMail
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeMail
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2493,9 +2530,9 @@
 }
 
 /**
- *	@brief	Print、Copy
+ *	@brief	打印、拷贝
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)shareByPrintOrCopyClickHandler:(UIButton *)sender
 {
@@ -2510,14 +2547,14 @@
 }
 
 /**
- *	@brief	Share to YouDaoNote
+ *	@brief	分享到有道云笔记
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)shareToYouDaoClickHandler:(UIButton *)sender
 {
-            //Create a share content.
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -2526,8 +2563,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2536,16 +2573,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu
-    [ShareSDK showShareViewWithType:ShareTypeYouDaoNote
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeYouDaoNote
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2573,14 +2610,14 @@
 }
 
 /**
- *	@brief	Share to Sohu SuiShenKan
+ *	@brief	分享到搜狐随身看
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)shareToSohuKanClickHandler:(id)sender
 {
-            //Create a share content.
-    id<ISSContent> publishContent = [ShareSDK content:nil
+        //创建分享内容
+        id<ISSContent> publishContent = [ShareSDK content:nil
                                        defaultContent:@""
                                                 image:nil
                                                 title:nil
@@ -2588,8 +2625,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2598,16 +2635,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareViewWithType:ShareTypeSohuKan
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeSohuKan
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2636,8 +2673,8 @@
 
 - (void)shareToGooglePlusClickHandler:(id)sender
 {
-            //Create a share content.
-    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+        //创建分享内容
+        id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:nil
                                                 title:nil
@@ -2645,8 +2682,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2655,16 +2692,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareViewWithType:ShareTypeGooglePlus
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeGooglePlus
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2685,7 +2722,65 @@
 
 - (void)shareToLinkedInClickHandler:(id)sender
 {
-            //Create a share content
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+                                       defaultContent:@""
+                                                image:[ShareSDK imageWithPath:imagePath]
+                                                title:nil
+                                                  url:@"http://www.sharesdk.cn"
+                                          description:nil
+                                            mediaType:SSPublishContentMediaTypeText];
+    
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeLinkedIn
+                          container:container
+                            content:publishContent
+                      statusBarTips:YES
+                        authOptions:authOptions
+                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
+                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                            qqButtonHidden:NO
+                                                     wxSessionButtonHidden:NO
+                                                    wxTimelineButtonHidden:NO
+                                                      showKeyboardOnAppear:NO
+                                                         shareViewDelegate:_appDelegate.viewDelegate
+                                                       friendsViewDelegate:_appDelegate.viewDelegate
+                                                     picViewerViewDelegate:nil]
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
+                                 if (state == SSPublishContentStateSuccess)
+                                 {
+                                     NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"发表成功"));
+                                 }
+                                 else if (state == SSPublishContentStateFail)
+                                 {
+                                     NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
+                                 }
+                             }];
+}
+
+- (void)shareToMingDaoClickHandler:(id)sender
+{
+    //创建分享内容
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
@@ -2695,7 +2790,7 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
+    //创建弹出菜单容器
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
@@ -2705,16 +2800,114 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
-                                    nil]];
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeMingDao
+                          container:container
+                            content:publishContent
+                      statusBarTips:YES
+                        authOptions:authOptions
+                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
+                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                            qqButtonHidden:NO
+                                                     wxSessionButtonHidden:NO
+                                                    wxTimelineButtonHidden:NO
+                                                      showKeyboardOnAppear:NO
+                                                         shareViewDelegate:_appDelegate.viewDelegate
+                                                       friendsViewDelegate:_appDelegate.viewDelegate
+                                                     picViewerViewDelegate:nil]
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
+                                 if (state == SSPublishContentStateSuccess)
+                                 {
+                                     NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"发表成功"));
+                                 }
+                                 else if (state == SSPublishContentStateFail)
+                                 {
+                                     NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
+                                 }
+                             }];
+}
+
+- (void)shareToLineClickHandler:(id)sender
+{
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+                                       defaultContent:@""
+                                                image:[ShareSDK imageWithPath:imagePath]
+                                                title:nil
+                                                  url:@"http://www.sharesdk.cn"
+                                          description:nil
+                                            mediaType:SSPublishContentMediaTypeText];
+    if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+    {
+        //7.0以上只允许发文字，定义Line信息
+        [publishContent addLineUnitWithContent:INHERIT_VALUE
+                                         image:nil];
+    }
     
-            //Display share menu.
-    [ShareSDK showShareViewWithType:ShareTypeLinkedIn
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeLine
+                          container:container
+                            content:publishContent
+                      statusBarTips:YES
+                        authOptions:authOptions
+                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
+                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                            qqButtonHidden:NO
+                                                     wxSessionButtonHidden:NO
+                                                    wxTimelineButtonHidden:NO
+                                                      showKeyboardOnAppear:NO
+                                                         shareViewDelegate:_appDelegate.viewDelegate
+                                                       friendsViewDelegate:_appDelegate.viewDelegate
+                                                     picViewerViewDelegate:nil]
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
+                                 if (state == SSPublishContentStateSuccess)
+                                 {
+                                     NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"发表成功"));
+                                 }
+                                 else if (state == SSPublishContentStateFail)
+                                 {
+                                     NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
+                                 }
+                             }];
+}
+
+- (void)shareToWhatsAppClickHandler:(id)sender
+{
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+                                       defaultContent:@""
+                                                image:nil
+                                                title:nil
+                                                  url:@"http://www.sharesdk.cn"
+                                          description:nil
+                                            mediaType:SSPublishContentMediaTypeText];
+    
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeWhatsApp
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2742,12 +2935,12 @@
 }
 
 /**
- *	@brief	Print share content.
+ *	@brief	打印分享内容
  */
 - (void)airPrintShareContent
 {
-            //Create a share content.
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -2756,8 +2949,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:[self.view viewWithTag:10001] arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2766,16 +2959,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareViewWithType:ShareTypeAirPrint
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeAirPrint
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2803,12 +2996,12 @@
 }
 
 /**
- *	@brief	Copy share content.
+ *	@brief	拷贝分享内容
  */
 - (void)copyShareContent
 {
-            //Create a share content.
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -2817,8 +3010,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:[self.view viewWithTag:10001] arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2827,16 +3020,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareViewWithType:ShareTypeCopy
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeCopy
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2864,9 +3057,9 @@
 }
 
 /**
- *	@brief	Follow Sina Weibo click handler.
+ *	@brief	关注新浪微博
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)followSinaWeiboClickHandler:(UIButton *)sender
 {
@@ -2876,8 +3069,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -2915,9 +3108,9 @@
 }
 
 /**
- *	@brief	Follow Tencent Weibo click handler.
+ *	@brief	关注腾讯微博
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)followTencentWeiboClickHandler:(UIButton *)sender
 {
@@ -2927,8 +3120,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -2975,9 +3168,9 @@
 }
 
 /**
- *	@brief	SSO enabled click handler.
+ *	@brief	SSO登录开关按钮点击
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)ssoEnabledClickHandler:(UIButton *)sender
 {
@@ -2995,22 +3188,22 @@
                                                                    expired:[NSDate dateWithTimeIntervalSince1970:1383806157.295929]
                                                                    extInfo:nil];
 
-            //Set Sina Weibo using the new credential.
-    [ShareSDK setCredential:newCredential type:ShareTypeVKontakte];
+        //设置新浪微博使用新的授权凭证
+        [ShareSDK setCredential:newCredential type:ShareTypeVKontakte];
 }
 
 /**
- *	@brief	Custom share menu click handler.
+ *	@brief	自定义分享菜单项按钮点击
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)customShareMenuClickHandler:(UIButton *)sender
 {
-            //Custom Menu Sharing list
-    NSArray *shareList = [ShareSDK getShareListWithType:ShareTypeTwitter, ShareTypeFacebook, ShareTypeSinaWeibo, ShareTypeTencentWeibo, ShareTypeRenren, ShareTypeKaixin, ShareTypeSohuWeibo, ShareType163Weibo, nil];
+        //定义菜单分享列表
+        NSArray *shareList = [ShareSDK getShareListWithType:ShareTypeTwitter, ShareTypeFacebook, ShareTypeSinaWeibo, ShareTypeTencentWeibo, ShareTypeRenren, ShareTypeKaixin, ShareTypeSohuWeibo, ShareType163Weibo, nil];
     
-            //Create a share container.
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -3019,8 +3212,8 @@
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
-            //Create a container.
-    id<ISSContainer> container = [ShareSDK container];
+        //创建容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -3029,16 +3222,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareActionSheet:container
+        //显示分享菜单
+        [ShareSDK showShareActionSheet:container
                          shareList:shareList
                            content:publishContent
                      statusBarTips:YES
@@ -3066,14 +3259,14 @@
 }
 
 /**
- *	@brief	Custom share menu item click handler.
+ *	@brief	自定义分享菜单项按钮点击
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)customShareMenuItemClickHandler:(UIButton *)sender
 {
-            //Create a share content.
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -3082,8 +3275,8 @@
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息") 
                                             mediaType:SSPublishContentMediaTypeNews];
     
-            //Custom menu items
-    id<ISSShareActionSheetItem> item1 = [ShareSDK shareActionSheetItemWithTitle:NSLocalizedString(@"TEXT_CUSTOM_ITEM_1", @"自定义项1")
+        //自定义菜单项
+        id<ISSShareActionSheetItem> item1 = [ShareSDK shareActionSheetItemWithTitle:NSLocalizedString(@"TEXT_CUSTOM_ITEM_1", @"自定义项1")
                                                                            icon:[UIImage imageNamed:@"qqicon.png"]
                                                                    clickHandler:^{
                                                                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
@@ -3148,8 +3341,8 @@
                           item5,
                           nil];
     
-            //Create a container.
-    id<ISSContainer> container = [ShareSDK container];
+        //创建容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -3158,16 +3351,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareActionSheet:container
+        //显示分享菜单
+        [ShareSDK showShareActionSheet:container
                          shareList:shareList
                            content:publishContent
                      statusBarTips:YES
@@ -3204,8 +3397,8 @@
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
-            //Create a container.
-    id<ISSContainer> container = [ShareSDK container];
+        //创建容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -3214,8 +3407,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -3261,18 +3454,18 @@
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息") 
                                             mediaType:SSPublishContentMediaTypeGif];
     
-            //The following information needs to be defined for a specific platform to share content, can be omitted if you do not need to add the following method
+        //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法
     
-    //Customized RenRen information.
-    [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网")
+    //定制人人网信息
+        [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网")
                               description:INHERIT_VALUE
                                       url:INHERIT_VALUE
                                   message:INHERIT_VALUE
                                     image:INHERIT_VALUE
                                   caption:nil];
     
-            //Customized QZone information.
-    [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_ZONE", @"Hello QQ空间") 
+        //定制QQ空间信息
+        [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_ZONE", @"Hello QQ空间") 
                                         url:INHERIT_VALUE
                                        site:nil
                                     fromUrl:nil
@@ -3283,8 +3476,8 @@
                                     playUrl:nil
                                        nswb:nil];
     
-            //Customized Wechat Session information.
-    [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
+        //定制微信好友信息
+        [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
                                          content:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_WECHAT_SESSION", @"Hello 微信好友!")
                                              url:INHERIT_VALUE
@@ -3294,8 +3487,8 @@
                                         fileData:nil
                                     emoticonData:[NSData dataWithContentsOfFile:path]];
     
-            //Customized Wechat Timeline information.
-    [publishContent addWeixinTimelineUnitWithType:INHERIT_VALUE
+        //定制微信朋友圈信息
+        [publishContent addWeixinTimelineUnitWithType:INHERIT_VALUE
                                           content:INHERIT_VALUE
                                             title:NSLocalizedString(@"TEXT_HELLO_WECHAT_TIMELINE", @"Hello 微信朋友圈!") 
                                               url:INHERIT_VALUE
@@ -3305,15 +3498,15 @@
                                          fileData:nil
                                      emoticonData:[NSData dataWithContentsOfFile:path]];
     
-            //Customized QQ information.
-    [publishContent addQQUnitWithType:INHERIT_VALUE
+        //定制QQ分享信息
+        [publishContent addQQUnitWithType:INHERIT_VALUE
                               content:INHERIT_VALUE
                                 title:@"Hello QQ!"
                                   url:INHERIT_VALUE
                                 image:INHERIT_VALUE];
     
-            //Customized Mail information
-    [publishContent addMailUnitWithSubject:@"Hello Mail"
+        //定制邮件信息
+        [publishContent addMailUnitWithSubject:@"Hello Mail"
                                    content:INHERIT_VALUE
                                     isHTML:[NSNumber numberWithBool:YES]
                                attachments:INHERIT_VALUE
@@ -3321,26 +3514,26 @@
                                         cc:nil
                                        bcc:nil];
     
-            //Customized SMS information
-    [publishContent addSMSUnitWithContent:@"Hello SMS"];
+        //定制短信信息
+        [publishContent addSMSUnitWithContent:@"Hello SMS"];
     
-            //Customized YouDaoNote information.
-    [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
+        //定制有道云笔记信息
+        [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_YOUDAO_NOTE", @"Hello 有道云笔记") 
                                           author:@"ShareSDK"
                                           source:nil
                                      attachments:INHERIT_VALUE];
     
-            //Customized Instapaper information.
-    [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
+        //定制Instapaper信息
+        [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
     
-            //End customized information
+        //结束定制信息
     ////////////////////////
     
-    //Create a container.
-    id<ISSContainer> container = [ShareSDK container];
+    //创建容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -3349,8 +3542,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -3385,14 +3578,14 @@
 }
 
 /**
- *	@brief	Share to Evernote.
+ *	@brief	分享到印象笔记
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)shareToEvernoteClickHandler:(id)sender
 {
-            //Create a share content.
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+        //创建分享内容
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -3401,8 +3594,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -3411,16 +3604,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareViewWithType:ShareTypeEvernote
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypeEvernote
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -3449,8 +3642,8 @@
 
 - (void)shareToPocketClickHandler:(id)sender
 {
-            //Create a share content.
-    id<ISSContent> publishContent = [ShareSDK content:nil
+        //创建分享内容
+        id<ISSContent> publishContent = [ShareSDK content:nil
                                        defaultContent:@""
                                                 image:nil
                                                 title:@"Hello Pocket"
@@ -3458,8 +3651,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -3468,16 +3661,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-            //Display share menu.
-    [ShareSDK showShareViewWithType:ShareTypePocket
+        //显示分享菜单
+        [ShareSDK showShareViewWithType:ShareTypePocket
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -3505,16 +3698,16 @@
 }
 
 /**
- *	@brief	Client share click handler.
+ *	@brief	客户端分享点击
  *
- *	@param 	sender 	Event object.
+ *	@param 	sender 	事件对象
  */
 - (void)clientShareClickHandler:(id)sender
 {
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     
-            //Create a share content.
-    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+        //构造分享内容
+        id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
@@ -3522,11 +3715,11 @@
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
-            ///////////////////////
-    //The following information needs to be defined for a specific platform to share content, can be omitted if you do not need to add the following method
+        ///////////////////////
+    //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法
     
-    //Customized WeChat Session information.
-    [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
+    //定制微信好友信息
+        [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
                                          content:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_WECHAT_SESSION", @"Hello 微信好友!")
                                              url:INHERIT_VALUE
@@ -3536,8 +3729,8 @@
                                         fileData:nil
                                     emoticonData:nil];
     
-            //Customized WeChat Timeline information.
-    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
+        //定制微信朋友圈信息
+        [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
                                           content:INHERIT_VALUE
                                             title:NSLocalizedString(@"TEXT_HELLO_WECHAT_TIMELINE", @"Hello 微信朋友圈!") 
                                               url:@"http://y.qq.com/i/song.html#p=7B22736F6E675F4E616D65223A22E4BDA0E4B88DE698AFE79C9FE6ADA3E79A84E5BFABE4B990222C22736F6E675F5761704C69766555524C223A22687474703A2F2F74736D7573696332342E74632E71712E636F6D2F586B303051563558484A645574315070536F4B7458796931667443755A68646C2F316F5A4465637734356375386355672B474B304964794E6A3770633447524A574C48795333383D2F3634363232332E6D34613F7569643D32333230303738313038266469723D423226663D312663743D3026636869643D222C22736F6E675F5769666955524C223A22687474703A2F2F73747265616D31382E71716D757369632E71712E636F6D2F33303634363232332E6D7033222C226E657454797065223A2277696669222C22736F6E675F416C62756D223A22E5889BE980A0EFBC9AE5B08FE5B7A8E89B8B444E414C495645EFBC81E6BC94E594B1E4BC9AE5889BE7BAAAE5BD95E99FB3222C22736F6E675F4944223A3634363232332C22736F6E675F54797065223A312C22736F6E675F53696E676572223A22E4BA94E69C88E5A4A9222C22736F6E675F576170446F776E4C6F616455524C223A22687474703A2F2F74736D757369633132382E74632E71712E636F6D2F586C464E4D31354C5569396961495674593739786D436534456B5275696879366A702F674B65356E4D6E684178494C73484D6C6A307849634A454B394568572F4E3978464B316368316F37636848323568413D3D2F33303634363232332E6D70333F7569643D32333230303738313038266469723D423226663D302663743D3026636869643D2673747265616D5F706F733D38227D"
@@ -3547,27 +3740,28 @@
                                          fileData:nil
                                      emoticonData:nil];
     
-            //Customized QQ information
-    [publishContent addQQUnitWithType:INHERIT_VALUE
+        //定制QQ分享信息
+        [publishContent addQQUnitWithType:INHERIT_VALUE
                               content:INHERIT_VALUE
                                 title:@"Hello QQ!"
                                   url:INHERIT_VALUE
                                 image:INHERIT_VALUE];
 
-            //Customized Pinterest information
-    [publishContent addPinterestUnitWithImage:[ShareSDK imageWithUrl:@"http://sharesdk.cn/Public/Frontend/images/logo.png"]
+        //定制Pinterest信息
+        [publishContent addPinterestUnitWithImage:[ShareSDK imageWithUrl:@"http://sharesdk.cn/Public/Frontend/images/logo.png"]
                                           url:INHERIT_VALUE
                                   description:INHERIT_VALUE];
     
-            //End custom information
+        //结束定制信息
     ////////////////////////
     
-    //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+    //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
-            //Custom Sina Weibo share menu.
-    id<ISSShareActionSheetItem> sinaItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSinaWeibo]
+        //自定义新浪微博分享菜单项
+    
+        id<ISSShareActionSheetItem> sinaItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSinaWeibo]
                                                                               icon:[ShareSDK getClientIconWithType:ShareTypeSinaWeibo]
                                                                       clickHandler:^{
                                                                           [ShareSDK clientShareContent:publishContent
@@ -3734,8 +3928,8 @@
                                                                                                }];
                                                                      }];
     
-            //Create a custom share list.
-    NSArray *shareList = [ShareSDK customShareListWithType:
+        //创建自定义分享列表
+        NSArray *shareList = [ShareSDK customShareListWithType:
                           sinaItem,
                           qzItem,
                           wxsItem,
@@ -3770,8 +3964,8 @@
 {
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     
-            //Create a share content.
-    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+        //构造分享内容
+        id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
@@ -3781,8 +3975,8 @@
                                    locationCoordinate:[SSCLocationCoordinate2D locationCoordinate2DWithLatitude:22.02454411766735
                                                                                                       longitude:112.76367125000003]];
     
-            //Create a pop-up menu container
-    id<ISSContainer> container = [ShareSDK container];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -3898,16 +4092,16 @@
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:_appDelegate.viewDelegate];
         
-                        //Adding official Weibo concern in the authorization page
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                //在授权页面中添加关注官方微博
+                [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                         SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                         SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                         nil]];
         
-                        //Concerned users
-        [ShareSDK followUserWithType:_followType
+                //关注用户
+                [ShareSDK followUserWithType:_followType
                                field:@"ShareSDK"
                            fieldType:SSUserFieldTypeName
                          authOptions:authOptions

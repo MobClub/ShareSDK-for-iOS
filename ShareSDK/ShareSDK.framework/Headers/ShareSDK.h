@@ -572,6 +572,34 @@
                      yixinCls:(Class)yixinCls;
 
 /**
+ *	@brief	Initialize MingDao platform，This platform need import MingDaoConnection.framework
+ *          Go to http://open.mingdao.com/ register app，Then fill in the relevant information into the field below
+ *
+ *  @since  ver2.9.0
+ *
+ *	@param 	appKey 	App key
+ *	@param 	appSecret 	App secret
+ *	@param 	redirectUri 	Redirect URI
+ */
++ (void)connectMingDaoWithAppKey:(NSString *)appKey
+                       appSecret:(NSString *)appSecret
+                     redirectUri:(NSString *)redirectUri;
+
+/**
+ *	@brief	Initialize Line platform，This platform need import LineConnection.framework
+ *
+ *	@since  ver2.9.0
+ */
++ (void)connectLine;
+
+/**
+ *	@brief	Initialize WhatsApp platform，This platform need import WhatsAppConnection.framework
+ *
+ *	@since  ver2.9.0
+ */
++ (void)connectWhatsApp;
+
+/**
  *	@brief	Handle open url,If the integrated Sina Weibo (SSO), Facebook (SSO), WeChat, QQ sharing need to add this method
  *
  *	@param 	url 	Url string.
@@ -1459,6 +1487,26 @@
                       type:(ShareType)type
              statusBarTips:(BOOL)statusBarTips
                     result:(SSPublishContentEventHandler)result;
+
+/**
+ *	@brief	Content sharing using a client (only for Sina Weibo, WeChat, QQ, Pinterest, Google+)
+ *
+ *  @since  ver2.9.0
+ *
+ *	@param 	content 	Content string.
+ *	@param 	type 	Platform type
+ *	@param 	authOptions 	Authorized options，Used to authorization for custom configuration（Such as: whether the automatic authorization, authorization view style, etc.）Default nil.
+ *  @param  shareOptions    Share options，Used to share for custom configuration（Such as: title, one key sharing, function buttons, etc.）Default nil.
+ *  @param  statusBarTips   The status bar Tip flag
+ *	@param 	result 	Result handler.
+ */
++ (void)clientShareContent:(id<ISSContent>)content
+                      type:(ShareType)type
+               authOptions:(id<ISSAuthOptions>)authOptions
+              shareOptions:(id<ISSShareOptions>)shareOptions
+             statusBarTips:(BOOL)statusBarTips
+                    result:(SSPublishContentEventHandler)result;
+
 
 #pragma mark - 分享有奖
 

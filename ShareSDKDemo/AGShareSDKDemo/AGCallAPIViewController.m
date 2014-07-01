@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  website:http://www.ShareSDK.cn
-//  Support E-mail:support@sharesdk.cn
-//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
-//  Business QQ:4006852216
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import "AGCallAPIViewController.h"
@@ -375,14 +375,14 @@
 
 -(BOOL)shouldAutorotate
 {
-            //iOS6 rotating screen method
-    return YES;
+        //iOS6下旋屏方法
+        return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-            //iOS6 rotating screen method
-    return SSInterfaceOrientationMaskAll;
+        //iOS6下旋屏方法
+        return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -481,16 +481,16 @@
 {
     [_focusTextField resignFirstResponder];
     
-            //Calling get list of comments method, api documentation: http://open.weibo.com/wiki/2/comments/show
-    //First,Get platform app object
-    id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
+        //调用获取评论列表方法，接口文档：http://open.weibo.com/wiki/2/comments/show
+    //先获取相关平台的App对象
+        id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
 
-            //Structural parameters
-    id<ISSCParameters> params = [ShareSDKCoreService parameters];
+        //构造参数
+        id<ISSCParameters> params = [ShareSDKCoreService parameters];
     [params addParameter:@"id" value:_sinaGetCmtStatusIdField.text];
     
-            //Call api
-    [app api:@"https://api.weibo.com/2/comments/show.json"
+        //调用接口
+        [app api:@"https://api.weibo.com/2/comments/show.json"
       method:SSSinaWeiboRequestMethodGet
       params:params
         user:nil
@@ -523,16 +523,16 @@
 {
     [_focusTextField resignFirstResponder];
     
-            //Call get comment list method，API documentation：http://open.weibo.com/wiki/2/comments/show
-    //First,Get platform app object
-    id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
+        //调用获取评论列表方法，接口文档：http://open.weibo.com/wiki/2/comments/show
+    //先获取相关平台的App对象
+        id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
     
-            //Structural parameters
-    id<ISSCParameters> params = [ShareSDKCoreService parameters];
+        //构造参数
+        id<ISSCParameters> params = [ShareSDKCoreService parameters];
     [params addParameter:@"id" value:_sinaGetCmtStatusIdField.text];
     
-            //Call api
-    [app api:@"https://api.weibo.com/2/comments/show.json"
+        //调用接口
+        [app api:@"https://api.weibo.com/2/comments/show.json"
       method:SSSinaWeiboRequestMethodGet
       params:params
         user:nil
@@ -583,12 +583,12 @@
 {
     [_focusTextField resignFirstResponder];
     
-            //Call get favorites method，API documentation：https://api.weibo.com/2/favorites.json
-    //First,Get platform app object
-    id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
+        //调用获取收藏列表方法，接口文档：https://api.weibo.com/2/favorites.json
+    //先获取相关平台的App对象
+        id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
     
-            //Call api
-    [app api:@"https://api.weibo.com/2/favorites.json"
+        //调用接口
+        [app api:@"https://api.weibo.com/2/favorites.json"
       method:SSSinaWeiboRequestMethodGet
       params:nil
         user:nil
@@ -622,12 +622,12 @@
 {
     [_focusTextField resignFirstResponder];
     
-            //Call get favorites method，API documentation：https://api.weibo.com/2/favorites.json
-    //First,Get platform app object
-    id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
+        //调用获取收藏列表方法，接口文档：https://api.weibo.com/2/favorites.json
+    //先获取相关平台的App对象
+        id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
     
-            //Call api
-    [app api:@"https://api.weibo.com/2/favorites.json"
+        //调用接口
+        [app api:@"https://api.weibo.com/2/favorites.json"
       method:SSSinaWeiboRequestMethodGet
       params:nil
         user:nil
@@ -682,17 +682,17 @@
 {
     [_focusTextField resignFirstResponder];
     
-            //Call reply comment method，API documentation：https://api.weibo.com/2/comments/reply.json
-    //First,Get platform app object
-    id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
+        //调用回复评论方法，接口文档：https://api.weibo.com/2/comments/reply.json
+    //先获取相关平台的App对象
+        id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
     [params addParameter:@"cid" value:_sinaReplyCommendIdField.text];
     [params addParameter:@"id" value:_sinaReplyStatusIdField.text];
     [params addParameter:@"comment" value:_sinaReplyContentField.text];
     
-            //Call api
-    [app api:@"https://api.weibo.com/2/comments/reply.json"
+        //调用接口
+        [app api:@"https://api.weibo.com/2/comments/reply.json"
       method:SSSinaWeiboRequestMethodPost
       params:params
         user:nil
@@ -725,17 +725,17 @@
 {
     [_focusTextField resignFirstResponder];
     
-            //Call reply comment method，API documentation：https://api.weibo.com/2/comments/reply.json
-    //First,Get platform app object
-    id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
+        //调用回复评论方法，接口文档：https://api.weibo.com/2/comments/reply.json
+    //先获取相关平台的App对象
+        id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
     [params addParameter:@"cid" value:_sinaReplyCommendIdField.text];
     [params addParameter:@"id" value:_sinaReplyStatusIdField.text];
     [params addParameter:@"comment" value:_sinaReplyContentField.text];
     
-            //Call api
-    [app api:@"https://api.weibo.com/2/comments/reply.json"
+        //调用接口
+        [app api:@"https://api.weibo.com/2/comments/reply.json"
       method:SSSinaWeiboRequestMethodPost
       params:params
         user:nil
@@ -768,9 +768,9 @@
 {
     [_focusTextField resignFirstResponder];
     
-            //Call get comment list method，API documentation：http://wiki.open.t.qq.com/index.php/API文档/微博接口/获取单条微博的转发或评论列表
-    //First,Get platform app object
-    id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
+        //调用获取评论列表方法，接口文档：http://wiki.open.t.qq.com/index.php/API文档/微博接口/获取单条微博的转发或评论列表
+    //先获取相关平台的App对象
+        id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
     [params addParameter:@"format" value:@"json"];
@@ -781,8 +781,8 @@
     [params addParameter:@"reqnum" value:@"20"];
     [params addParameter:@"twitterid" value:@"0"];
     
-            //Call api
-    [app api:@"https://open.t.qq.com/api/t/re_list"
+        //调用接口
+        [app api:@"https://open.t.qq.com/api/t/re_list"
       method:SSTecentWeiboRequestMethodGet
       params:params
         user:nil
@@ -815,9 +815,9 @@
 {
     [_focusTextField resignFirstResponder];
     
-            //Call get comment list method，API documentation：http://wiki.open.t.qq.com/index.php/API文档/微博接口/获取单条微博的转发或评论列表
-    //First,Get platform app object
-    id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
+        //调用获取评论列表方法，接口文档：http://wiki.open.t.qq.com/index.php/API文档/微博接口/获取单条微博的转发或评论列表
+    //先获取相关平台的App对象
+        id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
     [params addParameter:@"format" value:@"json"];
@@ -828,8 +828,8 @@
     [params addParameter:@"reqnum" value:@"20"];
     [params addParameter:@"twitterid" value:@"0"];
     
-            //Call api
-    [app api:@"https://open.t.qq.com/api/t/re_list"
+        //调用接口
+        [app api:@"https://open.t.qq.com/api/t/re_list"
       method:SSTecentWeiboRequestMethodGet
       params:params
         user:nil
@@ -872,9 +872,9 @@
 {
     [_focusTextField resignFirstResponder];
     
-            //Call get favorite list，API documentation：http://wiki.open.t.qq.com/index.php/API文档/收藏接口/收藏的微博列表
-    //First,Get platform app object
-    id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
+        //调用获取收藏列表方法，接口文档：http://wiki.open.t.qq.com/index.php/API文档/收藏接口/收藏的微博列表
+    //先获取相关平台的App对象
+        id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
     [params addParameter:@"format" value:@"json"];
@@ -883,8 +883,8 @@
     [params addParameter:@"reqnum" value:@"20"];
     [params addParameter:@"lastid" value:@"0"];
     
-            //Call api
-    [app api:@"https://open.t.qq.com/api/fav/list_t"
+        //调用接口
+        [app api:@"https://open.t.qq.com/api/fav/list_t"
       method:SSTecentWeiboRequestMethodGet
       params:params
         user:nil
@@ -917,9 +917,9 @@
 {
     [_focusTextField resignFirstResponder];
     
-            //Call get favorite list，API documentation：http://wiki.open.t.qq.com/index.php/API文档/收藏接口/收藏的微博列表
-    //First,Get platform app object
-    id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
+        //调用获取收藏列表方法，接口文档：http://wiki.open.t.qq.com/index.php/API文档/收藏接口/收藏的微博列表
+    //先获取相关平台的App对象
+        id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
     [params addParameter:@"format" value:@"json"];
@@ -928,8 +928,8 @@
     [params addParameter:@"reqnum" value:@"20"];
     [params addParameter:@"lastid" value:@"0"];
     
-            //Call api
-    [app api:@"https://open.t.qq.com/api/fav/list_t"
+        //调用接口
+        [app api:@"https://open.t.qq.com/api/fav/list_t"
       method:SSTecentWeiboRequestMethodGet
       params:params
         user:nil
@@ -980,17 +980,17 @@
 {
     [_focusTextField resignFirstResponder];
     
-            //Call reply status method，API documentation：http://wiki.open.t.qq.com/index.php/API文档/微博接口/回复一条微博
-    //First,Get platform app object
-    id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
+        //调用回复微博方法，接口文档：http://wiki.open.t.qq.com/index.php/API文档/微博接口/回复一条微博
+    //先获取相关平台的App对象
+        id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
     [params addParameter:@"format" value:@"json"];
     [params addParameter:@"content" value:_tencentReplyContentField.text];
     [params addParameter:@"reid" value:_tencentReplyStatusIdField.text];
     
-            //Call api
-    [app api:@"https://open.t.qq.com/api/t/reply"
+        //调用接口
+        [app api:@"https://open.t.qq.com/api/t/reply"
       method:SSTecentWeiboRequestMethodPost
       params:params
         user:nil
@@ -1022,17 +1022,17 @@
 {
     [_focusTextField resignFirstResponder];
     
-            //Call replay status method，API documentation：http://wiki.open.t.qq.com/index.php/API文档/微博接口/回复一条微博
-    //First,Get platform app object
-    id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
+        //调用回复微博方法，接口文档：http://wiki.open.t.qq.com/index.php/API文档/微博接口/回复一条微博
+    //先获取相关平台的App对象
+        id<ISSTencentWeiboApp> app = (id<ISSTencentWeiboApp>)[ShareSDK getClientWithType:ShareTypeTencentWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
     [params addParameter:@"format" value:@"json"];
     [params addParameter:@"content" value:_tencentReplyContentField.text];
     [params addParameter:@"reid" value:_tencentReplyStatusIdField.text];
     
-            //Call api
-    [app api:@"https://open.t.qq.com/api/t/reply"
+        //调用接口
+        [app api:@"https://open.t.qq.com/api/t/reply"
       method:SSTecentWeiboRequestMethodPost
       params:params
         user:nil

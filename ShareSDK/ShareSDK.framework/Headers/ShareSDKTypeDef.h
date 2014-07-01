@@ -52,6 +52,9 @@ typedef enum
     ShareTypeYiXinSession = 38,     /**< 易信好友 */
     ShareTypeYiXinTimeline = 39,    /**< 易信朋友圈 */
     ShareTypeYiXinFav = 40,         /**< 易信收藏 */
+    ShareTypeMingDao = 41,          /**< 明道 */
+    ShareTypeLine = 42,             /**< Line */
+    ShareTypeWhatsApp = 43,         /**< Whats App */
     ShareTypeAny = 99               /**< 任意平台 */
 }
 ShareType;

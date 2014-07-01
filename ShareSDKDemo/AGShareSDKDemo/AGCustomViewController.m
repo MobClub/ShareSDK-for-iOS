@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  website:http://www.ShareSDK.cn
-//  Support E-mail:support@sharesdk.cn
-//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
-//  Business QQ:4006852216
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import "AGCustomViewController.h"
@@ -82,14 +82,14 @@
 
 -(BOOL)shouldAutorotate
 {
-            //iOS6 rotating screen method
-    return YES;
+        //iOS6下旋屏方法
+        return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-            //iOS6 rotating screen method
-    return SSInterfaceOrientationMaskAll;
+        //iOS6下旋屏方法
+        return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -185,16 +185,16 @@
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这时一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
-            //Custom RenRen share content
-    [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网")
+        //定制人人网分享
+        [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网")
                               description:INHERIT_VALUE
                                       url:INHERIT_VALUE
                                   message:INHERIT_VALUE
                                     image:INHERIT_VALUE
                                   caption:nil];
     
-            //Custom QZone share content
-    [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间")
+        //定制QQ空间分享
+        [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间")
                                         url:INHERIT_VALUE
                                        site:nil
                                     fromUrl:nil
@@ -205,8 +205,8 @@
                                     playUrl:nil
                                        nswb:nil];
     
-            //Custom WeChat Session share content
-    [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
+        //定制微信好友内容
+        [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
                                          content:NSLocalizedString(@"TEXT_HELLO_WECHAT_SESSION", @"Hello 微信好友!")
                                            title:INHERIT_VALUE
                                              url:INHERIT_VALUE
@@ -216,8 +216,8 @@
                                         fileData:nil
                                     emoticonData:nil];
     
-            //Custom WeChat Timeline share content
-    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
+        //定制微信朋友圈内容
+        [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
                                           content:NSLocalizedString(@"TEXT_HELLO_WECHAT_TIMELINE", @"Hello 微信朋友圈!")
                                             title:INHERIT_VALUE
                                               url:@"http://y.qq.com/i/song.html#p=7B22736F6E675F4E616D65223A22E4BDA0E4B88DE698AFE79C9FE6ADA3E79A84E5BFABE4B990222C22736F6E675F5761704C69766555524C223A22687474703A2F2F74736D7573696332342E74632E71712E636F6D2F586B303051563558484A645574315070536F4B7458796931667443755A68646C2F316F5A4465637734356375386355672B474B304964794E6A3770633447524A574C48795333383D2F3634363232332E6D34613F7569643D32333230303738313038266469723D423226663D312663743D3026636869643D222C22736F6E675F5769666955524C223A22687474703A2F2F73747265616D31382E71716D757369632E71712E636F6D2F33303634363232332E6D7033222C226E657454797065223A2277696669222C22736F6E675F416C62756D223A22E5889BE980A0EFBC9AE5B08FE5B7A8E89B8B444E414C495645EFBC81E6BC94E594B1E4BC9AE5889BE7BAAAE5BD95E99FB3222C22736F6E675F4944223A3634363232332C22736F6E675F54797065223A312C22736F6E675F53696E676572223A22E4BA94E69C88E5A4A9222C22736F6E675F576170446F776E4C6F616455524C223A22687474703A2F2F74736D757369633132382E74632E71712E636F6D2F586C464E4D31354C5569396961495674593739786D436534456B5275696879366A702F674B65356E4D6E684178494C73484D6C6A307849634A454B394568572F4E3978464B316368316F37636848323568413D3D2F33303634363232332E6D70333F7569643D32333230303738313038266469723D423226663D302663743D3026636869643D2673747265616D5F706F733D38227D"
@@ -227,15 +227,15 @@
                                          fileData:nil
                                      emoticonData:nil];
     
-            //Custom QQ share content
-    [publishContent addQQUnitWithType:INHERIT_VALUE
+        //定制QQ分享内容
+        [publishContent addQQUnitWithType:INHERIT_VALUE
                               content:@"Hello QQ!"
                                 title:INHERIT_VALUE
                                   url:INHERIT_VALUE
                                 image:INHERIT_VALUE];
     
-            //Custom Mail share content
-    [publishContent addMailUnitWithSubject:INHERIT_VALUE
+        //定制邮件分享内容
+        [publishContent addMailUnitWithSubject:INHERIT_VALUE
                                    content:@"<a href='http://sharesdk.cn'>Hello Mail</a>"
                                     isHTML:[NSNumber numberWithBool:YES]
                                attachments:INHERIT_VALUE
@@ -243,11 +243,11 @@
                                         cc:nil
                                        bcc:nil];
     
-            //Custom SMS share content
-    [publishContent addSMSUnitWithContent:@"Hello SMS!"];
+        //定制短信分享内容
+        [publishContent addSMSUnitWithContent:@"Hello SMS!"];
     
-            //Custom YouDaoNote share content
-    [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
+        //定制有道云笔记分享内容
+        [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_SDK_SHARE", @"ShareSDK分享")
                                           author:@"ShareSDK"
                                           source:@"http://www.sharesdk.cn"
@@ -265,8 +265,8 @@
         [self presentModalViewController:naVC animated:YES];
     };
     
-            //Create a custom share list
-    NSArray *shareList = [ShareSDK customShareListWithType:
+        //创建自定义分享列表
+        NSArray *shareList = [ShareSDK customShareListWithType:
                           [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSinaWeibo]
                                                              icon:[ShareSDK getClientIconWithType:ShareTypeSinaWeibo]
                                                      clickHandler:clickHandler],
@@ -314,8 +314,8 @@
                                                      clickHandler:clickHandler],
                           nil];
     
-            //Create a container.
-    id<ISSContainer> container = [ShareSDK container];
+        //创建容器
+        id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -324,8 +324,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],

@@ -775,7 +775,7 @@
                          emoticonData:(NSData *)emoticonData;
 
 /**
- *	@brief	Add WeChat Favorite content unit，When custom WeChat timeline share content use this method，If the parameter is set to INHERIT_VALUE. will using the parent parameter value.
+ *	@brief	Add WeChat Favorite content unit，When custom WeChat Favorite share content use this method，If the parameter is set to INHERIT_VALUE. will using the parent parameter value.
  *
  *	@param 	type 	Media type,Please see SSPublishContentMediaType
  *	@param 	content 	Content string
@@ -798,6 +798,43 @@
                          extInfo:(NSString *)extInfo
                         fileData:(NSData *)fileData
                     emoticonData:(NSData *)emoticonData;
+
+/**
+ *	@brief	Add MingDao content unit，When custom MingDao share content use this method，If the parameter is set to INHERIT_VALUE. will using the parent parameter value.
+ *
+ *	@param 	content 	Content string
+ *	@param 	image 	Image attachment object
+ *	@param 	title 	Title string.
+ *	@param 	url 	URL string.
+ */
+- (void)addMingDaoUnitWithContent:(NSString *)content
+                            image:(id<ISSCAttachment>)image
+                            title:(NSString *)title
+                              url:(NSString *)url;
+/**
+ *	@brief	Add Line content unit，When custom Line share content use this method，If the parameter is set to INHERIT_VALUE. will using the parent parameter value.
+ *
+ *	@param 	content 	Content string.
+ *	@param 	image 	Image attachment object.
+ */
+- (void)addLineUnitWithContent:(NSString *)content
+                         image:(id<ISSCAttachment>)image;
+
+/**
+ *	@brief  Add WhatsApp content unit，When custom WhatsApp share content use this method，If the parameter is set to INHERIT_VALUE. will using the parent parameter value.
+ *
+ *	@param 	content 	content string
+ *	@param 	image 	image attachment
+ *	@param 	music 	music attachment
+ *	@param 	video   video attachment
+ *
+ */
+- (void)addWhatsAppUnitWithContent:(NSString *)content
+                             image:(id<ISSCAttachment>)image
+                             music:(id<ISSCAttachment>)music
+                             video:(id<ISSCAttachment>)video;
+
+
 
 
 @end

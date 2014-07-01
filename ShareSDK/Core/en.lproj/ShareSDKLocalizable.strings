@@ -54,6 +54,13 @@
 "ERROR_DESC_YIXIN_API_IS_NOT_SUPPORT" = "The current version does not support this api of YiXin";
 "ERROR_DESC_YIXIN_SEND_REQUEST_ERROR" = "YiXin OpenApi Request failed";
 "ERROR_DESC_YIXIN_NOT_SET_URL_SCHEME" = "YiXin's URL Scheme has not been set";
+"ERROR_DESC_INVALID_PLATFORM" = "Invalid platform or the platform is not initialized!";
+"ERROR_DESC_LINE_NOT_INSTALL" = "Line is not installed";
+"ERROR_DESC_LINE_SEND_FAIL" = "Failed to send";
+"ERROR_DESC_LINE_NOT_SUPPORTED_FOR_IOS7_PLUS" = "Line platforms do not support sharing pictures over the iOS7";
+"ERROR_CODE_LINE_INVALID_UIPASTBOARD" = "Invalid UIPasteboard object";
+"ERROR_DESC_WHATSAPP_NOT_INSTALL" = "WhatsApp is not installed";
+"ERROR_DESC_WHATSAPP_SEND_FAIL" = "Failed to send";
 
 "ShareType_1" = "Sina Weibo";
 "ShareType_2" = "腾讯微博";
@@ -90,6 +97,9 @@
 "ShareType_37" = "微信收藏";
 "ShareType_38" = "易信好友";
 "ShareType_39" = "易信朋友圈";
+"ShareType_41" = "明道";
+"ShareType_42" = "Line";
+"ShareType_43" = "WhatsApp";
 
 "ALTER_VIEW_TITLE" = "Message";
 "ALTER_VIEW_I_KNOWN_BUTTON" = "I know";
@@ -161,6 +171,7 @@
 "AUTH_VIEW_TITLE_34" = "Flickr";
 "AUTH_VIEW_TITLE_35" = "Dropbox";
 "AUTH_VIEW_TITLE_36" = "VKontakte";
+"AUTH_VIEW_TITLE_41" = "明道";
 "AUTH_VIEW_FOLLOW_ME" = "Follow Us";
 
 "AWARD_BACK_ITEM_TITLE" = "Close";

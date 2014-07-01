@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  website:http://www.ShareSDK.cn
-//  Support E-mail:support@sharesdk.cn
-//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
-//  Business QQ:4006852216
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import "AGSinaWeiboUserDetailInfoViewController.h"
@@ -121,8 +121,8 @@
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:appDelegate.viewDelegate];
         
-                        //Adding official Weibo concern in the authorization page
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                //在授权页面中添加关注官方微博
+                [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                         SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -138,17 +138,17 @@
                                    SAFE_RELEASE(_user);
                                    _user = [[SSSinaWeiboUserInfoReader readerWithSourceData:[userInfo sourceData]] retain];
                                    
-                                                                                                         //Calculate how many rows to be displayed
-                                   [_rowInfoArray removeAllObjects];
+                                                                      //计算需要显示多少行
+                                                                      [_rowInfoArray removeAllObjects];
                                    
-                                                                                                         //Verify information.
-                                   if (_user.verified)
+                                                                      //认证信息
+                                                                      if (_user.verified)
                                    {
                                        [_rowInfoArray addObject:[NSArray arrayWithObjects:NSLocalizedString(@"TEXT_VERIFIED_INFO", @"认证信息"), VERIFIED_CELL, nil]];
                                    }
                                    
-                                                                                                         //Basic information.
-                                   NSMutableArray *basicArr = [NSMutableArray arrayWithObject:NSLocalizedString(@"TEXT_BASIC_INFO", @"基础信息")];
+                                                                      //基础信息
+                                                                      NSMutableArray *basicArr = [NSMutableArray arrayWithObject:NSLocalizedString(@"TEXT_BASIC_INFO", @"基础信息")];
                                    [basicArr addObject:NICKNAME_CELL];
                                    [basicArr addObject:GENDER_CELL];
                                    [basicArr addObject:LOCATION_CELL];
@@ -160,17 +160,17 @@
     }
     else
     {
-                        //Calculate how many rows to be displayed
-        [_rowInfoArray removeAllObjects];
+                //计算需要显示多少行
+                [_rowInfoArray removeAllObjects];
         
-                        //Verified information.
-        if (_user.verified)
+                //认证信息
+                if (_user.verified)
         {
             [_rowInfoArray addObject:[NSArray arrayWithObjects:NSLocalizedString(@"TEXT_VERIFIED_INFO", @"认证信息"), VERIFIED_CELL, nil]];
         }
         
-                        //Basic information.
-        NSMutableArray *basicArr = [NSMutableArray arrayWithObject:NSLocalizedString(@"TEXT_BASIC_INFO", @"基础信息")];
+                //基础信息
+                NSMutableArray *basicArr = [NSMutableArray arrayWithObject:NSLocalizedString(@"TEXT_BASIC_INFO", @"基础信息")];
         [basicArr addObject:NICKNAME_CELL];
         [basicArr addObject:GENDER_CELL];
         [basicArr addObject:LOCATION_CELL];
@@ -200,14 +200,14 @@
 
 -(BOOL)shouldAutorotate
 {
-            //iOS6 rotating screen method
-    return YES;
+        //iOS6下旋屏方法
+        return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-            //iOS6 rotating screen method
-    return SSInterfaceOrientationMaskAll;
+        //iOS6下旋屏方法
+        return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

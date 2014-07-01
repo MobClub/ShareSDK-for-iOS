@@ -30,6 +30,43 @@ SSInstagramRequestMethod;
 @protocol ISSInstagramApp <ISSPlatformApp>
 
 /**
+ *	@brief	Set menu container for iPad device.
+ *
+ *  @since  ver2.9.0
+ *
+ *	@param 	container 	Menu container.
+ */
+- (void)setIPadMenuContainer:(UIView *)container;
+
+/**
+ *	@brief	Get menu container for iPad device
+ *
+ *  @since  ver2.9.0
+ *
+ *	@return	Menu container.
+ */
+- (UIView *)iPadMenuContainer;
+
+/**
+ *	@brief	Set pop-up menu container frame for iPad device.
+ *
+ *  @since  ver2.9.0
+ *
+ *	@param 	rect    menu container frame
+ */
+- (void)setIPadMenuContainerFrame:(CGRect)frame;
+
+/**
+ *	@brief	Get pop-up menu container frame for iPad device.
+ *
+ *  @since  ver2.9.0
+ *
+ *	@return	menu container frame
+ */
+- (CGRect)iPadMenuContainerFrame;
+
+
+/**
  *	@brief	Get client id.
  *
  *	@return	Client id string.
@@ -84,6 +121,23 @@ SSInstagramRequestMethod;
 - (void)shareWithImage:(id<ISSCAttachment>)image
                  title:(NSString *)title
    containerController:(UIViewController *)containerController
+                result:(SSShareResultEvent)result;
+
+/**
+ *	@brief	Share content.
+ *
+ *  @since  ver2.9.0
+ *
+ *	@param 	image 	Image attachment object.
+ *	@param 	title 	Title string.
+ *  @param  container     Menu container.
+ *  @param  containerFrame  Menu container frame.
+ *  @param  result  Result handler.
+ */
+- (void)shareWithImage:(id<ISSCAttachment>)image
+                 title:(NSString *)title
+             container:(UIView *)container
+        containerFrame:(CGRect)containerFrame
                 result:(SSShareResultEvent)result;
 
 

@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  website:http://www.ShareSDK.cn
-//  Support E-mail:support@sharesdk.cn
-//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
-//  Business QQ:4006852216
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import "WeChatViewController.h"
@@ -86,14 +86,14 @@
 
 -(BOOL)shouldAutorotate
 {
-            //iOS6 rotating screen method
-    return YES;
+        //iOS6下旋屏方法
+        return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-            //iOS6 rotating screen method
-    return SSInterfaceOrientationMaskAll;
+        //iOS6下旋屏方法
+        return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -105,8 +105,8 @@
 
 - (void)sendAppContent
 {
-            // Send content to WeChat
-    Byte* pBuffer = (Byte *)malloc(BUFFER_SIZE);
+        // 发送内容给微信
+        Byte* pBuffer = (Byte *)malloc(BUFFER_SIZE);
     memset(pBuffer, 0, BUFFER_SIZE);
     NSData* data = [NSData dataWithBytes:pBuffer length:BUFFER_SIZE];
     free(pBuffer);
@@ -134,8 +134,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -192,8 +192,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -239,8 +239,8 @@
 
 - (void)sendImageContent
 {
-            //Send content to WeChat
-    id<ISSContent> content = [ShareSDK content:nil
+        //发送内容给微信
+        id<ISSContent> content = [ShareSDK content:nil
                                 defaultContent:nil
                                          image:[ShareSDK jpegImageWithImage:[UIImage imageNamed:@"res1thumb.png"] quality:1]
                                          title:nil
@@ -254,8 +254,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -312,8 +312,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -361,8 +361,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -410,8 +410,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -446,8 +446,8 @@
 
 - (void)sendNonGifContent
 {
-            //Send content to WeChat
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"res1" ofType:@"jpg"];
+        //发送内容给微信
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"res1" ofType:@"jpg"];
     
     id<ISSContent> content = [ShareSDK content:nil
                                 defaultContent:nil
@@ -472,8 +472,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -533,8 +533,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -570,8 +570,8 @@
 
 - (void)sendTimelineAppContent
 {
-            //Send content to WeChat
-    Byte* pBuffer = (Byte *)malloc(BUFFER_SIZE);
+        // 发送内容给微信
+        Byte* pBuffer = (Byte *)malloc(BUFFER_SIZE);
     memset(pBuffer, 0, BUFFER_SIZE);
     NSData* data = [NSData dataWithBytes:pBuffer length:BUFFER_SIZE];
     free(pBuffer);
@@ -599,8 +599,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -646,8 +646,8 @@
 
 - (void)sendTimelineImageContent
 {
-            //Send content to WeChat
-    id<ISSContent> content = [ShareSDK content:nil
+        //发送内容给微信
+        id<ISSContent> content = [ShareSDK content:nil
                                 defaultContent:nil
                                          image:[ShareSDK jpegImageWithImage:[UIImage imageNamed:@"res1thumb.png"] quality:1]
                                          title:nil
@@ -661,8 +661,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -720,8 +720,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -770,8 +770,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -820,8 +820,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -856,8 +856,8 @@
 
 - (void)sendTimelineNonGifContent
 {
-            //Send content to WeChat
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"res1" ofType:@"jpg"];
+        //发送内容给微信
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"res1" ofType:@"jpg"];
     
     id<ISSContent> content = [ShareSDK content:nil
                                 defaultContent:nil
@@ -882,8 +882,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -943,8 +943,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -981,8 +981,8 @@
 
 - (void)sendFavAppContent
 {
-            // Send content to WeChat
-    Byte* pBuffer = (Byte *)malloc(BUFFER_SIZE);
+        // 发送内容给微信
+        Byte* pBuffer = (Byte *)malloc(BUFFER_SIZE);
     memset(pBuffer, 0, BUFFER_SIZE);
     NSData* data = [NSData dataWithBytes:pBuffer length:BUFFER_SIZE];
     free(pBuffer);
@@ -1010,8 +1010,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -1057,8 +1057,8 @@
 
 - (void)sendFavImageContent
 {
-            //Send content to WeChat
-    id<ISSContent> content = [ShareSDK content:nil
+        //发送内容给微信
+        id<ISSContent> content = [ShareSDK content:nil
                                 defaultContent:nil
                                          image:[ShareSDK jpegImageWithImage:[UIImage imageNamed:@"res1thumb.png"] quality:1]
                                          title:nil
@@ -1072,8 +1072,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -1131,8 +1131,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -1181,8 +1181,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -1231,8 +1231,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -1267,8 +1267,8 @@
 
 - (void)sendFavNonGifContent
 {
-            //Send content to WeChat
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"res1" ofType:@"jpg"];
+        //发送内容给微信
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"res1" ofType:@"jpg"];
     
     id<ISSContent> content = [ShareSDK content:nil
                                 defaultContent:nil
@@ -1293,8 +1293,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -1354,8 +1354,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],

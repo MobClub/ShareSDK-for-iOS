@@ -104,4 +104,14 @@ SSRenRenRequestMethod;
                     caption:(NSString *)caption
                      result:(SSShareResultEvent)result;
 
+/**
+ *	@brief	Share feed.
+ *
+ *	@param 	Comment 	Comment. Up to 500 characters
+ *	@param 	url 	分享资源的url
+ */
+- (void)shareFeedWithComment:(NSString *)comment
+                       image:(NSString *)image
+                         url:(NSString *)url
+                      result:(SSShareResultEvent)result;
 @end

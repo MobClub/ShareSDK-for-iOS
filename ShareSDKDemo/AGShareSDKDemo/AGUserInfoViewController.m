@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  website:http://www.ShareSDK.cn
-//  Support E-mail:support@sharesdk.cn
-//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
-//  Business QQ:4006852216
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import "AGUserInfoViewController.h"
@@ -23,65 +23,65 @@
 - (void)showUserIcon:(UIImage *)icon;
 
 /**
- *	@brief	Fill Sina Weibo user information
+ *	@brief	填充新浪微博用户信息
  *
- *	@param 	userInfo 	User information
+ *	@param 	userInfo 	用户信息
  */
 - (void)fillSinaWeiboUser:(id<ISSPlatformUser>)userInfo;
 
 /**
- *	@brief	Fill Tencent Weibo user information
+ *	@brief	填充腾讯微博用户信息
  *
- *	@param 	userInfo 	User information
+ *	@param 	userInfo 	用户信息
  */
 - (void)fillTecentWeiboUser:(id<ISSPlatformUser>)userInfo;
 
 /**
- *	@brief	Fill Sohu Weibo user information
+ *	@brief	填充搜狐微博用户信息
  *
- *	@param 	userInfo 	User information
+ *	@param 	userInfo 	用户信息
  */
 - (void)fillSohuWeiboUser:(id<ISSPlatformUser>)userInfo;
 
 /**
- *	@brief	Fill NetEase Weibo user information
+ *	@brief	填充网易微博用户信息
  *
- *	@param 	userInfo 	User information
+ *	@param 	userInfo 	用户信息
  */
 - (void)fill163WeiboUser:(id<ISSPlatformUser>)userInfo;
 
 /**
- *	@brief	Fill Douban user information
+ *	@brief	填充豆瓣社区用户信息
  *
- *	@param 	userInfo 	User information
+ *	@param 	userInfo 	用户信息
  */
 - (void)fillDouBanUser:(id<ISSPlatformUser>)userInfo;
 
 /**
- *	@brief	Fill QZone user information
+ *	@brief	填充QQ空间用户信息
  *
- *	@param 	userInfo 	User information
+ *	@param 	userInfo 	用户信息
  */
 - (void)fillQQSpaceUser:(id<ISSPlatformUser>)userInfo;
 
 /**
- *	@brief	Fill RenRen user information
+ *	@brief	填充人人网用户信息
  *
- *	@param 	userInfo 	User information
+ *	@param 	userInfo 	用户信息
  */
 - (void)fillRenRenUser:(id<ISSPlatformUser>)userInfo;
 
 /**
- *	@brief	Fill KaiXin user information
+ *	@brief	填充开心网用户信息
  *
- *	@param 	userInfo 	User information
+ *	@param 	userInfo 	用户信息
  */
 - (void)fillKaiXinUser:(id<ISSPlatformUser>)userInfo;
 
 /**
- *	@brief	Fill Instapaper user information
+ *	@brief	填充Instapaper用户信息
  *
- *	@param 	userInfo 	User information
+ *	@param 	userInfo 	用户信息
  */
 - (void)fillInstapaperUser:(id<ISSPlatformUser>)userInfo;
 
@@ -99,8 +99,8 @@
         
         if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
         {
-                                    //Rewrite the navigation bar heading styles
-            UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+                        //改写导航栏标题样式
+                        UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
             label.backgroundColor = [UIColor clearColor];
             label.textColor = [UIColor whiteColor];
             label.font = [UIFont boldSystemFontOfSize:18];
@@ -137,8 +137,8 @@
         
         if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
         {
-                                    //Rewrite the navigation bar heading styles
-            UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+                        //改写导航栏标题样式
+                        UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
             label.backgroundColor = [UIColor clearColor];
             label.textColor = [UIColor whiteColor];
             label.font = [UIFont boldSystemFontOfSize:18];
@@ -229,8 +229,8 @@
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:_appDelegate.viewDelegate];
         
-                        //Adding official Weibo concern in the authorization page
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                //在授权页面中添加关注官方微博
+                [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                         SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -257,64 +257,64 @@
                                            switch (_type)
                                            {
                                                case ShareTypeSinaWeibo:
-                                                                                                                                                         //Sina Weibo
-                                                   [self fillSinaWeiboUser:userInfo];
+                                                                                                      //新浪微博
+                                                                                                      [self fillSinaWeiboUser:userInfo];
                                                    break;
                                                case ShareTypeTencentWeibo:
-                                                                                                                                                         //Tencent Weibo
-                                                   [self fillTecentWeiboUser:userInfo];
+                                                                                                      //腾讯微博
+                                                                                                      [self fillTecentWeiboUser:userInfo];
                                                    break;
                                                case ShareTypeSohuWeibo:
-                                                                                                                                                         //Sohu Weibo
-                                                   [self fillSohuWeiboUser:userInfo];
+                                                                                                      //搜狐微博
+                                                                                                      [self fillSohuWeiboUser:userInfo];
                                                    break;
                                                case ShareType163Weibo:
-                                                                                                                                                         //NetEase Weibo
-                                                   [self fill163WeiboUser:userInfo];
+                                                                                                      //网易微博
+                                                                                                      [self fill163WeiboUser:userInfo];
                                                    break;
                                                case ShareTypeDouBan:
-                                                                                                                                                         //DouBan
-                                                   [self fillDouBanUser:userInfo];
+                                                                                                      //豆瓣社区
+                                                                                                      [self fillDouBanUser:userInfo];
                                                    break;
                                                case ShareTypeQQSpace:
-                                                                                                                                                         //QZone
-                                                   [self fillQQSpaceUser:userInfo];
+                                                                                                      //QQ空间
+                                                                                                      [self fillQQSpaceUser:userInfo];
                                                    break;
                                                case ShareTypeRenren:
-                                                                                                                                                         //RenRen
-                                                   [self fillRenRenUser:userInfo];
+                                                                                                      //人人网
+                                                                                                      [self fillRenRenUser:userInfo];
                                                    break;
                                                case ShareTypeKaixin:
-                                                                                                                                                         //KaiXin
-                                                   [self fillKaiXinUser:userInfo];
+                                                                                                      //开心网
+                                                                                                      [self fillKaiXinUser:userInfo];
                                                    break;
                                                case ShareTypeInstapaper:
-                                                                                                                                                         //Instapaper
-                                                   [self fillInstapaperUser:userInfo];
+                                                                                                      //Instapaper
+                                                                                                      [self fillInstapaperUser:userInfo];
                                                    break;
                                                case ShareTypeFacebook:
-                                                                                                                                                         //Facebook
-                                                   [self fillFacebookUser:userInfo];
+                                                                                                      //Facebook
+                                                                                                      [self fillFacebookUser:userInfo];
                                                    break;
                                                case ShareTypeTwitter:
-                                                                                                                                                         //Twitter
-                                                   [self fillTwitterUser:userInfo];
+                                                                                                      //Twitter
+                                                                                                      [self fillTwitterUser:userInfo];
                                                    break;
                                                case ShareTypeYouDaoNote:
-                                                                                                                                                         //YouDaoNote
-                                                   [self fillYouDaoNoteUser:userInfo];
+                                                                                                      //有道云笔记
+                                                                                                      [self fillYouDaoNoteUser:userInfo];
                                                    break;
                                                case ShareTypeSohuKan:
-                                                                                                                                                         //Soho SuiShenKan
-                                                   [self fillSohuKanUser:userInfo];
+                                                                                                      //搜狐随身看
+                                                                                                      [self fillSohuKanUser:userInfo];
                                                    break;
                                                 case ShareTypeLinkedIn:
-                                                                                                                                                         //LinkedIn
-                                                   [self fillLinkedInUser:userInfo];
+                                                                                                      //LinkedIn
+                                                                                                      [self fillLinkedInUser:userInfo];
                                                    break;
                                                 case ShareTypeGooglePlus:
-                                                                                                                                                         //Google+
-                                                   [self fillGooglePlusUser:userInfo];
+                                                                                                      //Google+
+                                                                                                      [self fillGooglePlusUser:userInfo];
                                                    break;
                                                default:
                                                    break;
@@ -356,64 +356,64 @@
                                            switch (_type)
                                            {
                                                case ShareTypeSinaWeibo:
-                                                                                                                                                         //Sina Weibo
-                                                   [self fillSinaWeiboUser:userInfo];
+                                                                                                      //新浪微博
+                                                                                                      [self fillSinaWeiboUser:userInfo];
                                                    break;
                                                case ShareTypeTencentWeibo:
-                                                                                                                                                         //Tencent Weibo
-                                                   [self fillTecentWeiboUser:userInfo];
+                                                                                                      //腾讯微博
+                                                                                                      [self fillTecentWeiboUser:userInfo];
                                                    break;
                                                case ShareTypeSohuWeibo:
-                                                                                                                                                         //Sohu Weibo
-                                                   [self fillSohuWeiboUser:userInfo];
+                                                                                                      //搜狐微博
+                                                                                                      [self fillSohuWeiboUser:userInfo];
                                                    break;
                                                case ShareType163Weibo:
-                                                                                                                                                         //NetEase Weibo
-                                                   [self fill163WeiboUser:userInfo];
+                                                                                                      //网易微博
+                                                                                                      [self fill163WeiboUser:userInfo];
                                                    break;
                                                case ShareTypeDouBan:
-                                                                                                                                                         //DouBan
-                                                   [self fillDouBanUser:userInfo];
+                                                                                                      //豆瓣社区
+                                                                                                      [self fillDouBanUser:userInfo];
                                                    break;
                                                case ShareTypeQQSpace:
-                                                                                                                                                         //QZone
-                                                   [self fillQQSpaceUser:userInfo];
+                                                                                                      //QQ空间
+                                                                                                      [self fillQQSpaceUser:userInfo];
                                                    break;
                                                case ShareTypeRenren:
-                                                                                                                                                         //RenRen
-                                                   [self fillRenRenUser:userInfo];
+                                                                                                      //人人网
+                                                                                                      [self fillRenRenUser:userInfo];
                                                    break;
                                                case ShareTypeKaixin:
-                                                                                                                                                         //KaiXin
-                                                   [self fillKaiXinUser:userInfo];
+                                                                                                      //开心网
+                                                                                                      [self fillKaiXinUser:userInfo];
                                                    break;
                                                case ShareTypeInstapaper:
-                                                                                                                                                         //Instapaper
-                                                   [self fillInstapaperUser:userInfo];
+                                                                                                      //Instapaper
+                                                                                                      [self fillInstapaperUser:userInfo];
                                                    break;
                                                case ShareTypeFacebook:
-                                                                                                                                                         //Facebook
-                                                   [self fillFacebookUser:userInfo];
+                                                                                                      //Facebook
+                                                                                                      [self fillFacebookUser:userInfo];
                                                    break;
                                                case ShareTypeTwitter:
-                                                                                                                                                         //Twitter
-                                                   [self fillTwitterUser:userInfo];
+                                                                                                      //Twitter
+                                                                                                      [self fillTwitterUser:userInfo];
                                                    break;
                                                case ShareTypeYouDaoNote:
-                                                                                                                                                         //YouDaoNote
-                                                   [self fillYouDaoNoteUser:userInfo];
+                                                                                                      //有道云笔记
+                                                                                                      [self fillYouDaoNoteUser:userInfo];
                                                    break;
                                                case ShareTypeSohuKan:
-                                                                                                                                                         //Soho SuiShenKan
-                                                   [self fillSohuKanUser:userInfo];
+                                                                                                      //搜狐随身看
+                                                                                                      [self fillSohuKanUser:userInfo];
                                                    break;
                                                case ShareTypeLinkedIn:
-                                                                                                                                                         //LinkedIn
-                                                   [self fillLinkedInUser:userInfo];
+                                                                                                      //LinkedIn
+                                                                                                      [self fillLinkedInUser:userInfo];
                                                    break;
                                                case ShareTypeGooglePlus:
-                                                                                                                                                         //Google+
-                                                   [self fillGooglePlusUser:userInfo];
+                                                                                                      //Google+
+                                                                                                      [self fillGooglePlusUser:userInfo];
                                                    break;
                                                default:
                                                    break;
@@ -448,14 +448,14 @@
 
 -(BOOL)shouldAutorotate
 {
-            //iOS6 rotating screen method
-    return YES;
+        //iOS6下旋屏方法
+        return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-            //iOS6 rotating screen method
-    return SSInterfaceOrientationMaskAll;
+        //iOS6下旋屏方法
+        return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

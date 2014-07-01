@@ -1,9 +1,9 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  website:http://www.ShareSDK.cn
-//  Support E-mail:support@sharesdk.cn
-//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
-//  Business QQ:4006852216
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import "AGCustomShareViewController.h"
@@ -155,8 +155,8 @@
     [self.view addSubview:_toolbarBG];
     [_toolbarBG release];
 	
-            //Image
-    _picBG = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareImageBG.png"]];
+        //图片
+        _picBG = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareImageBG.png"]];
     _picBG.frame = CGRectMake(self.view.width - IMAGE_PADDING_RIGHT - _picBG.width, IMAGE_PADDING_TOP, _picBG.width, _picBG.height);
     _picBG.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     [self.view addSubview:_picBG];
@@ -174,8 +174,8 @@
     [self.view addSubview:_pinImageView];
     [_pinImageView release];
     
-            //Text View
-    _textView = [[UITextView alloc] initWithFrame:CGRectMake(PADDING_LEFT,
+        //文本框
+        _textView = [[UITextView alloc] initWithFrame:CGRectMake(PADDING_LEFT,
                                                              PADDING_TOP + 1,
                                                              _picBG.left - HORIZONTAL_GAP - PADDING_LEFT,
                                                              _contentBG.bottom - AT_BUTTON_PADDING_BOTTOM - AT_BUTTON_HEIGHT - VERTICAL_GAP - 1)];
@@ -198,8 +198,8 @@
                                      _contentBG.bottom - AT_BUTTON_PADDING_BOTTOM - AT_BUTTON_HEIGHT - VERTICAL_GAP - 1);
     }
     
-            //Toolbar
-    _toolbar = [[AGCustomShareViewToolbar alloc] initWithFrame:CGRectMake(_toolbarBG.left + 2, _toolbarBG.top, _toolbarBG.width - 4, _toolbarBG.height)];
+        //工具栏
+        _toolbar = [[AGCustomShareViewToolbar alloc] initWithFrame:CGRectMake(_toolbarBG.left + 2, _toolbarBG.top, _toolbarBG.width - 4, _toolbarBG.height)];
     _toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:_toolbar];
     [_toolbar release];
@@ -225,8 +225,8 @@
     [self.view addSubview:_atTipsLabel];
     [_atTipsLabel release];
     
-            //Word count
-    _wordCountLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        //字数
+        _wordCountLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _wordCountLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     _wordCountLabel.backgroundColor = [UIColor clearColor];
     _wordCountLabel.textColor = [UIColor colorWithRGB:0xd2d2d2];
@@ -258,14 +258,14 @@
 
 -(BOOL)shouldAutorotate
 {
-            //iOS6 rotating screen method
-    return YES;
+        //iOS6下旋屏方法
+        return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-            //iOS6 rotating screen method
-    return SSInterfaceOrientationMaskAll;
+        //iOS6下旋屏方法
+        return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -423,7 +423,7 @@
 - (void)updateWordCount
 {
     NSInteger count = 140 - [_textView.text length];
-    _wordCountLabel.text = [NSString stringWithFormat:@"%d", count];
+    _wordCountLabel.text = [NSString stringWithFormat:@"%ld", (long)count];
     
     if (count < 0)
     {
@@ -541,8 +541,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-            //Adding official Weibo concern in the authorization page
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -552,7 +552,7 @@
     BOOL needAuth = NO;
     if ([selectedClients count] == 1)
     {
-        ShareType shareType = [[selectedClients objectAtIndex:0] integerValue];
+        ShareType shareType = (ShareType)[[selectedClients objectAtIndex:0] integerValue];
         if (![ShareSDK hasAuthorizedWithType:shareType])
         {
             needAuth = YES;
@@ -562,8 +562,8 @@
                                        
                                        if (result)
                                        {
-                                                                                                                                 //Share content.
-                                           [ShareSDK oneKeyShareContent:publishContent
+                                                                                      //分享内容
+                                                                                      [ShareSDK oneKeyShareContent:publishContent
                                                               shareList:selectedClients
                                                             authOptions:authOptions
                                                           statusBarTips:YES
@@ -587,8 +587,8 @@
     
     if (!needAuth)
     {
-                        //Share content.
-        [ShareSDK oneKeyShareContent:publishContent
+                //分享内容
+                [ShareSDK oneKeyShareContent:publishContent
                            shareList:selectedClients
                          authOptions:authOptions
                        statusBarTips:YES
