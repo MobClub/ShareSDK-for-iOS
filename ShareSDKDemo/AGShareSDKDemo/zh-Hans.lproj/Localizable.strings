@@ -7,6 +7,7 @@
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 "TEXT_SHARE_ALL" = "分享全部";
+"TEXT_SHARE_ALL_TARGET" = "分享全部(统计标识)";
 "TEXT_SHARE_ALL_SIMPLE" = "分享全部(简单)";
 "TEXT_SHARE_ALL_NONE_UI" = "分享全部(无界面)";
 "TEXT_SHARE_WEB_IMAGE" = "分享网络图片";

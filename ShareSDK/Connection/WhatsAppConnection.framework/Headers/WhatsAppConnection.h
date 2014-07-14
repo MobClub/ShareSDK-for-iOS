@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ISSWhatsAppApp.h"
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**

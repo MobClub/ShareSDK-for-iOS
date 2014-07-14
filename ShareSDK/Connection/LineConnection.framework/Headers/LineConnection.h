@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ISSLineApp.h"
 #import <ShareSDK/ShareSDKPlugin.h>
 
 /**

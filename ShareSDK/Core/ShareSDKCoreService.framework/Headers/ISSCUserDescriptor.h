@@ -14,7 +14,19 @@
  */
 @protocol ISSCUserDescriptor <NSObject>
 
-@required
+/**
+ *	@brief	Get user's raw data, define the structure consistent with the platform
+ *
+ *	@return	Raw data dicationary.
+ */
+- (NSDictionary *)sourceData;
+
+/**
+ *	@brief	Get platform type.
+ *
+ *	@return	Platform type. please see ShareType.
+ */
+- (SSCShareType)type;
 
 /**
  *	@brief	Get user id.
@@ -24,56 +36,56 @@
 - (NSString *)uid;
 
 /**
- *	@brief	Get nickname.
+ *	@brief	Get user nickname.
  *
- *	@return	Nickname.
+ *	@return	User nickname
  */
 - (NSString *)nickname;
 
 /**
- *	@brief	Get avatar path.
+ *	@brief	Get User profile image.
  *
- *	@return	Avatar path.
+ *	@return	User profile image url.
  */
-- (NSString *)icon;
+- (NSString *)profileImage;
 
 /**
- *	@brief	Get gender，0 Male； 1 Female； 2 Unknown.
+ *	@brief	Get gender
  *
- *	@return	Gender.
+ *	@return	Gender：0 Male； 1 Female； 2 Unknown
  */
 - (NSInteger)gender;
 
 /**
- *	@brief	Get personal homepage.
+ *	@brief	Get user's personal homepage
  *
- *	@return	Personal homepage.
+ *	@return	Personal homepage
  */
 - (NSString *)url;
 
 /**
- *	@brief	Get profile.
+ *	@brief	Get User Profile
  *
- *	@return Profile.
+ *	@return	User Profile
  */
 - (NSString *)aboutMe;
 
 /**
- *	@brief	Get verify type：－1 Unknown； 0 Not certified. 1 certification.
+ *	@brief	Get user verify type.
  *
- *	@return	Verify type.
+ *	@return	Verfify type：－1 Unknown； 0 Not Authenticate； 1 Authenticate。
  */
 - (NSInteger)verifyType;
 
 /**
- *	@brief	Get verify reason.
+ *	@brief	Get user verify reason.
  *
  *	@return	Verify reason.
  */
 - (NSString *)verifyReason;
 
 /**
- *	@brief	Get Birthday.
+ *	@brief	Get users birthday (unit: seconds)
  *
  *	@return	Birthday.
  */
@@ -101,54 +113,31 @@
 - (NSInteger)shareCount;
 
 /**
- *	@brief	Get Registered time.
+ *	@brief	Get the user's registration time (unit: seconds)
  *
- *	@return	Registered time（unit: seconds）
+ *	@return	Registration time
  */
 - (NSTimeInterval)regAt;
 
 /**
- *	@brief	Get user level.
+ *	@brief	Get user level
  *
- *	@return	User level.
+ *	@return	Level
  */
 - (NSInteger)level;
 
 /**
- *	@brief	Get education information
+ *	@brief	Get a list of user education information
  *
- *	@return	Education information.
+ *	@return	Education List
  */
 - (NSArray *)educations;
 
 /**
- *	@brief	Get career information
+ *	@brief	Get a list of the user's occupation information
  *
- *	@return	Career information.
+ *	@return	Occupation List
  */
 - (NSArray *)works;
-
-/**
- *	@brief	Get platform type.
- *
- *  @since  ver1.2.4
- *
- *	@return	Platform type.
- */
-- (SSCShareType)type;
-
-/**
- *	@brief	Get user information in the platform, the user can refer to each platform structure defined connector
- *
- *	@return	User information.
- */
-- (id)localUser;
-
-/**
- *	@brief	Get user information data sources, this property based on the user information structure made ​​of different platforms are not the same, please refer to the official detailed API documentation describes.
- *
- *	@return	Raw data.
- */
-- (NSDictionary *)sourceData;
 
 @end

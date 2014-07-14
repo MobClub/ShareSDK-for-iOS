@@ -21,8 +21,6 @@
 #import "ISSShareViewDelegate.h"
 #import "ISSShareActionSheetItem.h"
 #import "ISSUserField.h"
-#import "SSAwardViewController.h"
-#import "UIViewController+ShareSDK.h"
 
 /**
  *	@brief	ShareSDK function interface class, all functions performed by such offers (including sharing, authorization, etc.)
@@ -1403,6 +1401,27 @@
               result:(SSPublishContentEventHandler)result;
 
 /**
+ *	@brief	Share content to platform, This method does not pop up share view. (except WeChat, QQ, Pinterest platforms that will call the client to share).
+ *
+ *  @since  ver2.9.1
+ *
+ *	@param 	content 	Share content object.
+ *	@param 	type 	Platform type.
+ *	@param 	authOptions 	Authorized options，Used to authorization for custom configuration（Such as: whether the automatic authorization, authorization view style, etc.）Default nil.
+ *  @param  shareOptions    Share options，Used to share for custom configuration（Such as: title, one key sharing, function buttons, etc.）Default nil.
+ *  @param  statusBarTips   The status bar Tip flag. YES indicates display. NO indicates hidden.
+ *  @param  targets         Custom target collection, set custom target can view statistics related to sharing in the management background.
+ *	@param 	result 	Result handler.
+ */
++ (void)shareContent:(id<ISSContent>)content
+                type:(ShareType)type
+         authOptions:(id<ISSAuthOptions>)authOptions
+        shareOptions:(id<ISSShareOptions>)shareOptions
+       statusBarTips:(BOOL)statusBarTips
+             targets:(NSArray *)targets
+              result:(SSPublishContentEventHandler)result;
+
+/**
  *	@brief	Share content to multiple platforms
  *
  *	@param 	content 	Share content object.
@@ -1436,6 +1455,26 @@
                     result:(SSPublishContentEventHandler)result;
 
 /**
+ *	@brief	Share content to multiple platforms.
+ *
+ *  @since  ver2.9.1
+ *
+ *	@param 	content 	Share content object.
+ *	@param 	shareList 	Platform type list（exclude E-mail, SMS, WeChat, QQ, print, copy）
+ *	@param 	authOptions 	Authorized options，Used to authorization for custom configuration（Such as: whether the automatic authorization, authorization view style, etc.）Default nil.
+ *  @param  statusBarTips   The status bar Tip flag. YES indicates display. NO indicates hidden.
+ *  @param  targets         Custom target collection, set custom target can view statistics related to sharing in the management background.
+ *	@param 	result 	Result handler.
+ */
++ (void)oneKeyShareContent:(id<ISSContent>)content
+                 shareList:(NSArray *)shareList
+               authOptions:(id<ISSAuthOptions>)authOptions
+              shareOptions:(id<ISSShareOptions>)shareOptions
+             statusBarTips:(BOOL)statusBarTips
+                   targets:(NSArray *)targets
+                    result:(SSPublishContentEventHandler)result;
+
+/**
  *	@brief	Show share view.
  *
  *	@param 	type 	Platform type.
@@ -1455,6 +1494,29 @@
                        result:(SSPublishContentEventHandler)result;
 
 /**
+ *	@brief	Show share view.
+ *
+ *  @since  ver2.9.1
+ *
+ *	@param 	type 	Platform type.
+ *  @param  container   A container for the share view, if only displayed in the iPhone can pass nil. If you want to display on the iPad needs to be specified container.
+ *	@param 	content 	Share content object.
+ *	@param 	statusBarTips 	The status bar Tip flag. YES indicates display. NO indicates hidden.
+ *	@param 	authOptions 	Authorized options，Used to authorization for custom configuration（Such as: whether the automatic authorization, authorization view style, etc.）Default nil.
+ *	@param 	shareOptions 	Share options，Used to share for custom configuration（Such as: title, one key sharing, function buttons, etc.）Default nil.
+ *  @param  targets         Custom target collection, set custom target can view statistics related to sharing in the management background.
+ *	@param 	result 	Result handler.
+ */
++ (void)showShareViewWithType:(ShareType)type
+                    container:(id<ISSContainer>)container
+                      content:(id<ISSContent>)content
+                statusBarTips:(BOOL)statusBarTips
+                  authOptions:(id<ISSAuthOptions>)authOptions
+                 shareOptions:(id<ISSShareOptions>)shareOptions
+                      targets:(NSArray *)targets
+                       result:(SSPublishContentEventHandler)result;
+
+/**
  *	@brief	Show share menu.
  *
  *	@param 	container 	A container for the share view, if only displayed in the iPhone can pass nil. If you want to display on the iPad needs to be specified container.
@@ -1471,6 +1533,29 @@
                                   statusBarTips:(BOOL)statusBarTips
                                     authOptions:(id<ISSAuthOptions>)authOptions
                                    shareOptions:(id<ISSShareOptions>)shareOptions
+                                         result:(SSPublishContentEventHandler)result;
+
+/**
+ *	@brief	Show share menu.
+ *
+ *  @since  ver2.9.1
+ *
+ *	@param 	container 	A container for the share view, if only displayed in the iPhone can pass nil. If you want to display on the iPad needs to be specified container.
+ *	@param 	shareList 	Platform type list.
+ *	@param 	content 	Share content object.
+ *  @param  statusBarTips   The status bar Tip flag. YES indicates display. NO indicates hidden.
+ *  @param  authOptions Authorized options，Used to authorization for custom configuration（Such as: whether the automatic authorization, authorization view style, etc.）Default nil.
+ *  @param  shareOptions    Share options，Used to share for custom configuration（Such as: title, one key sharing, function buttons, etc.）Default nil.
+ *  @param  targets         Custom target collection, set custom target can view statistics related to sharing in the management background.
+ *  @param  result  Result handler.
+ */
++ (id<ISSShareActionSheet>)showShareActionSheet:(id<ISSContainer>)container
+                                      shareList:(NSArray *)shareList
+                                        content:(id<ISSContent>)content
+                                  statusBarTips:(BOOL)statusBarTips
+                                    authOptions:(id<ISSAuthOptions>)authOptions
+                                   shareOptions:(id<ISSShareOptions>)shareOptions
+                                        targets:(NSArray *)targets
                                          result:(SSPublishContentEventHandler)result;
 
 /**
@@ -1507,29 +1592,26 @@
              statusBarTips:(BOOL)statusBarTips
                     result:(SSPublishContentEventHandler)result;
 
-
-#pragma mark - 分享有奖
-
 /**
- *	@brief	Create a share awards view controller.
+ *	@brief	Content sharing using a client (only for Sina Weibo, WeChat, QQ, Pinterest, Google+)
  *
- *	@return	Awrads view controller.
- */
-+ (SSAwardViewController *)awardViewController;
-
-/**
- *	@brief	Set obtain conins notification handler.
+ *  @since  ver2.9.1
  *
- *	@param 	handler 	Handler object.
+ *	@param 	content 	Content string.
+ *	@param 	type 	Platform type
+ *	@param 	authOptions 	Authorized options，Used to authorization for custom configuration（Such as: whether the automatic authorization, authorization view style, etc.）Default nil.
+ *  @param  shareOptions    Share options，Used to share for custom configuration（Such as: title, one key sharing, function buttons, etc.）Default nil.
+ *  @param  statusBarTips   The status bar Tip flag
+ *  @param  targets         Custom target collection, set custom target can view statistics related to sharing in the management background.
+ *	@param 	result 	Result handler.
  */
-+ (void)setObtainCoinsHandler:(SSAwardObtainCoinsHandler)handler;
-
-/**
- *	@brief	Set buy item notification handler.
- *
- *	@param 	handler 	Handler object.
- */
-+ (void)setBuyItemHandler:(SSAwardBuyItemHandler)handler;
++ (void)clientShareContent:(id<ISSContent>)content
+                      type:(ShareType)type
+               authOptions:(id<ISSAuthOptions>)authOptions
+              shareOptions:(id<ISSShareOptions>)shareOptions
+             statusBarTips:(BOOL)statusBarTips
+                   targets:(NSArray *)targets
+                    result:(SSPublishContentEventHandler)result;
 
 
 @end
