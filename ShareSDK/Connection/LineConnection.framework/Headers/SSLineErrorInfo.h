@@ -1,5 +1,5 @@
 //
-//  LineConnection.h
+//  SSLineErrorInfo.h
 //  LineConnection
 //
 //  Created by 刘靖煌 on 14-6-20.
@@ -7,19 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ShareSDK/ShareSDKPlugin.h>
+#import <AGCommon/CMErrorInfo.h>
 
 ///#begin zh-cn
 /**
- *	@brief	Line连接器
+ *	@brief	Line错误信息
  */
 ///#end
 ///#begin en
 /**
- *	@brief	WhatsApp Connection
+ *	@brief	Error information.
  */
 ///#end
-
-@interface LineConnection : NSObject<ISSPlatform>
+@interface SSLineErrorInfo : CMErrorInfo
 
 @end

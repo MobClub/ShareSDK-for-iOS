@@ -1,3 +1,14 @@
+///#begin zh-cn
+//
+//  Created by ShareSDK.cn on 13-1-14.
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
+//
+///#end
+///#begin en
 //
 //  Created by ShareSDK.cn on 13-1-14.
 //  website:http://www.ShareSDK.cn
@@ -6,37 +17,84 @@
 //  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
+///#end
+
 #import <Foundation/Foundation.h>
 
+///#begin zh-cn
+/**
+ *	@brief	书签信息读取器
+ */
+///#end
+///#begin en
 /**
  *	@brief	Bookmark Reader.
  */
+///#end
 @interface SSSohuBookmarkReader : NSObject
 {
 @private
     NSDictionary *_sourceData;
 }
 
+///#begin zh-cn
+/**
+ *	@brief	源数据
+ */
+///#end
+///#begin en
 /**
  *	@brief	Raw data.
  */
+///#end
 @property (nonatomic,readonly) NSDictionary *sourceData;
 
+///#begin zh-cn
+/**
+ *	@brief	书签id
+ */
+///#end
+///#begin en
 /**
  *	@brief	Bookmark id
  */
+///#end
 @property (nonatomic,readonly) NSString *Id;
 
+///#begin zh-cn
+/**
+ *	@brief	书签来源url
+ */
+///#end
+///#begin en
 /**
  *	@brief	URL string.
  */
+///#end
 @property (nonatomic,readonly) NSString *url;
 
+///#begin zh-cn
+/**
+ *	@brief	书签标题
+ */
+///#end
+///#begin en
 /**
  *	@brief	Title string.
  */
+///#end
 @property (nonatomic,readonly) NSString *title;
 
+///#begin zh-cn
+/**
+ *	@brief	初始化读取器
+ *
+ *	@param 	sourceData 	原数据
+ *
+ *	@return	读取器实例对象
+ */
+///#end
+///#begin en
 /**
  *	@brief	Initialize Reader.
  *
@@ -44,8 +102,19 @@
  *
  *	@return	Reader object.
  */
+///#end
 - (id)initWithSourceData:(NSDictionary *)sourceData;
 
+///#begin zh-cn
+/**
+ *	@brief	创建读取器
+ *
+ *	@param 	sourceData 	原数据
+ *
+ *	@return	读取器实例对象
+ */
+///#end
+///#begin en
 /**
  *	@brief	Create a bookmark reader.
  *
@@ -53,6 +122,7 @@
  *
  *	@return	Bookmark Reader object.
  */
+///#end
 + (SSSohuBookmarkReader *)readerWithSourceData:(NSDictionary *)sourceData;
 
 @end

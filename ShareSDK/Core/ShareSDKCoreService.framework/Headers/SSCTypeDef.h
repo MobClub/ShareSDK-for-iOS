@@ -1,3 +1,14 @@
+///#begin zh-cn
+//
+//  Created by ShareSDK.cn on 13-1-14.
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
+//
+///#end
+///#begin en
 //
 //  Created by ShareSDK.cn on 13-1-14.
 //  Website:http://www.ShareSDK.cn
@@ -6,14 +17,23 @@
 //  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
+///#end
+
 #import <AGCommon/ICMErrorInfo.h>
 
 #ifndef ShareSDKCoreService_SSCTypeDef_h
 #define ShareSDKCoreService_SSCTypeDef_h
 
+///#begin zh-cn
+/**
+ *	@brief	授权会话状态
+ */
+///#end
+///#begin en
 /**
  *	@brief	Authorized session state.
  */
+///#end
 typedef enum
 {
     SSCAuthSessionStateBegan = 0,  /**< 开始会话 */
@@ -23,9 +43,16 @@ typedef enum
 }
 SSCAuthSessionState;
 
+///#begin zh-cn
+/**
+ *	@brief	分享会话状态
+ */
+///#end
+///#begin en
 /**
  *	@brief	Share session state.
  */
+///#end
 typedef enum
 {
     SSCShareSessionStateBegan = 0, /**< 开始会话 */
@@ -35,9 +62,16 @@ typedef enum
 }
 SSCShareSessionState;
 
+///#begin zh-cn
+/**
+ *	@brief	分享类型
+ */
+///#end
+///#begin en
 /**
  *	@brief	Platform type.
  */
+///#end
 typedef enum
 {
 	SSCShareTypeSinaWeibo = 1, /**< 新浪微博 */
@@ -73,9 +107,16 @@ typedef enum
 }
 SSCShareType;
 
+///#begin zh-cn
+/**
+ *	@brief	统计策略
+ */
+///#end
+///#begin en
 /**
  *	@brief  Statistics Policy
  */
+///#end
 typedef enum
 {
 	SSCStatPolicyRealTime = 0, /**< 实时发送统计数据 */
@@ -84,9 +125,16 @@ typedef enum
 }
 SSCStatPolicy;
 
+///#begin zh-cn
+/**
+ *	@brief	授权会话返回事件
+ */
+///#end
+///#begin en
 /**
  *	@brief	Authorized session result event.
  */
+///#end
 typedef void(^SSCAuthSessionResultEvent) (SSCAuthSessionState state, id user, id<ICMErrorInfo> error);
 
 

@@ -1,3 +1,14 @@
+///#begin zh-cn
+//
+//  Created by ShareSDK.cn on 13-1-14.
+//  官网地址:http://www.ShareSDK.cn
+//  技术支持邮箱:support@sharesdk.cn
+//  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+//  商务QQ:4006852216
+//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
+//
+///#end
+///#begin en
 //
 //  Created by ShareSDK.cn on 13-1-14.
 //  website:http://www.ShareSDK.cn
@@ -6,12 +17,21 @@
 //  Business QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
+///#end
+
 #ifndef EverNoteConnection_SSEverNoteTypeDef_h
 #define EverNoteConnection_SSEverNoteTypeDef_h
 
+///#begin zh-cn
+/**
+ *	@brief	应用类型
+ */
+///#end
+///#begin en
 /**
  *	@brief	App type.
  */
+///#end
 typedef enum
 {
 	SSEverNoteAppTypeSandbox = 0, /**< 沙箱模式 */
@@ -20,9 +40,16 @@ typedef enum
 }
 SSEverNoteAppType;
 
+///#begin zh-cn
+/**
+ *	@brief	权限
+ */
+///#end
+///#begin en
 /**
  *	@brief	Privilege level.
  */
+///#end
 typedef enum
 {
 	SSEverNotePrivilegeLevelNormal = 1, /**< 正常 */
@@ -33,9 +60,16 @@ typedef enum
 }
 SSEverNotePrivilegeLevel;
 
+///#begin zh-cn
 /**
  *	@brief	the possible states of a premium account
  */
+///#end
+///#begin en
+/**
+ *	@brief	the possible states of a premium account
+ */
+///#end
 typedef enum
 {
 	SSEverNotePremiumOrderStatusNone = 0, /**< the user has never attempted to become a premium subscriber */
@@ -47,9 +81,16 @@ typedef enum
 }
 SSEverNotePremiumOrderStatus;
 
+///#begin zh-cn
 /**
  *	@brief	Enumeration of the roles that a User can have within an Evernote Business account.
  */
+///#end
+///#begin en
+/**
+ *	@brief	Enumeration of the roles that a User can have within an Evernote Business account.
+ */
+///#end
 typedef enum
 {
 	SSEverNoteBusinessUserRoleAdmin = 1, /**< The user is an administrator of the Evernote Business account. */
@@ -57,9 +98,16 @@ typedef enum
 }
 SSEverNoteBusinessUserRole;
 
+///#begin zh-cn
 /**
  *	@brief	Enumeration of the roles that a User can have within a sponsored group.
  */
+///#end
+///#begin en
+/**
+ *	@brief	Enumeration of the roles that a User can have within a sponsored group.
+ */
+///#end
 typedef enum
 {
 	SSEverNoteSponsoredGroupRoleGroupMember = 1, /**< The user is a member of the group with no special privileges. */
@@ -68,9 +116,16 @@ typedef enum
 }
 SSEverNoteSponsoredGroupRole;
 
+///#begin zh-cn
+/**
+ *	@brief	字段类型
+ */
+///#end
+///#begin en
 /**
  *	@brief	Field type.
  */
+///#end
 typedef enum
 {
 	SSEverNoteFieldTypeStop = 0, /**< 停止 */
@@ -89,9 +144,16 @@ typedef enum
 }
 SSEverNoteFieldType;
 
+///#begin zh-cn
+/**
+ *	@brief	消息类型
+ */
+///#end
+///#begin en
 /**
  *	@brief	Message type.
  */
+///#end
 typedef enum
 {
 	SSEverNoteMessageTypeCall = 1, /**< 调用 */
@@ -101,9 +163,16 @@ typedef enum
 }
 SSEverNoteMessageType;
 
+///#begin zh-cn
+/**
+ *	@brief	异常类型
+ */
+///#end
+///#begin en
 /**
  *	@brief	Exception type.
  */
+///#end
 typedef enum
 {
 	SSEverNoteExceptionUnknown = 0, /**< 未知 */

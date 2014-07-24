@@ -9,9 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <ShareSDK/ShareSDKPlugin.h>
 
+///#begin zh-cn
+/**
+ *	@brief	WhatsApp连接器
+ */
+///#end
+///#begin en
 /**
  *	@brief	WhatsApp Connection
  */
+///#end
 @interface WhatsAppConnection : NSObject <ISSPlatform>
 
 @end
