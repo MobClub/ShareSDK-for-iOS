@@ -1618,7 +1618,6 @@
 				ARCHS = (
 					armv7s,
 					armv7,
-					arm64,
 				);
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
@@ -1659,7 +1658,6 @@
 				ARCHS = (
 					armv7s,
 					armv7,
-					arm64,
 				);
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
