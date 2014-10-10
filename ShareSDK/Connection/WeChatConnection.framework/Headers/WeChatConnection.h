@@ -55,7 +55,11 @@
  *	@return	App configuration information.
  */
 ///#end
+//- (NSDictionary *)appInfoWithAppId:(NSString *)appId
+//                             scene:(SSWeChatScene)scene;
+
 - (NSDictionary *)appInfoWithAppId:(NSString *)appId
+                         appSecret:(NSString *)appSecret
                              scene:(SSWeChatScene)scene;
 
 

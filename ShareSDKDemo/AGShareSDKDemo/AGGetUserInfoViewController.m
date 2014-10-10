@@ -1,6 +1,6 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
+//  官网地址:http://www.mob.com
 //  技术支持邮箱:support@sharesdk.cn
 //  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
 //  商务QQ:4006852216
@@ -184,6 +184,14 @@
     [button setTitle:@"LinkedIn" forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(showLinkedInUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    //WeChat
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"WeChat" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(showWeChatUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     scrollView.contentSize = CGSizeMake(self.view.width, top += button.height + VERTICAL_GAP);
@@ -403,6 +411,14 @@
 - (void)showLinkedInUserClickHandler:(id)sender
 {
     AGUserInfoViewController *vc = [[AGUserInfoViewController alloc] initWithType:ShareTypeLinkedIn];
+    UINavigationController *nvc = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
+    [self presentModalViewController:nvc animated:YES];
+    [vc release];
+}
+
+- (void)showWeChatUserClickHandler:(id)sender
+{
+    AGUserInfoViewController *vc = [[AGUserInfoViewController alloc] initWithType:ShareTypeWeixiSession];
     UINavigationController *nvc = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
     [self presentModalViewController:nvc animated:YES];
     [vc release];

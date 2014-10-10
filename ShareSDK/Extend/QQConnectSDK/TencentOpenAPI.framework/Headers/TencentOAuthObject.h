@@ -460,6 +460,7 @@
  * 该分享支持@到指定好友，最多支持10个好友。
  * 其中第三方应用可预传最多5个指定好友的openid，其余好友由用户自行选择。
  * 该分享形式仅提供跳QZone分享和本地Html5分享两种形式。
+ * sendStroy不支持userData参数
  */
 @interface TCSendStoryDic : TCAPIRequest
 

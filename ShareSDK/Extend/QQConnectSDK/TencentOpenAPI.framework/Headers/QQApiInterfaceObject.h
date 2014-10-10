@@ -6,6 +6,9 @@
 /// Copyright (c) 2012年 Tencent. All rights reserved.
 ///
 
+#ifndef QQApiInterface_QQAPIOBJECT_h
+#define QQApiInterface_QQAPIOBJECT_h
+
 #import "QQApi.h"
 
 /**
@@ -151,3 +154,4 @@ enum QQApiInterfaceRespType
 
 @end
 
+#endif

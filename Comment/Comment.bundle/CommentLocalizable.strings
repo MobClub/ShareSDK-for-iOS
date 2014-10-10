@@ -24,6 +24,7 @@
 "TITLE_TIP" = "提示";
 
 "PLACEHOLDER_DEFAULT_CONTENT" = "我来说两句";
+"PLACEHOLDER_REPLY_CONTENT" = "回复%@的评论";
 
 "TEXT_ANONYMOUS_USER" = "匿名用户";
 "TEXT_LOAD_MORE" = "正在加载更多...";
@@ -45,4 +46,11 @@
 "TEXT_COMMENT_IN_REVIEW" = "提交成功，等待审核通过";
 "TEXT_COMMENT_SHIELDED" = "该评论已被屏蔽";
 "TEXT_BIND_ACCOUNT_FAIL" = "绑定帐号失败";
+
+"FILTER_MSG_0" = "内容包含敏感字符";
+"FILTER_MSG_1" = "字符长度不足";
+"FILTER_MSG_2" = "字符长度过长";
+"FILTER_MSG_3" = "重复字符过多";
+"FILTER_MSG_4" = "内容连接数过多";
+"FILTER_MSG_5" = "请输入中文";
 

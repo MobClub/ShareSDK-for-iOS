@@ -1,6 +1,6 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
+//  官网地址:http://www.mob.com
 //  技术支持邮箱:support@sharesdk.cn
 //  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
 //  商务QQ:4006852216
@@ -512,7 +512,7 @@
                                        defaultContent:nil
                                                 image:[ShareSDK jpegImageWithImage:_picImageView.image quality:1]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeText];
     
@@ -526,13 +526,13 @@
                                        type:INHERIT_VALUE
                                     playUrl:nil
                                        nswb:nil];
-    [publishContent addInstapaperContentWithUrl:@"http://www.sharesdk.cn"
+    [publishContent addInstapaperContentWithUrl:@"http://www.mob.com"
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
     [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_YOUDAO_NOTE", @"Hello 有道云笔记") 
                                           author:INHERIT_VALUE
-                                          source:@"http://www.sharesdk.cn"
+                                          source:@"http://www.mob.com"
                                      attachments:INHERIT_VALUE];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES

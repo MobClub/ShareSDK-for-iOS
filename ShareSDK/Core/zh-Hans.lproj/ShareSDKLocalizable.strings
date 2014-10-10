@@ -4,7 +4,7 @@
 
 
   Created by ShareSDK.cn on 13-1-14.
-  官网地址:http://www.ShareSDK.cn
+  官网地址:http://www.mob.com
   技术支持邮箱:support@sharesdk.cn
   官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
   商务QQ:4006852216
@@ -61,6 +61,10 @@
 "ERROR_CODE_LINE_INVALID_UIPASTBOARD" = "无效UIPasteboard对象";
 "ERROR_DESC_WHATSAPP_NOT_INSTALL" = "尚未安装WhatsApp客户端";
 "ERROR_DESC_WHATSAPP_SEND_FAIL" = "分享WhatsApp内容失败";
+"ERROR_DESC_KAKAOTALK_NOT_INSTALL" = "尚未安装KakaoTalk客户端";
+"ERROR_DESC_KAKAOTALK_SEND_FAIL" = "分享KakaoTalk内容失败";
+"ERROR_DESC_KAKAOSTORY_NOT_INSTALL" = "尚未安装KakaoStory客户端";
+"ERROR_DESC_KAKAOSTORY_SEND_FAIL" = "分享KakaoStory内容失败";
 
 "ShareType_1" = "新浪微博";
 "ShareType_2" = "腾讯微博";
@@ -100,6 +104,8 @@
 "ShareType_41" = "明道";
 "ShareType_42" = "Line";
 "ShareType_43" = "WhatsApp";
+"ShareType_44" = "KakaoTalk";
+"ShareType_45" = "KakaoStory";
 
 "ALTER_VIEW_TITLE" = "提示";
 "ALTER_VIEW_I_KNOWN_BUTTON" = "知道了";
@@ -164,6 +170,7 @@
 "AUTH_VIEW_TITLE_15" = "Instagram";
 "AUTH_VIEW_TITLE_16" = "LinkedIn";
 "AUTH_VIEW_TITLE_17" = "Tumblr";
+"AUTH_VIEW_TITLE_22" = "WeChat";
 "AUTH_VIEW_TITLE_25" = "Instapaper";
 "AUTH_VIEW_TITLE_26" = "Pocket";
 "AUTH_VIEW_TITLE_27" = "有道云笔记";

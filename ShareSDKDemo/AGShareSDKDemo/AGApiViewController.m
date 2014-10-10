@@ -1,6 +1,6 @@
 //
 //  Created by ShareSDK.cn on 13-1-14.
-//  官网地址:http://www.ShareSDK.cn
+//  官网地址:http://www.mob.com
 //  技术支持邮箱:support@sharesdk.cn
 //  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
 //  商务QQ:4006852216
@@ -45,7 +45,6 @@
     self = [super init];
     if (self)
     {
-        // Custom initialization
         _appDelegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
         
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
@@ -394,6 +393,25 @@
     [button addTarget:self action:@selector(shareToWhatsAppClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
+    //KakaoTalk
+    top += button.height + VERTICAL_GAP;
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:NSLocalizedString(@"TEXT_SHARE_TO_KAKAOTALK", @"分享到KakaoTalk")
+            forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(shareToKakaoTalkClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    //KakaoStory
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:NSLocalizedString(@"TEXT_SHARE_TO_KAKAOSTORY", @"分享到KakaoStory")
+            forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(shareToKakaoStoryClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
@@ -703,28 +721,27 @@
 {
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     
-        //构造分享内容
-        id<ISSContent> publishContent = [ShareSDK content:CONTENT
+    //构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
-        ///////////////////////
     //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法
     
     //定制人人网信息
-        [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网")
+    [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网")
                               description:INHERIT_VALUE
                                       url:INHERIT_VALUE
                                   message:INHERIT_VALUE
                                     image:INHERIT_VALUE
                                   caption:nil];
     
-        //定制QQ空间信息
-        [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间") 
+    //定制QQ空间信息
+    [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间") 
                                         url:INHERIT_VALUE
                                        site:nil
                                     fromUrl:nil
@@ -735,8 +752,8 @@
                                     playUrl:nil
                                        nswb:nil];
     
-        //定制微信好友信息
-        [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
+    //定制微信好友信息
+    [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
                                          content:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_WECHAT_SESSION", @"Hello 微信好友!") 
                                              url:INHERIT_VALUE
@@ -747,8 +764,8 @@
                                         fileData:nil
                                     emoticonData:nil];
     
-        //定制微信朋友圈信息
-        [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
+    //定制微信朋友圈信息
+    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
                                           content:INHERIT_VALUE
                                             title:NSLocalizedString(@"TEXT_HELLO_WECHAT_TIMELINE", @"Hello 微信朋友圈!") 
                                               url:@"http://y.qq.com/i/song.html#p=7B22736F6E675F4E616D65223A22E4BDA0E4B88DE698AFE79C9FE6ADA3E79A84E5BFABE4B990222C22736F6E675F5761704C69766555524C223A22687474703A2F2F74736D7573696332342E74632E71712E636F6D2F586B303051563558484A645574315070536F4B7458796931667443755A68646C2F316F5A4465637734356375386355672B474B304964794E6A3770633447524A574C48795333383D2F3634363232332E6D34613F7569643D32333230303738313038266469723D423226663D312663743D3026636869643D222C22736F6E675F5769666955524C223A22687474703A2F2F73747265616D31382E71716D757369632E71712E636F6D2F33303634363232332E6D7033222C226E657454797065223A2277696669222C22736F6E675F416C62756D223A22E5889BE980A0EFBC9AE5B08FE5B7A8E89B8B444E414C495645EFBC81E6BC94E594B1E4BC9AE5889BE7BAAAE5BD95E99FB3222C22736F6E675F4944223A3634363232332C22736F6E675F54797065223A312C22736F6E675F53696E676572223A22E4BA94E69C88E5A4A9222C22736F6E675F576170446F776E4C6F616455524C223A22687474703A2F2F74736D757369633132382E74632E71712E636F6D2F586C464E4D31354C5569396961495674593739786D436534456B5275696879366A702F674B65356E4D6E684178494C73484D6C6A307849634A454B394568572F4E3978464B316368316F37636848323568413D3D2F33303634363232332E6D70333F7569643D32333230303738313038266469723D423226663D302663743D3026636869643D2673747265616D5F706F733D38227D"
@@ -759,8 +776,8 @@
                                          fileData:nil
                                      emoticonData:nil];
     
-        //定制微信收藏信息
-        [publishContent addWeixinFavUnitWithType:INHERIT_VALUE
+    //定制微信收藏信息
+    [publishContent addWeixinFavUnitWithType:INHERIT_VALUE
                                      content:INHERIT_VALUE
                                        title:NSLocalizedString(@"TEXT_HELLO_WECHAT_FAV", @"Hello 微信收藏!")
                                          url:INHERIT_VALUE
@@ -771,15 +788,15 @@
                                     fileData:nil
                                 emoticonData:nil];
     
-        //定制QQ分享信息
-        [publishContent addQQUnitWithType:INHERIT_VALUE
+    //定制QQ分享信息
+    [publishContent addQQUnitWithType:INHERIT_VALUE
                               content:INHERIT_VALUE
                                 title:@"Hello QQ!"
                                   url:INHERIT_VALUE
                                 image:INHERIT_VALUE];
     
-        //定制邮件信息
-        [publishContent addMailUnitWithSubject:@"Hello Mail"
+    //定制邮件信息
+    [publishContent addMailUnitWithSubject:@"Hello Mail"
                                    content:INHERIT_VALUE
                                     isHTML:[NSNumber numberWithBool:YES]
                                attachments:INHERIT_VALUE
@@ -787,31 +804,31 @@
                                         cc:nil
                                        bcc:nil];
     
-        //定制短信信息
-        [publishContent addSMSUnitWithContent:@"Hello SMS"];
+    //定制短信信息
+    [publishContent addSMSUnitWithContent:@"Hello SMS"];
     
-        //定制有道云笔记信息
-        [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
+    //定制有道云笔记信息
+    [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_YOUDAO_NOTE", @"Hello 有道云笔记")
                                           author:@"ShareSDK"
                                           source:nil
                                      attachments:INHERIT_VALUE];
     
-        //定制Instapaper信息
-        [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
+    //定制Instapaper信息
+    [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
     
-        //定制搜狐随身看信息
-        [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
+    //定制搜狐随身看信息
+    [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
     
-        //定制Pinterest信息
-        [publishContent addPinterestUnitWithImage:[ShareSDK imageWithUrl:@"http://img1.bdstatic.com/img/image/67037d3d539b6003af38f5c4c4f372ac65c1038b63f.jpg"]
+    //定制Pinterest信息
+    [publishContent addPinterestUnitWithImage:[ShareSDK imageWithUrl:@"http://img1.bdstatic.com/img/image/67037d3d539b6003af38f5c4c4f372ac65c1038b63f.jpg"]
                                           url:INHERIT_VALUE
                                   description:INHERIT_VALUE];
     
-        //定制易信好友信息
-        [publishContent addYiXinSessionUnitWithType:INHERIT_VALUE
+    //定制易信好友信息
+    [publishContent addYiXinSessionUnitWithType:INHERIT_VALUE
                                         content:INHERIT_VALUE
                                           title:INHERIT_VALUE
                                             url:INHERIT_VALUE
@@ -821,8 +838,8 @@
                                         extInfo:INHERIT_VALUE
                                        fileData:INHERIT_VALUE];
     
-        //定义易信朋友圈信息
-        [publishContent addYiXinTimelineUnitWithType:INHERIT_VALUE
+    //定义易信朋友圈信息
+    [publishContent addYiXinTimelineUnitWithType:INHERIT_VALUE
                                          content:INHERIT_VALUE
                                            title:INHERIT_VALUE
                                              url:INHERIT_VALUE
@@ -839,12 +856,10 @@
                                          image:nil];
     }
     
-        //结束定制信息
-    ////////////////////////
-    
+    //结束定制信息
     
     //创建弹出菜单容器
-        id<ISSContainer> container = [ShareSDK container];
+    id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -871,8 +886,8 @@
                                                           friendsViewDelegate:_appDelegate.viewDelegate
                                                         picViewerViewDelegate:nil];
     
-        //弹出分享菜单
-        [ShareSDK showShareActionSheet:container
+    //弹出分享菜单
+    [ShareSDK showShareActionSheet:container
                          shareList:nil
                            content:publishContent
                      statusBarTips:YES
@@ -905,11 +920,10 @@
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
-    ///////////////////////
     //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法
     
     //定制人人网信息
@@ -1037,7 +1051,6 @@
     }
     
     //结束定制信息
-    ////////////////////////
     
     
     //创建弹出菜单容器
@@ -1098,28 +1111,27 @@
 {
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     
-        //构造分享内容
-        id<ISSContent> publishContent = [ShareSDK content:CONTENT
+    //构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息") 
                                             mediaType:SSPublishContentMediaTypeNews];
     
-        ///////////////////////
     //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法
     
     //定制人人网信息
-        [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网") 
+    [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网")
                               description:INHERIT_VALUE
                                       url:INHERIT_VALUE
                                   message:INHERIT_VALUE
                                     image:INHERIT_VALUE
                                   caption:nil];
     
-        //定制QQ空间信息
-        [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间")
+    //定制QQ空间信息
+    [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间")
                                         url:INHERIT_VALUE
                                        site:nil
                                     fromUrl:nil
@@ -1130,8 +1142,8 @@
                                     playUrl:nil
                                        nswb:nil];
     
-        //定制微信好友信息
-        [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
+    //定制微信好友信息
+    [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
                                          content:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_WECHAT_SESSION", @"Hello 微信好友!") 
                                              url:INHERIT_VALUE
@@ -1142,8 +1154,8 @@
                                         fileData:nil
                                     emoticonData:nil];
     
-        //定制微信朋友圈信息
-        [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
+    //定制微信朋友圈信息
+    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
                                           content:INHERIT_VALUE
                                             title:NSLocalizedString(@"TEXT_HELLO_WECHAT_TIMELINE", @"Hello 微信朋友圈!") 
                                               url:@"http://y.qq.com/i/song.html#p=7B22736F6E675F4E616D65223A22E4BDA0E4B88DE698AFE79C9FE6ADA3E79A84E5BFABE4B990222C22736F6E675F5761704C69766555524C223A22687474703A2F2F74736D7573696332342E74632E71712E636F6D2F586B303051563558484A645574315070536F4B7458796931667443755A68646C2F316F5A4465637734356375386355672B474B304964794E6A3770633447524A574C48795333383D2F3634363232332E6D34613F7569643D32333230303738313038266469723D423226663D312663743D3026636869643D222C22736F6E675F5769666955524C223A22687474703A2F2F73747265616D31382E71716D757369632E71712E636F6D2F33303634363232332E6D7033222C226E657454797065223A2277696669222C22736F6E675F416C62756D223A22E5889BE980A0EFBC9AE5B08FE5B7A8E89B8B444E414C495645EFBC81E6BC94E594B1E4BC9AE5889BE7BAAAE5BD95E99FB3222C22736F6E675F4944223A3634363232332C22736F6E675F54797065223A312C22736F6E675F53696E676572223A22E4BA94E69C88E5A4A9222C22736F6E675F576170446F776E4C6F616455524C223A22687474703A2F2F74736D757369633132382E74632E71712E636F6D2F586C464E4D31354C5569396961495674593739786D436534456B5275696879366A702F674B65356E4D6E684178494C73484D6C6A307849634A454B394568572F4E3978464B316368316F37636848323568413D3D2F33303634363232332E6D70333F7569643D32333230303738313038266469723D423226663D302663743D3026636869643D2673747265616D5F706F733D38227D"
@@ -1154,8 +1166,8 @@
                                          fileData:nil
                                      emoticonData:nil];
     
-        //定制微信收藏信息
-        [publishContent addWeixinFavUnitWithType:INHERIT_VALUE
+    //定制微信收藏信息
+    [publishContent addWeixinFavUnitWithType:INHERIT_VALUE
                                      content:INHERIT_VALUE
                                        title:NSLocalizedString(@"TEXT_HELLO_WECHAT_FAV", @"Hello 微信收藏!")
                                          url:INHERIT_VALUE
@@ -1166,15 +1178,15 @@
                                     fileData:nil
                                 emoticonData:nil];
     
-        //定制QQ分享信息
-        [publishContent addQQUnitWithType:INHERIT_VALUE
+    //定制QQ分享信息
+    [publishContent addQQUnitWithType:INHERIT_VALUE
                               content:INHERIT_VALUE
                                 title:@"Hello QQ!"
                                   url:INHERIT_VALUE
                                 image:INHERIT_VALUE];
     
-        //定制邮件信息
-        [publishContent addMailUnitWithSubject:@"Hello Mail"
+    //定制邮件信息
+    [publishContent addMailUnitWithSubject:@"Hello Mail"
                                    content:INHERIT_VALUE
                                     isHTML:[NSNumber numberWithBool:YES]
                                attachments:INHERIT_VALUE
@@ -1182,30 +1194,30 @@
                                         cc:nil
                                        bcc:nil];
     
-        //定制短信信息
-        [publishContent addSMSUnitWithContent:@"Hello SMS"];
+    //定制短信信息
+    [publishContent addSMSUnitWithContent:@"Hello SMS"];
     
-        //定制有道云笔记信息
-        [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
+    //定制有道云笔记信息
+    [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_YOUDAO_NOTE", @"Hello 有道云笔记")
                                           author:@"ShareSDK"
                                           source:nil
                                      attachments:INHERIT_VALUE];
     
-        //定制Instapaper信息
-        [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
+    //定制Instapaper信息
+    [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
     
-        //定制搜狐随身看信息
-        [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
+    //定制搜狐随身看信息
+    [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
     
-        //结束定制信息
+    //结束定制信息
     ////////////////////////
     
     
     //创建弹出菜单容器
-        id<ISSContainer> container = [ShareSDK container];
+    id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -1214,8 +1226,8 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-        //在授权页面中添加关注官方微博
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -1225,8 +1237,8 @@
     id<ISSShareOptions> shareOptions = [ShareSDK simpleShareOptionsWithTitle:NSLocalizedString(@"TEXT_SHARE_TITLE", @"内容分享")
                                                            shareViewDelegate:_appDelegate.viewDelegate];
     
-        //弹出分享菜单
-        [ShareSDK showShareActionSheet:container
+    //弹出分享菜单
+    [ShareSDK showShareActionSheet:container
                          shareList:nil
                            content:publishContent
                      statusBarTips:YES
@@ -1245,32 +1257,38 @@
                             }];
 }
 
+
+/**
+ *	@brief
+ *
+ *	@param 	sender 	事件对象
+ */
 - (void)noneUIShareAllButtonClickHandler:(id)sender
 {
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     
-        //构造分享内容
-        id<ISSContent> publishContent = [ShareSDK content:CONTENT
+    //构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
-        ///////////////////////
+    ///////////////////////
     //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法
     
     //定制人人网信息
-        [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网") 
+    [publishContent addRenRenUnitWithName:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网")
                               description:INHERIT_VALUE
                                       url:INHERIT_VALUE
                                   message:INHERIT_VALUE
                                     image:INHERIT_VALUE
                                   caption:nil];
     
-        //定制QQ空间信息
-        [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间") 
+    //定制QQ空间信息
+    [publishContent addQQSpaceUnitWithTitle:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间") 
                                         url:INHERIT_VALUE
                                        site:nil
                                     fromUrl:nil
@@ -1281,8 +1299,8 @@
                                     playUrl:nil
                                        nswb:nil];
     
-        //定制微信好友信息
-        [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
+    //定制微信好友信息
+    [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
                                          content:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_WECHAT_SESSION", @"Hello 微信好友!")
                                              url:INHERIT_VALUE
@@ -1293,8 +1311,8 @@
                                         fileData:nil
                                     emoticonData:nil];
     
-        //定制微信朋友圈信息
-        [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
+    //定制微信朋友圈信息
+    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
                                           content:INHERIT_VALUE
                                             title:NSLocalizedString(@"TEXT_HELLO_WECHAT_TIMELINE", @"Hello 微信朋友圈!") 
                                               url:@"http://y.qq.com/i/song.html#p=7B22736F6E675F4E616D65223A22E4BDA0E4B88DE698AFE79C9FE6ADA3E79A84E5BFABE4B990222C22736F6E675F5761704C69766555524C223A22687474703A2F2F74736D7573696332342E74632E71712E636F6D2F586B303051563558484A645574315070536F4B7458796931667443755A68646C2F316F5A4465637734356375386355672B474B304964794E6A3770633447524A574C48795333383D2F3634363232332E6D34613F7569643D32333230303738313038266469723D423226663D312663743D3026636869643D222C22736F6E675F5769666955524C223A22687474703A2F2F73747265616D31382E71716D757369632E71712E636F6D2F33303634363232332E6D7033222C226E657454797065223A2277696669222C22736F6E675F416C62756D223A22E5889BE980A0EFBC9AE5B08FE5B7A8E89B8B444E414C495645EFBC81E6BC94E594B1E4BC9AE5889BE7BAAAE5BD95E99FB3222C22736F6E675F4944223A3634363232332C22736F6E675F54797065223A312C22736F6E675F53696E676572223A22E4BA94E69C88E5A4A9222C22736F6E675F576170446F776E4C6F616455524C223A22687474703A2F2F74736D757369633132382E74632E71712E636F6D2F586C464E4D31354C5569396961495674593739786D436534456B5275696879366A702F674B65356E4D6E684178494C73484D6C6A307849634A454B394568572F4E3978464B316368316F37636848323568413D3D2F33303634363232332E6D70333F7569643D32333230303738313038266469723D423226663D302663743D3026636869643D2673747265616D5F706F733D38227D"
@@ -1305,8 +1323,8 @@
                                          fileData:nil
                                      emoticonData:nil];
     
-        //定制微信收藏信息
-        [publishContent addWeixinFavUnitWithType:INHERIT_VALUE
+    //定制微信收藏信息
+    [publishContent addWeixinFavUnitWithType:INHERIT_VALUE
                                      content:INHERIT_VALUE
                                        title:NSLocalizedString(@"TEXT_HELLO_WECHAT_FAV", @"Hello 微信收藏!")
                                          url:INHERIT_VALUE
@@ -1317,15 +1335,15 @@
                                     fileData:nil
                                 emoticonData:nil];
     
-        //定制QQ分享信息
-        [publishContent addQQUnitWithType:INHERIT_VALUE
+    //定制QQ分享信息
+    [publishContent addQQUnitWithType:INHERIT_VALUE
                               content:INHERIT_VALUE
                                 title:@"Hello QQ!"
                                   url:INHERIT_VALUE
                                 image:INHERIT_VALUE];
     
-        //定制邮件信息
-        [publishContent addMailUnitWithSubject:@"Hello Mail"
+    //定制邮件信息
+    [publishContent addMailUnitWithSubject:@"Hello Mail"
                                    content:INHERIT_VALUE
                                     isHTML:[NSNumber numberWithBool:YES]
                                attachments:INHERIT_VALUE
@@ -1333,29 +1351,29 @@
                                         cc:nil
                                        bcc:nil];
     
-        //定制短信信息
-        [publishContent addSMSUnitWithContent:@"Hello SMS"];
+    //定制短信信息
+    [publishContent addSMSUnitWithContent:@"Hello SMS"];
     
-        //定制有道云笔记信息
-        [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
+    //定制有道云笔记信息
+    [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
                                            title:NSLocalizedString(@"TEXT_HELLO_YOUDAO_NOTE", @"Hello 有道云笔记")
                                           author:@"ShareSDK"
                                           source:nil
                                      attachments:INHERIT_VALUE];
     
-        //定制Instapaper信息
-        [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
+    //定制Instapaper信息
+    [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
     
-        //定制搜狐随身看信息
-        [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
+    //定制搜狐随身看信息
+    [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
     
         //结束定制信息
     ////////////////////////
     
     //创建弹出菜单容器
-        id<ISSContainer> container = [ShareSDK container];
+    id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -1364,16 +1382,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-        //在授权页面中添加关注官方微博
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-        //自定义新浪微博分享菜单项
-        id<ISSShareActionSheetItem> sinaItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSinaWeibo]
+    //自定义新浪微博分享菜单项
+    id<ISSShareActionSheetItem> sinaItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSinaWeibo]
                                                                               icon:[ShareSDK getClientIconWithType:ShareTypeSinaWeibo]
                                                                       clickHandler:^{
                                                                           [ShareSDK shareContent:publishContent
@@ -1393,8 +1411,8 @@
                                                                                           }];
                                                                       }];
     
-        //自定义腾讯微博分享菜单项
-        id<ISSShareActionSheetItem> tencentItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeTencentWeibo]
+    //自定义腾讯微博分享菜单项
+    id<ISSShareActionSheetItem> tencentItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeTencentWeibo]
                                                                                  icon:[ShareSDK getClientIconWithType:ShareTypeTencentWeibo]
                                                                          clickHandler:^{
                                                                              [ShareSDK shareContent:publishContent
@@ -1414,8 +1432,8 @@
                                                                                              }];
                                                                          }];
     
-        //自定义QQ空间分享菜单项
-        id<ISSShareActionSheetItem> qzoneItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeQQSpace]
+    //自定义QQ空间分享菜单项
+    id<ISSShareActionSheetItem> qzoneItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeQQSpace]
                                                                                icon:[ShareSDK getClientIconWithType:ShareTypeQQSpace]
                                                                        clickHandler:^{
                                                                            [ShareSDK shareContent:publishContent
@@ -1435,8 +1453,8 @@
                                                                                            }];
                                                                        }];
     
-        //自定义Facebook分享菜单项
-        id<ISSShareActionSheetItem> fbItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeFacebook]
+    //自定义Facebook分享菜单项
+    id<ISSShareActionSheetItem> fbItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeFacebook]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeFacebook]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1456,8 +1474,8 @@
                                                                                         }];
                                                                     }];
     
-        //自定义Twitter分享菜单项
-        id<ISSShareActionSheetItem> twItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeTwitter]
+    //自定义Twitter分享菜单项
+    id<ISSShareActionSheetItem> twItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeTwitter]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeTwitter]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1477,8 +1495,8 @@
                                                                                         }];
                                                                     }];
     
-        //自定义人人网分享菜单项
-        id<ISSShareActionSheetItem> rrItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeRenren]
+    //自定义人人网分享菜单项
+    id<ISSShareActionSheetItem> rrItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeRenren]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeRenren]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1498,8 +1516,8 @@
                                                                                         }];
                                                                     }];
     
-        //自定义开心网分享菜单项
-        id<ISSShareActionSheetItem> kxItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeKaixin]
+    //自定义开心网分享菜单项
+    id<ISSShareActionSheetItem> kxItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeKaixin]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeKaixin]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1519,8 +1537,8 @@
                                                                                         }];
                                                                     }];
     
-        //自定义搜狐微博分享菜单项
-        id<ISSShareActionSheetItem> shItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuWeibo]
+    //自定义搜狐微博分享菜单项
+    id<ISSShareActionSheetItem> shItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuWeibo]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeSohuWeibo]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1540,8 +1558,8 @@
                                                                                         }];
                                                                     }];
     
-        //自定义网易微博分享菜单项
-        id<ISSShareActionSheetItem> wyItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareType163Weibo]
+    //自定义网易微博分享菜单项
+    id<ISSShareActionSheetItem> wyItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareType163Weibo]
                                                                             icon:[ShareSDK getClientIconWithType:ShareType163Weibo]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1562,8 +1580,8 @@
                                                                                         }];
                                                                     }];
     
-        //自定义豆瓣分享菜单项
-        id<ISSShareActionSheetItem> dbItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeDouBan]
+    //自定义豆瓣分享菜单项
+    id<ISSShareActionSheetItem> dbItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeDouBan]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeDouBan]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1583,8 +1601,8 @@
                                                                                         }];
                                                                     }];
     
-        //自定义Instapaper分享菜单项
-        id<ISSShareActionSheetItem> ipItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeInstapaper]
+    //自定义Instapaper分享菜单项
+    id<ISSShareActionSheetItem> ipItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeInstapaper]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeInstapaper]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1604,8 +1622,8 @@
                                                                                         }];
                                                                     }];
     
-        //自定义有道云笔记分享菜单项
-        id<ISSShareActionSheetItem> ydItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeYouDaoNote]
+    //自定义有道云笔记分享菜单项
+    id<ISSShareActionSheetItem> ydItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeYouDaoNote]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeYouDaoNote]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1625,8 +1643,8 @@
                                                                                         }];
                                                                     }];
     
-        //自定义搜狐随身看分享菜单项
-        id<ISSShareActionSheetItem> shkItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuKan]
+    //自定义搜狐随身看分享菜单项
+    id<ISSShareActionSheetItem> shkItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuKan]
                                                                              icon:[ShareSDK getClientIconWithType:ShareTypeSohuKan]
                                                                      clickHandler:^{
                                                                          [ShareSDK shareContent:publishContent
@@ -1646,8 +1664,8 @@
                                                                                          }];
                                                                      }];
     
-        //自定义印象笔记分享菜单项
-        id<ISSShareActionSheetItem> evnItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeEvernote]
+    //自定义印象笔记分享菜单项
+    id<ISSShareActionSheetItem> evnItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeEvernote]
                                                                              icon:[ShareSDK getClientIconWithType:ShareTypeEvernote]
                                                                      clickHandler:^{
                                                                          [ShareSDK shareContent:publishContent
@@ -1667,8 +1685,8 @@
                                                                                          }];
                                                                      }];
     
-        //自定义Pocket分享菜单项
-        id<ISSShareActionSheetItem> pkItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypePocket]
+    //自定义Pocket分享菜单项
+    id<ISSShareActionSheetItem> pkItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypePocket]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypePocket]
                                                                     clickHandler:^{
                                                                         [ShareSDK shareContent:publishContent
@@ -1688,8 +1706,9 @@
                                                                                         }];
                                                                     }];
     
-        //创建自定义分享列表
-        NSArray *shareList = [ShareSDK customShareListWithType:
+    
+    //创建自定义分享列表
+    NSArray *shareList = [ShareSDK customShareListWithType:
                           sinaItem,
                           tencentItem,
                           SHARE_TYPE_NUMBER(ShareTypeSMS),
@@ -1748,8 +1767,8 @@
  */
 - (void)shareToSinaWeiboClickHandler:(UIButton *)sender
 {
-        //创建分享内容
-        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -1758,8 +1777,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-        //创建弹出菜单容器
-        id<ISSContainer> container = [ShareSDK container];
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -1768,16 +1787,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-        //在授权页面中添加关注官方微博
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-        //显示分享菜单
-        [ShareSDK showShareViewWithType:ShareTypeSinaWeibo
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeSinaWeibo
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -1811,8 +1830,8 @@
  */
 - (void)shareToTencentWeiboClickHandler:(UIButton *)sender
 {
-        //创建分享内容
-        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -1821,8 +1840,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-        //创建弹出菜单容器
-        id<ISSContainer> container = [ShareSDK container];
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -1831,16 +1850,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-        //在授权页面中添加关注官方微博
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-        //显示分享菜单
-        [ShareSDK showShareViewWithType:ShareTypeTencentWeibo
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeTencentWeibo
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -1874,13 +1893,13 @@
  */
 - (void)shareToQQFriendClickHandler:(UIButton *)sender
 {
-        //创建分享内容
-        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeNews];
     
@@ -1890,16 +1909,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-        //在授权页面中添加关注官方微博
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-        //显示分享菜单
-        [ShareSDK showShareViewWithType:ShareTypeQQ
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeQQ
                           container:nil
                             content:publishContent
                       statusBarTips:YES
@@ -1933,18 +1952,18 @@
  */
 - (void)shareToQQSpaceClickHandler:(UIButton *)sender
 {
-        //创建分享内容
-        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:NSLocalizedString(@"TEXT_HELLO_QZONE", @"Hello QQ空间")
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-        //创建弹出菜单容器
-        id<ISSContainer> container = [ShareSDK container];
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -1953,16 +1972,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-        //在授权页面中添加关注官方微博
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-        //显示分享菜单
-        [ShareSDK showShareViewWithType:ShareTypeQQSpace
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeQQSpace
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -1996,13 +2015,13 @@
  */
 - (void)shareToWeixinSessionClickHandler:(UIButton *)sender
 {
-        //创建分享内容
-        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeNews];
     
@@ -2012,16 +2031,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-        //在授权页面中添加关注官方微博
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-        //显示分享菜单
-        [ShareSDK showShareViewWithType:ShareTypeWeixiSession
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeWeixiSession
                           container:nil
                             content:publishContent
                       statusBarTips:YES
@@ -2055,13 +2074,13 @@
  */
 - (void)shareToWeixinTimelineClickHandler:(UIButton *)sender
 {
-        //创建分享内容
-        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeNews];
     
@@ -2071,16 +2090,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-        //在授权页面中添加关注官方微博
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-        //显示分享菜单
-        [ShareSDK showShareViewWithType:ShareTypeWeixiTimeline
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeWeixiTimeline
                           container:nil
                             content:publishContent
                       statusBarTips:YES
@@ -2114,8 +2133,8 @@
  */
 - (void)shareTo163WeiboClickHandler:(UIButton *)sender
 {
-        //创建分享内容
-        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -2124,8 +2143,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-        //创建弹出菜单容器
-        id<ISSContainer> container = [ShareSDK container];
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2134,16 +2153,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-        //在授权页面中添加关注官方微博
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-        //显示分享菜单
-        [ShareSDK showShareViewWithType:ShareType163Weibo
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareType163Weibo
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2177,8 +2196,8 @@
  */
 - (void)shareToSohuWeiboClickHandler:(UIButton *)sender
 {
-        //创建分享内容
-        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -2187,8 +2206,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-        //创建弹出菜单容器
-        id<ISSContainer> container = [ShareSDK container];
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2197,16 +2216,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-        //在授权页面中添加关注官方微博
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-        //显示分享菜单
-        [ShareSDK showShareViewWithType:ShareTypeSohuWeibo
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeSohuWeibo
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2240,18 +2259,18 @@
  */
 - (void)shareToRenRenClickHandler:(UIButton *)sender
 {
-        //创建分享内容
-        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_HELLO_RENREN", @"Hello 人人网") 
                                             mediaType:SSPublishContentMediaTypeText];
     
-        //创建弹出菜单容器
-        id<ISSContainer> container = [ShareSDK container];
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2260,16 +2279,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-        //在授权页面中添加关注官方微博
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-        //显示分享菜单
-        [ShareSDK showShareViewWithType:ShareTypeRenren
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeRenren
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -2303,8 +2322,8 @@
  */
 - (void)shareToKaiXinClickHandler:(UIButton *)sender
 {
-        //创建分享内容
-        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -2313,8 +2332,8 @@
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
-        //创建弹出菜单容器
-        id<ISSContainer> container = [ShareSDK container];
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -2435,7 +2454,7 @@
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:nil
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
@@ -2828,7 +2847,7 @@
                                        defaultContent:@""
                                                 image:nil
                                                 title:nil
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
@@ -2885,7 +2904,7 @@
                                        defaultContent:@""
                                                 image:nil
                                                 title:nil
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
@@ -2935,7 +2954,7 @@
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:nil
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
@@ -2993,7 +3012,7 @@
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:nil
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
@@ -3043,7 +3062,7 @@
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:nil
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
@@ -3094,12 +3113,12 @@
 - (void)shareToWhatsAppClickHandler:(id)sender
 {
     //创建分享内容
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+//    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:nil
                                                 title:nil
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
@@ -3115,6 +3134,106 @@
     
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeWhatsApp
+                          container:container
+                            content:publishContent
+                      statusBarTips:YES
+                        authOptions:authOptions
+                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
+                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                            qqButtonHidden:NO
+                                                     wxSessionButtonHidden:NO
+                                                    wxTimelineButtonHidden:NO
+                                                      showKeyboardOnAppear:NO
+                                                         shareViewDelegate:_appDelegate.viewDelegate
+                                                       friendsViewDelegate:_appDelegate.viewDelegate
+                                                     picViewerViewDelegate:nil]
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
+                                 if (state == SSPublishContentStateSuccess)
+                                 {
+                                     NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"发表成功"));
+                                 }
+                                 else if (state == SSPublishContentStateFail)
+                                 {
+                                     NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
+                                 }
+                             }];
+}
+
+- (void)shareToKakaoTalkClickHandler:(id)sender
+{
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+                                       defaultContent:@""
+                                                image:nil
+                                                title:imagePath
+                                                  url:@"http://www.mob.com"
+                                          description:@""
+                                            mediaType:SSPublishContentMediaTypeText];
+    
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeKaKaoTalk
+                          container:container
+                            content:publishContent
+                      statusBarTips:YES
+                        authOptions:authOptions
+                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
+                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                            qqButtonHidden:NO
+                                                     wxSessionButtonHidden:NO
+                                                    wxTimelineButtonHidden:NO
+                                                      showKeyboardOnAppear:NO
+                                                         shareViewDelegate:_appDelegate.viewDelegate
+                                                       friendsViewDelegate:_appDelegate.viewDelegate
+                                                     picViewerViewDelegate:nil]
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
+                                 if (state == SSPublishContentStateSuccess)
+                                 {
+                                     NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"发表成功"));
+                                 }
+                                 else if (state == SSPublishContentStateFail)
+                                 {
+                                     NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
+                                 }
+                             }];
+}
+
+- (void)shareToKakaoStoryClickHandler:(id)sender
+{
+    //创建分享内容
+//    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+                                       defaultContent:@""
+                                                image:nil
+                                                title:nil
+                                                  url:@"http://www.mob.com"
+                                          description:nil
+                                            mediaType:SSPublishContentMediaTypeText];
+    
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeKaKaoStory
                           container:container
                             content:publishContent
                       statusBarTips:YES
@@ -3415,7 +3534,7 @@
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
@@ -3478,7 +3597,7 @@
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息") 
                                             mediaType:SSPublishContentMediaTypeNews];
     
@@ -3600,7 +3719,7 @@
                                        defaultContent:nil
                                                 image:[ShareSDK imageWithUrl:@"http://list.image.baidu.com/t/yingshi.jpg"]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
@@ -3657,7 +3776,7 @@
                                        defaultContent:nil
                                                 image:[ShareSDK imageWithPath:path]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息") 
                                             mediaType:SSPublishContentMediaTypeGif];
     
@@ -3797,7 +3916,7 @@
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:NSLocalizedString(@"TEXT_HELLO_EVERNOTE", @"Hello 印象笔记") 
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
@@ -3854,7 +3973,7 @@
                                        defaultContent:@""
                                                 image:nil
                                                 title:@"Hello Pocket"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
     
@@ -3918,7 +4037,7 @@
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
@@ -4176,7 +4295,7 @@
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews
                                    locationCoordinate:[SSCLocationCoordinate2D locationCoordinate2DWithLatitude:22.02454411766735
