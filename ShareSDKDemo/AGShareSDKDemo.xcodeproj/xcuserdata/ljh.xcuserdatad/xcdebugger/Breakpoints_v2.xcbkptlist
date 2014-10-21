@@ -9,14 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AGShareSDKDemo/AGAuthViewController.m"
-            timestampString = "433323764.902509"
+            filePath = "AGShareSDKDemo/AGCallAPIViewController.m"
+            timestampString = "435234252.007549"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "-authSwitchChangeHandler:"
-            landmarkType = "5">
+            startingLineNumber = "1068"
+            endingLineNumber = "1068"
+            landmarkName = "@implementation AGCallAPIViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

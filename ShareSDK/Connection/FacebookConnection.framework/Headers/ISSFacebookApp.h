@@ -132,6 +132,38 @@ typedef void(^SSFacebookCloseAddFriendDialog) (UIViewController *viewController)
 
 ///#begin zh-cn
 /**
+ *	@brief	设置是否打开网页授权，默认值为NO。
+ *
+ *	@return	YES为打开网页授权开关，NO为关闭
+ */
+///#end
+///#begin en
+/**
+ *	@brief  whether to allow Facebook to authorize through Web（the default value is NO）
+ *
+ *	@return YES means allow to authorize through Web,NO means no allow
+ */
+///#end
+- (void)setIsAllowWebAuthorize:(BOOL)isAllowWebAuthorize;
+
+///#begin zh-cn
+/**
+ *	@brief	获取是否打开网页授权开关的值
+ *
+ *	@return	YES为打开网页授权开关，NO为关闭
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Get the value of isAllowWebAuthorize
+ *
+ *	@return YES means allow to authorize through Web,NO means no allow
+ */
+///#end
+- (BOOL)isAllowWebAuthorize;
+
+///#begin zh-cn
+/**
  *	@brief	设置添加好友对话框处理器
  *
  *	@param 	showHandler 	显示处理器

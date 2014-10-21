@@ -41,6 +41,25 @@ CMNetworkType;
 
 ///#begin zh-cn
 /**
+ *	@brief	分辨率
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Resolution
+ */
+///#end
+typedef enum
+{
+    CMDeviceResolutionTypeIPhone4 = 0,  /**< 3.5英寸屏幕的屏幕分辨率：320*480 */
+    CMDeviceResolutionTypeIPhone5 = 1,  /**< 4.0英寸屏幕的屏幕分辨率：320*568 */
+    CMDeviceResolutionTypeIPhone6 = 2,  /**< 4.7英寸屏幕的屏幕分辨率：375*667 */
+    CMDeviceResolutionTypeIPhoen6p = 3, /**< 5.5英寸屏幕的屏幕分辨率：414*736 */
+}
+CMDeviceResolutionType;
+
+///#begin zh-cn
+/**
  *	@brief	设备类目
  */
 ///#end
@@ -69,6 +88,54 @@ CMNetworkType;
 
 ///#begin zh-cn
 /**
+ *	@brief	判断是否为iPhone6
+ *
+ *	@return	YES：是，NO：否
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Determine whether the iPhone6
+ *
+ *	@return	YES：is iPhone5，NO：Not iPhone6
+ */
+///#end
+- (BOOL)isPhone6;
+
+///#begin zh-cn
+/**
+ *	@brief	判断是否为iPhone6 plus
+ *
+ *	@return	YES：是，NO：否
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Determine whether the iPhone6 plus
+ *
+ *	@return	YES：is iPhone6 plus，NO：Not iPhone6 plus
+ */
+///#end
+- (BOOL)isPhone6p;
+
+///#begin zh-cn
+/**
+ *	@brief 获取设备分辨率类型
+ *
+ *	@return CMDeviceResolutionType枚举，举个例子：CMDeviceResolutionTypeIPhone4表示3.5英寸屏幕的屏幕分辨率320*480
+ */
+///#end
+///#begin en
+/**
+ *	@brief	get the device resolution type
+ *
+ *	@return CMDeviceResolutionType enum, for example: CMDeviceResolutionTypeIPhone4 means 3.5 inch screen which resolution is 320*480
+ */
+///#end
+- (CMDeviceResolutionType)devicResolutionType;
+
+///#begin zh-cn
+/**
  *	@brief	获取系统越狱标识
  *
  *	@return	YES表示已经越狱，否则没有越狱。
@@ -76,6 +143,7 @@ CMNetworkType;
 ///#end
 ///#begin en
 /**
+ 
  *	@brief	Get System jailbreak flag
  *
  *	@return	YES said it had jailbreak, otherwise there is no jailbreak.

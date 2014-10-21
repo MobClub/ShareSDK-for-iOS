@@ -20,6 +20,8 @@
 //#import <GooglePlus/GooglePlus.h>
 #import <Pinterest/Pinterest.h>
 #import "YXApi.h"
+#import <QZoneConnection/ISSQZoneApp.h>
+#import <FacebookConnection/ISSFacebookApp.h>
 
 @implementation AGAppDelegate
 
@@ -348,6 +350,14 @@
     
     //横屏设置
 //        [ShareSDK setInterfaceOrientationMask:UIInterfaceOrientationMaskLandscape];
+    
+    //开启QQ空间网页授权开关
+    id<ISSQZoneApp> app =(id<ISSQZoneApp>)[ShareSDK getClientWithType:ShareTypeQQSpace];
+    [app setIsAllowWebAuthorize:YES];
+    
+    //开启Facebook网页授权开关
+    id<ISSFacebookApp> facebookApp =(id<ISSFacebookApp>)[ShareSDK getClientWithType:ShareTypeFacebook];
+    [facebookApp setIsAllowWebAuthorize:YES];
     
     //监听用户信息变更
     [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE

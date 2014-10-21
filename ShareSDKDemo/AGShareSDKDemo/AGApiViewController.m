@@ -351,13 +351,13 @@
     [button addTarget:self action:@selector(shareToPocketClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:NSLocalizedString(@"TEXT_SHARE_TO_GOOGLEPLUS", @"分享到Google+")
-            forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(shareToGooglePlusClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:button];
+//    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+//    [button setTitle:NSLocalizedString(@"TEXT_SHARE_TO_GOOGLEPLUS", @"分享到Google+")
+//            forState:UIControlStateNormal];
+//    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+//    [button addTarget:self action:@selector(shareToGooglePlusClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+//    [scrollView addSubview:button];
     
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];

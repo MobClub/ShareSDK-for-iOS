@@ -106,6 +106,38 @@ SSQZoneRequestMethod;
 
 ///#begin zh-cn
 /**
+ *	@brief	设置是否打开网页授权，默认值为NO。旧时申请QQ空间应用是可以进行网页授权的，新申请的应用目前不允许网页授权
+ *
+ *	@return	YES为打开网页授权开关，NO为关闭
+ */
+///#end
+///#begin en
+/**
+ *	@brief  whether to allow QZone to authorize through Web（the default value is NO）,the new QZone App is allow SSO only.
+ *
+ *	@return YES means allow to authorize through Web,NO means no allow
+ */
+///#end
+- (void)setIsAllowWebAuthorize:(BOOL)isAllowWebAuthorize;
+
+///#begin zh-cn
+/**
+ *	@brief	获取是否打开网页授权开关的值
+ *
+ *	@return	YES为打开网页授权开关，NO为关闭
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Get the value of isAllowWebAuthorize
+ *
+ *	@return YES means allow to authorize through Web,NO means no allow
+ */
+///#end
+- (BOOL)isAllowWebAuthorize;
+
+///#begin zh-cn
+/**
  *	@brief	调用开放平台API
  *
  *	@param 	path 	路径
