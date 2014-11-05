@@ -318,6 +318,38 @@
 
 ///#begin zh-cn
 /**
+ *	@brief	获取分享图片数组（适用平台：腾讯微博）
+ *
+ *	@return	分享图片
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Get share image array.（suitable platform：Tencent Weibo）
+ *
+ *	@return	image attachment object array.
+ */
+///#end
+- (NSArray *)imageArray;
+
+///#begin zh-cn
+/**
+ *	@brief	设置分享图片数组（适用平台：腾讯微博）
+ *
+ *	@param 	image 	分享图片
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Set share image array.
+ *
+ *	@param 	image 	image attachment object array.
+ */
+///#end
+- (void)setImageArray:(NSArray *)imageArray;
+
+///#begin zh-cn
+/**
  *	@brief	获取地理位置
  *
  *	@return	地理位置
@@ -904,6 +936,32 @@
 ///#end
 - (void)addTencentWeiboUnitWithContent:(NSString *)content
                                  image:(id<ISSCAttachment>)image
+                    locationCoordinate:(SSCLocationCoordinate2D *)locationCoordinate;
+
+///#begin zh-cn
+/**
+ *	@brief	添加腾讯微博多图内容单元
+ *
+ *  @since  ver2.10.0
+ *
+ *	@param 	aContent 	内容
+ *	@param 	imageArray 	图片数组，类型是id<ISSCAttachment>类型
+ *	@param 	locationCoordinate 	地理位置
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Add Tencent Weibo content unit
+ *
+ *  @since  ver2.10.0
+ *
+ *	@param 	aContent 	Content string
+ *	@param 	imageArray 	Image attachment array.
+ *	@param 	locationCoordinate 	Location info.
+ */
+///#end
+- (void)addTencentWeiboUnitWithContent:(NSString *)content
+                            imageArray:(NSArray *)imageArray
                     locationCoordinate:(SSCLocationCoordinate2D *)locationCoordinate;
 
 

@@ -65,6 +65,30 @@
 
 ///#begin zh-cn
 /**
+ *	@brief	存储多图微博的数组
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Image attachment object array.
+ */
+///#end
+@property (nonatomic,retain) NSArray *imageArray;
+
+/////#begin zh-cn
+///**
+// *	@brief	分享多图微博
+// */
+/////#end
+/////#begin en
+///**
+// *	@brief	image array.
+// */
+/////#end
+//@property (nonatomic,retain) NSArray *imageArray;
+
+///#begin zh-cn
+/**
  *	@brief	地理位置信息
  */
 ///#end

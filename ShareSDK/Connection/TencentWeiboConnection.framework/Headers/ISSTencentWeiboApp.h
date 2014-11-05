@@ -200,6 +200,31 @@ SSTecentWeiboRequestMethod;
 
 ///#begin zh-cn
 /**
+ *	@brief	发送带有多张图片的微博信息
+ *
+ *	@param 	content 	内容
+ *	@param 	pic 	图片数组（数组元素是id<ISSCAttachment>类型）
+ *  @param  locationCoordinate  地理位置
+ *  @param  result  回调方法
+ */
+///#end
+///#begin en
+/**
+ *	@brief	send Tweet with many pictures.
+ *
+ *	@param 	content 	Content string.
+ *	@param 	pic 	Picture Array(the type of array element is id<ISSCAttachment>)
+ *  @param  locationCoordinate  Location coordinate.
+ *  @param  result  Result handler.
+ */
+///#end
+- (void)addSomePicTweetWithContent:(NSString *)content
+                               pic:(NSMutableArray *)imagesArray
+                locationCoordinate:(SSCLocationCoordinate2D *)locationCoordinate
+                            result:(SSShareResultEvent)result;
+
+///#begin zh-cn
+/**
  *	@brief	用图片URL发表带图片的微博
  *
  *	@param 	content 	微博内容
