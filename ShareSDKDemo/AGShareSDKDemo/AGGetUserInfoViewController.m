@@ -171,12 +171,12 @@
     [button addTarget:self action:@selector(showSohuKanUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
-//    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-//    [button setTitle:@"Google+" forState:UIControlStateNormal];
-//    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
-//    [button addTarget:self action:@selector(showGooglePlusUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-//    [scrollView addSubview:button];
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:@"Google+" forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(showGooglePlusUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
     
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];

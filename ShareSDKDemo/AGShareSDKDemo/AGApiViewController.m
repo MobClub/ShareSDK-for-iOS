@@ -351,13 +351,13 @@
     [button addTarget:self action:@selector(shareToPocketClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
-//    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-//    [button setTitle:NSLocalizedString(@"TEXT_SHARE_TO_GOOGLEPLUS", @"分享到Google+")
-//            forState:UIControlStateNormal];
-//    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
-//    [button addTarget:self action:@selector(shareToGooglePlusClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-//    [scrollView addSubview:button];
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:NSLocalizedString(@"TEXT_SHARE_TO_GOOGLEPLUS", @"分享到Google+")
+            forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(shareToGooglePlusClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
     
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -729,7 +729,7 @@
                                                   url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
-    
+
     //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法
     
     //定制人人网信息
@@ -1949,6 +1949,7 @@
  *	@brief	分享到QQ空间
  *
  *	@param 	sender 	事件对象
+ 
  */
 - (void)shareToQQSpaceClickHandler:(UIButton *)sender
 {
@@ -1961,6 +1962,7 @@
                                                   url:@"http://www.mob.com"
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeText];
+    
     
     //创建弹出菜单容器
     id<ISSContainer> container = [ShareSDK container];
@@ -3525,11 +3527,11 @@
  */
 - (void)customShareMenuClickHandler:(UIButton *)sender
 {
-        //定义菜单分享列表
-        NSArray *shareList = [ShareSDK getShareListWithType:ShareTypeTwitter, ShareTypeFacebook, ShareTypeSinaWeibo, ShareTypeTencentWeibo, ShareTypeRenren, ShareTypeKaixin, ShareTypeSohuWeibo, ShareType163Weibo, nil];
+    //定义菜单分享列表
+    NSArray *shareList = [ShareSDK getShareListWithType:ShareTypeTwitter, ShareTypeFacebook, ShareTypeSinaWeibo, ShareTypeTencentWeibo, ShareTypeRenren, ShareTypeKaixin, ShareTypeSohuWeibo, ShareType163Weibo, nil];
     
-        //创建分享内容
-        NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:CONTENT
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
@@ -3538,8 +3540,8 @@
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
-        //创建容器
-        id<ISSContainer> container = [ShareSDK container];
+    //创建容器
+    id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -3548,16 +3550,16 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-        //在授权页面中添加关注官方微博
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
-        //显示分享菜单
-        [ShareSDK showShareActionSheet:container
+    //显示分享菜单
+    [ShareSDK showShareActionSheet:container
                          shareList:shareList
                            content:publishContent
                      statusBarTips:YES

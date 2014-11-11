@@ -1152,6 +1152,34 @@
                         image:(id<ISSCAttachment>)image
            locationCoordinate:(SSCLocationCoordinate2D *)locationCoordinate;
 
+
+///#begin zh-cn
+/**
+ *	@brief	添加推特多图内容单元
+ *
+ *  @since  ver2.10.1
+ *
+ *	@param 	aContent 	内容
+ *	@param 	imageArray 	图片数组，类型是id<ISSCAttachment>类型
+ *	@param 	locationCoordinate 	地理位置
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Add twitter content unit
+ *
+ *  @since  ver2.10.1
+ *
+ *	@param 	aContent 	Content string
+ *	@param 	imageArray 	Image attachment array.
+ *	@param 	locationCoordinate 	Location info.
+ */
+///#end
+- (void)addTwitterUnitWithContent:(NSString *)content
+                       imageArray:(NSArray *)imageArray
+               locationCoordinate:(SSCLocationCoordinate2D *)locationCoordinate;
+
+
 ///#begin zh-cn
 /**
  *	@brief	添加开心网内容单元

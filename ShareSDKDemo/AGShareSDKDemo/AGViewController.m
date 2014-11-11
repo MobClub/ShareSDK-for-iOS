@@ -101,6 +101,7 @@
                                              nil];
             
             id<ISSPlatformApp> app = [ShareSDK getClientWithType:type];
+            
             if ([app isSupportOneKeyShare])
             {
                 [_noneUIShareTypeArray addObject:itemDict];
@@ -438,8 +439,8 @@
                 id<ISSContainer> container = [ShareSDK container];
         [container setIPadContainerWithBarButtonItem:self.navigationItem.rightBarButtonItem arrowDirect:UIPopoverArrowDirectionAny];
         
-                //创建内容
-                id<ISSCAttachment> imageAttach = [ShareSDK imageWithPath:imagePath];
+        //创建内容
+        id<ISSCAttachment> imageAttach = [ShareSDK imageWithPath:imagePath];
         id<ISSContent> contentObj = [ShareSDK content:content
                                        defaultContent:@""
                                                 image:imageAttach

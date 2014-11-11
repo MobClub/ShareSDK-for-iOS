@@ -58,8 +58,8 @@
             [label release];
         }
         
-                //监听用户信息变更
-                [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
+        //监听用户信息变更
+        [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
                                    target:self
                                    action:@selector(userInfoUpdateHandler:)];
         
@@ -71,6 +71,7 @@
             NSNumber *typeNum = [shareTypes objectAtIndex:i];
             ShareType type = (ShareType)[typeNum integerValue];
             id<ISSPlatformApp> app = [ShareSDK getClientWithType:type];
+            
             
             if ([app isSupportOneKeyShare] || type == ShareTypeInstagram || type == ShareTypeGooglePlus || type == ShareTypeQQSpace || type == ShareTypeWeixiSession)
             {

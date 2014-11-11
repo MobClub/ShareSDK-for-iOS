@@ -77,8 +77,6 @@
     [listOfItems addObject:infoDict];
     [listOfItems addObject:aboutusDict];
 
-    
-    
 }
 
  
@@ -106,14 +104,10 @@
         case 1:
             return NSLocalizedString(@"TEXT_VERSION", @"版本信息");
             break;
-            
 		default:
 			break;
-            
-            
     }
     return nil;
-    
 }
 
 // Customize the appearance of table view cells.

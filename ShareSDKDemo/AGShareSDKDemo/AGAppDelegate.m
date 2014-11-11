@@ -11,16 +11,19 @@
 #import "AGAuthViewController.h"
 #import "AGApiViewController.h"
 #import "ShareSDKDemoMoreViewController.h"
+
 #import "QQDemoViewController.h"
 #import "RespViewController.h"
 #import "AGWeiXinQQDemoController.h"
 #import "AGLeftSideViewController.h"
 #import <RennSDK/RennSDK.h>
-//#import <GoogleOpenSource/GoogleOpenSource.h>
-//#import <GooglePlus/GooglePlus.h>
+
+#import <GoogleOpenSource/GoogleOpenSource.h>
+#import <GooglePlus/GooglePlus.h>
 #import <Pinterest/Pinterest.h>
 #import "YXApi.h"
 #import <QZoneConnection/ISSQZoneApp.h>
+
 #import <FacebookConnection/ISSFacebookApp.h>
 
 @implementation AGAppDelegate
@@ -120,11 +123,11 @@
      连接Google+应用以使用相关功能，此应用需要引用GooglePlusConnection.framework、GooglePlus.framework和GoogleOpenSource.framework库
      https://code.google.com/apis/console上注册应用，并将相关信息填写到以下字段
      **/
-//    [ShareSDK connectGooglePlusWithClientId:@"232554794995.apps.googleusercontent.com"
-//                               clientSecret:@"PEdFgtrMw97aCvf0joQj7EMk"
-//                                redirectUri:@"http://localhost"
-//                                  signInCls:[GPPSignIn class]
-//                                   shareCls:[GPPShare class]];
+    [ShareSDK connectGooglePlusWithClientId:@"232554794995.apps.googleusercontent.com"
+                               clientSecret:@"PEdFgtrMw97aCvf0joQj7EMk"
+                                redirectUri:@"http://localhost"
+                                  signInCls:[GPPSignIn class]
+                                   shareCls:[GPPShare class]];
     
     /**
      连接人人网应用以使用相关功能，此应用需要引用RenRenConnection.framework
@@ -321,8 +324,8 @@
     [ShareSDK importWeChatClass:[WXApi class]];
 
     //导入Google+需要的外部库类型，如果不需要Google＋分享可以不调用此方法
-//    [ShareSDK importGooglePlusClass:[GPPSignIn class]
-//                     shareClass:[GPPShare class]];
+    [ShareSDK importGooglePlusClass:[GPPSignIn class]
+                     shareClass:[GPPShare class]];
 
     //导入Pinterest需要的外部库类型，如果不需要Pinterest分享可以不调用此方法
     [ShareSDK importPinterestClass:[Pinterest class]];
@@ -358,7 +361,7 @@
     //开启Facebook网页授权开关
     id<ISSFacebookApp> facebookApp =(id<ISSFacebookApp>)[ShareSDK getClientWithType:ShareTypeFacebook];
     [facebookApp setIsAllowWebAuthorize:YES];
-    
+
     //监听用户信息变更
     [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
                            target:self
@@ -373,11 +376,9 @@
     
     //左视图
     AGLeftSideViewController *leftVC = [[[AGLeftSideViewController alloc] init] autorelease];
-    
     IIViewDeckController *vc = [[[IIViewDeckController alloc] initWithCenterViewController:navApiVC leftViewController:leftVC] autorelease];
     vc.leftSize = self.window.width - (320 - 44.0);
     self.viewController = vc;
-    
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
     
     self.window.rootViewController = self.viewController;

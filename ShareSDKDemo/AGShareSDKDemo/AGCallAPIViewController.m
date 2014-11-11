@@ -11,7 +11,6 @@
 #import <AGCommon/UIDevice+Common.h>
 #import <AGCommon/UINavigationBar+Common.h>
 #import "IIViewDeckController.h"
-
 #import <ShareSDK/ShareSDK.h>
 #import <SinaWeiboConnection/SinaWeiboConnection.h>
 #import <TencentWeiboConnection/TencentWeiboConnection.h>
@@ -21,6 +20,7 @@
 #define RIGHT_PADDING 10.0
 #define HORIZONTAL_GAP 10.0
 #define VERTICAL_GAP 10.0
+
 #define ITEM_HEIGHT 30.0
 
 @implementation AGCallAPIViewController
@@ -30,7 +30,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        //左上抽屉按钮
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
         [leftBtn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                            forState:UIControlStateNormal];
@@ -39,7 +38,6 @@
         [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
         
-        //
         if ([UIDevice currentDevice].isPad || [[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
         {
             UILabel *label = [[UILabel alloc] init];
@@ -76,7 +74,6 @@
 {
     [super viewDidLoad];
     
-    //
     if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
     {
         [self setExtendedLayoutIncludesOpaqueBars:NO];
@@ -379,14 +376,14 @@
 
 -(BOOL)shouldAutorotate
 {
-    //iOS6下旋屏方法
-    return YES;
+        //iOS6下旋屏方法
+        return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    //iOS6下旋屏方法
-    return SSInterfaceOrientationMaskAll;
+        //iOS6下旋屏方法
+        return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -587,12 +584,12 @@
 {
     [_focusTextField resignFirstResponder];
     
-    //调用获取收藏列表方法，接口文档：https://api.weibo.com/2/favorites.json
+        //调用获取收藏列表方法，接口文档：https://api.weibo.com/2/favorites.json
     //先获取相关平台的App对象
-    id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
+        id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
     
-    //调用接口
-    [app api:@"https://api.weibo.com/2/favorites.json"
+        //调用接口
+        [app api:@"https://api.weibo.com/2/favorites.json"
       method:SSSinaWeiboRequestMethodGet
       params:nil
         user:nil
@@ -686,17 +683,17 @@
 {
     [_focusTextField resignFirstResponder];
     
-    //调用回复评论方法，接口文档：https://api.weibo.com/2/comments/reply.json
+        //调用回复评论方法，接口文档：https://api.weibo.com/2/comments/reply.json
     //先获取相关平台的App对象
-    id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
+        id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
     [params addParameter:@"cid" value:_sinaReplyCommendIdField.text];
     [params addParameter:@"id" value:_sinaReplyStatusIdField.text];
     [params addParameter:@"comment" value:_sinaReplyContentField.text];
     
-    //调用接口
-    [app api:@"https://api.weibo.com/2/comments/reply.json"
+        //调用接口
+        [app api:@"https://api.weibo.com/2/comments/reply.json"
       method:SSSinaWeiboRequestMethodPost
       params:params
         user:nil
@@ -729,17 +726,17 @@
 {
     [_focusTextField resignFirstResponder];
     
-    //调用回复评论方法，接口文档：https://api.weibo.com/2/comments/reply.json
+        //调用回复评论方法，接口文档：https://api.weibo.com/2/comments/reply.json
     //先获取相关平台的App对象
-    id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
+        id<ISSSinaWeiboApp> app = (id<ISSSinaWeiboApp>)[ShareSDK getClientWithType:ShareTypeSinaWeibo];
     
     id<ISSCParameters> params = [ShareSDKCoreService parameters];
     [params addParameter:@"cid" value:_sinaReplyCommendIdField.text];
     [params addParameter:@"id" value:_sinaReplyStatusIdField.text];
     [params addParameter:@"comment" value:_sinaReplyContentField.text];
     
-    //调用接口
-    [app api:@"https://api.weibo.com/2/comments/reply.json"
+        //调用接口
+        [app api:@"https://api.weibo.com/2/comments/reply.json"
       method:SSSinaWeiboRequestMethodPost
       params:params
         user:nil
@@ -932,7 +929,7 @@
     [params addParameter:@"reqnum" value:@"20"];
     [params addParameter:@"lastid" value:@"0"];
     
-        //调用接口
+    //调用接口
     [app api:@"https://open.t.qq.com/api/fav/list_t"
       method:SSTecentWeiboRequestMethodGet
       params:params
