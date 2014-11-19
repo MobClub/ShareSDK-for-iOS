@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.9.6</string>
+	<string>2.10.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -41,6 +41,7 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>tb2QUXqO9fcgGdtGG1FcvML6ZunIQzAEL8xY6hIaxdJnDti2DYwM</string>
 				<string>fb107704292745179</string>
 				<string>wb568898243</string>
 				<string>wx4868b35061f87885</string>
@@ -56,7 +57,9 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2.9.6</string>
+	<string>2.10.2</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIPrerenderedIcon</key>

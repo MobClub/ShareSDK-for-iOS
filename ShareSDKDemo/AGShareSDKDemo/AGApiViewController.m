@@ -240,13 +240,13 @@
     [scrollView addSubview:button];
     
     top += button.height + VERTICAL_GAP;
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:NSLocalizedString(@"TEXT_SHARE_TO_NETEASE_WEIBO", @"分享到网易微博")
-            forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(shareTo163WeiboClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:button];
+//    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+//    [button setTitle:NSLocalizedString(@"TEXT_SHARE_TO_NETEASE_WEIBO", @"分享到网易微博")
+//            forState:UIControlStateNormal];
+//    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
+//    [button addTarget:self action:@selector(shareTo163WeiboClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+//    [scrollView addSubview:button];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
@@ -527,7 +527,14 @@
                                                                      delegate:self
                                                             cancelButtonTitle:NSLocalizedString(@"TEXT_CANCEL", @"取消") 
                                                        destructiveButtonTitle:nil
-                                                            otherButtonTitles:NSLocalizedString(@"TEXT_SINA_WEIBO", @"新浪微博"), NSLocalizedString(@"TEXT_TENCENT_WEIBO", @"腾讯微博"), NSLocalizedString(@"TEXT_SOHO_WEIBO", @"搜狐微博"), NSLocalizedString(@"TEXT_NETEASE_WEIBO", @"网易微博"), NSLocalizedString(@"TEXT_DOUBAN", @"豆瓣社区"), NSLocalizedString(@"TEXT_QZONE", @"QQ空间"), NSLocalizedString(@"TEXT_RENREN", @"人人网"), NSLocalizedString(@"TEXT_KAIXIN", @"开心网"), nil];
+                                                            otherButtonTitles:NSLocalizedString(@"TEXT_SINA_WEIBO", @"新浪微博"),
+                                          NSLocalizedString(@"TEXT_TENCENT_WEIBO", @"腾讯微博"),
+                                          NSLocalizedString(@"TEXT_SOHO_WEIBO", @"搜狐微博"),
+//                                          NSLocalizedString(@"TEXT_NETEASE_WEIBO", @"网易微博"),
+                                          NSLocalizedString(@"TEXT_DOUBAN", @"豆瓣社区"),
+                                          NSLocalizedString(@"TEXT_QZONE", @"QQ空间"),
+                                          NSLocalizedString(@"TEXT_RENREN", @"人人网"),
+                                          NSLocalizedString(@"TEXT_KAIXIN", @"开心网"), nil];
             actionSheet.tag = ACTION_SHEET_GET_USER_INFO;
             [actionSheet showInView:self.view];
             [actionSheet release];

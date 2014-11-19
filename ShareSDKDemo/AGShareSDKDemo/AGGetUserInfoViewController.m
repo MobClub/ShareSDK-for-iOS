@@ -96,12 +96,12 @@
     [button addTarget:self action:@selector(showSohuWeiboUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:NSLocalizedString(@"TEXT_NETEASE_WEIBO", @"网易微博") forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(show163WeiboUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:button];
+//    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+//    [button setTitle:NSLocalizedString(@"TEXT_NETEASE_WEIBO", @"网易微博") forState:UIControlStateNormal];
+//    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+//    [button addTarget:self action:@selector(show163WeiboUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+//    [scrollView addSubview:button];
     
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];

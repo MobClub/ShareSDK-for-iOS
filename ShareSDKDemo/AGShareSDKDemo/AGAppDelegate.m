@@ -174,9 +174,9 @@
      连接网易微博应用以使用相关功能，此应用需要引用T163WeiboConnection.framework
      http://open.t.163.com上注册网易微博开放平台应用，并将相关信息填写到以下字段
      **/
-    [ShareSDK connect163WeiboWithAppKey:@"T5EI7BXe13vfyDuy"
-                              appSecret:@"gZxwyNOvjFYpxwwlnuizHRRtBRZ2lV1j"
-                            redirectUri:@"http://www.shareSDK.cn"];
+//    [ShareSDK connect163WeiboWithAppKey:@"T5EI7BXe13vfyDuy"
+//                              appSecret:@"gZxwyNOvjFYpxwwlnuizHRRtBRZ2lV1j"
+//                            redirectUri:@"http://www.shareSDK.cn"];
     
     /**
      连接豆瓣应用以使用相关功能，此应用需要引用DouBanConnection.framework
@@ -355,8 +355,8 @@
 //        [ShareSDK setInterfaceOrientationMask:UIInterfaceOrientationMaskLandscape];
     
     //开启QQ空间网页授权开关
-    id<ISSQZoneApp> app =(id<ISSQZoneApp>)[ShareSDK getClientWithType:ShareTypeQQSpace];
-    [app setIsAllowWebAuthorize:YES];
+//    id<ISSQZoneApp> app =(id<ISSQZoneApp>)[ShareSDK getClientWithType:ShareTypeQQSpace];
+//    [app setIsAllowWebAuthorize:YES];
     
     //开启Facebook网页授权开关
     id<ISSFacebookApp> facebookApp =(id<ISSFacebookApp>)[ShareSDK getClientWithType:ShareTypeFacebook];
@@ -431,9 +431,9 @@
         case ShareTypeSinaWeibo:
             platName = NSLocalizedString(@"TEXT_SINA_WEIBO", @"新浪微博");
             break;
-        case ShareType163Weibo:
-            platName = NSLocalizedString(@"TEXT_NETEASE_WEIBO", @"网易微博");
-            break;
+//        case ShareType163Weibo:
+//            platName = NSLocalizedString(@"TEXT_NETEASE_WEIBO", @"网易微博");
+//            break;
         case ShareTypeDouBan:
             platName = NSLocalizedString(@"TEXT_DOUBAN", @"豆瓣");
             break;

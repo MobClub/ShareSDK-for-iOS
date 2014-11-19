@@ -91,7 +91,6 @@
 		4139C58E196FC8C300896192 /* SMSConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4139C539196FC8C300896192 /* SMSConnection.framework */; };
 		4139C58F196FC8C300896192 /* SohuConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4139C53A196FC8C300896192 /* SohuConnection.framework */; };
 		4139C590196FC8C300896192 /* SohuWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4139C53B196FC8C300896192 /* SohuWeiboConnection.framework */; };
-		4139C591196FC8C300896192 /* T163WeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4139C53C196FC8C300896192 /* T163WeiboConnection.framework */; };
 		4139C592196FC8C300896192 /* TencentWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4139C53D196FC8C300896192 /* TencentWeiboConnection.framework */; };
 		4139C593196FC8C300896192 /* TumblrConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4139C53E196FC8C300896192 /* TumblrConnection.framework */; };
 		4139C594196FC8C300896192 /* TwitterConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4139C53F196FC8C300896192 /* TwitterConnection.framework */; };
@@ -371,7 +370,6 @@
 		4139C539196FC8C300896192 /* SMSConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMSConnection.framework; sourceTree = "<group>"; };
 		4139C53A196FC8C300896192 /* SohuConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SohuConnection.framework; sourceTree = "<group>"; };
 		4139C53B196FC8C300896192 /* SohuWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SohuWeiboConnection.framework; sourceTree = "<group>"; };
-		4139C53C196FC8C300896192 /* T163WeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = T163WeiboConnection.framework; sourceTree = "<group>"; };
 		4139C53D196FC8C300896192 /* TencentWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentWeiboConnection.framework; sourceTree = "<group>"; };
 		4139C53E196FC8C300896192 /* TumblrConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TumblrConnection.framework; sourceTree = "<group>"; };
 		4139C53F196FC8C300896192 /* TwitterConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterConnection.framework; sourceTree = "<group>"; };
@@ -630,7 +628,6 @@
 				4139C593196FC8C300896192 /* TumblrConnection.framework in Frameworks */,
 				4139C58F196FC8C300896192 /* SohuConnection.framework in Frameworks */,
 				4139C5B5196FC8C400896192 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
-				4139C591196FC8C300896192 /* T163WeiboConnection.framework in Frameworks */,
 				4139C589196FC8C300896192 /* PrintConnection.framework in Frameworks */,
 				4133F12617C1E8E000B204A1 /* Security.framework in Frameworks */,
 				41A1E04E1755FE86003839C1 /* libstdc++.dylib in Frameworks */,
@@ -887,7 +884,6 @@
 				4139C539196FC8C300896192 /* SMSConnection.framework */,
 				4139C53A196FC8C300896192 /* SohuConnection.framework */,
 				4139C53B196FC8C300896192 /* SohuWeiboConnection.framework */,
-				4139C53C196FC8C300896192 /* T163WeiboConnection.framework */,
 				4139C53D196FC8C300896192 /* TencentWeiboConnection.framework */,
 				4139C53E196FC8C300896192 /* TumblrConnection.framework */,
 				4139C53F196FC8C300896192 /* TwitterConnection.framework */,
