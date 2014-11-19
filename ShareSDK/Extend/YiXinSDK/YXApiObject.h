@@ -2,7 +2,7 @@
 //  YXApiObject.h
 //  YixinSDK
 //
-//  Version 1.4
+//  Version 2.2
 //  Created by yixin ( yixinopen@188.com )
 //  Copyright (c) 2013年 yixin.im All rights reserved.
 //
@@ -20,11 +20,12 @@ enum YXRespCode {
 };
 
 /*! @brief 分享场景
- *  易信会话，易信朋友圈
+ *  易信会话，易信朋友圈，易信收藏
  */
 enum YXScene {
     kYXSceneSession   = 0,
     kYXSceneTimeline  = 1,
+    kYXSceneFavorite  = 2,
 };
 
 @class UIImage;
@@ -48,17 +49,6 @@ enum YXScene {
 // 错误提示字符串
 @property (nonatomic,retain) NSString *errDescription;
 @end
-
-
-
-//认证请求
-@interface YXAuthReq : YXBaseReq
-@end
-//反馈请求
-@interface YXAuthResp : YXBaseResp
-@property (nonatomic,retain)    NSString    *token;
-@end
-
 
 @class YXMediaMessage;
 /*! @brief 第三方程序发送消息至易信的消息结构体
@@ -265,6 +255,28 @@ enum YXScene {
 @end
 
 
+/*! @brief 第三方程序发送OAuth认证至易信的消息结构体
+ *
+ * 第三方App向易信客户端发送的认证消息对象，
+ */
+@interface SendOAuthToYXReq : YXBaseReq
+
+@property(nonatomic, retain) NSString *scope;
+@property(nonatomic, retain) NSString *state;
+
+@end
+
+
+/*! @brief 易信客户端向第三方App返回的OAuth认证结果。
+ *
+ */
+@interface SendOAuthToYXResp : YXBaseResp
+
+@property(nonatomic, retain) NSString *authCode;
+@property(nonatomic, retain) NSString *state;
+@property(nonatomic, assign) long long exprieSeonds;
+
+@end
 
 
 

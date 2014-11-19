@@ -2,7 +2,7 @@
 //  YXApi.h
 //  YixinSDK
 //
-//  Version 1.4
+//  Version 2.2
 //  Created by yixin ( yixinopen@188.com )
 //  Copyright (c) 2013年 yixin.im All rights reserved.
 //
@@ -59,6 +59,18 @@
  * @return 支持返回YES，不支持返回NO。
  */
 +(BOOL) isYXAppSupportApi;
+
+/*! @brief 判断当前易信客户端的版本是否支持OAuth授权
+ *
+ * @return 支持返回YES，不支持返回NO。
+ */
++(BOOL) isYXAppSupportOAuth;
+
+/*! @brief 判断当前易信客户端的版本是否支持收藏到易信功能
+ *
+ * @return 支持返回YES，不支持返回NO。
+ */
++(BOOL) isYXAppSupportFav;
 
 /*! @brief 打开易信客户端
  *

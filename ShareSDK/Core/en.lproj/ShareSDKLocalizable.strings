@@ -65,7 +65,7 @@
 "ShareType_1" = "Sina Weibo";
 "ShareType_2" = "Tencent Weibo";
 "ShareType_3" = "Soho Weibo";
-"ShareType_4" = "Netease weibo";
+//"ShareType_4" = "Netease weibo";
 "ShareType_5" = "Douban";
 "ShareType_6" = "QZone";
 "ShareType_7" = "Renren";
@@ -152,7 +152,7 @@
 "AUTH_VIEW_TITLE_1" = "Sina Weibo";
 "AUTH_VIEW_TITLE_2" = "Tencent Weibo";
 "AUTH_VIEW_TITLE_3" = "Soho Weibo";
-"AUTH_VIEW_TITLE_4" = "Netease weibo";
+//"AUTH_VIEW_TITLE_4" = "Netease weibo";
 "AUTH_VIEW_TITLE_5" = "Douban";
 "AUTH_VIEW_TITLE_6" = "QZone";
 "AUTH_VIEW_TITLE_7" = "Renren";
