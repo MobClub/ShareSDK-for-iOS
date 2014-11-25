@@ -106,7 +106,7 @@
 ///#end
 @property (nonatomic,retain) NSDictionary *extInfo;
 
-///#begin zh-cn
+///#begin zh-cni
 /**
  *	@brief	原始数据
  */
