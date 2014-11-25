@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		361F3E7B19F6023F00D9B8DA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 361F3E7A19F6023F00D9B8DA /* LaunchScreen.xib */; };
+		369AC1251A24930400CC2871 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369AC1241A24930400CC2871 /* Accounts.framework */; };
+		369AC1271A24930A00CC2871 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369AC1261A24930A00CC2871 /* Social.framework */; };
 		4100A5E216A3AE7E00813513 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4100A5BB16A3AE7E00813513 /* SVModalWebViewController.m */; };
 		4100A5E316A3AE7E00813513 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4100A5BC16A3AE7E00813513 /* SVWebViewController.bundle */; };
 		4100A5E416A3AE7E00813513 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4100A5BE16A3AE7E00813513 /* SVWebViewController.m */; };
@@ -268,6 +270,8 @@
 
 /* Begin PBXFileReference section */
 		361F3E7A19F6023F00D9B8DA /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		369AC1241A24930400CC2871 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		369AC1261A24930A00CC2871 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		4100A5BA16A3AE7E00813513 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
 		4100A5BB16A3AE7E00813513 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
 		4100A5BC16A3AE7E00813513 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
@@ -596,6 +600,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				369AC1271A24930A00CC2871 /* Social.framework in Frameworks */,
+				369AC1251A24930400CC2871 /* Accounts.framework in Frameworks */,
 				4139C584196FC8C300896192 /* LinkedInConnection.framework in Frameworks */,
 				4139C58D196FC8C300896192 /* SinaWeiboConnection.framework in Frameworks */,
 				4139C596196FC8C300896192 /* WeChatConnection.framework in Frameworks */,
@@ -1227,6 +1233,8 @@
 		41FE5E8D167CBAFF0096BFE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				369AC1261A24930A00CC2871 /* Social.framework */,
+				369AC1241A24930400CC2871 /* Accounts.framework */,
 				417D341218D145070043C52D /* AddressBook.framework */,
 				A8D5D44C1827EFE4007D55D0 /* CoreMotion.framework */,
 				A8D5D44A1827EFD4007D55D0 /* CoreLocation.framework */,
@@ -1642,6 +1650,7 @@
 				ARCHS = (
 					armv7s,
 					armv7,
+					arm64,
 				);
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
@@ -1683,6 +1692,7 @@
 				ARCHS = (
 					armv7s,
 					armv7,
+					arm64,
 				);
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
