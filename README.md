@@ -29,18 +29,21 @@ then you will see the following window, check the "Copy items into destination g
 
 **Optional Framework：**
 
-*necessary for the SSO Login Tencent weibo（iOS6.0+）*
+necessary for the SSO Login Tencent weibo（iOS6.0+）
+
 1. Social.framework        
 2. Accounts.framework 
 
-*necessary for the SSO Login of QZone or QQ Friend share*
+necessary for the SSO Login of QZone or QQ Friend share*
+
 1. libstdc++.dylib        
 2. libsqlite3.dylib      
 
-*necessary for Mail or SMS*
+necessary for Mail or SMS
+
 1. MessageUI.framework   
 
-*necessary for Google+ platform*
+necessary for Google+ platform 
 1. CoreMotion.framework        
 2. CoreLocation.framework      
 3. MediaPlayer.framework      
