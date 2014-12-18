@@ -44,6 +44,7 @@ necessary for Mail or SMS
 1. MessageUI.framework   
 
 necessary for Google+ platform 
+
 1. CoreMotion.framework        
 2. CoreLocation.framework      
 3. MediaPlayer.framework      
