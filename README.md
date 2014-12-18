@@ -25,25 +25,28 @@ then you will see the following window, check the "Copy items into destination g
 3. CoreTelephony.framework  
 4. libicucore.dylib 
 5. libz.1.2.5.dylib
+6. Security.framework
 
 **Optional Framework：**
 
-1. Social.framework        necessary for the SSO Login Tencent weibo（iOS6.0+）
-2. Accounts.framework      necessary for the SSO Login Tencent weibo（iOS6.0+）
+necessary for the SSO Login Tencent weibo（iOS6.0+）
+1. Social.framework        
+2. Accounts.framework 
 
+necessary for the SSO Login of QZone or QQ Friend share
+1. libstdc++.dylib        
+2. libsqlite3.dylib      
 
-1. libstdc++.dylib       necessary for the SSO Login of QZone or QQ Friend share 
-2. libsqlite3.dylib      necessary for the SSO Login of QZone or QQ Friend share 
-3. Security.framework    necessary for the SSO Login of QZone or QQ Friend share or Google+ platform
+necessary for Mail or SMS 
+1. MessageUI.framework   
 
-
-1. CoreMotion.framework        necessary for Google+ platform
-2. CoreLocation.framework      necessary for Google+ platform 
-3. MediaPlayer.framework       necessary for Google+ platform 
-4. CoreText.framework          necessary for Google+ platform
-5. AssetsLibrary.framework     necessary for Google+ platform 
-6. MessageUI.framework         necessary for Mail or SMS 
-
+necessary for Google+ platform
+1. CoreMotion.framework        
+2. CoreLocation.framework      
+3. MediaPlayer.framework      
+4. CoreText.framework          
+5. AssetsLibrary.framework     
+      
 The steps of adding the framework:
 
 ![img](http://www.mob.com/html/images/github/sharesdk-integrate-4.png)
