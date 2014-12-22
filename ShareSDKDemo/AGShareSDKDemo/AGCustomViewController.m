@@ -40,7 +40,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
     if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
     {
@@ -294,12 +293,12 @@
                           SHARE_TYPE_NUMBER(ShareTypeMail),
                           SHARE_TYPE_NUMBER(ShareTypeAirPrint),
                           SHARE_TYPE_NUMBER(ShareTypeCopy),
-                          [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuWeibo]
-                                                             icon:[ShareSDK getClientIconWithType:ShareTypeSohuWeibo]
-                                                     clickHandler:clickHandler],
-                          [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareType163Weibo]
-                                                             icon:[ShareSDK getClientIconWithType:ShareType163Weibo]
-                                                     clickHandler:clickHandler],
+//                          [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuWeibo]
+//                                                             icon:[ShareSDK getClientIconWithType:ShareTypeSohuWeibo]
+//                                                     clickHandler:clickHandler],
+//                          [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareType163Weibo]
+//                                                             icon:[ShareSDK getClientIconWithType:ShareType163Weibo]
+//                                                     clickHandler:clickHandler],
                           [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeDouBan]
                                                              icon:[ShareSDK getClientIconWithType:ShareTypeDouBan]
                                                      clickHandler:clickHandler],

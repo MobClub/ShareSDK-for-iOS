@@ -29,20 +29,32 @@
 
 - (id)initWithURL:(NSURL *)URL {
     self.webViewController = [[SVWebViewController alloc] initWithURL:URL];
-    if (self = [super initWithRootViewController:self.webViewController]) {
-        self.webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:webViewController action:@selector(doneButtonClicked:)];
+    if (self = [super initWithRootViewController:self.webViewController])
+    {
+        self.webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                                                target:webViewController
+                                                                                                                action:@selector(doneButtonClicked:)];
     }
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:NO];
     
     self.navigationBar.tintColor = self.toolbar.tintColor = self.barsTintColor;
 }
 
-- (void)setAvailableActions:(SVWebViewControllerAvailableActions)newAvailableActions {
+- (void)setAvailableActions:(SVWebViewControllerAvailableActions)newAvailableActions
+{
     self.webViewController.availableActions = newAvailableActions;
+}
+
+-(void)dealloc
+{
+    [webViewController release];
+    webViewController = nil;
+    [super dealloc];
 }
 
 @end

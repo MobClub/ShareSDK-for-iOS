@@ -182,8 +182,9 @@
         NSMutableDictionary *item = [_shareTypeArray objectAtIndex:index];
         if (sender.on)
         {
-                        //用户用户信息
-                        ShareType type = (ShareType)[[item objectForKey:@"type"] integerValue];
+            
+            //用户用户信息
+            ShareType type = (ShareType)[[item objectForKey:@"type"] integerValue];
             
             id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                                  allowCallback:YES
@@ -191,8 +192,8 @@
                                                                   viewDelegate:nil
                                                        authManagerViewDelegate:appDelegate.viewDelegate];
             
-                        //在授权页面中添加关注官方微博
-                        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+            //在授权页面中添加关注官方微博
+            [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                             SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                             [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -213,8 +214,8 @@
         }
         else
         {
-                        //取消授权
-                        [ShareSDK cancelAuthWithType:(ShareType)[[item objectForKey:@"type"] integerValue]];
+            //取消授权
+            [ShareSDK cancelAuthWithType:(ShareType)[[item objectForKey:@"type"] integerValue]];
             [_tableView reloadData];
         }
         

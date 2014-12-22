@@ -68,8 +68,8 @@
 
 "ShareType_1" = "新浪微博";
 "ShareType_2" = "腾讯微博";
-"ShareType_3" = "搜狐微博";
-"ShareType_4" = "网易微博";
+//"ShareType_3" = "搜狐微博";
+//"ShareType_4" = "网易微博";
 "ShareType_5" = "豆瓣";
 "ShareType_6" = "QQ空间";
 "ShareType_7" = "人人网";
@@ -157,8 +157,8 @@
 "AUTH_VIEW_CANCEL_BUTTON" = "取消";
 "AUTH_VIEW_TITLE_1" = "新浪微博";
 "AUTH_VIEW_TITLE_2" = "腾讯微博";
-"AUTH_VIEW_TITLE_3" = "搜狐微博";
-"AUTH_VIEW_TITLE_4" = "网易微博";
+//"AUTH_VIEW_TITLE_3" = "搜狐微博";
+//"AUTH_VIEW_TITLE_4" = "网易微博";
 "AUTH_VIEW_TITLE_5" = "豆瓣";
 "AUTH_VIEW_TITLE_6" = "QQ空间";
 "AUTH_VIEW_TITLE_7" = "人人网";

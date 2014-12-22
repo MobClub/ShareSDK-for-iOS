@@ -17,7 +17,7 @@
                                                    UIAlertViewDelegate>
 {
 @private
-    UITableView *_tableView;
+//    UITableView *_tableView;
     ShareType _followType;
     AGAppDelegate *_appDelegate;
     BOOL _ssoEnable;

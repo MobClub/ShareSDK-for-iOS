@@ -40,12 +40,54 @@
     return self;
 }
 
-- (void)dealloc
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [_window release];
-    [_viewController release];
-    [_viewDelegate release];
-    [super dealloc];
+    //1.初始化ShareSDK应用,字符串"4a88b2fb067c"换成你申请的ShareSDK应用的Appkey
+    [ShareSDK registerApp:@"4a88b2fb067c"];
+
+    //2. 初始化社交平台
+    //2.1 代码初始化社交平台的方法
+    [self initializePlat];
+    
+    //2.2 使用后台管理初始社交平台的方法
+//    [self initializePlatForTrusteeship];
+    
+    _interfaceOrientationMask = SSInterfaceOrientationMaskAll;
+    
+    //横屏设置
+    //        [ShareSDK setInterfaceOrientationMask:UIInterfaceOrientationMaskLandscape];
+    
+    //开启QQ空间网页授权开关
+    id<ISSQZoneApp> app =(id<ISSQZoneApp>)[ShareSDK getClientWithType:ShareTypeQQSpace];
+    [app setIsAllowWebAuthorize:YES];
+    
+    //开启Facebook网页授权开关
+    id<ISSFacebookApp> facebookApp =(id<ISSFacebookApp>)[ShareSDK getClientWithType:ShareTypeFacebook];
+    [facebookApp setIsAllowWebAuthorize:YES];
+    
+    //监听用户信息变更
+    [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
+                               target:self
+                               action:@selector(userInfoUpdateHandler:)];
+    
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    
+    //主视图
+    UIViewController *apiVC = [[[AGApiViewController alloc] init] autorelease];
+    apiVC.title = NSLocalizedString(@"TEXT_INTERFACE", @"接口");
+    UINavigationController *navApiVC = [[[UINavigationController alloc] initWithRootViewController:apiVC] autorelease];
+    
+    //左视图
+    AGLeftSideViewController *leftVC = [[[AGLeftSideViewController alloc] init] autorelease];
+    IIViewDeckController *vc = [[[IIViewDeckController alloc] initWithCenterViewController:navApiVC leftViewController:leftVC] autorelease];
+    vc.leftSize = self.window.width - (320 - 44.0);
+    self.viewController = vc;
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
+
+    //3.设置根视图控制器，如果没有使用storyboard一定要设置。
+    self.window.rootViewController = self.viewController;
+    [self.window makeKeyAndVisible];
+    return YES;
 }
 
 - (void)initializePlat
@@ -53,7 +95,7 @@
     /**
      连接新浪微博开放平台应用以使用相关功能，此应用需要引用SinaWeiboConnection.framework
      http://open.weibo.com上注册新浪微博开放平台应用，并将相关信息填写到以下字段
-    **/
+     **/
     [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
                                appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
                              redirectUri:@"http://www.sharesdk.cn"];
@@ -87,17 +129,16 @@
      连接微信应用以使用相关功能，此应用需要引用WeChatConnection.framework和微信官方SDK
      http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
      **/
-//    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885" wechatCls:[WXApi class]];
+    //    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885" wechatCls:[WXApi class]];
     [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
                            appSecret:@"64020361b8ec4c99936c0e3999a9f249"
                            wechatCls:[WXApi class]];
-    
     /**
      连接QQ应用以使用相关功能，此应用需要引用QQConnection.framework和QQApi.framework库
      http://mobile.qq.com/api/上注册应用，并将相关信息填写到以下字段
      **/
     //旧版中申请的AppId（如：QQxxxxxx类型），可以通过下面方法进行初始化
-        //    [ShareSDK connectQQWithAppId:@"QQ075BCD15" qqApiCls:[QQApi class]];
+    //    [ShareSDK connectQQWithAppId:@"QQ075BCD15" qqApiCls:[QQApi class]];
     
     [ShareSDK connectQQWithQZoneAppKey:@"100371282"
                      qqApiInterfaceCls:[QQApiInterface class]
@@ -155,28 +196,12 @@
     
     //连接邮件
     [ShareSDK connectMail];
-
+    
     //连接打印
     [ShareSDK connectAirPrint];
-
+    
     //连接拷贝
     [ShareSDK connectCopy];
-    
-    /**
-     连接搜狐微博应用以使用相关功能，此应用需要引用SohuWeiboConnection.framework
-     http://open.t.sohu.com上注册搜狐微博开放平台应用，并将相关信息填写到以下字段
-     **/
-    [ShareSDK connectSohuWeiboWithConsumerKey:@"q70QBQM9T0COxzYpGLj9"
-                               consumerSecret:@"XXYrx%QXbS!uA^m2$8TaD4T1HQoRPUH0gaG2BgBd"
-                                  redirectUri:@"http://www.sharesdk.cn"];
-    
-    /**
-     连接网易微博应用以使用相关功能，此应用需要引用T163WeiboConnection.framework
-     http://open.t.163.com上注册网易微博开放平台应用，并将相关信息填写到以下字段
-     **/
-//    [ShareSDK connect163WeiboWithAppKey:@"T5EI7BXe13vfyDuy"
-//                              appSecret:@"gZxwyNOvjFYpxwwlnuizHRRtBRZ2lV1j"
-//                            redirectUri:@"http://www.shareSDK.cn"];
     
     /**
      连接豆瓣应用以使用相关功能，此应用需要引用DouBanConnection.framework
@@ -253,7 +278,7 @@
     [ShareSDK connectTumblrWithConsumerKey:@"2QUXqO9fcgGdtGG1FcvML6ZunIQzAEL8xY6hIaxdJnDti2DYwM"
                             consumerSecret:@"3Rt0sPFj7u2g39mEVB3IBpOzKnM3JnTtxX2bao2JKk4VV1gtNo"
                                callbackUrl:@"http://sharesdk.cn"];
-
+    
     /**
      连接Dropbox应用以使用相关功能，此应用需要引用DropboxConnection.framework库
      https://www.dropbox.com/developers/apps上注册应用，并将相关信息填写以下字段。
@@ -313,90 +338,27 @@
     
     //导入QQ互联和QQ好友分享需要的外部库类型，如果不需要QQ空间SSO和QQ好友分享可以不调用此方法
     [ShareSDK importQQClass:[QQApiInterface class] tencentOAuthCls:[TencentOAuth class]];
-
+    
     //导入人人网需要的外部库类型,如果不需要人人网SSO可以不调用此方法
     [ShareSDK importRenRenClass:[RennClient class]];
-
+    
     //导入腾讯微博需要的外部库类型，如果不需要腾讯微博SSO可以不调用此方法
     [ShareSDK importTencentWeiboClass:[WeiboApi class]];
-
+    
     //导入微信需要的外部库类型，如果不需要微信分享可以不调用此方法
     [ShareSDK importWeChatClass:[WXApi class]];
-
+    
     //导入Google+需要的外部库类型，如果不需要Google＋分享可以不调用此方法
     [ShareSDK importGooglePlusClass:[GPPSignIn class]
-                     shareClass:[GPPShare class]];
-
+                         shareClass:[GPPShare class]];
+    
     //导入Pinterest需要的外部库类型，如果不需要Pinterest分享可以不调用此方法
     [ShareSDK importPinterestClass:[Pinterest class]];
-
+    
     //导入易信需要的外部库类型，如果不需要易信分享可以不调用此方法
     [ShareSDK importYiXinClass:[YXApi class]];
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    /**
-     注册SDK应用，此应用请到http://www.sharesdk.cn中进行注册申请。
-     此方法必须在启动时调用，否则会限制SDK的使用。
-     **/
-    [ShareSDK registerApp:@"iosv1101"];
-
-    //如果使用服务中配置的app信息，请把初始化代码改为下面的初始化方法。
-    //    [ShareSDK registerApp:@"iosv1101" useAppTrusteeship:YES];
-    [self initializePlat];
-    
-    //如果使用服务器中配置的app信息，请把初始化平台代码改为下面的方法
-    //    [self initializePlatForTrusteeship];
-    
-    _interfaceOrientationMask = SSInterfaceOrientationMaskAll;
-    
-    //横屏设置
-//        [ShareSDK setInterfaceOrientationMask:UIInterfaceOrientationMaskLandscape];
-    
-    //开启QQ空间网页授权开关
-//    id<ISSQZoneApp> app =(id<ISSQZoneApp>)[ShareSDK getClientWithType:ShareTypeQQSpace];
-//    [app setIsAllowWebAuthorize:YES];
-    
-    //开启Facebook网页授权开关
-    id<ISSFacebookApp> facebookApp =(id<ISSFacebookApp>)[ShareSDK getClientWithType:ShareTypeFacebook];
-    [facebookApp setIsAllowWebAuthorize:YES];
-
-    //监听用户信息变更
-    [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
-                           target:self
-                           action:@selector(userInfoUpdateHandler:)];
-    
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-
-    //主视图
-    UIViewController *apiVC = [[[AGApiViewController alloc] init] autorelease];
-    apiVC.title = NSLocalizedString(@"TEXT_INTERFACE", @"接口");
-    UINavigationController *navApiVC = [[[UINavigationController alloc] initWithRootViewController:apiVC] autorelease];
-    
-    //左视图
-    AGLeftSideViewController *leftVC = [[[AGLeftSideViewController alloc] init] autorelease];
-    IIViewDeckController *vc = [[[IIViewDeckController alloc] initWithCenterViewController:navApiVC leftViewController:leftVC] autorelease];
-    vc.leftSize = self.window.width - (320 - 44.0);
-    self.viewController = vc;
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
-    
-    self.window.rootViewController = self.viewController;
-    [self.window makeKeyAndVisible];
-    return YES;
-}
-
-- (void)application:(UIApplication *)application willChangeStatusBarOrientation:(UIInterfaceOrientation)newStatusBarOrientation duration:(NSTimeInterval)duration
-{
-    if (UIInterfaceOrientationIsLandscape(newStatusBarOrientation))
-    {
-        self.viewController.leftSize = self.window.height - (320 - 44.0);
-    }
-    else
-    {
-        self.viewController.leftSize = self.window.width - (320 - 44.0);
-    }
-}
 
 - (BOOL)application:(UIApplication *)application
       handleOpenURL:(NSURL *)url
@@ -416,6 +378,28 @@
                         wxDelegate:self];
 }
 
+
+- (void)dealloc
+{
+    [_window release];
+    [_viewController release];
+    [_viewDelegate release];
+    [super dealloc];
+}
+
+
+- (void)application:(UIApplication *)application willChangeStatusBarOrientation:(UIInterfaceOrientation)newStatusBarOrientation duration:(NSTimeInterval)duration
+{
+    if (UIInterfaceOrientationIsLandscape(newStatusBarOrientation))
+    {
+        self.viewController.leftSize = self.window.height - (320 - 44.0);
+    }
+    else
+    {
+        self.viewController.leftSize = self.window.width - (320 - 44.0);
+    }
+}
+
 - (void)userInfoUpdateHandler:(NSNotification *)notif
 {
     NSMutableArray *authList = [NSMutableArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()]];
@@ -431,9 +415,6 @@
         case ShareTypeSinaWeibo:
             platName = NSLocalizedString(@"TEXT_SINA_WEIBO", @"新浪微博");
             break;
-//        case ShareType163Weibo:
-//            platName = NSLocalizedString(@"TEXT_NETEASE_WEIBO", @"网易微博");
-//            break;
         case ShareTypeDouBan:
             platName = NSLocalizedString(@"TEXT_DOUBAN", @"豆瓣");
             break;
@@ -448,9 +429,6 @@
             break;
         case ShareTypeRenren:
             platName = NSLocalizedString(@"TEXT_RENREN", @"人人网");
-            break;
-        case ShareTypeSohuWeibo:
-            platName = NSLocalizedString(@"TEXT_SOHO_WEIBO", @"搜狐微博");
             break;
         case ShareTypeTencentWeibo:
             platName = NSLocalizedString(@"TEXT_TENCENT_WEIBO", @"腾讯微博");
@@ -512,13 +490,9 @@
 #pragma mark - WXApiDelegate
 
 -(void) onReq:(BaseReq*)req
-{
-    
-}
+{}
 
 -(void) onResp:(BaseResp*)resp
-{
-    
-}
+{}
 
 @end

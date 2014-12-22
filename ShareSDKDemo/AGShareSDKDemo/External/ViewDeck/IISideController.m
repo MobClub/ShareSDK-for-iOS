@@ -39,12 +39,14 @@
 
 @implementation IISideController 
 
-+ (IISideController*)autoConstrainedSideControllerWithViewController:(UIViewController*)controller {
-    return [[IISideController alloc] initWithViewController:controller];
++ (IISideController*)autoConstrainedSideControllerWithViewController:(UIViewController*)controller
+{
+    return [[[IISideController alloc] initWithViewController:controller] autorelease];
 }
 
-+ (IISideController*)sideControllerWithViewController:(UIViewController*)controller constrained:(CGFloat)constrainedSize {
-    return [[IISideController alloc] initWithViewController:controller constrained:constrainedSize];
++ (IISideController*)sideControllerWithViewController:(UIViewController*)controller constrained:(CGFloat)constrainedSize
+{
+    return [[[IISideController alloc] initWithViewController:controller constrained:constrainedSize] autorelease];
 }
 
 - (id)initWithViewController:(UIViewController*)controller constrained:(CGFloat)constrainedSize {
@@ -54,8 +56,10 @@
     return self;
 }
 
-- (id)initWithViewController:(UIViewController*)controller {
-    if ((self = [super initWithViewController:controller])) {
+- (id)initWithViewController:(UIViewController*)controller
+{
+    if ((self = [super initWithViewController:controller]))
+    {
         _constrainedSize = -1;
     }
     return self;

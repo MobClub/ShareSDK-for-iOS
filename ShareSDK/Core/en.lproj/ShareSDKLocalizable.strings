@@ -64,7 +64,7 @@
 
 "ShareType_1" = "Sina Weibo";
 "ShareType_2" = "Tencent Weibo";
-"ShareType_3" = "Soho Weibo";
+//"ShareType_3" = "Soho Weibo";
 //"ShareType_4" = "Netease weibo";
 "ShareType_5" = "Douban";
 "ShareType_6" = "QZone";
@@ -100,6 +100,8 @@
 "ShareType_41" = "Mingdao";
 "ShareType_42" = "Line";
 "ShareType_43" = "WhatsApp";
+"ShareType_44" = "KakaoTalk";
+"ShareType_45" = "KakaoStory";
 
 "ALTER_VIEW_TITLE" = "Message";
 "ALTER_VIEW_I_KNOWN_BUTTON" = "I know";

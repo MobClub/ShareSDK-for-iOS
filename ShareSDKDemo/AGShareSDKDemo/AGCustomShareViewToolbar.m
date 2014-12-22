@@ -61,18 +61,18 @@
                                   [NSNumber numberWithBool:NO],
                                   @"selected",
                                   nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  SHARE_TYPE_NUMBER(ShareType163Weibo),
-                                  @"type",
-                                  [NSNumber numberWithBool:NO],
-                                  @"selected",
-                                  nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  SHARE_TYPE_NUMBER(ShareTypeSohuWeibo),
-                                  @"type",
-                                  [NSNumber numberWithBool:NO],
-                                  @"selected",
-                                  nil],
+//                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
+//                                  SHARE_TYPE_NUMBER(ShareType163Weibo),
+//                                  @"type",
+//                                  [NSNumber numberWithBool:NO],
+//                                  @"selected",
+//                                  nil],
+//                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
+//                                  SHARE_TYPE_NUMBER(ShareTypeSohuWeibo),
+//                                  @"type",
+//                                  [NSNumber numberWithBool:NO],
+//                                  @"selected",
+//                                  nil],
                                  [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                   SHARE_TYPE_NUMBER(ShareTypeFacebook),
                                   @"type",

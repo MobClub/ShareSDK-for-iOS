@@ -229,6 +229,7 @@
 }
 
 - (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
     [self.wrappedController didReceiveMemoryWarning];
 }
 

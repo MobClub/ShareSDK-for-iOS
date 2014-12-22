@@ -7,15 +7,17 @@
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import <UIKit/UIKit.h>
+
+#import "RespForWeChatViewController.h"
+#import "IIViewDeckController.h"
+#import "AGViewDelegate.h"
+
 #import "WXApi.h"
 #import "WeiboApi.h"
 #import <TencentOpenAPI/QQApi.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "WeChatViewController.h"
-#import "RespForWeChatViewController.h"
-#import "IIViewDeckController.h"
-#import "AGViewDelegate.h"
 
 @class AGViewController;
 
@@ -30,9 +32,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) IIViewDeckController *viewController;
-
 @property (nonatomic,readonly) AGViewDelegate *viewDelegate;
-
 @property (nonatomic) SSInterfaceOrientationMask interfaceOrientationMask;
 
 @end

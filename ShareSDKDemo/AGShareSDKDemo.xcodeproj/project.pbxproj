@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		361F3E7B19F6023F00D9B8DA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 361F3E7A19F6023F00D9B8DA /* LaunchScreen.xib */; };
-		369AC1251A24930400CC2871 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369AC1241A24930400CC2871 /* Accounts.framework */; };
-		369AC1271A24930A00CC2871 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369AC1261A24930A00CC2871 /* Social.framework */; };
+		36E8E8571A1DEE0F00D446D2 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36E8E8561A1DEE0F00D446D2 /* Accounts.framework */; };
+		36E8E8591A1DEE1B00D446D2 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36E8E8581A1DEE1B00D446D2 /* Social.framework */; };
 		4100A5E216A3AE7E00813513 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4100A5BB16A3AE7E00813513 /* SVModalWebViewController.m */; };
 		4100A5E316A3AE7E00813513 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4100A5BC16A3AE7E00813513 /* SVWebViewController.bundle */; };
 		4100A5E416A3AE7E00813513 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4100A5BE16A3AE7E00813513 /* SVWebViewController.m */; };
@@ -92,7 +92,6 @@
 		4139C58D196FC8C300896192 /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4139C538196FC8C300896192 /* SinaWeiboConnection.framework */; };
 		4139C58E196FC8C300896192 /* SMSConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4139C539196FC8C300896192 /* SMSConnection.framework */; };
 		4139C58F196FC8C300896192 /* SohuConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4139C53A196FC8C300896192 /* SohuConnection.framework */; };
-		4139C590196FC8C300896192 /* SohuWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4139C53B196FC8C300896192 /* SohuWeiboConnection.framework */; };
 		4139C592196FC8C300896192 /* TencentWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4139C53D196FC8C300896192 /* TencentWeiboConnection.framework */; };
 		4139C593196FC8C300896192 /* TumblrConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4139C53E196FC8C300896192 /* TumblrConnection.framework */; };
 		4139C594196FC8C300896192 /* TwitterConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4139C53F196FC8C300896192 /* TwitterConnection.framework */; };
@@ -270,8 +269,9 @@
 
 /* Begin PBXFileReference section */
 		361F3E7A19F6023F00D9B8DA /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		369AC1241A24930400CC2871 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		369AC1261A24930A00CC2871 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		36E8E8561A1DEE0F00D446D2 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		36E8E8581A1DEE1B00D446D2 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		36E8E85B1A1DF33200D446D2 /* WeiboApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboApiObject.h; sourceTree = "<group>"; };
 		4100A5BA16A3AE7E00813513 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
 		4100A5BB16A3AE7E00813513 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
 		4100A5BC16A3AE7E00813513 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
@@ -373,7 +373,6 @@
 		4139C538196FC8C300896192 /* SinaWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnection.framework; sourceTree = "<group>"; };
 		4139C539196FC8C300896192 /* SMSConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMSConnection.framework; sourceTree = "<group>"; };
 		4139C53A196FC8C300896192 /* SohuConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SohuConnection.framework; sourceTree = "<group>"; };
-		4139C53B196FC8C300896192 /* SohuWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SohuWeiboConnection.framework; sourceTree = "<group>"; };
 		4139C53D196FC8C300896192 /* TencentWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentWeiboConnection.framework; sourceTree = "<group>"; };
 		4139C53E196FC8C300896192 /* TumblrConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TumblrConnection.framework; sourceTree = "<group>"; };
 		4139C53F196FC8C300896192 /* TwitterConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterConnection.framework; sourceTree = "<group>"; };
@@ -600,8 +599,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				369AC1271A24930A00CC2871 /* Social.framework in Frameworks */,
-				369AC1251A24930400CC2871 /* Accounts.framework in Frameworks */,
+				36E8E8591A1DEE1B00D446D2 /* Social.framework in Frameworks */,
+				36E8E8571A1DEE0F00D446D2 /* Accounts.framework in Frameworks */,
 				4139C584196FC8C300896192 /* LinkedInConnection.framework in Frameworks */,
 				4139C58D196FC8C300896192 /* SinaWeiboConnection.framework in Frameworks */,
 				4139C596196FC8C300896192 /* WeChatConnection.framework in Frameworks */,
@@ -671,7 +670,6 @@
 				41FE5E8F167CBAFF0096BFE9 /* UIKit.framework in Frameworks */,
 				41FE5E91167CBAFF0096BFE9 /* Foundation.framework in Frameworks */,
 				4139C580196FC8C300896192 /* InstapaperConnection.framework in Frameworks */,
-				4139C590196FC8C300896192 /* SohuWeiboConnection.framework in Frameworks */,
 				41FE5E93167CBAFF0096BFE9 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -679,14 +677,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36B720391A47CE22008D450D /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				4100A5A516A3AE7E00813513 /* External */,
+				417CF6381717B501008F2CF4 /* AGViewDelegate.h */,
+				417CF6391717B501008F2CF4 /* AGViewDelegate.m */,
+				414212E71862F7DE005E26F4 /* UIView+Common.h */,
+				414212E81862F7DE005E26F4 /* UIView+Common.m */,
+				410F7C1916A0368D00833885 /* AGWeiXinQQDemoController.h */,
+				410F7C1A16A0368D00833885 /* AGWeiXinQQDemoController.m */,
+				412A410D1695BDD700F22340 /* ShareSDKDemoMoreViewController.h */,
+				412A410E1695BDD700F22340 /* ShareSDKDemoMoreViewController.m */,
+				41081F1616B9544F0004743F /* AGLeftSideViewController.h */,
+				41081F1716B9544F0004743F /* AGLeftSideViewController.m */,
+				41081F3416B96CCE0004743F /* AGLeftSideTableCell.h */,
+				41081F3516B96CCE0004743F /* AGLeftSideTableCell.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
 		4100A5A516A3AE7E00813513 /* External */ = {
 			isa = PBXGroup;
 			children = (
 				413FF65217F0339000FD2131 /* ViewDeck */,
 				4100A5B916A3AE7E00813513 /* SVWebViewController */,
 			);
-			name = External;
-			path = AGShareSDKDemo/External;
+			path = External;
 			sourceTree = "<group>";
 		};
 		4100A5B916A3AE7E00813513 /* SVWebViewController */ = {
@@ -790,7 +807,7 @@
 			name = "Interface (接口)";
 			sourceTree = "<group>";
 		};
-		411A03C416D4ABC40069251F /* Authorized (授权) */ = {
+		411A03C416D4ABC40069251F /* Authorization (授权) */ = {
 			isa = PBXGroup;
 			children = (
 				41D4C68D168D56580093F94E /* AGShareCell.h */,
@@ -798,7 +815,7 @@
 				41D4C68A168D55CB0093F94E /* AGAuthViewController.h */,
 				41D4C68B168D55CB0093F94E /* AGAuthViewController.m */,
 			);
-			name = "Authorized (授权)";
+			name = "Authorization (授权)";
 			sourceTree = "<group>";
 		};
 		41284B8D16D6063100120FF5 /* QQ */ = {
@@ -889,7 +906,6 @@
 				4139C538196FC8C300896192 /* SinaWeiboConnection.framework */,
 				4139C539196FC8C300896192 /* SMSConnection.framework */,
 				4139C53A196FC8C300896192 /* SohuConnection.framework */,
-				4139C53B196FC8C300896192 /* SohuWeiboConnection.framework */,
 				4139C53D196FC8C300896192 /* TencentWeiboConnection.framework */,
 				4139C53E196FC8C300896192 /* TumblrConnection.framework */,
 				4139C53F196FC8C300896192 /* TwitterConnection.framework */,
@@ -986,6 +1002,7 @@
 			isa = PBXGroup;
 			children = (
 				4139C560196FC8C300896192 /* libTCWeiboSDK.a */,
+				36E8E85B1A1DF33200D446D2 /* WeiboApiObject.h */,
 				4139C561196FC8C300896192 /* WeiboApi.h */,
 			);
 			path = TencentWeiboSDK;
@@ -1115,13 +1132,13 @@
 			name = "Get User Information (获取用户信息)";
 			sourceTree = "<group>";
 		};
-		41D68AF4172777BD00516D1A /* Get Authorized Information (获取授权信息) */ = {
+		41D68AF4172777BD00516D1A /* Get Authorization Information (获取授权信息) */ = {
 			isa = PBXGroup;
 			children = (
 				41D68AF81727816700516D1A /* AGGetCredentialViewController.h */,
 				41D68AF91727816700516D1A /* AGGetCredentialViewController.m */,
 			);
-			name = "Get Authorized Information (获取授权信息)";
+			name = "Get Authorization Information (获取授权信息)";
 			sourceTree = "<group>";
 		};
 		41D68AFB1727934700516D1A /* Call API (调用API) */ = {
@@ -1216,7 +1233,6 @@
 			children = (
 				4139C521196FC8C200896192 /* ShareSDK */,
 				41FE5E94167CBAFF0096BFE9 /* AGShareSDKDemo */,
-				4100A5A516A3AE7E00813513 /* External */,
 				41FE5E8D167CBAFF0096BFE9 /* Frameworks */,
 				41FE5E8B167CBAFF0096BFE9 /* Products */,
 			);
@@ -1233,8 +1249,8 @@
 		41FE5E8D167CBAFF0096BFE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				369AC1261A24930A00CC2871 /* Social.framework */,
-				369AC1241A24930400CC2871 /* Accounts.framework */,
+				36E8E8581A1DEE1B00D446D2 /* Social.framework */,
+				36E8E8561A1DEE0F00D446D2 /* Accounts.framework */,
 				417D341218D145070043C52D /* AddressBook.framework */,
 				A8D5D44C1827EFE4007D55D0 /* CoreMotion.framework */,
 				A8D5D44A1827EFD4007D55D0 /* CoreLocation.framework */,
@@ -1260,31 +1276,20 @@
 		41FE5E94167CBAFF0096BFE9 /* AGShareSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
-				414212E71862F7DE005E26F4 /* UIView+Common.h */,
-				414212E81862F7DE005E26F4 /* UIView+Common.m */,
-				41D68AFB1727934700516D1A /* Call API (调用API) */,
-				41D68AF4172777BD00516D1A /* Get Authorized Information (获取授权信息) */,
-				41D68AF3172777A900516D1A /* Get User Information (获取用户信息) */,
-				416FB5F4171FD3EB0012D6B2 /* Sina Weibo (新浪微博) */,
 				411A03C316D4ABBE0069251F /* Interface (接口) */,
-				411A03C416D4ABC40069251F /* Authorized (授权) */,
+				411A03C416D4ABC40069251F /* Authorization (授权) */,
 				41284B9716D6063100120FF5 /* WeChat (微信) */,
 				41284B8D16D6063100120FF5 /* QQ */,
+				416FB5F4171FD3EB0012D6B2 /* Sina Weibo (新浪微博) */,
 				41284BAA16D6064900120FF5 /* Demo (演示) */,
 				41FA3C2716E58FA400826E69 /* Custom Share View (自定义分享界面) */,
-				410F7C1916A0368D00833885 /* AGWeiXinQQDemoController.h */,
-				410F7C1A16A0368D00833885 /* AGWeiXinQQDemoController.m */,
-				412A410D1695BDD700F22340 /* ShareSDKDemoMoreViewController.h */,
-				412A410E1695BDD700F22340 /* ShareSDKDemoMoreViewController.m */,
-				41081F1616B9544F0004743F /* AGLeftSideViewController.h */,
-				41081F1716B9544F0004743F /* AGLeftSideViewController.m */,
-				41081F3416B96CCE0004743F /* AGLeftSideTableCell.h */,
-				41081F3516B96CCE0004743F /* AGLeftSideTableCell.m */,
+				41D68AF3172777A900516D1A /* Get User Information (获取用户信息) */,
+				41D68AF4172777BD00516D1A /* Get Authorization Information (获取授权信息) */,
+				41D68AFB1727934700516D1A /* Call API (调用API) */,
+				36B720391A47CE22008D450D /* Other */,
 				41FE5E9D167CBAFF0096BFE9 /* AGAppDelegate.h */,
 				41FE5E9E167CBAFF0096BFE9 /* AGAppDelegate.m */,
 				41FE5E95167CBAFF0096BFE9 /* Supporting Files */,
-				417CF6381717B501008F2CF4 /* AGViewDelegate.h */,
-				417CF6391717B501008F2CF4 /* AGViewDelegate.m */,
 			);
 			path = AGShareSDKDemo;
 			sourceTree = "<group>";
@@ -1335,6 +1340,11 @@
 				CLASSPREFIX = AG;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = vimfung;
+				TargetAttributes = {
+					41FE5E89167CBAFF0096BFE9 = {
+						DevelopmentTeam = Q87QUX3533;
+					};
+				};
 			};
 			buildConfigurationList = 41FE5E84167CBAFF0096BFE9 /* Build configuration list for PBXProject "AGShareSDKDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1594,12 +1604,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv7s,
+					armv7,
+					arm64,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1612,7 +1627,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1624,18 +1639,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv7s,
+					armv7,
+					arm64,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1653,8 +1673,8 @@
 					arm64,
 				);
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../ShareSDK/Connection",
@@ -1680,8 +1700,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2B5E16F2-DA5D-4D17-9C87-9CD297ED8247";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2B5E16F2-DA5D-4D17-9C87-9CD297ED8247";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1695,8 +1715,8 @@
 					arm64,
 				);
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../ShareSDK/Connection",
@@ -1722,8 +1742,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2B5E16F2-DA5D-4D17-9C87-9CD297ED8247";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2B5E16F2-DA5D-4D17-9C87-9CD297ED8247";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

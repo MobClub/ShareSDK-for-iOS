@@ -210,16 +210,16 @@
             break;
     }
     
-    SSShareViewStyle  style = SSShareViewStyleDefault;
-    switch (_curShareViewStyle)
-    {
-        case 1:
-            style = SSShareViewStyleSimple;
-            break;
-        case 2:
-            style = SSShareViewStyleAppRecommend;
-            break;
-    }
+//    SSShareViewStyle  style = SSShareViewStyleDefault;
+//    switch (_curShareViewStyle)
+//    {
+//        case 1:
+//            style = SSShareViewStyleSimple;
+//            break;
+//        case 2:
+//            style = SSShareViewStyleAppRecommend;
+//            break;
+//    }
     
     NSInteger type = [[[_shareTypeArray objectAtIndex:sender.tag - 200] objectForKey:@"type"] integerValue];
     
