@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36B7203E1A47FFEB008D450D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36B7203D1A47FFEB008D450D /* Accounts.framework */; };
+		36B720401A47FFF1008D450D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36B7203F1A47FFF1008D450D /* Social.framework */; };
 		416E6C861867CC8C001AFF08 /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 416E6C371867CC8C001AFF08 /* SinaWeiboConnection.framework */; };
 		416E6C8B1867CC8C001AFF08 /* TencentWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 416E6C3C1867CC8C001AFF08 /* TencentWeiboConnection.framework */; };
 		416E6C921867CC8C001AFF08 /* AGCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 416E6C441867CC8C001AFF08 /* AGCommon.framework */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36B7203D1A47FFEB008D450D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		36B7203F1A47FFF1008D450D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		416E6C371867CC8C001AFF08 /* SinaWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnection.framework; sourceTree = "<group>"; };
 		416E6C3C1867CC8C001AFF08 /* TencentWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentWeiboConnection.framework; sourceTree = "<group>"; };
 		416E6C441867CC8C001AFF08 /* AGCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGCommon.framework; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36B720401A47FFF1008D450D /* Social.framework in Frameworks */,
+				36B7203E1A47FFEB008D450D /* Accounts.framework in Frameworks */,
 				416E6CB61867DBDC001AFF08 /* Comment.framework in Frameworks */,
 				A808348D18671916001D257D /* libz.1.2.5.dylib in Frameworks */,
 				A808348B1867190C001D257D /* MessageUI.framework in Frameworks */,
@@ -219,6 +225,8 @@
 		A80833E918671108001D257D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				36B7203F1A47FFF1008D450D /* Social.framework */,
+				36B7203D1A47FFEB008D450D /* Accounts.framework */,
 				A808348C18671916001D257D /* libz.1.2.5.dylib */,
 				A808348A1867190C001D257D /* MessageUI.framework */,
 				A808348818671904001D257D /* libicucore.dylib */,
@@ -446,7 +454,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -486,7 +495,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -509,10 +519,11 @@
 				ARCHS = (
 					armv7s,
 					armv7,
+					arm64,
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../Comment",
@@ -530,7 +541,7 @@
 					"$(SRCROOT)/../ShareSDK/Extend/TencentWeiboSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F0A5357E-5DB1-4584-A848-460E60763176";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -542,10 +553,11 @@
 				ARCHS = (
 					armv7s,
 					armv7,
+					arm64,
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../Comment",
@@ -563,7 +575,7 @@
 					"$(SRCROOT)/../ShareSDK/Extend/TencentWeiboSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F0A5357E-5DB1-4584-A848-460E60763176";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
