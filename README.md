@@ -34,7 +34,7 @@ necessary for the SSO Login Tencent weibo（iOS6.0+）
 1. Social.framework        
 2. Accounts.framework 
 
-necessary for the SSO Login of QZone or QQ Friend share*
+necessary for the SSO Login of QZone or QQ Friend share
 
 1. libstdc++.dylib        
 2. libsqlite3.dylib      
