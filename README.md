@@ -1,3 +1,7 @@
+ShareSDK is the most comprehensive social SDK in the world , which share easily with 40+ platforms , from around the world.This wiki mainly tells how to easily and fastly integrate ShareSDK.
+(中文文档：http://wiki.mob.com/%E5%BF%AB%E9%80%9F%E9%9B%86%E6%88%90%E6%8C%87%E5%8D%97/)
+
+
 # How to integrate ShareSDK easily
 
 ## Step 1：Import the ShareSDK to your project
