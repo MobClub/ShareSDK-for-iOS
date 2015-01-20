@@ -171,7 +171,6 @@ typedef void(^SSShareResultEvent) (SSResponseState state, id<ISSPlatformShareInf
 ///#end
 - (BOOL)isClientInstalled;
 
-
 ///#begin zh-cn
 /**
  *	@brief	获取是否支持一键分享功能标识,如果为YES则表示可以打开内容编辑界面并与其他平台一起进行分享。
@@ -187,6 +186,29 @@ typedef void(^SSShareResultEvent) (SSResponseState state, id<ISSPlatformShareInf
  */
 ///#end
 - (BOOL)isSupportOneKeyShare;
+
+/**
+ *  更新应用信息
+ *
+ *  @param appInfo 应用数据
+ *  @param isServerConfig 是否使用服务器配置信息
+ */
+///#begin zh-cn
+/**
+ *	@brief	更新应用信息
+ *
+ *	@param appInfo 应用数据
+ */
+///#end
+///#begin en
+/**
+ *	@brief	update the app infomation of social platform
+ *
+ *	@param appInfo the app infomation
+ *  @param isServerConfig  YES means use the server configuration
+ */
+///#end
+- (void)updateInfo:(NSDictionary *)appInfo isServerConfig:(BOOL)isServerConfig;
 
 ///#begin zh-cn
 /**

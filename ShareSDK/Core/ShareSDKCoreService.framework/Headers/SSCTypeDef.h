@@ -74,36 +74,48 @@ SSCShareSessionState;
 ///#end
 typedef enum
 {
-	SSCShareTypeSinaWeibo = 1, /**< 新浪微博 */
-	SSCShareTypeTencentWeibo = 2, /**< 腾讯微博 */
-	SSCShareTypeSohuWeibo = 3, /**< 搜狐微博 */
-	SSCShareType163Weibo = 4, /**< 网易微博 */
-	SSCShareTypeDouBan = 5, /**< 豆瓣社区 */
-	SSCShareTypeQQSpace = 6, /**< QQ空间 */
-	SSCShareTypeRenren = 7, /**< 人人网 */
-	SSCShareTypeKaixin = 8, /**< 开心网 */
-	SSCShareTypePengyou = 9, /**< 朋友网 */
-	SSCShareTypeFacebook = 10, /**< Facebook */
-	SSCShareTypeTwitter = 11, /**< Twitter */
-	SSCShareTypeEvernote = 12, /**< 印象笔记 */
-	SSCShareTypeFoursquare = 13, /**< Foursquare */
-	SSCShareTypeGooglePlus = 14, /**< Google＋ */
-	SSCShareTypeInstagram = 15, /**< Instagram */
-	SSCShareTypeLinkedIn = 16, /**< LinkedIn */
-	SSCShareTypeTumbir = 17, /**< Tumbir */
-    SSCShareTypeMail = 18, /**< 邮件分享 */
-	SSCShareTypeSMS = 19, /**< 短信分享 */
-	SSCShareTypeAirPrint = 20, /**< 打印 */
-	SSCShareTypeCopy = 21, /**< 拷贝 */
-    SSCShareTypeWeixiSession = 22, /**< 微信好友 */
+	SSCShareTypeSinaWeibo = 1,      /**< 新浪微博 */
+	SSCShareTypeTencentWeibo = 2,   /**< 腾讯微博 */
+//	SSCShareTypeSohuWeibo = 3,      /**< 搜狐微博 */
+//	SSCShareType163Weibo = 4,       /**< 网易微博 (v2.10.2开始不再支持网易微博平台)*/
+	SSCShareTypeDouBan = 5,         /**< 豆瓣社区 */
+	SSCShareTypeQQSpace = 6,        /**< QQ空间 */
+	SSCShareTypeRenren = 7,         /**< 人人网 */
+	SSCShareTypeKaixin = 8,         /**< 开心网 */
+	SSCShareTypePengyou = 9,        /**< 朋友网 */
+	SSCShareTypeFacebook = 10,      /**< Facebook */
+	SSCShareTypeTwitter = 11,       /**< Twitter */
+	SSCShareTypeEvernote = 12,      /**< 印象笔记 */
+	SSCShareTypeFoursquare = 13,    /**< Foursquare */
+	SSCShareTypeGooglePlus = 14,    /**< Google＋ */
+	SSCShareTypeInstagram = 15,     /**< Instagram */
+	SSCShareTypeLinkedIn = 16,      /**< LinkedIn */
+	SSCShareTypeTumbir = 17,        /**< Tumbir */
+    SSCShareTypeMail = 18,          /**< 邮件分享 */
+	SSCShareTypeSMS = 19,           /**< 短信分享 */
+	SSCShareTypeAirPrint = 20,      /**< 打印 */
+	SSCShareTypeCopy = 21,          /**< 拷贝 */
+    SSCShareTypeWeixiSession = 22,  /**< 微信好友 */
 	SSCShareTypeWeixiTimeline = 23, /**< 微信朋友圈 */
-    SSCShareTypeQQ = 24, /**< QQ */
-    SSCShareTypeInstapaper = 25, /**< Instapaper */
-    SSCShareTypePocket = 26, /**< Pocket */
-    SSCShareTypeYouDaoNote = 27,     /**< 有道云笔记 */
+    SSCShareTypeQQ = 24,            /**< QQ */
+    SSCShareTypeInstapaper = 25,    /**< Instapaper */
+    SSCShareTypePocket = 26,        /**< Pocket */
+    SSCShareTypeYouDaoNote = 27,    /**< 有道云笔记 */
     SSCShareTypeSohuKan = 28,       /**< 搜狐随身看 */
     SSCShareTYpePinterest = 30,     /**< Pinterest */
-    SSCShareTypeAny = 99   /**< 任意平台 */
+    SSCShareTypeFlickr = 34,        /**< Flickr */
+    SSCShareTypeDropbox = 35,       /**< Dropbox */
+    SSCShareTypeVKontakte = 36,     /**< VKontakte */
+    SSCShareTypeWeixiFav = 37,      /**< 微信收藏 */
+    SSCShareTypeYiXinSession = 38,  /**< 易信好友 */
+    SSCShareTypeYiXinTimeline = 39, /**< 易信朋友圈 */
+    SSCShareTypeYiXinFav = 40,      /**< 易信收藏 */
+    SSCShareTypeMingDao = 41,       /**< 明道 */
+    SSCShareTypeLine = 42,          /**< Line */
+    SSCShareTypeWhatsApp = 43,      /**< Whats App */
+    SSCShareTypeKaKaoTalk = 44,     /**< KaKao Talk */
+    SSCShareTypeKaKaoStory = 45,    /**< KaKao Story */
+    SSCShareTypeAny = 99            /**< 任意平台 */
 }
 SSCShareType;
 

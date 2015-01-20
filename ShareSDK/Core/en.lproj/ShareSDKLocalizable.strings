@@ -64,7 +64,7 @@
 
 "ShareType_1" = "Sina Weibo";
 "ShareType_2" = "Tencent Weibo";
-//"ShareType_3" = "Soho Weibo";
+"ShareType_3" = "Soho Weibo";
 //"ShareType_4" = "Netease weibo";
 "ShareType_5" = "Douban";
 "ShareType_6" = "QZone";

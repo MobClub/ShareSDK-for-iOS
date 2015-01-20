@@ -239,23 +239,6 @@
     [button addTarget:self action:@selector(shareToTwitterClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
-//    top += button.height + VERTICAL_GAP;
-//    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-//    [button setTitle:NSLocalizedString(@"TEXT_SHARE_TO_NETEASE_WEIBO", @"分享到网易微博")
-//            forState:UIControlStateNormal];
-//    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
-//    [button addTarget:self action:@selector(shareTo163WeiboClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-//    [scrollView addSubview:button];
-    
-//    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-//    [button setTitle:NSLocalizedString(@"TEXT_SHARE_TO_SOHO_WEIBO", @"分享到搜狐微博")
-//            forState:UIControlStateNormal];
-//    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
-//    [button addTarget:self action:@selector(shareToSohuWeiboClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-//    [scrollView addSubview:button];
-    
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
@@ -494,6 +477,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_CELL_ID];
+    
     if (cell == nil)
     {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TABLE_CELL_ID] autorelease];
@@ -529,7 +513,7 @@
                                                        destructiveButtonTitle:nil
                                                             otherButtonTitles:NSLocalizedString(@"TEXT_SINA_WEIBO", @"新浪微博"),
                                           NSLocalizedString(@"TEXT_TENCENT_WEIBO", @"腾讯微博"),
-                                          NSLocalizedString(@"TEXT_SOHO_WEIBO", @"搜狐微博"),
+//                                          NSLocalizedString(@"TEXT_SOHO_WEIBO", @"搜狐微博"),
 //                                          NSLocalizedString(@"TEXT_NETEASE_WEIBO", @"网易微博"),
                                           NSLocalizedString(@"TEXT_DOUBAN", @"豆瓣社区"),
                                           NSLocalizedString(@"TEXT_QZONE", @"QQ空间"),
@@ -812,7 +796,7 @@
                                        bcc:nil];
     
     //定制短信信息
-    [publishContent addSMSUnitWithContent:@"Hello SMS"];
+    [publishContent addSMSUnitWithContent:@"Hello SMS，ShareSDK github 网址 https://github.com/ShareSDKPlatform/ShareSDK-for-iOS"];
     
     //定制有道云笔记信息
     [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE

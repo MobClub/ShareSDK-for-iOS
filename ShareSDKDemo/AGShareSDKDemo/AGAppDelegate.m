@@ -42,8 +42,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //1.初始化ShareSDK应用,字符串"4a88b2fb067c"换成你申请的ShareSDK应用的Appkey
-    [ShareSDK registerApp:@"4a88b2fb067c"];
+    //1.初始化ShareSDK应用,字符串"5559f92aa230"换成http://www.mob.com/后台申请的ShareSDK应用的Appkey
+    [ShareSDK registerApp:@"5559f92aa230"];
 
     //2. 初始化社交平台
     //2.1 代码初始化社交平台的方法
@@ -52,43 +52,48 @@
     //2.2 使用后台管理初始社交平台的方法
 //    [self initializePlatForTrusteeship];
     
+//==============================================optional===========================================================//
     _interfaceOrientationMask = SSInterfaceOrientationMaskAll;
-    
-    //横屏设置
+    //横屏设置(optional)
     //        [ShareSDK setInterfaceOrientationMask:UIInterfaceOrientationMaskLandscape];
     
-    //开启QQ空间网页授权开关
+    //开启QQ空间网页授权开关(optional)
     id<ISSQZoneApp> app =(id<ISSQZoneApp>)[ShareSDK getClientWithType:ShareTypeQQSpace];
     [app setIsAllowWebAuthorize:YES];
     
-    //开启Facebook网页授权开关
+    //开启Facebook网页授权开关(optional)
     id<ISSFacebookApp> facebookApp =(id<ISSFacebookApp>)[ShareSDK getClientWithType:ShareTypeFacebook];
     [facebookApp setIsAllowWebAuthorize:YES];
     
-    //监听用户信息变更
+    //监听用户信息变更(optional)
     [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
                                target:self
                                action:@selector(userInfoUpdateHandler:)];
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
-    //主视图
+    //主视图(optional)
     UIViewController *apiVC = [[[AGApiViewController alloc] init] autorelease];
     apiVC.title = NSLocalizedString(@"TEXT_INTERFACE", @"接口");
-    UINavigationController *navApiVC = [[[UINavigationController alloc] initWithRootViewController:apiVC] autorelease];
+    UINavigationController *navApiVC = [
+                                        
+                                        
+                                        [[UINavigationController alloc] initWithRootViewController:apiVC] autorelease];
     
-    //左视图
+    //左视图(optional)
     AGLeftSideViewController *leftVC = [[[AGLeftSideViewController alloc] init] autorelease];
     IIViewDeckController *vc = [[[IIViewDeckController alloc] initWithCenterViewController:navApiVC leftViewController:leftVC] autorelease];
     vc.leftSize = self.window.width - (320 - 44.0);
     self.viewController = vc;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
+//==============================================optional===========================================================//
 
     //3.设置根视图控制器，如果没有使用storyboard一定要设置。
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
 }
+
 
 - (void)initializePlat
 {
@@ -143,7 +148,6 @@
     [ShareSDK connectQQWithQZoneAppKey:@"100371282"
                      qqApiInterfaceCls:[QQApiInterface class]
                        tencentOAuthCls:[TencentOAuth class]];
-    
     
     /**
      连接Facebook应用以使用相关功能，此应用需要引用FacebookConnection.framework
@@ -359,7 +363,7 @@
     [ShareSDK importYiXinClass:[YXApi class]];
 }
 
-
+#pragma mark - 如果使用SSO（可以简单理解成客户端授权），以下方法是必要的
 - (BOOL)application:(UIApplication *)application
       handleOpenURL:(NSURL *)url
 {
@@ -367,6 +371,7 @@
                         wxDelegate:self];
 }
 
+//iOS 4.2+
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
@@ -379,6 +384,16 @@
 }
 
 
+#pragma mark - WXApiDelegate(optional)
+
+-(void) onReq:(BaseReq*)req
+{}
+
+-(void) onResp:(BaseResp*)resp
+{}
+
+
+#pragma mark - other(optional)
 - (void)dealloc
 {
     [_window release];
@@ -386,7 +401,6 @@
     [_viewDelegate release];
     [super dealloc];
 }
-
 
 - (void)application:(UIApplication *)application willChangeStatusBarOrientation:(UIInterfaceOrientation)newStatusBarOrientation duration:(NSTimeInterval)duration
 {
@@ -486,13 +500,5 @@
 {
     return self.interfaceOrientationMask;
 }
-
-#pragma mark - WXApiDelegate
-
--(void) onReq:(BaseReq*)req
-{}
-
--(void) onResp:(BaseResp*)resp
-{}
 
 @end

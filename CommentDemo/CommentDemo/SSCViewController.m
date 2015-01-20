@@ -48,8 +48,8 @@
     [setOtherUserButton addTarget:self action:@selector(setOtherUserButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:setOtherUserButton];
     
-        //显示工具栏
-        [self showCommentToolbarWithContentId:@"123456" title:@"文章标题"];
+    //显示工具栏
+    [self showCommentToolbarWithContentId:@"123456" title:@"文章标题"];
 }
 
 #pragma mark - Private

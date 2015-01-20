@@ -46,6 +46,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>wx4868b35061f87885</string>
 				<string>wb568898243</string>
 				<string>wb801307650</string>
 			</array>

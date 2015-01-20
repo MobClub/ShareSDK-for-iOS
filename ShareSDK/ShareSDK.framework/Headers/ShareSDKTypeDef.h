@@ -77,6 +77,7 @@ typedef enum
     ShareTypeWhatsApp = 43,         /**< Whats App */
     ShareTypeKaKaoTalk = 44,        /**< KaKao Talk */
     ShareTypeKaKaoStory = 45,       /**< KaKao Story */
+    ShareTypeOther = -1,            /**< > */
     ShareTypeAny = 99               /**< 任意平台 */
 }
 ShareType;

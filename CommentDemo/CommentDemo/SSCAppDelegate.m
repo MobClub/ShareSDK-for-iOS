@@ -10,26 +10,31 @@
 #import <ShareSDK/ShareSDK.h>
 #import "SSCViewController.h"
 #import "WeiboApi.h"
+#import "WXApi.h"
 
 @implementation SSCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [ShareSDK registerApp:@"api20"];
+//    [ShareSDK registerApp:@"api20"];
+    [ShareSDK registerApp:@"4a88b2fb067c"];
     
-        //添加新浪微博应用
-        [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
-                               appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
-                             redirectUri:@"http://www.sharesdk.cn"];
-    
-        //添加腾讯微博应用
-        [ShareSDK connectTencentWeiboWithAppKey:@"801307650"
-                                  appSecret:@"ae36f4ee3946e1cbb98d6965b0b2ff5c"
-                                redirectUri:@"http://www.sharesdk.cn"
-                                   wbApiCls:[WeiboApi class]];
+    //添加新浪微博应用
+    [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
+                           appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+                         redirectUri:@"http://www.sharesdk.cn"];
+
+    //添加腾讯微博应用
+    [ShareSDK connectTencentWeiboWithAppKey:@"801307650"
+                              appSecret:@"ae36f4ee3946e1cbb98d6965b0b2ff5c"
+                            redirectUri:@"http://www.sharesdk.cn"
+                               wbApiCls:[WeiboApi class]];
+
+    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
+                           appSecret:@"64020361b8ec4c99936c0e3999a9f249"
+                           wechatCls:[WXApi class]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
     UIViewController *vc = [[SSCViewController alloc] init];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:vc];
     [self.window makeKeyAndVisible];

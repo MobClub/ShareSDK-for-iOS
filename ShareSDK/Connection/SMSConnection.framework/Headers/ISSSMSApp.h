@@ -78,4 +78,12 @@
           result:(SSShareResultEvent)result;
 
 
+- (void)sendText:(NSString *)text
+ withAttachments:(NSArray *)attachments
+       container:(UIViewController *)container
+    viewDelegate:(id<ISSViewDelegate>)viewDelegate
+          result:(SSShareResultEvent)result;
+
+
+
 @end

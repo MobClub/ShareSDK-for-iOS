@@ -19,7 +19,6 @@
  *	@brief	WhatsApp Connection
  */
 ///#end
-
 @interface LineConnection : NSObject<ISSPlatform>
 
 @end

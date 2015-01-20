@@ -67,6 +67,26 @@
 
 ///#begin zh-cn
 /**
+ *	@brief	是否和服务器通讯的开关请求
+ *
+ *	@param 	appKey 	应用标志
+ *
+ *	@return	void
+ */
+///#end
+///#begin en
+/**
+ *	@brief  whether connect with Server data
+ *
+ *	@param 	appKey 	App key.
+ *
+ *	@return	void
+ */
+///#end
++ (void)requestWhetherConnectServerUrlWithAppKey:(NSString *)appKey result:(void (^)(id<ISSCAccount> sender))aResult;
+
+///#begin zh-cn
+/**
  *	@brief	检查帐号是否已经登录
  *
  *	@param 	account 	登录帐号
@@ -339,6 +359,7 @@
  */
 ///#end
 + (UIImage *)imageNamed:(NSString *)name;
+
 
 
 @end

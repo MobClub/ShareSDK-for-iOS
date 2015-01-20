@@ -148,5 +148,24 @@
 - (void)load:(void(^)())completeHandler
 faultHandler:(void(^)(NSError *error))faultHandler;
 
+///#begin zh-cn
+/**
+ *	@brief	加载附件信息, 进行压缩处理(v2.10.3)
+ *
+ *  @param  completeHandler     加载完成事件处理
+ *  @param  faultHandler        加载失败事件处理
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Load attachment data. zip the file
+ *
+ *  @param  completeHandler     Completed handler.
+ *  @param  faultHandler        Fault handler.
+ */
+///#end
+- (void)loadCustomImages:(void (^)())completeHandler
+            faultHandler:(void (^)(NSError *))faultHandler;
+
 
 @end

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0610"
+   LastUpgradeVersion = "0510"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -17,20 +17,6 @@
                BlueprintIdentifier = "A80833E618671108001D257D"
                BuildableName = "CommentDemo.app"
                BlueprintName = "CommentDemo"
-               ReferencedContainer = "container:CommentDemo.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A808340A18671109001D257D"
-               BuildableName = "CommentDemoTests.xctest"
-               BlueprintName = "CommentDemoTests"
                ReferencedContainer = "container:CommentDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -68,7 +54,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">

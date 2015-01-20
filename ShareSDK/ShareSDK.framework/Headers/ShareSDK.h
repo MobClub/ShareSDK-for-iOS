@@ -381,29 +381,6 @@
              qqApiInterfaceCls:(Class)qqApiInterfaceCls
                tencentOAuthCls:(Class)tencentOAuthCls;
 
-///#begin zh-cn
-/**
- *	@brief	连接网易微博应用以使用相关功能，此应用需要引用T163WeiboConnection.framework
- *          http://open.t.163.com上注册网易微博开放平台应用，并将相关信息填写到以下字段
- *
- *	@param 	appKey 	应用Key
- *	@param 	appSecret 	应用密钥
- *	@param 	redirectUri 	回调地址
- */
-///#end
-///#begin en
-/**
- *	@brief	Initialize NetEase Weibo platform，This platform need import T163WeiboConnection.framework
- *          Go to http://open.t.163.com and register NetEase Weibo open platform app，Then fill in the relevant information into the field below
- *
- *	@param 	appKey 	App key.
- *	@param 	appSecret 	App secret.
- *	@param 	redirectUri 	Redirect url.
- */
-///#end
-+ (void)connect163WeiboWithAppKey:(NSString *)appKey
-                        appSecret:(NSString *)appSecret
-                      redirectUri:(NSString *)redirectUri;
 
 ///#begin zh-cn
 /**

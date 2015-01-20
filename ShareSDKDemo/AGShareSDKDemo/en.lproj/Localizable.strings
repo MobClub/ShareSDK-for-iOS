@@ -146,7 +146,7 @@
 "TEST_VERSION" = "version ver%@";
 "TEXT_FOLLOWED" = "Is concerned";
 "TEXT_OFFICAL_WEIBO" = "Official website";
-"TEXT_SHARE_CONTENT" = "ShareSDK is the most comprehensive Social SDK in the world , which share easily with 40+ platforms , from around the world.";
+"TEXT_SHARE_CONTENT" = "ShareSDK is the most comprehensive Social SDK in the world , which share easily with 40+ platforms , from around the world.https://github.com/ShareSDKPlatform/ShareSDK-for-iOS";
 "TEXT_FANS" = "Fans";
 "TEXT_DETAIL_INFO" = "Details";
 "TEXT_PERSONAL_HOMEPAGE" = "Personal Home Page";

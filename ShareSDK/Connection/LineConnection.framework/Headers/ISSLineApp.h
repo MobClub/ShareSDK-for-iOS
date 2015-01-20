@@ -78,7 +78,7 @@
  */
 ///#end
 - (void)sendImage:(id<ISSCAttachment>)image
-                result:(SSShareResultEvent)result;
+           result:(SSShareResultEvent)result;
 
 
 

@@ -30,7 +30,6 @@
 }
 
 @property (strong, nonatomic) UIWindow *window;
-
 @property (strong, nonatomic) IIViewDeckController *viewController;
 @property (nonatomic,readonly) AGViewDelegate *viewDelegate;
 @property (nonatomic) SSInterfaceOrientationMask interfaceOrientationMask;
