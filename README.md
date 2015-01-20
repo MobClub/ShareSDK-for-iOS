@@ -34,6 +34,10 @@ then you will see the following window, check the "Copy items into destination g
 
 **Optional Framework：**
 
+necessary for the SSO Login Sina weibo
+
+1. ImageIO.framework
+
 necessary for the SSO Login Tencent weibo（iOS6.0+）
 
 1. Social.framework        
