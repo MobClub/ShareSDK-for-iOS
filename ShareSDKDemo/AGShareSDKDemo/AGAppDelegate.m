@@ -55,7 +55,7 @@
 //==============================================optional===========================================================//
     _interfaceOrientationMask = SSInterfaceOrientationMaskAll;
     //横屏设置(optional)
-    //        [ShareSDK setInterfaceOrientationMask:UIInterfaceOrientationMaskLandscape];
+    [ShareSDK setInterfaceOrientationMask:UIInterfaceOrientationMaskAll];
     
     //开启QQ空间网页授权开关(optional)
     id<ISSQZoneApp> app =(id<ISSQZoneApp>)[ShareSDK getClientWithType:ShareTypeQQSpace];
