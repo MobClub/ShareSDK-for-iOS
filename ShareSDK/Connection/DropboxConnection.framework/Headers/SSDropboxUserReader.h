@@ -98,7 +98,6 @@
 ///#end
 @property (nonatomic,readonly) NSString *email;
 
-
 @property (nonatomic,readonly) NSString *referralLink;
 
 @property (nonatomic,readonly) SSDropboxQuotaInfoReader *quotaInfo;

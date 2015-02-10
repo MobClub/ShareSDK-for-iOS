@@ -65,6 +65,7 @@
 "ERROR_DESC_KAKAOTALK_SEND_FAIL" = "分享KakaoTalk内容失败";
 "ERROR_DESC_KAKAOSTORY_NOT_INSTALL" = "尚未安装KakaoStory客户端";
 "ERROR_DESC_KAKAOSTORY_SEND_FAIL" = "分享KakaoStory内容失败";
+"ERROR_CODE_SMS_SEND_ATTACHMENTS_ONLY_SUPPORTED_FOR_IOS7_PLUS" = "只有iOS7以上系统才能发送带附件的短信";
 
 "ShareType_1" = "新浪微博";
 "ShareType_2" = "腾讯微博";

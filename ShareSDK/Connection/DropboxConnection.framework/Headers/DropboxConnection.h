@@ -43,21 +43,24 @@
  *
  *	@param 	appKey 	应用标识
  *	@param 	appSecret 	应用密钥
+ *	@param 	redirectUri 	回调地址
  *
  *	@return	应用配置信息
  */
 ///#end
 ///#begin en
 /**
- *	@brief	Create app configuration information.
+ *	@brief	Create an app configuration information.
  *
  *	@param 	appKey 	App key.
  *	@param 	appSecret 	App secret.
+ *	@param 	redirectUri 	Redirect uri.
  *
  *	@return	App configuration information.
  */
 ///#end
 - (NSDictionary *)appInfoWithAppKey:(NSString *)appKey
-                          appSecret:(NSString *)appSecret;
+                          appSecret:(NSString *)appSecret
+                        redirectUri:(NSString *)redirectUri;
 
 @end

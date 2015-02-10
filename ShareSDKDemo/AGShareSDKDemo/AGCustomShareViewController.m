@@ -562,8 +562,8 @@
                                        
                                        if (result)
                                        {
-                                                                                      //分享内容
-                                                                                      [ShareSDK oneKeyShareContent:publishContent
+                                          //分享内容
+                                          [ShareSDK oneKeyShareContent:publishContent
                                                               shareList:selectedClients
                                                             authOptions:authOptions
                                                           statusBarTips:YES
@@ -587,8 +587,8 @@
     
     if (!needAuth)
     {
-                //分享内容
-                [ShareSDK oneKeyShareContent:publishContent
+        //分享内容
+        [ShareSDK oneKeyShareContent:publishContent
                            shareList:selectedClients
                          authOptions:authOptions
                        statusBarTips:YES

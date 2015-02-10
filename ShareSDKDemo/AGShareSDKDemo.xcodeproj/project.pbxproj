@@ -1698,7 +1698,6 @@
 					"$(SRCROOT)/../ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/../ShareSDK/Extend/WeChatSDK",
 					"$(SRCROOT)/../ShareSDK/Extend/YiXinSDK",
-					/Users/ljh/Desktop/ShareSDK2.10.5/release_cn/ShareSDK/Extend/SinaWeiboSDK,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1740,7 +1739,6 @@
 					"$(SRCROOT)/../ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/../ShareSDK/Extend/WeChatSDK",
 					"$(SRCROOT)/../ShareSDK/Extend/YiXinSDK",
-					/Users/ljh/Desktop/ShareSDK2.10.5/release_cn/ShareSDK/Extend/SinaWeiboSDK,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

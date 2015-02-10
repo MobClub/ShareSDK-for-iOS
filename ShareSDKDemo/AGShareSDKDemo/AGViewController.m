@@ -158,7 +158,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [self layoutView:self.interfaceOrientation];
 }
 
@@ -169,14 +168,14 @@
 
 -(BOOL)shouldAutorotate
 {
-        //iOS6下旋屏方法
-        return YES;
+    //iOS6下旋屏方法
+    return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-        //iOS6下旋屏方法
-        return SSInterfaceOrientationMaskAll;
+    //iOS6下旋屏方法
+    return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -349,8 +348,8 @@
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:_appDelegate.viewDelegate];
         
-                //在授权页面中添加关注官方微博
-                [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                         SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
@@ -449,8 +448,8 @@
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
         
-                //显示分享选择菜单
-                [ShareSDK showShareActionSheet:container
+        //显示分享选择菜单
+        [ShareSDK showShareActionSheet:container
                              shareList:shareList
                                content:contentObj
                          statusBarTips:YES

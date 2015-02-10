@@ -92,4 +92,11 @@
 ///#end
 - (void)view:(UIViewController *)viewController autorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation shareType:(ShareType)shareType;
 
+@optional
+
+/**
+ *  获取发送邮件响应码
+ */
+//- (void)getShareResponseState;
+
 @end

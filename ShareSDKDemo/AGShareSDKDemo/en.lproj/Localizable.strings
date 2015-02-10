@@ -22,7 +22,6 @@
 "TEXT_SHARE_TO_QZONE" = "Share to QZone";
 "TEXT_SHARE_TO_FACEBOOK" = "Share to Facebook";
 "TEXT_SHARE_TO_TWITTER" = "Share to Twitter";
-//"TEXT_SHARE_TO_NETEASE_WEIBO" = "Share to NetEase Weibo";
 "TEXT_SHARE_TO_SOHO_WEIBO" = "Share to Sohu Weibo";
 "TEXT_SHARE_TO_RENREN" = "Share to RenRen";
 "TEXT_SHARE_TO_KAIXIN" = "Share to KaiXin";
@@ -51,7 +50,6 @@
 "TEXT_SINA_WEIBO" = "Sina Weibo";
 "TEXT_TENCENT_WEIBO" = "Tencent Weibo";
 "TEXT_SOHO_WEIBO" = "Sohu Weibo";
-//"TEXT_NETEASE_WEIBO" = "NetEase Weibo";
 "TEXT_DOUBAN" = "DouBan";
 "TEXT_QZONE" = "QZone";
 "TEXT_RENREN" = "RenRen";

@@ -205,6 +205,9 @@
                                    result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
                                        if (result)
                                        {
+                                           
+                                           NSLog(@"userInfo%@",userInfo);
+                                           
                                            [item setObject:[userInfo nickname] forKey:@"username"];
                                            [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
                                        }

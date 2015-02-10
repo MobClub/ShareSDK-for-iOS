@@ -77,12 +77,39 @@
     viewDelegate:(id<ISSViewDelegate>)viewDelegate
           result:(SSShareResultEvent)result;
 
-
-- (void)sendText:(NSString *)text
- withAttachments:(NSArray *)attachments
-       container:(UIViewController *)container
-    viewDelegate:(id<ISSViewDelegate>)viewDelegate
-          result:(SSShareResultEvent)result;
+///#begin zh-cn
+/**
+ *	@brief	可发送带附件（如图片、音频、视频）短信息 （iOS7以上的系统才能发送带附件的短信）
+ *
+ *  @param subject      短信主题
+ *  @param text         文本
+ *  @param attachments  附件（如）
+ *  @param to           收信人
+ *  @param container    容器
+ *  @param viewDelegate 视图委托
+ *  @param result       返回回调
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Send text message.
+ *
+ *  @param subject      subject
+ *  @param text         the content of message
+ *  @param attachments  attachments(it can be image,radio and video)
+ *  @param to           the recipients array
+ *  @param container    Container
+ *  @param viewDelegate View delegate object
+ *  @param result       Result handler
+ */
+///#end
+- (void)sendSMSWithSubject:(NSString *)subject
+                   content:(NSString *)text
+               attachments:(NSArray *)attachments
+                        to:(NSArray *)to
+                 container:(UIViewController *)container
+              viewDelegate:(id<ISSViewDelegate>)viewDelegate
+                    result:(SSShareResultEvent)result;
 
 
 

@@ -16,14 +16,25 @@
 #import "RespViewController.h"
 #import "AGWeiXinQQDemoController.h"
 #import "AGLeftSideViewController.h"
-#import <RennSDK/RennSDK.h>
 
+//第三方平台的SDK头文件，根据需要的平台导入。
+//以下分别对应微信、新浪微博、腾讯微博、人人、易信
+#import "WXApi.h"
+#import "WeiboSDK.h"
+#import "WeiboApi.h"
+#import <RennSDK/RennSDK.h>
+#import "YXApi.h"
+//以下是腾讯QQ和QQ空间
+#import <TencentOpenAPI/QQApi.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+//以下分别是Google+、Pinterest
 #import <GoogleOpenSource/GoogleOpenSource.h>
 #import <GooglePlus/GooglePlus.h>
 #import <Pinterest/Pinterest.h>
-#import "YXApi.h"
-#import <QZoneConnection/ISSQZoneApp.h>
 
+//开启QQ和Facebook网页授权需要
+#import <QZoneConnection/ISSQZoneApp.h>
 #import <FacebookConnection/ISSFacebookApp.h>
 
 @implementation AGAppDelegate
@@ -43,7 +54,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //1.初始化ShareSDK应用,字符串"5559f92aa230"换成http://www.mob.com/后台申请的ShareSDK应用的Appkey
-    [ShareSDK registerApp:@"5559f92aa230"];
+    [ShareSDK registerApp:@"5577ff992136"];
 
     //2. 初始化社交平台
     //2.1 代码初始化社交平台的方法
@@ -54,7 +65,8 @@
     
 //==============================================optional===========================================================//
     _interfaceOrientationMask = SSInterfaceOrientationMaskAll;
-    //横屏设置(optional)
+    
+    //设置屏幕方向,默认是所有方向(optional)
     [ShareSDK setInterfaceOrientationMask:UIInterfaceOrientationMaskAll];
     
     //开启QQ空间网页授权开关(optional)
@@ -75,10 +87,7 @@
     //主视图(optional)
     UIViewController *apiVC = [[[AGApiViewController alloc] init] autorelease];
     apiVC.title = NSLocalizedString(@"TEXT_INTERFACE", @"接口");
-    UINavigationController *navApiVC = [
-                                        
-                                        
-                                        [[UINavigationController alloc] initWithRootViewController:apiVC] autorelease];
+    UINavigationController *navApiVC = [[[UINavigationController alloc] initWithRootViewController:apiVC] autorelease];
     
     //左视图(optional)
     AGLeftSideViewController *leftVC = [[[AGLeftSideViewController alloc] init] autorelease];
@@ -94,7 +103,6 @@
     return YES;
 }
 
-
 - (void)initializePlat
 {
     /**
@@ -104,6 +112,11 @@
     [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
                                appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
                              redirectUri:@"http://www.sharesdk.cn"];
+    
+    [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
+                               appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+                             redirectUri:@"http://www.sharesdk.cn"
+                             weiboSDKCls:[WeiboSDK class]];
     
     /**
      连接腾讯微博开放平台应用以使用相关功能，此应用需要引用TencentWeiboConnection.framework
@@ -287,8 +300,9 @@
      连接Dropbox应用以使用相关功能，此应用需要引用DropboxConnection.framework库
      https://www.dropbox.com/developers/apps上注册应用，并将相关信息填写以下字段。
      **/
-    [ShareSDK connectDropboxWithAppKey:@"7janx53ilz11gbs"
-                             appSecret:@"c1hpx5fz6tzkm32"];
+    [ShareSDK connectDropboxWithAppKey:@"i5vw2mex1zcgjcj"
+                             appSecret:@"3i9xifsgb4omr0s"
+                           callbackUrl:@"https://www.sharesdk.cn"];
     
     /**
      连接Instagram应用以使用相关功能，此应用需要引用InstagramConnection.framework库
@@ -339,7 +353,6 @@
  */
 - (void)initializePlatForTrusteeship
 {
-    
     //导入QQ互联和QQ好友分享需要的外部库类型，如果不需要QQ空间SSO和QQ好友分享可以不调用此方法
     [ShareSDK importQQClass:[QQApiInterface class] tencentOAuthCls:[TencentOAuth class]];
     
@@ -383,15 +396,12 @@
                         wxDelegate:self];
 }
 
-
 #pragma mark - WXApiDelegate(optional)
-
 -(void) onReq:(BaseReq*)req
 {}
 
 -(void) onResp:(BaseResp*)resp
 {}
-
 
 #pragma mark - other(optional)
 - (void)dealloc

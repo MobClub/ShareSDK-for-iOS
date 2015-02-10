@@ -61,6 +61,7 @@
 "ERROR_CODE_LINE_INVALID_UIPASTBOARD" = "Invalid UIPasteboard object";
 "ERROR_DESC_WHATSAPP_NOT_INSTALL" = "WhatsApp is not installed";
 "ERROR_DESC_WHATSAPP_SEND_FAIL" = "Failed to send";
+"ERROR_CODE_SMS_SEND_ATTACHMENTS_ONLY_SUPPORTED_FOR_IOS7_PLUS" = "Only iOS 7.0 and later can the system send message with attachments";
 
 "ShareType_1" = "Sina Weibo";
 "ShareType_2" = "Tencent Weibo";

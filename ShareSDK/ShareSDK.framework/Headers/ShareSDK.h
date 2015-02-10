@@ -39,7 +39,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	ShareSDK类，为整个SDK的顶层接口类，所有功能都由此类进行提供（包括分享、授权等等）
+ *	@brief	ShareSDK类，为整个SDK的顶层接口类，所有功能都由此类进行提供（包括分享、授权等等）v2.10.6
  */
 ///#end
 ///#begin en
@@ -897,7 +897,8 @@
  */
 ///#end
 + (void)connectDropboxWithAppKey:(NSString *)appKey
-                       appSecret:(NSString *)appSecret;
+                       appSecret:(NSString *)appSecret
+                     callbackUrl:(NSString *)callbackUrl;
 
 ///#begin zh-cn
 /**
@@ -1627,7 +1628,7 @@
  *
  *	@param 	content 	分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
  *	@param 	defaultContent 	默认分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝）
+ *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝、短信）
  *	@param 	title 	标题（QQ空间、人人、微信、QQ）
  *	@param 	url 	链接（QQ空间、人人、instapaper、微信、QQ）
  *	@param 	description 	主体内容（人人）
@@ -1642,7 +1643,7 @@
  *
  *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
  *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy）
+ *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy、SMS）
  *	@param 	title 	Title string.（QZone、RenRen、WeChat、QQ）
  *	@param 	url 	Url string.（QZone、RenRen、Instapaper、WeChat、QQ）
  *	@param 	description 	Description string（RenRen）
@@ -1667,7 +1668,7 @@
  *
  *	@param 	content 	分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
  *	@param 	defaultContent 	默认分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝）
+ *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝、短信）
  *	@param 	title 	标题（QQ空间、人人、微信、QQ）
  *	@param 	url 	链接（QQ空间、人人、instapaper、微信、QQ）
  *	@param 	description 	主体内容（人人）
@@ -1685,7 +1686,7 @@
  *
  *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
  *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy）
+ *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy、SMS）
  *	@param 	title 	Title string.（QZone、RenRen、WeChat、QQ）
  *	@param 	url 	Url string.（QZone、RenRen、Instapaper、WeChat、QQ）
  *	@param 	description 	Description string（RenRen）
@@ -1712,7 +1713,7 @@
  *
  *	@param 	content 	分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
  *	@param 	defaultContent 	默认分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝）
+ *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝、短信）
  *	@param 	title 	标题（QQ空间、人人、微信、QQ）
  *	@param 	url 	链接（QQ空间、人人、instapaper、微信、QQ）
  *	@param 	description 	主体内容（人人）
@@ -1731,7 +1732,7 @@
  *
  *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
  *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy）
+ *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy、SMS）
  *	@param 	title 	Title string.（QZone、RenRen、WeChat、QQ）
  *	@param 	url 	Url string.（QZone、RenRen、Instapaper、WeChat、QQ）
  *	@param 	description 	Description string（RenRen）

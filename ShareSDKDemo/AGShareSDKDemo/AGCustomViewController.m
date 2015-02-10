@@ -243,7 +243,11 @@
                                        bcc:nil];
     
         //定制短信分享内容
-        [publishContent addSMSUnitWithContent:@"Hello SMS!"];
+//        [publishContent addSMSUnitWithContent:@"Hello SMS!"];
+    [publishContent addSMSUnitWithContent:@"ShareSDK github download address https://github.com/ShareSDKPlatform/ShareSDK-for-iOS"
+                                  subject:nil
+                              attachments:@[[ShareSDKCoreService attachmentWithUrl:@"http://f.hiphotos.bdimg.com/album/w%3D2048/sign=df8f1fe50dd79123e0e09374990c5882/cf1b9d16fdfaaf51e6d1ce528d5494eef01f7a28.jpg"]]
+                                       to:@[@"15011991178"]];
     
         //定制有道云笔记分享内容
         [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE

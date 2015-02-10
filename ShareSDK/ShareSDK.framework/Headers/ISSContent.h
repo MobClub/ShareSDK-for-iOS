@@ -286,14 +286,14 @@
 
 ///#begin zh-cn
 /**
- *	@brief	获取分享图片（适用平台：新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ）
+ *	@brief	获取分享图片（适用平台：新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、短信）
  *
  *	@return	分享图片
  */
 ///#end
 ///#begin en
 /**
- *	@brief	Get share image.（uitable platform：Sina Weibo、Tencent Weibo、NetEase、Sohu、DouBan、Renren、KaiXin、Facebook、Twitter、Mai、Print、WeChat、QQ）
+ *	@brief	Get share image.（uitable platform：Sina Weibo、Tencent Weibo、NetEase、Sohu、DouBan、Renren、KaiXin、Facebook、Twitter、Mai、Print、WeChat、QQ、SMS）
  *
  *	@return	image attachment object.
  */
@@ -318,7 +318,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	获取分享图片数组（适用平台：腾讯微博）
+ *	@brief	获取分享图片数组（适用平台：腾讯微博、Twitter）
  *
  *	@return	分享图片
  */
@@ -334,7 +334,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	设置分享图片数组（适用平台：腾讯微博）
+ *	@brief	设置分享图片数组（适用平台：腾讯微博、Twitter）
  *
  *	@param 	image 	分享图片
  */
@@ -568,6 +568,9 @@
  *	@brief	添加短信内容单元，制定短信分享时的内容使用此参数，如果参数设置为INHERIT_VALUE则默认使用父级类型相关参数
  *
  *	@param 	content 	分享内容
+ *	@param 	subject 	分享主题 iOS (7.0 and later)
+ *	@param 	attachments 	分享附件（id<ISSActtachment>类型组成的数组）iOS (7.0 and later)
+ *	@param 	recipients 	收信人 iOS (7.0 and later)
  */
 ///#end
 ///#begin en
@@ -575,9 +578,17 @@
  *	@brief	add SMS content unit. When custom SMS share content use this method，If the parameter is set to INHERIT_VALUE. will using the parent parameter value.
  *
  *	@param 	content 	Share content string
+ *	@param 	subject 	subject iOS (7.0 and later)
+ *	@param 	attachments attachments（the type of array element is id<ISSActtachment>）iOS (7.0 and later)
+ *	@param 	recipients 	recipients iOS (7.0 and later)
  */
 ///#end
 - (void)addSMSUnitWithContent:(NSString *)content;
+
+- (void)addSMSUnitWithContent:(NSString *)content
+                      subject:(NSString *)subject
+                  attachments:(NSArray *)attachments
+                           to:(NSArray*)recipients;
 
 ///#begin zh-cn
 /**

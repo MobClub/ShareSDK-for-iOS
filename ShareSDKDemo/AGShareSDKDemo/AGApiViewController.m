@@ -796,7 +796,11 @@
                                        bcc:nil];
     
     //定制短信信息
-    [publishContent addSMSUnitWithContent:@"Hello SMS，ShareSDK github 网址 https://github.com/ShareSDKPlatform/ShareSDK-for-iOS"];
+//    [publishContent addSMSUnitWithContent:@"ShareSDK github download address https://github.com/ShareSDKPlatform/ShareSDK-for-iOS"];
+    [publishContent addSMSUnitWithContent:@"ShareSDK github download address https://github.com/ShareSDKPlatform/ShareSDK-for-iOS"
+                                  subject:nil
+                              attachments:@[[ShareSDKCoreService attachmentWithUrl:@"http://f.hiphotos.bdimg.com/album/w%3D2048/sign=df8f1fe50dd79123e0e09374990c5882/cf1b9d16fdfaaf51e6d1ce528d5494eef01f7a28.jpg"]]
+                                       to:@[@"10086"]];
     
     //定制有道云笔记信息
     [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
@@ -990,7 +994,11 @@
                                        bcc:nil];
     
     //定制短信信息
-    [publishContent addSMSUnitWithContent:@"Hello SMS"];
+//    [publishContent addSMSUnitWithContent:@"Hello SMS"];
+    [publishContent addSMSUnitWithContent:@"ShareSDK github download address https://github.com/ShareSDKPlatform/ShareSDK-for-iOS"
+                                  subject:nil
+                              attachments:@[[ShareSDKCoreService attachmentWithUrl:@"http://f.hiphotos.bdimg.com/album/w%3D2048/sign=df8f1fe50dd79123e0e09374990c5882/cf1b9d16fdfaaf51e6d1ce528d5494eef01f7a28.jpg"]]
+                                       to:@[@"15011991178"]];
     
     //定制有道云笔记信息
     [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
@@ -1186,7 +1194,11 @@
                                        bcc:nil];
     
     //定制短信信息
-    [publishContent addSMSUnitWithContent:@"Hello SMS"];
+//    [publishContent addSMSUnitWithContent:@"Hello SMS"];
+    [publishContent addSMSUnitWithContent:@"ShareSDK github download address https://github.com/ShareSDKPlatform/ShareSDK-for-iOS"
+                                  subject:nil
+                              attachments:@[[ShareSDKCoreService attachmentWithUrl:@"http://f.hiphotos.bdimg.com/album/w%3D2048/sign=df8f1fe50dd79123e0e09374990c5882/cf1b9d16fdfaaf51e6d1ce528d5494eef01f7a28.jpg"]]
+                                       to:@[@"15011991178"]];
     
     //定制有道云笔记信息
     [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
@@ -1343,7 +1355,11 @@
                                        bcc:nil];
     
     //定制短信信息
-    [publishContent addSMSUnitWithContent:@"Hello SMS"];
+//    [publishContent addSMSUnitWithContent:@"Hello SMS"];
+    [publishContent addSMSUnitWithContent:@"ShareSDK github download address https://github.com/ShareSDKPlatform/ShareSDK-for-iOS"
+                                  subject:nil
+                              attachments:@[[ShareSDKCoreService attachmentWithUrl:@"http://f.hiphotos.bdimg.com/album/w%3D2048/sign=df8f1fe50dd79123e0e09374990c5882/cf1b9d16fdfaaf51e6d1ce528d5494eef01f7a28.jpg"]]
+                                       to:@[@"15011991178"]];
     
     //定制有道云笔记信息
     [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
@@ -3835,7 +3851,11 @@
                                        bcc:nil];
     
         //定制短信信息
-        [publishContent addSMSUnitWithContent:@"Hello SMS"];
+//        [publishContent addSMSUnitWithContent:@"Hello SMS"];
+    [publishContent addSMSUnitWithContent:@"ShareSDK github download address https://github.com/ShareSDKPlatform/ShareSDK-for-iOS"
+                                  subject:nil
+                              attachments:@[[ShareSDKCoreService attachmentWithUrl:@"http://f.hiphotos.bdimg.com/album/w%3D2048/sign=df8f1fe50dd79123e0e09374990c5882/cf1b9d16fdfaaf51e6d1ce528d5494eef01f7a28.jpg"]]
+                                       to:@[@"15011991178"]];
     
         //定制有道云笔记信息
         [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE

@@ -7,18 +7,12 @@
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
 #import <UIKit/UIKit.h>
-
 #import "RespForWeChatViewController.h"
 #import "IIViewDeckController.h"
 #import "AGViewDelegate.h"
-
-#import "WXApi.h"
-#import "WeiboApi.h"
-#import <TencentOpenAPI/QQApi.h>
-#import <TencentOpenAPI/QQApiInterface.h>
-#import <TencentOpenAPI/TencentOAuth.h>
 #import "WeChatViewController.h"
 
+#import "WXApi.h"
 @class AGViewController;
 
 @interface AGAppDelegate : UIResponder <UIApplicationDelegate,
