@@ -121,7 +121,6 @@
     /**
      连接腾讯微博开放平台应用以使用相关功能，此应用需要引用TencentWeiboConnection.framework
      http://dev.t.qq.com上注册腾讯微博开放平台应用，并将相关信息填写到以下字段
-     
      如果需要实现SSO，需要导入libWeiboSDK.a，并引入WBApi.h，将WBApi类型传入接口
      **/
     [ShareSDK connectTencentWeiboWithAppKey:@"801307650"
@@ -135,7 +134,6 @@
     /**
      连接QQ空间应用以使用相关功能，此应用需要引用QZoneConnection.framework
      http://connect.qq.com/intro/login/上申请加入QQ登录，并将相关信息填写到以下字段
-     
      如果需要实现SSO，需要导入TencentOpenAPI.framework,并引入QQApiInterface.h和TencentOAuth.h，将QQApiInterface和TencentOAuth的类型传入接口
      **/
     [ShareSDK connectQZoneWithAppKey:@"100371282"
@@ -173,9 +171,9 @@
      连接Twitter应用以使用相关功能，此应用需要引用TwitterConnection.framework
      https://dev.twitter.com上注册应用，并将相关信息填写到以下字段
      **/
-    [ShareSDK connectTwitterWithConsumerKey:@"mnTGqtXk0TYMXYTN7qUxg"
-                             consumerSecret:@"ROkFqr8c3m1HXqS3rm3TJ0WkAJuwBOSaWhPbZ9Ojuc"
-                                redirectUri:@"http://www.sharesdk.cn"];
+    [ShareSDK connectTwitterWithConsumerKey:@"1dJMOpqHbtZMhuKwqC0jSKXOz"
+                             consumerSecret:@"PzUXUxEfIA8gBfEylxaDIpRg2zcpXmaw6UElD4pjinQmOke0KG"
+                                redirectUri:@"https://apps.twitter.com/app"];
     
     /**
      连接Google+应用以使用相关功能，此应用需要引用GooglePlusConnection.framework、GooglePlus.framework和GoogleOpenSource.framework库

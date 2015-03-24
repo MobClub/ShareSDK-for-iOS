@@ -39,7 +39,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	ShareSDK类，为整个SDK的顶层接口类，所有功能都由此类进行提供（包括分享、授权等等）v2.10.6
+ *	@brief	ShareSDK类，为整个SDK的顶层接口类，所有功能都由此类进行提供（包括分享、授权等等）
  */
 ///#end
 ///#begin en

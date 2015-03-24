@@ -27,8 +27,8 @@
     {
         if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
         {
-                        //改写导航栏标题样式
-                        UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+            //改写导航栏标题样式
+            UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
             label.backgroundColor = [UIColor clearColor];
             label.textColor = [UIColor whiteColor];
             label.font = [UIFont boldSystemFontOfSize:18];
@@ -75,7 +75,6 @@
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneNavigationBarBG.png"]];
     
-	// Do any additional setup after loading the view.
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.width, self.view.height)
                                               style:UITableViewStyleGrouped];
     _tableView.delegate = self;

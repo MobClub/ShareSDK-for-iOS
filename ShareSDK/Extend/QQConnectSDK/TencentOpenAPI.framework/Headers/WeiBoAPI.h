@@ -6,6 +6,8 @@
 //  Copyright (c) 2013年 Tencent. All rights reserved.
 //
 
+#ifndef QQ_OPEN_SDK_LITE
+
 #import <Foundation/Foundation.h>
 #import "sdkdef.h"
 
@@ -77,3 +79,5 @@
 @property (nonatomic, retain) TCRequiredImage param_pic;
 
 @end
+
+#endif

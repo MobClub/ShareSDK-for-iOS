@@ -9,6 +9,7 @@
 /** @file */
 
 #import <Foundation/Foundation.h>
+
 @class QQApiObject;
 @class QQApiMessage;
 @class QQApiAdItem;
@@ -23,8 +24,8 @@ typedef enum
     EQQAPIMESSAGECONTENTINVALID = 5,
     EQQAPIAPPNOTREGISTED = 6,
     EQQAPIAPPSHAREASYNC = 7,
+    EQQAPIQQNOTSUPPORTAPI_WITH_ERRORSHOW = 8,
     EQQAPISENDFAILD = -1,
-    
     //qzone分享不支持text类型分享
     EQQAPIQZONENOTSUPPORTTEXT = 10000,
     //qzone分享不支持image类型分享
@@ -105,6 +106,7 @@ typedef enum
      成功返回TRUE，否则返回FALSE
  */
 + (BOOL)openQQApp;
+
 @end
 
 
@@ -133,11 +135,14 @@ enum
     // Message from Plugin app to QZone,
     QQApiMessageTypeSendMessageToQQQZoneRequest = 0x07,
     
+    // Message from Plugin app to QQ GroupTribe
+    QQApiMessageTypeSendMessageToQQGroupTribeRequest = 0x08,
+    
 	QQApiMessageTypeReserved   = 0xF0
 };
 
 /**
- 新补充的 用来区分消息是发送给哪个平台（这个多余了 设计的有点问题）
+ 用来区分消息是发送给哪个平台
  */
 typedef enum
 {
@@ -145,6 +150,8 @@ typedef enum
     kShareMsgToQQ = 0x0,
     //分享到qzone结合版
     kShareMsgToQQQZone = 0x1,
+    //分享到群部落
+    kShareMsgToGroupTribe = 0x2,
 }QQShareType;
 
 typedef NSUInteger QQApiMessageType;
@@ -189,6 +196,9 @@ enum
 {
     kQQAPICtrlFlagQZoneShareOnStart = 0x01,
     kQQAPICtrlFlagQZoneShareForbid = 0x02,
+    kQQAPICtrlFlagQQShare = 0x04,
+    kQQAPICtrlFlagQQShareFavorites = 0x08, //收藏
+    kQQAPICtrlFlagQQShareDataline = 0x10,  //数据线
 };
 
 // QQApiObject
@@ -272,6 +282,7 @@ typedef enum QQApiURLTargetType{
 @interface QQApiExtendObject : QQApiObject
 @property(nonatomic,retain) NSData* data;///<具体数据内容，必填，最大5M字节
 @property(nonatomic,retain) NSData* previewImageData;///<预览图像，最大1M字节
+@property(nonatomic,retain) NSArray* imageDataArray;///图片数组(多图暂只支持分享到手机QQ收藏功能)
 
 /**
  初始化方法
@@ -281,6 +292,15 @@ typedef enum QQApiURLTargetType{
  @param description 此对象，分享的描述
  */
 - (id)initWithData:(NSData*)data previewImageData:(NSData*)previewImageData title:(NSString*)title description:(NSString*)description;
+
+/**
+ 初始化方法
+ @param data 数据内容
+ @param title 标题
+ @param description 此对象，分享的描述
+ @param imageDataArray 发送的多张图片队列
+ */
+- (id)initWithData:(NSData *)data previewImageData:(NSData*)previewImageData title:(NSString *)title description:(NSString *)description imageDataArray:(NSArray *)imageDataArray;
 
 /**
  helper方法获取一个autorelease的<code>QQApiExtendObject</code>对象
@@ -293,6 +313,18 @@ typedef enum QQApiURLTargetType{
  */
 + (id)objectWithData:(NSData*)data previewImageData:(NSData*)previewImageData title:(NSString*)title description:(NSString*)description;
 
+/**
+ helper方法获取一个autorelease的<code>QQApiExtendObject</code>对象
+ @param data 数据内容
+ @param previewImageData 用于预览的图片
+ @param title 标题
+ @param description 此对象，分享的描述
+ @param imageDataArray 发送的多张图片队列
+ @return
+ 一个自动释放的<code>QQApiExtendObject</code>实例
+ */
++ (id)objectWithData:(NSData*)data previewImageData:(NSData*)previewImageData title:(NSString*)title description:(NSString*)description imageDataArray:(NSArray*)imageDataArray;
+
 @end
 
 // QQApiImageObject
@@ -300,6 +332,35 @@ typedef enum QQApiURLTargetType{
      用于分享图片内容的对象，是一个指定为图片类型的<code>QQApiExtendObject</code>
  */
 @interface QQApiImageObject : QQApiExtendObject
+@end
+
+// QQApiGroupTribeImageObject
+/** @brief 群部落图片对象
+ 用于分享图片内容的对象，是一个指定为图片类型的 可以指定一些其他的附加数据<code>QQApiExtendObject</code>
+ */
+@interface QQApiGroupTribeImageObject : QQApiImageObject
+{
+    NSString *_bid;
+    NSString *_bname;
+}
+// 群部落id
+@property (nonatomic, retain)NSString* bid;
+
+// 群部落名称
+@property (nonatomic, retain)NSString* bname;
+
+@end
+
+
+//QQApiFileObject
+/** @brief 本地文件对象(暂只支持分享到手机QQ数据线功能)
+ 用于分享文件内容的对象，是一个指定为文件类型的<code>QQApiExtendObject</code>
+ */
+@interface QQApiFileObject : QQApiExtendObject
+{
+    NSString* _fileName;
+}
+@property(nonatomic, retain)NSString* fileName;
 @end
 
 // QQApiAudioObject
@@ -441,4 +502,31 @@ typedef enum QQApiURLTargetType{
 
 -(id)initWithUin:(NSString*)uin; ///<初始化方法
 +(id)objectWithUin:(NSString*)uin;///<工厂方法，获取一个QQApiWPAObject对象.
+@end
+
+// QQApiAddFriendObject
+/** \brief 添加好友
+ */
+@interface QQApiAddFriendObject : QQApiObject
+@property (nonatomic,retain)NSString* openID;
+@property (nonatomic,retain)NSString* subID;
+@property (nonatomic,retain)NSString* remark;
+
+-(id)initWithOpenID:(NSString*)openID; ///<初始化方法
++(id)objecWithOpenID:(NSString*)openID; ///<工厂方法，获取一个QQApiAddFriendObject对象.
+
+@end
+
+// QQApiGameConsortiumBindingGroupObject
+/** \brief 游戏公会绑定群
+ */
+@interface QQApiGameConsortiumBindingGroupObject : QQApiObject
+@property (nonatomic,retain)NSString* signature;
+@property (nonatomic,retain)NSString* unionid;
+@property (nonatomic,retain)NSString* zoneID;
+@property (nonatomic,retain)NSString* appDisplayName;
+
+-(id)initWithGameConsortium:(NSString*)signature unionid:(NSString*)unionid zoneID:(NSString*)zoneID appDisplayName:(NSString*)appDisplayName; ///<初始化方法
++(id)objectWithGameConsortium:(NSString*)signature unionid:(NSString*)unionid zoneID:(NSString*)zoneID appDisplayName:(NSString*)appDisplayName; ///<工厂方法，获取一个QQApiAddFriendObject对象.
+
 @end

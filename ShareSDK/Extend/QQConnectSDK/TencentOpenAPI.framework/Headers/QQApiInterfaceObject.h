@@ -118,7 +118,7 @@ enum QQApiInterfaceRespType
  \param extendInfo 扩展信息
  \return 新创建的SendMessageToQQResp应答实例
  */
-+(SendMessageToQQResp*) respWithResult:(NSString *)result errorDescription:(NSString *)errDesp extendInfo:(NSString*)extendInfo;
++ (SendMessageToQQResp *)respWithResult:(NSString *)result errorDescription:(NSString *)errDesp extendInfo:(NSString*)extendInfo;
 
 @end
 

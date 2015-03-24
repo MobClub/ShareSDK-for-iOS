@@ -1,2 +1,5 @@
 /* Localized versions of Info.plist keys */
 
+"Release to refresh status" = "放开刷新状态";
+"Pull down to refresh status" =  "下拉刷新";
+"Loading Status" = "加载中...";

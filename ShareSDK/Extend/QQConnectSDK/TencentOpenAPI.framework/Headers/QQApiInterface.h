@@ -61,6 +61,14 @@
 + (QQApiSendResultCode)SendReqToQZone:(QQBaseReq *)req;
 
 /**
+ 向手Q 群部落发起分享请求
+ \note H5分享只支持单张网络图片的传递
+ \param req 分享内容的请求
+ \return 请求发送结果码
+ */
++ (QQApiSendResultCode)SendReqToQQGroupTribe:(QQBaseReq *)req;
+
+/**
  向手Q发送应答消息
  \param resp 应答消息
  \return 应答发送结果码

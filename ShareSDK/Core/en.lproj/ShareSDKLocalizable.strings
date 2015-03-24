@@ -62,6 +62,9 @@
 "ERROR_DESC_WHATSAPP_NOT_INSTALL" = "WhatsApp is not installed";
 "ERROR_DESC_WHATSAPP_SEND_FAIL" = "Failed to send";
 "ERROR_CODE_SMS_SEND_ATTACHMENTS_ONLY_SUPPORTED_FOR_IOS7_PLUS" = "Only iOS 7.0 and later can the system send message with attachments";
+"ERROR_DESC_KAKAOTALK_NOT_INSTALL" = "KakaoTalk client is not installed";
+"ERROR_DESC_KAKAOSTORY_NOT_INSTALL" = "KakaoStory client is not installed";
+"ERROR_DESC_QQ_CLIENT_NOT_INSTALLED" = "QQ client is not installed";
 
 "ShareType_1" = "Sina Weibo";
 "ShareType_2" = "Tencent Weibo";
