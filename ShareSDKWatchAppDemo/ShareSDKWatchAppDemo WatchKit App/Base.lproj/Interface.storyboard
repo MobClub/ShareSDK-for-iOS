@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController">
+                    <items>
+                        <button width="1" alignment="left" title="Share" id="5fb-0y-Zep">
+                            <connections>
+                                <segue destination="h9S-ar-S0m" kind="modal" id="G9V-j5-H6N"/>
+                            </connections>
+                        </button>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Share List Interface Controller-->
+        <scene sceneID="DIp-Sq-dfd">
+            <objects>
+                <controller id="h9S-ar-S0m" customClass="ShareListInterfaceController">
+                    <items>
+                        <table alignment="left" id="FaI-tg-Jeq">
+                            <items>
+                                <tableRow identifier="platformRowID" id="VDs-ba-BFq" customClass="PlatformRow">
+                                    <group key="rootItem" width="1" alignment="left" id="eC1-Jw-VDZ">
+                                        <items>
+                                            <group width="32" height="32" alignment="left" verticalAlignment="center" backgroundImage="sns_icon_01" radius="16" id="j8y-Xk-J5T"/>
+                                            <label width="94" height="32" alignment="left" verticalAlignment="center" text="Label" textAlignment="left" id="uko-yr-hTj"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="platformIcon" destination="j8y-Xk-J5T" id="xor-9m-0UO"/>
+                                        <outlet property="platfromName" destination="uko-yr-hTj" id="DP4-JZ-5nA"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="FaI-tg-Jeq" id="6kR-Zb-qzd"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="503" y="345"/>
+        </scene>
+        <!--分享结果-->
+        <scene sceneID="iZF-LZ-6n1">
+            <objects>
+                <controller identifier="ResultInterfaceController" title="分享结果" id="uLu-ze-3JV" customClass="ResultInterfaceController">
+                    <items>
+                        <label width="1" height="111" alignment="left" text="没有登录信息，请您在手机端登陆。" textAlignment="center" numberOfLines="0" id="kyS-Su-qR4"/>
+                    </items>
+                    <connections>
+                        <outlet property="resultLabel" destination="kyS-Su-qR4" id="Rb5-T6-Kjy"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="704" y="471"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+    </scenes>
+</document>
