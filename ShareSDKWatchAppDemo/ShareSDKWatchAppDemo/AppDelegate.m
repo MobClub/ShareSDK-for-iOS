@@ -12,10 +12,9 @@
 #import <ShareSDK/ShareSDK.h>
 
 //第三方平台的SDK头文件，根据需要的平台导入。
-//以下分别对应微信、新浪微博、腾讯微博、人人、易信
+//以下分别对应微信、新浪微博、人人、易信
 #import "WXApi.h"
 #import "WeiboSDK.h"
-#import "WeiboApi.h"
 #import <RennSDK/RennSDK.h>
 #import "YXApi.h"
 //以下是腾讯QQ和QQ空间
@@ -41,7 +40,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //1.初始化ShareSDK应用,字符串"5559f92aa230"换成http://www.mob.com/后台申请的ShareSDK应用的Appkey
-    [ShareSDK registerApp:@"5559f92aa230"];
+    [ShareSDK registerApp:@"5559f92aa230"];  //如果需要看下广告效果，可以把Appkey换成"737dfd5147db"
     
     //2. 初始化社交平台
     //2.1 代码初始化社交平台的方法
@@ -80,8 +79,7 @@
      **/
     [ShareSDK connectTencentWeiboWithAppKey:@"801307650"
                                   appSecret:@"ae36f4ee3946e1cbb98d6965b0b2ff5c"
-                                redirectUri:@"http://www.sharesdk.cn"
-                                   wbApiCls:[WeiboApi class]];
+                                redirectUri:@"http://www.sharesdk.cn"];
     
     //连接短信分享
     [ShareSDK connectSMS];
@@ -127,9 +125,9 @@
      连接Twitter应用以使用相关功能，此应用需要引用TwitterConnection.framework
      https://dev.twitter.com上注册应用，并将相关信息填写到以下字段
      **/
-    [ShareSDK connectTwitterWithConsumerKey:@"1dJMOpqHbtZMhuKwqC0jSKXOz"
-                             consumerSecret:@"PzUXUxEfIA8gBfEylxaDIpRg2zcpXmaw6UElD4pjinQmOke0KG"
-                                redirectUri:@"https://apps.twitter.com/app"];
+    [ShareSDK connectTwitterWithConsumerKey:@"LRBM0H75rWrU9gNHvlEAA2aOy"
+                             consumerSecret:@"gbeWsZvA9ELJSdoBzJ5oLKX0TU09UOwrzdGfo9Tg7DjyGuMe8G"
+                                redirectUri:@"http://mob.com"];
     
     /**
      连接Google+应用以使用相关功能，此应用需要引用GooglePlusConnection.framework、GooglePlus.framework和GoogleOpenSource.framework库
@@ -312,9 +310,6 @@
     
     //导入人人网需要的外部库类型,如果不需要人人网SSO可以不调用此方法
     [ShareSDK importRenRenClass:[RennClient class]];
-    
-    //导入腾讯微博需要的外部库类型，如果不需要腾讯微博SSO可以不调用此方法
-    [ShareSDK importTencentWeiboClass:[WeiboApi class]];
     
     //导入微信需要的外部库类型，如果不需要微信分享可以不调用此方法
     [ShareSDK importWeChatClass:[WXApi class]];

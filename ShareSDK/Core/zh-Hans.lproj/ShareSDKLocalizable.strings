@@ -1,15 +1,8 @@
 /* 
   ShareSDKLocalizable.strings
   AppgoFramework
-
-
   Created by ShareSDK.cn on 13-1-14.
-  官网地址:http://www.mob.com
-  技术支持邮箱:support@sharesdk.cn
-  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-  商务QQ:4006852216
   Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
-
 */
 
 "ERROR_DESC_UNREGISTER" = "尚未初始化SDK";
@@ -24,6 +17,7 @@
 "ERROR_DESC_QQ_UNKNOWN_MEDIA_TYPE" = "未知的消息发送类型";
 "ERROR_DESC_UNAUTH" = "尚未授权";
 "ERROR_DESC_FACEBOOK_CANCEL_ADD_FRIEND" = "取消添加好友";
+"ERROR_DESC_FACEBOOK_NOT_INSTALL" = "尚未安装Facebook客户端";
 "ERROR_DESC_TWITTER_GET_FRIENDS_API_DEPRECATED" = "此方法已过时，请使用getFriendsWithPage方法代替";
 "ERROR_DESC_WEIXIN_NOT_INSTALL" = "尚未安装微信";
 "ERROR_DESC_WEIXIN_API_IS_NOT_SUPPORT" = "当前微信版本不支持该功能";
@@ -69,11 +63,10 @@
 "ERROR_DESC_KAKAOTALK_NOT_INSTALL" = "尚未安装KakaoTalk客户端";
 "ERROR_DESC_KAKAOSTORY_NOT_INSTALL" = "尚未安装KakaoStory客户端";
 "ERROR_DESC_QQ_CLIENT_NOT_INSTALLED" = "尚未安装QQ客户端";
+"ERROR_DESC_WEIXIN_AUTHORIZE_ERROR" = "获取 access token 失败";
 
 "ShareType_1" = "新浪微博";
 "ShareType_2" = "腾讯微博";
-"ShareType_3" = "搜狐微博";
-"ShareType_4" = "网易微博";
 "ShareType_5" = "豆瓣";
 "ShareType_6" = "QQ空间";
 "ShareType_7" = "人人网";
@@ -161,8 +154,6 @@
 "AUTH_VIEW_CANCEL_BUTTON" = "取消";
 "AUTH_VIEW_TITLE_1" = "新浪微博";
 "AUTH_VIEW_TITLE_2" = "腾讯微博";
-"AUTH_VIEW_TITLE_3" = "搜狐微博";
-"AUTH_VIEW_TITLE_4" = "网易微博";
 "AUTH_VIEW_TITLE_5" = "豆瓣";
 "AUTH_VIEW_TITLE_6" = "QQ空间";
 "AUTH_VIEW_TITLE_7" = "人人网";
@@ -186,3 +177,24 @@
 "AUTH_VIEW_FOLLOW_ME" = "关注我们的微博";
 
 "AWARD_BACK_ITEM_TITLE" = "关闭";
+"AD_SKIP_BUTTON" = "跳过";
+
+"Share_Recommendaiton_Title" = "分享宝盒";
+"Share_Successfully" = "分享成功";
+"Share_Fail" = "分享失败";
+"Share_To_More_Platform" = "分享到更多平台";
+"They_Are_Sharing" = "他们正在分享";
+"Share_Recommendation_From" = "分享至";
+"Sharing_Summary_Close" = "关闭";
+"Return" = "返回";
+"There_Are" = "您有";
+"Friend_Using_The_App" = "位好友正在使用这个应用";
+"Views" = "人看过";
+"Just_Now" = "刚刚";
+"Min_Ago" = "分钟前";
+"Hour_Ago" = "小时前";
+"Yesterday" = "昨天";
+"Today_News" = "今日新闻";
+"Load_More" = "点击加载更多";
+"Type_News" = "新闻"; 
+

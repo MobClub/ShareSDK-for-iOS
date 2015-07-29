@@ -22,8 +22,7 @@
 {
     [super awakeWithContext:context];
     
-    //可以不依赖iOS客户端进行分享的平台：
-
+    //支持不依赖客户端分享的平台：
 //    typedef enum
 //    {
 //        ShareTypeSinaWeibo = 1,         /**< 新浪微博 */

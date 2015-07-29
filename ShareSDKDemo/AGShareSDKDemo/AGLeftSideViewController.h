@@ -17,7 +17,6 @@
 @private
     UITableView *_tableView;
     AGSectionView *_sectionView;
-    
     AGAppDelegate *_appDelegate;
 }
 

@@ -110,14 +110,14 @@
 
 -(BOOL)shouldAutorotate
 {
-        //iOS6下旋屏方法
-        return YES;
+    //iOS6下旋屏方法
+    return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-        //iOS6下旋屏方法
-        return SSInterfaceOrientationMaskAll;
+    //iOS6下旋屏方法
+    return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -212,8 +212,6 @@
         
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPadLandscapeNavigationBarBG.png"]];
     }
-    
-    
     
     UIImageView *imageView = [[(UIImageView *)_tableView.tableHeaderView retain] autorelease];
     _tableView.tableHeaderView = nil;

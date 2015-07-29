@@ -30,24 +30,6 @@
 
 ///#begin zh-cn
 /**
- *	@brief	印象笔记请求方式
- */
-///#end
-///#begin en
-/**
- *	@brief	Evernote request method
- */
-///#end
-typedef enum
-{
-	SSEverNoteRequestMethodGet = 0, /**< GET方式 */
-	SSEverNoteRequestMethodPost = 1, /**< POST方式 */
-	SSEverNoteRequestMethodMultipartPost = 2 /**< Multipart POST方式，用于上传文件的api接口 */
-}
-SSEverNoteRequestMethod;
-
-///#begin zh-cn
-/**
  *	@brief	印象笔记应用协议
  */
 ///#end

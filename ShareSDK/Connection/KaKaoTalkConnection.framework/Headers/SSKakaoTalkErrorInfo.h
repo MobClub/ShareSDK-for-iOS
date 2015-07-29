@@ -2,7 +2,7 @@
 //  SSKakaoTalkErrorInfo.h
 //  KakaoTalkConnection
 //
-//  Created by @刘靖煌 on 14-7-1.
+//  Created by 刘 靖煌 on 14-7-1.
 //  Copyright (c) 2014年 掌淘科技. All rights reserved.
 //
 

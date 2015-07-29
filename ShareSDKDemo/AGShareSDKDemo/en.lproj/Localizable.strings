@@ -49,7 +49,6 @@
 "TEXT_CANCEL" = "Cancel";
 "TEXT_SINA_WEIBO" = "Sina Weibo";
 "TEXT_TENCENT_WEIBO" = "Tencent Weibo";
-"TEXT_SOHO_WEIBO" = "Sohu Weibo";
 "TEXT_DOUBAN" = "DouBan";
 "TEXT_QZONE" = "QZone";
 "TEXT_RENREN" = "RenRen";
@@ -69,7 +68,7 @@
 "TEXT_HELLO_YOUDAO_NOTE" = "Hello YouDaoNote";
 "TEXT_HELLO_EVERNOTE" = "Hello EverNote";
 "TEXT_SHARE_TITLE" = "Content Share";
-"TEXT_ShARE_SUC" = "Shared success";
+"TEXT_ShARE_SUC" = "Share the Content Successfully";
 "TEXT_ShARE_FAI" = "Sharing failed with error code: %d, error description: %@";
 "TEXT_SELECT" = "Select";
 "TEXT_PRINT" = "Print";
@@ -141,10 +140,10 @@
 "TEXT_FOLLOW_TENCENT_WEIBO" = "Tencent Weibo concern";
 "TEXT_FOLLOW_WECHAT" = "Concern the official WeChat";
 "TEXT_GO_TO_OFFICAL_WEBSITE" = "Visit the official website";
-"TEST_VERSION" = "version ver%@";
+"TEST_VERSION" = "version v%@";
 "TEXT_FOLLOWED" = "Is concerned";
 "TEXT_OFFICAL_WEIBO" = "Official website";
-"TEXT_SHARE_CONTENT" = "ShareSDK is the most comprehensive Social SDK in the world , which share easily with 40+ platforms , from around the world.https://github.com/ShareSDKPlatform/ShareSDK-for-iOS";
+"TEXT_SHARE_CONTENT" = "ShareSDK is the most comprehensive Social SDK in the world , which share easily with 40+ platforms , from around the world. http://www.mob.com ";
 "TEXT_FANS" = "Fans";
 "TEXT_DETAIL_INFO" = "Details";
 "TEXT_PERSONAL_HOMEPAGE" = "Personal Home Page";

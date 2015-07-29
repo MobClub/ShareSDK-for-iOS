@@ -22,16 +22,9 @@
 #import <Foundation/Foundation.h>
 #import "ISSCDataObject.h"
 
-///#begin zh-cn
 /**
  *	@brief	数据模型对象基类
  */
-///#end
-///#begin en
-/**
- *	@brief	Data model object base class
- */
-///#end
 @interface SSCDataObject : NSObject <NSCoding,
                                      ISSCDataObject>
 {
@@ -39,16 +32,9 @@
     NSMutableDictionary *_sourceData;
 }
 
-///#begin zh-cn
 /**
  *	@brief	源数据
  */
-///#end
-///#begin en
-/**
- *	@brief	Raw data.
- */
-///#end
 @property (nonatomic,retain) NSDictionary *sourceData;
 
 

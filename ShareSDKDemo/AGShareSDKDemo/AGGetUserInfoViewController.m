@@ -88,21 +88,6 @@
     [button addTarget:self action:@selector(showTencentWeiboUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
-//    top += button.height + VERTICAL_GAP;
-//    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-//    [button setTitle:NSLocalizedString(@"TEXT_SOHO_WEIBO", @"搜狐微博") forState:UIControlStateNormal];
-//    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
-//    [button addTarget:self action:@selector(showSohuWeiboUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-//    [scrollView addSubview:button];
-    
-//    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-//    [button setTitle:NSLocalizedString(@"TEXT_NETEASE_WEIBO", @"网易微博") forState:UIControlStateNormal];
-//    button.frame = CGRectMake(LEFT_PADDING + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
-//    [button addTarget:self action:@selector(show163WeiboUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-//    [scrollView addSubview:button];
-    
     top += button.height + VERTICAL_GAP;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
@@ -311,22 +296,6 @@
     [self presentModalViewController:nvc animated:YES];
     [vc release];
 }
-
-//- (void)showSohuWeiboUserClickHandler:(id)sender
-//{
-//    AGUserInfoViewController *vc = [[AGUserInfoViewController alloc] initWithType:ShareTypeSohuWeibo];
-//    UINavigationController *nvc = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
-//    [self presentModalViewController:nvc animated:YES];
-//    [vc release];
-//}
-//
-//- (void)show163WeiboUserClickHandler:(id)sender
-//{
-//    AGUserInfoViewController *vc = [[AGUserInfoViewController alloc] initWithType:ShareType163Weibo];
-//    UINavigationController *nvc = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
-//    [self presentModalViewController:nvc animated:YES];
-//    [vc release];
-//}
 
 - (void)showDoubanUserClickHandler:(id)sender
 {

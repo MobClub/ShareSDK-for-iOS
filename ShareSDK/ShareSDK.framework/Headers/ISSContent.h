@@ -220,14 +220,14 @@
 
 ///#begin zh-cn
 /**
- *	@brief	获取分享内容(适用平台：新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝)
+ *	@brief	获取分享内容(适用平台：新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝)
  *
  *	@return	分享内容
  */
 ///#end
 ///#begin en
 /**
- *	@brief	Get share content(suitable platform：Sina Weibo、Tencent Weibo、NetEase、Sohu、DouBan、Renren、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy)
+ *	@brief	Get share content(suitable platform：Sina Weibo、Tencent Weibo、DouBan、Renren、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy)
  *
  *	@return	share content string.
  */
@@ -253,7 +253,7 @@
 ///#begin zh-cn
 /**
  *	@brief	获取默认分享内容，在没有设置content时使用。
- *          (适用平台：新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝)
+ *          (适用平台：新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝)
  *
  *	@return	默认分享内容
  */
@@ -261,7 +261,7 @@
 ///#begin en
 /**
  *	@brief	Get default share content，Used when there is no set content。
- *          (suitable platform：Sina Weibo、Tencent Weibo、NetEase、Sohu、DouBan、Renren、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy)
+ *          (suitable platform：Sina Weibo、Tencent Weibo、DouBan、Renren、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy)
  *
  *	@return	Default share content string.
  */
@@ -286,14 +286,14 @@
 
 ///#begin zh-cn
 /**
- *	@brief	获取分享图片（适用平台：新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、短信）
+ *	@brief	获取分享图片（适用平台：新浪、腾讯、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、短信）
  *
  *	@return	分享图片
  */
 ///#end
 ///#begin en
 /**
- *	@brief	Get share image.（uitable platform：Sina Weibo、Tencent Weibo、NetEase、Sohu、DouBan、Renren、KaiXin、Facebook、Twitter、Mai、Print、WeChat、QQ、SMS）
+ *	@brief	Get share image.（uitable platform：Sina Weibo、Tencent Weibo、DouBan、Renren、KaiXin、Facebook、Twitter、Mai、Print、WeChat、QQ、SMS）
  *
  *	@return	image attachment object.
  */
@@ -974,53 +974,6 @@
 - (void)addTencentWeiboUnitWithContent:(NSString *)content
                             imageArray:(NSArray *)imageArray
                     locationCoordinate:(SSCLocationCoordinate2D *)locationCoordinate;
-
-
-///#begin zh-cn
-/**
- *	@brief	添加搜狐微博内容单元
- *
- *  @since  ver2.2.0
- *
- *	@param 	content 	内容
- *	@param 	image 	图片
- */
-///#end
-///#begin en
-/**
- *	@brief	Add Sohu Weibo content unit
- *
- *  @since  ver2.2.0
- *
- *	@param 	content 	Content string.
- *	@param 	image 	Image attachment object.
- */
-///#end
-- (void)addSohuWeiboUnitWithContent:(NSString *)content
-                              image:(id<ISSCAttachment>)image;
-
-///#begin zh-cn
-/**
- *	@brief	添加网易微博内容单元
- *
- *  @since  ver2.2.0
- *
- *	@param 	content 	内容
- *	@param 	image 	图片
- */
-///#end
-///#begin en
-/**
- *	@brief	Add NetEase Weibo content unit
- *
- *  @since  ver2.2.0
- *
- *	@param 	content 	Content string.
- *	@param 	image 	Image attachment object.
- */
-///#end
-- (void)add163WeiboUnitWithContent:(NSString *)content
-                             image:(id<ISSCAttachment>)image;
 
 ///#begin zh-cn
 /**

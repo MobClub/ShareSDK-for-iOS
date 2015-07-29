@@ -9,7 +9,6 @@
 #import "SSCAppDelegate.h"
 #import <ShareSDK/ShareSDK.h>
 #import "SSCViewController.h"
-#import "WeiboApi.h"
 #import "WXApi.h"
 
 @implementation SSCAppDelegate
@@ -27,8 +26,7 @@
     //添加腾讯微博应用
     [ShareSDK connectTencentWeiboWithAppKey:@"801307650"
                               appSecret:@"ae36f4ee3946e1cbb98d6965b0b2ff5c"
-                            redirectUri:@"http://www.sharesdk.cn"
-                               wbApiCls:[WeiboApi class]];
+                            redirectUri:@"http://www.sharesdk.cn"];
 
     [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
                            appSecret:@"64020361b8ec4c99936c0e3999a9f249"

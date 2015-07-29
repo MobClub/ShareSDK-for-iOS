@@ -28,24 +28,6 @@
 
 ///#begin zh-cn
 /**
- *	@brief	Instapaper请求方式
- */
-///#end
-///#begin en
-/**
- *	@brief	Instapaper Request Method.
- */
-///#end
-typedef enum
-{
-	SSInstapaperRequestMethodGet = 0, /**< GET方式 */
-	SSInstapaperRequestMethodPost = 1, /**< POST方式 */
-	SSInstapaperRequestMethodMultipartPost = 2 /**< Multipart POST方式，用于上传文件的api接口 */
-}
-SSInstapaperRequestMethod;
-
-///#begin zh-cn
-/**
  *	@brief	Instapaper应用
  */
 ///#end
@@ -87,37 +69,6 @@ SSInstapaperRequestMethod;
  */
 ///#end
 - (NSString *)appSecret;
-
-///#begin zh-cn
-/**
- *	@brief	调用开放平台API
- *
- *	@param 	path 	路径
- *  @param  method  请求方式
- *	@param 	params 	请求参数
- *  @param  user    授权用户,如果传入nil则表示默认的授权用户
- *  @param  result  返回回调
- *  @param  fault   失败回调
- */
-///#end
-///#begin en
-/**
- *	@brief	Call API
- *
- *	@param 	path 	API path string.
- *  @param  method  Request method.
- *	@param 	params 	Request parameters.
- *  @param  user    Authorized users, it means that if the incoming nil default authorized users
- *  @param  result  Result handler.
- *  @param  fault   Fault handler.
- */
-///#end
-- (void)api:(NSString *)path
-     method:(SSInstapaperRequestMethod)method
-     params:(id<ISSCOAuthParameters>)params
-       user:(id<ISSPlatformUser>)user
-     result:(void(^)(id responder))result
-      fault:(void(^)(CMErrorInfo *error))fault;
 
 ///#begin zh-cn
 /**

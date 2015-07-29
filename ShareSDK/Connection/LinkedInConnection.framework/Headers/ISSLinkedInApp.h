@@ -27,24 +27,6 @@
 #import "SSLinkedInShare.h"
 #import <ShareSDK/ShareSDKPlugin.h>
 
-///#begin zh-cn
-/**
- *	@brief	LinkedIn请求方式
- */
-///#end
-///#begin en
-/**
- *	@brief	LinkedIn request method
- */
-///#end
-typedef enum
-{
-	SSLinkedInRequestMethodGet = 0, /**< GET方式 */
-	SSLinkedInRequestMethodPost = 1, /**< POST方式 */
-	SSLinkedInRequestMethodMultipartPost = 2 /**< Multipart POST方式，用于上传文件的api接口 */
-}
-SSLinkedInRequestMethod;
-
 @protocol ISSLinkedInApp <ISSPlatformApp>
 
 ///#begin zh-cn
@@ -94,35 +76,6 @@ SSLinkedInRequestMethod;
  */
 ///#end
 - (NSString *)redirectUri;
-
-///#begin zh-cn
-/**
- *	@brief	调用开放平台API
- *
- *	@param 	path 	路径
- *	@param 	params 	请求参数,可以为一个ISSCParameters协议对象，也可以为一个NSDictionary对象,为NSDicationary对象时仅在以POST方式提交时有效。
- *  @param  user    授权用户,如果传入nil则表示默认的授权用户
- *  @param  result  返回回调
- *  @param  fault   失败回调
- */
-///#end
-///#begin en
-/**
- *	@brief	Call api.
- *
- *	@param 	path 	API path string.
- *	@param 	params 	Request parameters, which can be a ISSCParameters protocol object, but also for an NSDictionary object. Be a NSDictionary object is only valid when the POST method to submit.
- *  @param  user    Authorized users, it means that if the incoming nil default authorized users
- *  @param  result  Result handler.
- *  @param  fault   Fault handler.
- */
-///#end
-- (void)api:(NSString *)path
-     method:(SSLinkedInRequestMethod)method
-     params:(id)params
-       user:(id<ISSPlatformUser>)user
-     result:(void(^)(id responder))result
-      fault:(void(^)(CMErrorInfo *error))fault;
 
 ///#begin zh-cn
 /**

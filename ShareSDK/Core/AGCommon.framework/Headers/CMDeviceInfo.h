@@ -31,43 +31,18 @@
 
 ///#begin zh-cn
 /**
- *	@brief	获取设备型号
+ *	@brief	获取设备型号.http://en.wikipedia.org/wiki/List_of_iOS_devices
  *
- *	@return	设备型号：设备型号对照如下：
- *  iPhone1,1 ->    iPhone 1G
- *  iPhone1,2 ->    iPhone 3G
- *  iPhone2,1 ->    iPhone 3GS
- *  iPhone3,1 ->    iPhone 4
- *  
- *  iPod1,1   -> iPod touch 1G
- *  iPod2,1   -> iPod touch 2G
- *  iPod2,2   -> iPod touch 2.5G
- *  iPod3,1   -> iPod touch 3G
- *  iPod4,1   -> iPod touch 4
- *  
- *  iPad1,1   -> iPad 1G, WiFi
+ *	@return	设备型号：设备型号对照如下：https://github.com/InderKumarRathore/UIDeviceUtil/blob/master/UIDeviceUtil.m
  */
 ///#end
 ///#begin en
 /**
- *	@brief	Get device model.
+ *	@brief	Get device model.http://en.wikipedia.org/wiki/List_of_iOS_devices
  *
- *	@return	Device Model. Model as follows:
- *  iPhone1,1 ->    iPhone 1G
- *  iPhone1,2 ->    iPhone 3G
- *  iPhone2,1 ->    iPhone 3GS
- *  iPhone3,1 ->    iPhone 4
- *
- *  iPod1,1   -> iPod touch 1G
- *  iPod2,1   -> iPod touch 2G
- *  iPod2,2   -> iPod touch 2.5G
- *  iPod3,1   -> iPod touch 3G
- *  iPod4,1   -> iPod touch 4
- *
- *  iPad1,1   -> iPad 1G, WiFi
+ *	@return	Device model. Model follows：https://github.com/InderKumarRathore/UIDeviceUtil/blob/master/UIDeviceUtil.m
  */
 ///#end
 + (NSString *)deviceModel;
-
 
 @end

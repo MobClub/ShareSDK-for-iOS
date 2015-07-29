@@ -19,6 +19,17 @@ typedef enum
 }
 CMNetworkType;
 
+/**
+ *  蜂窝类型
+ */
+typedef enum{
+    CMNetworkCellularType2G = 0,
+    CMNetworkCellularType3G,
+    CMNetworkCellularType4G,
+    CMNetworkCellularTypeUnknow
+}
+CMNetworkCellularType;
+
 ///#begin zh-cn
 /**
  *	@brief	分辨率
@@ -179,6 +190,18 @@ CMDeviceResolutionType;
 ///#end
 - (CMNetworkType)currentNetworkType;
 
+/**
+ *  获取当前蜂窝类型
+ *
+ *  @return 蜂窝类型
+ */
+- (CMNetworkCellularType)currentCellularType;
+
+/**
+ *  获取用于蜂窝网络类型判断的连接技术值
+ */
+- (NSString *)radioAccessTechnologyValues;
+
 ///#begin zh-cn
 /**
  *	@brief	获取wifi的使能状态
@@ -227,20 +250,21 @@ CMDeviceResolutionType;
 ///#end
 - (BOOL)isPad;
 
-///#begin zh-cn
 /**
  *	@brief	获取运行进程
  *
  *	@return	运行进程
  */
-///#end
-///#begin en
-/**
- *	@brief	Get running processes information.
- *
- *	@return	Running processes information.
- */
-///#end
 - (NSArray *)runningProcesses;
+
+/**
+ *  Wi-Fi的ssid
+ */
+- (NSString *)ssid;
+
+/**
+ *  Wi-Fi的bssid
+ */
+- (NSString *)bssid;
 
 @end

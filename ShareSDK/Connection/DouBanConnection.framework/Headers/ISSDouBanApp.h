@@ -26,24 +26,6 @@
 #import "SSDouBanStatus.h"
 #import <ShareSDK/ShareSDKPlugin.h>
 
-///#begin zh-cn
-/**
- *	@brief	豆瓣请求方式
- */
-///#end
-///#begin en
-/**
- *	@brief	DouBan request method
- */
-///#end
-typedef enum
-{
-	SSDouBanRequestMethodGet = 0, /**< GET方式 */
-	SSDouBanRequestMethodPost = 1, /**< POST方式 */
-	SSDouBanRequestMethodMultipartPost = 2, /**< Multipart POST方式，用于上传文件的api接口 */
-    SSDouBanRequestMethodDelete = 3 /**< DELETE方式 */
-}
-SSDouBanRequestMethod;
 
 ///#begin zh-cn
 /**
@@ -105,34 +87,6 @@ SSDouBanRequestMethod;
 ///#end
 - (NSString *)redirectUri;
 
-///#begin zh-cn
-/**
- *	@brief	调用开放平台API
- *
- *	@param 	path 	路径
- *	@param 	params 	请求参数
- *  @param  user    授权用户,如果传入nil则表示默认的授权用户
- *  @param  result  返回回调
- *  @param  fault   失败回调
- */
-///#end
-///#begin en
-/**
- *	@brief	Call api
- *
- *	@param 	path 	Path string.
- *	@param 	params 	Request parameters.
- *  @param  user    User object,If the incoming nil indicates the default authorized users
- *  @param  result  result handler.
- *  @param  fault   fault handler.
- */
-///#end
-- (void)api:(NSString *)path
-     method:(SSDouBanRequestMethod)method
-     params:(id<ISSCParameters>)params
-       user:(id<ISSPlatformUser>)user
-     result:(void(^)(id responder))result
-      fault:(void(^)(CMErrorInfo *error))fault;
 
 ///#begin zh-cn
 /**

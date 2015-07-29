@@ -29,25 +29,6 @@
 
 ///#begin zh-cn
 /**
- *	@brief	Facebook请求方式
- */
-///#end
-///#begin en
-/**
- *	@brief	Facebook request method.
- */
-///#end
-typedef enum
-{
-	SSFacebookRequestMethodGet = 0, /**< GET方式 */
-	SSFacebookRequestMethodPost = 1, /**< POST方式 */
-	SSFacebookRequestMethodMultipartPost = 2, /**< Multipart POST方式，用于上传文件的api接口 */
-    SSFacebookRequestMethodDelete = 3   /**< DELETE方式 */
-}
-SSFacebookRequestMethod;
-
-///#begin zh-cn
-/**
  *	@brief	显示添加好友对话框
  */
 ///#end
@@ -196,35 +177,6 @@ typedef void(^SSFacebookCloseAddFriendDialog) (UIViewController *viewController)
  */
 ///#end
 - (void)setAddFriendDialogDelegate:(id<ISSViewDelegate>)delegate;
-
-///#begin zh-cn
-/**
- *	@brief	调用开放平台API
- *
- *	@param 	path 	路径
- *	@param 	params 	请求参数
- *  @param  user    授权用户,如果传入nil则表示默认的授权用户
- *  @param  result  返回回调
- *  @param  fault   失败回调
- */
-///#end
-///#begin en
-/**
- *	@brief	Call API
- *
- *	@param 	path 	API path string.
- *	@param 	params 	Request parameters.
- *  @param  user    Authoried user. If the incoming nil indicates the default authorized users
- *  @param  result  Result handler.
- *  @param  fault   Fault handler.
- */
-///#end
-- (void)api:(NSString *)path
-     method:(SSFacebookRequestMethod)method
-     params:(id<ISSCParameters>)params
-       user:(id<ISSPlatformUser>)user
-     result:(void(^)(id responder))result
-      fault:(void(^)(CMErrorInfo *error))fault;
 
 ///#begin zh-cn
 /**

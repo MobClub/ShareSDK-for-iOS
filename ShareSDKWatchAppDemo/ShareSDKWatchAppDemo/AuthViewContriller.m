@@ -159,8 +159,10 @@
     return cell;
 }
 
+
 - (void)authSwitchChangeHandler:(UISwitch *)sender
 {
+//    id<UIApplicationDelegate> appDelegate = [UIApplication sharedApplication].delegate;
     NSInteger index = sender.tag - BASE_TAG;
     
     if (index < [_shareTypeArray count])
@@ -175,7 +177,7 @@
                                                                  authViewStyle:SSAuthViewStyleFullScreenPopup
                                                                   viewDelegate:nil
                                                        authManagerViewDelegate:nil];
-            //在授权页面中添加关注微博
+            //在授权页面中添加关注官网微博
             [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"刘靖煌"],
                                             SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
@@ -188,9 +190,11 @@
                                    result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
                                        if (result)
                                        {
+//                                           NSLog(@"userInfo%@",userInfo);
                                            [item setObject:[userInfo nickname] forKey:@"username"];
                                            [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
                                        }
+//                                       NSLog(@"%ld:%@",(long)[error errorCode], [error errorDescription]);
                                        [_tableView reloadData];
                                    }];
         }

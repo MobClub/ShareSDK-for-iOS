@@ -6,6 +6,7 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
+
 #import "AGAuthViewController.h"
 #import <AGCommon/UIImage+Common.h>
 #import "AGShareCell.h"
@@ -30,7 +31,6 @@
  */
 - (void)userInfoUpdateHandler:(NSNotification *)notif;
 
-
 @end
 
 @implementation AGAuthViewController
@@ -48,7 +48,8 @@
         [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
         
-        if ([UIDevice currentDevice].isPad || [[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
+        if ([UIDevice currentDevice].isPad ||
+            [[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
         {
             UILabel *label = [[UILabel alloc] init];
             label.backgroundColor = [UIColor clearColor];
@@ -73,8 +74,11 @@
             ShareType type = (ShareType)[typeNum integerValue];
             id<ISSPlatformApp> app = [ShareSDK getClientWithType:type];
             
-            
-            if ([app isSupportOneKeyShare] || type == ShareTypeInstagram || type == ShareTypeGooglePlus || type == ShareTypeQQSpace || type == ShareTypeWeixiSession)
+            if ([app isSupportOneKeyShare] ||
+                type == ShareTypeInstagram ||
+                type == ShareTypeGooglePlus ||
+                type == ShareTypeQQSpace ||
+                type == ShareTypeWeixiSession)
             {
                 [_shareTypeArray addObject:[NSMutableDictionary dictionaryWithObject:[shareTypes objectAtIndex:i]
                                                                               forKey:@"type"]];
@@ -82,6 +86,7 @@
         }
         
         NSArray *authList = [NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()]];
+        
         if (authList == nil)
         {
             [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
@@ -131,7 +136,7 @@
     }
 
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.width, self.view.height)
-                                               style:UITableViewStyleGrouped];
+                                               style:UITableViewStylePlain];
     _tableView.rowHeight = 50.0;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     _tableView.backgroundColor = [UIColor colorWithRGB:0xe1e0de];
@@ -156,14 +161,12 @@
 
 -(BOOL)shouldAutorotate
 {
-        //iOS6下旋屏方法
-        return YES;
+    return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-        //iOS6下旋屏方法
-        return SSInterfaceOrientationMaskAll;
+    return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -182,8 +185,7 @@
         NSMutableDictionary *item = [_shareTypeArray objectAtIndex:index];
         if (sender.on)
         {
-            
-            //用户用户信息
+            //用户信息
             ShareType type = (ShareType)[[item objectForKey:@"type"] integerValue];
             
             id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -237,7 +239,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TARGET_CELL_ID];
     if (cell == nil)
     {
-        cell = [[[AGShareCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TARGET_CELL_ID] autorelease];
+        cell = [[[AGShareCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                   reuseIdentifier:TARGET_CELL_ID] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         UISwitch *switchCtrl = [[UISwitch alloc] initWithFrame:CGRectZero];
@@ -246,6 +249,7 @@
         cell.accessoryView = switchCtrl;
         [switchCtrl release];
     }
+    
     if (indexPath.row < [_shareTypeArray count])
     {
         NSDictionary *item = [_shareTypeArray objectAtIndex:indexPath.row];
@@ -279,14 +283,6 @@
     [self.viewDeckController toggleLeftViewAnimated:YES];
 }
 
-- (void)moreButtonClickHanlder:(id)sender
-{
-    UIViewController *moreVC = [[[ShareSDKDemoMoreViewController alloc] init] autorelease];
-    moreVC.title = NSLocalizedString(@"TEXT_MORE", @"更多");
-    UINavigationController *navMoreVC = [[[UINavigationController alloc] initWithRootViewController:moreVC] autorelease];
-    [self presentModalViewController:navMoreVC animated:YES];
-}
-
 - (void)userInfoUpdateHandler:(NSNotification *)notif
 {
     NSInteger plat = [[[notif userInfo] objectForKey:SSK_PLAT] integerValue];
@@ -301,6 +297,18 @@
             [item setObject:[userInfo nickname] forKey:@"username"];
             [_tableView reloadData];
         }
+    }
+}
+
+- (void)layoutView:(UIInterfaceOrientation)orientation
+{
+    if (UIInterfaceOrientationIsLandscape(orientation))
+    {
+        [self layoutLandscape];
+    }
+    else
+    {
+        [self layoutPortrait];
     }
 }
 
@@ -351,18 +359,6 @@
                        forState:UIControlStateNormal];
 
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPadLandscapeNavigationBarBG.png"]];
-    }
-}
-
-- (void)layoutView:(UIInterfaceOrientation)orientation
-{
-    if (UIInterfaceOrientationIsLandscape(orientation))
-    {
-        [self layoutLandscape];
-    }
-    else
-    {
-        [self layoutPortrait];
     }
 }
 

@@ -37,20 +37,6 @@
 - (void)fillTecentWeiboUser:(id<ISSPlatformUser>)userInfo;
 
 /**
- *	@brief	填充搜狐微博用户信息
- *
- *	@param 	userInfo 	用户信息
- */
-//- (void)fillSohuWeiboUser:(id<ISSPlatformUser>)userInfo;
-
-/**
- *	@brief	填充网易微博用户信息
- *
- *	@param 	userInfo 	用户信息
- */
-//- (void)fill163WeiboUser:(id<ISSPlatformUser>)userInfo;
-
-/**
  *	@brief	填充豆瓣社区用户信息
  *
  *	@param 	userInfo 	用户信息
@@ -105,7 +91,6 @@
             label.textColor = [UIColor whiteColor];
             label.font = [UIFont boldSystemFontOfSize:18];
             [label sizeToFit];
-            
             self.navigationItem.titleView = label;
         }
         
@@ -227,15 +212,13 @@
                                                              authViewStyle:SSAuthViewStyleFullScreenPopup
                                                               viewDelegate:nil
                                                    authManagerViewDelegate:_appDelegate.viewDelegate];
-        
-                //在授权页面中添加关注官方微博
-                [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                         SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                         [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                         SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                         nil]];
-        
         if (_flag == 0)
         {
             [ShareSDK getUserInfoWithType:_type
@@ -263,14 +246,6 @@
                                                                                                       //腾讯微博
                                                                                                       [self fillTecentWeiboUser:userInfo];
                                                    break;
-//                                               case ShareTypeSohuWeibo:
-//                                                                                                      //搜狐微博
-//                                                                                                      [self fillSohuWeiboUser:userInfo];
-//                                                   break;
-//                                               case ShareType163Weibo:
-//                                                                                                      //网易微博
-//                                                                                                      [self fill163WeiboUser:userInfo];
-//                                                   break;
                                                case ShareTypeDouBan:
                                                                                                       //豆瓣社区
                                                                                                       [self fillDouBanUser:userInfo];
@@ -362,14 +337,6 @@
                                                                                                       //腾讯微博
                                                                                                       [self fillTecentWeiboUser:userInfo];
                                                    break;
-//                                               case ShareTypeSohuWeibo:
-//                                                                                                      //搜狐微博
-//                                                                                                      [self fillSohuWeiboUser:userInfo];
-//                                                   break;
-//                                               case ShareType163Weibo:
-//                                                                                                      //网易微博
-//                                                                                                      [self fill163WeiboUser:userInfo];
-//                                                   break;
                                                case ShareTypeDouBan:
                                                                                                       //豆瓣社区
                                                                                                       [self fillDouBanUser:userInfo];

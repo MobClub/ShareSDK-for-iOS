@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.10.7</string>
+	<string>2.11.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -28,10 +28,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>cn.appgo.sharebyone</string>
+			<string>com.mob.demoShareSDK</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>cn.appgo.sharebyone</string>
+				<string>com.mob.demoShareSDK</string>
 			</array>
 		</dict>
 		<dict>
@@ -41,6 +41,7 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>wb3225526301</string>
 				<string>tb2QUXqO9fcgGdtGG1FcvML6ZunIQzAEL8xY6hIaxdJnDti2DYwM</string>
 				<string>fb107704292745179</string>
 				<string>wb568898243</string>
@@ -50,14 +51,14 @@
 				<string>pocketapp1234</string>
 				<string>tencent100371282</string>
 				<string>wb801307650</string>
-				<string>rm226427cn.appgo.sharebyone</string>
+				<string>rm226427com.mob.demoShareSDK</string>
 				<string>pin1432928</string>
 				<string>yx0d9a9f9088ea44d78680f3274da1765f</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2.10.7</string>
+	<string>2.11.1</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>

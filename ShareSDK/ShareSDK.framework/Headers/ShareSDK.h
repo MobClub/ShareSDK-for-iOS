@@ -39,7 +39,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	ShareSDK类，为整个SDK的顶层接口类，所有功能都由此类进行提供（包括分享、授权等等）
+ *	@brief	ShareSDK类，为整个SDK的顶层接口类，所有功能都由此类进行提供（包括分享、授权等等）v2.11.1
  */
 ///#end
 ///#begin en
@@ -148,7 +148,7 @@
  *	@param 	statEnabled 	YES indicates the use of statistical functions, NO indicates they did not use statistical functions
  */
 ///#end
-+ (void)statEnabled:(BOOL)statEnabled;
++ (void)statEnabled:(BOOL)statEnabled __deprecated;
 
 ///#begin zh-cn
 /**
@@ -380,31 +380,6 @@
                      appSecret:(NSString *)appSecret
              qqApiInterfaceCls:(Class)qqApiInterfaceCls
                tencentOAuthCls:(Class)tencentOAuthCls;
-
-
-///#begin zh-cn
-/**
- *	@brief	连接搜狐微博应用以使用相关功能，此应用需要引用SohuWeiboConnection.framework
- *          http://open.t.sohu.com上注册搜狐微博开放平台应用，并将相关信息填写到以下字段
- *
- *	@param 	consumerKey 	消费者Key
- *	@param 	consumerSecret 	消费者密钥
- *  @param  redirectUri     回调地址
- */
-///#end
-///#begin en
-/**
- *	@brief	Initialize Sohu Weibo platform，This platform need import SohuWeiboConnection.framework
- *          Go to http://open.t.sohu.com and register Sohu Weibo open platform app，Then fill in the relevant information into the field below
- *
- *	@param 	consumerKey 	Consumer key.
- *	@param 	consumerSecret 	Consumer secret.
- *  @param  redirectUri     Redirect url.
- */
-///#end
-+ (void)connectSohuWeiboWithConsumerKey:(NSString *)consumerKey
-                         consumerSecret:(NSString *)consumerSecret
-                            redirectUri:(NSString *)redirectUri;
 
 ///#begin zh-cn
 /**
@@ -1626,9 +1601,9 @@
 /**
  *	@brief	创建分享内容对象，根据以下每个字段适用平台说明来填充参数值
  *
- *	@param 	content 	分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	defaultContent 	默认分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝、短信）
+ *	@param 	content 	分享内容（新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
+ *	@param 	defaultContent 	默认分享内容（新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
+ *	@param 	image 	分享图片（新浪、腾讯、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝、短信）
  *	@param 	title 	标题（QQ空间、人人、微信、QQ）
  *	@param 	url 	链接（QQ空间、人人、instapaper、微信、QQ）
  *	@param 	description 	主体内容（人人）
@@ -1641,9 +1616,9 @@
 /**
  *	@brief	Create share content object. based on the following description of each field to fill the parameter values
  *
- *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy、SMS）
+ *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
+ *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
+ *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy、SMS）
  *	@param 	title 	Title string.（QZone、RenRen、WeChat、QQ）
  *	@param 	url 	Url string.（QZone、RenRen、Instapaper、WeChat、QQ）
  *	@param 	description 	Description string（RenRen）
@@ -1666,9 +1641,9 @@
  *
  *  @since  ver2.4.1
  *
- *	@param 	content 	分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	defaultContent 	默认分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝、短信）
+ *	@param 	content 	分享内容（新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
+ *	@param 	defaultContent 	默认分享内容（新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
+ *	@param 	image 	分享图片（新浪、腾讯、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝、短信）
  *	@param 	title 	标题（QQ空间、人人、微信、QQ）
  *	@param 	url 	链接（QQ空间、人人、instapaper、微信、QQ）
  *	@param 	description 	主体内容（人人）
@@ -1684,9 +1659,9 @@
  *
  *  @since  ver2.4.1
  *
- *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy、SMS）
+ *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
+ *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
+ *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy、SMS）
  *	@param 	title 	Title string.（QZone、RenRen、WeChat、QQ）
  *	@param 	url 	Url string.（QZone、RenRen、Instapaper、WeChat、QQ）
  *	@param 	description 	Description string（RenRen）
@@ -1711,9 +1686,9 @@
  *
  *  @since  ver2.6.0
  *
- *	@param 	content 	分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	defaultContent 	默认分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝、短信）
+ *	@param 	content 	分享内容（新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
+ *	@param 	defaultContent 	默认分享内容（新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
+ *	@param 	image 	分享图片（新浪、腾讯、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝、短信）
  *	@param 	title 	标题（QQ空间、人人、微信、QQ）
  *	@param 	url 	链接（QQ空间、人人、instapaper、微信、QQ）
  *	@param 	description 	主体内容（人人）
@@ -1730,9 +1705,9 @@
  *
  *  @since  ver2.6.0
  *
- *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy、SMS）
+ *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
+ *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
+ *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy、SMS）
  *	@param 	title 	Title string.（QZone、RenRen、WeChat、QQ）
  *	@param 	url 	Url string.（QZone、RenRen、Instapaper、WeChat、QQ）
  *	@param 	description 	Description string（RenRen）
@@ -2404,7 +2379,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	创建授权控制器，此方法用于自定义授权页面时使用,可以自由控制授权UI及过程。(注：微信、QQ、邮件、短信、打印、拷贝类型不支持授权功能。)
+ *	@brief	创建授权控制器，此方法用于自定义授权页面时使用,可以自由控制授权UI及过程。(注：邮件、短信、打印、拷贝类型不支持授权功能。)
  *
  *  @since  ver2.6.0    修改返回类型
  *
@@ -2415,7 +2390,7 @@
 ///#end
 ///#begin en
 /**
- *	@brief	Create an authorize controller，This method is used when the custom authorization page, you can freely control the authorization UI and process. (Note: WeChat, QQ, Mail, SMS, Print, Copy does not support authorization feature.)
+ *	@brief	Create an authorize controller，This method is used when the custom authorization page, you can freely control the authorization UI and process. (Note: Mail, SMS, Print, Copy does not support authorization feature.)
  *
  *  @since  ver2.6.0    Fix return type.
  *
@@ -2428,7 +2403,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	显示授权界面，(注：微信、QQ、邮件、短信、打印、拷贝类型不支持授权功能。)
+ *	@brief	显示授权界面，(注：邮件、短信、打印、拷贝类型不支持授权功能。)
  *
  *	@param 	type    社会化平台类型
  *  @param  options 授权选项，如果为nil则表示使用默认设置
@@ -2437,7 +2412,7 @@
 ///#end
 ///#begin en
 /**
- *	@brief	Show authorize view，(Note: WeChat, QQ, Mail, SMS, Print, Copy does not support authorization feature.)
+ *	@brief	Show authorize view，(Note: Mail, SMS, Print, Copy does not support authorization feature.)
  *
  *	@param 	type    Platform type.
  *  @param  options Authorized options，Used to authorization for custom configuration（Such as: whether the automatic authorization, authorization view style, etc.）Default nil.
@@ -2450,7 +2425,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	判断是否授权,微信、QQ、邮件、短信、打印、拷贝类型不支持授权功能。
+ *	@brief	判断是否授权,邮件、短信、打印、拷贝类型不支持授权功能。
  *
  *	@param 	type 	社会化平台类型
  *
@@ -2470,14 +2445,14 @@
 
 ///#begin zh-cn
 /**
- *	@brief	取消授权,微信、QQ、邮件、短信、打印、拷贝类型不支持授权功能。
+ *	@brief	取消授权,邮件、短信、打印、拷贝类型不支持授权功能。
  *
  *	@param 	type 	社会化平台类型
  */
 ///#end
 ///#begin en
 /**
- *	@brief	Cancel authorized. WeChat、QQ, Mail, SMS, Print, Copy dose not support authorized feature.
+ *	@brief	Cancel authorized.Mail, SMS, Print, Copy dose not support authorized feature.
  *
  *	@param 	type 	Platform type.
  */
@@ -2555,8 +2530,6 @@
  */
 ///#end
 + (NSArray *)authorizedUsersWithType:(ShareType)type;
-
-
 
 #pragma mark 用户信息
 
@@ -2667,7 +2640,6 @@
                       page:(id<ISSPage>)page
                authOptions:(id<ISSAuthOptions>)authOptions
                     result:(SSFriendsResultEvent)result;
-
 
 #pragma mark 分享
 
@@ -3268,6 +3240,19 @@
              statusBarTips:(BOOL)statusBarTips
                    targets:(NSArray *)targets
                     result:(SSPublishContentEventHandler)result;
+
+#pragma mark - 分享推荐页面
+
+/**
+ *  显示自定义cell模块，用法类似如下
+ *  
+    [ShareSDK onShowWidgets:^NSArray *{
+        UIView *view1 = [[UIView alloc] initWithFrame:CGRectZero];
+        UIView *view2 = [[UIView alloc] initWithFrame:CGRectZero];
+        return @[view1, view2];
+    }];
+ */
++ (void)onShowWidgets:(NSArray *(^)())block;
 
 
 @end

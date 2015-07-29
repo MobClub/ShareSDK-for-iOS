@@ -219,6 +219,42 @@
 
 ///#begin zh-cn
 /**
+ *	@brief	用户粉丝数
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Fans count.
+ */
+///#end
+@property (nonatomic,readonly) NSInteger followerCount;
+
+///#begin zh-cn
+/**
+ *	@brief	用户关注数
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Friends count.
+ */
+///#end
+@property (nonatomic,readonly) NSInteger friendCount;
+
+///#begin zh-cn
+/**
+ *	@brief	是否是认证用户，即加V用户，true：是，false：否
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Whether Weibo authenticate the user, that user plus V, true: YES, false: No
+ */
+///#end
+@property (nonatomic,readonly) BOOL verified;
+
+///#begin zh-cn
+/**
  *	@brief	初始化读取器
  *
  *	@param 	sourceData 	原数据

@@ -22,8 +22,6 @@
 "TEXT_SHARE_TO_QZONE" = "分享到QQ空间";
 "TEXT_SHARE_TO_FACEBOOK" = "分享到Facebook";
 "TEXT_SHARE_TO_TWITTER" = "分享到Twitter";
-//"TEXT_SHARE_TO_NETEASE_WEIBO" = "分享到网易微博";
-//"TEXT_SHARE_TO_SOHO_WEIBO" = "分享到搜狐微博";
 "TEXT_SHARE_TO_RENREN" = "分享到人人网";
 "TEXT_SHARE_TO_KAIXIN" = "分享到开心网";
 "TEXT_SHARE_TO_DOUBAN" = "分享到豆瓣我说";
@@ -50,8 +48,6 @@
 "TEXT_CANCEL" = "取消";
 "TEXT_SINA_WEIBO" = "新浪微博";
 "TEXT_TENCENT_WEIBO" = "腾讯微博";
-//"TEXT_SOHO_WEIBO" = "搜狐微博";
-//"TEXT_NETEASE_WEIBO" = "网易微博";
 "TEXT_DOUBAN" = "豆瓣社区";
 "TEXT_QZONE" = "QQ空间";
 "TEXT_RENREN" = "人人网";

@@ -1,15 +1,8 @@
 /* 
   ShareSDKLocalizable.strings
   AppgoFramework
-
-
   Created by ShareSDK.cn on 13-1-14.
-  官网地址:http://www.ShareSDK.cn
-  技术支持邮箱:support@sharesdk.cn
-  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
-  商务QQ:4006852216
   Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
-
 */
 
 "ERROR_DESC_UNREGISTER" = "SDK has not been initialized";
@@ -24,6 +17,7 @@
 "ERROR_DESC_QQ_UNKNOWN_MEDIA_TYPE" = "Unknown media type";
 "ERROR_DESC_UNAUTH" = "Not authorized";
 "ERROR_DESC_FACEBOOK_CANCEL_ADD_FRIEND" = "Cancel Add Friend";
+"ERROR_DESC_FACEBOOK_NOT_INSTALL" = "facebook client is not installed";
 "ERROR_DESC_TWITTER_GET_FRIENDS_API_DEPRECATED" = "This method is deprecated, use getFriendsWithPage method instead";
 "ERROR_DESC_WEIXIN_NOT_INSTALL" = "WeChat is not installed";
 "ERROR_DESC_WEIXIN_API_IS_NOT_SUPPORT" = "The current version does not support this api of WeChat";
@@ -65,11 +59,10 @@
 "ERROR_DESC_KAKAOTALK_NOT_INSTALL" = "KakaoTalk client is not installed";
 "ERROR_DESC_KAKAOSTORY_NOT_INSTALL" = "KakaoStory client is not installed";
 "ERROR_DESC_QQ_CLIENT_NOT_INSTALLED" = "QQ client is not installed";
+"ERROR_DESC_WEIXIN_AUTHORIZE_ERROR" = "fail to request the access token";
 
 "ShareType_1" = "Sina Weibo";
 "ShareType_2" = "Tencent Weibo";
-"ShareType_3" = "Soho Weibo";
-//"ShareType_4" = "Netease weibo";
 "ShareType_5" = "Douban";
 "ShareType_6" = "QZone";
 "ShareType_7" = "Renren";
@@ -157,8 +150,6 @@
 "AUTH_VIEW_CANCEL_BUTTON" = "Cancel";
 "AUTH_VIEW_TITLE_1" = "Sina Weibo";
 "AUTH_VIEW_TITLE_2" = "Tencent Weibo";
-"AUTH_VIEW_TITLE_3" = "Soho Weibo";
-//"AUTH_VIEW_TITLE_4" = "Netease weibo";
 "AUTH_VIEW_TITLE_5" = "Douban";
 "AUTH_VIEW_TITLE_6" = "QZone";
 "AUTH_VIEW_TITLE_7" = "Renren";
@@ -181,3 +172,23 @@
 "AUTH_VIEW_FOLLOW_ME" = "Follow Us";
 
 "AWARD_BACK_ITEM_TITLE" = "Close";
+"AD_SKIP_BUTTON" = "skip";
+
+"Share_Recommendaiton_Title" = "Sharing Summary";
+"Share_Successfully" = "Shared successfully";
+"Share_Fail" = "Shared Failed";
+"Share_To_More_Platform" = "Share to more platforms";
+"They_Are_Sharing" = "They are sharing";
+"Share_Recommendation_From" = "Share to";
+"Sharing_Summary_Close" = "Close";
+"Return" = "Return";
+"There_Are" = "You have";
+"Friend_Using_The_App" = "friends are using this app";
+"Views" = "Views";
+"Just_Now" = "Just now";
+"Min_Ago" = "min ago";
+"Hour_Ago" = "hour ago";
+"Yesterday" = "Yesterday";
+"Today_News" = "Today's News";
+"Load_More" = "More";
+"Type_News" = "News";

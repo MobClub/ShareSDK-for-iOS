@@ -29,24 +29,6 @@
 
 ///#begin zh-cn
 /**
- *	@brief	Google+请求方式
- */
-///#end
-///#begin en
-/**
- *	@brief	Google+ request method
- */
-///#end
-typedef enum
-{
-	SSGooglePlusRequestMethodGet = 0, /**< GET方式 */
-	SSGooglePlusRequestMethodPost = 1, /**< POST方式 */
-	SSGooglePlusRequestMethodMultipartPost = 2 /**< Multipart POST方式，用于上传文件的api接口 */
-}
-SSGooglePlusRequestMethod;
-
-///#begin zh-cn
-/**
  *	@brief	Google+应用协议
  */
 ///#end
@@ -120,35 +102,6 @@ SSGooglePlusRequestMethod;
  */
 ///#end
 - (NSString *)ssoCallbackUrl;
-
-///#begin zh-cn
-/**
- *	@brief	调用开放平台API
- *
- *	@param 	path 	路径
- *	@param 	params 	请求参数，可以为ISSParameter或者NSDictionary，(NSDictionary仅用于POST提交方式）
- *  @param  user    授权用户,如果传入nil则表示默认的授权用户
- *  @param  result  返回回调
- *  @param  fault   失败回调
- */
-///#end
-///#begin en
-/**
- *	@brief	Call api.
- *
- *	@param 	path 	API path string.
- *	@param 	params 	Request parameters，Can ISSParameter or NSDictionary, (NSDictionary only way to submit POST)
- *  @param  user    Authorized users, it means that if the incoming nil default authorized users
- *  @param  result  Result handler.
- *  @param  fault   Fault handler.
- */
-///#end
-- (void)api:(NSString *)path
-     method:(SSGooglePlusRequestMethod)method
-     params:(id)params
-       user:(id<ISSPlatformUser>)user
-     result:(void(^)(id responder))result
-      fault:(void(^)(CMErrorInfo *error))fault;
 
 ///#begin zh-cn
 /**

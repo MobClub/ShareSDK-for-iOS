@@ -11,6 +11,7 @@
 #import <AGCommon/UIDevice+Common.h>
 #import <AGCommon/UINavigationBar+Common.h>
 #import "IIViewDeckController.h"
+
 #import <ShareSDK/ShareSDK.h>
 #import <SinaWeiboConnection/SinaWeiboConnection.h>
 #import <TencentWeiboConnection/TencentWeiboConnection.h>
@@ -20,7 +21,6 @@
 #define RIGHT_PADDING 10.0
 #define HORIZONTAL_GAP 10.0
 #define VERTICAL_GAP 10.0
-
 #define ITEM_HEIGHT 30.0
 
 @implementation AGCallAPIViewController
@@ -376,14 +376,14 @@
 
 -(BOOL)shouldAutorotate
 {
-        //iOS6下旋屏方法
-        return YES;
+    //iOS6下旋屏方法
+    return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-        //iOS6下旋屏方法
-        return SSInterfaceOrientationMaskAll;
+    //iOS6下旋屏方法
+    return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -784,7 +784,7 @@
     
     //调用接口
     [app api:@"https://open.t.qq.com/api/t/re_list"
-      method:SSTecentWeiboRequestMethodGet
+      method:SSCallAPIRequestMethodGet
       params:params
         user:nil
       result:^(id responder) {
@@ -831,7 +831,7 @@
     
     //调用接口
     [app api:@"https://open.t.qq.com/api/t/re_list"
-      method:SSTecentWeiboRequestMethodGet
+      method:SSCallAPIRequestMethodGet
       params:params
         user:nil
       result:^(id responder) {
@@ -886,7 +886,7 @@
     
     //调用接口
     [app api:@"https://open.t.qq.com/api/fav/list_t"
-      method:SSTecentWeiboRequestMethodGet
+      method:SSCallAPIRequestMethodGet
       params:params
         user:nil
       result:^(id responder) {
@@ -931,7 +931,7 @@
     
     //调用接口
     [app api:@"https://open.t.qq.com/api/fav/list_t"
-      method:SSTecentWeiboRequestMethodGet
+      method:SSCallAPIRequestMethodGet
       params:params
         user:nil
       result:^(id responder) {
@@ -992,7 +992,7 @@
     
     //调用接口
     [app api:@"https://open.t.qq.com/api/t/reply"
-      method:SSTecentWeiboRequestMethodPost
+      method:SSCallAPIRequestMethodPost
       params:params
         user:nil
       result:^(id responder) {
@@ -1034,7 +1034,7 @@
     
     //调用接口
     [app api:@"https://open.t.qq.com/api/t/reply"
-      method:SSTecentWeiboRequestMethodPost
+      method:SSCallAPIRequestMethodPost
       params:params
         user:nil
       result:^(id responder) {

@@ -24,7 +24,6 @@
     {
         _appDelegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
         
-        // Custom initialization
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
         [leftBtn setBackgroundImage:[UIImage imageNamed:@"Common/NavigationButtonBG.png" bundleName:BUNDLE_NAME]
                            forState:UIControlStateNormal];
@@ -297,12 +296,6 @@
                           SHARE_TYPE_NUMBER(ShareTypeMail),
                           SHARE_TYPE_NUMBER(ShareTypeAirPrint),
                           SHARE_TYPE_NUMBER(ShareTypeCopy),
-//                          [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuWeibo]
-//                                                             icon:[ShareSDK getClientIconWithType:ShareTypeSohuWeibo]
-//                                                     clickHandler:clickHandler],
-//                          [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareType163Weibo]
-//                                                             icon:[ShareSDK getClientIconWithType:ShareType163Weibo]
-//                                                     clickHandler:clickHandler],
                           [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeDouBan]
                                                              icon:[ShareSDK getClientIconWithType:ShareTypeDouBan]
                                                      clickHandler:clickHandler],

@@ -28,24 +28,6 @@
 
 ///#begin zh-cn
 /**
- *	@brief	搜狐请求方式
- */
-///#end
-///#begin en
-/**
- *	@brief	Sohu Request Method
- */
-///#end
-typedef enum
-{
-	SSSohuRequestMethodGet = 0, /**< GET方式 */
-	SSSohuRequestMethodPost = 1, /**< POST方式 */
-	SSSohuRequestMethodMultipartPost = 2 /**< Multipart POST方式，用于上传文件的api接口 */
-}
-SSSohuRequestMethod;
-
-///#begin zh-cn
-/**
  *	@brief	搜狐应用协议
  */
 ///#end
@@ -103,35 +85,6 @@ SSSohuRequestMethod;
  */
 ///#end
 - (NSString *)redirectUri;
-
-///#begin zh-cn
-/**
- *	@brief	调用开放平台API
- *
- *	@param 	path 	路径
- *	@param 	params 	请求参数
- *  @param  user    授权用户,如果传入nil则表示默认的授权用户
- *  @param  result  返回回调
- *  @param  fault   失败回调
- */
-///#end
-///#begin en
-/**
- *	@brief	Call API
- *
- *	@param 	path 	API path string.
- *	@param 	params 	Request parameters.
- *  @param  user    Authorized users, it means that if the incoming nil default authorized users
- *  @param  result  Result handler.
- *  @param  fault   Fault handler.
- */
-///#end
-- (void)api:(NSString *)path
-     method:(SSSohuRequestMethod)method
-     params:(id<ISSCParameters>)params
-       user:(id<ISSPlatformUser>)user
-     result:(void(^)(id responder))result
-      fault:(void(^)(CMErrorInfo *error))fault;
 
 ///#begin zh-cn
 /**

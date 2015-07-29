@@ -60,7 +60,6 @@
 ///#end
 - (UIView<ICMHTableViewItem> *)tableView:(CMHTableView *)tableView itemForIndexPath:(NSIndexPath *)indexPath;
 
-
 @end
 
 ///#begin zh-cn

@@ -1,18 +1,7 @@
 
 #import <Foundation/Foundation.h>
 
-///#begin zh-cn
-/**
- *	@brief	日期类目
- */
-///#end
-///#begin en
-/**
- *	@brief	NSDate Category
- */
-///#end
 @interface NSDate (Common)
-
 
 ///#begin zh-cn
 /**

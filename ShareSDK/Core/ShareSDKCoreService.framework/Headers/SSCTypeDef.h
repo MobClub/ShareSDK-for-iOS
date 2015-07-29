@@ -1,4 +1,3 @@
-///#begin zh-cn
 //
 //  Created by ShareSDK.cn on 13-1-14.
 //  官网地址:http://www.ShareSDK.cn
@@ -7,33 +6,15 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
-///#end
-///#begin en
-//
-//  Created by ShareSDK.cn on 13-1-14.
-//  Website:http://www.ShareSDK.cn
-//  Support E-mail:support@sharesdk.cn
-//  WeChat ID:ShareSDK   （If publish a new version, we will be push the updates content of version to you. If you have any questions about the ShareSDK, you can get in touch through the WeChat with us, we will respond within 24 hours）
-//  Business QQ:4006852216
-//  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
-//
-///#end
 
 #import <AGCommon/ICMErrorInfo.h>
 
 #ifndef ShareSDKCoreService_SSCTypeDef_h
 #define ShareSDKCoreService_SSCTypeDef_h
 
-///#begin zh-cn
 /**
  *	@brief	授权会话状态
  */
-///#end
-///#begin en
-/**
- *	@brief	Authorized session state.
- */
-///#end
 typedef enum
 {
     SSCAuthSessionStateBegan = 0,  /**< 开始会话 */
@@ -43,16 +24,9 @@ typedef enum
 }
 SSCAuthSessionState;
 
-///#begin zh-cn
 /**
  *	@brief	分享会话状态
  */
-///#end
-///#begin en
-/**
- *	@brief	Share session state.
- */
-///#end
 typedef enum
 {
     SSCShareSessionStateBegan = 0, /**< 开始会话 */
@@ -62,22 +36,13 @@ typedef enum
 }
 SSCShareSessionState;
 
-///#begin zh-cn
 /**
  *	@brief	分享类型
  */
-///#end
-///#begin en
-/**
- *	@brief	Platform type.
- */
-///#end
 typedef enum
 {
 	SSCShareTypeSinaWeibo = 1,      /**< 新浪微博 */
 	SSCShareTypeTencentWeibo = 2,   /**< 腾讯微博 */
-//	SSCShareTypeSohuWeibo = 3,      /**< 搜狐微博 */
-//	SSCShareType163Weibo = 4,       /**< 网易微博 (v2.10.2开始不再支持网易微博平台)*/
 	SSCShareTypeDouBan = 5,         /**< 豆瓣社区 */
 	SSCShareTypeQQSpace = 6,        /**< QQ空间 */
 	SSCShareTypeRenren = 7,         /**< 人人网 */
@@ -119,16 +84,9 @@ typedef enum
 }
 SSCShareType;
 
-///#begin zh-cn
 /**
  *	@brief	统计策略
  */
-///#end
-///#begin en
-/**
- *	@brief  Statistics Policy
- */
-///#end
 typedef enum
 {
 	SSCStatPolicyRealTime = 0, /**< 实时发送统计数据 */
@@ -137,17 +95,9 @@ typedef enum
 }
 SSCStatPolicy;
 
-///#begin zh-cn
 /**
  *	@brief	授权会话返回事件
  */
-///#end
-///#begin en
-/**
- *	@brief	Authorized session result event.
- */
-///#end
 typedef void(^SSCAuthSessionResultEvent) (SSCAuthSessionState state, id user, id<ICMErrorInfo> error);
-
 
 #endif

@@ -65,7 +65,6 @@
             self.navigationItem.titleView = label;
             [label release];
         }
-        
         _ssoEnable = YES;
     }
     return self;
@@ -79,22 +78,18 @@
     [self.navigationItem.titleView sizeToFit];
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-    
     if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
     {
         [self setExtendedLayoutIncludesOpaqueBars:NO];
         [self setEdgesForExtendedLayout:SSRectEdgeBottom | SSRectEdgeLeft | SSRectEdgeRight];
     }
-    
     self.view.backgroundColor = [UIColor colorWithRGB:0xe1e0de];
     
-	// Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
     CGFloat top = VERTICAL_GAP;
@@ -404,7 +399,6 @@
     [button addTarget:self action:@selector(clientShareClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
-    
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:NSLocalizedString(@"TEXT_SHARE_WITH_LOCATION", @"地理位置分享")
@@ -444,14 +438,14 @@
 
 -(BOOL)shouldAutorotate
 {
-        //iOS6下旋屏方法
-        return YES;
+    //iOS6下旋屏方法
+    return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-        //iOS6下旋屏方法
-        return SSInterfaceOrientationMaskAll;
+    //iOS6下旋屏方法
+    return SSInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -513,8 +507,6 @@
                                                        destructiveButtonTitle:nil
                                                             otherButtonTitles:NSLocalizedString(@"TEXT_SINA_WEIBO", @"新浪微博"),
                                           NSLocalizedString(@"TEXT_TENCENT_WEIBO", @"腾讯微博"),
-//                                          NSLocalizedString(@"TEXT_SOHO_WEIBO", @"搜狐微博"),
-//                                          NSLocalizedString(@"TEXT_NETEASE_WEIBO", @"网易微博"),
                                           NSLocalizedString(@"TEXT_DOUBAN", @"豆瓣社区"),
                                           NSLocalizedString(@"TEXT_QZONE", @"QQ空间"),
                                           NSLocalizedString(@"TEXT_RENREN", @"人人网"),
@@ -557,12 +549,6 @@
                     break;
                 case 1:
                     type = ShareTypeTencentWeibo;
-                    break;
-                case 2:
-                    type = ShareTypeSohuWeibo;
-                    break;
-                case 3:
-                    type = ShareType163Weibo;
                     break;
                 case 4:
                     type = ShareTypeDouBan;
@@ -629,12 +615,6 @@
                     break;
                 case 1:
                     type = ShareTypeTencentWeibo;
-                    break;
-                case 2:
-                    type = ShareTypeSohuWeibo;
-                    break;
-                case 3:
-                    type = ShareType163Weibo;
                     break;
                 case 4:
                     type = ShareTypeDouBan;
@@ -859,9 +839,18 @@
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:NO
+                                                                scopes:@{@(ShareTypeSinaWeibo): @[@"follow_app_official_microblog"]}
+                                                         powerByHidden:YES
+                                                        followAccounts:nil
                                                          authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+//    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+//                                                         allowCallback:NO
+//                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+//                                                          viewDelegate:nil
+//                                               authManagerViewDelegate:_appDelegate.viewDelegate];
     
     //在授权页面中添加关注官方微博
     [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -893,10 +882,26 @@
                                 if (state == SSResponseStateSuccess)
                                 {
                                     NSLog(NSLocalizedString(@"TEXT_ShARE_SUC", @"分享成功"));
+                                    
+                                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
+                                                                                        message:NSLocalizedString(@"TEXT_ShARE_SUC", @"分享成功")
+                                                                                       delegate:nil
+                                                                              cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
+                                                                              otherButtonTitles:nil];
+                                    [alertView show];
+                                    [alertView release];
                                 }
                                 else if (state == SSResponseStateFail)
                                 {
                                     NSLog(NSLocalizedString(@"TEXT_ShARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
+                                    
+                                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_TIPS", @"提示")
+                                                                                        message:[NSString stringWithFormat:NSLocalizedString(@"TEXT_ShARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]]
+                                                                                       delegate:nil
+                                                                              cancelButtonTitle:NSLocalizedString(@"TEXT_KNOW", @"知道了")
+                                                                              otherButtonTitles:nil];
+                                    [alertView show];
+                                    [alertView release];
                                 }
                             }];
 }
@@ -1544,49 +1549,6 @@
                                                                                         }];
                                                                     }];
     
-    //自定义搜狐微博分享菜单项
-//    id<ISSShareActionSheetItem> shItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuWeibo]
-//                                                                            icon:[ShareSDK getClientIconWithType:ShareTypeSohuWeibo]
-//                                                                    clickHandler:^{
-//                                                                        [ShareSDK shareContent:publishContent
-//                                                                                          type:ShareTypeSohuWeibo
-//                                                                                   authOptions:authOptions
-//                                                                                 statusBarTips:YES
-//                                                                                        result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-//                                                                                            
-//                                                                                            if (state == SSPublishContentStateSuccess)
-//                                                                                            {
-//                                                                                                NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"分享成功"));
-//                                                                                            }
-//                                                                                            else if (state == SSPublishContentStateFail)
-//                                                                                            {
-//                                                                                                NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
-//                                                                                            }
-//                                                                                        }];
-//                                                                    }];
-    
-    //自定义网易微博分享菜单项
-//    id<ISSShareActionSheetItem> wyItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareType163Weibo]
-//                                                                            icon:[ShareSDK getClientIconWithType:ShareType163Weibo]
-//                                                                    clickHandler:^{
-//                                                                        [ShareSDK shareContent:publishContent
-//                                                                                          type:ShareType163Weibo
-//                                                                                   authOptions:authOptions
-//                                                                                 statusBarTips:YES
-//                                                                                        result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-//                                                                               
-//                                                                                            
-//                                                                                            if (state == SSPublishContentStateSuccess)
-//                                                                                            {
-//                                                                                                NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"分享成功"));
-//                                                                                            }
-//                                                                                            else if (state == SSPublishContentStateFail)
-//                                                                                            {
-//                                                                                                NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
-//                                                                                            }
-//                                                                                        }];
-//                                                                    }];
-    
     //自定义豆瓣分享菜单项
     id<ISSShareActionSheetItem> dbItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeDouBan]
                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeDouBan]
@@ -2134,132 +2096,6 @@
                                  }
                              }];
 }
-
-/**
- *	@brief	分享到网易微博
- *
- *	@param 	sender 	事件对象
- */
-- (void)shareTo163WeiboClickHandler:(UIButton *)sender
-{
-    //创建分享内容
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
-    id<ISSContent> publishContent = [ShareSDK content:CONTENT
-                                       defaultContent:@""
-                                                image:[ShareSDK imageWithPath:imagePath]
-                                                title:nil
-                                                  url:nil
-                                          description:nil
-                                            mediaType:SSPublishContentMediaTypeText];
-    
-    //创建弹出菜单容器
-    id<ISSContainer> container = [ShareSDK container];
-    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
-    
-    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
-                                                         allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
-                                                          viewDelegate:nil
-                                               authManagerViewDelegate:_appDelegate.viewDelegate];
-    
-    //在授权页面中添加关注官方微博
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
-                                    nil]];
-    
-    //显示分享菜单
-    [ShareSDK showShareViewWithType:ShareType163Weibo
-                          container:container
-                            content:publishContent
-                      statusBarTips:YES
-                        authOptions:authOptions
-                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
-                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
-                                                            qqButtonHidden:NO
-                                                     wxSessionButtonHidden:NO
-                                                    wxTimelineButtonHidden:NO
-                                                      showKeyboardOnAppear:NO
-                                                         shareViewDelegate:_appDelegate.viewDelegate
-                                                       friendsViewDelegate:_appDelegate.viewDelegate
-                                                     picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                 
-                                 if (state == SSPublishContentStateSuccess)
-                                 {
-                                     NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"发表成功"));
-                                 }
-                                 else if (state == SSPublishContentStateFail)
-                                 {
-                                     NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
-                                 }
-                             }];
-}
-
-/**
- *	@brief	分享到搜狐微博
- *
- *	@param 	sender 	事件对象
- */
-//- (void)shareToSohuWeiboClickHandler:(UIButton *)sender
-//{
-//    //创建分享内容
-//    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
-//    id<ISSContent> publishContent = [ShareSDK content:CONTENT
-//                                       defaultContent:@""
-//                                                image:[ShareSDK imageWithPath:imagePath]
-//                                                title:nil
-//                                                  url:nil
-//                                          description:nil
-//                                            mediaType:SSPublishContentMediaTypeText];
-//    
-//    //创建弹出菜单容器
-//    id<ISSContainer> container = [ShareSDK container];
-//    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
-//    
-//    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
-//                                                         allowCallback:YES
-//                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
-//                                                          viewDelegate:nil
-//                                               authManagerViewDelegate:_appDelegate.viewDelegate];
-//    
-//    //在授权页面中添加关注官方微博
-//    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-//                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-//                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-//                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-//                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
-//                                    nil]];
-//    
-//    //显示分享菜单
-//    [ShareSDK showShareViewWithType:ShareTypeSohuWeibo
-//                          container:container
-//                            content:publishContent
-//                      statusBarTips:YES
-//                        authOptions:authOptions
-//                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
-//                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
-//                                                            qqButtonHidden:NO
-//                                                     wxSessionButtonHidden:NO
-//                                                    wxTimelineButtonHidden:NO
-//                                                      showKeyboardOnAppear:NO
-//                                                         shareViewDelegate:_appDelegate.viewDelegate
-//                                                       friendsViewDelegate:_appDelegate.viewDelegate
-//                                                     picViewerViewDelegate:nil]
-//                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-//                                
-//                                 if (state == SSPublishContentStateSuccess)
-//                                 {
-//                                     NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"发表成功"));
-//                                 }
-//                                 else if (state == SSPublishContentStateFail)
-//                                 {
-//                                     NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
-//                                 }
-//                             }];
-//}
 
 /**
  *	@brief	分享到人人网
@@ -3535,7 +3371,6 @@
 - (void)customShareMenuClickHandler:(UIButton *)sender
 {
     //定义菜单分享列表
-//    NSArray *shareList = [ShareSDK getShareListWithType:ShareTypeTwitter, ShareTypeFacebook, ShareTypeSinaWeibo, ShareTypeTencentWeibo, ShareTypeRenren, ShareTypeKaixin, ShareTypeSohuWeibo, ShareType163Weibo, nil];
     NSArray *shareList = [ShareSDK getShareListWithType:ShareTypeTwitter, ShareTypeFacebook, ShareTypeSinaWeibo, ShareTypeTencentWeibo, ShareTypeRenren, ShareTypeKaixin,nil];
     
     //创建分享内容

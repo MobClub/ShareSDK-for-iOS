@@ -29,24 +29,6 @@
 
 ///#begin zh-cn
 /**
- *	@brief	请求方式
- */
-///#end
-///#begin en
-/**
- *	@brief	Request method
- */
-///#end
-typedef enum
-{
-	SSTumblrRequestMethodGet = 0, /**< GET方式 */
-	SSTumblrRequestMethodPost = 1, /**< POST方式 */
-	SSTumblrRequestMethodMultipartPost = 2 /**< Multipart POST方式，用于上传文件的api接口 */
-}
-SSTumblrRequestMethod;
-
-///#begin zh-cn
-/**
  *	@brief	Tumblr应用
  */
 ///#end
@@ -104,35 +86,6 @@ SSTumblrRequestMethod;
  */
 ///#end
 - (NSString *)callbackUrl;
-
-///#begin zh-cn
-/**
- *	@brief	调用开放平台API
- *
- *	@param 	path 	路径
- *	@param 	params 	请求参数
- *  @param  user    授权用户,如果传入nil则表示默认的授权用户
- *  @param  result  返回回调
- *  @param  fault   失败回调
- */
-///#end
-///#begin en
-/**
- *	@brief	Call API
- *
- *	@param 	path 	API path string.
- *	@param 	params 	Request parameters.
- *  @param  user    Authorized user, it means that if the incoming nil default authorized user
- *  @param  result  Result handler.
- *  @param  fault   Fault handler.
- */
-///#end
-- (void)api:(NSString *)path
-     method:(SSTumblrRequestMethod)method
-     params:(id<ISSCOAuthParameters>)params
-       user:(id<ISSPlatformUser>)user
-     result:(void(^)(id responder))result
-      fault:(void(^)(CMErrorInfo *error))fault;
 
 ///#begin zh-cn
 /**
