@@ -48,8 +48,7 @@ necessary for the SSO Login of Tencent weibo（iOS6.0+）
 
 necessary for the SSO Login of QZone or QQ Friend share
 
-1. libstdc++.dylib        
-2. libsqlite3.dylib      
+1. libsqlite3.dylib   
 
 necessary for Mail or SMS
 
