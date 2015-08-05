@@ -31,6 +31,9 @@ then you will see the following window, check the "Copy items into destination g
 4. libicucore.dylib 
 5. libz.1.2.5.dylib
 6. Security.framework
+7. JavaScriptCore.framework
+8. libstdc++.dylib
+9. CoreText.framework
 
 **Optional Framework：**
 
@@ -57,8 +60,7 @@ necessary for Google+ platform
 1. CoreMotion.framework        
 2. CoreLocation.framework      
 3. MediaPlayer.framework      
-4. CoreText.framework          
-5. AssetsLibrary.framework     
+4. AssetsLibrary.framework  
       
 The steps of adding the framework:
 
