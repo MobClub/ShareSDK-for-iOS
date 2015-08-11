@@ -375,4 +375,9 @@
 "TEXT_SHARE_TO_TIMELINE" = "分享朋友圈";
 "TEXT_FAV" = "收藏";
 
+"TEXT_ALIPAY" = "支付宝朋友";
+"TEXT_ALIPAY_SHARE_TEXT" = "支付宝朋友分享文字";
+"TEXT_ALIPAY_SHARE_IMAGE" = "支付宝朋友分享图片";
+"TEXT_ALIPAY_SHARE_WEBPAGE" = "支付宝朋友分享链接";
+
 

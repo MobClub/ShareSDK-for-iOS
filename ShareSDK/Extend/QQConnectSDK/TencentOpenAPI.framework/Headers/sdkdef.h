@@ -10,6 +10,17 @@
 #import <UIKit/UIKit.h>
 
 /**
+ * \brief 设置sdk的log等级
+ */
+typedef enum {
+    TCOLogLevel_Disabled = -1,   // 关闭所有log
+    TCOLogLevel_Error = 0,
+    TCOLogLevel_Warning,
+    TCOLogLevel_Info,
+    TCOLogLevel_Debug,
+} TCOLogLevel;
+
+/**
  * \brief 手机qq的当前版本
  */
 typedef enum QQVersion

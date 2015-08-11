@@ -1059,7 +1059,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../ShareSDK/Extend/SinaWeiboSDK",
-					"$(SRCROOT)/../ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/../ShareSDK/Extend/WeChatSDK",
 					"$(SRCROOT)/../ShareSDK/Extend/YiXinSDK",
 				);
@@ -1093,7 +1092,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../ShareSDK/Extend/SinaWeiboSDK",
-					"$(SRCROOT)/../ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/../ShareSDK/Extend/WeChatSDK",
 					"$(SRCROOT)/../ShareSDK/Extend/YiXinSDK",
 				);

@@ -14,18 +14,17 @@
 #import "ShareSDKDemoMoreViewController.h"
 
 #import "QQDemoViewController.h"
-#import "RespViewController.h"
 #import "AGWeiXinQQDemoController.h"
 #import "AGLeftSideViewController.h"
 
 //第三方平台的SDK头文件，根据需要的平台导入。
-//以下分别对应微信、新浪微博、人人、易信
+//以下分别对应微信、新浪微博、人人、易信、支付宝
 #import "WXApi.h"
 #import "WeiboSDK.h"
 #import <RennSDK/RennSDK.h>
 #import "YXApi.h"
+#import "APOpenAPI.h"
 //以下是腾讯QQ和QQ空间
-#import <TencentOpenAPI/QQApi.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 //以下分别是Google+、Pinterest
@@ -104,7 +103,17 @@
 }
 
 - (void)initializePlat
-{
+
+{   /**
+     连接支付宝开放平台应用以使用相关功能（不含支付宝支付，仅支持支付宝朋友分享功能,此应用需要引用AliPaySocialConnection.frameworkhttps://open.alipay.com/platform/home.htm上注册支付宝开放平台应用,并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectAliPaySocialWithAppID:@"2015072400185895"
+                                openApiCls:[APOpenAPI class]
+                           mediaMessageCls:[APMediaMessage class]
+                        shareTextObjectCls:[APShareTextObject class]
+                         shareImgObjectCls:[APShareImageObject class]
+                         shareWebObjectCls:[APShareWebObject class]
+                     sendMessageToAPReqCls:[APSendMessageToAPReq class]];
     /**
      连接新浪微博开放平台应用以使用相关功能，此应用需要引用SinaWeiboConnection.framework
      http://open.weibo.com上注册新浪微博开放平台应用，并将相关信息填写到以下字段
@@ -350,9 +359,6 @@
     
     //导入人人网需要的外部库类型,如果不需要人人网SSO可以不调用此方法
     [ShareSDK importRenRenClass:[RennClient class]];
-    
-    //导入腾讯微博需要的外部库类型，如果不需要腾讯微博SSO可以不调用此方法
-//    [ShareSDK importTencentWeiboClass:[WeiboApi class]];
     
     //导入微信需要的外部库类型，如果不需要微信分享可以不调用此方法
     [ShareSDK importWeChatClass:[WXApi class]];

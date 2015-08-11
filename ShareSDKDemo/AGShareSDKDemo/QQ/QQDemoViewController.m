@@ -9,7 +9,6 @@
 #import "QQDemoViewController.h"
 #import "HeadView.h"
 #import "QQTextViewController.h"
-#import <TencentOpenAPI/QQApi.h>
 #import <AGCommon/UINavigationBar+Common.h>
 #import <AGCommon/UIImage+Common.h>
 #import <AGCommon/UIDevice+Common.h>
@@ -18,7 +17,8 @@
 #import "IIViewDeckController.h"
 #import "AGAppDelegate.h"
 #import <AGCommon/NSString+Common.h>
-
+#import <QQConnection/QQConnection.h>
+#import <TencentOpenAPI/QQApiInterface.h>
 @interface QQDemoViewController (TestMethods)
 - (BOOL)checkQQ;
 - (void)sendTextMessage;
@@ -28,19 +28,10 @@
 - (void)sendVideoMessage;
 - (void)doEditText;
 - (void)doSelImage;
-- (void)showTestContent;
+
 @end
 
-
 @implementation QQDemoViewController
-
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,9 +60,6 @@
                           NSLocalizedString(@"TEXT_SELECT_IMAGE", @"选择发送图片"),
                           nil];
         
-        _featureNames3 = [[NSMutableArray alloc] initWithObjects:
-                          NSLocalizedString(@"TEXT_SHOW_TEST_CONTENT", @"显示测试内容"),
-                          nil];
         
         if ([UIDevice currentDevice].isPad || [[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
         {
@@ -92,7 +80,6 @@
 {
     [_featureNames release];
     [_featureNames2 release];
-    [_featureNames3 release];
     [super dealloc];
 }
 
@@ -201,14 +188,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(section == 0) return [_featureNames count];
     else if(section == 1) return [_featureNames2 count];
-    else if(section == 2) return [_featureNames3 count];
     
     return 0;
 }
@@ -235,12 +221,7 @@
         cell.textLabel.text = [_featureNames2 objectAtIndex:indexPath.row];
         cell.textLabel.textAlignment = UITextAlignmentCenter;
     }
-    else if(indexPath.section == 2)
-    {
-        cell.textLabel.text = [_featureNames3 objectAtIndex:indexPath.row];
-        cell.textLabel.textAlignment = UITextAlignmentCenter;
-    }
-	
+   	
     return cell;
 }
 
@@ -289,19 +270,6 @@
                 break;
         }
     }
-    else if(section == 2)
-    {
-        switch (row) 
-        {
-            case 0:
-                [self showTestContent];
-                break;
-                
-            default:
-                break;
-        }
-    }
-	
 	[_featureListView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -476,7 +444,8 @@
 
 - (BOOL)checkQQ
 {
-    if(![QQApi isQQInstalled])
+
+    if(![QQApiInterface isQQInstalled])
     {
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"warning" message:@"QQ is not installed" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
         [alertView show];
@@ -484,7 +453,7 @@
         return NO;
     }
     
-    if(![QQApi isQQSupportApi])
+    if(![QQApiInterface isQQSupportApi])
     {
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"warning" message:@"Open API is not supported by current QQ" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
         [alertView show];
@@ -737,36 +706,6 @@
     picker.delegate = self;
     picker.allowsEditing = YES;
     [self presentModalViewController:picker animated:YES];
-}
-
-- (void)showTestContent
-{
-    NSMutableString* str = [NSMutableString stringWithString:@""];
-    
-    NSArray* array = [QQApi getAdItemArray];
-    if(array)
-    {
-        [str appendFormat:@"count:%d ---\n", (int)[array count]];
-        for(int i = 0; i < (int)[array count]; i++)
-        {
-            QQApiAdItem* item = [array objectAtIndex:i];
-            if(item)
-            {
-                [str appendFormat:@"item: %d\n{\n", i];
-                
-                [str appendFormat:@"title: %@\n", item.title];
-                [str appendFormat:@"description: %@\n", item.description];
-                [str appendFormat:@"imageData size: %d\n", item.imageData ? (int)[item.imageData length] : 0];
-                [str appendFormat:@"target: %@\n", item.target];
-                
-                [str appendFormat:@"}\n"];
-            }
-        }
-    }
-    
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"content" message:str delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-    [alertView show];
-    [alertView release];
 }
 
 - (void)moreButtonClickHanlder:(id)sender

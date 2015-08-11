@@ -61,6 +61,14 @@
 "ERROR_DESC_QQ_CLIENT_NOT_INSTALLED" = "QQ client is not installed";
 "ERROR_DESC_WEIXIN_AUTHORIZE_ERROR" = "fail to request the access token";
 
+"ERROR_DESC_ALIPAYSOCIAL_SEND_FAIL" = "Failed to send";
+"ERROR_DESC_ALIPAYSOCIAL_NOT_INTEGRATED" = "Not yet integrated APSocial SDK";
+"ERROR_DESC_ALI_API_IS_NOT_SUPPORT" = "The current version does not support this api of Ali Pay";
+"ERROR_DESC_ALIPAYSOCIAL_NOT_INSTALLED" = "Ali Pay is not installed";
+"ERROR_DESC_ALIPAYSOCIAL_NOT_SET_URL_SCHEME" = "Ali Pay's URL Scheme has not been set";
+"ERROR_DESC_ALIPAYSOCIAL_NOT_SUPPORT_MEDIA_TYPE" = "the media-type is not supportted";
+"ERROR_DESC_NO_VALILD_PLATFORM_TO_SHARE" = "There is no valid platform to show.The reason may be that the active platform need app client to share but the iOS device do not have that app client.";
+
 "ShareType_1" = "Sina Weibo";
 "ShareType_2" = "Tencent Weibo";
 "ShareType_5" = "Douban";
@@ -99,6 +107,7 @@
 "ShareType_43" = "WhatsApp";
 "ShareType_44" = "KakaoTalk";
 "ShareType_45" = "KakaoStory";
+"ShareType_50" = "Alipay";
 
 "ALTER_VIEW_TITLE" = "Message";
 "ALTER_VIEW_I_KNOWN_BUTTON" = "I know";

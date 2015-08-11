@@ -65,6 +65,14 @@
 "ERROR_DESC_QQ_CLIENT_NOT_INSTALLED" = "尚未安装QQ客户端";
 "ERROR_DESC_WEIXIN_AUTHORIZE_ERROR" = "获取 access token 失败";
 
+"ERROR_DESC_ALIPAYSOCIAL_SEND_FAIL" = "发送失败";
+"ERROR_DESC_ALIPAYSOCIAL_NOT_INTEGRATED" = "尚未集成支付宝分享接口";
+"ERROR_DESC_ALI_API_IS_NOT_SUPPORT" = "当前支付宝版本不支持该功能";
+"ERROR_DESC_ALIPAYSOCIAL_NOT_INSTALLED" = "尚未安装支付宝";
+"ERROR_DESC_ALIPAYSOCIAL_NOT_SET_URL_SCHEME" = "尚未设置支付宝的URL Scheme";
+"ERROR_DESC_ALIPAYSOCIAL_NOT_SUPPORT_MEDIA_TYPE" = "支付宝不支持该类型媒体分享";
+"ERROR_DESC_NO_VALILD_PLATFORM_TO_SHARE" = "没有有效的分享平台可以显示。原因可能是：分享平台需要客户端才能分享，而这台iOS设备没有安装这些平台的客户端。";
+
 "ShareType_1" = "新浪微博";
 "ShareType_2" = "腾讯微博";
 "ShareType_5" = "豆瓣";
@@ -103,6 +111,7 @@
 "ShareType_43" = "WhatsApp";
 "ShareType_44" = "KakaoTalk";
 "ShareType_45" = "KakaoStory";
+"ShareType_50" = "支付宝朋友";
 
 "ALTER_VIEW_TITLE" = "提示";
 "ALTER_VIEW_I_KNOWN_BUTTON" = "知道了";

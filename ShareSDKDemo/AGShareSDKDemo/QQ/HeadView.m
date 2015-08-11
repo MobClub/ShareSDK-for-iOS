@@ -17,8 +17,6 @@
     {
         self.backgroundColor = [UIColor colorWithRed:240.0f/255.f green:240.f/255.f blue:240.f/255.f alpha:1.f];
         
-        // logo
-        
         _imgView = [[[UIImageView alloc] initWithFrame:CGRectMake((self.width - 54) / 2, 17, 54, 54)] autorelease];
         _imgView.image = [UIImage imageNamed:@"qqicon.png"];
         _imgView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
@@ -32,8 +30,7 @@
         label.textAlignment = UITextAlignmentCenter;
         label.font = [UIFont systemFontOfSize:14];
         [self addSubview:label];
-        
-        //version
+
         _versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(_imgView.right + 10, 45, 100, 40)];
         _versionLabel.font = [UIFont systemFontOfSize:14];
         NSString* version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
@@ -41,7 +38,6 @@
         _versionLabel.text = version;
         _versionLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:_versionLabel];
-        // line
         
         UIView *lineView1 = [[UIView alloc] initWithFrame:CGRectMake(0, frame.size.height - 2, self.width, 1)];
         lineView1.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -69,8 +65,9 @@
 
 - (void)dealloc
 {
+    _imgView = nil;
+    _versionLabel = nil;
     [super dealloc];
 }
-
 
 @end

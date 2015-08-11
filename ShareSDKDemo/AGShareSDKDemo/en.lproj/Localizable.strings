@@ -375,3 +375,7 @@ See you later than you think you have the United States ";
 "TEXT_WECHAT_SEND_GIF" = "Send a GIF message to WeChat";
 "TEXT_SHARE_TO_TIMELINE" = "Send to Timeline";
 "TEXT_FAV" = "Favorited";
+"TEXT_ALIPAY" = "Alipay";
+"TEXT_ALIPAY_SHARE_TEXT" = "Send a text to Alipay";
+"TEXT_ALIPAY_SHARE_IMAGE" = "Send a photo to Alipay";
+"TEXT_ALIPAY_SHARE_WEBPAGE" = "Send a webpage to Alipay";

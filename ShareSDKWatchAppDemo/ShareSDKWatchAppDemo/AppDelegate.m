@@ -12,7 +12,7 @@
 #import <ShareSDK/ShareSDK.h>
 
 //第三方平台的SDK头文件，根据需要的平台导入。
-//以下分别对应微信、新浪微博、人人、易信
+//以下分别对应微信、新浪微博、腾讯微博、人人、易信
 #import "WXApi.h"
 #import "WeiboSDK.h"
 #import <RennSDK/RennSDK.h>

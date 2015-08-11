@@ -39,7 +39,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	ShareSDK类，为整个SDK的顶层接口类，所有功能都由此类进行提供（包括分享、授权等等）v2.11.1
+ *	@brief	ShareSDK类，为整个SDK的顶层接口类，所有功能都由此类进行提供（包括分享、授权等等）v2.11.2
  */
 ///#end
 ///#begin en
@@ -1232,6 +1232,44 @@
 
 ///#begin zh-cn
 /**
+ *	@brief	链接支付宝朋友以使用相关功能
+ *
+ *  @since  ver2.11.2
+ *
+ *	@param 	appId               应用ID
+ *  @param 	openApiCls          头文件导入文件"APOpenAPI.h",将[APOpenAPI class]传入此参数
+ *  @param 	mediaMessageCls     将[APMediaMessage class]传入此参数
+ *  @param 	shareTextObjectCls  将[APShareTextObject class]传入此参数
+ *  @param 	shareImgObjectCls   将[APShareImageObject class]传入此参数
+ *  @param 	webObjectCls        将[APShareWebObject class]传入此参数
+ *  @param 	sendMsgToAPReqCls   将[APSendMessageToAPReq class]传入此参数
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Initialize YiXin Session platform.
+ *
+ *  @since  ver2.11.2
+ *
+ *	@param 	appId 	App id
+ *  @param 	openApiCls          import "APOpenAPI.h",then passed [APOpenAPI class] this parameter.
+ *  @param 	mediaMessageCls     passed [APMediaMessage class] this parameter
+ *  @param 	shareTextObjectCls  passed [APShareTextObject class] this parameter
+ *  @param 	shareImgObjectCls   passed [APShareImageObject class] this parameter
+ *  @param 	webObjectCls        passed [APShareWebObject class] this parameter
+ *  @param 	sendMsgToAPReqCls   passed [APSendMessageToAPReq class] this parameter
+ */
+///#end
++ (void)connectAliPaySocialWithAppID:(NSString*)appId
+                          openApiCls:(Class)openApiCls
+                     mediaMessageCls:(Class)mediaMessageCls
+                  shareTextObjectCls:(Class)shareTextObjectCls
+                   shareImgObjectCls:(Class)shareImgObjectCls
+                   shareWebObjectCls:(Class)webObjectCls
+               sendMessageToAPReqCls:(Class)sendMsgToAPReqCls;
+
+///#begin zh-cn
+/**
  *	@brief	处理请求打开链接,如果集成新浪微博(SSO)、Facebook(SSO)、微信、QQ分享功能需要加入此方法
  *
  *	@param 	url 	链接
@@ -1407,6 +1445,42 @@
 ///#end
 + (void)importYiXinClass:(Class)yixinClass;
 
+
+///#begin zh-cn
+/**
+ *	@brief	导入支付宝朋友所需要的类型，如果不使用支付宝朋友可以不调用
+ *
+ *  @since  ver2.11.2
+ *
+ *  @param 	openApiCls          头文件导入文件"APOpenAPI.h",将[APOpenAPI class]传入此参数
+ *  @param 	mediaMessageCls     将[APMediaMessage class]传入此参数
+ *  @param 	shareTextObjectCls  将[APShareTextObject class]传入此参数
+ *  @param 	shareImgObjectCls   将[APShareImageObject class]传入此参数
+ *  @param 	webObjectCls        将[APShareWebObject class]传入此参数
+ *  @param 	sendMsgToAPReqCls   将[APSendMessageToAPReq class]传入此参数
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Import Alipay classes，If you not use the Alipay platform when not in call
+ *
+ *  @since  ver2.11.2
+ *
+ *  @param 	openApiCls          import "APOpenAPI.h",then passed [APOpenAPI class] this parameter.
+ *  @param 	mediaMessageCls     passed [APMediaMessage class] this parameter
+ *  @param 	shareTextObjectCls  passed [APShareTextObject class] this parameter
+ *  @param 	shareImgObjectCls   passed [APShareImageObject class] this parameter
+ *  @param 	webObjectCls        passed [APShareWebObject class] this parameter
+ *  @param 	sendMsgToAPReqCls   passed [APSendMessageToAPReq class] this parameter
+ */
+///#end
+
++ (void)importAlipayOpenApiCls:(Class)openApiCls
+               mediaMessageCls:(Class)mediaMessageCls
+            shareTextObjectCls:(Class)shareTextObjectCls
+             shareImgObjectCls:(Class)shareImgObjectCls
+             shareWebObjectCls:(Class)webObjectCls
+         sendMessageToAPReqCls:(Class)sendMsgToAPReqCls;
 
 #pragma mark 辅助
 

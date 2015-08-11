@@ -419,7 +419,6 @@
     scrollView.contentSize = CGSizeMake(self.view.width, top += button.height + VERTICAL_GAP);
     [self.view addSubview:scrollView];
     [scrollView release];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -1223,7 +1222,6 @@
     //结束定制信息
     ////////////////////////
     
-    
     //创建弹出菜单容器
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
@@ -1381,7 +1379,7 @@
     //定制搜狐随身看信息
     [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
     
-        //结束定制信息
+    //结束定制信息
     ////////////////////////
     
     //创建弹出菜单容器
@@ -1692,8 +1690,6 @@
                           SHARE_TYPE_NUMBER(ShareTypeMail),
                           SHARE_TYPE_NUMBER(ShareTypeAirPrint),
                           SHARE_TYPE_NUMBER(ShareTypeCopy),
-//                          shItem,
-//                          wyItem,
                           dbItem,
                           evnItem,
                           pkItem,

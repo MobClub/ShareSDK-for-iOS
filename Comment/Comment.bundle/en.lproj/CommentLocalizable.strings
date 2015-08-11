@@ -1,0 +1,55 @@
+/* 
+  CommentLocalizable.strings
+  Comment
+
+  Created by 刘靖煌 on 15/8/3.
+  Copyright (c) 2015年 掌淘科技. All rights reserved.
+*/
+
+"MENU_ITEM_HOT_LIST" = "Hot comment";
+"MENU_ITEM_LATEST_LIST" = "New Comment";
+
+"BUTTON_COMMENT" = "Make a comment";
+"BUTTON_CANCEL" = "Cancel";
+"BUTTON_SEND" = "Send";
+"BUTTON_REPLY" = "Reply";
+"BUTTON_COPY" = "Copy";
+"BUTTON_SHARE" = "Share";
+"BUTTON_KNOWN" = "Get it";
+"BUTTON_ADD_ACCOUNT" = "Add more account";
+
+"TITLE_ACCOUNT_LOGIN" = "Login";
+"TITLE_SELECT_ACCOUNT" = "Choose the way to login";
+"TITLE_COMMENT" = "Comment";
+"TITLE_TIP" = "Tip";
+
+"PLACEHOLDER_DEFAULT_CONTENT" = "Make a comment";
+"PLACEHOLDER_REPLY_CONTENT" = "reply to %@";
+
+"TEXT_ANONYMOUS_USER" = "Anonymous user";
+"TEXT_LOAD_MORE" = "Loading more ...";
+"TEXT_CONTENT_OUT_OF_LENGTH" = "The character of comment is no more than 140";
+"TEXT_SHARE_SUCCESS" = "Shared successfully";
+"TEXT_SHARE_FAIL" = "Shared failed";
+"TEXT_DATE_RECENT" = "Just now";
+"TEXT_DATE_MINUTE_AGO" = "%.0f min ago";
+"TEXT_DATE_HOUR_AGO" = "%.0f hour age";
+"TEXT_SHARE_TO" = "Share to :";
+"TEXT_BIND_FAIL" = "Binding failure!";
+"TEXT_SENDING" = "Sending ...";
+"TEXT_COMMENT_SUC" = "Comment successfully!";
+"TEXT_COMMENT_FAI" = "Comment failed!";
+"TEXT_CLICK_GET_MORE" = "Click to show more";
+"TEXT_BIND_ACCOUNT" = "Binding account";
+"TEXT_CHANGE_ACCOUNT" = "Change account";
+"TEXT_COMMENT_SEND_FREQUENT" = "Request too frequently ！Please try again later";
+"TEXT_COMMENT_IN_REVIEW" = "Submitted successfully,waiting for the approval";
+"TEXT_COMMENT_SHIELDED" = "The comment has been blocked";
+"TEXT_BIND_ACCOUNT_FAIL" = "Binding account failure";
+
+"FILTER_MSG_0" = "Content containing sensitive character";
+"FILTER_MSG_1" = "Character length is not enough";
+"FILTER_MSG_2" = "Character length is too long";
+"FILTER_MSG_3" = "Repeated characters too much";
+"FILTER_MSG_4" = "Too many link accessing the content";
+"FILTER_MSG_5" = "Please type in Chinese";

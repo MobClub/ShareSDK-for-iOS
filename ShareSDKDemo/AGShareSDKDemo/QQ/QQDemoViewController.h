@@ -18,11 +18,8 @@
                                                    QQTextViewControllerDelegate>
 {
     UITableView *_featureListView;
-    
     NSMutableArray* _featureNames;
     NSMutableArray* _featureNames2;
-    NSMutableArray* _featureNames3;
-    
     AGAppDelegate *_appDelegate;
 }
 

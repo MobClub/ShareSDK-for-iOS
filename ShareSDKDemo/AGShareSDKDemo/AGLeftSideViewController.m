@@ -14,6 +14,7 @@
 #import "AGApiViewController.h"
 #import "AGAuthViewController.h"
 #import "QQDemoViewController.h"
+#import "AliPaySocialViewController.h"
 #import "AGViewController.h"
 #import "AGLeftSideTableCell.h"
 #import "AGCustomViewController.h"
@@ -57,7 +58,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
     {
         [self setExtendedLayoutIncludesOpaqueBars:NO];
@@ -94,7 +94,7 @@
 {
     switch (section) {
         case 0:
-            return 10;
+            return 11;
         case 1:
             return 5;
         default:
@@ -141,18 +141,21 @@
                     cell.textLabel.text = NSLocalizedString(@"TEXT_SINA_WEIBO", @"新浪微博");
                     break;
                 case 5:
-                    cell.textLabel.text = NSLocalizedString(@"TEXT_DEMO", @"演示");
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_ALIPAY", @"支付宝好友");
                     break;
                 case 6:
-                    cell.textLabel.text = NSLocalizedString(@"TEXT_CUSTOM_SHARE_VIEW", @"自定义分享界面");
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_DEMO", @"演示");
                     break;
                 case 7:
-                    cell.textLabel.text = NSLocalizedString(@"TEXT_GET_USER_INFO", @"获取用户信息");
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_CUSTOM_SHARE_VIEW", @"自定义分享界面");
                     break;
                 case 8:
-                    cell.textLabel.text = NSLocalizedString(@"TEXT_GET_AUTH_INFO", @"获取授权信息");
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_GET_USER_INFO", @"获取用户信息");
                     break;
                 case 9:
+                    cell.textLabel.text = NSLocalizedString(@"TEXT_GET_AUTH_INFO", @"获取授权信息");
+                    break;
+                case 10:
                     cell.textLabel.text = NSLocalizedString(@"TEXT_CALL_API", @"调用API");
                     break;
             }
@@ -297,6 +300,19 @@
                     break;
                 }
                 case 5:
+                {//支付宝
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        UIViewController* shareVC = [[[AliPaySocialViewController alloc]init] autorelease];
+                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
+                        self.viewDeckController.centerController = navShareVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                        
+                    }];
+                    break;
+                    
+                }
+                case 6:
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         UIViewController *shareVC = [[[AGViewController alloc] init] autorelease];
@@ -307,7 +323,7 @@
                     }];
                     break;
                 }
-                case 6:
+                case 7:
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         UIViewController *shareVC = [[[AGCustomViewController alloc] init] autorelease];
@@ -318,7 +334,7 @@
                     }];
                     break;
                 }
-                case 7:
+                case 8:
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         UIViewController *shareVC = [[[AGGetUserInfoViewController alloc] init] autorelease];
@@ -329,7 +345,7 @@
                     }];
                     break;
                 }
-                case 8:
+                case 9:
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         UIViewController *shareVC = [[[AGGetCredentialViewController alloc] init] autorelease];
@@ -340,7 +356,7 @@
                     }];
                     break;
                 }
-                case 9:
+                case 10:
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         UIViewController *shareVC = [[[AGCallAPIViewController alloc] init] autorelease];

@@ -47,6 +47,7 @@
 		A808348918671904001D257D /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A808348818671904001D257D /* libicucore.dylib */; };
 		A808348B1867190C001D257D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A808348A1867190C001D257D /* MessageUI.framework */; };
 		A808348D18671916001D257D /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A808348C18671916001D257D /* libz.1.2.5.dylib */; };
+		DE245B521B7364A50011E028 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DE245B511B7364A50011E028 /* libsqlite3.dylib */; };
 		DE63FAC61B004D2A0060B5F6 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE63FAC51B004D2A0060B5F6 /* AdSupport.framework */; };
 		DE795B0D1B4D1E1100026FD0 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE795B0C1B4D1E1100026FD0 /* MOBFoundation.framework */; };
 		DE795B0F1B4D1E2300026FD0 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DE795B0E1B4D1E2300026FD0 /* libstdc++.dylib */; };
@@ -104,6 +105,7 @@
 		A808348818671904001D257D /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		A808348A1867190C001D257D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A808348C18671916001D257D /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		DE245B511B7364A50011E028 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		DE63FAC51B004D2A0060B5F6 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		DE795B0C1B4D1E1100026FD0 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		DE795B0E1B4D1E2300026FD0 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
@@ -115,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE245B521B7364A50011E028 /* libsqlite3.dylib in Frameworks */,
 				DE795B0F1B4D1E2300026FD0 /* libstdc++.dylib in Frameworks */,
 				DEB4B1961B4D1DF90000A99C /* JavaScriptCore.framework in Frameworks */,
 				DE63FAC61B004D2A0060B5F6 /* AdSupport.framework in Frameworks */,
@@ -266,6 +269,7 @@
 		A80833E918671108001D257D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DE245B511B7364A50011E028 /* libsqlite3.dylib */,
 				DE795B0E1B4D1E2300026FD0 /* libstdc++.dylib */,
 				DEB4B1951B4D1DF90000A99C /* JavaScriptCore.framework */,
 				DE63FAC51B004D2A0060B5F6 /* AdSupport.framework */,
@@ -515,6 +519,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/../ShareSDK/Extend/WeChatSDK",
 					"$(SRCROOT)/../ShareSDK/Extend/SinaWeiboSDK",
 				);
@@ -550,6 +555,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/../ShareSDK/Extend/WeChatSDK",
 					"$(SRCROOT)/../ShareSDK/Extend/SinaWeiboSDK",
 				);
