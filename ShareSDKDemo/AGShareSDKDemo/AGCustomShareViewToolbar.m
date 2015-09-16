@@ -121,12 +121,6 @@
                                   [NSNumber numberWithBool:NO],
                                   @"selected",
                                   nil],
-                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  SHARE_TYPE_NUMBER(ShareTypeSohuKan),
-                                  @"type",
-                                  [NSNumber numberWithBool:NO],
-                                  @"selected",
-                                  nil],
                                  nil];
         
         

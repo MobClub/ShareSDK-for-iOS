@@ -53,7 +53,6 @@
 "TEXT_RENREN" = "人人网";
 "TEXT_KAIXIN" = "开心网";
 "TEXT_YOUDAO_NOTE" = "有道云笔记";
-"TEXT_SOHU_KAN" = "搜狐随身看";
 "TEXT_TIPS" = "提示";
 "TEXT_KNOW" = "知道了";
 "TEXT_UNAUTH" = "此平台尚未授权!";
@@ -379,5 +378,7 @@
 "TEXT_ALIPAY_SHARE_TEXT" = "支付宝朋友分享文字";
 "TEXT_ALIPAY_SHARE_IMAGE" = "支付宝朋友分享图片";
 "TEXT_ALIPAY_SHARE_WEBPAGE" = "支付宝朋友分享链接";
+"TEXT_FACEBOOK_APP_INVITE" = "发送Facebook应用邀请";
+
 
 

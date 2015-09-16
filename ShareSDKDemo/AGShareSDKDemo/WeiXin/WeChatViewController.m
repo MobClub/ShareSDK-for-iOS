@@ -134,13 +134,13 @@
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
     
-        //在授权页面中添加关注官方微博
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
-                                    nil]];
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
+                                SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
+                                SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                nil]];
     
     [ShareSDK shareContent:content
                       type:ShareTypeWeixiSession

@@ -121,8 +121,8 @@
         
         if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
         {
-                        //改写导航栏标题样式
-                        UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+            //改写导航栏标题样式
+            UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
             label.backgroundColor = [UIColor clearColor];
             label.textColor = [UIColor whiteColor];
             label.font = [UIFont boldSystemFontOfSize:18];
@@ -278,10 +278,6 @@
                                                                                                       //有道云笔记
                                                                                                       [self fillYouDaoNoteUser:userInfo];
                                                    break;
-                                               case ShareTypeSohuKan:
-                                                                                                      //搜狐随身看
-                                                                                                      [self fillSohuKanUser:userInfo];
-                                                   break;
                                                 case ShareTypeLinkedIn:
                                                                                                       //LinkedIn
                                                                                                       [self fillLinkedInUser:userInfo];
@@ -368,10 +364,6 @@
                                                case ShareTypeYouDaoNote:
                                                                                                       //有道云笔记
                                                                                                       [self fillYouDaoNoteUser:userInfo];
-                                                   break;
-                                               case ShareTypeSohuKan:
-                                                                                                      //搜狐随身看
-                                                                                                      [self fillSohuKanUser:userInfo];
                                                    break;
                                                case ShareTypeLinkedIn:
                                                                                                       //LinkedIn
@@ -1199,29 +1191,6 @@
 }
 
 - (void)fillYouDaoNoteUser:(id<ISSPlatformUser>)userInfo
-{
-    NSArray *keys = [[userInfo sourceData] allKeys];
-    for (int i = 0; i < [keys count]; i++)
-    {
-        NSString *keyName = [keys objectAtIndex:i];
-        id value = [[userInfo sourceData] objectForKey:keyName];
-        if (![value isKindOfClass:[NSString class]])
-        {
-            if ([value respondsToSelector:@selector(stringValue)])
-            {
-                value = [value stringValue];
-            }
-            else
-            {
-                value = @"";
-            }
-        }
-        
-        [_infoDict setObject:value forKey:keyName];
-    }
-}
-
-- (void)fillSohuKanUser:(id<ISSPlatformUser>)userInfo
 {
     NSArray *keys = [[userInfo sourceData] allKeys];
     for (int i = 0; i < [keys count]; i++)

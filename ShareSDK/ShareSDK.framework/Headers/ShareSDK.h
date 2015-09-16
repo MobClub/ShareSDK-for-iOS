@@ -650,34 +650,6 @@
 
 ///#begin zh-cn
 /**
- *	@brief	链接搜狐随身看应用以使用相关功能，此应用需要引用SohuConnection.framework
- *          http://open.sohu.com/上注册应用，并将相关信息填写以下字段
- *
- *  @since  ver2.1.0
- *
- *	@param 	appKey 	应用Key
- *	@param 	appSecret 	应用密钥
- *	@param 	redirectUri 	回调地址
- */
-///#end
-///#begin en
-/**
- *	@brief	Initialize Sohu SuiShenKan platform，This platform need import SohuConnection.framework
- *          Go to http://open.sohu.com/ register app，Then fill in the relevant information into the field below
- *
- *  @since  ver2.1.0
- *
- *	@param 	appKey 	App key.
- *	@param 	appSecret 	App secret.
- *	@param 	redirectUri 	Redirect url.
- */
-///#end
-+ (void)connectSohuKanWithAppKey:(NSString *)appKey
-                       appSecret:(NSString *)appSecret
-                     redirectUri:(NSString *)redirectUri;
-
-///#begin zh-cn
-/**
  *	@brief	链接Pocket以使用相关功能，此应用需要引用PocketConnection.framework
  *          http://getpocket.com/developer/上注册应用，并将相关信息填写以下字段
  *
@@ -1482,6 +1454,32 @@
              shareWebObjectCls:(Class)webObjectCls
          sendMessageToAPReqCls:(Class)sendMsgToAPReqCls;
 
+///#begin zh-cn
+/**
+ *	@brief	如果你需要使用Facebook App（AppInvite）分享的功能,请导入Facebook SDK所需要的类型，
+ *  @brief  头文件处请 import <FBSDKCoreKit/FBSDKCoreKit.h> 和 <FBSDKShareKit/FBSDKShareKit.h>
+ *  @since  ver2.11.2
+ 
+ *  @param 	applicationDelegateCls  将[FBSDKApplicationDelegate class]传入此参数
+ *  @param 	appInviteDialogCls      将[FBSDKAppInviteDialog class]传入此参数
+ *  @param 	appInviteContentCls     将[FBSDKAppInviteContent class]传入此参数
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Import Facebook classes，If you need Share App(AppInvite) to Facebook.
+ *  @brief 	You need to import <FBSDKCoreKit/FBSDKCoreKit.h> and <FBSDKShareKit/FBSDKShareKit.h>.
+ *  @since  ver2.11.2
+ 
+ *  @param 	applicationDelegateCls  passed [FBSDKApplicationDelegate class] this parameter
+ *  @param 	appInviteDialogCls      passed [FBSDKAppInviteDialog class] this parameter
+ *  @param 	appInviteContentCls     passed [APShareImageObject class] this parameter
+ */
+///#end
++ (void)importFacebookShareAppWithApplicationDelegateCls:(Class)applicationDelegateCls
+                                      appInviteDialogCls:(Class)appInviteDialogCls
+                                     appInviteContentCls:(Class)appInviteContentCls;
+
 #pragma mark 辅助
 
 ///#begin zh-cn
@@ -2239,6 +2237,13 @@
  */
 ///#end
 + (NSString *)version;
+
+/**
+ *  获取SDK版本，等同于+ (NSString *)version，接口兼容需要。
+ *
+ *  @return 版本号
+ */
++ (NSString *)sdkVer;
 
 ///#begin zh-cn
 /**

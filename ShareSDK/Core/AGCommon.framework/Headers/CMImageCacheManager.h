@@ -62,8 +62,8 @@
  */
 ///#end
 - (CMImageLoader *)getImage:(NSString *)url
-                     size:(CGSize)size
-                 clipType:(CMImageClipType)clipType;
+                       size:(CGSize)size
+                   clipType:(CMImageClipType)clipType;
 
 ///#begin zh-cn
 /**
@@ -111,8 +111,8 @@
  */
 ///#end
 - (CMImageLoader *)getImage:(NSString *)url
-             cornerRadius:(CGFloat)cornerRadius
-                     size:(CGSize)size;
+               cornerRadius:(CGFloat)cornerRadius
+                       size:(CGSize)size;
 
 ///#begin zh-cn
 /**
@@ -139,9 +139,9 @@
  */
 ///#end
 - (CMImageLoader *)getImage:(NSString *)url
-             cornerRadius:(CGFloat)cornerRadius
-                     size:(CGSize)size
-                 clipType:(CMImageClipType)clipType;
+               cornerRadius:(CGFloat)cornerRadius
+                       size:(CGSize)size
+                   clipType:(CMImageClipType)clipType;
 
 ///#begin zh-cn
 /**

@@ -111,7 +111,7 @@
 "ShareType_43" = "WhatsApp";
 "ShareType_44" = "KakaoTalk";
 "ShareType_45" = "KakaoStory";
-"ShareType_50" = "支付宝朋友";
+"ShareType_50" = "支付宝好友";
 
 "ALTER_VIEW_TITLE" = "提示";
 "ALTER_VIEW_I_KNOWN_BUTTON" = "知道了";

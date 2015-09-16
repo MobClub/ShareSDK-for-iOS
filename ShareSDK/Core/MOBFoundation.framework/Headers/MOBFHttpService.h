@@ -69,6 +69,11 @@ typedef void(^MOBFHttpUploadProgressEvent) (NSInteger totalBytes, NSInteger load
 @property (nonatomic) BOOL isCacheResponse;
 
 /**
+ *  自动填充请求表单，默认为YES，如果为NO则表示使用自定义的方式发起请求。
+ */
+@property (nonatomic) BOOL autoFillRequestForm;
+
+/**
  *  初始化HTTP服务
  *
  *  @param urlString URL地址字符串

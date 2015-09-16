@@ -149,12 +149,6 @@
     [scrollView addSubview:button];
     
     top += button.height + VERTICAL_GAP;
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:NSLocalizedString(@"TEXT_SOHU_KAN", @"搜狐随身看") forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(showSohuKanCredClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:button];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
@@ -347,11 +341,6 @@
 - (void)showTwitterCredClickHandler:(id)sender
 {
     [self showCredentialWithType:ShareTypeTwitter];
-}
-
-- (void)showSohuKanCredClickHandler:(id)sender
-{
-    [self showCredentialWithType:ShareTypeSohuKan];
 }
 
 - (void)showGooglePlusCredClickHandler:(id)sender

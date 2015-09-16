@@ -6,6 +6,7 @@
 //  商务QQ:4006852216
 //  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
 //
+
 #import "AGApiViewController.h"
 #import "AGUserInfoViewController.h"
 #import <AGCommon/UINavigationBar+Common.h>
@@ -88,8 +89,6 @@
         [self setExtendedLayoutIncludesOpaqueBars:NO];
         [self setEdgesForExtendedLayout:SSRectEdgeBottom | SSRectEdgeLeft | SSRectEdgeRight];
     }
-    self.view.backgroundColor = [UIColor colorWithRGB:0xe1e0de];
-    
     self.view.backgroundColor = [UIColor whiteColor];
     
     CGFloat top = VERTICAL_GAP;
@@ -304,13 +303,6 @@
     [scrollView addSubview:button];
     
     top += button.height + VERTICAL_GAP;
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:NSLocalizedString(@"TEXT_SHARE_TO_SOHOKAN", @"分享到搜狐随身看")
-            forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(shareToSohuKanClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:button];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
@@ -414,6 +406,14 @@
             forState:UIControlStateNormal];
     button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
     [button addTarget:self action:@selector(setAccessTokenClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:button];
+    
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
+    [button setTitle:NSLocalizedString(@"TEXT_FACEBOOK_APP_INVITE", @"Facebook应用邀请")
+            forState:UIControlStateNormal];
+    button.frame = CGRectMake(LEFT_PADDING  + buttonW + HORIZONTAL_GAP, top, buttonW, 45.0);
+    [button addTarget:self action:@selector(sendFacebookAppInvite:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
     scrollView.contentSize = CGSizeMake(self.view.width, top += button.height + VERTICAL_GAP);
@@ -573,9 +573,6 @@
                 case 11:
                     type = ShareTypeTwitter;
                     break;
-                case 12:
-                    type = ShareTypeSohuKan;
-                    break;
                 default:
                     break;
             }
@@ -638,9 +635,6 @@
                     break;
                 case 11:
                     type = ShareTypeTwitter;
-                    break;
-                case 12:
-                    type = ShareTypeSohuKan;
                     break;
                 default:
                     break;
@@ -792,9 +786,6 @@
     [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
-    
-    //定制搜狐随身看信息
-    [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
     
     //定制Pinterest信息
     [publishContent addPinterestUnitWithImage:[ShareSDK imageWithUrl:@"http://img1.bdstatic.com/img/image/67037d3d539b6003af38f5c4c4f372ac65c1038b63f.jpg"]
@@ -1016,9 +1007,6 @@
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
     
-    //定制搜狐随身看信息
-    [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
-    
     //定制Pinterest信息
     [publishContent addPinterestUnitWithImage:[ShareSDK imageWithUrl:@"http://img1.bdstatic.com/img/image/67037d3d539b6003af38f5c4c4f372ac65c1038b63f.jpg"]
                                           url:INHERIT_VALUE
@@ -1216,9 +1204,6 @@
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
     
-    //定制搜狐随身看信息
-    [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
-    
     //结束定制信息
     ////////////////////////
     
@@ -1375,9 +1360,6 @@
     [publishContent addInstapaperContentWithUrl:INHERIT_VALUE
                                           title:@"Hello Instapaper"
                                     description:INHERIT_VALUE];
-    
-    //定制搜狐随身看信息
-    [publishContent addSohuKanUnitWithUrl:INHERIT_VALUE];
     
     //结束定制信息
     ////////////////////////
@@ -1610,27 +1592,6 @@
                                                                                         }];
                                                                     }];
     
-    //自定义搜狐随身看分享菜单项
-    id<ISSShareActionSheetItem> shkItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuKan]
-                                                                             icon:[ShareSDK getClientIconWithType:ShareTypeSohuKan]
-                                                                     clickHandler:^{
-                                                                         [ShareSDK shareContent:publishContent
-                                                                                           type:ShareTypeSohuKan
-                                                                                    authOptions:authOptions
-                                                                                  statusBarTips:YES
-                                                                                         result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                                                                             
-                                                                                             if (state == SSPublishContentStateSuccess)
-                                                                                             {
-                                                                                                 NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"分享成功"));
-                                                                                             }
-                                                                                             else if (state == SSPublishContentStateFail)
-                                                                                             {
-                                                                                                 NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
-                                                                                             }
-                                                                                         }];
-                                                                     }];
-    
     //自定义印象笔记分享菜单项
     id<ISSShareActionSheetItem> evnItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeEvernote]
                                                                              icon:[ShareSDK getClientIconWithType:ShareTypeEvernote]
@@ -1695,7 +1656,7 @@
                           pkItem,
                           ipItem,
                           ydItem,
-                          shkItem,
+//                          shkItem,
                           nil];
     
     [ShareSDK showShareActionSheet:container
@@ -2676,68 +2637,6 @@
                              }];
 }
 
-/**
- *	@brief	分享到搜狐随身看
- *
- *	@param 	sender 	事件对象
- */
-- (void)shareToSohuKanClickHandler:(id)sender
-{
-        //创建分享内容
-        id<ISSContent> publishContent = [ShareSDK content:nil
-                                       defaultContent:@""
-                                                image:nil
-                                                title:nil
-                                                  url:@"http://www.mob.com"
-                                          description:nil
-                                            mediaType:SSPublishContentMediaTypeText];
-    
-        //创建弹出菜单容器
-        id<ISSContainer> container = [ShareSDK container];
-    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
-    
-    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
-                                                         allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
-                                                          viewDelegate:nil
-                                               authManagerViewDelegate:_appDelegate.viewDelegate];
-    
-        //在授权页面中添加关注官方微博
-        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
-                                    nil]];
-    
-        //显示分享菜单
-        [ShareSDK showShareViewWithType:ShareTypeSohuKan
-                          container:container
-                            content:publishContent
-                      statusBarTips:YES
-                        authOptions:authOptions
-                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
-                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
-                                                            qqButtonHidden:NO
-                                                     wxSessionButtonHidden:NO
-                                                    wxTimelineButtonHidden:NO
-                                                      showKeyboardOnAppear:NO
-                                                         shareViewDelegate:_appDelegate.viewDelegate
-                                                       friendsViewDelegate:_appDelegate.viewDelegate
-                                                     picViewerViewDelegate:nil]
-                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                 
-                                 if (state == SSPublishContentStateSuccess)
-                                 {
-                                     NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"发表成功"));
-                                 }
-                                 else if (state == SSPublishContentStateFail)
-                                 {
-                                     NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
-                                 }
-                             }];
-}
-
 - (void)shareToGooglePlusClickHandler:(id)sender
 {
         //创建分享内容
@@ -3357,6 +3256,47 @@
 
         //设置新浪微博使用新的授权凭证
         [ShareSDK setCredential:newCredential type:ShareTypeVKontakte];
+}
+
+- (void)sendFacebookAppInvite:(UIButton *)sender
+{
+    id<ISSContent> content = [ShareSDK content:nil
+                                defaultContent:nil
+                                         image:[ShareSDK imageWithUrl:@"http://img1.bdstatic.com/img/image/426a8773912b31bb05181ec0901347adab44bede0cb.jpg"]
+                                         title:nil
+                                           url:@"https://fb.me/476977725817832"
+                                   description:nil
+                                     mediaType:SSPublishContentMediaTypeApp];
+    [ShareSDK shareContent:content
+                      type:ShareTypeFacebook
+               authOptions:nil
+              shareOptions:nil
+             statusBarTips:YES
+                    result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        
+                        if (state == SSResponseStateSuccess)
+                        {
+                            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil
+                                                                           message:@"发送成功"
+                                                                          delegate:nil
+                                                                 cancelButtonTitle:@"OK"
+                                                                 otherButtonTitles:nil];
+                            [alert show];
+                            [alert release];
+                        }
+                        if (state == SSResponseStateFail)
+                        {
+                            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil
+                                                                           message:[NSString stringWithFormat:@"发送失败:%@",[error errorDescription]]
+                                                                          delegate:nil
+                                                                 cancelButtonTitle:@"OK"
+                                                                 otherButtonTitles:nil];
+                            [alert show];
+                            [alert release];
+                        }
+
+                        
+                    }];
 }
 
 /**

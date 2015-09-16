@@ -36,6 +36,10 @@
 #import <QZoneConnection/ISSQZoneApp.h>
 #import <FacebookConnection/ISSFacebookApp.h>
 
+//使用Facebook应用邀请功能需要
+#import <FBSDKShareKit/FBSDKShareKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 @implementation AGAppDelegate
 
 @synthesize viewDelegate = _viewDelegate;
@@ -75,7 +79,9 @@
     //开启Facebook网页授权开关(optional)
     id<ISSFacebookApp> facebookApp =(id<ISSFacebookApp>)[ShareSDK getClientWithType:ShareTypeFacebook];
     [facebookApp setIsAllowWebAuthorize:YES];
-    
+    [ShareSDK importFacebookShareAppWithApplicationDelegateCls:[FBSDKApplicationDelegate class]
+                                            appInviteDialogCls:[FBSDKAppInviteDialog class]
+                                           appInviteContentCls:[FBSDKAppInviteContent class]];
     //监听用户信息变更(optional)
     [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
                                target:self
@@ -99,7 +105,7 @@
     //3.设置根视图控制器，如果没有使用storyboard一定要设置。
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
-    return YES;
+    return [facebookApp application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
 - (void)initializePlat
@@ -158,7 +164,6 @@
      **/
     //旧版中申请的AppId（如：QQxxxxxx类型），可以通过下面方法进行初始化
     //    [ShareSDK connectQQWithAppId:@"QQ075BCD15" qqApiCls:[QQApi class]];
-    
     [ShareSDK connectQQWithQZoneAppKey:@"100371282"
                      qqApiInterfaceCls:[QQApiInterface class]
                        tencentOAuthCls:[TencentOAuth class]];
@@ -275,14 +280,6 @@
                                    redirectUri:@"http://www.sharesdk.cn/"];
     
     /**
-     连接搜狐随身看应用以使用相关功能，此应用需要引用SohuConnection.framework
-     https://open.sohu.com上注册应用，并将相关信息填写到以下字段
-     **/
-    [ShareSDK connectSohuKanWithAppKey:@"e16680a815134504b746c86e08a19db0"
-                             appSecret:@"b8eec53707c3976efc91614dd16ef81c"
-                           redirectUri:@"http://sharesdk.cn"];
-    
-    /**
      链接Flickr,此平台需要引用FlickrConnection.framework框架。
      http://www.flickr.com/services/apps/create/上注册应用，并将相关信息填写以下字段。
      **/
@@ -375,6 +372,7 @@
 }
 
 #pragma mark - 如果使用SSO（可以简单理解成客户端授权），以下方法是必要的
+
 - (BOOL)application:(UIApplication *)application
       handleOpenURL:(NSURL *)url
 {

@@ -305,9 +305,6 @@
                           [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeYouDaoNote]
                                                              icon:[ShareSDK getClientIconWithType:ShareTypeYouDaoNote]
                                                      clickHandler:clickHandler],
-                          [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:ShareTypeSohuKan]
-                                                             icon:[ShareSDK getClientIconWithType:ShareTypeSohuKan]
-                                                     clickHandler:clickHandler],
                           nil];
     
         //创建容器

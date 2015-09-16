@@ -148,14 +148,6 @@
     [button addTarget:self action:@selector(showTwitterUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:button];
     
-    top += button.height + VERTICAL_GAP;
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
-    [button setTitle:NSLocalizedString(@"TEXT_SOHU_KAN", @"搜狐随身看") forState:UIControlStateNormal];
-    button.frame = CGRectMake(LEFT_PADDING, top, buttonW, 45.0);
-    [button addTarget:self action:@selector(showSohuKanUserClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:button];
-    
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     [button setTitle:@"Google+" forState:UIControlStateNormal];
@@ -356,14 +348,6 @@
 - (void)showTwitterUserClickHandler:(id)sender
 {
     AGUserInfoViewController *vc = [[AGUserInfoViewController alloc] initWithType:ShareTypeTwitter];
-    UINavigationController *nvc = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
-    [self presentModalViewController:nvc animated:YES];
-    [vc release];
-}
-
-- (void)showSohuKanUserClickHandler:(id)sender
-{
-    AGUserInfoViewController *vc = [[AGUserInfoViewController alloc] initWithType:ShareTypeSohuKan];
     UINavigationController *nvc = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
     [self presentModalViewController:nvc animated:YES];
     [vc release];

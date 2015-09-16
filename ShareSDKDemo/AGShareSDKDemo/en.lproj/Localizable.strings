@@ -22,7 +22,6 @@
 "TEXT_SHARE_TO_QZONE" = "Share to QZone";
 "TEXT_SHARE_TO_FACEBOOK" = "Share to Facebook";
 "TEXT_SHARE_TO_TWITTER" = "Share to Twitter";
-"TEXT_SHARE_TO_SOHO_WEIBO" = "Share to Sohu Weibo";
 "TEXT_SHARE_TO_RENREN" = "Share to RenRen";
 "TEXT_SHARE_TO_KAIXIN" = "Share to KaiXin";
 "TEXT_SHARE_TO_DOUBAN" = "Share to DouBan";
@@ -31,7 +30,6 @@
 "TEXT_SHARE_TO_MAIL" = "Share to Mail";
 "TEXT_SHARE_TO_PRINT_OR_COPY" = "Print、Copy";
 "TEXT_SHARE_TO_YOUDAONOTE" = "Share to YouDaoNote";
-"TEXT_SHARE_TO_SOHOKAN" = "Share to Sohu SuiShenKan";
 "TEXT_SHARE_TO_EVERNOTE" = "Share to EverNote";
 "TEXT_SHARE_TO_POCKET" = "Share to Pocket";
 "TEXT_SHARE_TO_GOOGLEPLUS" = "Share to Google+";
@@ -54,7 +52,6 @@
 "TEXT_RENREN" = "RenRen";
 "TEXT_KAIXIN" = "KaiXin";
 "TEXT_YOUDAO_NOTE" = "YouDaoNote";
-"TEXT_SOHU_KAN" = "Sohu SuiShenKan";
 "TEXT_TIPS" = "Prompt";
 "TEXT_KNOW" = "I Know";
 "TEXT_UNAUTH" = "This platform not authorized !";
@@ -379,3 +376,6 @@ See you later than you think you have the United States ";
 "TEXT_ALIPAY_SHARE_TEXT" = "Send a text to Alipay";
 "TEXT_ALIPAY_SHARE_IMAGE" = "Send a photo to Alipay";
 "TEXT_ALIPAY_SHARE_WEBPAGE" = "Send a webpage to Alipay";
+"TEXT_FACEBOOK_APP_INVITE" = "Send a FacebookAppInvite";
+
+

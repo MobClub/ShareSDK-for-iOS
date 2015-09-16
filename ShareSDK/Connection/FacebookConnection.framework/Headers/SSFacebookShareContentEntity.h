@@ -63,6 +63,16 @@
 ///#end
 @property (nonatomic,retain) id<ISSCAttachment> image;
 
+/**
+ *	@brief	分享类型
+ */
+@property (nonatomic, retain) NSNumber *mediaType;
+
+/**
+ *	@brief	链接
+ */
+@property (nonatomic, copy) NSString *url;
+
 ///#begin zh-cn
 /**
  *	@brief	通过分享内容解析实体数据

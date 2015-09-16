@@ -215,9 +215,13 @@
     
     id<ISSContent> content = [ShareSDK content:@"支付宝文字分享||AliPay Text Share " defaultContent:nil image:nil title:@"title" url:@"http://mob.com" description:nil mediaType:SSPublishContentMediaTypeText];
     
-    [ShareSDK shareContent:content type:ShareTypeAliPaySocial authOptions:nil shareOptions:nil statusBarTips:YES result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-        
-        
+    [ShareSDK shareContent:content
+                      type:ShareTypeAliPaySocial
+               authOptions:nil
+              shareOptions:nil
+             statusBarTips:YES
+                    result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end)
+    {
         if (state == SSResponseStateSuccess)
         {
             NSLog(NSLocalizedString(@"TEXT_ShARE_SUC", @"分享成功"));

@@ -27,4 +27,9 @@
  */
 + (NSString *)version;
 
+/**
+ *  检测是否启用ATS功能
+ */
++ (BOOL)enabledATS;
+
 @end

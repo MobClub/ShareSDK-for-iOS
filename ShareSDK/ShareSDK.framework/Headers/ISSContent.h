@@ -754,22 +754,6 @@
 
 ///#begin zh-cn
 /**
- *	@brief	添加搜狐随身看内容单元
- *
- *	@param 	url 	书签的URL
- */
-///#end
-///#begin en
-/**
- *	@brief	Add Sohu SuiShenKan content unit.
- *
- *	@param 	url 	Bookmark link
- */
-///#end
-- (void)addSohuKanUnitWithUrl:(NSString *)url;
-
-///#begin zh-cn
-/**
  *	@brief	添加Pocket内容单元
  *
  *  @since  ver2.2.0

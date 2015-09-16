@@ -56,20 +56,20 @@
 
 - (void)presentListButtonClickHandler:(id)sender
 {
-        //显示评论列表
-        [self presentCommentListViewControllerWithContentId:@"123456" title:@"文章标题" animated:YES];
+    //显示评论列表
+    [self presentCommentListViewControllerWithContentId:@"123456" title:@"文章标题" animated:YES];
 }
 
 - (void)pushListButtonClickHandler:(id)sender
 {
-        //显示评论列表
-        [self pushCommentListViewControllerWithContentId:@"123456" title:@"文章标题" animated:YES];
+    //显示评论列表
+    [self pushCommentListViewControllerWithContentId:@"123456" title:@"文章标题" animated:YES];
 }
 
 - (void)presentCmtButtonClickHandler:(id)sender
 {
-        //显示评论界面
-        [self presentCommentViewControllerWithContentId:@"123456"
+    //显示评论界面
+    [self presentCommentViewControllerWithContentId:@"123456"
                                               title:@"文章标题"
                                             comment:nil
                                            animated:YES
@@ -89,8 +89,8 @@
 
 - (void)pushCmtButtonClickHandler:(id)sender
 {
-        //显示评论界面
-        [self pushCommentViewControllerWithContentId:@"123456"
+    //显示评论界面
+    [self pushCommentViewControllerWithContentId:@"123456"
                                            title:@"文章标题"
                                          comment:nil
                                         animated:YES

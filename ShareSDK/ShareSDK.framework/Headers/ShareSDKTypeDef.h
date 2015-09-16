@@ -61,7 +61,6 @@ typedef enum
     ShareTypeInstapaper = 25,       /**< Instapaper */
     ShareTypePocket = 26,           /**< Pocket */
     ShareTypeYouDaoNote = 27,       /**< 有道云笔记 */
-    ShareTypeSohuKan = 28,          /**< 搜狐随身看 */
     ShareTypePinterest = 30,        /**< Pinterest */
     ShareTypeFlickr = 34,           /**< Flickr */
     ShareTypeDropbox = 35,          /**< Dropbox */

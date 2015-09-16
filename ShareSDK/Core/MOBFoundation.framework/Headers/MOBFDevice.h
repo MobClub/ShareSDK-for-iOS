@@ -147,4 +147,11 @@ typedef NS_ENUM(NSUInteger, MOBFNetworkType)
  */
 + (NSString *)bssid;
 
+/**
+ *  获取广告商ID
+ *
+ *  @return 广告商ID
+ */
++ (NSString *)idfa;
+
 @end

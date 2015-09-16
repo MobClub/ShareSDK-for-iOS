@@ -236,5 +236,47 @@ typedef void(^SSFacebookCloseAddFriendDialog) (UIViewController *viewController)
 - (void)getPostWithId:(NSString *)postId
                result:(void(^)(BOOL result, id post, CMErrorInfo *error))result;
 
+///#begin zh-cn
+/**
+ *	@brief	处理请求打开链接(Facebook进行App分享需要使用此方法)
+ *  @brief  如需同时使用ShareSDK.h中的回调方法,应根据传入的url来判断返回方法
+ *  @param  application 主应用
+ *	@param 	url 	链接
+ *	@param 	sourceApplication 	源应用
+ *	@param 	annotation 	源应用提供的信息
+ *
+ *	@return	YES 表示接受请求，NO 表示不接受请求
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Handle open url.
+ *  @param  local application
+ *	@param 	url 	url object
+ *	@param 	sourceApplication 	source application
+ *	@param 	annotation 	annotation
+ *
+ *	@return	YES indicates to accept the request, NO indicates did not accept the request
+ */
+///#end
+- (BOOL)handleApplication:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
+
+///#begin zh-cn
+/**
+ *  @brief	处理应用启动信息（Facebook进行App分享需要使用此方法）
+ *  @param  application 主应用
+ *	@param 	launchOptions 	应用启动项
+ *	@return	YES 表示接受请求，NO 表示不接受请求
+ */
+///#end
+///#begin en
+/**
+ *  @param  application
+ *	@param 	launchOptions
+ *	@return	YES indicates to accept the request, NO indicates did not accept the request
+ */
+///#end
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+
 
 @end

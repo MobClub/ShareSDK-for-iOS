@@ -436,6 +436,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -478,6 +479,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

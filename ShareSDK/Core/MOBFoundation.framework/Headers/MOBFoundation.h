@@ -21,13 +21,17 @@
 #import <MOBFoundation/MOBFNumber.h>
 #import <MOBFoundation/MOBFJson.h>
 #import <MOBFoundation/MOBFRegex.h>
+#import <MOBFoundation/MOBFDebug.h>
+#import <MOBFoundation/MOBFImage.h>
 
 #import <MOBFoundation/MOBFHttpService.h>
 #import <MOBFoundation/MOBFDataService.h>
 #import <MOBFoundation/MOBFJSContext.h>
+#import <MOBFoundation/MOBFImageService.h>
+
+#import <MOBFoundation/MOBFRSAHelper.h>
 
 #import <MOBFoundation/MOBFPluginManager.h>
 #import <MOBFoundation/IMOBFPlugin.h>
-#import <MOBFoundation/MOBFErrorReport.h>
 
 #endif
