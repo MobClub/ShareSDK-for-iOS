@@ -130,4 +130,13 @@
  */
 + (NSString *)stringByCRC32Data:(NSData *)data;
 
+/**
+ *  将数据转换成16进制字符串
+ *
+ *  @param data 原始数据
+ *
+ *  @return 字符串
+ */
++ (NSString *)hexStringByData:(NSData *)data;
+
 @end

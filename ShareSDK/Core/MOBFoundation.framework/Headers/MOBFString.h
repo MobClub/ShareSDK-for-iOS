@@ -95,4 +95,13 @@
  */
 + (NSDictionary *)parseURLParametersString:(NSString *)string;
 
+/**
+ *	@brief	转换16进制字符串为NSData
+ *
+ *  @param  string  二进制流的16进制字符串
+ *
+ *	@return	二进制数据对象
+ */
++ (NSData *)dataByHexString:(NSString *)string;
+
 @end

@@ -10,7 +10,6 @@
 #import <UIKit/UIKit.h>
 
 #pragma mark - WBHttpRequest and WBHttpRequestDelegate
-
 @class WBHttpRequest;
 
 /**
@@ -126,12 +125,14 @@
  @param delegate WBHttpRequestDelegate对象，用于接收微博SDK对于发起的接口请求的请求的响应
  @param tag 用户自定义TAG,将通过回调WBHttpRequest实例的tag属性返回
  */
+
 + (WBHttpRequest *)requestWithAccessToken:(NSString *)accessToken
                                       url:(NSString *)url
                                httpMethod:(NSString *)httpMethod
                                    params:(NSDictionary *)params
                                  delegate:(id<WBHttpRequestDelegate>)delegate
                                   withTag:(NSString *)tag;
+
 
 
 /**
@@ -172,11 +173,13 @@ typedef void (^WBRequestHandler)(WBHttpRequest *httpRequest,
  @param queue 发起请求的NSOperationQueue对象，如queue为nil,则在主线程（[NSOperationQueue mainQueue]）发起请求。
  @param handler 接口请求返回调用的block方法
  */
+
 + (WBHttpRequest *)requestWithAccessToken:(NSString *)accessToken
                                       url:(NSString *)url
                                httpMethod:(NSString *)httpMethod
                                    params:(NSDictionary *)params
                                     queue:(NSOperationQueue*)queue
                     withCompletionHandler:(WBRequestHandler)handler;
+
 
 @end
