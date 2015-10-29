@@ -145,6 +145,38 @@ typedef void(^SSFacebookCloseAddFriendDialog) (UIViewController *viewController)
 
 ///#begin zh-cn
 /**
+ *	@brief	设置在获取用户信息时获取token_for_business字段，默认值为NO。
+ *
+ *	@return	YES为获取，NO为关闭
+ */
+///#end
+///#begin en
+/**
+ *	@brief  whether to get the field "token_for_business" when get user info（the default value is NO）
+ *
+ *	@return YES means allow get the field,NO means no allow
+ */
+///#end
+- (void)setIsNeedTokenForBusiness:(BOOL)isNeed;
+
+///#begin zh-cn
+/**
+ *	@brief	获得在获取用户信息时是否获取token_for_business字段的值
+ *
+ *	@return	YES为获取，NO为关闭
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Get the value of isNeedTokenForBusiness
+ *
+ *	@return YES means get, NO means no allow
+ */
+///#end
+- (BOOL)isNeedTokenForBusiness;
+
+///#begin zh-cn
+/**
  *	@brief	设置添加好友对话框处理器
  *
  *	@param 	showHandler 	显示处理器

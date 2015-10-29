@@ -175,6 +175,47 @@ typedef enum QQApiURLTargetType{
 @interface QQApiImageObject : QQApiExtendObject
 @end
 
+// QQApiImageArrayForQZoneObject
+/** @brief 图片对象
+ 用于分享图片到空间，走写说说路径，是一个指定为图片类型的，当图片数组为空时，默认走文本写说说<code>QQApiObject</code>
+ */
+@interface QQApiImageArrayForQZoneObject : QQApiObject
+
+@property(nonatomic,retain) NSArray* imageDataArray;///图片数组
+
+/**
+ 初始化方法
+ @param imageDataArray 图片数组
+ @param title 写说说的内容，可以为空
+ */
+- (id)initWithImageArrayData:(NSArray*)imageDataArray title:(NSString*)title;
+
+/**
+ helper方法获取一个autorelease的<code>QQApiExtendObject</code>对象
+ @param title 写说说的内容，可以为空
+ @param imageDataArray 发送的多张图片队列
+ @return
+ 一个自动释放的<code>QQApiExtendObject</code>实例
+ */
++ (id)objectWithimageDataArray:(NSArray*)imageDataArray title:(NSString*)title;
+
+@end
+
+// QQApiVideoForQZoneObject
+/** @brief 视频对象
+ 用于分享视频到空间，走写说说路径<code>QQApiObject</code>
+ assetURL可传ALAsset的ALAssetPropertyAssetURL，或者PHAsset的localIdentifier
+ */
+@interface QQApiVideoForQZoneObject : QQApiObject
+
+@property(nonatomic, retain) NSString *assetURL;
+
+- (id)initWithAssetURL:(NSString*)assetURL title:(NSString*)title;
+
++ (id)objectWithAssetURL:(NSString*)assetURL title:(NSString*)title;
+
+@end
+
 // QQApiWebImageObject
 /** @brief 图片对象
  用于分享网络图片内容的对象，是一个指定网络图片url的: 该类型只在2.9.0的h5分享中才支持，

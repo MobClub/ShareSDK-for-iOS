@@ -45,7 +45,6 @@
 		DE84C3A71B061A9700A9CE73 /* RenRenConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE84C3511B061A9600A9CE73 /* RenRenConnection.framework */; };
 		DE84C3A81B061A9700A9CE73 /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE84C3521B061A9600A9CE73 /* SinaWeiboConnection.framework */; };
 		DE84C3A91B061A9700A9CE73 /* SMSConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE84C3531B061A9600A9CE73 /* SMSConnection.framework */; };
-		DE84C3AA1B061A9700A9CE73 /* SohuConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE84C3541B061A9600A9CE73 /* SohuConnection.framework */; };
 		DE84C3AB1B061A9700A9CE73 /* TencentWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE84C3551B061A9600A9CE73 /* TencentWeiboConnection.framework */; };
 		DE84C3AC1B061A9700A9CE73 /* TumblrConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE84C3561B061A9600A9CE73 /* TumblrConnection.framework */; };
 		DE84C3AD1B061A9700A9CE73 /* TwitterConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE84C3571B061A9600A9CE73 /* TwitterConnection.framework */; };
@@ -203,7 +202,6 @@
 		DE84C3511B061A9600A9CE73 /* RenRenConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RenRenConnection.framework; sourceTree = "<group>"; };
 		DE84C3521B061A9600A9CE73 /* SinaWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnection.framework; sourceTree = "<group>"; };
 		DE84C3531B061A9600A9CE73 /* SMSConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMSConnection.framework; sourceTree = "<group>"; };
-		DE84C3541B061A9600A9CE73 /* SohuConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SohuConnection.framework; sourceTree = "<group>"; };
 		DE84C3551B061A9600A9CE73 /* TencentWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentWeiboConnection.framework; sourceTree = "<group>"; };
 		DE84C3561B061A9600A9CE73 /* TumblrConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TumblrConnection.framework; sourceTree = "<group>"; };
 		DE84C3571B061A9600A9CE73 /* TwitterConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterConnection.framework; sourceTree = "<group>"; };
@@ -364,7 +362,6 @@
 				DE84C3AE1B061A9700A9CE73 /* VKontakteConnection.framework in Frameworks */,
 				DE84C3951B061A9700A9CE73 /* FacebookConnection.framework in Frameworks */,
 				DE84C3B91B061A9700A9CE73 /* GooglePlus.framework in Frameworks */,
-				DE84C3AA1B061A9700A9CE73 /* SohuConnection.framework in Frameworks */,
 				DE84C3991B061A9700A9CE73 /* InstapaperConnection.framework in Frameworks */,
 				DE84C3AC1B061A9700A9CE73 /* TumblrConnection.framework in Frameworks */,
 				DE84C3B21B061A9700A9CE73 /* YouDaoNoteConnection.framework in Frameworks */,
@@ -460,7 +457,6 @@
 				DE84C3511B061A9600A9CE73 /* RenRenConnection.framework */,
 				DE84C3521B061A9600A9CE73 /* SinaWeiboConnection.framework */,
 				DE84C3531B061A9600A9CE73 /* SMSConnection.framework */,
-				DE84C3541B061A9600A9CE73 /* SohuConnection.framework */,
 				DE84C3551B061A9600A9CE73 /* TencentWeiboConnection.framework */,
 				DE84C3561B061A9600A9CE73 /* TumblrConnection.framework */,
 				DE84C3571B061A9600A9CE73 /* TwitterConnection.framework */,
@@ -1052,7 +1048,6 @@
 					"$(SRCROOT)/../ShareSDK/Extend/RenRenSDK",
 					"$(SRCROOT)/../ShareSDK",
 					"$(SRCROOT)/../ShareSDK/UI",
-					/Users/liujinghuang/Desktop/ShareSDK2.11.1/release_cn/ShareSDK/Core,
 				);
 				INFOPLIST_FILE = ShareSDKWatchAppDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1085,7 +1080,6 @@
 					"$(SRCROOT)/../ShareSDK/Extend/RenRenSDK",
 					"$(SRCROOT)/../ShareSDK",
 					"$(SRCROOT)/../ShareSDK/UI",
-					/Users/liujinghuang/Desktop/ShareSDK2.11.1/release_cn/ShareSDK/Core,
 				);
 				INFOPLIST_FILE = ShareSDKWatchAppDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

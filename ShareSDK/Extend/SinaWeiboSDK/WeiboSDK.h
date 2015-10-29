@@ -5,6 +5,7 @@
 //  Created by Wade Cheng on 4/3/13.
 //  Copyright (c) 2013 SINA iOS Team. All rights reserved.
 //
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
@@ -29,7 +30,6 @@ typedef NS_ENUM(NSInteger, WeiboSDKResponseStatusCode)
     WeiboSDKResponseStatusCodeUnsupport             = -99,//不支持的请求
     WeiboSDKResponseStatusCodeUnknown               = -100,
 };
-
 
 @protocol WeiboSDKDelegate;
 @protocol WBHttpRequestDelegate;
@@ -68,7 +68,6 @@ typedef NS_ENUM(NSInteger, WeiboSDKResponseStatusCode)
  @return 成功打开返回YES，失败返回NO
  */
 + (BOOL)openWeiboApp;
-
 
 /**
  获取微博客户端程序的itunes安装地址

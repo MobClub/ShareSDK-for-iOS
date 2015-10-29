@@ -52,6 +52,7 @@
 		DE795B0D1B4D1E1100026FD0 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE795B0C1B4D1E1100026FD0 /* MOBFoundation.framework */; };
 		DE795B0F1B4D1E2300026FD0 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DE795B0E1B4D1E2300026FD0 /* libstdc++.dylib */; };
 		DEB4B1961B4D1DF90000A99C /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB4B1951B4D1DF90000A99C /* JavaScriptCore.framework */; };
+		DECC0E681BE1FD23005B663F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECC0E671BE1FD23005B663F /* LaunchScreen.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +111,7 @@
 		DE795B0C1B4D1E1100026FD0 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		DE795B0E1B4D1E2300026FD0 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		DEB4B1951B4D1DF90000A99C /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		DECC0E671BE1FD23005B663F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +305,7 @@
 		A80833F118671108001D257D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DECC0E671BE1FD23005B663F /* LaunchScreen.xib */,
 				A808340518671108001D257D /* Images.xcassets */,
 				A80833F218671108001D257D /* CommentDemo-Info.plist */,
 				A80833F318671108001D257D /* InfoPlist.strings */,
@@ -370,6 +373,7 @@
 				416E6C931867CC8D001AFF08 /* ShareSDKLocalizable.strings in Resources */,
 				3695D8A91A12F771008747D2 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				3695D8A21A12F771008747D2 /* ShareSDKiPadDefaultShareViewUI.bundle in Resources */,
+				DECC0E681BE1FD23005B663F /* LaunchScreen.xib in Resources */,
 				416E6C941867CC8D001AFF08 /* Resource.bundle in Resources */,
 				3695D8A01A12F770008747D2 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				416E6CB51867DBDC001AFF08 /* Comment.bundle in Resources */,
@@ -451,7 +455,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -488,7 +492,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -518,7 +522,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CommentDemo/CommentDemo-Prefix.pch";
 				INFOPLIST_FILE = "CommentDemo/CommentDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../ShareSDK/Extend/TencentWeiboSDK",
@@ -554,7 +558,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CommentDemo/CommentDemo-Prefix.pch";
 				INFOPLIST_FILE = "CommentDemo/CommentDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../ShareSDK/Extend/TencentWeiboSDK",

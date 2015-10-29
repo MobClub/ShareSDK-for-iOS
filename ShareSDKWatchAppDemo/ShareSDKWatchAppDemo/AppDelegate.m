@@ -18,7 +18,6 @@
 #import <RennSDK/RennSDK.h>
 #import "YXApi.h"
 //以下是腾讯QQ和QQ空间
-#import <TencentOpenAPI/QQApi.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 //以下分别是Google+、Pinterest
@@ -224,15 +223,7 @@
     [ShareSDK connectYouDaoNoteWithConsumerKey:@"dcde25dca105bcc36884ed4534dab940"
                                 consumerSecret:@"d98217b4020e7f1874263795f44838fe"
                                    redirectUri:@"http://www.sharesdk.cn/"];
-    
-    /**
-     连接搜狐随身看应用以使用相关功能，此应用需要引用SohuConnection.framework
-     https://open.sohu.com上注册应用，并将相关信息填写到以下字段
-     **/
-    [ShareSDK connectSohuKanWithAppKey:@"e16680a815134504b746c86e08a19db0"
-                             appSecret:@"b8eec53707c3976efc91614dd16ef81c"
-                           redirectUri:@"http://sharesdk.cn"];
-    
+
     /**
      链接Flickr,此平台需要引用FlickrConnection.framework框架。
      http://www.flickr.com/services/apps/create/上注册应用，并将相关信息填写以下字段。

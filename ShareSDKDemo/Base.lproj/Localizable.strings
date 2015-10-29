@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  ShareSDKDemo
+
+  Created by 刘靖煌 on 15/10/24.
+  Copyright © 2015年 mob.com. All rights reserved.
+*/
+
+"Share" = "Share";
+"Auth" = "Third Party Login";
+"Custom" = "Customize";
+
+"CommonShare" = "Common Share";
+"CustomizeShareContent" = "Coutomize Share Content";
+"ShareDirectly" = "Share Directly";
+"ShareWithShareMenu" = "Share With Share Memu Only";
+"ShareWithShareView" = "Share With Edit Share View";
+"OneKeyShare" = "OneKey Share";
+"ShareWithClient" = "Share With Client";
+
+"AuthWithType" = "Authorize With Type";
+"GetUserInfo" = "Get User Infomation";
+"GetCredentialWithType" = "Get Authorized Credential";
+"CancelAuthWithType" = "Cancel Authorize";
+"AuthWithAuthOptions" = "Authorize With Scopes";
+
+"CustomizeShareEditView" = "Customize Share Edit View";
+"CallOpenAPI" = "Call Open API";
