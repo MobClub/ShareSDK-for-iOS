@@ -1,4 +1,6 @@
-ShareSDK is the most comprehensive social SDK in the world , which share easily with 40+ platforms , from around the world.This wiki mainly tells how to easily and fastly integrate ShareSDK.
+ShareSDK is the most popular social SDK for apps and mobile games in global world ! We've already support over 100,000 clients unitl now.
+ShareSDK could easily support 40+ social platforms in the world for third-party log in, sharing, and operating with friends list. Only few hours, this small package will make your app fully socialized! 
+Wanna post something from your app on Chinese social platform? This might be your best choice!
 
 (中文文档：http://wiki.mob.com/%E5%BF%AB%E9%80%9F%E9%9B%86%E6%88%90%E6%8C%87%E5%8D%97/)
 
