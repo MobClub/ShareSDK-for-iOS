@@ -3,6 +3,7 @@ ShareSDK could easily support 40+ social platforms in the world for third-party 
 Wanna post something from your app on Chinese social platform? This might be your best choice!
 
  (中文文档：http://wiki.mob.com/%E5%BF%AB%E9%80%9F%E9%9B%86%E6%88%90%E6%8C%87%E5%8D%97/)
+ 
 （使用CocoaPods集成ShareSDK文档地址：http://wiki.mob.com/cocoapods集成sharesdk标准版/）
 
 
