@@ -42,11 +42,12 @@ then you will see the following window, check the "Copy items into destination g
 necessary for the SSO Login of Sina weibo
 
 1. ImageIO.framework
+2. AdSupport.framework
+3. libsqlite3.dylib
 
-necessary for the SSO Login of Tencent weibo（iOS6.0+）
+necessary for the SSO Login of WeChat
 
-1. Social.framework        
-2. Accounts.framework 
+1. libsqlite3.dylib
 
 necessary for the SSO Login of QZone or QQ Friend share
 
