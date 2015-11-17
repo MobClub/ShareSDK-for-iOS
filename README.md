@@ -2,7 +2,7 @@ ShareSDK is the most popular social SDK for apps and mobile games in global worl
 ShareSDK could easily support 40+ social platforms in the world for third-party log in, sharing, and operating with friends list. Only few hours, this small package will make your app fully socialized! 
 Wanna post something from your app on Chinese social platform? This might be your best choice!
 
-（使用CocoaPods集成ShareSDK的中文文档地址：http://wiki.mob.com/cocoapods集成sharesdk标准版/）
+使用CocoaPods集成ShareSDK的中文文档地址：http://wiki.mob.com/cocoapods集成sharesdk标准版/
 
 
 # How to integrate ShareSDK easily
