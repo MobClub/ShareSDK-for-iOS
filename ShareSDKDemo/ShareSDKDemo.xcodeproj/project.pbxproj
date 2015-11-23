@@ -232,8 +232,6 @@
 		DE218CF91BDB8E9E003717DF /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		DE218CFB1BDB8EB9003717DF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		DE2CED221BDBA1370015F942 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		DE2CED261BDBA1610015F942 /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/ShareSDKLocalizable.strings"; sourceTree = "<group>"; };
-		DE2CED291BDBA1990015F942 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/ShareSDKLocalizable.strings"; sourceTree = "<group>"; };
 		DE3198141BDC8F4A00B59173 /* ShareButtonBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareButtonBG.png; sourceTree = "<group>"; };
 		DE3198581BDCBA5700B59173 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		DE3198591BDCBA5700B59173 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
@@ -700,8 +698,6 @@
 				en,
 				Base,
 				"zh-Hans",
-				"zh-Hans-CN",
-				"en-US",
 			);
 			mainGroup = DE218BDD1BDB7AA7003717DF;
 			productRefGroup = DE218BE71BDB7AA7003717DF /* Products */;
@@ -778,8 +774,6 @@
 			children = (
 				DE218C4C1BDB8836003717DF /* en */,
 				DE218C501BDB8836003717DF /* zh-Hans */,
-				DE2CED261BDBA1610015F942 /* zh-Hans-CN */,
-				DE2CED291BDBA1990015F942 /* en-US */,
 			);
 			name = ShareSDKLocalizable.strings;
 			sourceTree = "<group>";

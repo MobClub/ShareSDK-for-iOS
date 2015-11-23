@@ -111,7 +111,7 @@ Pod::Spec.new do |s|
         end
 
         # Pinterest.embeddedframework
-        sp.subspec 'Pinterest.embeddedframework' do |ssp|
+        sp.subspec 'Pinterest' do |ssp|
             ssp.vendored_frameworks = 'ShareSDK/Extend/Pinterest.embeddedframework/Pinterest.framework'
             ssp.resource = 'ShareSDK/Extend/Pinterest.embeddedframework/Resources/PinterestSDKResources.bundle'
         end
