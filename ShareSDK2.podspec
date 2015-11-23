@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ShareSDK2'
-  s.version          = "2.12.1"
+  s.version          = "2.12.1.1"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "Jinghuang Liu" => "liujinghuang@icloud.com" }
@@ -111,7 +111,7 @@ Pod::Spec.new do |s|
         end
 
         # Pinterest
-        sp.subspec 'Pinterest' do |ssp|
+        sp.subspec 'Pinterest.embeddedframework' do |ssp|
             ssp.vendored_frameworks = 'ShareSDK/Extend/Pinterest.embeddedframework/Pinterest.framework'
             ssp.resource = 'ShareSDK/Extend/Pinterest.embeddedframework/Resources/PinterestSDKResources.bundle'
         end
