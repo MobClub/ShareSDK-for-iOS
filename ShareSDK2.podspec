@@ -110,7 +110,7 @@ Pod::Spec.new do |s|
             ssp.public_header_files = "ShareSDK/Extend/YiXinSDK/*.h"
         end
 
-        # Pinterest.embeddedframework
+        # Pinterest
         sp.subspec 'Pinterest' do |ssp|
             ssp.vendored_frameworks = 'ShareSDK/Extend/Pinterest.embeddedframework/Pinterest.framework'
             ssp.resource = 'ShareSDK/Extend/Pinterest.embeddedframework/Resources/PinterestSDKResources.bundle'
