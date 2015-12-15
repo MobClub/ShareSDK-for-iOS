@@ -1,8 +1,8 @@
 //
 //  APOpenAPIObject.h
-//  APShareService
+//  API对象，包含所有接口和对象数据定义
 //
-//  Created by alipay on 15-4-15.
+//  Created by Alipay on 15-4-15.
 //  Copyright (c) 2015年 Alipay. All rights reserved.
 //
 
@@ -24,14 +24,19 @@ typedef enum {
     APSceneSession  = 0,        // 会话
 }APScene;
 
-#pragma mark - 基类
+#pragma mark - APBaseReq
 
+/*! @brief 该类为支付宝SDK所有请求类的基类
+ *
+ */
 @interface APBaseReq : NSObject
 /** 请求类型 */
 @property (nonatomic, assign) int type;
 /** AppID，发送请求时第三方程序必须填写 */
 @property (nonatomic, retain) NSString* openID;
 @end
+
+#pragma mark - APBaseResp
 
 /*! @brief 该类为SDK所有响应类的基类
  *
@@ -43,14 +48,14 @@ typedef enum {
 @property (nonatomic, strong) NSString *errStr;
 /** 响应类型 */
 @property (nonatomic, assign) int type;
-@property (nonatomic, strong)NSString *openID;
+@property (nonatomic, strong) NSString *openID;
 @end
 
 #pragma mark - 发送消息到支付宝
 /*! @brief 第三方程序发送消息至支付宝终端程序的消息结构体
  *
  * 第三方程序向支付宝发送信息需要传入SendMessageToAPReq结构体，调用该方法后，支付宝处理完信息会向第三方程序发送一个处理结果。
- * @see SendMessageToWXReq
+ * @see SendMessageToAPReq
  */
 @class APMediaMessage;
 @interface APSendMessageToAPReq : APBaseReq

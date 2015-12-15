@@ -2,18 +2,14 @@
 //  SSKakaoTalkShareContentEntity.h
 //  KakaoTalkConnection
 //
-//  Created by 刘 靖煌 on 14-7-1.
-//  Copyright (c) 2014年 掌淘科技. All rights reserved.
+//  Created by chenjd on 15/9/8.
+//  Copyright (c) 2015年 Mob. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <ShareSDK/ShareSDKPlugin.h>
-
-/**
- *	@brief	分享内容实体
- */
-@interface SSKakaoTalkShareContentEntity : NSObject<ISSPlatformShareContentEntity,
-NSCoding>
+@interface SSKakaoTalkShareContentEntity : NSObject <ISSPlatformShareContentEntity,
+                                                    NSCoding>
 {
 @private
     NSMutableDictionary *_dict;
@@ -22,52 +18,52 @@ NSCoding>
 /**
  *	@brief	分享类型
  */
-@property (nonatomic, retain) NSNumber *mediaType;
+@property (nonatomic, strong) NSNumber *mediaType;
 
 /**
- *	@brief	分享内容
+ *	@brief	发送内容
  */
-@property (nonatomic, copy) NSString *message;
+@property (nonatomic, copy) NSString *content;
 
 /**
- *	@brief	应用名
+ *	@brief	链接按钮标题
  */
-@property (nonatomic, copy) NSString *appName;
+@property (nonatomic, copy) NSString *newsButtonTitle;
 
 /**
- *	@brief	应用版本
- */
-@property (nonatomic, copy) NSString *appVersion;
-
-/**
- *	@brief  appBundleID
- */
-@property (nonatomic, copy) NSString *appBundleID;
-
-/**
- *	@brief	iOS下载地址
- */
-@property (nonatomic, copy) NSString *iosDownLoadUrl;
-
-/**
- *	@brief	Android下载地址
- */
-@property (nonatomic, copy) NSString *androidDownLoadUrl;
-
-/**
- *	@brief	执行URL
- */
-@property (nonatomic, copy) NSString *executeUrl;
-
-/**
- *	@brief	标题
- */
-@property (nonatomic, copy) NSString *title;
-
-/**
- *	@brief	链接
+ *	@brief	链接路径
  */
 @property (nonatomic, copy) NSString *url;
+
+/**
+ *	@brief	图片
+ */
+@property (nonatomic, strong) id<ISSCAttachment> image;
+
+/**
+ *  @brief 图片尺寸
+ */
+@property (nonatomic, strong) NSValue *imageSizeValue;
+
+/**
+ *  brief 应用分享按钮标题
+ */
+@property (nonatomic, copy)NSString *appButtonTitle;
+
+/**
+ *  @brief 启动安卓版应用时传入参数
+ */
+@property (nonatomic, strong)NSDictionary *andriodExecParam;
+
+/**
+ *  @brief 启动iphone版应用时传入参数
+ */
+@property (nonatomic, strong)NSDictionary *iphoneExecParam;
+
+/**
+ *  @brief 启动ipad版应用时传入参数
+ */
+@property (nonatomic, strong)NSDictionary *ipadExecParam;
 
 /**
  *	@brief	通过分享内容解析实体数据

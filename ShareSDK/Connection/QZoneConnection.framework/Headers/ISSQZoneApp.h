@@ -52,7 +52,7 @@
  *	@return	App key.
  */
 ///#end
-- (NSString *)appKey;
+- (NSString *) appKey;
 
 ///#begin zh-cn
 /**
@@ -68,7 +68,7 @@
  *	@return	App id.
  */
 ///#end
-- (NSString *)appId;
+- (NSString *) appId;
 
 ///#begin zh-cn
 /**
@@ -84,26 +84,98 @@
  *	@return	SSO callback url address.
  */
 ///#end
-- (NSString *)ssoCallbackUrl;
+- (NSString *) ssoCallbackUrl;
+
+
+
+/**
+ *  分享链接类型到QQ空间(包括普通链接，音频链接，视频链接)
+ *
+ *  @param title       标题
+ *  @param description 描述
+ *  @param image       预览图
+ *  @param result      回调
+ *
+ *  @since 2.12.2
+ */
+- (void) shareWebPageToQzoneWithTitle:(NSString *)title
+                          description:(NSString *)description
+                                   url:(NSString *)url
+                                image:(id<ISSCAttachment>)image
+                               result:(SSShareResultEvent)result;
+
+
+/**
+ *  分享文字到QQ空间说说
+ *
+ *  @param text   文本内容
+ *  @param result 回调
+ *
+ *  @since 2.12.2
+ */
+- (void) clientShareTextToQzoneWithText:(NSString *)text result:(SSShareResultEvent)result;
+
+/**
+ *  分享图片到QQ空间说说
+ *  9张图片或以内会直接分享到QQ空间说说,9张以上上传图片到相册
+ *  @param text   文本内容
+ *  @param images 图片数组（ISSCAttachment数组）
+ *  @param result 回调
+ * 
+ *  @since 2.12.2
+ */
+- (void) clientShareImagesToQzoneWithText:(NSString *)text
+                                   images:(NSArray *)images
+                                   result:(SSShareResultEvent)result;
+
+
+/**
+ *  分享视频到QQ空间说说
+ *
+ *  @param text     文本内容
+ *  @param assetURL 可传ALAsset的ALAssetPropertyAssetURL，或者PHAsset的localIdentifier
+ *  @param result   回调
+ *
+ *  @since 2.12.2
+ */
+- (void) clientShareVideoToQzoneWithText:(NSString *)text
+                                assetURL:(NSString *)assetURL
+                                  result:(SSShareResultEvent)result;
+
+
+
+
+
+
+#pragma - mark  弃用接口 - DEPRECATED_API
 
 ///#begin zh-cn
 /**
+ *
+ *  @deprecated since 2.12.1 QQ空间授权如果在无安装的时候会直接进行web授权
+ *
  *	@brief	设置是否打开网页授权，默认值为NO。旧时申请QQ空间应用是可以进行网页授权的，新申请的应用目前不允许网页授权
  *
  *	@return	YES为打开网页授权开关，NO为关闭
- */
+*/
 ///#end
 ///#begin en
 /**
+ *
+ *  @deprecated since 2.12.1 if QQ is not installed, it will excute web authorize directly
+ *
  *	@brief  whether to allow QZone to authorize through Web（the default value is NO）,the new QZone App is allow SSO only.
  *
  *	@return YES means allow to authorize through Web,NO means no allow
  */
 ///#end
-- (void)setIsAllowWebAuthorize:(BOOL)isAllowWebAuthorize;
+- (void) setIsAllowWebAuthorize:(BOOL)isAllowWebAuthorize;
 
 ///#begin zh-cn
 /**
+ *
+ *  @deprecated since 2.12.1 QQ空间授权如果在无安装的时候会直接进行web授权
+ *
  *	@brief	获取是否打开网页授权开关的值
  *
  *	@return	YES为打开网页授权开关，NO为关闭
@@ -111,15 +183,21 @@
 ///#end
 ///#begin en
 /**
+ *
+ *  @deprecated since 2.12.1 if QQ is not installed, it will excute web authorize directly
+ *
  *	@brief	Get the value of isAllowWebAuthorize
  *
  *	@return YES means allow to authorize through Web,NO means no allow
  */
 ///#end
-- (BOOL)isAllowWebAuthorize;
+- (BOOL) isAllowWebAuthorize;
 
 ///#begin zh-cn
 /**
+ *
+ *  @deprecated 2.12.2开始不再使用此方法，如需分享图片到QQ空间，请使用[clientShareImagesToQzoneWithText:images:result:]
+ *
  *	@brief	上传照片
  *
  *	@param 	pic 	照片
@@ -130,22 +208,72 @@
 ///#end
 ///#begin en
 /**
+ *
+ *  @deprecated since 2.12.2 please use [clientShareImagesToQzoneWithText:images:result:] instead
+ *
  *	@brief	Upload picture.
  *
  *	@param 	pic 	Picture attachment object.
  *	@param 	desc 	Description.
  *	@param 	title 	Title string.
  *	@param 	albumid 	Album ID，The default is nil indicates album
- */
+*/
 ///#end
-- (void)uploadPic:(id<ISSCAttachment>)pic
-             desc:(NSString *)desc
-            title:(NSString *)title
-          albumid:(NSString *)albumid
-           result:(void(^)(BOOL result, id image, CMErrorInfo *error))result;
+- (void) uploadPic:(id<ISSCAttachment>)pic
+              desc:(NSString *)desc
+             title:(NSString *)title
+           albumid:(NSString *)albumid
+            result:(void(^)(BOOL result, id image, CMErrorInfo *error))result;
+
 
 ///#begin zh-cn
 /**
+ *
+ *  @deprecated since 2.12.1 QQ空间分享链接类型请调用[shareWebPageToQzoneWithTitle:description:url:image:result:]
+ *
+ *	@brief	定向分享
+ *
+ *	@param 	title 	标题
+ *	@param 	description 	分享的内容描述
+ *	@param 	shareUrl 	分享连接
+ *	@param 	pics 	分享图片
+ *	@param 	summary 	分享的摘要内容
+ *	@param 	url 	分享的来源网站对应的网站地址url
+ *	@param 	act 	默认为“进入应用”
+ *	@param 	result 	返回回调
+ */
+///#end
+///#begin en
+/**
+ *
+ *  @deprecated since 2.12.1 QZone share webPage please use [shareWebPageToQzoneWithTitle:description:url:image:result:] instead
+ *
+ *	@brief	Send story.
+ *
+ *	@param 	title 	Title string.
+ *	@param 	description 	Description.
+ *	@param 	shareUrl 	Share url.
+ *	@param 	pics 	a image list.
+ *	@param 	summary 	Summary string.
+ *	@param 	url 	URL string.
+ *	@param 	act 	Default is “进入应用”
+ *	@param 	result 	Result handler.
+ */
+///#end
+- (void) sendStoryWithTitle:(NSString *)title
+                description:(NSString *)description
+                   shareUrl:(NSString *)shareUrl
+                       pics:(NSArray *)pics
+                    summary:(NSString *)summary
+                        url:(NSString *)url
+                        act:(NSString *)act
+                     result:(SSShareResultEvent)result;
+
+///#begin zh-cn
+/**
+ *
+ *  @deprecated since 2.12.1 QQ空间分享链接类型请调用[shareWebPageToQzoneWithTitle:description:url:image:result:]
+ *
  *	@brief	添加分享
  *
  *	@param 	title 	标题，最长36个中文字，超出部分会被截断。
@@ -163,6 +291,9 @@
 ///#end
 ///#begin en
 /**
+ *
+ *  @deprecated since 2.12.1 QZone share webPage please use [shareWebPageToQzoneWithTitle:description:url:image:result:] instead
+ *
  *	@brief	Add share information.
  *
  *	@param 	title 	Title, the longest 36 characters, the excess will be truncated.
@@ -178,53 +309,16 @@
  *  @param  result  Result handler.
  */
 ///#end
-- (void)addShareWithTitle:(NSString *)title
-                      url:(NSString *)url
-                     site:(NSString *)site
-                  fromUrl:(NSString *)fromUrl
-                  comment:(NSString *)comment
-                  summary:(NSString *)summary
-                   images:(NSArray *)images
-                     type:(NSNumber *)type
-                  playUrl:(NSString *)playUrl
-                     nswb:(NSNumber *)nswb
-                   result:(SSShareResultEvent)result;
-
-///#begin zh-cn
-/**
- *	@brief	定向分享
- *
- *	@param 	title 	标题
- *	@param 	description 	分享的内容描述
- *	@param 	shareUrl 	分享连接
- *	@param 	pics 	分享图片
- *	@param 	summary 	分享的摘要内容
- *	@param 	url 	分享的来源网站对应的网站地址url
- *	@param 	act 	默认为“进入应用”
- *	@param 	result 	返回回调
- */
-///#end
-///#begin en
-/**
- *	@brief	Send story.
- *
- *	@param 	title 	Title string.
- *	@param 	description 	Description.
- *	@param 	shareUrl 	Share url.
- *	@param 	pics 	a image list.
- *	@param 	summary 	Summary string.
- *	@param 	url 	URL string.
- *	@param 	act 	Default is “进入应用”
- *	@param 	result 	Result handler.
- */
-///#end
-- (void)sendStoryWithTitle:(NSString *)title
-               description:(NSString *)description
-                  shareUrl:(NSString *)shareUrl
-                      pics:(NSArray *)pics
-                   summary:(NSString *)summary
+- (void) addShareWithTitle:(NSString *)title
                        url:(NSString *)url
-                       act:(NSString *)act
+                      site:(NSString *)site
+                   fromUrl:(NSString *)fromUrl
+                   comment:(NSString *)comment
+                   summary:(NSString *)summary
+                    images:(NSArray *)images
+                      type:(NSNumber *)type
+                   playUrl:(NSString *)playUrl
+                      nswb:(NSNumber *)nswb
                     result:(SSShareResultEvent)result;
 
 

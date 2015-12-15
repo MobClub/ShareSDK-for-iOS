@@ -74,6 +74,27 @@ typedef NS_ENUM(NSUInteger, MOBFNetworkType)
 + (NSString *)carrier;
 
 /**
+ *  获取手机运营商名称
+ *
+ *  @return 运营商名称
+ */
++ (NSString *)carrierName;
+
+/**
+ *  获取手机运营商国家码
+ *
+ *  @return 运营商国家码
+ */
++ (NSString *)mobileCountryCode;
+
+/**
+ *  获取手机运营商网络编号
+ *
+ *  @return 运营商网络编号
+ */
++ (NSString *)mobileNetworkCode;
+
+/**
  *  与当前系统版本比较
  *
  *  @param other 需要对比的版本
@@ -153,5 +174,19 @@ typedef NS_ENUM(NSUInteger, MOBFNetworkType)
  *  @return 广告商ID
  */
 + (NSString *)idfa;
+
+/**
+ *  获取当前语言
+ *
+ *  @return 语言描述
+ */
++ (NSString *)currentLanguage;
+
+/**
+ *  获取设备IP地址
+ *
+ *  @return IP地址
+ */
++ (NSString *)ipAddress;
 
 @end

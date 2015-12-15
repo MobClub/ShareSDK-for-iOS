@@ -1,13 +1,15 @@
 //
 //  APOpenAPI.h
-//  APShareService
+//  所有API接口
 //
-//  Created by alipay on 15-4-15.
+//  Created by Alipay on 15-4-15.
 //  Copyright (c) 2015年 Alipay. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "APOpenAPIObject.h"
+
+#pragma mark - APOpenAPIDelegate
 
 /*! @brief 接收并处理来自支付宝终端程序的事件消息
  *
@@ -35,6 +37,12 @@
 
 @end
 
+#pragma mark - APOpenAPI
+
+/*! @brief 支付宝API接口函数类
+ *
+ * 该类封装了支付宝终端SDK的所有接口
+ */
 @interface APOpenAPI : NSObject
 
 
@@ -127,6 +135,6 @@
  * @param resp 具体的应答内容，调用函数后，请自己释放
  * @return 成功返回YES，失败返回NO。
  */
-+(BOOL) sendResp:(APBaseReq*)resp;
++(BOOL) sendResp:(APBaseResp*)resp;
 
 @end

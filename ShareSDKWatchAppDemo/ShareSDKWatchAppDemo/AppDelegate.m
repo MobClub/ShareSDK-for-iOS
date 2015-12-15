@@ -279,16 +279,6 @@
      连接WhatsApp应用以使用相关功能，此应用需要引用WhatsAppConnection.framework库
      **/
     [ShareSDK connectWhatsApp];
-    
-    /**
-     连接KakaoTalk应用以使用相关功能，此应用需要引用KakaoTalkConnection.framework库
-     **/
-    [ShareSDK connectKaKaoTalk];
-    
-    /**
-     连接KakaoStory应用以使用相关功能，此应用需要引用KakaoStoryConnection.framework库
-     **/
-    [ShareSDK connectKaKaoStory];
 }
 
 /**

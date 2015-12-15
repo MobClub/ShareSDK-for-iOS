@@ -11,6 +11,12 @@
 //ShareSDK头文件
 #import <ShareSDK/ShareSDK.h>
 
+@interface ShareViewController ()
+
+@property (nonatomic, strong) id<ISSShareActionSheet> actionSheet;
+
+@end
+
 @implementation ShareViewController
 
 - (void)viewDidLoad
@@ -38,24 +44,26 @@
 }
 
 - (void)commonShare:(id)sender
+
 {
     //1、构造分享内容
     //1.1、要分享的图片（以下分别是网络图片和本地图片的生成方式的示例）
     id<ISSCAttachment> remoteAttachment = [ShareSDKCoreService attachmentWithUrl:@"http://f.hiphotos.bdimg.com/album/w%3D2048/sign=df8f1fe50dd79123e0e09374990c5882/cf1b9d16fdfaaf51e6d1ce528d5494eef01f7a28.jpg"];
-//        id<ISSCAttachment> localAttachment = [ShareSDKCoreService attachmentWithPath:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
+    id<ISSCAttachment> localAttachment = [ShareSDKCoreService attachmentWithPath:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
     
     //1.2、以下参数分别对应：内容、默认内容、图片、标题、链接、描述、分享类型
-    id<ISSContent> publishContent = [ShareSDK content:@"test content of ShareSDK"
+    id<ISSContent> publishContent = [ShareSDK content:@"Share your fabulous message with ShareSDK.@刘靖煌"
                                        defaultContent:nil
                                                 image:remoteAttachment
                                                 title:@"test title"
                                                   url:@"http://www.mob.com"
                                           description:nil
-                                            mediaType:SSPublishContentMediaTypeNews];
+                                            mediaType:SSPublishContentMediaTypeImage];
     
     //1+、创建弹出菜单容器（iPad应用必要，iPhone应用非必要）
     id<ISSContainer> container = [ShareSDK container];
-    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    [container setIPadContainerWithView:sender
+                            arrowDirect:UIPopoverArrowDirectionUp];
     
     //2、展现分享菜单
     [ShareSDK showShareActionSheet:container
@@ -192,6 +200,7 @@
                                         to:nil
                                         cc:nil
                                        bcc:nil];
+
     //定制新浪微博分享内容
     id<ISSCAttachment> localAttachment = [ShareSDKCoreService attachmentWithPath:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
     [publishContent addSinaWeiboUnitWithContent:@"The content of Sina Weibo" image:localAttachment];
@@ -213,7 +222,7 @@
                                             mediaType:SSPublishContentMediaTypeNews];
     //直接分享接口
     [ShareSDK shareContent:publishContent
-                      type:ShareTypeSinaWeibo
+                      type:ShareTypeQQSpace
                authOptions:nil
               shareOptions:nil
              statusBarTips:NO

@@ -2,107 +2,79 @@
 //  ISSKakaoStoryApp.h
 //  KakaoStoryConnection
 //
-//  Created by 刘靖煌 on 14-7-28.
-//  Copyright (c) 2014年 掌淘科技. All rights reserved.
+//  Created by chenjd on 15/11/17.
+//  Copyright © 2015年 Mob. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <ShareSDKCoreService/ShareSDKCoreService.h>
-#import <ShareSDK/ShareSDK.h>
+#import <ShareSDK/ShareSDKPlugin.h>
 
-///#begin zh-cn
-/**
- *	@brief	ISSKakaoStoryApp应用协议
- */
-///#end
-///#begin en
-/**
- *	@brief	ISSKakaoStoryApp App.
- */
-///#end
 @protocol ISSKakaoStoryApp <ISSPlatformApp>
 
-///#begin zh-cn
 /**
- *	@brief 是否装了KakaoStory
+ *  设定是否通过客户客户端分享(仅用于Text分享)
  *
- *  @return YES 表示
+ *  @param enable YES/NO 是/否
+ *  
+ *  注：若要通过客户端进行Text类型分享时,仅支持通过接口 [ShareSDK shareContent:type:authOptions:shareOptions:statusBarTips:result:]
+ *  进行分享,不支持通过分享编辑页面和分享菜单进行分享。
  */
-///#end
-///#begin en
-/**
- *	@brief Open KakaoStory
- *
- *  @return YES open success. otherwise open failure.
- */
-///#end
-- (BOOL)isKakaoStoryInstalled;
+- (void)setIsEnableClientShare:(BOOL)enable;
 
-///#begin zh-cn
 /**
- *	@brief	发送文本消息
+ *  文本分享
  *
- *	@param 	message 	内容
- *	@param 	appName 	应用名，默认值[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"]
- *	@param 	appVersion 	应用版本，默认值[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
- *	@param 	appBundleID 	appBundleID，默认值[[NSBundle mainBundle] bundleIdentifier]
- *  @param  result  返回回调
+ *  @param content          文本内容
+ *  @param iphoneMarkParam  iphone应用下载地址
+ *  @param androidMarkParam 安卓应用下载地址
+ *  @param permission       查看权限
+ *  @param enaleShare       是否允许二次分享
+ *  @param aResult          回调
  */
-///#end
-///#begin en
-/**
- *	@brief	Send a text message.
- *
- *	@param 	message 	Content string.
- *	@param 	appName       the name of applicaiton
- *	@param 	appVersion    the version of application
- *	@param 	appBundleID   the bundle id of applicaiton
- *  @param  result  Result handler.
- */
-///#end
-- (void)sendMessage:(NSString *)message
-            appName:(NSString *)appName
-         appVersion:(NSString *)appVersion
-        appBundleID:(NSString *)appBundleID
-             result:(SSShareResultEvent)result;
+- (void) shareContentWithText:(NSString *)content
+            iphoneMarketParam:(NSString *)iphoneMarkParam
+           androidMarketParam:(NSString *)androidMarkParam
+                   permission:(NSString *)permission
+                  enableShare:(BOOL)enaleShare
+                       result:(SSShareResultEvent)result;
 
-///#begin zh-cn
 /**
- *	@brief	分享文件：包括图片、音频和视频等
+ *  图片分享
  *
- *	@param 	fileURL     文件地址
- *	@param 	message 	内容
- *	@param 	title 	图片标题
- *	@param 	desc	图片描述
- *	@param 	image	展示图地址
- *	@param 	appName 	应用名，默认值[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"]
- *	@param 	appVersion 	应用版本，默认值[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
- *	@param 	appBundleID 	appBundleID，默认值[[NSBundle mainBundle] bundleIdentifier]
- *  @param  result  返回回调
+ *  @param content          文本内容
+ *  @param images           图片(支持数组)
+ *  @param iphoneMarkParam  iphone应用下载地址
+ *  @param androidMarkParam 安卓应用下载地址
+ *  @param permission       查看权限
+ *  @param enaleShare       是否允许二次分享
+ *  @param result           回调
  */
-///#end
-///#begin en
+- (void) shareContentWithText:(NSString *)content
+                       images:(id)images
+            iphoneMarketParam:(NSString *)iphoneMarkParam
+           androidMarketParam:(NSString *)androidMarkParam
+                   permission:(NSString *)permission
+                  enableShare:(BOOL)enaleShare
+                       result:(SSShareResultEvent)result;
+
+
 /**
- *	@brief	share file
- *	@param 	fileURL 	file's url
- *	@param 	message 	Content string
- *	@param 	title 	Title string
- *	@param 	desc    description of image
- *	@param 	image      URL of showImage
- *	@param 	appName       the name of applicaiton
- *	@param 	appVersion    the version of application
- *	@param 	appBundleID   the bundle id of applicaiton
- *  @param  result  Result handler.
+ *  图片分享
+ *
+ *  @param content          文本内容
+ *  @param url              链接地址
+ *  @param iphoneMarkParam  iphone应用下载地址
+ *  @param androidMarkParam 安卓应用下载地址
+ *  @param permission       查看权限
+ *  @param enaleShare       是否允许二次分享
+ *  @param result           回调
  */
-///#end
-- (void)shareWithFile:(NSString *)fileURL
-              message:(NSString *)message
-                title:(NSString *)title
-          description:(NSString *)desc
-                image:(id<ISSCAttachment>)imageURL
-              appName:(NSString *)appName
-           appVersion:(NSString *)appVersion
-          appBundleID:(NSString *)appBundleID
-               result:(SSShareResultEvent)result;
+- (void) shareContentWithText:(NSString *)content
+                          url:(NSString *)url
+            iphoneMarketParam:(NSString *)iphoneMarkParam
+           androidMarketParam:(NSString *)androidMarkParam
+                   permission:(NSString *)permission
+                  enableShare:(BOOL)enaleShare
+                       result:(SSShareResultEvent)result;
 
 @end

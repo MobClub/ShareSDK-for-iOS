@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ShareSDK2'
-  s.version          = "2.12.1-1"
+  s.version          = "2.12.2"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "Jinghuang Liu" => "liujinghuang@icloud.com" }
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   # 核心模块
     s.subspec 'Core' do |sp|
-        sp.vendored_frameworks = 'ShareSDK/Core/AGCommon.framework', 'ShareSDK/Core/MOBFoundation.framework', 'ShareSDK/Core/ShareSDKCoreService.framework'
+        sp.vendored_frameworks = 'ShareSDK/Core/AGCommon.framework','ShareSDK/Core/ShareSDKCoreService.framework'
         sp.libraries = 'z', 'icucore'
         sp.resources = ['ShareSDK/Core/Resource.bundle', 'ShareSDK/Core/zh-Hans.lproj/ShareSDKLocalizable.strings','ShareSDK/Core/en.lproj/ShareSDKLocalizable.strings']
     end

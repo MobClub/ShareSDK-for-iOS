@@ -2,18 +2,14 @@
 //  SSKakaoStoryShareContentEntity.h
 //  KakaoStoryConnection
 //
-//  Created by ljh on 14-7-28.
-//  Copyright (c) 2014年 掌淘科技. All rights reserved.
+//  Created by chenjd on 15/11/18.
+//  Copyright © 2015年 Mob. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <ShareSDK/ShareSDKPlugin.h>
-
-/**
- *	@brief	分享内容实体：用于决定分享时的内容
- */
-@interface SSKakaoStoryShareContentEntity : NSObject<ISSPlatformShareContentEntity,
-NSCoding>
+@interface SSKakaoStoryShareContentEntity : NSObject <ISSPlatformShareContentEntity,
+                                                     NSCoding>
 {
 @private
     NSMutableDictionary *_dict;
@@ -22,54 +18,49 @@ NSCoding>
 /**
  *	@brief	分享类型
  */
-@property (nonatomic, retain) NSNumber *mediaType;
+@property (nonatomic, strong) NSNumber *mediaType;
 
 /**
- *	@brief	分享内容
+ *	@brief	发送内容
  */
 @property (nonatomic, copy) NSString *content;
 
 /**
- *	@brief	标题
+ *  @brief  图片数组
  */
-@property (nonatomic, copy) NSString *title;
+@property (nonatomic, strong) NSArray *images;
 
 /**
- *	@brief	描述
+ *	@brief	链接路径
  */
-@property (nonatomic, copy)NSString *description;
+@property (nonatomic, copy) NSString *url;
 
 /**
- *	@brief	配图
+ *	@brief	iphone应用下载地址
  */
-@property (nonatomic, retain) id<ISSCAttachment> image;
+@property (nonatomic, copy) NSString *iphoneMarketParam;
 
 /**
- *	@brief	应用名
+ *	@brief	安卓应用下载地址
  */
-@property (nonatomic, copy) NSString *appName;
+@property (nonatomic, copy) NSString *androidMarketParam;
 
 /**
- *	@brief	应用版本
+ *	@brief	 查看权限：F 表示好友可以查看，A 表示任何人可以查看，M 表示私有，默认为A
  */
-@property (nonatomic, copy) NSString *appVersion;
+@property (nonatomic, copy) NSString *permission;
 
 /**
- *	@brief  appBundleID
+ *	@brief	 是否允许分享，当查看权限为好友查看时，该选项有效，可以设置内容是否允许再分享
  */
-@property (nonatomic, copy) NSString *appBundleID;
-
-/**
- *	@brief	文件地址
- */
-@property (nonatomic, copy) NSString *fileUrl;
+@property (nonatomic, assign) BOOL enableShare;
 
 /**
  *	@brief	通过分享内容解析实体数据
  *
  *	@param 	content 	分享内容
  */
-- (void)parseWithContent:(id<ISSContent>)content;
+- (void) parseWithContent:(id<ISSContent>)content;
 
 
 @end

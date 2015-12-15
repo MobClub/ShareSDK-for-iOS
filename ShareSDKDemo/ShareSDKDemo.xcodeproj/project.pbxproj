@@ -26,8 +26,6 @@
 		DE218C961BDB8836003717DF /* InstapaperConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE218C301BDB8836003717DF /* InstapaperConnection.framework */; };
 		DE218C971BDB8836003717DF /* InstapaperResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE218C311BDB8836003717DF /* InstapaperResource.bundle */; };
 		DE218C981BDB8836003717DF /* KaiXinConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE218C321BDB8836003717DF /* KaiXinConnection.framework */; };
-		DE218C991BDB8836003717DF /* KaKaoStoryConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE218C331BDB8836003717DF /* KaKaoStoryConnection.framework */; };
-		DE218C9A1BDB8836003717DF /* KaKaoTalkConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE218C341BDB8836003717DF /* KaKaoTalkConnection.framework */; };
 		DE218C9B1BDB8836003717DF /* LineConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE218C351BDB8836003717DF /* LineConnection.framework */; };
 		DE218C9C1BDB8836003717DF /* LinkedInConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE218C361BDB8836003717DF /* LinkedInConnection.framework */; };
 		DE218C9D1BDB8836003717DF /* MailConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE218C371BDB8836003717DF /* MailConnection.framework */; };
@@ -117,6 +115,9 @@
 		DEC8329D1BDE1D9200FB2182 /* tabbar_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEC832911BDE1D9200FB2182 /* tabbar_share@2x.png */; };
 		DEC8329E1BDE1D9200FB2182 /* tabbar_share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEC832921BDE1D9200FB2182 /* tabbar_share@3x.png */; };
 		DED588401BDCFC5700D44C93 /* shareImg.png in Resources */ = {isa = PBXBuildFile; fileRef = DED5883F1BDCFC5700D44C93 /* shareImg.png */; };
+		DEE71EF91C1958DE00492606 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEE71EF81C1958DE00492606 /* KakaoOpenSDK.framework */; };
+		DEE71EFC1C1959C600492606 /* KakaoStoryConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEE71EFA1C1959C600492606 /* KakaoStoryConnection.framework */; };
+		DEE71EFD1C1959C600492606 /* KakaoTalkConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEE71EFB1C1959C600492606 /* KakaoTalkConnection.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,8 +146,6 @@
 		DE218C301BDB8836003717DF /* InstapaperConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = InstapaperConnection.framework; sourceTree = "<group>"; };
 		DE218C311BDB8836003717DF /* InstapaperResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InstapaperResource.bundle; sourceTree = "<group>"; };
 		DE218C321BDB8836003717DF /* KaiXinConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KaiXinConnection.framework; sourceTree = "<group>"; };
-		DE218C331BDB8836003717DF /* KaKaoStoryConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KaKaoStoryConnection.framework; sourceTree = "<group>"; };
-		DE218C341BDB8836003717DF /* KaKaoTalkConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KaKaoTalkConnection.framework; sourceTree = "<group>"; };
 		DE218C351BDB8836003717DF /* LineConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LineConnection.framework; sourceTree = "<group>"; };
 		DE218C361BDB8836003717DF /* LinkedInConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LinkedInConnection.framework; sourceTree = "<group>"; };
 		DE218C371BDB8836003717DF /* MailConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MailConnection.framework; sourceTree = "<group>"; };
@@ -256,6 +255,9 @@
 		DEC832911BDE1D9200FB2182 /* tabbar_share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_share@2x.png"; sourceTree = "<group>"; };
 		DEC832921BDE1D9200FB2182 /* tabbar_share@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_share@3x.png"; sourceTree = "<group>"; };
 		DED5883F1BDCFC5700D44C93 /* shareImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareImg.png; sourceTree = "<group>"; };
+		DEE71EF81C1958DE00492606 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		DEE71EFA1C1959C600492606 /* KakaoStoryConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoStoryConnection.framework; sourceTree = "<group>"; };
+		DEE71EFB1C1959C600492606 /* KakaoTalkConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoTalkConnection.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +282,7 @@
 				DE218CE01BDB8DE8003717DF /* Security.framework in Frameworks */,
 				DE218CDA1BDB8DCB003717DF /* CoreTelephony.framework in Frameworks */,
 				DE218CD81BDB8DC2003717DF /* QuartzCore.framework in Frameworks */,
+				DEE71EFC1C1959C600492606 /* KakaoStoryConnection.framework in Frameworks */,
 				DE218CD61BDB8DB9003717DF /* SystemConfiguration.framework in Frameworks */,
 				DE218CA01BDB8836003717DF /* PocketConnection.framework in Frameworks */,
 				DE218CD21BDB8836003717DF /* ShareSDKShareActionSheet.framework in Frameworks */,
@@ -290,7 +293,6 @@
 				DE218C961BDB8836003717DF /* InstapaperConnection.framework in Frameworks */,
 				DE218C9B1BDB8836003717DF /* LineConnection.framework in Frameworks */,
 				DE218CC31BDB8836003717DF /* libWeChatSDK.a in Frameworks */,
-				DE218C991BDB8836003717DF /* KaKaoStoryConnection.framework in Frameworks */,
 				DE218C951BDB8836003717DF /* InstagramConnection.framework in Frameworks */,
 				DE218CA21BDB8836003717DF /* QQConnection.framework in Frameworks */,
 				DE218CAF1BDB8836003717DF /* AGCommon.framework in Frameworks */,
@@ -316,13 +318,14 @@
 				DE218C9F1BDB8836003717DF /* PinterestConnection.framework in Frameworks */,
 				DE218CCC1BDB8836003717DF /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */,
 				DE218CA41BDB8836003717DF /* RenRenConnection.framework in Frameworks */,
+				DEE71EF91C1958DE00492606 /* KakaoOpenSDK.framework in Frameworks */,
 				DE218CB81BDB8836003717DF /* GoogleOpenSource.framework in Frameworks */,
 				DE218CAA1BDB8836003717DF /* VKontakteConnection.framework in Frameworks */,
 				DE218CB11BDB8836003717DF /* MOBFoundation.framework in Frameworks */,
 				DE218CC01BDB8836003717DF /* RennSDK.framework in Frameworks */,
 				DE218C8E1BDB8836003717DF /* CopyConnection.framework in Frameworks */,
-				DE218C9A1BDB8836003717DF /* KaKaoTalkConnection.framework in Frameworks */,
 				DE218CC81BDB8836003717DF /* ShareSDKFlatShareViewUI.framework in Frameworks */,
+				DEE71EFD1C1959C600492606 /* KakaoTalkConnection.framework in Frameworks */,
 				DE218CD11BDB8836003717DF /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */,
 				DE218CCD1BDB8836003717DF /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */,
 				DE218C921BDB8836003717DF /* FacebookConnection.framework in Frameworks */,
@@ -415,12 +418,12 @@
 				DE218C301BDB8836003717DF /* InstapaperConnection.framework */,
 				DE218C311BDB8836003717DF /* InstapaperResource.bundle */,
 				DE218C321BDB8836003717DF /* KaiXinConnection.framework */,
-				DE218C331BDB8836003717DF /* KaKaoStoryConnection.framework */,
-				DE218C341BDB8836003717DF /* KaKaoTalkConnection.framework */,
 				DE218C351BDB8836003717DF /* LineConnection.framework */,
 				DE218C361BDB8836003717DF /* LinkedInConnection.framework */,
 				DE218C371BDB8836003717DF /* MailConnection.framework */,
 				DE218C381BDB8836003717DF /* MingDaoConnection.framework */,
+				DEE71EFA1C1959C600492606 /* KakaoStoryConnection.framework */,
+				DEE71EFB1C1959C600492606 /* KakaoTalkConnection.framework */,
 				DE218C391BDB8836003717DF /* PinterestConnection.framework */,
 				DE218C3A1BDB8836003717DF /* PocketConnection.framework */,
 				DE218C3B1BDB8836003717DF /* PrintConnection.framework */,
@@ -456,6 +459,7 @@
 		DE218C511BDB8836003717DF /* Extend */ = {
 			isa = PBXGroup;
 			children = (
+				DEE71EF71C1958DE00492606 /* KaKaoSDK */,
 				DE218C521BDB8836003717DF /* APSocialSDK */,
 				DE218C5A1BDB8836003717DF /* GooglePlusSDK */,
 				DE218C5E1BDB8836003717DF /* Pinterest.embeddedframework */,
@@ -656,6 +660,14 @@
 			name = images;
 			sourceTree = "<group>";
 		};
+		DEE71EF71C1958DE00492606 /* KaKaoSDK */ = {
+			isa = PBXGroup;
+			children = (
+				DEE71EF81C1958DE00492606 /* KakaoOpenSDK.framework */,
+			);
+			path = KaKaoSDK;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -809,7 +821,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -853,7 +866,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -878,7 +892,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -891,6 +905,7 @@
 					"$(SRCROOT)/../ShareSDK/Extend/RenRenSDK",
 					"$(SRCROOT)/../ShareSDK/",
 					"$(SRCROOT)/../ShareSDK/UI",
+					"$(SRCROOT)/../ShareSDK/Extend/KaKaoSDK",
 				);
 				INFOPLIST_FILE = ShareSDKDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -911,7 +926,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinghuang Liu (H4ZH7W6LU4)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -924,6 +939,7 @@
 					"$(SRCROOT)/../ShareSDK/Extend/RenRenSDK",
 					"$(SRCROOT)/../ShareSDK/",
 					"$(SRCROOT)/../ShareSDK/UI",
+					"$(SRCROOT)/../ShareSDK/Extend/KaKaoSDK",
 				);
 				INFOPLIST_FILE = ShareSDKDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

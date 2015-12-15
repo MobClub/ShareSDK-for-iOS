@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <ShareSDK/ISSPlatformApp.h>
 
 #import "ShareViewController.h"
 #import "AuthViewController.h"
@@ -67,6 +68,9 @@
 //易信SDK头文件
 #import "YXApi.h"
 
+//Kakao SDK头文件
+#import <KakaoOpenSDK/KakaoOpenSDK.h>
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -76,6 +80,9 @@
     
     //2. 初始化社交平台
     [self initializePlat];
+    
+    id<ISSPlatformApp> weibo = [ShareSDK getClientWithType:ShareTypeSinaWeibo];
+    [weibo setSsoEnabled:NO];
     
     //以下是Demo界面的相关代码
     //分享页面
@@ -108,7 +115,8 @@
 }
 
 - (void)initializePlat
-{   /**
+{
+    /**
      连接支付宝开放平台应用以使用相关功能（不含支付宝支付，仅支持支付宝朋友分享功能,此应用需要引用AliPaySocialConnection.frameworkhttps://open.alipay.com/platform/home.htm上注册支付宝开放平台应用,并将相关信息填写到以下字段
      **/
     [ShareSDK connectAliPaySocialWithAppID:@"2015072400185895"
@@ -336,12 +344,20 @@
     /**
      连接KakaoTalk应用以使用相关功能，此应用需要引用KakaoTalkConnection.framework库
      **/
-    [ShareSDK connectKaKaoTalk];
+    [ShareSDK connectKakaoWithType:ShareTypeKaKaoTalk
+                          ByAppKey:@"48d3f524e4a636b08d81b3ceb50f1003"
+                        restApiKey:@"ac360fa50b5002637590d24108e6cb10"
+                       redirectUri:@"http://www.mob.com/oauth"
+                          KakaoCls:[KOSession class]];
     
     /**
      连接KakaoStory应用以使用相关功能，此应用需要引用KakaoStoryConnection.framework库
      **/
-    [ShareSDK connectKaKaoStory];
+    [ShareSDK connectKakaoWithType:ShareTypeKaKaoStory
+                          ByAppKey:@"48d3f524e4a636b08d81b3ceb50f1003"
+                        restApiKey:@"ac360fa50b5002637590d24108e6cb10"
+                       redirectUri:@"http://www.mob.com/oauth"
+                          KakaoCls:[KOSession class]];
 }
 
 #pragma mark - 如果使用SSO（可以简单理解成跳客户端授权），以下方法是必要的

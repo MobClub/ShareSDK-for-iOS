@@ -109,12 +109,26 @@ typedef void(^MOBFHttpUploadProgressEvent) (NSInteger totalBytes, NSInteger load
 - (void)addHeader:(NSString *)header value:(NSString *)value;
 
 /**
+ *  添加HTTP头集合
+ *
+ *  @param headers 头集合
+ */
+- (void)addHeaders:(NSDictionary *)headers;
+
+/**
  *  添加参数
  *
  *  @param value 参数值
  *  @param key   参数名字
  */
 - (void)addParameter:(id)value forKey:(NSString *)key;
+
+/**
+ *  添加多个参数
+ *
+ *  @param parameters 参数集合
+ */
+- (void)addParameters:(NSDictionary *)parameters;
 
 /**
  *  添加上传文件参数
@@ -130,6 +144,13 @@ typedef void(^MOBFHttpUploadProgressEvent) (NSInteger totalBytes, NSInteger load
                 mimeType:(NSString *)mimeType
         transferEncoding:(NSString *)transferEncoding
                   forKey:(NSString *)key;
+
+/**
+ *  设置请求体数据，可以为NSData或者NSInputStream
+ *
+ *  @param body 请求体数据
+ */
+- (void)setBody:(id)body;
 
 /**
  *  发送请求

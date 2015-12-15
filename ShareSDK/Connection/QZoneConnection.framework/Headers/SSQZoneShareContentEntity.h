@@ -20,6 +20,11 @@
 }
 
 /**
+ *	@brief	文本内容
+ */
+@property (nonatomic,copy) NSString *content;
+
+/**
  *	@brief	标题
  */
 @property (nonatomic,copy) NSString *title;
@@ -55,6 +60,11 @@
 @property (nonatomic,retain) id<ISSCAttachment> image;
 
 /**
+ *	@brief	QQ空间说说图片数组
+ */
+@property (nonatomic,retain) NSArray *images;
+
+/**
  *	@brief	分享内容的类型。4表示网页；5表示视频
  */
 @property (nonatomic,retain) NSNumber *type;
@@ -68,6 +78,8 @@
  *	@brief	同步微博标识
  */
 @property (nonatomic,retain) NSNumber *nswb;
+
+@property (nonatomic,copy) NSString *assetURL;
 
 /**
  *	@brief	通过分享内容解析实体数据

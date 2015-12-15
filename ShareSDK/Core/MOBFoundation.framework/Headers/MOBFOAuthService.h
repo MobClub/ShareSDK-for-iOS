@@ -14,6 +14,30 @@
 @interface MOBFOAuthService : MOBFHttpService
 
 /**
+ *  设置密钥
+ *
+ *  @param consumerSecret   消费者密钥，不允许为nil
+ *  @param oauthTokenSecret 令牌密钥，如果尚未取得令牌密钥，可以传入nil
+ */
+- (void)setSecretByConsumerSecret:(NSString *)consumerSecret
+                 oauthTokenSecret:(NSString *)oauthTokenSecret;
+
+/**
+ *  添加OAuth参数
+ *
+ *  @param value 参数值
+ *  @param key   参数名字
+ */
+- (void)addOAuthParameter:(id)value forKey:(NSString *)key;
+
+/**
+ *  添加OAuth参数
+ *
+ *  @param oauthParameters OAuth参数集合
+ */
+- (void)addOAuthParameters:(NSDictionary *)oauthParameters;
+
+/**
  *  发送HTTP请求
  *
  *  @param urlString             请求地址

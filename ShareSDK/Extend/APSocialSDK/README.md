@@ -1,8 +1,11 @@
 # APShareSDK
 ### 准备工作
 
+`重要`
+
 请到 http://open.alipay.com/index.htm 申请AppID
-DEMO内AppID为`2015050500576720`
+
+demo中以xxxxxxxxxx代替
 
 ### 接入步骤
 
@@ -14,7 +17,7 @@ DEMO内AppID为`2015050500576720`
 	* Other Linker Flags : -all_load
 	* 添加URL Types
 		* Identifier : alipayShare
-		* URL Schemes : 2015050500576720
+		* URL Schemes : apxxxxxxxxxx
 * 引入APOpenAPI.h
 
 ```
@@ -26,7 +29,7 @@ DEMO内AppID为`2015050500576720`
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [APOpenAPI registerApp:@"2015050500576720"];
+    [APOpenAPI registerApp:@"xxxxxxxxxx"];
     return YES;
 }
 ```

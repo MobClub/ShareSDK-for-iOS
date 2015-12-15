@@ -128,27 +128,30 @@
 /**
  *	@brief	分享音乐信息
  *
- *	@param 	title 	标题
- *	@param 	content 	内容
- *	@param 	url 	链接
- *	@param 	pic 	预览图
- *  @param  result  返回回调
+ *	@param 	title       标题
+ *	@param 	content     内容
+ *	@param 	url         链接
+ *  @param  flashURL    预览图播放键音乐URL
+ *	@param 	pic         预览图
+ *  @param  result      返回回调
  */
 ///#end
 ///#begin en
 /**
  *	@brief	Send a music message.
  *
- *	@param 	title 	Title string.
+ *	@param 	title       Title string.
  *	@param 	content 	Content string.
- *	@param 	url 	URL string.
- *	@param 	pic 	Thumbnail.
- *  @param  result  Result handler.
+ *	@param 	url         URL string.
+ *  @param  flashURL    music url in thumbnail
+ *	@param 	pic         Thumbnail.
+ *  @param  result      Result handler.
  */
 ///#end
 - (void)sendMusic:(NSString *)title
           content:(NSString *)content
               url:(NSString *)url
+    audioFlashURL:(NSString *)flashURL
               pic:(id<ISSCAttachment>)pic
            result:(SSShareResultEvent)result;
 
@@ -156,27 +159,30 @@
 /**
  *	@brief	分享视频信息
  *
- *	@param 	title 	标题
+ *	@param 	title       标题
  *	@param 	content 	内容
- *	@param 	url 	链接
- *	@param 	pic 	预览图
- *  @param  result  返回回调
+ *	@param 	url         链接
+ *  @param  flashURL    预览图播放键视频URL
+ *	@param 	pic         预览图
+ *  @param  result      返回回调
  */
 ///#end
 ///#begin en
 /**
  *	@brief	Send a video message.
  *
- *	@param 	title 	Title string.
+ *	@param 	title       Title string.
  *	@param 	content 	Content string.
- *	@param 	url 	URL string.
- *	@param 	pic 	Thumbnail.
- *  @param  result  Result handler.
+ *	@param 	url         URL string.
+ *  @param  flashURL    video url in thumbnail.
+ *	@param 	pic         Thumbnail.
+ *  @param  result      Result handler.
  */
 ///#end
 - (void)sendVideo:(NSString *)title
           content:(NSString *)content
               url:(NSString *)url
+    videoFlashURL:(NSString *)flashURL
               pic:(id<ISSCAttachment>)pic
            result:(SSShareResultEvent)result;
 
