@@ -44,7 +44,6 @@
 }
 
 - (void)commonShare:(id)sender
-
 {
     //1、构造分享内容
     //1.1、要分享的图片（以下分别是网络图片和本地图片的生成方式的示例）
@@ -52,7 +51,7 @@
     id<ISSCAttachment> localAttachment = [ShareSDKCoreService attachmentWithPath:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
     
     //1.2、以下参数分别对应：内容、默认内容、图片、标题、链接、描述、分享类型
-    id<ISSContent> publishContent = [ShareSDK content:@"Share your fabulous message with ShareSDK.@刘靖煌"
+    id<ISSContent> publishContent = [ShareSDK content:@"Share your fabulous message with ShareSDK. @Mob移动开发者服务平台 @ShareSDK"
                                        defaultContent:nil
                                                 image:remoteAttachment
                                                 title:@"test title"
@@ -106,7 +105,7 @@
 //    id<ISSCAttachment> localAttachment = [ShareSDKCoreService attachmentWithPath:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
     
     //1.2、以下参数分别对应：内容、默认内容、图片、标题、链接、描述、分享类型
-    id<ISSContent> publishContent = [ShareSDK content:@"Test content of ShareSDK"
+    id<ISSContent> publishContent = [ShareSDK content:@"Share your fabulous message with ShareSDK.@Mob移动开发者服务平台 @ShareSDK"
                                        defaultContent:nil
                                                 image:remoteAttachment
                                                 title:@"test title"
@@ -213,7 +212,7 @@
     id<ISSCAttachment> remoteAttachment = [ShareSDKCoreService attachmentWithUrl:@"http://f.hiphotos.bdimg.com/album/w%3D2048/sign=df8f1fe50dd79123e0e09374990c5882/cf1b9d16fdfaaf51e6d1ce528d5494eef01f7a28.jpg"];
     
     //1.2、以下参数分别对应：内容、默认内容、图片、标题、链接、描述、分享类型
-    id<ISSContent> publishContent = [ShareSDK content:@"test content of ShareSDK"
+    id<ISSContent> publishContent = [ShareSDK content:@"Share your fabulous message with ShareSDK. @刘靖煌"
                                        defaultContent:nil
                                                 image:remoteAttachment
                                                 title:@"test title"
@@ -260,7 +259,7 @@
 //    id<ISSCAttachment> localAttachment = [ShareSDKCoreService attachmentWithPath:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
     
     //1.2、以下参数分别对应：内容、默认内容、图片、标题、链接、描述、分享类型
-    id<ISSContent> publishContent = [ShareSDK content:@"test content of ShareSDK"
+    id<ISSContent> publishContent = [ShareSDK content:@"Share your fabulous message with ShareSDK. @刘靖煌"
                                        defaultContent:nil
                                                 image:remoteAttachment
                                                 title:@"test title"
@@ -467,7 +466,7 @@
 //    id<ISSCAttachment> localAttachment = [ShareSDKCoreService attachmentWithPath:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
     
     //1.2、以下参数分别对应：内容、默认内容、图片、标题、链接、描述、分享类型
-    id<ISSContent> publishContent = [ShareSDK content:@"test content of ShareSDK"
+    id<ISSContent> publishContent = [ShareSDK content:@"Share your fabulous message with ShareSDK.@Mob移动开发者服务平台 @ShareSDK"
                                        defaultContent:nil
                                                 image:remoteAttachment
                                                 title:@"test title"
@@ -520,7 +519,7 @@
 //    id<ISSCAttachment> localAttachment = [ShareSDKCoreService attachmentWithPath:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
     
     //1.2、以下参数分别对应：内容、默认内容、图片、标题、链接、描述、分享类型
-    id<ISSContent> publishContent = [ShareSDK content:@"test content of ShareSDK"
+    id<ISSContent> publishContent = [ShareSDK content:@"Share your fabulous message with ShareSDK.@Mob移动开发者服务平台 @ShareSDK"
                                        defaultContent:nil
                                                 image:remoteAttachment
                                                 title:@"test title"
@@ -572,7 +571,7 @@
 //    id<ISSCAttachment> localAttachment = [ShareSDKCoreService attachmentWithPath:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
     
     //1.2、以下参数分别对应：内容、默认内容、图片、标题、链接、描述、分享类型
-    id<ISSContent> publishContent = [ShareSDK content:@"test content of ShareSDK"
+    id<ISSContent> publishContent = [ShareSDK content:@"Share your fabulous message with ShareSDK.@Mob移动开发者服务平台 @ShareSDK"
                                        defaultContent:nil
                                                 image:remoteAttachment
                                                 title:@"test title"

@@ -47,6 +47,7 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>kakao48d3f524e4a636b08d81b3ceb50f1003</string>
 				<string>wb3225526301</string>
 				<string>tb2QUXqO9fcgGdtGG1FcvML6ZunIQzAEL8xY6hIaxdJnDti2DYwM</string>
 				<string>fb107704292745179</string>
@@ -69,6 +70,8 @@
 	<string>107704292745179</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>sinaweibo</string>
+		<string>sinaweibohd</string>
 		<string>kakaokompassauth</string>
 		<string>storykompassauth</string>
 		<string>kakao48d3f524e4a636b08d81b3ceb50f1003</string>

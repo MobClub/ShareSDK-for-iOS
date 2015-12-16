@@ -81,9 +81,6 @@
     //2. 初始化社交平台
     [self initializePlat];
     
-    id<ISSPlatformApp> weibo = [ShareSDK getClientWithType:ShareTypeSinaWeibo];
-    [weibo setSsoEnabled:NO];
-    
     //以下是Demo界面的相关代码
     //分享页面
     ShareViewController *share = [[ShareViewController alloc] init];
