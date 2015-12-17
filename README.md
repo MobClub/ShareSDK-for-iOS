@@ -111,9 +111,9 @@ Wanna post something from your app on Chinese social platform? This might be you
   # 支付宝(可选)
   pod 'ShareSDK2/Connection/AliPaySocial' 
   ```
-  安装ShareSDK2/UI 模块可使用所有UI界面，安装ShareSDK2/Connection模块可使用所有分享平台。但鉴于安装所有分享平台模块会使得应用变得非常   庞大，所以不推荐大家使用这种方式安装。开发者可根据自己的需求安装引入指定的分享模块，这样可使应用体积保持小巧。
+  Installation ShareSDK / UI module can use all the UI interface, install ShareSDK2 / Connection module can use all sharing platform.   But given all sharing platform installation module makes the application becomes very large, so I do not recommend you use this       method to install. Developers can install the introduction of the specified share modules according to their needs, it will give the   application volume remains small.
 
-  例：应用需要包含新浪微博分享,微信和 QQ 分享，并且需要使用简单分享视图，则只需要添加如下代码于 Podfile 中进行安装即可。
+  Example: The application needs to include Sina Weibo, QQ, Wechat sharing, and the need to use simple sharing view, you only need to   add the following code in Podfile.
   ```objc
   pod 'MOBFoundation'
   pod 'ShareSDK2'
