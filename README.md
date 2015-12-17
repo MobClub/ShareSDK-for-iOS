@@ -1,75 +1,206 @@
-ShareSDK is the most popular social SDK for apps and mobile games in global world ! We've already support over 100,000 clients unitl now.
+## ShareSDK
+* ShareSDK is the most popular social SDK for apps and mobile games in global world ! We've already support over 100,000 clients unitl now.
 ShareSDK could easily support 40+ social platforms in the world for third-party log in, sharing, and operating with friends list. Only few hours, this small package will make your app fully socialized! 
 Wanna post something from your app on Chinese social platform? This might be your best choice!
 
-使用CocoaPods集成ShareSDK的中文文档地址：http://wiki.mob.com/cocoapods集成sharesdk标准版/
+## Contents
+* Getting Started
+    * [Features](#Features)
+    * [Category structure【ShareSDK Category structure】](#Category structure【ShareSDK Category structure】)
+    * [How to integrate ShareSDK easily](#How to integrate ShareSDK easily)
+    * [Option Configuration](#Option Configuration)
+* common API
+    * [ShareSDK.h](#ShareSDK.h)
+* Examples
+    * [simplyShare](#simplyShare)
+    * [showShareEditor](#showShareEditor)
 
+## <a id="Features"></a>Features
+* Share to third-party SNS platforms.
+* Third party log in.
 
-# How to integrate ShareSDK easily
+## <a id="How to integrate ShareSDK easily"></a>How to integrate ShareSDK easily
 
 ## Step 1：Import the ShareSDK to your project
+* **cocoapods import：**
+  ```objc
+  * 公共库(必须)
+  pod 'MOBFoundation'
+  * 主模块(必须)
+  pod 'ShareSDK2'
+  ```
+  ```objc
+  # UI模块(含所有UI样式,可选)
+  pod 'ShareSDK2/UI'
+  # iOS竖版默认分享UI(可选)
+  pod 'ShareSDK2/UI/Flat'
+  # iPad版默认分享视图(可选)
+  pod 'ShareSDK2/UI/iPadDefault'
+  # iPad版简单分享视图(可选)
+  pod 'ShareSDK2/UI/iPadSimple'
+  # iPhone版默认分享视图(可选)
+  pod 'ShareSDK2/UI/iPhoneDefault'
+  # iPhone版简单分享视图(可选)
+  pod 'ShareSDK2/UI/iPhoneSimple'
+  # iPhone版应用推荐视图(可选)
+  pod 'ShareSDK2/UI/iPhoneAppRecommend'
+  ```
+  ```objc
+  # 评论和赞模块(可选)
+  pod 'ShareSDK2/Comment'
+  ```
+  ```objc
+  # 分享&登录链接模块(含所有平台,可选)
+  pod 'ShareSDK2/Connection'
+  # 短信(可选)
+  pod 'ShareSDK2/Connection/SMS'
+  # 邮件(可选)
+  pod 'ShareSDK2/Connection/Mail'
+  # 拷贝(可选)
+  pod 'ShareSDK2/Connection/Copy'
+  # 打印(可选)
+  pod 'ShareSDK2/Connection/Print'
+  # 新浪微博(可选)
+  pod 'ShareSDK2/Connection/SinaWeibo'
+  # 微信(可选)
+  pod 'ShareSDK2/Connection/WeChat'
+  # 腾讯QQ(可选)
+  pod 'ShareSDK2/Connection/QQ'
+  # QQ空间(可选)
+  pod 'ShareSDK2/Connection/QZone'
+  # 腾讯微博(可选)
+  pod 'ShareSDK2/Connection/TencentWeibo'
+  # Google+(可选)
+  pod 'ShareSDK2/Connection/GooglePlus'
+  # 人人网(可选)
+  pod 'ShareSDK2/Connection/RenRen'
+  # 易信(可选)
+  pod 'ShareSDK2/Connection/YiXin'
+  # Facebook(可选)
+  pod 'ShareSDK2/Connection/Facebook'
+  # Dropbox(可选)
+  pod 'ShareSDK2/Connection/Dropbox'
+  # DouBan(可选)
+  pod 'ShareSDK2/Connection/DouBan'
+  # 印象笔记(可选)
+  pod 'ShareSDK2/Connection/EverNote'
+  # Flickr(可选)
+  pod 'ShareSDK2/Connection/Flickr'
+  # Instagram(可选)
+  pod 'ShareSDK2/Connection/Instagram'
+  # Instapaper(可选)
+  pod 'ShareSDK2/Connection/Instapaper'
+  # 开心网(可选)
+  pod 'ShareSDK2/Connection/KaiXin'
+  # Twitter(可选)
+  pod 'ShareSDK2/Connection/Twitter'
+  # Tumblr(可选)
+  pod 'ShareSDK2/Connection/Tumblr'
+  # WhatsApp(可选)
+  pod 'ShareSDK2/Connection/WhatsApp'
+  # VKontakte(可选)
+  pod 'ShareSDK2/Connection/VKontakte'
+  # KaKaoStory(可选)
+  pod 'ShareSDK2/Connection/KaKaoStory'
+  # KaKaoTalk(可选)
+  pod 'ShareSDK2/Connection/KaKaoTalk'
+  # Line(可选)
+  pod 'ShareSDK2/Connection/Line'
+  # LinkedIn(可选)
+  pod 'ShareSDK2/Connection/LinkedIn'
+  # Pocket(可选)
+  pod 'ShareSDK2/Connection/Pocket'
+  # 明道(可选)
+  pod 'ShareSDK2/Connection/MingDao'
+  # 有道云笔记(可选)
+  pod 'ShareSDK2/Connection/YouDaoNote'
+  # 支付宝(可选)
+  pod 'ShareSDK2/Connection/AliPaySocial' 
+  ```
+  安装ShareSDK2/UI 模块可使用所有UI界面，安装ShareSDK2/Connection模块可使用所有分享平台。但鉴于安装所有分享平台模块会使得应用变得非常   庞大，所以不推荐大家使用这种方式安装。开发者可根据自己的需求安装引入指定的分享模块，这样可使应用体积保持小巧。
 
-* 1、Download the latest version of the ShareSDK, then you will get the following files.
+  例：应用需要包含新浪微博分享,微信和 QQ 分享，并且需要使用简单分享视图，则只需要添加如下代码于 Podfile 中进行安装即可。
+  ```objc
+  pod 'MOBFoundation'
+  pod 'ShareSDK2'
+  pod 'ShareSDK2/UI/iPadDefault'
+  pod 'ShareSDK2/UI/iPhoneDefault'
+  pod 'ShareSDK2/Connection/SinaWeibo'
+  pod 'ShareSDK2/Connection/WeChat'
+  pod 'ShareSDK2/Connection/QQ'
+  ```
+  
+* **Manually import：**
+    * 1、Download the latest version of the ShareSDK, and drag into your project(#download)
+    * 2、add the necessary Framework(#add)
+    
+<a id="download"></a>* (1)、Download the latest version of the ShareSDK, then you will get the following files.
 
 ![img](http://www.mob.com/html/images/github/sharesdk-integrate-1.png)
 
-* 2、Select the ShareSDK file and drag into your project (or just holding down the Control key on your keyboard and click your project,namely right-click your project, and choose “Add Files to …”).
+* (2)、Select the ShareSDK file and drag into your project (or just holding down the Control key on your keyboard and click your project,namely right-click your project, and choose “Add Files to …”).
 
 then you will see the following window, check the "Copy items into destination group's folder (if needed)" and click "Finish" button.
 
 ![img](http://www.mob.com/html/images/github/sharesdk-integrate-2.png)
 
-* 3、Now you have added the ShareSDK file to your project and it will look like this:
+* (3)、Now you have added the ShareSDK file to your project and it will look like this:
 
 ![img](http://www.mob.com/html/images/github/sharesdk-integrate-3.png)
 
-## Step 2：add the necessary Framework
+<a id="add"></a>*  2、add the necessary Framework
 
-**Indispensable Framework：**
+ Indispensable Framework：
+  ```objc
+  SystemConfiguration.framework
+  QuartzCore.framework
+  CoreTelephony.framework
+  libicucore.dylib
+  libz.1.2.5.dylib
+  Security.framework
+  JavaScriptCore.framework
+  libstdc++.dylib
+  CoreText.framework
+  ```
 
-1. SystemConfiguration.framework  
-2. QuartzCore.framework  
-3. CoreTelephony.framework  
-4. libicucore.dylib 
-5. libz.1.2.5.dylib
-6. Security.framework
-7. JavaScriptCore.framework
-8. libstdc++.dylib
-9. CoreText.framework
-
-**Optional Framework：**
-
-necessary for the SSO Login of Sina weibo
-
-1. ImageIO.framework
-2. AdSupport.framework
-3. libsqlite3.dylib
-
-necessary for the SSO Login of WeChat
-
-1. libsqlite3.dylib
-
-necessary for the SSO Login of QZone or QQ Friend share
-
-1. libsqlite3.dylib   
-
-necessary for Mail or SMS
-
-1. MessageUI.framework   
-
-necessary for Google+ platform 
-
-1. CoreMotion.framework        
-2. CoreLocation.framework      
-3. MediaPlayer.framework      
-4. AssetsLibrary.framework  
+  Optional Framework：
+  ```objc
+  necessary for the SSO Login of Sina weibo
+  
+  ImageIO.framework
+  AdSupport.framework
+  libsqlite3.dylib
+  ```
+  ```objc
+  necessary for the SSO Login of WeChat
+  
+  libsqlite3.dylib
+  ```
+  ```objc
+  necessary for the SSO Login of QZone or QQ Friend share
+  
+  libsqlite3.dylib
+  ```
+  ```objc
+  necessary for Mail or SMS
+  
+  MessageUI.framework
+  ```
+  ```objc
+  necessary for Google+ platform
+  
+  CoreMotion.framework
+  CoreLocation.framework
+  MediaPlayer.framework
+  AssetsLibrary.framework
+  ```
       
 The steps of adding the framework:
 
 ![img](http://www.mob.com/html/images/github/sharesdk-integrate-4.png)
 
 
-## Step3: import the header files and register for a Appkey
+## Step2: import the header files and register for a Appkey
 
 * 1、Log in to http://reg.sharesdk.cn/ to register to be a Mob developer , and click [here](http://dashboard.mob.com/ShareSDK#/) to create a Mob application, then you will get the Appkey.
 
@@ -90,7 +221,7 @@ and add the initialize code to the -(BOOL)application: didFinishLaunchingWithOpt
 
 ```
 
-## Step 4：choose the platforms that you need and initialize them
+## Step 3：choose the platforms that you need and initialize them
 
 Add the the initialized codes of platform that you need to the -(BOOL) application: didFinishLaunchingWithOptions: method
 
@@ -128,7 +259,7 @@ return YES;
 
 > PS:the parameters of above connect… method are relevant with the social platform.If you don’t have the platform’ application, then you should go that platform and create one.
 
-## Step 5：point out the rootViewController
+## Step 4：point out the rootViewController
 
 If you create the project with storyboard ,then just ignore this step,
 the system will set the rootViewController automatically.
@@ -151,7 +282,7 @@ self.window.rootViewController = self.viewController;
 
 ```
 
-## Step 6：construct the share content and share it
+## Step 5：construct the share content and share it
 
 * 1、Create an object that conforms to ISSContent protocol. Please refer to ShareSDK.h in ShareSDK.framework or ShareSDKDemo to get the specific usage.
 
@@ -195,11 +326,9 @@ errorCode], [error errorDescription]);
 
 Congratulations!you make it and the result may look like the following snapshop.
 
-![img](http://www.mob.com/html/images/github/sharesdk-integrate-5.png)
+![(ShareSDK提供的UI界面分享)](http://images2015.cnblogs.com/blog/708376/201512/708376-20151206163027597-624321518.gif)
 
-![img](http://www.mob.com/html/images/github/sharesdk-integrate-6.png)
-
-
+## <a id="Option Configuration"></a>Option Configuration
 ## Option 1：The way to share content for iPad 
 
 * 1、If you need to use ShareSDK on the iPad,you need to use the +container method of ShareSDK class to create an object that conforms to ISSContainer protocol. 
