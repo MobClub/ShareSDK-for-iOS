@@ -677,43 +677,32 @@
  *
  *  @since 2.12.2
  *
- *  @param content       文本内容，在分享[Text、Image、Video]类型时有效
- *  @param title         标题,仅类型为News时有效
- *  @param url           链接(普通链接,音频链接,视频链接)地址,仅类型为News时有效
- *  @param description   描述,仅类型为News时有效
- *  @param images        图片数组,仅对类型为News和Image时有效
- *  @param videoAssetURL 视频地址(仅Video类型,并传入的为AssetURL的absoluteString)
- *  Ex:
- *  NSURL *url = [asset valueForProperty:ALAssetPropertyAssetURL];
- *  请传入[url absoluteString]
+ *  @param title         标题
+ *  @param url           链接
+ *  @param description   描述
+ *  @param image         图片
  *  @param type          分享类型
  */
 ///#end
 ///#begin en
 /**
- *  添加QQ空间内容单元，制定QQ空间分享时的内容使用此参数，如果参数设置为INHERIT_VALUE则默认使用父级类型相关参数
+ *  add QZone content unit， When custom QZone share content use this method，If the parameter is set
+ *  to INHERIT_VALUE. will using the parent parameter value.
  *
  *  @since 2.12.2
  *
- *  @param content       text，only valid on [Text、Image、Video] mediaType
- *  @param title         title,valid on [News] mediaType
- *  @param url           url,valid on [News] mediaType
- *  @param description   desciption,valid on [News] mediaType
- *  @param images        images array,valid on [News] and [Image] mediaType
- *  @param videoAssetURL videoAssetURL abbsoluteString(only valid on [Video] mediaType)
- *  Ex:
- *  NSURL *url = [asset valueForProperty:ALAssetPropertyAssetURL];
- *  pass [url absoluteString]
+ *  @param title         title
+ *  @param url           url
+ *  @param description   desciption
+ *  @param image         image
  *  @param type          share media type
  */
 ///#end
-- (void)addQQSpaceUnitWithContent:(NSString *)content
-                            title:(NSString *)title
-                              url:(NSString*)url
-                      description:(NSString *)description
-                           images:(NSArray *)images
-                    videoAssetURL:(NSString *)videoAssetURL
-                             type:(NSNumber *)type;
+- (void)addQQSpaceUnitWithtitle:(NSString *)title
+                            url:(NSString*)url
+                    description:(NSString *)description
+                          image:(id<ISSCAttachment>)image
+                           type:(NSNumber *)type;
 
 
 ///#begin zh-cn

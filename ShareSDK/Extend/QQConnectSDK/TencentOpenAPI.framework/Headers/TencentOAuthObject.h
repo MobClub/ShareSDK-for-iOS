@@ -321,11 +321,6 @@
  */
 @property (nonatomic, retain) TCRequiredStr paramFromurl;
 
-/** 
- * nswb string	值为1时，表示分享不默认同步到微博，其他值或者不传此参数表示默认同步到微博。
- */
-@property (nonatomic, retain) TCOptionalStr paramNswb;
-
 @end
 
 #pragma mark -
@@ -397,58 +392,6 @@
  * 表示要获取的照片列表所在的相册ID
  */
 @property (nonatomic, retain) TCRequiredStr paramAlbumid;
-
-@end
-
-#pragma mark -
-#pragma mark TCMatchNickTipsDic
-/** 
- * \brief 微博获取好友输入提示的参数字典定义
- *
- * 可以直接填写相应参数后将对象当作参数传入API中
- */
-@interface TCMatchNickTipsDic : TCAPIRequest
-
-/**
- * 返回一个对象用来进行API参数的填充
- *
- * \note 不用释放，返回的对象是自动释放的
- */
-+ (TCMatchNickTipsDic *) dictionary;
-
-/** 
- * 匹配字符串（目前匹配范围为我收听的人）
- */
-@property (nonatomic, retain) TCRequiredStr paramMatch;
-
-/** 
- * 请求个数（1-10）
- */
-@property (nonatomic, retain) TCRequiredStr paramReqnum;
-
-@end
-
-
-#pragma mark -
-#pragma mark TCGetIntimateFriendsDic
-/**
- * \brief 微博获取最近联系人列表的参数字典定义
- *
- * 可以直接填写相应参数后将对象当作参数传入API中
- */
-@interface TCGetIntimateFriendsDic : TCAPIRequest
-
-/**
- * 返回一个对象用来进行API参数的填充
- *
- * \note 不用释放，返回的对象是自动释放的
- */
-+ (TCGetIntimateFriendsDic *) dictionary;
-
-/** 
- * 请求个数（1-20）
- */
-@property (nonatomic, retain) TCRequiredStr paramReqnum;
 
 @end
 

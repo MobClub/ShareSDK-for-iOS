@@ -86,8 +86,6 @@
 ///#end
 - (NSString *) ssoCallbackUrl;
 
-
-
 /**
  *  分享链接类型到QQ空间(包括普通链接，音频链接，视频链接)
  *
@@ -105,47 +103,32 @@
                                result:(SSShareResultEvent)result;
 
 
+///#begin zh-cn
 /**
- *  分享文字到QQ空间说说
  *
- *  @param text   文本内容
- *  @param result 回调
+ *	@brief	上传照片
  *
- *  @since 2.12.2
+ *	@param 	pic 	照片
+ *	@param 	desc 	描述
+ *	@param 	title 	标题
+ *	@param 	albumid 	相册ID，为nil则表示默认相册
  */
-- (void) clientShareTextToQzoneWithText:(NSString *)text result:(SSShareResultEvent)result;
-
+///#end
+///#begin en
 /**
- *  分享图片到QQ空间说说
- *  9张图片或以内会直接分享到QQ空间说说,9张以上上传图片到相册
- *  @param text   文本内容
- *  @param images 图片数组（ISSCAttachment数组）
- *  @param result 回调
- * 
- *  @since 2.12.2
- */
-- (void) clientShareImagesToQzoneWithText:(NSString *)text
-                                   images:(NSArray *)images
-                                   result:(SSShareResultEvent)result;
-
-
-/**
- *  分享视频到QQ空间说说
+ *	@brief	Upload picture.
  *
- *  @param text     文本内容
- *  @param assetURL 可传ALAsset的ALAssetPropertyAssetURL，或者PHAsset的localIdentifier
- *  @param result   回调
- *
- *  @since 2.12.2
+ *	@param 	pic 	Picture attachment object.
+ *	@param 	desc 	Description.
+ *	@param 	title 	Title string.
+ *	@param 	albumid 	Album ID，The default is nil indicates album
  */
-- (void) clientShareVideoToQzoneWithText:(NSString *)text
-                                assetURL:(NSString *)assetURL
-                                  result:(SSShareResultEvent)result;
-
-
-
-
-
+///#end
+- (void) uploadPic:(id<ISSCAttachment>)pic
+              desc:(NSString *)desc
+             title:(NSString *)title
+           albumid:(NSString *)albumid
+            result:(void(^)(BOOL result, id image, CMErrorInfo *error))result;
 
 #pragma - mark  弃用接口 - DEPRECATED_API
 
@@ -193,37 +176,7 @@
 ///#end
 - (BOOL) isAllowWebAuthorize;
 
-///#begin zh-cn
-/**
- *
- *  @deprecated 2.12.2开始不再使用此方法，如需分享图片到QQ空间，请使用[clientShareImagesToQzoneWithText:images:result:]
- *
- *	@brief	上传照片
- *
- *	@param 	pic 	照片
- *	@param 	desc 	描述
- *	@param 	title 	标题
- *	@param 	albumid 	相册ID，为nil则表示默认相册
- */
-///#end
-///#begin en
-/**
- *
- *  @deprecated since 2.12.2 please use [clientShareImagesToQzoneWithText:images:result:] instead
- *
- *	@brief	Upload picture.
- *
- *	@param 	pic 	Picture attachment object.
- *	@param 	desc 	Description.
- *	@param 	title 	Title string.
- *	@param 	albumid 	Album ID，The default is nil indicates album
-*/
-///#end
-- (void) uploadPic:(id<ISSCAttachment>)pic
-              desc:(NSString *)desc
-             title:(NSString *)title
-           albumid:(NSString *)albumid
-            result:(void(^)(BOOL result, id image, CMErrorInfo *error))result;
+
 
 
 ///#begin zh-cn
