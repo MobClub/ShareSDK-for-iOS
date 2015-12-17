@@ -6,14 +6,8 @@ Wanna post something from your app on Chinese social platform? This might be you
 ## Contents
 * Getting Started
     * [Features](#Features)
-    * [Category structure【ShareSDK Category structure】](#Category structure【ShareSDK Category structure】)
     * [How to integrate ShareSDK easily](#How to integrate ShareSDK easily)
     * [Option Configuration](#Option Configuration)
-* common API
-    * [ShareSDK.h](#ShareSDK.h)
-* Examples
-    * [simplyShare](#simplyShare)
-    * [showShareEditor](#showShareEditor)
 
 ## <a id="Features"></a>Features
 * Share to third-party SNS platforms.
@@ -134,7 +128,7 @@ Wanna post something from your app on Chinese social platform? This might be you
     * 1、Download the latest version of the ShareSDK, and drag into your project(#download)
     * 2、add the necessary Framework(#add)
     
-<a id="download"></a>* (1)、Download the latest version of the ShareSDK, then you will get the following files.
+<a id="download"></a>(1)、Download the latest version of the ShareSDK, then you will get the following files.
 
 ![img](http://www.mob.com/html/images/github/sharesdk-integrate-1.png)
 
@@ -148,7 +142,7 @@ then you will see the following window, check the "Copy items into destination g
 
 ![img](http://www.mob.com/html/images/github/sharesdk-integrate-3.png)
 
-<a id="add"></a>*  2、add the necessary Framework
+<a id="add"></a>2、add the necessary Framework
 
  Indispensable Framework：
   ```objc
