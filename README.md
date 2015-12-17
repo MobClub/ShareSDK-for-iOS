@@ -125,20 +125,20 @@ Wanna post something from your app on Chinese social platform? This might be you
   ```
   
 * **Manually import：**
- * 1、Download the latest version of the ShareSDK, and drag into your project
-  
-   (1)、Download the latest version of the ShareSDK, then you will get the following files.  
-    ![img](http://www.mob.com/html/images/github/sharesdk-integrate-1.png)
-     
-   (2)、Select the ShareSDK file and drag into your project (or just holding down the Control key on your keyboard and click your             project,namely right-click your project, and choose “Add Files to …”).
- 
-        then you will see the following window, check the "Copy items into destination group's folder (if needed)" and click                  "Finish" button.
-    ![img](http://www.mob.com/html/images/github/sharesdk-integrate-2.png)
-      
-   (3)、Now you have added the ShareSDK file to your project and it will look like this:  
+* 1、Download the latest version of the ShareSDK, and drag into your project
+ (1)、Download the latest version of the ShareSDK, then you will get the following files.
 
-    ![img](http://www.mob.com/html/images/github/sharesdk-integrate-3.png)
-      
+![img](http://www.mob.com/html/images/github/sharesdk-integrate-1.png)
+
+ (2)、Select the ShareSDK file and drag into your project (or just holding down the Control key on your keyboard and click your project,namely right-click your project, and choose “Add Files to …”).
+then you will see the following window, check the "Copy items into destination group's folder (if needed)" and click "Finish" button.
+
+![img](http://www.mob.com/html/images/github/sharesdk-integrate-2.png)
+
+ (3)、Now you have added the ShareSDK file to your project and it will look like this:  
+
+![img](http://www.mob.com/html/images/github/sharesdk-integrate-3.png)
+
 * 2、add the necessary Framework
 
  Indispensable Framework：
