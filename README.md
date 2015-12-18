@@ -221,32 +221,30 @@ Add the the initialized codes of platform that you need to the -(BOOL) applicati
 ```objc
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {     
-[ShareSDK registerApp:@"***"];  //you just added it
+   [ShareSDK registerApp:@"***"];  //you just added it
 
-//… … 
+   //… … 
 
-//Initialize SinaWeibo Application 
-[ShareSDK connectSinaWeiboWithAppKey:@"3201194191"                              
-appSecret:@"0334252914651e8f76bad63337b3b78f"                              
-redirectUri:@"http://appgo.cn"];      
+   //Initialize SinaWeibo Application 
+   [ShareSDK connectSinaWeiboWithAppKey:@"3201194191"                              
+                              appSecret:@"0334252914651e8f76bad63337b3b78f"                              
+                            redirectUri:@"http://appgo.cn"];      
    
-//Initialize QZone Application 
-[ShareSDK connectQZoneWithAppKey:@"100371282"                              
-appSecret:@"aed9b0303e3ed1e27bae87c33761161d"];   
+   //Initialize QZone Application 
+   [ShareSDK connectQZoneWithAppKey:@"100371282"                              
+                          appSecret:@"aed9b0303e3ed1e27bae87c33761161d"];   
 
-//Initialize Facebook Application 
-[ShareSDK connectFacebookWithAppKey:@"107704292745179"                              
-appSecret:@"38053202e1a5fe26c80c753071f0b573"];   
+   //Initialize Facebook Application 
+   [ShareSDK connectFacebookWithAppKey:@"107704292745179"                              
+                             appSecret:@"38053202e1a5fe26c80c753071f0b573"];   
   
-//Initialize Twitter Application 
-[ShareSDK connectTwitterWithConsumerKey:@"mnTGqtXk0TYMXYTN7qUxg"                              
-consumerSecret:@"ROkFqr8c3m1HXqS3rm3TJ0WkAJuwBOSaWhPbZ9Ojuc"                              
-redirectUri:@"http://www.sharesdk.cn"];    
+   //Initialize Twitter Application 
+   [ShareSDK connectTwitterWithConsumerKey:@"mnTGqtXk0TYMXYTN7qUxg"                              
+                            consumerSecret:@"ROkFqr8c3m1HXqS3rm3TJ0WkAJuwBOSaWhPbZ9Ojuc"                              
+                               redirectUri:@"http://www.sharesdk.cn"];    
 
-//… … 
-return YES;
-}
-
+   //… … 
+   return YES;
 }
 ```
 
@@ -263,14 +261,12 @@ didFinishLaunchingWithOptions: method,or it may cause some error(s). The codes m
 ```objc
 -	(BOOL)application:(UIApplication )application didFinishLaunchingWithOptions:(NSDictionary )launchOptions 
 {     
-//……      
-self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen    
-mainScreen] bounds]] autorelease];      
-self.viewController = [[[UINavigationController alloc] init]
-autorelease];             
-self.window.rootViewController = self.viewController;     
-[self.window makeKeyAndVisible];
-       return YES; 
+   //……      
+   self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];      
+   self.viewController = [[[UINavigationController alloc] init] autorelease];             
+   self.window.rootViewController = self.viewController;     
+   [self.window makeKeyAndVisible];
+   return YES; 
 }
 
 ```
@@ -288,12 +284,11 @@ NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK"  ofType
 
 //Create a share content object
 id<ISSContent> publishContent = [ShareSDK content:@"Share Content"                                           
-          defaultContent:@" The default share content. No content displayed"                                                            
-image:[ShareSDK imageWithPath:imagePath]                                              
-title:@"ShareSDK"                                          
-  url:@"http://www.sharesdk.cn"                                           
-description:@"This is a test message"                                             
-  mediaType:SSPublishContentMediaTypeNews];
+                                   defaultContent:@" The default share content. No content displayed"                                                                             image:[ShareSDK imageWithPath:imagePath]                                              
+                                            title:@"ShareSDK"                                          
+                                              url:@"http://www.sharesdk.cn"                                           
+                                      description:@"This is a test message"                                             
+                                        mediaType:SSPublishContentMediaTypeNews];
 
 //show share content view 
 [ShareSDK showShareActionSheet:nil                     
@@ -304,15 +299,14 @@ description:@"This is a test message"
                    shareOptions: nil                     
                           result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) 
 {                                                
-if (state == SSResponseStateSuccess)                                                            
-{                                         
-             NSLog(@"Share Success!");                                        
-       }                                         
-else if (state == SSResponseStateFail)                                                      
-{                                         
-NSLog(@"Share Fail,Error code:%d,Error description:%@", [error  
-errorCode], [error errorDescription]);                                                
-       }                             
+   if (state == SSResponseStateSuccess)                                                            
+   {                                         
+       NSLog(@"Share Success!");                                        
+   }                                         
+   else if (state == SSResponseStateFail)                                                      
+   {                                         
+       NSLog(@"Share Fail,Error code:%d,Error description:%@", [error errorCode], [error errorDescription]);                                                
+   }                             
 }];
 
 ```
@@ -354,8 +348,7 @@ id<ISSContainer> container = [ShareSDK container];
      }                                 
      else if (state == SSResponseStateFail)                                 
      {                                     
-         NSLog(@"Share Fail,Error code:%d,Error description:%@", 
-         [error errorCode], [error errorDescription]);                                 
+         NSLog(@"Share Fail,Error code:%d,Error description:%@", [error errorCode], [error errorDescription]);                       
      }                             
 }]; 
 ```
@@ -375,13 +368,13 @@ id<ISSContainer> container = [ShareSDK container];
 ```objc
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {     
-//[ShareSDK registerApp:@"***"]; // *** is the Appkey of Mob app
+   //[ShareSDK registerApp:@"***"]; // *** is the Appkey of Mob app
 
-// Here is the way of using The Sever Hosting mode
-//the parameter YES means use The Sever Hosting mode
-      [ShareSDK registerApp:@"***" useAppTrusteeship:YES];    
-      //……      
-      return YES; 
+   // Here is the way of using The Sever Hosting mode
+   //the parameter YES means use The Sever Hosting mode
+   [ShareSDK registerApp:@"***" useAppTrusteeship:YES];    
+   //……      
+   return YES; 
 }
 ```
 * 3、When changing the configuration information of Mob application in The Server Hosting mode, it needs some time(about 15 minutes) to really get worked. 
@@ -413,15 +406,15 @@ Check whether the handleOpenURL method had been added, if not then add the follo
 ```objc
 -	(BOOL)application:(UIApplication *)application  handleOpenURL:(NSURL *)url 
 {     
-return [ShareSDK handleOpenURL:url wxDelegate:self]; 
+   return [ShareSDK handleOpenURL:url wxDelegate:self]; 
 } 
 
- - (BOOL)application:(UIApplication *)application                 openURL:(NSURL *)url   sourceApplication:(NSString *)sourceApplication                 annotation:(id)annotation 
+ - (BOOL)application:(UIApplication *)application  openURL:(NSURL *)url   sourceApplication:(NSString *)sourceApplication                 annotation:(id)annotation 
 {     
       return [ShareSDK handleOpenURL:url       
-sourceApplication:sourceApplication                      
-        annotation:annotation         
-        wxDelegate:self]; 
+                   sourceApplication:sourceApplication                      
+                          annotation:annotation         
+                          wxDelegate:self]; 
 }
 ```
 
@@ -433,15 +426,15 @@ There are 2 methods to share content to WeChat,but if you want to use WeChat acc
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
       //...         
-//Initialize WeChat Application 
-//The parameter “wx6dd7a9b94f3dd72a” is the AppID of WeChat App   
-//[ShareSDK connectWeChatWithAppId:@"wx6dd7a9b94f3dd72a"                                 
-//                         wechatCls:[WXApi class]];     
+      //Initialize WeChat Application 
+      //The parameter “wx6dd7a9b94f3dd72a” is the AppID of WeChat App   
+      //[ShareSDK connectWeChatWithAppId:@"wx6dd7a9b94f3dd72a"                                 
+      //                         wechatCls:[WXApi class]];     
 
-//you can use WeChat account to authorize using this method
-[ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
-                      appSecret:@"64020361b8ec4c99936c0e3999a9f249"  
-                      wechatCls:[WXApi class]];
+      //you can use WeChat account to authorize using this method
+      [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
+                             appSecret:@"64020361b8ec4c99936c0e3999a9f249"  
+                             wechatCls:[WXApi class]];
       
       //... 
 }
@@ -455,10 +448,10 @@ There’s not need to initialize the application configuration by code in this m
 ```objc
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
-//...        
-// Add the WeChat SDK if your project or ShareSDK still don’s have one
+   //...        
+   // Add the WeChat SDK if your project or ShareSDK still don’s have one
       [ShareSDK importWeChatClass:[WXApi class] ];         
-//... 
+   //... 
 }
 ```
 
@@ -484,15 +477,15 @@ Check whether the handleOpenURL method  is added, if not then add the following 
 ```objc
 -	(BOOL)application:(UIApplication *)application  handleOpenURL:(NSURL *)url 
 {     
-return [ShareSDK handleOpenURL:url wxDelegate:self]; 
+   return [ShareSDK handleOpenURL:url wxDelegate:self]; 
 } 
 
-- (BOOL)application:(UIApplication *)application                 openURL:(NSURL *)url   sourceApplication:(NSString *)sourceApplication                 annotation:(id)annotation 
+- (BOOL)application:(UIApplication *)application  openURL:(NSURL *)url   sourceApplication:(NSString *)sourceApplication   annotation:(id)annotation 
 {     
       return [ShareSDK handleOpenURL:url       
-sourceApplication:sourceApplication                      
-        annotation:annotation         
-        wxDelegate:self]; 
+                   sourceApplication:sourceApplication                      
+                          annotation:annotation         
+                          wxDelegate:self]; 
 }
 ```
 
@@ -504,11 +497,11 @@ Add the codes in -(BOOL)application: didFinishLaunchingWithOptions: method
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
       //...        
-//Initialize QQ Platform  
-//The parameter “100371282” is the AppID of QQ App   
-[ShareSDK connectQQWithQZoneAppKey:@"100371282"                                              
-                   qqApiInterfaceCls:[QQApiInterface class]                            
-                     tencentOAuthCls:[TencentOAuth class] ];
+      //Initialize QQ Platform  
+      //The parameter “100371282” is the AppID of QQ App   
+      [ShareSDK connectQQWithQZoneAppKey:@"100371282"                                              
+                       qqApiInterfaceCls:[QQApiInterface class]                            
+                         tencentOAuthCls:[TencentOAuth class] ];
       
       //... 
 }
@@ -522,9 +515,9 @@ There’s not need to initialize the application configuration by code in this m
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
       //...        
-// Add the QQ SDK if your project or ShareSDK still don’s have one 
-[ShareSDK importQQClass:[QQApiInterface class]                   
-         tencentOAuthCls:[TencentOAuth class] ];          
+      // Add the QQ SDK if your project or ShareSDK still don’s have one 
+      [ShareSDK importQQClass:[QQApiInterface class]                   
+               tencentOAuthCls:[TencentOAuth class] ];          
       //... 
 }
 ```
@@ -579,15 +572,11 @@ Add the codes in -(BOOL)application: didFinishLaunchingWithOptions: method
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
       //...        
-//Initialize Google+ Platform  
-//the Google+ app’s ClientID、ClientSecret、redirectUri 
-      [ShareSDK connectGooglePlusWithClientId:
-                 @"232554794995.apps.googleusercontent.com"                                                  
-                 clientSecret:@"PEdFgtrMw97aCvf0joQj7EMk"                                                                                        
-                 redirectUri:@"http://localhost"                                                                                                            
-                 signInCls:[GPPSignIn class]                                               
-                 shareCls:[GPPShare class] ];
-      
+      //Initialize Google+ Platform  
+      //the Google+ app’s ClientID、ClientSecret、redirectUri 
+      [ShareSDK connectGooglePlusWithClientId: @"232554794995.apps.googleusercontent.com"                                           
+                                 clientSecret:@"PEdFgtrMw97aCvf0joQj7EMk"                                                                                               redirectUri:@"http://localhost"                                                                                                         signInCls:[GPPSignIn class]                                               
+                                     shareCls:[GPPShare class] ];
       //... 
 }
 ```
@@ -600,10 +589,10 @@ There’s not need to initialize the application configuration by code in this m
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
       //...        
-// Add the Google+ SDK if your project or ShareSDK still don’s have one 
-[ShareSDK importGooglePlusClass:[GPPSignIn class]                              
-                       shareClass:[GPPShare class] ];
-      //... 
+      // Add the Google+ SDK if your project or ShareSDK still don’s have one 
+      [ShareSDK importGooglePlusClass:[GPPSignIn class]                              
+                           shareClass:[GPPShare class] ];
+      //...    
 }
 
 ```
@@ -711,11 +700,10 @@ Add the codes in -(BOOL)application: didFinishLaunchingWithOptions: method
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
       //...        
-//Initialize YiXin Platform  
-//The parameter “yx0d9a9f9088ea44d78680f3274da1765f” is the AppID 
-[ShareSDK connectYiXinWithAppId:
-                             @"yx0d9a9f9088ea44d78680f3274da1765f"                              
-                         yixinCls:[YXApi class] ];
+      //Initialize YiXin Platform  
+      //The parameter “yx0d9a9f9088ea44d78680f3274da1765f” is the AppID 
+      [ShareSDK connectYiXinWithAppId: @"yx0d9a9f9088ea44d78680f3274da1765f"                              
+                             yixinCls:[YXApi class] ];
       
       //... 
 }
@@ -730,7 +718,7 @@ There’s not need to initialize the application configuration by code in this m
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
       //...        
-// Add the YiXin SDK if your project or ShareSDK still don’s have one 
+      // Add the YiXin SDK if your project or ShareSDK still don’s have one 
       [ShareSDK importYiXinClass:[YXApi class] ];
        
       //... 
