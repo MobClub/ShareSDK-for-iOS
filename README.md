@@ -44,26 +44,6 @@ Wanna post something from your app on Chinese social platform? This might be you
   # 评论和赞模块(可选)
   pod 'ShareSDK2/Comment'
   ```
-  ```objc
-  # 链接原生SDK，执行下面一句将会包含所有原生SDK (可选)
-  pod 'ShareSDK2/Extend' 
-  # 链接原生Google plus SDK(可选)
-  pod 'ShareSDK2/Extend/GooglePlusSDK'
-  # 链接原生QQ SDK(可选)
-  pod 'ShareSDK2/Extend/QQConnectSDK'
-  # 链接原生新浪微博 SDK(可选)
-  pod 'ShareSDK2/Extend/SinaWeiboSDK'
-  # 链接原生微信 SDK(可选)
-  pod 'ShareSDK2/Extend/WeChatSDK'
-  # 链接原生易信 SDK(可选)
-  pod 'ShareSDK2/Extend/YiXinSDK' 
-  # 链接原生Pinterest SDK(可选)
-  pod 'ShareSDK2/Extend/Pinterest.embeddedframework'
-  # 链接原生人人网 SDK(可选)
-  pod 'ShareSDK2/Extend/RenRenSDK'
-  # 链接原生支付宝 SDK(可选)
-  pod 'ShareSDK2/Extend/APSocialSDK'
-  ```
   
   ```objc
   # 分享&登录链接模块(含所有平台,可选)
