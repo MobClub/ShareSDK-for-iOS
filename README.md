@@ -8,7 +8,7 @@ Wanna post something from your app on Chinese social platform? This might be you
     * [Features](#Features)
     * [How to integrate ShareSDK easily](#How to integrate ShareSDK easily)
     * [Option Configuration](#Option Configuration)
-* [Notic](#Notic)
+* [Notice](#Notice)
 
 ## <a id="Features"></a>Features
 * Share to third-party SNS platforms.
@@ -724,6 +724,6 @@ There’s not need to initialize the application configuration by code in this m
       //... 
 }
 ```
-## <a id="Notic"></a>Notic
+## <a id="Notice"></a>Notice
 SinaWeibo SDK needs add “-ObjC” to Other linker flags (Build Settings). Here are steps:
 ![img](http://www.mob.com/html/images/github/sharesdk-integrate-10.png)
