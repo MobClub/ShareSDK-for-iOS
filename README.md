@@ -8,6 +8,7 @@ Wanna post something from your app on Chinese social platform? This might be you
     * [Features](#Features)
     * [How to integrate ShareSDK easily](#How to integrate ShareSDK easily)
     * [Option Configuration](#Option Configuration)
+* [Notic](#Notic)
 
 ## <a id="Features"></a>Features
 * Share to third-party SNS platforms.
@@ -198,12 +199,12 @@ The steps of adding the framework:
 
 * 2、Open AppDelegate.m to import the .h file 
 
-```
+```objc
 #import <ShareSDK/ShareSDK.h>
 ```
 
 and add the initialize code to the -(BOOL)application: didFinishLaunchingWithOptions: method 
-```
+```objc
 -	(BOOL)application:(UIApplication )application didFinishLaunchingWithOptions:(NSDictionary )launchOptions 
 {     
        [ShareSDK registerApp:@"***"]; // *** is the AppKey that you just got 
@@ -217,7 +218,7 @@ and add the initialize code to the -(BOOL)application: didFinishLaunchingWithOpt
 
 Add the the initialized codes of platform that you need to the -(BOOL) application: didFinishLaunchingWithOptions: method
 
-```
+```objc
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {     
 [ShareSDK registerApp:@"***"];  //you just added it
@@ -259,7 +260,7 @@ the system will set the rootViewController automatically.
 Otherwise,you must set the rootViewController in the -(BOOL)application:
 didFinishLaunchingWithOptions: method,or it may cause some error(s). The codes may look like this:
 
-```
+```objc
 -	(BOOL)application:(UIApplication )application didFinishLaunchingWithOptions:(NSDictionary )launchOptions 
 {     
 //……      
@@ -282,7 +283,7 @@ self.window.rootViewController = self.viewController;
 
 * 3、Share content event usually goes after the ViewDidAppear event, in response to some action(such as a button is pressed). If you really would like to click the button and show the share content view,then you may add the following codes to the buttonPressed method.
 
-```
+```objc
 NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK"  ofType:@"jpg"];  //make sure you actually have the picture in your project
 
 //Create a share content object
@@ -330,7 +331,7 @@ and call setIPadContainer series method to set the iPad container.
 
 * 3、Call the showShareActionSheet… method. And notice that the above container object should be one of the parameters. Here is an example:
 
-```
+```objc
 //1,Create a container object
 id<ISSContainer> container = [ShareSDK container]; 
 
@@ -367,11 +368,11 @@ id<ISSContainer> container = [ShareSDK container];
 
 * 2、Here are the codes that replace the Step 3 and Step 4 to initialize the ShareSDK and social platforms:
 
-```
+```objc
 #import <ShareSDK/ShareSDK.h>
 ```
 
-```
+```objc
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {     
 //[ShareSDK registerApp:@"***"]; // *** is the Appkey of Mob app
@@ -386,7 +387,7 @@ id<ISSContainer> container = [ShareSDK container];
 * 3、When changing the configuration information of Mob application in The Server Hosting mode, it needs some time(about 15 minutes) to really get worked. 
 SDK provides a waitAppSettingComplete methods to make sure the change is getting works.You can use it like this: 
 
-```
+```objc
 [ShareSDK waitAppSettingComplete:^{          
       // Calls the ShareSDK API  
 }];
@@ -403,13 +404,13 @@ SDK provides a waitAppSettingComplete methods to make sure the change is getting
 
 * 3、Open  -AppDelegate.m ( -represents your project name), import WeChat SDK’s header file:
 
-```
+```objc
 #import "WXApi.h"
 ```
 
 Check whether the handleOpenURL method had been added, if not then add the following codes(in AppDelegate.m file):
 
-```
+```objc
 -	(BOOL)application:(UIApplication *)application  handleOpenURL:(NSURL *)url 
 {     
 return [ShareSDK handleOpenURL:url wxDelegate:self]; 
@@ -428,7 +429,7 @@ sourceApplication:sourceApplication
 
 There are 2 methods to share content to WeChat,but if you want to use WeChat account to authorize and get the user’s information ,you need to use the method with appSecret parameter.
 
-```
+```objc
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
       //...         
@@ -451,7 +452,7 @@ There are 2 methods to share content to WeChat,but if you want to use WeChat acc
 
 There’s not need to initialize the application configuration by code in this mode. Since ShareSDK relies on WeChat SDK to share, so you still need to  add a line of code in - application: didFinishLaunchingWithOptions: method, to import the WeChat SDK classes. Here is the example:
 
-```
+```objc
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
 //...        
@@ -473,14 +474,14 @@ There’s not need to initialize the application configuration by code in this m
 * 3、Open  -AppDelegate.m ( -represents your project name), import QQSDK
 SDK header file:
 
-```
+```objc
 #import <TencentOpenAPI/QQApiInterface.h> 
 #import <TencentOpenAPI/TencentOAuth.h>
 ```
 
 Check whether the handleOpenURL method  is added, if not then add the following codes(in AppDelegate.m file):
 
-```
+```objc
 -	(BOOL)application:(UIApplication *)application  handleOpenURL:(NSURL *)url 
 {     
 return [ShareSDK handleOpenURL:url wxDelegate:self]; 
@@ -499,7 +500,7 @@ sourceApplication:sourceApplication
 
 Add the codes in -(BOOL)application: didFinishLaunchingWithOptions: method
 
-```
+```objc
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
       //...        
@@ -517,7 +518,7 @@ Add the codes in -(BOOL)application: didFinishLaunchingWithOptions: method
 
 There’s not need to initialize the application configuration by code in this mode. Since ShareSDK relies on QQ SDK to share, so you still need to add a line of code in- application: didFinishLaunchingWithOptions: method, to import the QQ SDK classes. Here is the example:
 
-```
+```objc
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
       //...        
@@ -545,13 +546,13 @@ There’s not need to initialize the application configuration by code in this m
 * 4、Open  -AppDelegate.m ( -represents your project name), import Google+
 SDK header file:
 
-```
+```objc
 #import <GoogleOpenSource/GoogleOpenSource.h>
 #import <GooglePlus/GooglePlus.h>
 ```
 Check whether the handleOpenURL method had been added, if not add the following codes(in AppDelegate.m file):
 
-```
+```objc
 - (BOOL)application:(UIApplication *)application  handleOpenURL:(NSURL *)url
 {
     return [ShareSDK handleOpenURL:url
@@ -574,7 +575,7 @@ Check whether the handleOpenURL method had been added, if not add the following 
 
 Add the codes in -(BOOL)application: didFinishLaunchingWithOptions: method
 
-```
+```objc
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
       //...        
@@ -595,7 +596,7 @@ Add the codes in -(BOOL)application: didFinishLaunchingWithOptions: method
 
 There’s not need to initialize the application configuration by code in this mode. Since ShareSDK relies on Google+ SDK to share, so you still need to  add a line of code in - application: didFinishLaunchingWithOptions: method, to import the Google+ SDK classes. Here is the example:
 
-```
+```objc
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
       //...        
@@ -619,11 +620,12 @@ There’s not need to initialize the application configuration by code in this m
 * 3、Open  -AppDelegate.m ( -represents your project’s name), import Pinterest
 SDK header file:
 
-```
+```objc
 #import <Pinterest/Pinterest.h>
 ```
 Check whether the handleOpenURL method had been added, if not add the following codes(in AppDelegate.m file):
-```
+
+```objc
 - (BOOL)application:(UIApplication *)application  handleOpenURL:(NSURL *)url
 {
     return [ShareSDK handleOpenURL:url
@@ -646,7 +648,7 @@ Check whether the handleOpenURL method had been added, if not add the following 
 
 Add the codes in -(BOOL)application: didFinishLaunchingWithOptions: method
 
-```
+```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
        //...
@@ -664,7 +666,7 @@ Add the codes in -(BOOL)application: didFinishLaunchingWithOptions: method
 
 There’s not need to initialize the application configuration by code in this mode. Since ShareSDK relies on Pinterest SDK to share, so you still need to add a line of code in - application: didFinishLaunchingWithOptions: method, to import the Pinterest SDK classes. Here is the example:
 
-```
+```objc
 [ShareSDK importPinterestClass:[Pinterest class] ];
 ```
 
@@ -678,11 +680,11 @@ There’s not need to initialize the application configuration by code in this m
 ![img](http://www.mob.com/html/images/github/sharesdk-integrate-13.png)
 
 * 3、Open  -AppDelegate.m ( -represents your project name), import YiXin SDK header file:
-```
+```objc
 #import "YXApi.h"
 ```
 Check whether the handleOpenURL method  is added, if not then add the following codes(in AppDelegate.m file):
-```
+```objc
 - (BOOL)application:(UIApplication *)application  handleOpenURL:(NSURL *)url
 {
     return [ShareSDK handleOpenURL:url
@@ -705,7 +707,7 @@ Check whether the handleOpenURL method  is added, if not then add the following 
 
 Add the codes in -(BOOL)application: didFinishLaunchingWithOptions: method
 
-```
+```objc
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
       //...        
@@ -724,7 +726,7 @@ Add the codes in -(BOOL)application: didFinishLaunchingWithOptions: method
 
 There’s not need to initialize the application configuration by code in this mode. Since ShareSDK relies on YiXin SDK to share, so you still need to  add a line of code in - application: didFinishLaunchingWithOptions: method, to import the YiXin SDK classes. Here is the example:
 
-```
+```objc
 -	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
       //...        
@@ -734,3 +736,6 @@ There’s not need to initialize the application configuration by code in this m
       //... 
 }
 ```
+## <a id="Notic"></a>Notic
+SinaWeibo SDK needs add “-ObjC” to Other linker flags (Build Settings). Here are steps:
+![img](http://www.mob.com/html/images/github/sharesdk-integrate-10.png)
