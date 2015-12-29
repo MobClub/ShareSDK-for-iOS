@@ -120,7 +120,7 @@ Wanna post something from your app on Chinese social platform? This might be you
   pod 'MOBFoundation'
   pod 'ShareSDK2'
   pod 'ShareSDK2/UI/Flat'
-  pod 'ShareSDK2/UI/iPadSimple'
+  pod 'ShareSDK2/UI/iPadDefault'
 
   pod 'ShareSDK2/Connection/SinaWeibo'
   pod 'ShareSDK2/Connection/WeChat'
