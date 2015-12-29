@@ -119,8 +119,9 @@ Wanna post something from your app on Chinese social platform? This might be you
   ```objc
   pod 'MOBFoundation'
   pod 'ShareSDK2'
-  pod 'ShareSDK2/UI/iPadDefault'
-  pod 'ShareSDK2/UI/iPhoneDefault'
+  pod 'ShareSDK2/UI/Flat'
+  pod 'ShareSDK2/UI/iPadSimple'
+
   pod 'ShareSDK2/Connection/SinaWeibo'
   pod 'ShareSDK2/Connection/WeChat'
   pod 'ShareSDK2/Connection/QQ'
