@@ -1,3 +1,5 @@
+
+* ShareSDK For iOS has been fully upgraded to version 3.x，We strongly recommend that you use or upgrade to version 3.x：https://github.com/MobClub/ShareSDK3.x-for-iOS
 ## ShareSDK
 * ShareSDK is the most popular social SDK for apps and mobile games in global world ! We've already support over 100,000 clients unitl now.
 ShareSDK could easily support 40+ social platforms in the world for third-party log in, sharing, and operating with friends list. Only few hours, this small package will make your app fully socialized! 
