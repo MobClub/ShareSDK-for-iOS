@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
 
     # ShareSDK提供的UI
     s.subspec 'UI' do |sp|
-        sp.default_subspecs = 'Flat', 'iPadDefault', 'iPadSimple', 'iPhoneDefault', 'iPhoneSimple', 'iPhoneAppRecommend'
+        # sp.default_subspecs = 'Flat', 'iPadDefault', 'iPadSimple', 'iPhoneDefault', 'iPhoneSimple', 'iPhoneAppRecommend'
 
         # iOS竖版默认分享UI
         sp.subspec 'Flat' do |ssp|
@@ -132,7 +132,7 @@ Pod::Spec.new do |s|
 
     # 分享和登陆平台
     s.subspec 'Connection' do |sp|
-        sp.default_subspecs = 'SMS', 'Mail', 'Copy', 'Print', 'SinaWeibo', 'WeChat', 'QQ', 'QZone',  'TencentWeibo', 'GooglePlus', 'RenRen', 'YiXin', 'Pinterest', 'Facebook', 'Dropbox', 'DouBan', 'EverNote', 'Flickr', 'Instagram', 'Instapaper', 'KaiXin', 'Twitter', 'Tumblr', 'WhatsApp', 'VKontakte', 'KaKaoStory', 'KaKaoTalk', 'Line', 'LinkedIn', 'Pocket', 'MingDao', 'YouDaoNote', 'AliPaySocial'
+        # sp.default_subspecs = 'SMS', 'Mail', 'Copy', 'Print', 'SinaWeibo', 'WeChat', 'QQ', 'QZone',  'TencentWeibo', 'GooglePlus', 'RenRen', 'YiXin', 'Pinterest', 'Facebook', 'Dropbox', 'DouBan', 'EverNote', 'Flickr', 'Instagram', 'Instapaper', 'KaiXin', 'Twitter', 'Tumblr', 'WhatsApp', 'VKontakte', 'KaKaoStory', 'KaKaoTalk', 'Line', 'LinkedIn', 'Pocket', 'MingDao', 'YouDaoNote', 'AliPaySocial'
 
         # 短信
         sp.subspec 'SMS' do |ssp|
