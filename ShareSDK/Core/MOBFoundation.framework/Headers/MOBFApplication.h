@@ -53,4 +53,11 @@
  */
 + (BOOL)enabledATS;
 
+/**
+ *  获取应用运行经过的时间（单位：毫秒）
+ *
+ *  @return 经过时间
+ */
++ (uint64_t)elapsedTime;
+
 @end

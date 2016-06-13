@@ -56,8 +56,8 @@
                                                 image:remoteAttachment
                                                 title:@"test title"
                                                   url:@"http://www.mob.com"
-                                          description:nil
-                                            mediaType:SSPublishContentMediaTypeImage];
+                                          description:@"http://www.mob.com"
+                                            mediaType:SSPublishContentMediaTypeNews];
     
     //1+、创建弹出菜单容器（iPad应用必要，iPhone应用非必要）
     id<ISSContainer> container = [ShareSDK container];

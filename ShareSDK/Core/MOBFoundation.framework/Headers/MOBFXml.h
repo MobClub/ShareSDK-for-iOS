@@ -23,6 +23,15 @@
 /**
  *  初始化XML实例对象
  *
+ *  @param path XML文件路径
+ *
+ *  @return XML实例对象
+ */
+- (instancetype)initWithPath:(NSString *)path;
+
+/**
+ *  初始化XML实例对象
+ *
  *  @param string XML字符串描述
  *
  *  @return XML实例对象

@@ -37,7 +37,7 @@
 
 - (void)authWithType:(id)sender
 {
-    [ShareSDK authWithType:ShareTypeMingDao
+    [ShareSDK authWithType:ShareTypeWeixiSession
                    options:nil
                     result:^(SSAuthState state, id<ICMErrorInfo> error) {
                         
@@ -84,7 +84,7 @@
 
 - (void)getUserInfo:(id)sender
 {
-    [ShareSDK getUserInfoWithType:ShareTypeWeixiSession
+    [ShareSDK getUserInfoWithType:ShareTypeQQSpace
                       authOptions:nil
                            result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
                                

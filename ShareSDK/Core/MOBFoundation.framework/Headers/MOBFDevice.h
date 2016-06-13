@@ -21,11 +21,11 @@ typedef NS_ENUM(NSUInteger, MOBFNetworkType)
     /**
      *  蜂窝网络
      */
-    MOBFNetworkTypeCellular     = 1,
+    MOBFNetworkTypeCellular     = 2,
     /**
      *  WIFI
      */
-    MOBFNetworkTypeWifi         = 2,
+    MOBFNetworkTypeWifi         = 1,
     /**
      *  2G网络
      */
@@ -188,5 +188,12 @@ typedef NS_ENUM(NSUInteger, MOBFNetworkType)
  *  @return IP地址
  */
 + (NSString *)ipAddress;
+
+/**
+ *  获取开发商ID
+ *
+ *  @return 开发商ID
+ */
++ (NSString *)idfv;
 
 @end

@@ -101,4 +101,14 @@ typedef NS_ENUM(NSUInteger, MOBFOvalType)
  */
 + (UIImage *)imageByView:(UIView *)view;
 
+/**
+ *  通过制定视图生成图片
+ *
+ *  @param view   视图对象
+ *  @param opaque 是否为不透明图片，YES，不透明，NO，透明
+ *
+ *  @return 图片对象
+ */
++ (UIImage *)imageByView:(UIView *)view opaque:(BOOL)opaque;
+
 @end

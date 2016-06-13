@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "MOBFImageServiceTypeDef.h"
 
+__deprecated
 /**
  *  图片服务
  */

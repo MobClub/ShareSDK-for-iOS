@@ -39,12 +39,12 @@
 
 ///#begin zh-cn
 /**
- *	@brief	ShareSDK类，为整个SDK的顶层接口类，所有功能都由此类进行提供（包括分享、授权等等）v2.11.2
+ *	@brief	ShareSDK类，为整个SDK的顶层接口类，所有功能都由此类进行提供（包括分享、授权等等）v2.13.0
  */
 ///#end
 ///#begin en
 /**
- *	@brief	ShareSDK function interface class, all functions performed by such offers (including sharing, authorization, etc.)
+ *	@brief	ShareSDK function interface class, all functions performed by such offers (including sharing, authorization, etc.) v2.13.0
  */
 ///#end
 @interface ShareSDK : NSObject
@@ -3333,19 +3333,5 @@
              statusBarTips:(BOOL)statusBarTips
                    targets:(NSArray *)targets
                     result:(SSPublishContentEventHandler)result;
-
-#pragma mark - 分享推荐页面
-
-/**
- *  显示自定义cell模块，用法类似如下
- *  
-    [ShareSDK onShowWidgets:^NSArray *{
-        UIView *view1 = [[UIView alloc] initWithFrame:CGRectZero];
-        UIView *view2 = [[UIView alloc] initWithFrame:CGRectZero];
-        return @[view1, view2];
-    }];
- */
-+ (void)onShowWidgets:(NSArray *(^)())block;
-
 
 @end

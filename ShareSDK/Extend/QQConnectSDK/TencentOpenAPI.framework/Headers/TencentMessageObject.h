@@ -109,16 +109,16 @@ TencentObjVersion;
 + (TencentApiReq *)reqFromSeq:(NSInteger)apiSeq type:(TencentReqMessageType)type;
 
 /** 请求类型 */
-@property (readonly, assign)TCRequiredInt nMessageType;
+@property (readonly, assign, nonatomic)TCRequiredInt nMessageType;
 
 /** 请求平台 */
-@property (readonly, assign)NSInteger nPlatform;
+@property (readonly, assign, nonatomic)NSInteger nPlatform;
 
 /** 请求的SDK版本号 */
-@property (readonly, assign)NSInteger nSdkVersion;
+@property (readonly, assign, nonatomic)NSInteger nSdkVersion;
 
 /** 请求序列号 */
-@property (readonly, assign)TCRequiredInt nSeq;
+@property (readonly, assign, nonatomic)TCRequiredInt nSeq;
 
 /** 第三方的APPID */
 @property (nonatomic, retain)TCRequiredStr sAppID;
@@ -342,7 +342,7 @@ typedef enum
  * 视频来源 主要是用来让发起方指定视频的来源
  * \note TencentApiVideoSourceType 对应的类型 只读参数
  */
-@property (readonly, assign)  NSInteger nType;
+@property (readonly, assign, nonatomic)  NSInteger nType;
 
 /** 
  * 视频的预览图 

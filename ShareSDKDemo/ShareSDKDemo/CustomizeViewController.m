@@ -83,7 +83,7 @@
 - (void)viewOnWillDisplay:(UIViewController *)viewController shareType:(ShareType)shareType
 {
     //修改导航栏背景颜色、图片
-    viewController.navigationController.navigationBar.barTintColor = [UIColor blueColor];
+//    viewController.navigationController.navigationBar.barTintColor = [UIColor blueColor];
 //    [viewController.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ShareButtonBG.png"] forBarMetrics:UIBarMetricsDefault];
     
     //修改左右按钮的文字颜色

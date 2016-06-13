@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonCrypto.h>
+#import <zlib.h>
 
 /**
  *  数据工具类
@@ -122,6 +123,15 @@
 + (NSString *)stringByBase64EncodeData:(NSData *)data;
 
 /**
+ *  对数据进行CRC32校验
+ *
+ *  @param data 数据对象
+ *
+ *  @return 校验值
+ */
++ (uLong)valueByCRC32Data:(NSData *)data;
+
+/**
  *  对数据进行CRC32检验
  *
  *  @param data 原始数据
@@ -138,5 +148,41 @@
  *  @return 字符串
  */
 + (NSString *)hexStringByData:(NSData *)data;
+
+/**
+ *  写入一个32位整数到数据对象中
+ *
+ *  @param value 整数值
+ *  @param data  数据对象
+ */
++ (void)writeInt32:(int32_t)value toData:(NSMutableData *)data;
+
+/**
+ *  写入一个16位整数到数据对象中
+ *
+ *  @param value 整数值
+ *  @param data  数据对象
+ */
++ (void)writeInt16:(int16_t)value toData:(NSMutableData *)data;
+
+/**
+ *  读取一个16位整数
+ *
+ *  @param data   数据对象
+ *  @param offset 偏移位置
+ *
+ *  @return 短整型数据
+ */
++ (int16_t)readInt16FromData:(NSData *)data offset:(NSInteger)offset;
+
+/**
+ *  读取一个32位整数
+ *
+ *  @param data   数据对象
+ *  @param offset 偏移位置
+ *
+ *  @return 整型数据
+ */
++ (int32_t)readInt32FromData:(NSData *)data offset:(NSInteger)offset;
 
 @end
