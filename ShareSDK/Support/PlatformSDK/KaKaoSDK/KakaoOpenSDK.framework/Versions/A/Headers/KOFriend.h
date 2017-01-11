@@ -17,7 +17,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "KOTalkMessageSending.h"
 #import "KOUserInfo.h"
 
 /*!
@@ -51,7 +50,7 @@ extern NSString* convertOSPropertyTypeString(KOOSPropertyType type);
  @discussion 카카오톡, 카카오스토리 친구 정보를 담는 구조체
  @see KOTalkMessageSending 카카오톡 메시지를 전송하기 위해 구현해야 하는 프로토콜
  */
-@interface KOFriend : KOUserInfo <KOTalkMessageSending>
+@interface KOFriend : KOUserInfo
 
 /*!
  @property appRegistered

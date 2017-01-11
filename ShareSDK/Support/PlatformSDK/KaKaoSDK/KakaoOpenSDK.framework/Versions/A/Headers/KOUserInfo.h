@@ -17,12 +17,13 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "KOTalkMessageSending.h"
 
 extern NSString const *EXTRA_KEY_SERVICE_USER_ID;
 extern NSString const *EXTRA_KEY_INVITE_MESSAGE_REMAINING_COUNT;
 extern NSString const *EXTRA_KEY_GROUP_CHAT_MESSAGE_REMAINING_COUNT;
 
-@interface KOUserInfo : NSObject
+@interface KOUserInfo : NSObject <KOTalkMessageSending>
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 

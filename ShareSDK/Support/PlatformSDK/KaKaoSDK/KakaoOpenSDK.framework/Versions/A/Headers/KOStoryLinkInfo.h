@@ -1,5 +1,5 @@
 /**
-* Copyright 2015 Kakao Corp.
+* Copyright 2015-2016 Kakao Corp.
 *
 * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
 *
@@ -58,7 +58,7 @@
  @property image
  @abstract 해당 웹 페이지의 대표 이미지 주소의 url array. 최대 3개.
  */
-@property(nonatomic, readonly) NSArray *image;
+@property(nonatomic, readonly) NSArray<NSString *> *image;
 
 /*!
  @property desc
@@ -82,7 +82,7 @@
      requestedUrl:(NSString *)requestedUrl
              host:(NSString *)host
             title:(NSString *)title
-            image:(NSArray *)image
+            image:(NSArray<NSString *> *)image
              desc:(NSString *)desc
           section:(NSString *)section
              type:(NSString *)type;

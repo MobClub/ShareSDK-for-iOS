@@ -1,20 +1,20 @@
 /**
-* Copyright 2015 Kakao Corp.
-*
-* Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*    http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright 2015-2016 Kakao Corp.
+ *
+ * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 /*!
  @header KOError.h
@@ -42,6 +42,8 @@ extern NSString *const KOErrorDomain;
  @constant  KOServerErrorUnSupportedApi 지원되지 않은 API 호출
  @constant  KOServerErrorBlocked 계정 제재 또는 특정 서비스에서 해당 사용자의 제재로 인해 API 호출이 금지된 경우
  @constant  KOServerErrorPermission 해당 API에 대한 권한/퍼미션이 없는 경우
+ @constant  KOServerErrorMisConfigured 개발환경 설정 오류 (bundle id 등)
+ @constant  KOServerErrorInternal 내부 서버 오류
  @constant  KOServerErrorApiLimitExceed API 호출 횟수가 제한을 초과
  @constant  KOServerErrorNotSignedUpUser 미가입(가가입) 사용자
  @constant  KOServerErrorAlreadySignedUpUser 이미 가입된 사용자. 가입된 사용자에 대해 다시 가입 요청(앱 연결 요청)을 한 경우
@@ -57,6 +59,7 @@ extern NSString *const KOErrorDomain;
  @constant  KOServerErrorAgeResultMismatched 이전에 인증했던 정보와 불일치 한 경우
  @constant  KOServerErrorCIResultMismatched CI 정보가 불일치 할 경우
  @constant  KOServerErrorNotTalkUser 카카오톡 유저가 아닐때
+ @constant  KOServerErrorUserDeviceUnsupported 유저 디바이스가 해당 기능을 지원하지 않는 경우
  @constant  KOServerErrorTalkMessageDisabled 받는이가 메시지 수신 거부를 설정한 경우
  @constant  KOServerErrorTalkSendMessageMonthlyLimitExceed 한명이 특정앱에 대해 특정인에게 보낼 수 있는 한달 쿼터 초과시 발생
  @constant  KOServerErrorTalkSendMessageDailyLimitExceed 한명이 특정앱에 대해 보낼 수 있는 하루 쿼터(받는 사람 관계없이) 초과시 발생
@@ -87,11 +90,13 @@ typedef enum {
     KOServerErrorUnSupportedApi = -3,
     KOServerErrorBlocked = -4,
     KOServerErrorSecurity = -5,
+    KOServerErrorMisConfigured = -6,
+    KOServerErrorInternal = -9,
     KOServerErrorApiLimitExceed = -10,
 
     KOServerErrorNotSignedUpUser = -101,
     KOServerErrorAlreadySignedUpUser = -102,
-    KOServerErrorNotKakaoAcccountUser = -103,
+    KOServerErrorNotKakaoAccountUser = -103,
 
     KOServerErrorInvalidUserPropertyKey = -201,
 
@@ -107,6 +112,7 @@ typedef enum {
     KOServerErrorCIResultMismatched = -481,
 
     KOServerErrorNotTalkUser = -501,
+    KOServerErrorUserDeviceUnsupported = -504,
     KOServerErrorTalkMessageDisabled = -530,
     KOServerErrorTalkSendMessageMonthlyLimitExceed = -531,
     KOServerErrorTalkSendMessageDailyLimitExceed = -532,

@@ -1,5 +1,5 @@
 /**
-* Copyright 2015 Kakao Corp.
+* Copyright 2015-2016 Kakao Corp.
 *
 * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
 *
@@ -65,6 +65,6 @@
                 xlarge:(NSString *)xlarge
                  large:(NSString *)large
                 medium:(NSString *)medium
-                 small:(NSArray *)small;
+                 small:(NSString *)small;
 
 @end

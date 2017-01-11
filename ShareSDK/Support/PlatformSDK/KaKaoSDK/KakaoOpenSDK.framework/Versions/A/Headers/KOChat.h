@@ -50,6 +50,26 @@
  */
 @property (nonatomic, readonly) NSNumber *memberCount;
 
+/*!
+ @property memberImageURLs
+ @abstract 카카오톡 채팅방 멤버들의 썸네일 이미지 URL List. (최대 5개 까지)
+ @deprecated in the near future.
+ */
+@property (nonatomic, readonly) NSArray *memberImageURLs;
+
+/*!
+ @property display_member_images
+ @abstract 이미지가 존재하는 카카오톡 채팅방 멤버들의 썸네일 이미지 URL List. (최대 5대 까지)
+ */
+@property (nonatomic, readonly) NSArray *displayMemberImages;
+
+/*!
+ @property chatType
+ @abstract 카카오톡 채팅방의 종류(오픈채팅(open), 일반채팅(regular)).
+ */
+@property (nonatomic, readonly) NSString *chatType;
+
+
 + (instancetype)responseWithDictionary:(NSDictionary *)dictionary;
 
 @end

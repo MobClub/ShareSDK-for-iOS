@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Kakao Corp.
+ * Copyright 2015-2016 Kakao Corp.
  *
  * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
  *
@@ -30,7 +30,7 @@
  @param friends 친구 목록.
  @param error 호출 실패시의 오류 정보.
  */
-typedef void(^KOSessionFriendsTaskCompletionHandler)(NSArray *friends, NSError *error);
+typedef void(^KOSessionFriendsTaskCompletionHandler)(NSArray<KOFriend *> *friends, NSError *error);
 
 /*!
 인증된 session 정보를 바탕으로 Friend 관련 API를 호출할 수 있습니다. 제휴를 통해 권한이 부여된 특정 앱에서만 호출 가능합니다.

@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Kakao Corp.
+ * Copyright 2015-2016 Kakao Corp.
  *
  * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
  *
@@ -23,6 +23,7 @@
 - (id)safeValueForKey:(NSString *)key;
 - (id)safeObjectForKey:(NSString *)key;
 - (NSNumber *)safeNumberForKey:(NSString *)key;
+- (NSNumber *)safeNumberForKey:(NSString *)key floatingPoint:(BOOL)floatingPoint;
 - (NSDictionary *)safeValueDictionary;
 
 @end

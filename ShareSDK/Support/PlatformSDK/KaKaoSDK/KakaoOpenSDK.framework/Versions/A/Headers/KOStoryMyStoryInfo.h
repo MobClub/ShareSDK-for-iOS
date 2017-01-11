@@ -1,5 +1,5 @@
 /**
-* Copyright 2015 Kakao Corp.
+* Copyright 2015-2016 Kakao Corp.
 *
 * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
 *
@@ -22,13 +22,6 @@
  */
 
 #import <Foundation/Foundation.h>
-
-/*!
- @class KOStoryMyStoryInfo
- @discussion 카카오스토리의 내스토리 정보를 담고 있는 구조체.
- */
-
-@interface KOStoryMyStoryInfo : NSObject
 
 /*!
  @abstract KOStoryMediaType 스토리의 미디어 형식
@@ -58,6 +51,17 @@ typedef NS_ENUM(NSInteger, KOStoryPermission) {
     KOStoryPermissionOnlyMe
 };
 
+@class KOStoryMyStoryImageInfo;
+@class KOStoryCommentInfo;
+@class KOStoryLikeInfo;
+
+/*!
+ @class KOStoryMyStoryInfo
+ @discussion 카카오스토리의 내스토리 정보를 담고 있는 구조체.
+ */
+
+@interface KOStoryMyStoryInfo : NSObject
+
 /*!
  @property ID
  @abstract 내스토리 정보의 id(포스트 id)
@@ -86,7 +90,7 @@ typedef NS_ENUM(NSInteger, KOStoryPermission) {
  @property media
  @abstract 내스토리 정보의 미디어타입이 PHOTO일 경우 이미지 내용의 array. KOStoryMyStoryImageInfo 객체의 array.
  */
-@property(nonatomic, readonly) NSArray *media;
+@property(nonatomic, readonly) NSArray<KOStoryMyStoryImageInfo *> *media;
 
 /*!
  @property url
@@ -110,13 +114,13 @@ typedef NS_ENUM(NSInteger, KOStoryPermission) {
  @property comments
  @abstract 댓글 정보들을 담고 있는 array. KOStoryCommentInfo 객체의 array. 내스토리 정보 요청을 통해 값이 채워짐.
  */
-@property(nonatomic, readonly) NSArray *comments;
+@property(nonatomic, readonly) NSArray<KOStoryCommentInfo *> *comments;
 
 /*!
  @property likes
  @abstract 좋아요 등 느낌(감성표현)에 대한 정보들을 담고 있는 array. KOStoryLikeInfo 객체의 array. 내스토리 정보 요청을 통해 값이 채워짐.
  */
-@property(nonatomic, readonly) NSArray *likes;
+@property(nonatomic, readonly) NSArray<KOStoryLikeInfo *> *likes;
 
 /*!
  @property permission
@@ -129,12 +133,12 @@ typedef NS_ENUM(NSInteger, KOStoryPermission) {
          content:(NSString *)content
        mediaType:(KOStoryMediaType)mediaType
        createdAt:(NSString *)createdAt
-           media:(NSArray *)media
+           media:(NSArray<KOStoryMyStoryImageInfo *> *)media
              url:(NSString *)url
     commentCount:(NSNumber *)commentCount
        likeCount:(NSNumber *)likeCount
-        comments:(NSArray *)comments
-           likes:(NSArray *)likes
+        comments:(NSArray<KOStoryCommentInfo *> *)comments
+           likes:(NSArray<KOStoryLikeInfo *> *)likes
       permission:(KOStoryPermission)permission;
 
 - (NSString *)convertMediaTypeToString:(KOStoryMediaType)mediaType;

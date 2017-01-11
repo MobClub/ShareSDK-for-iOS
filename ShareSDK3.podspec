@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ShareSDK3'
-  s.version          = "3.5.7"
+  s.version          = "3.6.0"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "Jinghuang Liu" => "liujinghuang@icloud.com" }
@@ -156,41 +156,6 @@ Pod::Spec.new do |s|
     s.subspec 'ShareSDKExtension' do |sp|
         sp.vendored_frameworks = 'ShareSDK/Support/Optional/ShareSDKExtension.framework','ShareSDK/ShareSDK.framework','ShareSDK/Support/Required/ShareSDKConnector.framework','ShareSDK/Support/Optional/ShareSDKExtension.framework'
     sp.resources = 'ShareSDK/Support/Required/ShareSDK.bundle'
-    end
-
-    # 需要移除平台SDK的平台，可用PlatformConnector平台语句替换ShareSDKPlatforms的平台语句
-    s.subspec 'PlatformConnector' do |sp|
-        #sp.default_subspecs = 'QQ', 'SinaWeibo', 'WeChat', 'RenRen', 'AliPaySocial' - Errors: Can't set `default_subspecs` attribute for subspecs
-
-        # QQ
-        sp.subspec 'QQ' do |ssp|
-            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/QQConnector.framework','ShareSDK/ShareSDK.framework','ShareSDK/Support/Required/ShareSDKConnector.framework','ShareSDK/Support/Optional/ShareSDKExtension.framework'
-        sp.resources = 'ShareSDK/Support/Required/ShareSDK.bundle'
-        end
-
-        # SinaWeibo
-        sp.subspec 'SinaWeibo' do |ssp|
-            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/SinaWeiboConnector.framework','ShareSDK/ShareSDK.framework','ShareSDK/Support/Required/ShareSDKConnector.framework','ShareSDK/Support/Optional/ShareSDKExtension.framework'
-            ssp.resource = 'ShareSDK/Support/Required/ShareSDK.bundle'
-        end
-
-        # WeChat
-        sp.subspec 'WeChat' do |ssp|
-            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/WechatConnector.framework','ShareSDK/ShareSDK.framework','ShareSDK/Support/Required/ShareSDKConnector.framework','ShareSDK/Support/Optional/ShareSDKExtension.framework'
-            ssp.resource = 'ShareSDK/Support/Required/ShareSDK.bundle'
-        end
-
-        # RenRen
-        sp.subspec 'RenRen' do |ssp|
-            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/RenrenConnector.framework','ShareSDK/ShareSDK.framework','ShareSDK/Support/Required/ShareSDKConnector.framework','ShareSDK/Support/Optional/ShareSDKExtension.framework'
-            ssp.resource = 'ShareSDK/Support/Required/ShareSDK.bundle'
-        end
-
-        # 支付宝（AliPaySocial）
-        sp.subspec 'AliPaySocial' do |ssp|
-            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/AliPayConnector.framework','ShareSDK/ShareSDK.framework','ShareSDK/Support/Required/ShareSDKConnector.framework','ShareSDK/Support/Optional/ShareSDKExtension.framework'
-            ssp.resource = 'ShareSDK/Support/Required/ShareSDK.bundle'
-        end
     end
 
     # ShareSDK提供的UI

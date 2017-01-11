@@ -25,12 +25,6 @@
 #import "KOStoryActorInfo.h"
 
 /*!
- @class KOStoryLikeInfo
- @discussion 카카오스토리의 좋아요 등 느낌(감정표현)에 대한 정보를 담고 있는 구조체.
- */
-@interface KOStoryLikeInfo : NSObject
-
-/*!
  @abstract KOStoryEmotion 느낌(감정표현)에 대한 정의.
  @constant KOStoryEmotionUnknown 알수 없는 형식
  @constant KOStoryEmotionLike 좋아요
@@ -47,6 +41,12 @@ typedef NS_ENUM(NSInteger, KOStoryEmotion) {
     KOStoryEmotionSad,
     KOStoryEmotionCheerUp
 };
+
+/*!
+ @class KOStoryLikeInfo
+ @discussion 카카오스토리의 좋아요 등 느낌(감정표현)에 대한 정보를 담고 있는 구조체.
+ */
+@interface KOStoryLikeInfo : NSObject
 
 /*!
  @property emotion

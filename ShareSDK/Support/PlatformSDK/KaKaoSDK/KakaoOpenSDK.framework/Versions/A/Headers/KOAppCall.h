@@ -1,5 +1,5 @@
 /**
-* Copyright 2015 Kakao Corp.
+* Copyright 2015-2016 Kakao Corp.
 *
 * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
 *
@@ -37,7 +37,7 @@
  4. objArray가 비어있는 경우 (objArray is empty.)
  @param objArray 카카오 링크에 담을 내용. objArray 에는 KakaoTalkLinkObject 객체들을 담는다.
  */
-+ (void)openKakaoTalkAppLink:(NSArray *)objArray;
++ (void)openKakaoTalkAppLink:(NSArray<KakaoTalkLinkObject *> *)objArray;
 
 /*!
  @abstract 카카오톡 링크를 호출한다. 아래의 경우에는 아무런 동작을 하지 않는다.<br>
@@ -48,7 +48,19 @@
  @param objArray 카카오 링크에 담을 내용. objArray 에는 KakaoTalkLinkObject 객체들을 담는다.
  @param forwardable 메시지를 받은 사람이 해당 내용을 카카오톡에서 다시 전달할지의 여부. default NO.
  */
-+ (void)openKakaoTalkAppLink:(NSArray *)objArray forwardable:(BOOL)forwardable;
++ (void)openKakaoTalkAppLink:(NSArray<KakaoTalkLinkObject *> *)objArray forwardable:(BOOL)forwardable;
+
+/*!
+ @abstract 카카오톡 링크를 호출한다. 아래의 경우에는 아무런 동작을 하지 않는다.<br>
+ 1. 카카오톡이 설치되어 있지 않거나 3.9.5 버젼 미만인 경우 (The minimum requirements for KakaoTalk 3.9.5)<br>
+ 2. KAKAO_APP_KEY 가 plist에 등록되어 있지 않은 경우 (KAKAO_APP_KEY is not set properly in plist.)<br>
+ 3. 카카오 SDK 의 Custom Scheme 이 등록되어 있지 않은 경우 (URL scheme for KakaoOpenSDK is not set properly in plist.)<br>
+ 4. objArray가 비어있는 경우 (objArray is empty.)
+ @param objArray 카카오 링크에 담을 내용. objArray 에는 KakaoTalkLinkObject 객체들을 담는다.
+ @param extras 카카오 링크에 추가적으로 전달할 파라미터. (not yet opened)
+ @param forwardable 메시지를 받은 사람이 해당 내용을 카카오톡에서 다시 전달할지의 여부. default NO.
+ */
++ (void)openKakaoTalkAppLink:(NSArray<KakaoTalkLinkObject *> *)objArray extras:(NSDictionary *)extras forwardable:(BOOL)forwardable;
 
 /*!
  @abstract 카카오톡 링크를 호출할 수 있는지의 여부를 알려준다. NO 가 리턴되는 경우는 아래와 같다. 괄호 안은 NSLog로 출력되는 로그.<br>

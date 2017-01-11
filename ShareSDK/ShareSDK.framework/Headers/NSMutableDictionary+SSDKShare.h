@@ -234,6 +234,9 @@
                          images:(id)images
                            type:(SSDKContentType)type
              forPlatformSubType:(SSDKPlatformType)platformSubType;
+
+
+
 /**
  *  设置Facebook分享参数
  *
@@ -246,16 +249,34 @@
                                  type:(SSDKContentType)type;
 
 /**
- *  设置Facebook分享参数
+ *  设置Facebook分享参数 非客户端分享是使用
  *
- *  @param text             分享内容(注意:当分享类型为WebPage时会作为链接描述)
- *  @param image            图片，可以为UIImage、NSString（图片路径）、NSURL（图片路径）、SSDKImage (注意:在分享类型为WegPage时,仅网络图片有效;若不传,FB会自动根据分享的链接URL寻找)
- *  @param url              分享链接(注意:仅当分享类型为WebPage时生效)
+ *  @param text             分享内容
+                            分享类型为Text类型时,作为文字主体内容
+                            分享类型为WebPage类型时,作为连接描述
+ 
+ *  @param image            图片，可以为UIImage、NSString（图片路径）、NSURL（图片路径）、SSDKImage
+                            分享类型为Image类型时,若使用客户端分享,可传入 单张/多张 的 本地/网络 图片;如果不使用客户端分享,仅支持单张的本地/网络图片
+ *【Facebook通过客户端分享图片,可不需依赖任何权限;否则需要申请publish_actions权限】*
+                            分享类型为WebPage类型时,无论是否使用客户端,仅支持单张的网络图片
+ 
+ *  @param url              链接
+                            分享类型为WebPage类型时,为链接地址
                             [如果分享的连接是AppStore/GooglePlay/Facebook个人/公共主页,所对应的图片,标题,描述等参数可能不会生效,而实际生效的是FB通过爬虫网络根据连接搜刮而来的信息]
- *  @param title            链接标题(注意:仅当分享类型为WebPage时生效)
- *  @param urlName          连接名称(注意:仅当分享类型为WebPage时生效)
+                            分享类型为Video类型时,需传入视频地址且但必须是相册地址
+ 
+ *  @param title            链接标题
+                            分享类型为WebPage类型时,为链接标题
+ 
+ *  @param urlName          连接名称
+                            分享类型为WebPage类型时,为链接名称,仅在非客户端分享时生效
+ 
  *  @param attachementUrl   附件链接(附加的媒体文件（SWF 或 MP3）的网址。如果是 SWF，还必须指定image以提供视频的缩略图)
- *  @param type             分享类型,仅支持Text、Image、WebPage类型
+                            分享类型为WebPage类型时,为链,仅在非客户端分享时生效
+ 
+ *  @param type             分享类型
+                            当使用客户端分享时,支持Image、WebPage,Video类型
+                            当不适用客户端分享是,支持Text、Image、WebPage类型
  */
 - (void)SSDKSetupFacebookParamsByText:(NSString *)text
                                 image:(id)image
@@ -264,6 +285,7 @@
                               urlName:(NSString *)urlName
                        attachementUrl:(NSURL *)attachementUrl
                                  type:(SSDKContentType)type;
+
 
 /**
  *  设置短信分享参数
@@ -733,5 +755,20 @@
                                           audio:(id)audio
                                           video:(id)video
                                            type:(SSDKContentType)type;
+
+/**
+ *  设置Ding Talk分享参数
+ *
+ *  @param text  文本内容
+ *  @param image 图片
+ *  @param title 标题
+ *  @param url   链接
+ *  @param type  分享类型，仅支持Text、Image、Webpage、Audio
+ */
+- (void)SSDKSetupDingTalkParamsByText:(NSString *)text
+                                image:(id)image
+                                title:(NSString *)title
+                                  url:(NSURL *)url
+                                 type:(SSDKContentType)type;
 
 @end

@@ -1,5 +1,5 @@
 /**
-* Copyright 2015 Kakao Corp.
+* Copyright 2015-2016 Kakao Corp.
 *
 * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
 *
@@ -77,13 +77,26 @@ typedef NS_ENUM(NSInteger, KOAgeAuthLevel) {
  @abstract KOAgeAuthLimit 연령인증 시 인증 나이.
  @constant KOAgeAuthLimitType12 12세 인증.
  @constant KOAgeAuthLimitType15 15세 인증.
+ @constant KOAgeAuthLimitType18 18세 인증.
  @constant KOAgeAuthLimitType19 19세 인증.
  */
 typedef NS_ENUM(NSInteger, KOAgeAuthLimit) {
+    KOAgeAuthLimitTypeNone = 0,
     KOAgeAuthLimitType12 = 12,
     KOAgeAuthLimitType15 = 15,
+    KOAgeAuthLimitType18 = 18,
     KOAgeAuthLimitType19 = 19
 };
+
+/*!
+ @abstract KOAgeAuthProperty 연령인증 정보 요청시 추가로 더 요청할 수 있는 목록
+ @constant ACCOUNT_CI "account_ci" 를 의미.
+ */
+typedef NS_ENUM(NSInteger, KOAgeAuthProperty) {
+    KOAgeAuthPropertyAccountCi = 1
+};
+
+@class KOAgeAuthQueryStringBuilder;
 
 /*!
  * @class KOSession
@@ -209,7 +222,7 @@ typedef NS_ENUM(NSInteger, KOAgeAuthLimit) {
  @param authParams 로그인 요청시의 인증에 필요한 부가적인 파라미터들을 전달한다.
  @param authTypes 로그인 요청시의 인증 타입(KOAuthType)의 array.
  */
-- (void)openWithCompletionHandler:(KOSessionCompletionHandler)completionHandler authParams:(NSDictionary *)authParams authTypes:(NSArray *)authTypes;
+- (void)openWithCompletionHandler:(KOSessionCompletionHandler)completionHandler authParams:(NSDictionary *)authParams authTypes:(NSArray<NSNumber *> *)authTypes;
 
 /*!
  현재 기기에서만 로그아웃한다.
@@ -230,8 +243,7 @@ typedef NS_ENUM(NSInteger, KOAgeAuthLimit) {
 /*!
  새로운 연령 인증이 필요할 경우 사용자에게 연령 인증관련 창을 띄워서 연령 인증을 유도합니다. 제휴를 통해 권한이 부여된 특정 앱에서만 호출 가능합니다.
  */
-- (void)showAgeAuthWithAuthLevel:(KOAgeAuthLevel)authLevel
-                       authLimit:(KOAgeAuthLimit)authLimit
+- (void)showAgeAuthWithAuthLevel:(KOAgeAuthQueryStringBuilder *) ageAuthQueryStringBuilder
                completionHandler:(KOCompletionSuccessHandler)completionHandler;
 
 @end

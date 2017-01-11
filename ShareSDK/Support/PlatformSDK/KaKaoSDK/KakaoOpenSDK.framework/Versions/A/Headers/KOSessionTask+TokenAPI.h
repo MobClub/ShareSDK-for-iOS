@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Kakao Corp.
+ * Copyright 2015-2016 Kakao Corp.
  *
  * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
  *
@@ -17,13 +17,12 @@
  */
 
 #import "KOSessionTask.h"
+#import "KOAccessTokenInfo.h"
 
 /*!
  @header KOSessionTask+TokenAPI.h
  인증된 access token 정보를 얻어올 수 있습니다.
  */
-
-@class KOAccessTokenInfo;
 
 /*!
  @abstract access token 정보를 얻을 때 사용하는 완료 콜백 핸들러

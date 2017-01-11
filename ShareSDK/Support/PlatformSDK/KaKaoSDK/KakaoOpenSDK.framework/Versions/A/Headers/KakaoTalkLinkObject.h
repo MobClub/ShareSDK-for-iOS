@@ -1,5 +1,5 @@
 /**
-* Copyright 2015 Kakao Corp.
+* Copyright 2015-2016 Kakao Corp.
 *
 * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
 *
@@ -26,6 +26,8 @@
  4. 버튼형 : 링크형과 거의 유사하지만 하이퍼 링크를 버튼이미지로 표시할 수 있습니다.
  */
 
+@class KakaoTalkLinkAction;
+
 /*!
  * @class KakaoTalkLinkObject
  * @abstract 카카오톡 LINK 를 호출할떄 필요한 내용을 포함하는 객체
@@ -39,7 +41,7 @@
 @property(nonatomic, readonly) int height;
 @property(nonatomic, copy) NSString *disptype;
 @property(nonatomic, readonly) NSString *actiontype;
-@property(nonatomic, readonly) NSArray *actions;
+@property(nonatomic, readonly) NSArray<KakaoTalkLinkAction *> *actions;
 
 /*!
  @abstract 레이블 객체를 생성한다.
@@ -71,7 +73,7 @@
  @param actions array of {@link KakaoTalkLinkAction}
  */
 + (KakaoTalkLinkObject *)createAppLink:(NSString *)text
-                               actions:(NSArray *)actions;
+                               actions:(NSArray<KakaoTalkLinkAction *> *)actions;
 
 
 /*!
@@ -88,5 +90,5 @@
  @param actions array of {@link KakaoTalkLinkAction}
  */
 + (KakaoTalkLinkObject *)createAppButton:(NSString *)text
-                                 actions:(NSArray *)actions;
+                                 actions:(NSArray<KakaoTalkLinkAction *> *)actions;
 @end

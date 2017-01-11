@@ -223,7 +223,7 @@ typedef NS_ENUM(NSUInteger, SSDKPlatformType){
     /**
      *  钉钉
      */
-//    SSDKPlatformTypeDingTalk            = 52,
+    SSDKPlatformTypeDingTalk            = 52,
     /**
      *  易信
      */

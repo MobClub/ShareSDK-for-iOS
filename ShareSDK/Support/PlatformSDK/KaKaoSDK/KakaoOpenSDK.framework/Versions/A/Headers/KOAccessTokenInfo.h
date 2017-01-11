@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Kakao Corp.
+ * Copyright 2015-2016 Kakao Corp.
  *
  * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
  *
@@ -33,15 +33,15 @@
  @property ID
  @abstract 해당 access token에 해당되는 사용자의 ID
  */
-@property(nonatomic, readonly) NSUInteger ID;
+@property(nonatomic, readonly) NSNumber *ID;
 
 /*!
  @property expiresInMillis
  @abstract 해당 access token의 남은 만료시간. 0보다 큰 milli-second가 반환됨.
  */
-@property(nonatomic, readonly) NSUInteger expiresInMillis;
-
+@property(nonatomic, readonly) NSNumber *expiresInMillis;
 
 + (instancetype)responseWithDictionary:(NSDictionary *)dictionary;
+
 
 @end
