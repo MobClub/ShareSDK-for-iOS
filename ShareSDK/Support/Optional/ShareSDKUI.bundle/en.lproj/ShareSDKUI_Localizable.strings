@@ -50,6 +50,8 @@
 "ShareType_50" = "Alipay";
 "ShareType_51" = "Alipay moments";
 "ShareType_52" = "DingTalk";
+"ShareType_53" = "YouTube";
+"ShareType_54" = "Meipai";
 
 "ShareType_995" = "Kakao";
 "ShareType_996" = "Evernote";

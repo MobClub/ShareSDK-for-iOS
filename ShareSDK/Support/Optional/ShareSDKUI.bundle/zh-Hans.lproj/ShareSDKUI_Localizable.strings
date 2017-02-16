@@ -50,6 +50,8 @@
 "ShareType_50" = "支付宝好友";
 "ShareType_51" = "支付宝朋友圈";
 "ShareType_52" = "钉钉";
+"ShareType_53" = "YouTube";
+"ShareType_54" = "美拍";
 
 "ShareType_995" = "Kakao";
 "ShareType_996" = "Evernote";

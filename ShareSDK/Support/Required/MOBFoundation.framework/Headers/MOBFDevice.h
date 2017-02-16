@@ -40,6 +40,19 @@ typedef NS_ENUM(NSUInteger, MOBFNetworkType)
     MOBFNetworkTypeCellular4G   = 5,
 };
 
+
+/**
+ IP版本
+
+ - MOBFIPVersion4: IPv4
+ - MOBFIPVersion6: IPv6
+ */
+typedef NS_ENUM(NSUInteger, MOBFIPVersion)
+{
+    MOBFIPVersion4 = 0,
+    MOBFIPVersion6 = 1,
+};
+
 /**
  *  设备工具类
  */
@@ -171,7 +184,7 @@ typedef NS_ENUM(NSUInteger, MOBFNetworkType)
  *
  *  @return IP地址
  */
-+ (NSString *)ipAddress;
++ (NSString *)ipAddress:(MOBFIPVersion)ver;
 
 /**
  *  获取开发商ID

@@ -315,4 +315,23 @@
  *  @param appId 应用标识
  */
 - (void)SSDKSetupDingTalkByAppId:(NSString *)appId;
+
+/**
+ 设置美拍应用信息
+
+ @param appKey 应用标识
+ */
+- (void)SSDKSetupMeiPaiByAppKey:(NSString *)appKey;
+
+/**
+ 设置youtube应用信息
+ 
+ @param appKey 应用标识
+ @param clientSecret 应用密钥 没有则填 ""
+ @param redirectUri 回调地址 redirectUri 可以使用 http://localhost 或 iOSURLscheme:/ 例如：com.googleusercontent.apps.906418427202-jinnbqal1niq4s8isbg2ofsqc5ddkcgr:/
+ 
+ */
+- (void)SSDKSetupYouTubeByClientId:(NSString *)clientId
+                      clientSecret:(NSString *)clientSecret
+                       redirectUri:(NSString *)redirectUri;
 @end

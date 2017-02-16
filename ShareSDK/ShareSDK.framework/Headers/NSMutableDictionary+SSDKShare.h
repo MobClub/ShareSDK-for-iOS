@@ -745,7 +745,6 @@
  *  设置Facebook Messenger分享参数
  *
  *  @param image 分享图片，可以为UIImage、NSString（图片路径）、NSURL（图片路径）、SSDKImage。
- *  @param image 分享gif图，可以为NSData、NSString、NSURL（文件路径）、SSDKData。
  *  @param audio 分享音频, 可以为NSData、NSString、NSURL（文件路径）、SSDKData。
  *  @param video 分享视频, 可以为NSData、NSString、NSURL（文件路径）、SSDKData。
  *  @param type  分享类型，仅支持Image、Audio、Video
@@ -771,4 +770,41 @@
                                   url:(NSURL *)url
                                  type:(SSDKContentType)type;
 
+
+/**
+ 设置 美拍分享参数
+
+ @param url  必须是相册地址
+ @param type 分享类型，仅支持Image、Video Auto的自动类型判断需要 MeiPaiConnector.framework 进行支持
+ */
+- (void)SSDKSetupMeiPaiParamsByUrl:(NSURL *)url
+                              type:(SSDKContentType)type;
+
+
+/**
+ 设置 YouTube 分享参数
+
+ @param video 分享视频, 可以为NSData、NSString、NSURL（文件路径）、SSDKData
+ @param title 标题
+ @param description 描述
+ @param tags 标签，可以为NSString或者NSArray。为NSString时，标签名称要以逗号分隔   为NSArray时，元素为NSString。
+ @param privacyStatus 视频的隐私权限
+ 只支持 Video类型
+ */
+- (void)SSDKSetupYouTubeParamsByVideo:(id)video
+                                title:(NSString *)title
+                          description:(NSString *)description
+                                 tags:(id)tags
+                        privacyStatus:(SSDKPrivacyStatus)privacyStatus;
+
+/**
+ 设置 YouTube 分享参数
+ 可完全自定义 发布参数
+ @param video video 分享视频, 可以为NSData、NSString、NSURL（文件路径）、SSDKData
+ @param parts 多个使用逗号隔开 例如 snippet,status  参考 https://developers.google.com/youtube/v3/docs/videos/insert#part
+ @param jsonString Video resource 的 json数据  参考 https://developers.google.com/youtube/v3/docs/videos
+ */
+- (void)SSDKSetupYouTubeParamsByVideo:(id)video
+                                parts:(NSString *)parts
+                           jsonString:(NSString *)jsonString;
 @end

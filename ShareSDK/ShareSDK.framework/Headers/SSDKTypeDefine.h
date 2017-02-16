@@ -225,6 +225,14 @@ typedef NS_ENUM(NSUInteger, SSDKPlatformType){
      */
     SSDKPlatformTypeDingTalk            = 52,
     /**
+     *  youtube
+     */
+    SSDKPlatformTypeYouTube             = 53,
+    /**
+     *  美拍
+     */
+    SSDKPlatformTypeMeiPai              = 54,
+    /**
      *  易信
      */
     SSDKPlatformTypeYiXin               = 994,
@@ -341,6 +349,29 @@ typedef NS_ENUM(NSUInteger, SSDKContentType){
 
 };
 
+
+/**
+ YouTube 视频的隐私状态
+ */
+typedef NS_ENUM(NSUInteger, SSDKPrivacyStatus){
+    
+    /**
+     *  私有（只有自己可以观看）
+     */
+    SSDKPrivacyStatusPublic = 0,
+    /**
+     *  公开（任何人都可以搜索和观看）
+     */
+    SSDKPrivacyStatusPrivate = 1,
+    
+    /**
+     *  不公开（知道链接的人可以观看）
+     */
+    SSDKPrivacyStatusUnlisted = 2
+    
+    
+};
+
 /**
  *  配置分享平台回调处理器
  *
@@ -414,5 +445,13 @@ typedef void(^SSDKCallApiStateChangedHandler)(SSDKResponseState state, id data, 
  *  @param authorizeStateChangedHandler 授权状态回调
  */
 typedef void(^SSDKNeedAuthorizeHandler)(SSDKAuthorizeStateChangedHandler authorizeStateChangedHandler);
+
+/**
+ *  HTTP上传数据情况
+ *
+ *  @param totalBytes  总字节数
+ *  @param loadedBytes 上传字节数据
+ */
+typedef void(^SSDKHttpUploadProgressHandler) (int64_t totalBytes, int64_t loadedBytes);
 
 #endif
