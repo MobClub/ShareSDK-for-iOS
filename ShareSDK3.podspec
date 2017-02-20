@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
   s.name             = 'ShareSDK3'
-  s.version          = "3.6.0"
+  s.version          = "3.6.1"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "Jinghuang Liu" => "liujinghuang@icloud.com" }
 
   s.homepage         = 'http://www.mob.com'
-  s.source           = { :git => "https://git.oschina.net/MobClub/ShareSDK-for-iOS.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/ShareSDKPlatform/ShareSDK.git", :tag => s.version.to_s }
   s.platform         = :ios
   s.ios.deployment_target = "6.0"
   s.frameworks       = 'UIKit', 'JavaScriptCore','SystemConfiguration','CoreTelephony'
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
 
     # 各个平台：需要集成哪些平台需要选择相应的平台语句，如果以下语句没有对应的平台，则是：1、不需要（如Twitter），2、ShareSDK尚未支持。
     s.subspec 'ShareSDKPlatforms' do |sp|
-        #sp.default_subspecs = 'QQ', 'SinaWeibo', 'WeChat', 'RenRen', 'AliPaySocial','Kakao','Yixin', 'Messenger','Copy','Evernote','GooglePlus','Instagram','Instapaper','Line','Mail','SMS','WhatsApp','Facebook' - Errors: Can't set `default_subspecs` attribute for subspecs
+        #sp.default_subspecs = 'QQ', 'SinaWeibo', 'WeChat', 'RenRen', 'AliPaySocial','Kakao','Yixin', 'MeiPai','Messenger','Copy','Evernote','GooglePlus','Instagram','Instapaper','Line','Mail','SMS','WhatsApp','Facebook','YouTube' - Errors: Can't set `default_subspecs` attribute for subspecs
 
         # QQ
         sp.subspec 'QQ' do |ssp|
@@ -74,6 +74,13 @@ Pod::Spec.new do |s|
         sp.subspec 'Kakao' do |ssp|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/KaKaoSDK/KakaoOpenSDK.framework','ShareSDK/Support/PlatformConnector/KakaoConnector.framework','ShareSDK/ShareSDK.framework','ShareSDK/Support/Required/ShareSDKConnector.framework','ShareSDK/Support/Optional/ShareSDKExtension.framework'
             ssp.resource = 'ShareSDK/Support/Required/ShareSDK.bundle'
+        end
+
+        # MeiPai
+        sp.subspec 'MeiPai' do |ssp|
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/MPShareSDK/MPShareSDK.framework','ShareSDK/Support/PlatformConnector/MeiPaiConnector.framework','ShareSDK/ShareSDK.framework','ShareSDK/Support/Required/ShareSDKConnector.framework','ShareSDK/Support/Optional/ShareSDKExtension.framework'
+            ssp.resource = 'ShareSDK/Support/Required/ShareSDK.bundle'
+            ssp.frameworks = 'AssetsLibrary'
         end
 
         # Yixin
@@ -142,6 +149,12 @@ Pod::Spec.new do |s|
         # WhatsApp
         sp.subspec 'WhatsApp' do |ssp|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/WhatsAppConnector.framework','ShareSDK/ShareSDK.framework','ShareSDK/Support/Required/ShareSDKConnector.framework','ShareSDK/Support/Optional/ShareSDKExtension.framework'
+            ssp.resource = 'ShareSDK/Support/Required/ShareSDK.bundle'
+        end
+
+        # YouTube
+        sp.subspec 'YouTube' do |ssp|
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/YouTubeConnector.framework','ShareSDK/ShareSDK.framework','ShareSDK/Support/Required/ShareSDKConnector.framework','ShareSDK/Support/Optional/ShareSDKExtension.framework'
             ssp.resource = 'ShareSDK/Support/Required/ShareSDK.bundle'
         end
     end
