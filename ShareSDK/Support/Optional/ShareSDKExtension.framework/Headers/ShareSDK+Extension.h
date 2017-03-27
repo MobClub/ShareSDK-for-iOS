@@ -65,7 +65,7 @@
  *  @param platformType       平台类型
  *  @param cursor             分页游标
  *  @param size               分页大小
- *  @param stateChangeHandler 状态变更回调处理
+ *  @param stateChangedHandler 状态变更回调处理
  */
 + (void)getFriends:(SSDKPlatformType)platformType
             cursor:(NSUInteger)cursor
@@ -79,7 +79,7 @@
  *  @param cursor             分页游标
  *  @param size               分页大小
  *  @param authorizeHandler   授权处理器
- *  @param stateChangeHandler 状态变更回调处理
+ *  @param stateChangedHandler 状态变更回调处理
  */
 + (void)getFriends:(SSDKPlatformType)platformType
             cursor:(NSUInteger)cursor

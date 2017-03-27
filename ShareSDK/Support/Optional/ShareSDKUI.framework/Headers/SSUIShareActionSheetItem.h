@@ -32,7 +32,6 @@
  *  创建平台分享菜单项
  *
  *  @param platformType 平台类型
- *  @param index 数组下标
  *
  *  @return 分享菜单项
  */

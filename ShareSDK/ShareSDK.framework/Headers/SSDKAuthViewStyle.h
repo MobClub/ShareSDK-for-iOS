@@ -72,7 +72,7 @@
 /**
  *  设置导航栏右边按钮
  *
- *  @param label 右边按钮
+ *  @param button 右边按钮
  */
 + (void)setRightButton:(UIButton *)button;
 

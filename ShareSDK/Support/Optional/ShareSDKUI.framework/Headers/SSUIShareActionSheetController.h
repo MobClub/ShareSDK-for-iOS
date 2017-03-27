@@ -20,6 +20,14 @@
  */
 @property (nonatomic, strong) NSMutableSet *directSharePlatforms;
 
+
+/**
+ 消息编辑UI中显示其他平台Icon （其他平台icon 点击选中后可以多平台分享）
+ NO 显示  YES 不显示 默认为 NO
+ */
+@property (nonatomic) BOOL noShowOtherPlatformOnEditorView;
+
+
 /**
  *  初始化分享菜单
  *

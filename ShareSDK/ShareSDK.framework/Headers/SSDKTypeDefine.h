@@ -345,7 +345,16 @@ typedef NS_ENUM(NSUInteger, SSDKContentType){
     /**
      *  文件类型(暂时仅微信可用)
      */
-    SSDKContentTypeFile         = 7
+    SSDKContentTypeFile         = 7,
+    
+    //图片类型 仅FacebookMessage 分享图片并需要明确结果时 注此类型分享后不会显示应用名称与icon
+    //v3.6.2 增加
+    SSDKContentTypeFBMessageImages = 8,
+    
+    //图片类型 仅FacebookMessage 分享视频并需要明确结果时 注此类型分享后不会显示应用名称与icon
+    //所分享的视频地址必须为相册地址
+    //v3.6.2 增加
+    SSDKContentTypeFBMessageVideo = 9
 
 };
 

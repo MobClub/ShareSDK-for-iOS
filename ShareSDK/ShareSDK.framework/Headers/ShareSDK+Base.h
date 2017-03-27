@@ -60,7 +60,7 @@
  *  @param platformType         平台类型
  *  @param settings             授权设置
  *  @param viewDisplayHandler   授权视图显示回调处理，当授权时需要在应用中显示授权时触发此回调（即SSO授权此回调不触发）
- *  @param stateChangeHandler   授权状态变更回调处理
+ *  @param stateChangedHandler   授权状态变更回调处理
  */
 + (void)authorize:(SSDKPlatformType)platformType
          settings:(NSDictionary *)settings
@@ -73,7 +73,7 @@
  *  @param platformType         平台类型
  *  @param conditional          查询条件
  *  @param authorizeHandler     授权处理器
- *  @param stateChangeHandler   状态变更回调处理
+ *  @param stateChangedHandler   状态变更回调处理
  */
 + (void)getUserInfo:(SSDKPlatformType)platformType
         conditional:(SSDKUserQueryConditional *)conditional

@@ -54,6 +54,14 @@ typedef void(^MOBFHttpFaultEvent) (NSError *error);
 typedef void(^MOBFHttpUploadProgressEvent) (int64_t totalBytes, int64_t loadedBytes);
 
 /**
+ *  HTTP下载数据事件
+ *
+ *  @param totalBytes  总字节数
+ *  @param loadedBytes 上传字节数据
+ */
+typedef void(^MOBFHttpDownloadProgressEvent) (int64_t totalBytes, int64_t loadedBytes);
+
+/**
  *  HTTP服务类
  */
 @interface MOBFHttpService : NSObject
@@ -168,6 +176,20 @@ typedef void(^MOBFHttpUploadProgressEvent) (int64_t totalBytes, int64_t loadedBy
                     onFault:(MOBFHttpFaultEvent)faultHandler
            onUploadProgress:(MOBFHttpUploadProgressEvent)uploadProgressHandler;
 
+
+/**
+ 发送请求
+
+ @param resultHandler 返回回调
+ @param faultHandler 错误回调
+ @param uploadProgressHandler 上传数据进度回调
+ @param downloadProgressHandler 下载数据进度回调
+ */
+- (void)sendRequestOnResult:(MOBFHttpResultEvent)resultHandler
+                    onFault:(MOBFHttpFaultEvent)faultHandler
+           onUploadProgress:(MOBFHttpUploadProgressEvent)uploadProgressHandler
+         onDownloadProgress:(MOBFHttpDownloadProgressEvent)downloadProgressHandler;
+
 /**
  *  取消请求
  */
@@ -217,6 +239,31 @@ typedef void(^MOBFHttpUploadProgressEvent) (int64_t totalBytes, int64_t loadedBy
                                        onResult:(MOBFHttpResultEvent)resultHandler
                                         onFault:(MOBFHttpFaultEvent)faultHandler
                                onUploadProgress:(MOBFHttpUploadProgressEvent)uploadProgressHandler;
+
+/**
+ *  发送HTTP请求
+ *
+ *  @param urlString             请求地址
+ *  @param method                请求方式
+ *  @param parameters            请求参数
+ *  @param headers               请求头集合
+ *  @param timeout               请求超时
+ *  @param resultHandler         返回回调
+ *  @param faultHandler          错误回调
+ *  @param uploadProgressHandler 上传数据进度回调
+ *  @param downloadProgressHandler  下载数据进度回调
+ *
+ *  @return HTTP服务对象
+ */
++ (MOBFHttpService *)sendHttpRequestByURLString:(NSString *)urlString
+                                         method:(NSString *)method
+                                     parameters:(NSDictionary *)parameters
+                                        headers:(NSDictionary *)headers
+                                        timeout:(NSTimeInterval)timeout
+                                       onResult:(MOBFHttpResultEvent)resultHandler
+                                        onFault:(MOBFHttpFaultEvent)faultHandler
+                               onUploadProgress:(MOBFHttpUploadProgressEvent)uploadProgressHandler
+                             onDownloadProgress:(MOBFHttpDownloadProgressEvent)downloadProgressHandler;
 
 
 @end
