@@ -9,15 +9,22 @@
 #import <Foundation/Foundation.h>
 #import <MOBFoundation/MOBFoundation.h>
 #import "SSDKTypeDefine.h"
+#import "SSDKHttpServiceModel.h"
 
 @interface SSDKVideoUploadCenter : NSObject
 
 + (SSDKVideoUploadCenter *)shareInstance;
 
-- (void)uploadProgressWithPlatformType:(SSDKPlatformType)platformType
+- (SSDKHttpServiceModel *)uploadProgressWithPlatformType:(SSDKPlatformType)platformType
                                fileURL:(NSURL *)url
                                    tag:(NSString *)tag
                          progressEvent:(MOBFHttpUploadProgressEvent)progressEvent;
+
+- (void)stopWithModel:(SSDKHttpServiceModel *)model;
+
+- (void)continueWithModel:(SSDKHttpServiceModel *)model;
+
+- (void)closeWithModel:(SSDKHttpServiceModel *)model;
 
 @property (nonatomic,strong) NSMutableArray *httpServiceArray;
 

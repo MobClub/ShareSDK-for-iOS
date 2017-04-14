@@ -28,6 +28,14 @@
  */
 - (void)SSDKEnableUseClientShare;
 
+
+/**
+ 可设置新浪微博使用高级接口进行分享（即应用内使用 statuses/update 和 statuses/upload_url_text这两个高级接口进行分享）
+ statuses/update 原为普通接口 2017年6月30日后修改为高级接口 应用内普通分享接口改变为 statuses/share 
+ statuses/share 规则 http://open.weibo.com/wiki/2/statuses/share
+ */
+- (void)SSDKEnableAdvancedInterfaceShare;
+
 /**
  *  设置分享参数
  *
@@ -161,6 +169,7 @@
  *
  *  分享文件时：
  *  设置type为SSDKContentTypeFile（例如.mp3、.mp4、.pdf、.docx的分享），设置title、sourceFileExtension、sourceFileData，以及thumbImage参数，如果尚未设置thumbImage则会从image参数中读取图片并对图片进行缩放操作参数
+ 
  */
 - (void)SSDKSetupWeChatParamsByText:(NSString *)text
                               title:(NSString *)title
@@ -175,6 +184,27 @@
                      sourceFileData:(id)sourceFileData
                                type:(SSDKContentType)type
                  forPlatformSubType:(SSDKPlatformType)platformSubType;
+
+//3.6.3 为微信小程序分享增加
+/**
+ 设置微信小程序分享
+
+ @param title 标题
+ @param description 详细说明
+ @param webpageUrl 网址（6.5.6以下版本微信会自动转化为分享链接 必填）
+ @param path 跳转到页面路径
+ @param thumbImage 缩略图 （必填）
+ @param userName 小程序的userName（必填）
+ @param platformSubType 分享自平台 微信小程序暂只支持 SSDKPlatformSubTypeWechatSession（微信好友分享）
+ */
+- (void)SSDKSetupWeChatParamsByTitle:(NSString *)title
+                         description:(NSString *)description
+                          webpageUrl:(NSURL *)webpageUrl
+                                path:(NSString *)path
+                          thumbImage:(id)thumbImage
+                            userName:(NSString *)userName
+                  forPlatformSubType:(SSDKPlatformType)platformSubType;
+
 
 /**
  *  设置Twitter分享参数

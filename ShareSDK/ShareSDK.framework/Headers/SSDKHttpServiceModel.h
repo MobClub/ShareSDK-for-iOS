@@ -21,8 +21,6 @@ typedef NS_ENUM(NSUInteger, SSPHttpServiceType){
 
 @property (nonatomic, copy)NSString *fileURL;
 
-@property (nonatomic, copy)NSString *fileSign;
-
 @property (nonatomic)NSInteger totalBytes;
 
 @property (nonatomic)NSInteger uploadedBytes;
@@ -30,8 +28,6 @@ typedef NS_ENUM(NSUInteger, SSPHttpServiceType){
 @property (nonatomic, copy) NSString *sessionID;
 
 @property (nonatomic, weak) MOBFHttpService *httpService;
-
-@property (nonatomic, copy) NSString *resourcesSign;
 
 @property (nonatomic, copy) NSString *tag;
 
@@ -45,14 +41,34 @@ typedef NS_ENUM(NSUInteger, SSPHttpServiceType){
 
 @property (nonatomic, copy) NSString *tokenSecret;
 
-@property (nonatomic, copy) NSString *mediaID;
+@property (nonatomic, copy) NSString *mediaID; //facebook video_id
+
+@property (nonatomic) NSTimeInterval expiresTime;
 
 @property (nonatomic) NSInteger segmentIndex;
 
 @property (nonatomic) NSInteger maxIndex;
 
+@property (nonatomic, copy)NSString *youtubeJsonString;
+
+@property (nonatomic, copy)NSString *youtubeAuthorization;
+
+@property (nonatomic, copy)NSString *youtubeParts;
+
+@property (nonatomic, copy)NSString *youtubeLocation;
+
+@property (nonatomic, copy)NSString *facebookUploadURL;
+
+@property (nonatomic, copy)NSString *facebookUploadSessionID;
+
+@property (nonatomic)NSInteger facebookStartOffset;
+
+@property (nonatomic)NSInteger facebookEndOffset;
+
 @property (nonatomic) SSDKPlatformType platformType;
 
 @property (nonatomic) SSPHttpServiceType serviceType;
+
+@property (nonatomic, copy)MOBFHttpUploadProgressEvent uploadProgressEvent;
 
 @end

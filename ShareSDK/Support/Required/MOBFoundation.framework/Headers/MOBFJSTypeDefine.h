@@ -12,6 +12,7 @@
 /**
  *  JS方法实现
  *
+ *  @param params 传入参数
  */
 typedef void(^MOBFJSMethodIMP) (NSArray *arguments);
 

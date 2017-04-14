@@ -299,7 +299,11 @@ typedef NS_ENUM(NSUInteger, SSDKResponseState){
     /**
      *  取消
      */
-    SSDKResponseStateCancel     = 3
+    SSDKResponseStateCancel     = 3,
+    
+    
+    //视频文件开始上传
+    SSDKResponseStateBeginUPLoad = 4
 };
 
 /**
@@ -354,7 +358,10 @@ typedef NS_ENUM(NSUInteger, SSDKContentType){
     //图片类型 仅FacebookMessage 分享视频并需要明确结果时 注此类型分享后不会显示应用名称与icon
     //所分享的视频地址必须为相册地址
     //v3.6.2 增加
-    SSDKContentTypeFBMessageVideo = 9
+    SSDKContentTypeFBMessageVideo = 9,
+    
+    //3.6.3 小程序分享(暂时仅微信可用)
+    SSDKContentTypeMiniProgram  = 10
 
 };
 

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ShareSDK3'
-  s.version          = "3.6.2.1"
+  s.version          = "3.6.3"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "Jinghuang Liu" => "liujinghuang@icloud.com" }
@@ -156,6 +156,12 @@ Pod::Spec.new do |s|
         # YouTube
         sp.subspec 'YouTube' do |ssp|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/YouTubeConnector.framework','ShareSDK/ShareSDK.framework','ShareSDK/Support/Required/ShareSDKConnector.framework','ShareSDK/Support/Optional/ShareSDKExtension.framework'
+            ssp.resource = 'ShareSDK/Support/Required/ShareSDK.bundle'
+        end
+
+        # Twitter
+        sp.subspec 'Twitter' do |ssp|
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/TwitterConnector.framework','ShareSDK/ShareSDK.framework','ShareSDK/Support/Required/ShareSDKConnector.framework','ShareSDK/Support/Optional/ShareSDKExtension.framework'
             ssp.resource = 'ShareSDK/Support/Required/ShareSDK.bundle'
         end
     end
