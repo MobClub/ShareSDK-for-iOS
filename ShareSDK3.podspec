@@ -164,6 +164,12 @@ Pod::Spec.new do |s|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/TwitterConnector.framework','ShareSDK/ShareSDK.framework','ShareSDK/Support/Required/ShareSDKConnector.framework','ShareSDK/Support/Optional/ShareSDKExtension.framework'
             ssp.resource = 'ShareSDK/Support/Required/ShareSDK.bundle'
         end
+
+        # DingTalk
+        sp.subspec 'DingTalk' do |ssp|
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/DingTalkSDK/DTShareKit.framework','ShareSDK/Support/PlatformConnector/DingTalkConnector.framework','ShareSDK/ShareSDK.framework','ShareSDK/Support/Required/ShareSDKConnector.framework','ShareSDK/Support/Optional/ShareSDKExtension.framework'
+            ssp.resource = 'ShareSDK/Support/Required/ShareSDK.bundle'
+        end
     end
 
     # ShareSDK 配置文件模块
