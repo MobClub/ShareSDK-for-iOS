@@ -66,7 +66,7 @@
 /*!
  @abstract 현재 로그인된 사용자의 모든 Push 토큰들에 대한 정보를 얻을 수 있습니다. 해당 API는 AdminKey가 아닌 AccessToken을 기반으로 요청합니다.
  @param completionHandler Push 토큰의 정보를 얻어 처리하는 핸들러
- @discussion
+ @discussion xxx
  */
 + (instancetype)pushGetTokensTaskWithCompletionHandler:(void (^)(NSArray *tokens, NSError *error))completionHandler;
 

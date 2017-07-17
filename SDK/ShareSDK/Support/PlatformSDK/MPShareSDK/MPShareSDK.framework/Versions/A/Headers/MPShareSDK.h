@@ -48,7 +48,7 @@
 /**
  *  分享视频到美拍
  *
- *  @param pathUrl 视频在相册中的 url
+ *  @param pathURL 视频在相册中的 url
  *  一个 url 的地址实例:assets-library://asset/asset.m4v?id=E5A30D8D-77AE-40D2-8755-8CA43CAA19EB&ext=m4v
  */
 + (void)shareVideoAtPathToMeiPai:(NSURL *)pathURL;

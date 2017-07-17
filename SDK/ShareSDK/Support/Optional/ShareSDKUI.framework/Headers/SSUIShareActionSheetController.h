@@ -62,5 +62,4 @@
  *  @param cancelHandler 取消事件处理器
  */
 - (void)onCancel:(SSUIShareActionSheetCancelHandler)cancelHandler;
-
 @end

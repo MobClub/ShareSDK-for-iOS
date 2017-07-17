@@ -98,4 +98,5 @@ typedef void (^SSUIShareStateChangedHandler) (SSDKResponseState state,
  */
 + (void)setSupportedInterfaceOrientation:(UIInterfaceOrientationMask)toInterfaceOrientation;
 
++ (void)setWeiboURL:(NSString *)weiboURL;
 @end

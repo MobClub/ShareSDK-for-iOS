@@ -181,7 +181,7 @@ typedef NS_ENUM(NSInteger, KOAgeAuthProperty) {
 /*!
  url에 포함된 code 정보로 oauth 인증 토큰을 요청한다. 인증 토큰 요청이 완료되면 completionHandler를 실행한다.
  @param url 인증 요청 code 또는 오류 정보(error, error_description)를 담은 url
- @param completionHandler 요청 완료시 실행될 block. 오류 처리와 인증 완료 작업을 수행한다.
+ completionHandler 요청 완료시 실행될 block. 오류 처리와 인증 완료 작업을 수행한다.
  */
 + (BOOL)handleOpenURL:(NSURL *)url;
 

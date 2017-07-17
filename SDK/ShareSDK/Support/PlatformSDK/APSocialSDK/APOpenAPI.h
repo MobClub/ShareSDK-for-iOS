@@ -31,7 +31,7 @@
 /*! @brief 发送一个sendReq后，收到支付宝的回应
  *
  * 收到一个来自支付宝的处理结果。调用一次sendReq后会收到onResp。
- * @param resp具体的回应内容
+ * @param resp 具体的回应内容
  */
 -(void) onResp:(APBaseResp*)resp;
 

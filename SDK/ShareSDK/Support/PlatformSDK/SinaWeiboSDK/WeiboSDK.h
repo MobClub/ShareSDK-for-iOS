@@ -152,8 +152,6 @@ extern NSString * const WeiboSDKGetAidFailNotification;
  有的话呼起微博客户端定位到对应界面；
  没有的话打开 webView 加载相应的微博H5页面；
  @param uid 用户id
- @param mid 微博id
- @param aid 文章id
 */
 
 //连接到指定用户的微博个人主页，连接后可进行加关注等互动

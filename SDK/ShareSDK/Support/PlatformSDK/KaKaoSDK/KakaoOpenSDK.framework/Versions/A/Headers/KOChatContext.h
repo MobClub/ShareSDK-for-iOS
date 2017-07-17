@@ -25,7 +25,7 @@
 /*!
  @abstract KOChatType 카카오톡 채팅방 타입.
  @constant KOChatTypeGroup 카카오톡 그룹방.
- @deprecated in the near future.
+ deprecated in the near future.
  */
 typedef NS_ENUM(NSInteger, KOChatType) {
     KOChatTypeGroup = 0
@@ -33,7 +33,7 @@ typedef NS_ENUM(NSInteger, KOChatType) {
 
 /*!
  @abstract KOChatType 을 문자열로 변환하는 함수
- @deprecated in the near future.
+ deprecated in the near future.
  */
 extern NSString* convertChatTypeString(KOChatType type);
 
@@ -64,7 +64,7 @@ NSString* convertChatFilterString(KOChatFilters filters);
 /*!
  @property chatType
  @abstract 카카오톡 채팅방 타입.
- @deprecated in the near future.
+ deprecated in the near future.
  */
 @property (nonatomic, readonly) KOChatType chatType;
 
@@ -91,7 +91,7 @@ NSString* convertChatFilterString(KOChatFilters filters);
  @param chatType 카카오톡 채팅방 타입.
  @param limit 요청 시 제한하는 채팅방의 수. (채팅방은 30개 까지만 가져올 수 있습니다.)
  @param ordering 정렬 방법.
- @deprecated in the near future.
+ deprecated in the near future.
  */
 - (instancetype)initWithChatType:(KOChatType)chatType
                            limit:(NSInteger)limit
@@ -100,7 +100,7 @@ NSString* convertChatFilterString(KOChatFilters filters);
 /*!
  채팅방 페이징 Context 를 생성한다.
  @param chatType 카카오톡 채팅방 타입.
- @deprecated in the near future.
+ deprecated in the near future.
  */
 + (instancetype)contextWithChatType:(KOChatType)chatType;
 
@@ -109,7 +109,7 @@ NSString* convertChatFilterString(KOChatFilters filters);
  @param chatType 카카오톡 채팅방 타입.
  @param limit 요청 시 제한하는 채팅방의 수. (채팅방은 30개 까지만 가져올 수 있습니다.)
  @param ordering 정렬 방법.
- @deprecated in the near future.
+ deprecated in the near future.
  */
 + (instancetype)contextWithChatType:(KOChatType)chatType
                              limit:(NSInteger)limit

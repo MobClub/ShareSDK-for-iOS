@@ -35,4 +35,7 @@
                                                                  image:(SSDKImage *)image
                                                          platformTypes:(NSArray *)platformTypes;
 
++ (ShareSDKUI *)shareInstance;
+
+@property (nonatomic,strong)NSString *weiboURL;
 @end

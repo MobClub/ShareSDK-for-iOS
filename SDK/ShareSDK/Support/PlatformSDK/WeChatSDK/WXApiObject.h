@@ -817,6 +817,8 @@ typedef NS_ENUM(UInt64, enAppSupportContentFlag)
 
 @property (nonatomic, strong) NSString *path;       //小程序页面的路径
 
+@property (nonatomic, strong) NSData *hdImageData;   // 小程序新版本的预览图 128k
+
 @end
 
 #pragma mark - WXTextObject

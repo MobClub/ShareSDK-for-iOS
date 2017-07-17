@@ -53,7 +53,7 @@
 /*!
  @property memberImageURLs
  @abstract 카카오톡 채팅방 멤버들의 썸네일 이미지 URL List. (최대 5개 까지)
- @deprecated in the near future.
+ deprecated in the near future.
  */
 @property (nonatomic, readonly) NSArray *memberImageURLs;
 

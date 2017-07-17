@@ -33,8 +33,18 @@
  可设置新浪微博使用高级接口进行分享（即应用内使用 statuses/update 和 statuses/upload_url_text这两个高级接口进行分享）
  statuses/update 原为普通接口 2017年6月30日后修改为高级接口 应用内普通分享接口改变为 statuses/share 
  statuses/share 规则 http://open.weibo.com/wiki/2/statuses/share
+ 
+ 注：
+ v4.0.1 废弃此接口 由于使用接口需要设置安全域 并且 无法分享话题所以都统一使用微博SDK进行分享 
+ 如果仍需要使用api接口进行分享请调用 SSDKEnableSinaWeiboAPIShare 接口
  */
-- (void)SSDKEnableAdvancedInterfaceShare;
+- (void)SSDKEnableAdvancedInterfaceShare __deprecated_msg("discard form v4.0.1");
+
+
+/**
+ 新浪微博应用内分享 指定使用api进行分享 v4.0.1
+ */
+- (void)SSDKEnableSinaWeiboAPIShare;
 
 /**
  *  设置分享参数
@@ -61,7 +71,8 @@
  *  @param latitude  纬度
  *  @param longitude 经度
  *  @param objectID  对象ID，标识系统内内容唯一性，应传入系统中分享内容的唯一标识，没有时可以传入nil
- *  @param type      分享类型，仅支持Text、Image、WebPage（客户端分享时）类型
+ *  @param type      分享类型，仅支持Text、Image、WebPage 类型 
+    设置 SSDKEnableSinaWeiboAPIShare 使用API进行分享 但text中需要附 安全域 安全域在新浪微博开放平台设置
  */
 - (void)SSDKSetupSinaWeiboShareParamsByText:(NSString *)text
                                       title:(NSString *)title
@@ -672,7 +683,8 @@
  *  设置KaKao分享参数
  *
  *  @param text                 分享文本
- *  @param images               分享图片列表,传入参数可以为单张图片信息，也可以为一个NSArray，数组元素可以为UIImage、NSString（图片路径）、NSURL（图片路径）、SSDKImage，如: @"http://www.mob.com/images/logo_black.png" 或 @[@"http://www.mob.com/images/logo_black.png"]
+ *  @param images               分享图片列表,传入参数可以为单张图片信息，也可以为一个NSArray，数组元素可以为UIImage、NSString（图片路径）、NSURL（图片路径）、SSDKImage，如: @"http://www.mob.com/images/logo_black.png" 或 @[@"http://www.mob.com/images/logo_black.png"] 
+    注：SSDKPlatformSubTypeKakaoTalk 只支持网络图片
  *  @param title                分享链接标题，用于SSDKPlatformSubTypeKaKaoTalk分享
  *  @param url                  分享链接
  *  @param permission           查看权限：F 表示好友可以查看，A 表示任何人可以查看，M 表示私有，默认为A

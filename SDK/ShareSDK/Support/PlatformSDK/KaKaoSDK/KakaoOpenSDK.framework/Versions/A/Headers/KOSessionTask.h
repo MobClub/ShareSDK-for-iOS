@@ -54,21 +54,21 @@ completionHandler:(KOSessionTaskCompletionHandler)completionHandler;
 
 /*!
  @abstract 해당 API 요청을 취소
- @discussion
+ @discussion xxx
  */
 - (void)cancel;
 
 /*!
  @abstract 해당 API 요청을 취소
  @param error 취소할 때 발생시키고자 하는(원인) NSError.
- @discussion
+ @discussion xxx
  */
 - (void)cancelWithError:(NSError *)error;
 
 /*!
  @abstract API 요청시의 타임아웃을 설정
  @param timeoutInterval second단위의 타임아웃 값(NSTimeInterval). 기본 180초(3분).
- @discussion
+ @discussion xxx
  */
 + (void)setRequestTimeoutInterval:(NSTimeInterval)timeoutInterval;
 + (NSTimeInterval)requestTimeoutInterval;

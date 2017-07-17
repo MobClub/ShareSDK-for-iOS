@@ -46,7 +46,7 @@
  
  第三方应用程序需要在程序启动时调用. @note 请在主线程中调用此方法.
  
- @param appid 在钉钉开放平台申请的应用ID.
+ @param appId 在钉钉开放平台申请的应用ID.
  
  @return YES 注册成功. NO 注册失败.
  */
@@ -57,7 +57,7 @@
  
  第三方应用程序需要在程序启动时调用. @note 请在主线程中调用此方法.
  
- @param appid 在钉钉开放平台申请的应用ID.
+ @param appId 在钉钉开放平台申请的应用ID.
  @param appDescription 第三方描述信息, 长度不超过1K.
  
  @retrun YES 注册成功. NO 注册失败.
@@ -70,7 +70,7 @@
  
  第三方应用需要在 -[UIApplicationDelegate application:openURL:sourceApplication:annotation:] 或者 -[UIApplicationDelegate application:openURL:options:] 中调用该方法.
 
- @param url 钉钉给第三方回调的URL.
+ @param URL 钉钉给第三方回调的URL.
  @param delegate 实现DTOpenAPIDelegate的对象, 通过DTOpenAPIDelegate处理钉钉的回调结果.
  
  @return YES 回调处理成功. NO 回调处理失败.
@@ -127,7 +127,7 @@
 /**
  第三方APP需在 -[DTOpenAPIDelegate onResp:] 处理完收到钉钉的请求后, 使用改方法将处理结果返回给钉钉, 界面会切换到钉钉客户端.
  
- @param req 封装响应的对象. 支持的类型:DTSendMessageToDingTalkResp.
+ @param resp 封装响应的对象. 支持的类型:DTSendMessageToDingTalkResp.
  
  @return YES 响应发送成功. NO 响应发送失败.
  */
