@@ -10,7 +10,8 @@
 #import <MOBFoundation/MOBFHttpService.h>
 #import <ShareSDK/ShareSDK.h>
 
-typedef NS_ENUM(NSUInteger, SSPHttpServiceType){
+typedef NS_ENUM (NSUInteger, SSPHttpServiceType)
+{
     SSPHttpServiceInit = 0,
     SSPHttpServiceAppend = 1,
     SSPHttpServiceFinalize = 2,
@@ -19,11 +20,11 @@ typedef NS_ENUM(NSUInteger, SSPHttpServiceType){
 
 @interface SSDKHttpServiceModel : NSObject
 
-@property (nonatomic, copy)NSString *fileURL;
+@property (nonatomic, copy) NSString *fileURL;
 
-@property (nonatomic)NSInteger totalBytes;
+@property (nonatomic) NSInteger totalBytes;
 
-@property (nonatomic)NSInteger uploadedBytes;
+@property (nonatomic) NSInteger uploadedBytes;
 
 @property (nonatomic, copy) NSString *sessionID;
 
@@ -61,9 +62,9 @@ typedef NS_ENUM(NSUInteger, SSPHttpServiceType){
 
 @property (nonatomic, copy)NSString *facebookUploadSessionID;
 
-@property (nonatomic)NSInteger facebookStartOffset;
+@property (nonatomic) NSInteger facebookStartOffset;
 
-@property (nonatomic)NSInteger facebookEndOffset;
+@property (nonatomic) NSInteger facebookEndOffset;
 
 @property (nonatomic, copy) NSString *dropboxUploadSessionID;
 
@@ -71,6 +72,6 @@ typedef NS_ENUM(NSUInteger, SSPHttpServiceType){
 
 @property (nonatomic) SSPHttpServiceType serviceType;
 
-@property (nonatomic, copy)MOBFHttpUploadProgressEvent uploadProgressEvent;
+@property (nonatomic, copy) MOBFHttpUploadProgressEvent uploadProgressEvent;
 
 @end

@@ -9,11 +9,12 @@
 #ifndef ShareSDK_SSDKTypeDefine_h
 #define ShareSDK_SSDKTypeDefine_h
 
+#import "SSDKContentEntity.h"
+
 @protocol ISSDKAuthView;
 
 @class SSDKUser;
 @class SSDKFriendsPaging;
-@class SSDKContentEntity;
 @class UIView;
 @class SSDKAddFriendView;
 
@@ -362,7 +363,6 @@ typedef NS_ENUM(NSUInteger, SSDKContentType){
     
     //3.6.3 小程序分享(暂时仅微信可用)
     SSDKContentTypeMiniProgram  = 10
-
 };
 
 

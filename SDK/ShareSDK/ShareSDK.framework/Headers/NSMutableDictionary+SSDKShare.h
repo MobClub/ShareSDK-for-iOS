@@ -46,6 +46,15 @@
  */
 - (void)SSDKEnableSinaWeiboAPIShare;
 
+
+/**
+ 使用第三方应用插件进行分享 (暂只支持微信 QQ TIM) iOS11 不可用
+    微信   支持  本地图片(1-9张) 本地视频(SSDKContentTypeFile) 本地音频(SSDKContentTypeFile) 链接(只有链接有作用标题 说明设置无效)
+ QQ&TIM   支持  本地图片(1-9张) 本地视频(SSDKContentTypeFile) 本地音频(SSDKContentTypeFile) 链接(只有链接有作用标题 说明设置无效)
+    QQiPad版本不支持
+ */
+- (void)SSDKEnableExtensionShare;
+
 /**
  *  设置分享参数
  *

@@ -45,6 +45,18 @@
 - (void)SSDKSetupWeChatByAppId:(NSString *)appId
                      appSecret:(NSString *)appSecret;
 
+
+/**
+ *  设置微信(微信好友，微信朋友圈、微信收藏)应用信息
+ *
+ *  @param appId      应用标识
+ *  @param appSecret  应用密钥
+ *  @param backUnionID  是否默认返回unionID 否返回 openID 是则返回 unionID
+ */
+- (void)SSDKSetupWeChatByAppId:(NSString *)appId
+                     appSecret:(NSString *)appSecret
+                   backUnionID:(BOOL)backUnionID;
+
 /**
  *  设置Twitter应用信息
  *
@@ -80,6 +92,21 @@
                     appKey:(NSString *)appKey
                   authType:(NSString *)authType
                     useTIM:(BOOL)useTIM;
+
+/**
+ *  设置QQ分享平台（QQ空间，QQ好友分享）应用信息 4.0.0增加
+ *
+ *  @param appId          应用标识
+ *  @param appKey         应用Key
+ *  @param authType       授权方式。值可以是：SSDKAuthTypeSSO、SSDKAuthTypeWeb、SSDKAuthTypeBoth，分别代表SSO、网页授权、SSO＋网页授权。
+ *  @param useTIM         是否优先使用TIM进行授权及分享
+  *  @param backUnionID  是否默认返回unionID 否返回 openID 是则返回 unionID
+ */
+- (void)SSDKSetupQQByAppId:(NSString *)appId
+                    appKey:(NSString *)appKey
+                  authType:(NSString *)authType
+                    useTIM:(BOOL)useTIM
+               backUnionID:(BOOL)backUnionID;
 
 /**
  *  设置Facebook应用信息 不需要使用facebook客户端分享
@@ -353,4 +380,7 @@
  *  @param authType  授权方式。值可以是：SSDKAuthTypeSSO、SSDKAuthTypeWeb、SSDKAuthTypeBoth，分别代表SSO、网页授权、SSO＋网页授权。
  */
 - (void)SSDKSetupLineAuthType:(NSString *)authType;
+
+//打开短信登录的国家列表选择
+- (void)SSDKSetpSMSOpenCountryList:(BOOL)open;
 @end

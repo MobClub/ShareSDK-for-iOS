@@ -11,10 +11,9 @@
 #import "NSMutableDictionary+SSDKShare.h"
 #import "SSDKTypeDefine.h"
 #import "SSDKUserQueryConditional.h"
-#import "SSDKContentEntity.h"
-#import "SSDKUser.h"
 #import "SSDKCredential.h"
 #import "SSDKAuthViewStyle.h"
+#import "SSDKUser.h"
 
 /**
  *  ShareSDK APIs
@@ -96,6 +95,5 @@
 + (void)share:(SSDKPlatformType)platformType
    parameters:(NSMutableDictionary *)parameters
 onStateChanged:(SSDKShareStateChangedHandler)stateChangedHandler;
-
 
 @end

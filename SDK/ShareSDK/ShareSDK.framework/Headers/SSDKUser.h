@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SSDKTypeDefine.h"
-#import <MOBFoundation/IMOBFSocialUser.h>
+#import <ShareSDK/IMOBFSocialUser.h>
 #import <MOBFoundation/MOBFDataModel.h>
 
 @class SSDKCredential;
@@ -16,7 +16,8 @@
 /**
  *  性别
  */
-typedef NS_ENUM(NSUInteger, SSDKGender){
+typedef NS_ENUM(NSUInteger, SSDKGender)
+{
     /**
      *  男
      */

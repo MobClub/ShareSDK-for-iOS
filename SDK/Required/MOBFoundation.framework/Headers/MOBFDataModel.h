@@ -39,7 +39,7 @@
 
 /**
  返回一个字典结构
-
+ 
  @return 字段数据对象
  */
 - (NSDictionary *)dictionaryValue;

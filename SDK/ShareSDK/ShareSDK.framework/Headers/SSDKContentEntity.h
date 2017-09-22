@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ShareSDK/IMOBFContentEntity.h>
+#import <MOBFoundation/MOBFDataModel.h>
 
 /**
  *  内容实体
  */
-@interface SSDKContentEntity : NSObject
+@interface SSDKContentEntity : MOBFDataModel <IMOBFContentEntity>
 
 /**
  *  内容标识

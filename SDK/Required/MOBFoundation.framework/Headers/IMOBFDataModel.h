@@ -15,7 +15,7 @@
 
 /**
  初始化数据模型
-
+ 
  @param dict 初始化数据
  @return 数据模型
  */
@@ -23,7 +23,7 @@
 
 /**
  设置数据
-
+ 
  @param data 数据
  @param key 名称
  */
@@ -31,7 +31,7 @@
 
 /**
  获取数据
-
+ 
  @param key 名称
  */
 - (id)get:(NSString *)key;
@@ -42,5 +42,23 @@
  @return 字段数据对象
  */
 - (NSDictionary *)dictionaryValue;
+
+/**
+ 返回字段映射字典
+ 
+ 说明:类如果实现此方法,并返回映射字典,在使用initWithDict初始化时,则会按照映射查找属性;key 为真正想要设定的、存在的属性 ,value为需要映射的字段
+ 
+ @return 字段映射字典
+ */
+- (NSDictionary <NSString *, NSString *> *)mappingDictionary;
+
+/**
+ 当类中有属性为数组,且数组元素同为MOBFDataModel时,应该置制定该属性属性及其元素类型
+ 例如有 @property NSArray <OtherDataModel *> *array;
+ 应主动实现本方法,并返回 @{@"array" : @"OtherDataModel"}
+ 
+ @return 映射配置
+ */
+- (NSDictionary <NSString *, NSString *> *)confirmArrayElementType;
 
 @end

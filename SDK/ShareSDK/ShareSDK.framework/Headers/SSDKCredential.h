@@ -11,7 +11,8 @@
 /**
  *  授权类型
  */
-typedef NS_ENUM(NSUInteger, SSDKCredentialType){
+typedef NS_ENUM(NSUInteger, SSDKCredentialType)
+{
     /**
      *  未知
      */
@@ -24,6 +25,9 @@ typedef NS_ENUM(NSUInteger, SSDKCredentialType){
      *  OAuth 2
      */
     SSDKCredentialTypeOAuth2  = 2,
+    
+    //4.0.2 短信
+    SSDKCredentialTypeSMS = 3,
 };
 
 /**
