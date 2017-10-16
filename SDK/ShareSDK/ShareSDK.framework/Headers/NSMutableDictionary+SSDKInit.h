@@ -272,7 +272,7 @@
  *
  *  @param appId 应用标识
  */
-- (void)SSDKSetupAliPaySocialByAppId:(NSString *)appId;
+- (void)SSDKSetupAliSocialByAppId:(NSString *)appId;
 
 /**
  *  设置Pinterest应用信息

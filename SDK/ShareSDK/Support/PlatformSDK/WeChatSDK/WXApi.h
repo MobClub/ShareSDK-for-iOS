@@ -136,7 +136,7 @@
 /*! @brief 发送请求到微信，等待微信返回onResp
  *
  * 函数调用后，会切换到微信的界面。第三方应用程序等待微信返回onResp。微信在异步处理完成后一定会调用onResp。支持以下类型
- * SendAuthReq、SendMessageToWXReq等。
+ * SendAuthReq、SendMessageToWXReq、PayReq等。
  * @param req 具体的发送请求，在调用函数后，请自己释放。
  * @return 成功返回YES，失败返回NO。
  */

@@ -881,7 +881,7 @@
 
         <!-- </FacebookMessenger> -->
 
-        <!-- <Alipay> -->
+        <!-- <AliSocial> -->
 
         <!--
             分享类型            必要参数
@@ -896,7 +896,7 @@
         <!--<url></url>-->
         <!--<images></images>-->
 
-        <!-- </Alipay> -->
+        <!-- </AliSocial> -->
 
     </Content>
 

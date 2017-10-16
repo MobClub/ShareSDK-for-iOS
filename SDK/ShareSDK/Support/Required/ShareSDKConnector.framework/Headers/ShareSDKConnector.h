@@ -50,7 +50,7 @@
  *
  *  @param apOpenApiClass 支付宝好友SDK中的类型，应先导入libAPOpenSdk.a，再将[APOpenApi class]传入到此参数。注：此参数不能为nil，否则会导致无法正常分享。
  */
-+ (void)connectAliPaySocial:(Class)apOpenApiClass;
++ (void)connectAliSocial:(Class)apOpenApiClass;
 
 /**
  *  链接KaKao以供ShareSDK可以正常使用KaKao进行分享

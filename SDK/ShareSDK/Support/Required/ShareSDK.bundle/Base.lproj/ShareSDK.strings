@@ -130,10 +130,10 @@
 "ShareSDKConnector_Error_KaKao_Talk" = "分享平台［KaKao］不支持Talk客户端分享";
 "ShareSDKConnector_Error_KaKao_Story" = "分享平台［KaKao］不支持Story客户端分享";
 
-"ShareSDKConnector_Error_AliPay_NOLib" = "请将libAPOpenSdk.a导入项目并引入APOpenAPI";
-"ShareSDKConnector_Error_AliPay_NOShare" = "分享平台［支付宝］客户端不支持分享功能";
-"ShareSDKConnector_Error_AliPay_NOClient" = "分享平台［支付宝］尚未安装客户端!无法进行分享";
-"ShareSDKConnector_Error_AliPay_NOLibShare" = "分享平台［支付宝］尚未导入libAPOpenSdk.a库! 无法进行相关操作";
+"ShareSDKConnector_Error_Ali_NOLib" = "请将libAPOpenSdk.a导入项目并引入APOpenAPI";
+"ShareSDKConnector_Error_Ali_NOShare" = "分享平台［支付宝］客户端不支持分享功能";
+"ShareSDKConnector_Error_Ali_NOClient" = "分享平台［支付宝］尚未安装客户端!无法进行分享";
+"ShareSDKConnector_Error_Ali_NOLibShare" = "分享平台［支付宝］尚未导入libAPOpenSdk.a库! 无法进行相关操作";
 
 "ShareSDKConnector_Error_Line_NOLib" = "请将LineSDK.framework导入项目";
 "ShareSDKConnector_Error_Line_NOLibShare" = "分享平台［Line］尚未导入LineSDK.framework! 无法进行相关操作";

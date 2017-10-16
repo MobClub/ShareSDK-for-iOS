@@ -374,35 +374,9 @@ FOUNDATION_EXTERN NSString *const kOPEN_PERMISSION_GET_SIMPLE_USER_INFO;
 /**
  * \name CGI接口相关参数类型定义
  */
-///@{
-
-/** 必填的字符串类型参数 */
-typedef NSString *TCRequiredStr;
-
-/** 必填的UIImage类型参数 */
-typedef UIImage *TCRequiredImage;
-
-/** 必填的整型参数 */
-typedef NSInteger TCRequiredInt;
-
-/** 必填的数字类型 */
-typedef NSNumber *TCRequiredNumber;
-
-/** 必填的NSData参数 */
-typedef NSData *TCRequiredData;
 
 /** 可选的字符串类型参数 */
 typedef NSString *TCOptionalStr;
-
-/** 可选的UIImage类型参数 */
-typedef UIImage *TCOptionalImage;
-
-/** 可选的整型参数 */
-typedef NSInteger TCOptionalInt;
-
-/** 可选的数字类型 */
-typedef NSNumber *TCOptionalNumber;
-
 /** 可选的不定类型参数 */
 typedef id TCRequiredId;
 ///@}

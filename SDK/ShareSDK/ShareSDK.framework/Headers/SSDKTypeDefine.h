@@ -216,11 +216,11 @@ typedef NS_ENUM(NSUInteger, SSDKPlatformType){
     /**
      *  支付宝好友
      */
-    SSDKPlatformTypeAliPaySocial        = 50,
+    SSDKPlatformTypeAliSocial        = 50,
     /**
      *  支付宝朋友圈
      */
-    SSDKPlatformTypeAliPaySocialTimeline= 51,
+    SSDKPlatformTypeAliSocialTimeline= 51,
     /**
      *  钉钉
      */

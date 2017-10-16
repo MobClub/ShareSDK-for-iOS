@@ -130,10 +130,10 @@
 "ShareSDKConnector_Error_KaKao_Talk" = "Share platform [KaKao] does not support Talk client sharing";
 "ShareSDKConnector_Error_KaKao_Story" = "Share platform [KaKao] does not support Story client sharing";
 
-"ShareSDKConnector_Error_AliPay_NOLib" = "Please add libAPOpenSdk.a into the project and import APOpenAPI.h";
-"ShareSDKConnector_Error_AliPay_NOShare" = "Share platform［AliPay］client version does not support sharing";
-"ShareSDKConnector_Error_AliPay_NOClient" = "Share platform［AliPay］has not yet installed the client! Can not share";
-"ShareSDKConnector_Error_AliPay_NOLibShare" = "Share platform［AliPay］has not yet add libAPOpenSdk.a! Unable to do so";
+"ShareSDKConnector_Error_Ali_NOLib" = "Please add libAPOpenSdk.a into the project and import APOpenAPI.h";
+"ShareSDKConnector_Error_Ali_NOShare" = "Share platform［AliSocial］client version does not support sharing";
+"ShareSDKConnector_Error_Ali_NOClient" = "Share platform［AliSocial］has not yet installed the client! Can not share";
+"ShareSDKConnector_Error_Ali_NOLibShare" = "Share platform［AliSocial］has not yet add libAPOpenSdk.a! Unable to do so";
 
 "ShareSDKConnector_Error_Line_NOLib" = "Please add LineSDK.framework into the project";
 "ShareSDKConnector_Error_Line_NOLibShare" = "Share platform［Line］has not yet add LineSDK.framework! Unable to do so";
