@@ -153,20 +153,23 @@ Pod::Spec.new do |s|
         end
     end
 
-    # ShareSDK 配置文件模块
-    s.subspec 'ShareSDKConfigurationFile' do |sp|
-        sp.vendored_frameworks = 'SDK/ShareSDK/Support/Optional/ShareSDKConfigFile.framework'
-        sp.resources = 'SDK/ShareSDK/Support/Optional/ShareSDKConfigFile.bundle'
-    end
-    
-    # ShareSDK Extension扩展模块
-    s.subspec 'ShareSDKExtension' do |sp|
-        sp.vendored_frameworks = 'SDK/ShareSDK/Support/Optional/ShareSDKExtension.framework'
-    end
+    s.subspec 'Optional' do |sp|
 
-    # ShareSDK提供的UI
-    s.subspec 'ShareSDKUI' do |sp|
-        sp.vendored_frameworks = 'SDK/ShareSDK/Support/Optional/ShareSDKUI.framework'
-        sp.resources = 'SDK/ShareSDK/Support/Optional/ShareSDKUI.bundle'
+        # ShareSDK 配置文件模块
+        sp.subspec 'ShareSDKConfigFile' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/Optional/ShareSDKConfigFile.framework'
+            ssp.resources = 'SDK/ShareSDK/Support/Optional/ShareSDKConfigFile.bundle'
+        end
+    
+        # ShareSDK Extension扩展模块
+        sp.subspec 'ShareSDKExtension' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/Optional/ShareSDKExtension.framework'
+        end
+
+        # ShareSDK提供的UI
+        sp.subspec 'ShareSDKUI' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/Optional/ShareSDKUI.framework'
+            ssp.resources = 'SDK/ShareSDK/Support/Optional/ShareSDKUI.bundle'
+        end
     end
 end
