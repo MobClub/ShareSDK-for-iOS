@@ -1,0 +1,160 @@
+/* 
+  ShareSDKLocalizable.strings
+  AppgoFramework
+
+
+  Created by ShareSDK.cn on 13-1-14.
+  官网地址:http://www.mob.com
+  技术支持邮箱:support@sharesdk.cn
+  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+  商务QQ:4006852216
+  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
+
+*/
+
+"AUTH_VIEW_TITLE" = "用户授权";
+"AUTH_VIEW_CANCEL_BUTTON" = "取消";
+"AUTH_VIEW_SIGN_IN" = "登录";
+"AUTH_VIEW_ACCOUNT" = "帐号,如name@example.com";
+"AUTH_VIEW_PASS" = "密码";
+"AUTH_VIEW_ALERT_TITLE" = "提示";
+"AUTH_VIEW_ALERT_CANCEL_BUTTON" = "知道了";
+"AUTH_VIEW_INPUT_ACCOUNT" = "请输入登录帐号!";
+"AUTH_VIEW_INPUT_PASSWORD" = "请输入登录密码!";
+"AUTH_VIEW_UNAUTHORIZED" = "用户名或密码错误";
+"SHARE_VIEW_DONE" = "完成";
+"SHARE_VIEW_TITLE" = "分享";
+
+"SMS_NEXT_TEXT" = "下一步";
+"SMS_REGION_TEXT" = "国家/地区";
+"SMS_PHONENUM_PLACEHOLDER_TEXT" = "请输入手机号码";
+"SMS_LOGIN_TITLE" = "请输入您的手机号";
+"SMS_DEF_COUNTRY" = "中国";
+"SMS_CHOOSE_COUNTRY_TEXT" = "选择国家或地区";
+"SMS_CHECK_PHONENUM_TEXT" = "确认手机号码";
+"SMS_SURE_TEXT" = "好";
+"SMS_CHECK_TEXT" = "我知道了";
+"SMS_WILL_SEND_TEXT" = "我们将发送验证码短信到这个号码";
+"SMS_PHONENUM_ERROR_TEXT" = "手机号码格式错误";
+"SMS_PHONENUM_ERROR_MESSAGE" = "\n您输入的是一个无效手机号码\n请重新输入";
+"SMS_DONE_TEXT" = "提交";
+"SMS_CHECK_CODE_TITLE" = "验证码已发送，请填写验证码";
+"SMS_PHONE_TEXT" = "手机号码";
+"SMS_CHECKCODE_PLACEHOLDER_TEXT" = "请输入您的短信验证码";
+"SMS_RESEND_TEXT" = "重新发送";
+"SMS_BACK_TEXT" = "返回";
+"SMS_WAIT_TEXT" = "等待";
+"SMS_TITLE" = "短信登录";
+"SMS_CODE_TEXT" = "验证码";
+"SMS_BACK_MESSAGE" = "验证码短信可能略有延迟，确定返回并重新开始？";
+"SMS_VIOICE_MESSAGE" = "短信验证码收不到？请尝试";
+"SMS_VIOICE_TEXT" = "语音验证码";
+"SMS_VOICE_MESSAGE" = "我们将以电话的方式告知你验证码，请注意接听";
+"SMS_Error_100" = "系统有点小问题，请稍后再试";
+"SMS_Error_101" = "权限错误";
+"SMS_Error_102" = "解密数据失败";
+"SMS_Error_103" = "缺少必要参数";
+"SMS_Error_104" = "请求数据非法";
+"SMS_Error_105" = "验证码错误";
+"SMS_Error_106" = "请求发送验证码失败";
+"SMS_Error_107" = "该号码超过接受验证码上限次数，请明天再试";
+"SMS_Error_108" = "该应用超过发送验证码上限次数";
+"SMS_Error_109" = "发送验证码太频繁，请稍后再试";
+
+"ShareSDK_Error_WechatMini" = "小程序分享只支持微信好友分享";
+"ShareSDK_Error_WechatFile" = "微信朋友圈不支持文件分享";
+"ShareSDK_Error_Register" = "传入参数 activePlatforms 类型错误";
+"ShareSDK_Error_NORegister" = "尚未初始化SDK";
+"ShareSDK_Error_Illegal" = "非法操作";
+
+"ShareSDKConfigFile_Error_Illegal" = "无效的分享内容";
+"ShareSDKConfigFile_Error_NOContentName" = "没有找到contentName节点";
+"ShareSDKConfigFile_Error_NOXMLFile" = "没有找到ShareContent.xml文件";
+"ShareSDKConfigFile_Error_XML" = "ShareContent.xml 没有寻找到有效子节点或xml格式不正确";
+"ShareSDKConfigFile_Error_MOBAppKey" = "请在info.plist中填写正确的 MOBAppKey";
+
+"ShareSDKExtension_Error_Platforms"= "没有指定要分享到哪些平台，无法进行分享";
+"ShareSDKExtension_Error_Platform" = "无法分享到指定平台，该平台不支持一键分享操作";
+"ShareSDKExtension_Error_NOAuthorize" = "用户尚未授权";
+"ShareSDKExtension_Error_ClientInstalled" = "平台不支持检测客户端功能";
+"ShareSDKConnector_Error_NetVideo" = "暂不支持网络视频";
+"ShareSDKConnector_Error_DownLoadPhoto" = "网络图片下载失败";
+
+"ShareSDKConnector_Error_CLose" = "主动关闭";
+"ShareSDKConnector_Error_Data" = "数据不完整";
+"ShareSDKConnector_Error_Video" = "未找到指定视频数据";
+"ShareSDKConnector_Error_Audio" = "未找到指定音频数据";
+"ShareSDKConnector_Error_Read_Data" = "数据解析错误";
+"ShareSDKConnector_Error_File" = "未找到指定资源";
+
+"ShareSDKConnector_Error_Twitter_Size" = "视频数据超过最大上传限制512M";
+"ShareSDKConnector_Error_Twitter_Time" = "视频播放时间需要控制在 0.5 - 140.0 秒之间";
+
+"ShareSDKConnector_Error_WeChat_NoLib" = "请将libWeChat.a导入项目并引入WXApi.h";
+"ShareSDKConnector_Error_WeChat_NOShare" = "分享平台［微信］客户端不支持分享功能";
+"ShareSDKConnector_Error_WeChat_NOClient" = "分享平台［微信］尚未安装客户端!无法进行分享";
+"ShareSDKConnector_Error_WeChat_NOLibShare" = "分享平台［微信］尚未导入libWeChatSDK.a库!无法进行相关操作";
+
+"ShareSDKConnector_Error_Facebook_NOAppkey" = "appKey 未配置";
+"ShareSDKConnector_Error_Facebook_ShareType" = "分享状态未知";
+"ShareSDKConnector_Error_Facebook_DisplayName" = "分享平台［Facebook］进行客户端分享时请务必配置displayName";
+"ShareSDKConnector_Error_Facebook_NOClient" = "分享平台［Facebook］尚未安装客户端!无法进行分享!";
+
+"ShareSDKConnector_Error_FacebookMessager_NOClient" = "分享平台［Facebook Messenger］尚未安装客户端!无法进行分享";
+"ShareSDKConnector_Error_FacebookMessager_NOLibShare" = "分享平台［微信］尚未导入FBSDKMessengerShareKit.framework库!无法进行分享";
+
+"ShareSDKConnector_Error_MeiPai_NOLib" = "请将MPShareSDK.framework导入项目中";
+"ShareSDKConnector_Error_MeiPai_NOLibShare" = "分享平台［美拍］尚未导入MPShareSDK.framework库!无法进行相关操作";
+"ShareSDKConnector_Error_MeiPai_NOShare" = "分享平台［美拍］客户端不支持此类分享功能";
+"ShareSDKConnector_Error_MeiPai_NOShareVideo" = "分享平台［美拍］客户端版本不支持视频分享功能";
+"ShareSDKConnector_Error_MeiPai_NOSharePhoto" = "分享平台［美拍］客户端版本不支持图片分享功能";
+"ShareSDKConnector_Error_MeiPai_NOClient" = "分享平台［美拍］尚未安装客户端!无法进行分享";
+"ShareSDKConnector_Error_MeiPai_PhotoLibraryUsageDescription" = "未配置相册权限 NSPhotoLibraryUsageDescription 无法判定传入相册资源的类型 则统一使用图片类型分享";
+
+"ShareSDKConnector_Error_DingTalk_NOLib" = "请将DTShareKit.framework导入项目";
+"ShareSDKConnector_Error_DingTalk_NOLibShare" = "分享平台［钉钉］尚未导入DTShareKit.framework库!无法进行相关操作";
+"ShareSDKConnector_Error_DingTalk_NOClient" = "分享平台［钉钉］尚未安装客户端!无法进行分享";
+"ShareSDKConnector_Error_DingTalk_NOShare" = "分享平台［钉钉］客户端不支持分享功能";
+
+"ShareSDKConnector_Error_Yixin_NOLib" = "请将libYixinSDK.a导入项目并引入YXApi.h";
+"ShareSDKConnector_Error_Yixin_Auth" = "[易信]授权失败";
+"ShareSDKConnector_Error_Yixin_SSO" = "[易信]客户端不支持SSO授权功能";
+"ShareSDKConnector_Error_Yixin_NOLibShare" = "分享平台［易信］尚未导入YXApi.a库!无法进行相关操作";
+"ShareSDKConnector_Error_Yixin_NOShare" = "分享平台［易信］客户端不支持分享功能";
+"ShareSDKConnector_Error_Yixin_NOClient" = "分享平台［易信］尚未安装客户端!无法进行分享";
+
+"ShareSDKConnector_Error_KaKao_NOLib" = "请将KakaoOpenAPI.framework导入项目并引入KOSession.h";
+"ShareSDKConnector_Error_KaKao_NOLibShare" = "分享平台［KaKao］尚未导入KakaoOpenSDK.framework! 无法进行相关操作";
+"ShareSDKConnector_Error_KaKao_Callback" = "无效的回调请求";
+"ShareSDKConnector_Error_KaKao_ShareTalk" = "[Kakao] 的Talk客户端分享失败，请检查分享参数";
+"ShareSDKConnector_Error_KaKao_Talk" = "分享平台［KaKao］不支持Talk客户端分享";
+"ShareSDKConnector_Error_KaKao_Story" = "分享平台［KaKao］不支持Story客户端分享";
+
+"ShareSDKConnector_Error_AliPay_NOLib" = "请将libAPOpenSdk.a导入项目并引入APOpenAPI";
+"ShareSDKConnector_Error_AliPay_NOShare" = "分享平台［支付宝］客户端不支持分享功能";
+"ShareSDKConnector_Error_AliPay_NOClient" = "分享平台［支付宝］尚未安装客户端!无法进行分享";
+"ShareSDKConnector_Error_AliPay_NOLibShare" = "分享平台［支付宝］尚未导入libAPOpenSdk.a库! 无法进行相关操作";
+
+"ShareSDKConnector_Error_Line_NOLib" = "请将LineSDK.framework导入项目";
+"ShareSDKConnector_Error_Line_NOLibShare" = "分享平台［Line］尚未导入LineSDK.framework! 无法进行相关操作";
+
+"ShareSDKConnector_Error_Instagram_PhotoLibrary" = "尚未授权访问相册，无法进行分享";
+
+"ShareSDKConnector_Error_Mail" = "该设备不支持发送邮件";
+
+"ShareSDKConnector_Error_RenRen_NOLib" = "请将RennSDK.framework导入项目中";
+"ShareSDKConnector_Error_RenRen_NOLibShare" = "分享平台［人人网］尚未导入RennSDK.framework库! 无法进行相关操作";
+"ShareSDKConnector_Error_RenRen_Auth" = "分享平台［人人网］授权调用失败";
+
+"ShareSDKConnector_Error_QQ_NOLib" = "请将TencentOpenAPI.framework导入项目中";
+"ShareSDKConnector_Error_QQ_NOLibShare" = "分享平台［QQ］尚未导入TencentOpenApi.framework! 无法进行相关操作";
+"ShareSDKConnector_Error_QQ_NOClient" = "分享平台［QQ］尚未安装客户端!无法进行分享";
+"ShareSDKConnector_Error_QQ_Share" = "分享平台［QQ］分享失败";
+"ShareSDKConnector_Error_QQ_Version" = "当前QQ版本太低，需要更新至新版本才可以支持";
+"ShareSDKConnector_Error_QQ_QZone" = "分享平台［QQ］调用分享失败!当前QQSDK不支持QZONE文字分享";
+"ShareSDKConnector_Error_QQ_ShareScene" = "无法识别的分享场景";
+"ShareSDKConnector_Error_QQ_Auth" = "分享平台［QQ］授权调用失败";
+"ShareSDKConnector_Error_QQ_ShareType" = "不支持此分享类型";
+
+"ShareSDKConnector_Error_Weibo_NOLibShare" = "分享平台［微博］尚未导入libWeiboSDK.a库! 无法进行相关操作";
+"ShareSDKConnector_Error_Weibo_Auth" = "分享平台［微博］授权调用失败";

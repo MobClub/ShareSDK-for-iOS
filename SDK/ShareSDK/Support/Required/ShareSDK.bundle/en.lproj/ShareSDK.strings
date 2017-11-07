@@ -1,0 +1,160 @@
+/* 
+  ShareSDKLocalizable.strings
+  AppgoFramework
+
+
+  Created by ShareSDK.cn on 13-1-14.
+  官网地址:http://www.ShareSDK.cn
+  技术支持邮箱:support@sharesdk.cn
+  官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+  商务QQ:4006852216
+  Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
+
+*/
+
+"AUTH_VIEW_TITLE" = "Authorize";
+"AUTH_VIEW_CANCEL_BUTTON" = "Cancel";
+"AUTH_VIEW_SIGN_IN" = "Sign In";
+"AUTH_VIEW_ACCOUNT" = "Account(e.g. name@example.com)";
+"AUTH_VIEW_PASS" = "Password";
+"AUTH_VIEW_ALERT_TITLE" = "Tips";
+"AUTH_VIEW_ALERT_CANCEL_BUTTON" = "I known";
+"AUTH_VIEW_INPUT_ACCOUNT" = "Input your account";
+"AUTH_VIEW_INPUT_PASSWORD" = "Input your password";
+"AUTH_VIEW_UNAUTHORIZED" = "Account or password is not correct";
+"SHARE_VIEW_DONE" = "Done";
+"SHARE_VIEW_TITLE" = "Share";
+
+"SMS_NEXT_TEXT" = "Next";
+"SMS_REGION_TEXT" = "Region";
+"SMS_PHONENUM_PLACEHOLDER_TEXT" = "Mobile number";
+"SMS_LOGIN_TITLE" = "Please enter your phone number";
+"SMS_DEF_COUNTRY" = "China";
+"SMS_CHOOSE_COUNTRY_TEXT" = "Choose the country";
+"SMS_CHECK_PHONENUM_TEXT" = "Phone Number Confirmation";
+"SMS_SURE_TEXT" = "OK";
+"SMS_CHECK_TEXT" = "I see";
+"SMS_WILL_SEND_TEXT" = "We will send a verify code to the following number";
+"SMS_PHONENUM_ERROR_TEXT" = "Phone number format error";
+"SMS_PHONENUM_ERROR_MESSAGE" = "Phone number is invalid";
+"SMS_DONE_TEXT" = "Done";
+"SMS_CHECK_CODE_TITLE" = "The verify code has been sent";
+"SMS_PHONE_TEXT" = "Mobile";
+"SMS_CHECKCODE_PLACEHOLDER_TEXT" = "Verify code";
+"SMS_RESEND_TEXT" = "Resend";
+"SMS_BACK_TEXT" = "Back";
+"SMS_WAIT_TEXT" = "Wait";
+"SMS_TITLE" = "SMS Login";
+"SMS_CODE_TEXT" = "Code";
+"SMS_BACK_MESSAGE" = "SMS verify code may be slightly delayed";
+"SMS_VIOICE_MESSAGE" = "Not receive code? Please try";
+"SMS_VIOICE_TEXT" = "Voice code";
+"SMS_VOICE_MESSAGE" = "We will inform you the phone verify code";
+"SMS_Error_100" = "System is a little problem, Please try again later";
+"SMS_Error_101" = "No permission request";
+"SMS_Error_102" = "Failed to decrypt msg";
+"SMS_Error_103" = "Request parameter missing";
+"SMS_Error_104" = "Request parameter illegal";
+"SMS_Error_105" = "Verify code error";
+"SMS_Error_106" = "Send code fail";
+"SMS_Error_107" = "Phone No. over send code limit, Please try again tomorrow";
+"SMS_Error_108" = "App over send code limit";
+"SMS_Error_109" = "System is a little problem, Please try again later";
+
+"ShareSDK_Error_WechatMini" = "MiniProgram only support WeChat friends to share";
+"ShareSDK_Error_WechatFile" = "WeChat Timeline does not support file sharing";
+"ShareSDK_Error_Register" = "activePlatforms type error";
+"ShareSDK_Error_NORegister" = "ShareSDK has not been initialized yet";
+"ShareSDK_Error_Illegal" = "Illegal operation";
+
+"ShareSDKConfigFile_Error_Illegal" = "Invalid shared content";
+"ShareSDKConfigFile_Error_NOContentName" = "Node without contentName";
+"ShareSDKConfigFile_Error_NOXMLFile" = "The ShareContent.xml file was not found";
+"ShareSDKConfigFile_Error_XML" = "ShareContent.xml does not find the valid child node or xml format is incorrect";
+"ShareSDKConfigFile_Error_MOBAppKey" = "Please fill in the correct MOBAppKey in info.plist";
+
+"ShareSDKExtension_Error_Platforms"= "Did not specify which platforms to share and can not share";
+"ShareSDKExtension_Error_Platform" = "Can not be shared to the specified platform, the platform does not support onekey share";
+"ShareSDKExtension_Error_NOAuthorize" = "User is not authorized yet";
+"ShareSDKExtension_Error_ClientInstalled" = "Does not support detection clients";
+
+"ShareSDKConnector_Error_CLose" = "Active off";
+"ShareSDKConnector_Error_Data" = "Data error";
+"ShareSDKConnector_Error_Video" = "Not find video";
+"ShareSDKConnector_Error_Audio" = "Not find audio";
+"ShareSDKConnector_Error_Read_Data" = "Data parsing error";
+"ShareSDKConnector_Error_File" = "Not find resources";
+"ShareSDKConnector_Error_NetVideo" = "No support for online video";
+"ShareSDKConnector_Error_DownLoadPhoto" = "Network image download failed";
+
+"ShareSDKConnector_Error_Twitter_Size" = "File size should not exceed 512 MB";
+"ShareSDKConnector_Error_Twitter_Time" = "Duration should be between 0.5 seconds and 140.0 seconds";
+
+"ShareSDKConnector_Error_WeChat_NoLib" = "Please add libWeChat.a into the project and import WXApi.h";
+"ShareSDKConnector_Error_WeChat_NOShare" = "Share platform [WeChat] client does not support sharing";
+"ShareSDKConnector_Error_WeChat_NOClient" = "Share the platform [WeChat] has not yet installed the client! Can not share";
+"ShareSDKConnector_Error_WeChat_NOLibShare" = "Share platform [WeChat] has not yet add libWeChatSDK.a! Unable to do so";
+
+"ShareSDKConnector_Error_Facebook_NOAppkey" = "AppKey is not configured";
+"ShareSDKConnector_Error_Facebook_ShareType" = "The sharing status is unknown";
+"ShareSDKConnector_Error_Facebook_DisplayName" = "Share platform［Facebook］Be sure to configure displayName when sharing the client";
+"ShareSDKConnector_Error_Facebook_NOClient" = "Share the platform [Facebook] has not yet installed the client! Can not share";
+
+"ShareSDKConnector_Error_FacebookMessager_NOClient" = "Share platform [Facebook Messenger] has not yet installed the client! Can not share";
+"ShareSDKConnector_Error_FacebookMessager_NOLibShare" = "Share platform [Facebook Messenger] has not yet add FBSDKMessengerShareKit.framework! Can not share";
+
+"ShareSDKConnector_Error_MeiPai_NOLib" = "Please add the MPShareSDK.framework into the project";
+"ShareSDKConnector_Error_MeiPai_NOLibShare" = "Share platform［MeiPai］has not yet add MPShareSDK.framework! Unable to do so";
+"ShareSDKConnector_Error_MeiPai_NOShare" = "Share platform［MeiPai］does not support such sharing";
+"ShareSDKConnector_Error_MeiPai_NOShareVideo" = "Share platform [MeiPai] client version does not support video sharing";
+"ShareSDKConnector_Error_MeiPai_NOSharePhoto" = "Share platform [MeiPai] client version does not support photo sharing";
+"ShareSDKConnector_Error_MeiPai_NOClient" = "Share platform [MeiPai] has not yet installed the client! Can not share";
+"ShareSDKConnector_Error_MeiPai_PhotoLibraryUsageDescription" = "Unconfigured album permissions NSPhotoLibraryUsageDescription can not determine the type of incoming album resource is shared using image type sharing";
+
+"ShareSDKConnector_Error_DingTalk_NOLib" = "Please add the DTShareKit.framework into the project";
+"ShareSDKConnector_Error_DingTalk_NOLibShare" = "Share platform［DingTalk］has not yet add DTShareKit.framework! Unable to do so";
+"ShareSDKConnector_Error_DingTalk_NOClient" = "Share platform [DingTalk] has not yet installed the client! Can not share";
+"ShareSDKConnector_Error_DingTalk_NOShare" = "Share platform [DingTalk] client version does not support sharing";
+
+"ShareSDKConnector_Error_Yixin_NOLib" = "Please add libYixinSDK.a into the project and import YXApi.h";
+"ShareSDKConnector_Error_Yixin_Auth" = "[Yixin] Authorization failed";
+"ShareSDKConnector_Error_Yixin_SSO" = "[Yixin] The client does not support SSO authorization";
+"ShareSDKConnector_Error_Yixin_NOLibShare" = "Share platform［Yixin］has not yet add YXApi.a! Unable to do so";
+"ShareSDKConnector_Error_Yixin_NOShare" = "Share platform［Yixin］client version does not support sharing";
+"ShareSDKConnector_Error_Yixin_NOClient" = "Share platform［Yixin］has not yet installed the client! Can not share";
+
+"ShareSDKConnector_Error_KaKao_NOLib" = "Please add KakaoOpenAPI.framework into the project and import KOSession.h";
+"ShareSDKConnector_Error_KaKao_NOLibShare" = "Share platform［KaKao］has not yet add KakaoOpenSDK.framework! Unable to do so";
+"ShareSDKConnector_Error_KaKao_Callback" = "Invalid callback request";
+"ShareSDKConnector_Error_KaKao_ShareTalk" = "[Kakao] Talk client sharing failed, please check sharing parameters";
+"ShareSDKConnector_Error_KaKao_Talk" = "Share platform [KaKao] does not support Talk client sharing";
+"ShareSDKConnector_Error_KaKao_Story" = "Share platform [KaKao] does not support Story client sharing";
+
+"ShareSDKConnector_Error_AliPay_NOLib" = "Please add libAPOpenSdk.a into the project and import APOpenAPI.h";
+"ShareSDKConnector_Error_AliPay_NOShare" = "Share platform［AliPay］client version does not support sharing";
+"ShareSDKConnector_Error_AliPay_NOClient" = "Share platform［AliPay］has not yet installed the client! Can not share";
+"ShareSDKConnector_Error_AliPay_NOLibShare" = "Share platform［AliPay］has not yet add libAPOpenSdk.a! Unable to do so";
+
+"ShareSDKConnector_Error_Line_NOLib" = "Please add LineSDK.framework into the project";
+"ShareSDKConnector_Error_Line_NOLibShare" = "Share platform［Line］has not yet add LineSDK.framework! Unable to do so";
+
+"ShareSDKConnector_Error_Instagram_PhotoLibrary" = "Not authorized to access the album and can not share it";
+
+"ShareSDKConnector_Error_Mail" = "The device does not support sending mail";
+
+"ShareSDKConnector_Error_RenRen_NOLib" = "Please add RennSDK.framework into the project";
+"ShareSDKConnector_Error_RenRen_NOLibShare" = "Share platform［RenRen］has not yet add RennSDK.framework! Unable to do so";
+"ShareSDKConnector_Error_RenRen_Auth" = "Share platform [RenRen] authorization call failed";
+
+"ShareSDKConnector_Error_QQ_NOLib" = "Please add TencentOpenAPI.framework into the project";
+"ShareSDKConnector_Error_QQ_NOLibShare" = "Share platform［QQ］has not yet add TencentOpenApi.framework! Unable to do so";
+"ShareSDKConnector_Error_QQ_NOClient" = "Share platform［QQ］has not yet installed the client! Can not share";
+"ShareSDKConnector_Error_QQ_Share" = "Share platform [QQ] sharing failed";
+"ShareSDKConnector_Error_QQ_Version" = "The current version of the QQ is too low, need to be updated to a new version can support";
+"ShareSDKConnector_Error_QQ_QZone" = "Sharing platform [QQ] call to share the failure of the current QQSDK does not support QZONE text sharing";
+"ShareSDKConnector_Error_QQ_ShareScene" = "Unrecognized sharing scenes";
+"ShareSDKConnector_Error_QQ_Auth" = "Share platform [QQ] authorization call failed";
+"ShareSDKConnector_Error_QQ_ShareType" = "Does not support this type of sharing";
+
+"ShareSDKConnector_Error_Weibo_NOLibShare" = "Share platform［Weibo］has not yet add libWeiboSDK.a! Unable to do so";
+"ShareSDKConnector_Error_Weibo_Auth" = "Share platform [Weibo] authorization call failed";

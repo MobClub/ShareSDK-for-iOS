@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MobUserInfoShowViewController">
+            <connections>
+                <outlet property="clearButon" destination="oPg-YD-1jw" id="ulG-V3-zpO"/>
+                <outlet property="copyButton" destination="Bu5-Do-ICG" id="WQq-Jt-MEw"/>
+                <outlet property="mainView" destination="t8b-W6-13o" id="j15-sO-vja"/>
+                <outlet property="mainViewAspect" destination="Et4-cV-SDH" id="rjl-my-8k5"/>
+                <outlet property="myTextView" destination="Q9M-PG-TO3" id="9fr-Ke-i31"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t8b-W6-13o">
+                    <rect key="frame" x="30" y="74.666666666666686" width="354" height="566.66666666666674"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Q9M-PG-TO3">
+                            <rect key="frame" x="10" y="10.000000000000028" width="334" height="496.66666666666674"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bu5-Do-ICG">
+                            <rect key="frame" x="187" y="521.66666666666674" width="100" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="4pc-he-nUw"/>
+                                <constraint firstAttribute="height" constant="30" id="Ikw-cx-8nr"/>
+                            </constraints>
+                            <state key="normal" title="复制"/>
+                            <connections>
+                                <action selector="copyAct:" destination="-1" eventType="touchUpInside" id="VsI-y0-hMS"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPg-YD-1jw">
+                            <rect key="frame" x="67" y="521.66666666666674" width="100" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="MNQ-e7-6ou"/>
+                                <constraint firstAttribute="height" constant="30" id="T69-Pu-ygh"/>
+                            </constraints>
+                            <state key="normal" title="清除信息"/>
+                            <connections>
+                                <action selector="clearAct:" destination="-1" eventType="touchUpInside" id="dcZ-sb-VFa"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Q9M-PG-TO3" firstAttribute="leading" secondItem="t8b-W6-13o" secondAttribute="leading" constant="10" id="CwG-vW-LSK"/>
+                        <constraint firstAttribute="bottom" secondItem="Q9M-PG-TO3" secondAttribute="bottom" constant="60" id="DLP-9R-Kaa"/>
+                        <constraint firstItem="oPg-YD-1jw" firstAttribute="centerX" secondItem="t8b-W6-13o" secondAttribute="centerX" constant="-60" id="E9j-gb-uGE"/>
+                        <constraint firstAttribute="width" secondItem="t8b-W6-13o" secondAttribute="height" multiplier="10:16" id="Et4-cV-SDH"/>
+                        <constraint firstItem="Q9M-PG-TO3" firstAttribute="top" secondItem="t8b-W6-13o" secondAttribute="top" constant="10" id="LIz-ZZ-ErE"/>
+                        <constraint firstItem="Bu5-Do-ICG" firstAttribute="centerX" secondItem="t8b-W6-13o" secondAttribute="centerX" constant="60" id="PeR-Ud-KWj"/>
+                        <constraint firstAttribute="trailing" secondItem="Q9M-PG-TO3" secondAttribute="trailing" constant="10" id="S9G-ut-qpZ"/>
+                        <constraint firstItem="Bu5-Do-ICG" firstAttribute="top" secondItem="Q9M-PG-TO3" secondAttribute="bottom" constant="15" id="izF-3w-HUP"/>
+                        <constraint firstItem="oPg-YD-1jw" firstAttribute="top" secondItem="Q9M-PG-TO3" secondAttribute="bottom" constant="15" id="u9s-O0-bHC"/>
+                    </constraints>
+                </view>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BU8-C8-UQD">
+                    <rect key="frame" x="0.0" y="641.33333333333348" width="414" height="94.666666666666629"/>
+                    <subviews>
+                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="closeButton.png" translatesAutoresizingMaskIntoConstraints="NO" id="Pim-OH-O4p">
+                            <rect key="frame" x="188.66666666666666" y="29.333333333333258" width="37" height="37"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="37" id="SNG-Fr-2nH"/>
+                                <constraint firstAttribute="width" constant="37" id="ZB5-Tv-ZRa"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Pim-OH-O4p" firstAttribute="centerX" secondItem="BU8-C8-UQD" secondAttribute="centerX" id="Mlc-i2-pOm"/>
+                        <constraint firstItem="Pim-OH-O4p" firstAttribute="centerY" secondItem="BU8-C8-UQD" secondAttribute="centerY" id="fBd-Fe-Mnl"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="t8b-W6-13o" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-10" id="5kV-Y8-xtJ"/>
+                <constraint firstAttribute="bottom" secondItem="BU8-C8-UQD" secondAttribute="bottom" id="HDb-tb-6KK"/>
+                <constraint firstItem="BU8-C8-UQD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="L3Y-Sr-WdK"/>
+                <constraint firstItem="BU8-C8-UQD" firstAttribute="top" secondItem="t8b-W6-13o" secondAttribute="bottom" id="Lvk-1H-ZyK"/>
+                <constraint firstAttribute="trailing" secondItem="BU8-C8-UQD" secondAttribute="trailing" id="df5-QJ-yiB"/>
+                <constraint firstItem="t8b-W6-13o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="iJ7-iA-aMA"/>
+                <constraint firstAttribute="trailing" secondItem="t8b-W6-13o" secondAttribute="trailing" constant="30" id="lId-Fz-5bJ"/>
+            </constraints>
+            <point key="canvasLocation" x="-136.5" y="2.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="closeButton.png" width="37" height="37"/>
+    </resources>
+</document>
