@@ -54,6 +54,16 @@ Pod::Spec.new do |s|
             ssp.libraries = 'sqlite3'
         end
 
+        # WeChatFull
+        sp.subspec 'WeChatFull' do |ssp|
+            ssp.vendored_libraries = "SDK/ShareSDK/Support/PlatformSDK/WeChatSDKFull/*.a"
+            ssp.source_files = "SDK/ShareSDK/Support/PlatformSDK/WeChatSDKFull/*.{h,m}"
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/WechatConnector.framework','SDK/ShareSDK/ShareSDK.framework','SDK/ShareSDK/Support/Required/ShareSDKConnector.framework','SDK/ShareSDK/Support/Optional/ShareSDKExtension.framework'
+            ssp.resource = 'SDK/ShareSDK/Support/Required/ShareSDK.bundle'
+            ssp.public_header_files = "SDK/ShareSDK/Support/PlatformSDK/WeChatSDKFull/*.h"
+            ssp.libraries = 'sqlite3'
+        end
+
         # RenRen
         sp.subspec 'RenRen' do |ssp|
             ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformSDK/RenRenSDK/RennSDK.framework' ,'SDK/ShareSDK/Support/PlatformConnector/RenrenConnector.framework','SDK/ShareSDK/ShareSDK.framework','SDK/ShareSDK/Support/Required/ShareSDKConnector.framework','SDK/ShareSDK/Support/Optional/ShareSDKExtension.framework'
