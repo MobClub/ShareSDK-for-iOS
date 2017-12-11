@@ -44,7 +44,7 @@
 /**
  新浪微博应用内分享 指定使用api进行分享 v4.0.1
  */
-- (void)SSDKEnableSinaWeiboAPIShare;
+- (void)SSDKEnableSinaWeiboAPIShare __deprecated_msg("discard form v4.0.5");
 
 
 /**

@@ -74,27 +74,29 @@
 
 + (void)hasGetAppKey:(NSNotification *)notification
 {
-    [MOBShareSDKHelper shareInstance].platforems = [MOBShareSDKHelper _getPlatforems];
-    [ShareSDK registerActivePlatforms:[MOBShareSDKHelper shareInstance].platforems
-                             onImport:^(SSDKPlatformType platformType) {
-                                 [MOBShareSDKHelper _setConnectorWithPlatformType:platformType];
-                             }
-                      onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
-                          [MOBShareSDKHelper _setConfigurationWithPlatformType:platformType appInfo:appInfo];
-                      }];
-    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [MOBShareSDKHelper shareInstance].platforems = [MOBShareSDKHelper _getPlatforems];
+        [ShareSDK registerActivePlatforms:[MOBShareSDKHelper shareInstance].platforems
+                                 onImport:^(SSDKPlatformType platformType) {
+                                     [MOBShareSDKHelper _setConnectorWithPlatformType:platformType];
+                                 }
+                          onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
+                              [MOBShareSDKHelper _setConfigurationWithPlatformType:platformType appInfo:appInfo];
+                          }];
+        
 //#define InitTest
 #ifdef InitTest
-    [self testShare];
+        [self testShare];
 #endif
+//    });  
 }
 
 + (void)testShare
 {
     NSLog(@"---------%s---------",__func__);
-    BOOL support = [ShareSDK isSupportAuth:SSDKPlatformTypeMeiPai];
+    BOOL support = [ShareSDK isSupportAuth:SSDKPlatformTypeWechat];
     
-    NSLog(@"%zd",support);
+    NSLog(@"--------------> %zd",support);
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params SSDKSetupShareParamsByText:@"Text" images:[UIImage imageNamed:@""] url:nil title:@"test" type:SSDKContentTypeAuto];
@@ -475,6 +477,7 @@
             break;
             //Facebook
         case SSDKPlatformTypeFacebook:
+        case SSDKPlatformTypeFacebookMessenger:
 #ifdef IMPORT_Facebook
             #pragma mark - Facebook 重设权限
 //                  [appInfo SSDKSetAuthSettings:@[

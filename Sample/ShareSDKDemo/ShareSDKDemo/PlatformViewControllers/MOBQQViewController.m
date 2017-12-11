@@ -36,6 +36,7 @@
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeText];
+    
     //平台定制
 //    [parameters SSDKSetupQQParamsByText:@"Share SDK"
 //                                  title:nil
@@ -61,6 +62,7 @@
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
+//    [parameters SSDKEnableExtensionShare];
     
     
     //平台定制
