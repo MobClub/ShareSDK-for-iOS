@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
 /*! @brief 错误码
  *
  */
@@ -48,7 +47,14 @@ enum WXBizProfileType{
     WXBizProfileType_Device = 1,    //**< 硬件公众号  */
 };
 
-
+/*! @brief 分享小程序类型
+ *
+ */
+typedef NS_ENUM(NSUInteger, WXMiniProgramType){
+    WXMiniProgramTypeRelease = 0,       //**< 正式版  */
+    WXMiniProgramTypeTest = 1,        //**< 开发版  */
+    WXMiniProgramTypePreview = 2,         //**< 体验版  */
+};
 
 /*! @brief 跳转mp网页类型
  *
@@ -81,6 +87,20 @@ typedef NS_ENUM(UInt64, enAppSupportContentFlag)
     MMAPP_SUPPORT_XLSX = 0x800,              // xlsx
     MMAPP_SUPPORT_PDF  = 0x1000,             // pdf
 };
+
+/*! @brief log的级别
+ *
+ */
+typedef NS_ENUM(NSInteger,WXLogLevel){
+    WXLogLevelNormal = 0,      // 打印日常的日志
+    WXLogLevelDetail = 1,      // 打印详细的日志
+};
+
+
+/*! @brief 打印回调的block
+ *
+ */
+typedef void(^WXLogBolock)(NSString * log);
 
 #pragma mark - BaseReq
 /*! @brief 该类为微信终端SDK所有请求类的基类
@@ -842,6 +862,8 @@ typedef NS_ENUM(UInt64, enAppSupportContentFlag)
 
 @property (nonatomic, assign) BOOL withShareTicket;   //是否使用带 shareTicket 的转发
 
+@property (nonatomic, assign) WXMiniProgramType miniProgramType;  // 分享小程序的版本（正式，开发，体验）
+
 @end
 
 #pragma mark - WXLaunchMiniProgramReq
@@ -856,6 +878,7 @@ typedef NS_ENUM(UInt64, enAppSupportContentFlag)
 
 @property (nonatomic, strong) NSString *userName;   //拉起的小程序的username
 @property (nonatomic, strong) NSString *path;       //拉起小程序页面的路径，不填默认拉起小程序首页
+@property (nonatomic, assign) WXMiniProgramType miniProgramType; //拉起小程序的类型
 
 @end
 
