@@ -232,13 +232,23 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //平台定制
-    [parameters SSDKSetupWeChatParamsByTitle:@"MiniProgram"
-                                 description:@"test MiniProgram"
-                                  webpageUrl:[NSURL URLWithString:@"http://www.mob.com"]
-                                        path:@"/page/API/pages/share/share"
-                                  thumbImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                    userName:@"gh_d43f693ca31f"
-                          forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+//    [parameters SSDKSetupWeChatParamsByTitle:@"MiniProgram"
+//                                  description:@"test MiniProgram"
+//                                   webpageUrl:[NSURL URLWithString:@"http://www.mob.com"]
+//                                         path:@"/page/API/pages/share/share"
+//                                   thumbImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+//                                     userName:@"gh_d43f693ca31f"
+//                           forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+    
+     [parameters SSDKSetupWeChatMiniProgramShareParamsByTitle:@"MiniProgram"
+                                                  description:@"test MiniProgram"
+                                                   webpageUrl:[NSURL URLWithString:@"http://www.mob.com"]
+                                                         path:@"pages/index/index"
+                                                   thumbImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                                     userName:@"gh_afb25ac019c9"
+                                              withShareTicket:YES
+                                              miniProgramType:0
+                                           forPlatformSubType:SSDKPlatformSubTypeWechatSession];
     
     [self shareWithParameters:parameters];
 }

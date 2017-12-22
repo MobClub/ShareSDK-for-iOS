@@ -251,7 +251,30 @@
                                 path:(NSString *)path
                           thumbImage:(id)thumbImage
                             userName:(NSString *)userName
-                  forPlatformSubType:(SSDKPlatformType)platformSubType;
+                  forPlatformSubType:(SSDKPlatformType)platformSubType __deprecated_msg("discard form v4.0.7");
+
+/**
+ v4.0.7 为微信小程序分享增加
+ 
+ @param title 标题
+ @param description 详细说明
+ @param webpageUrl 网址（6.5.6以下版本微信会自动转化为分享链接 必填）
+ @param path 跳转到页面路径
+ @param thumbImage 缩略图 （必填）
+ @param userName 小程序的userName （必填）
+ @param withShareTicket 是否使用带 shareTicket 的转发
+ @param type 分享小程序的版本（0-正式，1-开发，2-体验）
+ @param platformSubType 分享自平台 微信小程序暂只支持 SSDKPlatformSubTypeWechatSession（微信好友分享)
+ */
+- (void)SSDKSetupWeChatMiniProgramShareParamsByTitle:(NSString *)title
+                                         description:(NSString *)description
+                                          webpageUrl:(NSURL *)webpageUrl
+                                                path:(NSString *)path
+                                          thumbImage:(id)thumbImage
+                                            userName:(NSString *)userName
+                                     withShareTicket:(BOOL)withShareTicket
+                                     miniProgramType:(NSUInteger)type
+                                  forPlatformSubType:(SSDKPlatformType)platformSubType;
 
 
 /**

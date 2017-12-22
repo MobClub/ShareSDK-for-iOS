@@ -967,8 +967,8 @@
 				TargetAttributes = {
 					4462125E1E6D8B5800C609C9 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = LW5266U92D;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = Q87QUX3533;
+						ProvisioningStyle = Manual;
 					};
 					44F1FD231F8F60D100366259 = {
 						CreatedOnToolsVersion = 9.0;
@@ -1239,8 +1239,8 @@
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = deep;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LW5266U92D;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = Q87QUX3533;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../SDK/ShareSDK\"/**",
@@ -1254,8 +1254,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mob.product.ShareSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "58b21a8b-09ee-418f-a4b2-1092cd2cb717";
+				PROVISIONING_PROFILE_SPECIFIER = MobProvisioningProfiles;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1266,8 +1266,8 @@
 			buildSettings = {
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = deep;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = LW5266U92D;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1282,8 +1282,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mob.product.ShareSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "3944b332-19f5-4da5-a25c-5d408cf821bb";
+				PROVISIONING_PROFILE_SPECIFIER = ShareSDK;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

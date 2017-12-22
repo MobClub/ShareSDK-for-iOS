@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
 /*! @brief 错误码
  *
  */
@@ -48,7 +47,14 @@ enum WXBizProfileType{
     WXBizProfileType_Device = 1,    //**< 硬件公众号  */
 };
 
-
+/*! @brief 分享小程序类型
+ *
+ */
+typedef NS_ENUM(NSUInteger, WXMiniProgramType){
+    WXMiniProgramTypeRelease = 0,       //**< 正式版  */
+    WXMiniProgramTypeTest = 1,        //**< 开发版  */
+    WXMiniProgramTypePreview = 2,         //**< 体验版  */
+};
 
 /*! @brief 跳转mp网页类型
  *
@@ -81,6 +87,20 @@ typedef NS_ENUM(UInt64, enAppSupportContentFlag)
     MMAPP_SUPPORT_XLSX = 0x800,              // xlsx
     MMAPP_SUPPORT_PDF  = 0x1000,             // pdf
 };
+
+/*! @brief log的级别
+ *
+ */
+typedef NS_ENUM(NSInteger,WXLogLevel){
+    WXLogLevelNormal = 0,      // 打印日常的日志
+    WXLogLevelDetail = 1,      // 打印详细的日志
+};
+
+
+/*! @brief 打印回调的block
+ *
+ */
+typedef void(^WXLogBolock)(NSString * log);
 
 #pragma mark - BaseReq
 /*! @brief 该类为微信终端SDK所有请求类的基类
@@ -115,7 +135,6 @@ typedef NS_ENUM(UInt64, enAppSupportContentFlag)
 
 #pragma mark - WXMediaMessage
 @class WXMediaMessage;
-
 
 
 #pragma mark - SendAuthReq
@@ -503,6 +522,27 @@ typedef NS_ENUM(UInt64, enAppSupportContentFlag)
 @property (nonatomic, strong) NSArray* cardAry;
 @end
 
+#pragma mark - WXSubscriptionReq
+@interface WXSubscribeMsgReq : BaseReq
+@property (nonatomic, assign) UInt32 scene;
+@property (nonatomic, strong) NSString * templateId;
+@property (nonatomic, strong) NSString * reserved;
+@end
+
+#pragma mark - WXSubscriptionReq
+@interface WXSubscribeMsgResp : BaseResp
+
+@property (nonatomic, strong) NSString *templateId;
+@property (nonatomic, assign) UInt32 scene;
+@property (nonatomic, strong) NSString *action;
+@property (nonatomic, strong) NSString * reserved;
+@property (nonatomic, strong) NSString * openId;
+
+@end
+
+#pragma mark - WXMediaMessage
+
+
 #pragma mark - WXMediaMessage
 
 /*! @brief 多媒体消息结构体
@@ -776,7 +816,39 @@ typedef NS_ENUM(UInt64, enAppSupportContentFlag)
 
 @property (nonatomic, strong) NSData *hdImageData;   // 小程序新版本的预览图 128k
 
+@property (nonatomic, assign) BOOL withShareTicket;   //是否使用带 shareTicket 的转发
+
+@property (nonatomic, assign) WXMiniProgramType miniProgramType;  // 分享小程序的版本（正式，开发，体验）
+
 @end
+
+#pragma mark - WXLaunchMiniProgramReq
+
+/*! @brief WXLaunchMiniProgramReq对象, 可实现通过sdk拉起微信小程序
+ *
+ * @note 返回的WXLaunchMiniProgramReq对象是自动释放的
+ */
+@interface WXLaunchMiniProgramReq : BaseReq
+
++(WXLaunchMiniProgramReq *) object;
+
+@property (nonatomic, strong) NSString *userName;   //拉起的小程序的username
+@property (nonatomic, strong) NSString *path;       //拉起小程序页面的路径，不填默认拉起小程序首页
+@property (nonatomic, assign) WXMiniProgramType miniProgramType; //拉起小程序的类型
+
+@end
+
+#pragma mark - WXLaunchMiniProgramResp
+/*! @brief 微信终端向第三方程序返回的WXLaunchMiniProgramReq处理结果。
+ *
+ * 第三方程序向微信终端发送WXLaunchMiniProgramReq后，微信发送回来的处理结果，该结果用WXLaunchMiniProgramResp表示。
+ */
+@interface WXLaunchMiniProgramResp : BaseResp
+
+@property (nonatomic, retain) NSString *extMsg;
+
+@end
+
 
 #pragma mark - WXTextObject
 /*! @brief 多媒体消息中包含的文本数据对象

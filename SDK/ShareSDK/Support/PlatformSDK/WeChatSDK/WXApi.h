@@ -39,7 +39,13 @@
 
 @end
 
+#pragma mark - WXApiLogDelegate
 
+@protocol WXApiLogDelegate <NSObject>
+
+-(void) onLog:(NSString*)log logLevel:(WXLogLevel)level;
+
+@end
 
 #pragma mark - WXApi
 
@@ -136,7 +142,7 @@
 /*! @brief 发送请求到微信，等待微信返回onResp
  *
  * 函数调用后，会切换到微信的界面。第三方应用程序等待微信返回onResp。微信在异步处理完成后一定会调用onResp。支持以下类型
- * SendAuthReq、SendMessageToWXReq等。
+ * SendAuthReq、SendMessageToWXReq、PayReq等。
  * @param req 具体的发送请求，在调用函数后，请自己释放。
  * @return 成功返回YES，失败返回NO。
  */
@@ -163,4 +169,25 @@
 +(BOOL) sendResp:(BaseResp*)resp;
 
 
+/*! @brief WXApi的成员函数，接受微信的log信息。byBlock
+    注意1:SDK会强引用这个block,注意不要导致内存泄漏,注意不要导致内存泄漏
+    注意2:调用过一次startLog by block之后，如果再调用一次任意方式的startLoad,会释放上一次logBlock，不再回调上一个logBlock
+ *
+ *  @param level 打印log的级别
+ *  @param logBlock 打印log的回调block
+ */
++(void) startLogByLevel:(WXLogLevel)level logBlock:(WXLogBolock)logBlock;
+
+/*! @brief WXApi的成员函数，接受微信的log信息。byDelegate 
+    注意1:sdk会弱引用这个delegate，这里可加任意对象为代理，不需要与WXApiDelegate同一个对象
+    注意2:调用过一次startLog by delegate之后，再调用一次任意方式的startLoad,不会再回调上一个logDelegate对象
+ *  @param level 打印log的级别
+ *  @param logDelegate 打印log的回调代理，
+ */
++ (void)startLogByLevel:(WXLogLevel)level logDelegate:(id<WXApiLogDelegate>)logDelegate;
+
+/*! @brief 停止打印log，会清理block或者delegate为空，释放block
+ *  @param 
+ */
++ (void)stopLog;
 @end
