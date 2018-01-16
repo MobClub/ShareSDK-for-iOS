@@ -62,58 +62,50 @@ SDK
 
   main module(necessary)
   ```objc
-  pod 'ShareSDK3'
+  pod 'mob_sharesdk'
   #Mob Public Library (must) if SMSSDK iOS2.0: can be integrated at the same time see this note：http://bbs.mob.com/thread-20051-1-1.html
   pod 'MOBFoundation'
   ```
   
   UI module(Non-essential，Use ShareSDK's UI(Share menu bar and share editorial page) needs)
   ```objc
-  pod 'ShareSDK3/ShareSDKUI'
+  pod 'mob_sharesdk/ShareSDKUI'
   pod 'ShareSDK3/ShareSDKExtension'
   ```
   
   SNSPlatform SDK module(Non-essential。if you want to Share to QQ/Wechat/Sinaweibo,Only the following three lines)
   
   ```objc
-  pod 'ShareSDK3/ShareSDKPlatforms/QQ'
-  pod 'ShareSDK3/ShareSDKPlatforms/SinaWeibo'
-  pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
+  pod 'mob_sharesdk/ShareSDKPlatforms/QQ'
+  pod 'mob_sharesdk/ShareSDKPlatforms/SinaWeibo'
+  pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'   //（微信sdk不带支付的命令）
+  # pod 'mob_sharesdk/ShareSDKPlatforms/WeChatFull' //（微信sdk带支付的命令，和上面不带支付的不能共存，只能选择一个）
   
-  pod 'ShareSDK3/ShareSDKPlatforms/RenRen'
-  pod 'ShareSDK3/ShareSDKPlatforms/AliPaySocial'
-  pod 'ShareSDK3/ShareSDKPlatforms/Kakao'
-  pod 'ShareSDK3/ShareSDKPlatforms/Yixin'
-  pod 'ShareSDK3/ShareSDKPlatforms/Facebook'
-  pod 'ShareSDK3/ShareSDKPlatforms/Copy'
-  pod 'ShareSDK3/ShareSDKPlatforms/Evernote'
-  pod 'ShareSDK3/ShareSDKPlatforms/GooglePlus'
-  pod 'ShareSDK3/ShareSDKPlatforms/Instagram'
-  pod 'ShareSDK3/ShareSDKPlatforms/Instapaper'
-  pod 'ShareSDK3/ShareSDKPlatforms/Line'
-  pod 'ShareSDK3/ShareSDKPlatforms/Mail'
-  pod 'ShareSDK3/ShareSDKPlatforms/SMS'
-  pod 'ShareSDK3/ShareSDKPlatforms/WhatsApp'
-  pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
-  pod 'ShareSDK3/ShareSDKPlatforms/MeiPai'
-  pod 'ShareSDK3/ShareSDKPlatforms/YouTube'
-  pod 'ShareSDK3/ShareSDKPlatforms/Twitter'
-  pod 'ShareSDK3/ShareSDKPlatforms/DingTalk'
-  pod 'ShareSDK3/ShareSDKPlatforms/Dropbox'
+  pod 'mob_sharesdk/ShareSDKPlatforms/RenRen'
+  pod 'mob_sharesdk/ShareSDKPlatforms/AliPaySocial'
+  pod 'mob_sharesdk/ShareSDKPlatforms/Kakao'
+  pod 'mob_sharesdk/ShareSDKPlatforms/Yixin'
+  pod 'mob_sharesdk/ShareSDKPlatforms/Facebook'
+  pod 'mob_sharesdk/ShareSDKPlatforms/Copy'
+  pod 'mob_sharesdk/ShareSDKPlatforms/Evernote'
+  pod 'mob_sharesdk/ShareSDKPlatforms/GooglePlus'
+  pod 'mob_sharesdk/ShareSDKPlatforms/Instagram'
+  pod 'mob_sharesdk/ShareSDKPlatforms/Instapaper'
+  pod 'mob_sharesdk/ShareSDKPlatforms/Line'
+  pod 'mob_sharesdk/ShareSDKPlatforms/Mail'
+  pod 'mob_sharesdk/ShareSDKPlatforms/SMS'
+  pod 'mob_sharesdk/ShareSDKPlatforms/WhatsApp'
+  pod 'mob_sharesdk/ShareSDKPlatforms/MeiPai'
+  pod 'mob_sharesdk/ShareSDKPlatforms/DingTalk'
+  pod 'mob_sharesdk/ShareSDKPlatforms/YouTube'
+  pod 'mob_sharesdk/ShareSDKPlatforms/Twitter'
+  pod 'mob_sharesdk/ShareSDKPlatforms/Dropbox'
   
   #using the configuration file sharing module (optional) 
-  pod 'ShareSDK3/ShareSDKConfigurationFile'
+  pod 'mob_sharesdk/ShareSDKConfigurationFile'
  
   #extension module (optional) 
-  pod 'ShareSDK3/ShareSDKExtension'
-  
-  #ShareSDK currently supports a platform (SDK platform removal does not affect the sharing and authorization functions)
-  #platform statement replaces the ShareSDKPlatforms module statement can  
- pod 'ShareSDK3/PlatformConnector/QQ'
-  pod 'ShareSDK3/PlatformConnector/SinaWeibo'
-  pod 'ShareSDK3/PlatformConnector/WeChat'
-  pod 'ShareSDK3/PlatformConnector/RenRen'
-  pod 'ShareSDK3/PlatformConnector/AliPaySocial'  
+  pod 'mob_sharesdk/ShareSDKExtension'
   ```
 * **Manually import：**
   * 1、Download the latest version of the ShareSDK, and drag into your project
