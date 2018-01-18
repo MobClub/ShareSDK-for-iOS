@@ -68,9 +68,9 @@ SDK
   ```
   
   UI module(Non-essential，Use ShareSDK's UI(Share menu bar and share editorial page) needs)
-  ```objc
+  ```
   pod 'mob_sharesdk/ShareSDKUI'
-  pod 'ShareSDK3/ShareSDKExtension'
+  pod 'mob_sharesdk/ShareSDKExtension'
   ```
   
   SNSPlatform SDK module(Non-essential。if you want to Share to QQ/Wechat/Sinaweibo,Only the following three lines)
