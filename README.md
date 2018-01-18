@@ -114,16 +114,16 @@ pod 'mob_sharesdk/ShareSDKExtension'
    
        (1)、Download the latest version of the ShareSDK, then you will get the following files.
 
-        ![img](http://images2015.cnblogs.com/blog/708376/201512/708376-20151217215634646-932311230.png)
+![img](http://images2015.cnblogs.com/blog/708376/201512/708376-20151217215634646-932311230.png)
 
        (2)、Select the ShareSDK file and drag into your project (or just holding down the Control key on your keyboard and click your project,namely right-click your project, and choose “Add Files to …”).
 then you will see the following window, check the "Copy items into destination group's folder (if needed)" and click "Finish" button.
 
-        ![img](http://images2015.cnblogs.com/blog/708376/201512/708376-20151217214621381-255952184.png)
+![img](http://images2015.cnblogs.com/blog/708376/201512/708376-20151217214621381-255952184.png)
 
        (3)、Now you have added the ShareSDK file to your project and it will look like this:  
 
-        ![img](http://images2015.cnblogs.com/blog/708376/201512/708376-20151217215149318-1957357410.png)
+![img](http://images2015.cnblogs.com/blog/708376/201512/708376-20151217215149318-1957357410.png)
 
 * 2、add the necessary Framework
 
