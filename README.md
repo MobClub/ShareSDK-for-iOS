@@ -61,14 +61,16 @@ SDK
 * **cocoapods import：**
 
   main module(necessary)
-  ```objc
+
+   ```objc  
   pod 'mob_sharesdk'
-  #Mob Public Library (must) if SMSSDK iOS2.0: can be integrated at the same time see this note：http://bbs.mob.com/thread-20051-1-1.html
+  // Mob Public Library (must) if SMSSDK iOS2.0: can be integrated at the same time see this note：http://bbs.mob.com/thread-20051-1-1.html
   pod 'MOBFoundation'
   ```
   
-  UI module(Non-essential，Use ShareSDK's UI(Share menu bar and share editorial page) needs)
-  ```objc
+  UI module(Non-essential，Use ShareSDK's UI(Share menu bar and share editorial page) needs)  
+  
+  ```objc  
   pod 'mob_sharesdk/ShareSDKUI'
   pod 'mob_sharesdk/ShareSDKExtension'
   ```
