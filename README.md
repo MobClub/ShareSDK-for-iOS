@@ -62,18 +62,18 @@ SDK
 
   main module(necessary)
 
-   ```ruby
-   pod 'mob_sharesdk'
-   // Mob Public Library (must) if SMSSDK iOS2.0: can be integrated at the same time see this note：http://bbs.mob.com/thread-20051-1-1.html
-   pod 'MOBFoundation'
-  ```
+```ruby
+pod 'mob_sharesdk'
+# Mob Public Library (must) if SMSSDK iOS2.0: can be integrated at the same time see this note：http://bbs.mob.com/thread-20051-1-1.html
+pod 'MOBFoundation'
+```
   
   UI module(Non-essential，Use ShareSDK's UI(Share menu bar and share editorial page) needs)  
   
-  ```ruby  
-  pod 'mob_sharesdk/ShareSDKUI'
-  pod 'mob_sharesdk/ShareSDKExtension'
-  ```
+```ruby  
+pod 'mob_sharesdk/ShareSDKUI'
+pod 'mob_sharesdk/ShareSDKExtension'
+```
   
   SNSPlatform SDK module(Non-essential。if you want to Share to QQ/Wechat/Sinaweibo,Only the following three lines)
   
