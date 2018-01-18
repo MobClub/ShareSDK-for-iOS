@@ -60,7 +60,7 @@ SDK
 ## Step 1：Import the ShareSDK to your project
 * **cocoapods import：**  
 
-    1. main module(necessary)
+1.main module(necessary)
 
 ```ruby
 pod 'mob_sharesdk'
@@ -68,14 +68,14 @@ pod 'mob_sharesdk'
 pod 'MOBFoundation'
 ```
 
-    2. UI module(Non-essential，Use ShareSDK's UI(Share menu bar and share editorial page) needs)  
+2. UI module(Non-essential，Use ShareSDK's UI(Share menu bar and share editorial page) needs)  
   
 ```ruby  
 pod 'mob_sharesdk/ShareSDKUI'
 pod 'mob_sharesdk/ShareSDKExtension'
 ```
   
-    3. SNSPlatform SDK module(Non-essential。if you want to Share to QQ/Wechat/Sinaweibo,Only the following three lines)
+3. SNSPlatform SDK module(Non-essential。if you want to Share to QQ/Wechat/Sinaweibo,Only the following three lines)
   
 ```ruby
 pod 'mob_sharesdk/ShareSDKPlatforms/QQ'
