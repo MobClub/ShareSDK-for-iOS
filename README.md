@@ -60,55 +60,55 @@ SDK
 ## Step 1：Import the ShareSDK to your project
 * **cocoapods import：**  
 
-main module(necessary)
+    1. main module(necessary)
 
 ```ruby
 pod 'mob_sharesdk'
 # Mob Public Library (must) if SMSSDK iOS2.0: can be integrated at the same time see this note：http://bbs.mob.com/thread-20051-1-1.html
 pod 'MOBFoundation'
 ```
-  
-UI module(Non-essential，Use ShareSDK's UI(Share menu bar and share editorial page) needs)  
+
+    2. UI module(Non-essential，Use ShareSDK's UI(Share menu bar and share editorial page) needs)  
   
 ```ruby  
 pod 'mob_sharesdk/ShareSDKUI'
 pod 'mob_sharesdk/ShareSDKExtension'
 ```
   
-SNSPlatform SDK module(Non-essential。if you want to Share to QQ/Wechat/Sinaweibo,Only the following three lines)
+    3. SNSPlatform SDK module(Non-essential。if you want to Share to QQ/Wechat/Sinaweibo,Only the following three lines)
   
-  ```objc
-  pod 'mob_sharesdk/ShareSDKPlatforms/QQ'
-  pod 'mob_sharesdk/ShareSDKPlatforms/SinaWeibo'
-  pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'   //（微信sdk不带支付的命令）
-  # pod 'mob_sharesdk/ShareSDKPlatforms/WeChatFull' //（微信sdk带支付的命令，和上面不带支付的不能共存，只能选择一个）
-  
-  pod 'mob_sharesdk/ShareSDKPlatforms/RenRen'
-  pod 'mob_sharesdk/ShareSDKPlatforms/AliPaySocial'
-  pod 'mob_sharesdk/ShareSDKPlatforms/Kakao'
-  pod 'mob_sharesdk/ShareSDKPlatforms/Yixin'
-  pod 'mob_sharesdk/ShareSDKPlatforms/Facebook'
-  pod 'mob_sharesdk/ShareSDKPlatforms/Copy'
-  pod 'mob_sharesdk/ShareSDKPlatforms/Evernote'
-  pod 'mob_sharesdk/ShareSDKPlatforms/GooglePlus'
-  pod 'mob_sharesdk/ShareSDKPlatforms/Instagram'
-  pod 'mob_sharesdk/ShareSDKPlatforms/Instapaper'
-  pod 'mob_sharesdk/ShareSDKPlatforms/Line'
-  pod 'mob_sharesdk/ShareSDKPlatforms/Mail'
-  pod 'mob_sharesdk/ShareSDKPlatforms/SMS'
-  pod 'mob_sharesdk/ShareSDKPlatforms/WhatsApp'
-  pod 'mob_sharesdk/ShareSDKPlatforms/MeiPai'
-  pod 'mob_sharesdk/ShareSDKPlatforms/DingTalk'
-  pod 'mob_sharesdk/ShareSDKPlatforms/YouTube'
-  pod 'mob_sharesdk/ShareSDKPlatforms/Twitter'
-  pod 'mob_sharesdk/ShareSDKPlatforms/Dropbox'
-  
-  #using the configuration file sharing module (optional) 
-  pod 'mob_sharesdk/ShareSDKConfigurationFile'
- 
-  #extension module (optional) 
-  pod 'mob_sharesdk/ShareSDKExtension'
-  ```
+```ruby
+pod 'mob_sharesdk/ShareSDKPlatforms/QQ'
+pod 'mob_sharesdk/ShareSDKPlatforms/SinaWeibo'
+pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'   //（微信sdk不带支付的命令）
+# pod 'mob_sharesdk/ShareSDKPlatforms/WeChatFull' //（微信sdk带支付的命令，和上面不带支付的不能共存，只能选择一个）
+
+pod 'mob_sharesdk/ShareSDKPlatforms/RenRen'
+pod 'mob_sharesdk/ShareSDKPlatforms/AliPaySocial'
+pod 'mob_sharesdk/ShareSDKPlatforms/Kakao'
+pod 'mob_sharesdk/ShareSDKPlatforms/Yixin'
+pod 'mob_sharesdk/ShareSDKPlatforms/Facebook'
+pod 'mob_sharesdk/ShareSDKPlatforms/Copy'
+pod 'mob_sharesdk/ShareSDKPlatforms/Evernote'
+pod 'mob_sharesdk/ShareSDKPlatforms/GooglePlus'
+pod 'mob_sharesdk/ShareSDKPlatforms/Instagram'
+pod 'mob_sharesdk/ShareSDKPlatforms/Instapaper'
+pod 'mob_sharesdk/ShareSDKPlatforms/Line'
+pod 'mob_sharesdk/ShareSDKPlatforms/Mail'
+pod 'mob_sharesdk/ShareSDKPlatforms/SMS'
+pod 'mob_sharesdk/ShareSDKPlatforms/WhatsApp'
+pod 'mob_sharesdk/ShareSDKPlatforms/MeiPai'
+pod 'mob_sharesdk/ShareSDKPlatforms/DingTalk'
+pod 'mob_sharesdk/ShareSDKPlatforms/YouTube'
+pod 'mob_sharesdk/ShareSDKPlatforms/Twitter'
+pod 'mob_sharesdk/ShareSDKPlatforms/Dropbox'
+
+#using the configuration file sharing module (optional) 
+pod 'mob_sharesdk/ShareSDKConfigurationFile'
+
+#extension module (optional) 
+pod 'mob_sharesdk/ShareSDKExtension'
+```
 * **Manually import：**
   * 1、Download the latest version of the ShareSDK, and drag into your project
    
