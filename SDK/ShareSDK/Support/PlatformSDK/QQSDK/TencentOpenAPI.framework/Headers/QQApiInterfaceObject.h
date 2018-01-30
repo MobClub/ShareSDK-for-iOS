@@ -15,26 +15,26 @@
 typedef enum
 {
     EQQAPISENDSUCESS = 0,
-    EQQAPIQQNOTINSTALLED = 1,
-    EQQAPIQQNOTSUPPORTAPI = 2,
+    EQQAPIQQNOTINSTALLED = 1,  //QQ未安装
+    EQQAPIQQNOTSUPPORTAPI = 2,  // QQ api不支持
     EQQAPIMESSAGETYPEINVALID = 3,
     EQQAPIMESSAGECONTENTNULL = 4,
     EQQAPIMESSAGECONTENTINVALID = 5,
     EQQAPIAPPNOTREGISTED = 6,
     EQQAPIAPPSHAREASYNC = 7,
-    EQQAPIQQNOTSUPPORTAPI_WITH_ERRORSHOW = 8,
-    EQQAPISENDFAILD = -1,
+    EQQAPIQQNOTSUPPORTAPI_WITH_ERRORSHOW = 8,  //QQ api不支持 && SDK显示error提示（已废弃）
+    EQQAPIMESSAGEARKCONTENTNULL = 9,  //ark内容为空
+    EQQAPISENDFAILD = -1,  //发送失败
     EQQAPISHAREDESTUNKNOWN = -2, //未指定分享到QQ或TIM
+    EQQAPITIMSENDFAILD = -3,  //发送失败
     
     EQQAPITIMNOTINSTALLED = 11, //TIM未安装
     EQQAPITIMNOTSUPPORTAPI = 12, // TIM api不支持
-    //qzone分享不支持text类型分享
-    EQQAPIQZONENOTSUPPORTTEXT = 10000,
-    //qzone分享不支持image类型分享
-    EQQAPIQZONENOTSUPPORTIMAGE = 10001,
-    //当前QQ版本太低，需要更新至新版本才可以支持
-    EQQAPIVERSIONNEEDUPDATE = 10002,
-    ETIMAPIVERSIONNEEDUPDATE = 10004,
+    
+    EQQAPIQZONENOTSUPPORTTEXT = 10000,  //qzone分享不支持text类型分享
+    EQQAPIQZONENOTSUPPORTIMAGE = 10001,  //qzone分享不支持image类型分享
+    EQQAPIVERSIONNEEDUPDATE = 10002,  //当前QQ版本太低，需要更新至新版本才可以支持
+    ETIMAPIVERSIONNEEDUPDATE = 10004,  //当前TIM版本太低，需要更新至新版本才可以支持
 } QQApiSendResultCode;
 
 #pragma mark - QQApiObject(分享对象类型)
@@ -47,13 +47,13 @@ enum
     kQQAPICtrlFlagQQShare = 0x04,
     kQQAPICtrlFlagQQShareFavorites = 0x08, //收藏
     kQQAPICtrlFlagQQShareDataline = 0x10,  //数据线
+    kQQAPICtrlFlagQQShareEnableArk = 0x20, //支持ARK
 };
 
 // 分享到QQ或TIM
 typedef enum ShareDestType {
     ShareDestTypeQQ = 0,
     ShareDestTypeTIM,
-    ShareDestTypeQIM,
 }ShareDestType;
 
 // QQApiObject
@@ -65,11 +65,22 @@ __attribute__((visibility("default"))) @interface QQApiObject : NSObject
 
 @property (nonatomic, assign) uint64_t cflag;
 /*
- * 分享到QQ/TIM/QIM
- * SDK根据是否安装对应客户端进行判断，判断顺序：QQ > TIM > QIM
- * 默认分享到QQ，如果QQ未安装检测TIM是否安装，如果TIM未安装检测是否安装QIM
+ * 分享到QQ/TIM
+ * SDK根据是否安装对应客户端进行判断，判断顺序：QQ > TIM
+ * 默认分享到QQ，如果QQ未安装检测TIM是否安装
  */
 @property (nonatomic, assign) ShareDestType shareDestType;
+@end
+
+// ArkObject
+/** \brief 支持Ark的根类。
+ */
+__attribute__((visibility("default"))) @interface ArkObject : NSObject
+@property(nonatomic,retain) NSString* arkData; ///< 显示Ark所需的数据，json串，长度暂不限制
+@property(nonatomic,assign) QQApiObject* qqApiObject; ///<原有老版本的QQApiObject
+
+- (id)initWithData:(NSString *)arkData qqApiObject:(QQApiObject*)qqApiObject;
++ (id)objectWithData:(NSString *)arkData qqApiObject:(QQApiObject*)qqApiObject;
 @end
 
 // QQApiResultObject
@@ -402,6 +413,47 @@ __attribute__((visibility("default"))) @interface QQApiURLObject : QQApiObject
 @property(nonatomic,retain) NSURL* target;///<广告目标链接
 @end
 
+#pragma mark - QQApiObject(关系链对象)
+
+// QQApiAddFriendObject
+/** \brief 添加好友
+ */
+@interface QQApiAddFriendObject : QQApiObject
+@property (nonatomic,retain)NSString* openID;
+@property (nonatomic,retain)NSString* subID;
+@property (nonatomic,retain)NSString* remark;
+
+-(id)initWithOpenID:(NSString*)openID; ///<初始化方法
++(id)objecWithOpenID:(NSString*)openID; ///<工厂方法，获取一个QQApiAddFriendObject对象.
+
+@end
+
+// QQApiGameConsortiumBindingGroupObject
+/** \brief 游戏公会绑定群
+ */
+@interface QQApiGameConsortiumBindingGroupObject : QQApiObject
+@property (nonatomic,retain)NSString* signature;
+@property (nonatomic,retain)NSString* unionid;
+@property (nonatomic,retain)NSString* zoneID;
+@property (nonatomic,retain)NSString* appDisplayName;
+
+-(id)initWithGameConsortium:(NSString*)signature unionid:(NSString*)unionid zoneID:(NSString*)zoneID appDisplayName:(NSString*)appDisplayName; ///<初始化方法
++(id)objectWithGameConsortium:(NSString*)signature unionid:(NSString*)unionid zoneID:(NSString*)zoneID appDisplayName:(NSString*)appDisplayName; ///<工厂方法，获取一个QQApiAddFriendObject对象.
+
+@end
+
+// QQApiGameConsortiumBindingGroupObject
+/** \brief 加入群
+ */
+@interface QQApiJoinGroupObject : QQApiObject
+@property (nonatomic,retain)NSString* groupUin;
+@property (nonatomic,retain)NSString* groupKey;
+
+- (id)initWithGroupInfo:(NSString*)groupUin key:(NSString*)groupKey; ///<初始化方法
++ (id)objectWithGroupInfo:(NSString*)groupUin key:(NSString*)groupKey; ///<同时提供群号和群KEY 工厂方法，获取一个QQApiAddFriendObject对象.
++ (id)objectWithGroupKey:(NSString*)groupKey; ///<只需要群的KEY 工厂方法，获取一个QQApiAddFriendObject对象.
+
+@end
 
 #pragma mark - QQApi请求消息类型
 
@@ -412,7 +464,8 @@ enum QQApiInterfaceReqType
 {
     EGETMESSAGEFROMQQREQTYPE = 0,   ///< 手Q -> 第三方应用，请求第三方应用向手Q发送消息
     ESENDMESSAGETOQQREQTYPE = 1,    ///< 第三方应用 -> 手Q，第三方应用向手Q分享消息
-    ESHOWMESSAGEFROMQQREQTYPE = 2   ///< 手Q -> 第三方应用，请求第三方应用展现消息中的数据
+    ESHOWMESSAGEFROMQQREQTYPE = 2,   ///< 手Q -> 第三方应用，请求第三方应用展现消息中的数据
+    ESENDMESSAGEARKTOQQREQTYPE = 3    ///< 第三方应用 -> 手Q，第三方应用向手Q分享Ark消息
 };
 
 /**
@@ -466,9 +519,6 @@ enum QQApiInterfaceRespType
 
 @end
 
-/**
- SendMessageToQQReq请求帮助类
- */
 @interface SendMessageToQQReq : QQBaseReq
 
 /**
@@ -478,8 +528,18 @@ enum QQApiInterfaceRespType
  */
 + (SendMessageToQQReq *)reqWithContent:(QQApiObject *)message;
 
+/**
+ 创建一个支持Ark的SendMessageToQQReq请求实例
+ \param message 具体分享消息实例
+ \return 新创建的SendMessageToQQReq请求实例
+ */
++ (SendMessageToQQReq *)reqWithArkContent:(ArkObject *)message;
+
 /** 具体分享消息 */
 @property (nonatomic, retain) QQApiObject *message;
+
+/** 支持Ark的具体分享消息 */
+@property (nonatomic, retain) ArkObject *arkMessage;
 
 @end
 

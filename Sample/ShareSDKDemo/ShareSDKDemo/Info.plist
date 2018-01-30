@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.0.8</string>
+	<string>4.0.9</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -120,7 +120,7 @@
 			<string>pin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>pdk4797078908495202393</string>
+				<string>pdk4759388231231868449</string>
 			</array>
 		</dict>
 		<dict>
@@ -170,7 +170,7 @@
 			<string>pinterest</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>pdk4869186880492553915</string>
+				<string>pdk4799618093317899411</string>
 			</array>
 		</dict>
 		<dict>
@@ -194,6 +194,7 @@
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>pinterestsdk.v1</string>
 		<string>vkauthorize</string>
 		<string>storylink</string>
 		<string>kakao48d3f524e4a636b08d81b3ceb50f1003</string>

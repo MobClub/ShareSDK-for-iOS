@@ -89,6 +89,36 @@ typedef enum
 @property(nonatomic, assign) TencentAuthShareType authShareType;
 
 /**
+ * 获取上次登录得到的token
+ *
+ **/
+- (NSString *)getCachedToken;
+
+/**
+ * 获取上次登录得到的openid
+ *
+ **/
+- (NSString *)getCachedOpenID;
+
+/**
+ * 获取上次登录的token过期日期
+ *
+ **/
+- (NSDate *)getCachedExpirationDate;
+
+/**
+ * 上次登录的token是否过期
+ *
+ **/
+- (BOOL)isCachedTokenValid;
+
+/**
+ * 删除上次登录登录的token信息
+ *
+ **/
+- (BOOL)deleteCachedToken;
+
+/**
  * 用来获得当前sdk的版本号
  * \return 返回sdk版本号
  **/
@@ -145,12 +175,20 @@ typedef enum
 /**
  * 判断用户手机上是否安装手机QQ
  * \return YES:安装 NO:没安装
+ *
+ * \note SDK目前已经支持QQ、TIM授权登录及分享功能， 会按照QQ>TIM的顺序进行调用。
+ * 只要用户安装了QQ、TIM中任意一个应用，都可为第三方应用进行授权登录、分享功能。
+ * 第三方应用在接入SDK时不需要判断是否安装QQ、TIM。若有判断安装QQ、TIM的逻辑建议移除。
  */
 + (BOOL)iphoneQQInstalled;
 
 /**
  * 判断用户手机上是否安装手机TIM
  * \return YES:安装 NO:没安装
+ *
+ * \note SDK目前已经支持QQ、TIM授权登录及分享功能， 会按照QQ>TIM的顺序进行调用。
+ * 只要用户安装了QQ、TIM中任意一个应用，都可为第三方应用进行授权登录、分享功能。
+ * 第三方应用在接入SDK时不需要判断是否安装QQ、TIM。若有判断安装QQ、TIM的逻辑建议移除。
  */
 + (BOOL)iphoneTIMInstalled;
  

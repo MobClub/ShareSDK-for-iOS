@@ -746,7 +746,10 @@
  */
 #ifdef IMPORT_Pinterest
     //ClientId
-    #define MOBSSDKPinterestClientId @"4869186880492553915"
+    #define MOBSSDKPinterestClientId @"4759388231231868449"
+//#define MOBSSDKPinterestClientId @"4799618093317899411"
+//#define MOBSSDKPinterestAppSecret @"17690a5c8ac6e30a27b27c153442c9dab9e2ba9049e72d3b93e633175501384f"
+
 #endif
 
 #pragma mark - Pocket平台配置信息

@@ -62,12 +62,20 @@
 /**
  检测是否已安装QQ
  \return 如果QQ已安装则返回YES，否则返回NO
+
+ \note SDK目前已经支持QQ、TIM授权登录及分享功能， 会按照QQ>TIM的顺序进行调用。
+ 只要用户安装了QQ、TIM中任意一个应用，都可为第三方应用进行授权登录、分享功能。
+ 第三方应用在接入SDK时不需要判断是否安装QQ、TIM。若有判断安装QQ、TIM的逻辑建议移除。
  */
 + (BOOL)isQQInstalled;
 
 /**
  检测是否已安装TIM
  \return 如果TIM已安装则返回YES，否则返回NO
+ 
+ \note SDK目前已经支持QQ、TIM授权登录及分享功能， 会按照QQ>TIM的顺序进行调用。
+ 只要用户安装了QQ、TIM中任意一个应用，都可为第三方应用进行授权登录、分享功能。
+ 第三方应用在接入SDK时不需要判断是否安装QQ、TIM。若有判断安装QQ、TIM的逻辑建议移除。
  */
 + (BOOL)isTIMInstalled;
 
@@ -82,6 +90,18 @@
  \return 如果当前安装TIM版本支持API调用则返回YES，否则返回NO
  */
 + (BOOL)isTIMSupportApi;
+
+/**
+ 检测是否支持分享
+ \return 如果当前已安装QQ且QQ版本支持API调用 或者 当前已安装TIM且TIM版本支持API调用则返回YES，否则返回NO
+ */
++ (BOOL)isSupportShareToQQ;
+
+/**
+ 检测是否支持分享到QQ结合版QZone
+ \return 如果当前已安装QQ且QQ版本支持API调用则返回YES，否则返回NO
+ */
++ (BOOL)isSupportPushToQZone;
 
 /**
  启动QQ

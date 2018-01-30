@@ -74,7 +74,7 @@
 
 + (void)hasGetAppKey:(NSNotification *)notification
 {
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [MOBShareSDKHelper shareInstance].platforems = [MOBShareSDKHelper _getPlatforems];
         [ShareSDK registerActivePlatforms:[MOBShareSDKHelper shareInstance].platforems
                                  onImport:^(SSDKPlatformType platformType) {
@@ -86,9 +86,9 @@
         
 //#define InitTest
 #ifdef InitTest
-        [self testShare];
+                [self testShare];
 #endif
-//    });  
+//    });
 }
 
 + (void)testShare
@@ -99,7 +99,7 @@
     NSLog(@"--------------> %zd",support);
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params SSDKSetupShareParamsByText:@"Text" images:[UIImage imageNamed:@""] url:nil title:@"test" type:SSDKContentTypeAuto];
+    [params SSDKSetupShareParamsByText:@"Text" images:[UIImage imageNamed:@"D45.jpg"] url:nil title:@"test" type:SSDKContentTypeAuto];
     
     [ShareSDK share:SSDKPlatformTypeWechat parameters:params onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
         
