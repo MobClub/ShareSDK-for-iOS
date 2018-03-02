@@ -169,7 +169,7 @@
     //AuthType
     #define MOBSSDKQQAuthType SSDKAuthTypeBoth
     //useTIM 是否优先使用TIM客户端
-    #define MOBSSDKQQUseTIM NO
+    #define MOBSSDKQQUseTIM YES
     //是否默认返回 UnionID v4.0.2增加
     #define MOBSSDKQQBackUnionID NO
 #endif

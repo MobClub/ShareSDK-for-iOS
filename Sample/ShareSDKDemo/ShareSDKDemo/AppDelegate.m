@@ -10,10 +10,10 @@
 #import <ShareSDKConnector/ShareSDKConnector.h>
 //导入启动注册helper
 //#import "MOBShareSDKHelper.h"
-
+#import "WXApi.h"
 #import "MobScreenshotCenter.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
@@ -379,9 +379,18 @@
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
 {
-    NSLog(@"application:openURL:options:");
-    //    [self application:app handleOpenURL:url];
+    [WXApi handleOpenURL:url delegate:self];
     return  YES;
+}
+
+- (void)onReq:(BaseReq *)req
+{
+    NSLog(@"--->%s wxapi onreq:%@",__func__,req);
+}
+
+- (void)onResp:(BaseResp *)resp
+{
+    NSLog(@"--->%s wxapi onresp:%@",__func__,resp);
 }
 
 //#import "WeiboSDK.h"
