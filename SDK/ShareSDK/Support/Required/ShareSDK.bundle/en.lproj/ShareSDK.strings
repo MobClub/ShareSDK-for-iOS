@@ -152,7 +152,7 @@
 "ShareSDKConnector_Error_QQ_Share" = "Share platform [QQ] sharing failed";
 "ShareSDKConnector_Error_QQ_Version" = "The current version of the QQ is too low, need to be updated to a new version can support";
 "ShareSDKConnector_Error_QQ_QZone" = "Sharing platform [QQ] call to share the failure of the current QQSDK does not support QZONE text sharing";
-"ShareSDKConnector_Error_QQ_ShareScene" = "Unrecognized sharing scenes";
+"ShareSDKConnector_Error_QQ_ShareScene" = "The sharing platform [QQ] API call error";
 "ShareSDKConnector_Error_QQ_Auth" = "Share platform [QQ] authorization call failed";
 "ShareSDKConnector_Error_QQ_ShareType" = "Does not support this type of sharing";
 

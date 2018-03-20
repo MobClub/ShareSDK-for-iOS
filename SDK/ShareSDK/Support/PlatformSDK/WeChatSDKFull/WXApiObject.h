@@ -584,6 +584,49 @@ typedef void(^WXLogBolock)(NSString * log);
 
 @end
 
+#pragma mark - WXinvoiceAuthInsertReq
+@interface WXInvoiceAuthInsertReq : BaseReq
+
+@property (nonatomic, strong) NSString *urlString;
+
+@end
+
+#pragma mark - WXinvoiceAuthInsertResp
+
+@interface WXInvoiceAuthInsertResp : BaseResp
+
+@property (nonatomic, strong) NSString * wxOrderId;
+
+@end
+
+#pragma mark - WXNontaxPayReq
+@interface WXNontaxPayReq:BaseReq
+
+@property (nonatomic, strong) NSString *urlString;
+
+@end
+
+#pragma mark - WXNontaxPayResp
+@interface WXNontaxPayResp : BaseResp
+
+@property (nonatomic, strong) NSString *wxOrderId;
+
+@end
+
+#pragma mark - WXPayInsuranceReq
+@interface WXPayInsuranceReq : BaseReq
+
+@property (nonatomic, strong) NSString *urlString;
+
+@end
+
+#pragma mark - WXPayInsuranceResp
+@interface WXPayInsuranceResp : BaseResp
+
+@property (nonatomic, strong) NSString *wxOrderId;
+
+@end
+
 #pragma mark - WXMediaMessage
 
 

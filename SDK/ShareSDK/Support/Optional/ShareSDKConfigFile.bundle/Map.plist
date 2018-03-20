@@ -199,6 +199,8 @@
 	</dict>
 	<key>Facebook</key>
 	<dict>
+		<key>DisplayName</key>
+		<string>display_name</string>
 		<key>PlatformID</key>
 		<integer>10</integer>
 		<key>ConsumerKey</key>

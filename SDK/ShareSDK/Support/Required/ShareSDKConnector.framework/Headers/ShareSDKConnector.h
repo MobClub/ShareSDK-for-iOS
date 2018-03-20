@@ -83,7 +83,7 @@
 /**
  *  链接Line以供ShareSDK可以正常使用Line进行分享
  *
- *  @param lineSDKClass Line SDK中的类型，应先导入LineAdapter.framework，再将[LineSDK class]传入到此参数。
+ *  @param lineSDKClass Line SDK中的类型，应先导入LineSDK.framework，再将[LineSDKLogin class]传入到此参数。
  */
 + (void)connectLine:(Class)lineSDKClass;
 

@@ -115,6 +115,7 @@
 <!--    ConsumerSecret="38053202e1a5fe26c80c753071f0b573"-->
 <!--    RedirectUrl="http://mob.com"-->
 <!--    AuthType="both"-->
+<!--    DisplayName="display_name"-->
 <!--    Enable="true" />-->
 
 <!--    <Twitter-->
