@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         let shareParames = NSMutableDictionary()
         shareParames.ssdkSetupShareParams(byText: "分享内容 http://www.mob.com/",
                                            images : UIImage(named: "shareImg.png"),
-                                              url : NSURL(string:"http://mob.com") as URL!,
+                                              url : URL(string: "http://mob.com"),
                                             title : nil,
                                              type : SSDKContentType.image)
         //2.进行分享
@@ -52,27 +52,23 @@ class ViewController: UIViewController {
         //1.创建分享参数
         let shareParames = NSMutableDictionary()
         shareParames.ssdkSetupShareParams(byText: "分享内容 http://www.mob.com/",
-                                         images : UIImage(named: "shareImg.png"),
-                                            url : NSURL(string:"http://mob.com") as URL!,
+                                          images : UIImage(named: "shareImg.png"),
+                                          url : URL(string: "http://mob.com"),
                                           title : "分享标题",
-                                           type : SSDKContentType.auto)
-        
-        SSUIShareActionSheetStyle.setShareActionSheetStyle(.simple)
+                                          type : SSDKContentType.auto)
         
         //2.进行分享
-        let sheet = ShareSDK.showShareActionSheet(sender, items: nil, shareParams: shareParames) { (state : SSDKResponseState, platformType : SSDKPlatformType, userdata : [AnyHashable : Any]?, contentEnity : SSDKContentEntity?, error : Error?, end) in
-            
+        ShareSDK.showShareActionSheet(sender, customItems: nil, shareParams: shareParames, sheetConfiguration: nil) { (state, platformType, userdata, contentEnity, error, end) in
             switch state{
-            
-                case SSDKResponseState.success: print("分享成功")
-                case SSDKResponseState.fail:    print("分享失败,错误描述:\(String(describing: error))")
-                case SSDKResponseState.cancel:  print("分享取消")
-            
+                
+            case SSDKResponseState.success: print("分享成功")
+            case SSDKResponseState.fail:    print("分享失败,错误描述:\(String(describing: error))")
+            case SSDKResponseState.cancel:  print("分享取消")
+                
             default:
                 break
             }
         }
-        sheet?.directSharePlatforms.add(SSDKPlatformType.typeSinaWeibo.rawValue)
     }
     
     /**

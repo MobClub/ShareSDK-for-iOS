@@ -57,9 +57,6 @@
 		444D9EE61FD13F28001393FC /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 444D9EA41FD13F27001393FC /* libWeChatSDK.a */; };
 		444D9EE71FD13F28001393FC /* libAPOpenSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 444D9EA61FD13F27001393FC /* libAPOpenSdk.a */; };
 		444D9EE81FD13F28001393FC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 444D9EA71FD13F27001393FC /* README.md */; };
-		444D9EE91FD13F28001393FC /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444D9EAB1FD13F27001393FC /* FBSDKMessengerShareKit.framework */; };
-		444D9EEA1FD13F28001393FC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444D9EAC1FD13F27001393FC /* FBSDKCoreKit.framework */; };
-		444D9EEB1FD13F28001393FC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444D9EAD1FD13F27001393FC /* Bolts.framework */; };
 		444D9EEC1FD13F28001393FC /* LineSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444D9EAF1FD13F27001393FC /* LineSDK.framework */; };
 		444D9EED1FD13F28001393FC /* MPShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444D9EB11FD13F27001393FC /* MPShareSDK.framework */; };
 		444D9EEE1FD13F28001393FC /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444D9EB31FD13F27001393FC /* TencentOpenAPI.framework */; };
@@ -124,7 +121,6 @@
 		44B071CF1F7910150087CE45 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 44B071CE1F7910150087CE45 /* libsqlite3.tbd */; };
 		44B071D01F79114A0087CE45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44B0708E1F78EF550087CE45 /* Main.storyboard */; };
 		44B9A5421E8508E5008BC9ED /* MOBSinaWeiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B9A5401E8508E5008BC9ED /* MOBSinaWeiboViewController.m */; };
-		44F1FD271F8F60D100366259 /* ShareSDKDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F1FD261F8F60D100366259 /* ShareSDKDemoTests.m */; };
 		44FD96E61F790DDB00F7087E /* appInfoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44FD96C91F790DDB00F7087E /* appInfoIcon@2x.png */; };
 		44FD96E71F790DDB00F7087E /* audioURLIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44FD96CA1F790DDB00F7087E /* audioURLIcon@2x.png */; };
 		44FD96E81F790DDB00F7087E /* cat.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 44FD96CB1F790DDB00F7087E /* cat.mp4 */; };
@@ -155,16 +151,6 @@
 		44FD97011F790DDB00F7087E /* videoURLIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44FD96E41F790DDB00F7087E /* videoURLIcon@2x.png */; };
 		44FD97021F790DDB00F7087E /* webURLIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44FD96E51F790DDB00F7087E /* webURLIcon@2x.png */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		44F1FD291F8F60D100366259 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 446212571E6D8B5800C609C9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4462125E1E6D8B5800C609C9;
-			remoteInfo = ShareSDKDemo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		44009A0B1EC46A38001730C0 /* MobShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobShareViewController.h; sourceTree = "<group>"; };
@@ -263,9 +249,6 @@
 		444D9EA71FD13F27001393FC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		444D9EA81FD13F27001393FC /* APOpenAPIObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APOpenAPIObject.h; sourceTree = "<group>"; };
 		444D9EA91FD13F27001393FC /* APOpenAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APOpenAPI.h; sourceTree = "<group>"; };
-		444D9EAB1FD13F27001393FC /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
-		444D9EAC1FD13F27001393FC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		444D9EAD1FD13F27001393FC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		444D9EAF1FD13F27001393FC /* LineSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LineSDK.framework; sourceTree = "<group>"; };
 		444D9EB11FD13F27001393FC /* MPShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MPShareSDK.framework; sourceTree = "<group>"; };
 		444D9EB31FD13F27001393FC /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
@@ -354,9 +337,6 @@
 		44B071CE1F7910150087CE45 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		44B9A5401E8508E5008BC9ED /* MOBSinaWeiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBSinaWeiboViewController.m; sourceTree = "<group>"; };
 		44B9A5411E8508E5008BC9ED /* MOBSinaWeiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBSinaWeiboViewController.h; sourceTree = "<group>"; };
-		44F1FD241F8F60D100366259 /* ShareSDKDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShareSDKDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		44F1FD261F8F60D100366259 /* ShareSDKDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareSDKDemoTests.m; sourceTree = "<group>"; };
-		44F1FD281F8F60D100366259 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44FD96C91F790DDB00F7087E /* appInfoIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appInfoIcon@2x.png"; sourceTree = "<group>"; };
 		44FD96CA1F790DDB00F7087E /* audioURLIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audioURLIcon@2x.png"; sourceTree = "<group>"; };
 		44FD96CB1F790DDB00F7087E /* cat.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = cat.mp4; sourceTree = "<group>"; };
@@ -418,10 +398,8 @@
 				444D9F021FD13F28001393FC /* LineConnector.framework in Frameworks */,
 				444D9EEE1FD13F28001393FC /* TencentOpenAPI.framework in Frameworks */,
 				444D9EF11FD13F28001393FC /* libYixinSDK.a in Frameworks */,
-				444D9EE91FD13F28001393FC /* FBSDKMessengerShareKit.framework in Frameworks */,
 				444D9F0A1FD13F28001393FC /* FacebookConnector.framework in Frameworks */,
 				444D9F101FD13F28001393FC /* ShareSDK.framework in Frameworks */,
-				444D9EEB1FD13F28001393FC /* Bolts.framework in Frameworks */,
 				444D9EEF1FD13F28001393FC /* KakaoOpenSDK.framework in Frameworks */,
 				444D9EED1FD13F28001393FC /* MPShareSDK.framework in Frameworks */,
 				444D9EEC1FD13F28001393FC /* LineSDK.framework in Frameworks */,
@@ -433,18 +411,10 @@
 				444D9F041FD13F28001393FC /* CopyConnector.framework in Frameworks */,
 				444D9EE21FD13F28001393FC /* RennSDK.framework in Frameworks */,
 				444D9EE71FD13F28001393FC /* libAPOpenSdk.a in Frameworks */,
-				444D9EEA1FD13F28001393FC /* FBSDKCoreKit.framework in Frameworks */,
 				446212FA1E6D8C2200C609C9 /* libstdc++.tbd in Frameworks */,
 				444D9F121FD13F28001393FC /* MOBFoundation.framework in Frameworks */,
 				444D9EFF1FD13F28001393FC /* QQConnector.framework in Frameworks */,
 				444D9F031FD13F28001393FC /* MeiPaiConnector.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		44F1FD211F8F60D100366259 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,7 +601,6 @@
 				444D9E9A1FD13F27001393FC /* SinaWeiboSDK */,
 				444D9E9F1FD13F27001393FC /* WeChatSDK */,
 				444D9EA51FD13F27001393FC /* APSocialSDK */,
-				444D9EAA1FD13F27001393FC /* FacebookMessengerSDK */,
 				444D9EAE1FD13F27001393FC /* LineSDK */,
 				444D9EB01FD13F27001393FC /* MPShareSDK */,
 				444D9EB21FD13F27001393FC /* QQSDK */,
@@ -683,16 +652,6 @@
 				444D9EA91FD13F27001393FC /* APOpenAPI.h */,
 			);
 			path = APSocialSDK;
-			sourceTree = "<group>";
-		};
-		444D9EAA1FD13F27001393FC /* FacebookMessengerSDK */ = {
-			isa = PBXGroup;
-			children = (
-				444D9EAB1FD13F27001393FC /* FBSDKMessengerShareKit.framework */,
-				444D9EAC1FD13F27001393FC /* FBSDKCoreKit.framework */,
-				444D9EAD1FD13F27001393FC /* Bolts.framework */,
-			);
-			path = FacebookMessengerSDK;
 			sourceTree = "<group>";
 		};
 		444D9EAE1FD13F27001393FC /* LineSDK */ = {
@@ -808,7 +767,6 @@
 			isa = PBXGroup;
 			children = (
 				446212611E6D8B5800C609C9 /* ShareSDKDemo */,
-				44F1FD251F8F60D100366259 /* ShareSDKDemoTests */,
 				446212601E6D8B5800C609C9 /* Products */,
 				446212F81E6D8C2200C609C9 /* Frameworks */,
 			);
@@ -818,7 +776,6 @@
 			isa = PBXGroup;
 			children = (
 				4462125F1E6D8B5800C609C9 /* ShareSDKDemo.app */,
-				44F1FD241F8F60D100366259 /* ShareSDKDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -871,15 +828,6 @@
 				446212F91E6D8C2200C609C9 /* libstdc++.tbd */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		44F1FD251F8F60D100366259 /* ShareSDKDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				44F1FD261F8F60D100366259 /* ShareSDKDemoTests.m */,
-				44F1FD281F8F60D100366259 /* Info.plist */,
-			);
-			path = ShareSDKDemoTests;
 			sourceTree = "<group>";
 		};
 		44FD96C81F790DDB00F7087E /* Resources */ = {
@@ -938,24 +886,6 @@
 			productReference = 4462125F1E6D8B5800C609C9 /* ShareSDKDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		44F1FD231F8F60D100366259 /* ShareSDKDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 44F1FD2B1F8F60D100366259 /* Build configuration list for PBXNativeTarget "ShareSDKDemoTests" */;
-			buildPhases = (
-				44F1FD201F8F60D100366259 /* Sources */,
-				44F1FD211F8F60D100366259 /* Frameworks */,
-				44F1FD221F8F60D100366259 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				44F1FD2A1F8F60D100366259 /* PBXTargetDependency */,
-			);
-			name = ShareSDKDemoTests;
-			productName = ShareSDKDemoTests;
-			productReference = 44F1FD241F8F60D100366259 /* ShareSDKDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -969,12 +899,6 @@
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = LW5266U92D;
 						ProvisioningStyle = Automatic;
-					};
-					44F1FD231F8F60D100366259 = {
-						CreatedOnToolsVersion = 9.0;
-						DevelopmentTeam = LW5266U92D;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 4462125E1E6D8B5800C609C9;
 					};
 				};
 			};
@@ -993,7 +917,6 @@
 			projectRoot = "";
 			targets = (
 				4462125E1E6D8B5800C609C9 /* ShareSDKDemo */,
-				44F1FD231F8F60D100366259 /* ShareSDKDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1046,13 +969,6 @@
 				44FD96FC1F790DDB00F7087E /* shareMenuIcon@2x.png in Resources */,
 				44FD96F51F790DDB00F7087E /* mutImageIcon@2x.png in Resources */,
 				444D9EF81FD13F28001393FC /* ShareSDKConfigFile.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		44F1FD221F8F60D100366259 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1124,23 +1040,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		44F1FD201F8F60D100366259 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				44F1FD271F8F60D100366259 /* ShareSDKDemoTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		44F1FD2A1F8F60D100366259 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4462125E1E6D8B5800C609C9 /* ShareSDKDemo */;
-			targetProxy = 44F1FD291F8F60D100366259 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		446212741E6D8B5800C609C9 /* Debug */ = {
@@ -1237,7 +1137,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = deep;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: vhbvb qc (QY75LX86SC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LW5266U92D;
@@ -1265,7 +1165,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = deep;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: vhbvb qc (QY75LX86SC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LW5266U92D;
@@ -1289,62 +1189,6 @@
 			};
 			name = Release;
 		};
-		44F1FD2C1F8F60D100366259 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LW5266U92D;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../SDK\"/**";
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ShareSDKDemoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = youzu.ShareSDKDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShareSDKDemo.app/ShareSDKDemo";
-			};
-			name = Debug;
-		};
-		44F1FD2D1F8F60D100366259 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LW5266U92D;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../SDK\"/**";
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ShareSDKDemoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = youzu.ShareSDKDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShareSDKDemo.app/ShareSDKDemo";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1362,15 +1206,6 @@
 			buildConfigurations = (
 				446212771E6D8B5800C609C9 /* Debug */,
 				446212781E6D8B5800C609C9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		44F1FD2B1F8F60D100366259 /* Build configuration list for PBXNativeTarget "ShareSDKDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				44F1FD2C1F8F60D100366259 /* Debug */,
-				44F1FD2D1F8F60D100366259 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

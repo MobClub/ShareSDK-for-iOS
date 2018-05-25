@@ -19,7 +19,7 @@
 //4、JavaScriptCore.framework
 
 //＝＝＝＝＝＝＝＝＝＝ShareSDKUI头文件，使用ShareSDK提供的UI需要导入＝＝＝＝＝
-#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import <ShareSDKUI/ShareSDKUI.h>
 
 //＝＝＝＝＝＝＝＝＝＝以下是各个平台SDK的头文件，根据需要继承的平台添加＝＝＝
 //腾讯开放平台（对应QQ和QQ空间）SDK头文件
@@ -41,18 +41,10 @@
 
 //人人SDK头文件
 #import <RennSDK/RennSDK.h>
-
-#import <ShareSDKUI/SSUIShareActionSheetCustomItem.h>
-#import <ShareSDKExtension/SSEShareHelper.h>
-#import <ShareSDKUI/ShareSDK+SSUI.h>
-#import <ShareSDKUI/SSUIShareActionSheetStyle.h>
-#import <ShareSDK/ShareSDK+Base.h>
+#import <ShareSDK/ShareSDK.h>
 
 #import <ShareSDKExtension/ShareSDK+Extension.h>
 #import <MOBFoundation/MOBFoundation.h>
-
-#import <ShareSDKUI/SSUIShareActionSheetItem.h>
-#import <ShareSDKUI/SSUIShareActionSheetCustomItem.h>
 
 #endif
 

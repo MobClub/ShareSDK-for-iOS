@@ -11,9 +11,6 @@
 #import <ShareSDK/ShareSDK+Base.h>
 #import <ShareSDKExtension/ShareSDK+Extension.h>
 #import <ShareSDKUI/ShareSDKUI.h>
-#import <ShareSDKUI/SSUIShareActionSheetCustomItem.h>
-#import <ShareSDKUI/SSUIShareActionSheetStyle.h>
-#import <ShareSDKUI/SSUIEditorViewStyle.h>
 #import <ShareSDKConfigFile/ShareSDK+XML.h>
 
 #define ShareAlert(_S_, ...)     [[[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:(_S_), ##__VA_ARGS__] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show]
@@ -193,43 +190,30 @@
     [params SSDKEnableUseClientShare];
     [params SSDKSetupTencentWeiboShareParamsByText:@"TencentWeibo xt-test" images:imgArr latitude:34.12 longitude:54.05 type:SSDKContentTypeImage];
     
-    [SSUIEditorViewStyle setStatusBarStyle:UIStatusBarStyleLightContent];
-    [SSUIEditorViewStyle setTitle:@"自定义标题"];
-    [SSUIEditorViewStyle setTitleColor:[UIColor yellowColor]];
-    [SSUIEditorViewStyle setiPhoneNavigationBarBackgroundImage:[UIImage imageNamed:@"wenBG.jpg"]];
-    [SSUIEditorViewStyle setiPhoneNavigationBarBackgroundColor:[UIColor purpleColor]];
-    [SSUIEditorViewStyle setiPadNavigationBarBackgroundColor:[UIColor lightGrayColor]];
-    [SSUIEditorViewStyle setCancelButtonLabel:@"ccccc"];
-    [SSUIEditorViewStyle setCancelButtonImage:[UIImage imageNamed:@"wenButton.jpg"]];
-    [SSUIEditorViewStyle setCancelButtonLabelColor:[UIColor blueColor]];
+    SSUIEditorConfiguration *config = [[SSUIEditorConfiguration alloc] init];
+    config.title = @"自定义标题";
+    config.titleColor = [UIColor yellowColor];
+    config.cancelButtonTitle = @"cancel";
+    config.shareButtonTitle = @"send";
     
-    [SSUIEditorViewStyle setShareButtonImage:[UIImage imageNamed:@"wenButton.jpg"]];
-    [SSUIEditorViewStyle setShareButtonLabelColor:[UIColor greenColor]];
-    [SSUIEditorViewStyle setShareButtonLabel:@"right"];
-    [SSUIEditorViewStyle setContentViewBackgroundColor:[UIColor brownColor]];
-    //    [SSUIEditorViewStyle setSupportedInterfaceOrientation:UIInterfaceOrientationMaskLandscape];
-    
-    [ShareSDK showShareEditor:SSDKPlatformSubTypeWechatSession
-           otherPlatformTypes:nil
-                  shareParams:params
-          onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
-              
-              if (state == SSDKResponseStateSuccess)
-              {
-                  NSLog(@"平台:%lu 分享成功！",(unsigned long)platformType);
-                  NSLog(@"平台:%@ 分享的图片！",[contentEntity images]);
-              }
-              
-              if (state == SSDKResponseStateFail)
-              {
-                  NSLog(@"平台:%lu 分享失败,错误信息:\n%@",(unsigned long)platformType,error);
-              }
-              
-              if (state == SSDKResponseStateCancel)
-              {
-                  NSLog(@"平台:%lu 取消分享",(unsigned long)platformType);
-              }
-          }];
+    [ShareSDK showShareEditor:SSDKPlatformSubTypeWechatSession otherPlatforms:nil shareParams:params editorConfiguration:config onStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+        
+        if (state == SSDKResponseStateSuccess)
+        {
+            NSLog(@"平台:%lu 分享成功！",(unsigned long)platformType);
+            NSLog(@"平台:%@ 分享的图片！",[contentEntity images]);
+        }
+        
+        if (state == SSDKResponseStateFail)
+        {
+            NSLog(@"平台:%lu 分享失败,错误信息:\n%@",(unsigned long)platformType,error);
+        }
+        
+        if (state == SSDKResponseStateCancel)
+        {
+            NSLog(@"平台:%lu 取消分享",(unsigned long)platformType);
+        }
+    }];
 }
 
 
@@ -302,83 +286,58 @@
                                   type:SSDKContentTypeImage];
     [params SSDKEnableUseClientShare];
     
-    //1.2、自定义分享平台（非必要）
-    //    NSMutableArray *activePlatforms = [NSMutableArray arrayWithArray:@[@(SSDKPlatformTypeWechat),@(SSDKPlatformTypeQQ),@(SSDKPlatformTypeRenren),@(SSDKPlatformTypeSinaWeibo),@(SSDKPlatformTypeSMS),@(SSDKPlatformTypeTwitter)]];
-    //    NSMutableArray *activePlatforms = [NSMutableArray arrayWithArray:@[@(SSDKPlatformSubTypeWechatTimeline),@(SSDKPlatformSubTypeWechatSession),@(SSDKPlatformSubTypeWechatFav),@(SSDKPlatformSubTypeQQFriend),@(SSDKPlatformSubTypeQZone),@(SSDKPlatformTypeRenren),@(SSDKPlatformTypeSinaWeibo),@(SSDKPlatformTypeSMS),@(SSDKPlatformTypeTwitter)]];
-    //    SSUIShareActionSheetCustomItem *item = [SSUIShareActionSheetCustomItem itemWithIcon:[UIImage imageNamed:@"Icon.png"]
-    //                                                                                  label:@"自定义"
-    //                                                                                onClick:^{
-    //
-    //                                                                                    NSLog(@"=== 自定义item点击 ===");
-    //                                                                                }];
-    //    [activePlatforms addObject:item];
-    
-    //    //1.3、自定义分享菜单栏（非必要）
-    //    [SSUIShareActionSheetStyle setStatusBarStyle:UIStatusBarStyleLightContent];
-    //    [SSUIEditorViewStyle setStatusBarStyle:UIStatusBarStyleLightContent];
-    //    [SSUIShareActionSheetStyle setActionSheetBackgroundColor:[UIColor colorWithRed:137/255.0 green:142/255.0 blue:150/255.0 alpha:0.8]];
-    //    [SSUIShareActionSheetStyle setActionSheetColor:[UIColor colorWithRed:21.0/255.0 green:21.0/255.0 blue:21.0/255.0 alpha:1.0]];
-    //    [SSUIShareActionSheetStyle setCancelButtonBackgroundColor:[UIColor colorWithRed:21.0/255.0 green:21.0/255.0 blue:21.0/255.0 alpha:1.0]];
-    //
-    //    [SSUIShareActionSheetStyle setCancelButtonLabelColor:[UIColor whiteColor]];
-    //    [SSUIShareActionSheetStyle setItemNameColor:[UIColor whiteColor]];
-    //    [SSUIShareActionSheetStyle setItemNameFont:[UIFont systemFontOfSize:10]];
-    //    [SSUIShareActionSheetStyle setCurrentPageIndicatorTintColor:[UIColor colorWithRed:156/255.0 green:156/255.0 blue:156/255.0 alpha:1.0]];
-    //    [SSUIShareActionSheetStyle setPageIndicatorTintColor:[UIColor colorWithRed:62/255.0 green:62/255.0 blue:62/255.0 alpha:1.0]];
-    //    [SSUIShareActionSheetStyle setSupportedInterfaceOrientation:UIInterfaceOrientationMaskPortrait];
-    //    NSMutableArray *active = [ShareSDK activePlatforms];
-    //
-    //    [SSUIShareActionSheetStyle setShareActionSheetStyle:ShareActionSheetStyleSimple];
-    //    [SSUIShareActionSheetStyle isCancelButtomHidden:NO];
-    //
-    //    //1.4、自定义支持的屏幕方向
-    //    [ShareSDK setSupportedInterfaceOrientation:UIInterfaceOrientationMaskPortrait];
-    
-    //    BOOL isClient =  [ShareSDK isClientInstalled:SSDKPlatformTypeFacebookMessenger];
-    
-    
-    
     //2、弹出分享菜单栏
-    SSUIShareActionSheetController *actionSheet = [ShareSDK showShareActionSheet:sender
-                                                   //    [ShareSDK showShareActionSheet:sender
-                                                                           items:nil
-                                                                     shareParams:params
-                                                             onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
-                                                                 
-                                                                 switch (state) {
-                                                                         
-                                                                     case SSDKResponseStateBegin:
-                                                                     {
-                                                                         break;
-                                                                     }
-                                                                     case SSDKResponseStateSuccess:
-                                                                     {
-                                                                         //Facebook Messenger、WhatsApp等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
-                                                                         if (platformType == SSDKPlatformTypeFacebookMessenger)
-                                                                         {
-                                                                             break;
-                                                                         }
-                                                                         
-                                                                         ShareAlert(@"分享成功");
-                                                                         
-                                                                         break;
-                                                                     }
-                                                                     case SSDKResponseStateFail:
-                                                                     {
-                                                                         ShareAlert(@"分享失败:%@",error);
-                                                                         break;
-                                                                     }
-                                                                     case SSDKResponseStateCancel:
-                                                                     {
-                                                                         ShareAlert(@"分享取消");
-                                                                         break;
-                                                                     }
-                                                                     default:
-                                                                         break;
-                                                                 }
-                                                             }];
     
-        [actionSheet.directSharePlatforms removeObject:@(SSDKPlatformTypeWechat)];
+    SSUIShareSheetConfiguration *config = [[SSUIShareSheetConfiguration alloc] init];
+    
+    config.style = SSUIActionSheetStyleSimple;
+    
+    config.itemAlignment = SSUIItemAlignmentCenter;
+    
+    [ShareSDK showShareActionSheet:sender
+                       customItems:nil
+                       shareParams:params
+                sheetConfiguration:config
+                    onStateChanged:^(SSDKResponseState state,
+                                     SSDKPlatformType platformType,
+                                     NSDictionary *userData,
+                                     SSDKContentEntity *contentEntity,
+                                     NSError *error,
+                                     BOOL end) {
+        
+        switch (state) {
+                
+            case SSDKResponseStateBegin:
+            {
+                break;
+            }
+            case SSDKResponseStateSuccess:
+            {
+                //Facebook Messenger、WhatsApp等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
+                if (platformType == SSDKPlatformTypeFacebookMessenger)
+                {
+                    break;
+                }
+                
+                ShareAlert(@"分享成功");
+                
+                break;
+            }
+            case SSDKResponseStateFail:
+            {
+                ShareAlert(@"分享失败:%@",error);
+                break;
+            }
+            case SSDKResponseStateCancel:
+            {
+                ShareAlert(@"分享取消");
+                break;
+            }
+            default:
+                break;
+        }
+        
+    }];
 }
 
 @end

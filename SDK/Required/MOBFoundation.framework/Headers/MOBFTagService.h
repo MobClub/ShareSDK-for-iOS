@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /**
  *  错误消息类型
@@ -25,7 +26,7 @@ typedef NS_ENUM(NSUInteger, MOBFErrorTagMsgType){
      */
     MOBFErrorTagMsgTypeCharacterLimitError  = 109998,
     /**
-     *  上传无效标签参数
+     *  上传无效参数
      */
     MOBFErrorTagMsgTypeInvalidParamError    = 109999,
 };
@@ -38,7 +39,7 @@ typedef NS_ENUM(NSUInteger, MOBFErrorTagMsgType){
  @param tags   用户信息
  @param result 回调信息
  */
-+(void)tagUserUpload:(NSDictionary *)tags
++ (void)tagUserUpload:(NSDictionary *)tags
               result:(void (^)(NSError *error))result;
 
 /**
@@ -46,6 +47,21 @@ typedef NS_ENUM(NSUInteger, MOBFErrorTagMsgType){
 
  @param handler 回调
  */
-+(void)userTags:(void (^) (NSDictionary *userTags, NSError *error))handler;
++ (void)userTags:(void (^) (NSDictionary *userTags, NSError *error))handler;
+
+/**
+ 上传位置信息
+
+ @param accuracy 精度
+ @param latitude 纬度
+ @param longitude 经度
+ @param tag 完整地理信息JSON数据
+ @param handler 回调信息
+ */
++ (void)uploadLocation:(CGFloat)accuracy
+              latitude:(CGFloat)latitude
+             longitude:(CGFloat)longitude
+                   tag:(NSDictionary *)tag
+                result:(void (^)(NSError *error))result;
 
 @end

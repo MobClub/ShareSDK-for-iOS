@@ -46,9 +46,6 @@
 		449B71781FA7383E00CE4684 /* libAPOpenSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 449B71331FA7383E00CE4684 /* libAPOpenSdk.a */; };
 		449B71791FA7383E00CE4684 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 449B71341FA7383E00CE4684 /* README.md */; };
 		449B717A1FA7383E00CE4684 /* DTShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449B71361FA7383E00CE4684 /* DTShareKit.framework */; };
-		449B717B1FA7383E00CE4684 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449B71381FA7383E00CE4684 /* Bolts.framework */; };
-		449B717C1FA7383E00CE4684 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449B71391FA7383E00CE4684 /* FBSDKCoreKit.framework */; };
-		449B717D1FA7383E00CE4684 /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449B713A1FA7383E00CE4684 /* FBSDKMessengerShareKit.framework */; };
 		449B717E1FA7383E00CE4684 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449B713C1FA7383E00CE4684 /* KakaoOpenSDK.framework */; };
 		449B717F1FA7383E00CE4684 /* LineSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449B713E1FA7383E00CE4684 /* LineSDK.framework */; };
 		449B71801FA7383E00CE4684 /* MPShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449B71401FA7383E00CE4684 /* MPShareSDK.framework */; };
@@ -116,9 +113,6 @@
 		449B71331FA7383E00CE4684 /* libAPOpenSdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAPOpenSdk.a; sourceTree = "<group>"; };
 		449B71341FA7383E00CE4684 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		449B71361FA7383E00CE4684 /* DTShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DTShareKit.framework; sourceTree = "<group>"; };
-		449B71381FA7383E00CE4684 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		449B71391FA7383E00CE4684 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		449B713A1FA7383E00CE4684 /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
 		449B713C1FA7383E00CE4684 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		449B713E1FA7383E00CE4684 /* LineSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LineSDK.framework; sourceTree = "<group>"; };
 		449B71401FA7383E00CE4684 /* MPShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MPShareSDK.framework; sourceTree = "<group>"; };
@@ -164,7 +158,6 @@
 				449B71751FA7383E00CE4684 /* WhatsAppConnector.framework in Frameworks */,
 				449B71811FA7383E00CE4684 /* TencentOpenAPI.framework in Frameworks */,
 				449B71881FA7383E00CE4684 /* libYixinSDK.a in Frameworks */,
-				449B717B1FA7383E00CE4684 /* Bolts.framework in Frameworks */,
 				449B71651FA7383E00CE4684 /* EvernoteConnector.framework in Frameworks */,
 				449B716F1FA7383E00CE4684 /* QQConnector.framework in Frameworks */,
 				449B716C1FA7383E00CE4684 /* MailConnector.framework in Frameworks */,
@@ -172,12 +165,10 @@
 				449B71741FA7383E00CE4684 /* WechatConnector.framework in Frameworks */,
 				449B71631FA7383E00CE4684 /* DingTalkConnector.framework in Frameworks */,
 				449B717F1FA7383E00CE4684 /* LineSDK.framework in Frameworks */,
-				449B717D1FA7383E00CE4684 /* FBSDKMessengerShareKit.framework in Frameworks */,
 				449B71601FA7383E00CE4684 /* ShareSDKUI.framework in Frameworks */,
 				449B71831FA7383E00CE4684 /* RennSDK.framework in Frameworks */,
 				449B71691FA7383E00CE4684 /* InstapaperConnector.framework in Frameworks */,
 				449B71641FA7383E00CE4684 /* DropboxConnector.framework in Frameworks */,
-				449B717C1FA7383E00CE4684 /* FBSDKCoreKit.framework in Frameworks */,
 				449B71721FA7383E00CE4684 /* SMSConnector.framework in Frameworks */,
 				449B716B1FA7383E00CE4684 /* LineConnector.framework in Frameworks */,
 				449B71801FA7383E00CE4684 /* MPShareSDK.framework in Frameworks */,
@@ -331,7 +322,6 @@
 			children = (
 				449B71301FA7383E00CE4684 /* APSocialSDK */,
 				449B71351FA7383E00CE4684 /* DingTalkSDK */,
-				449B71371FA7383E00CE4684 /* FacebookMessengerSDK */,
 				449B713B1FA7383E00CE4684 /* KaKaoSDK */,
 				449B713D1FA7383E00CE4684 /* LineSDK */,
 				449B713F1FA7383E00CE4684 /* MPShareSDK */,
@@ -361,16 +351,6 @@
 				449B71361FA7383E00CE4684 /* DTShareKit.framework */,
 			);
 			path = DingTalkSDK;
-			sourceTree = "<group>";
-		};
-		449B71371FA7383E00CE4684 /* FacebookMessengerSDK */ = {
-			isa = PBXGroup;
-			children = (
-				449B71381FA7383E00CE4684 /* Bolts.framework */,
-				449B71391FA7383E00CE4684 /* FBSDKCoreKit.framework */,
-				449B713A1FA7383E00CE4684 /* FBSDKMessengerShareKit.framework */,
-			);
-			path = FacebookMessengerSDK;
 			sourceTree = "<group>";
 		};
 		449B713B1FA7383E00CE4684 /* KaKaoSDK */ = {

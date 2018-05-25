@@ -38,10 +38,6 @@
 #if (defined IMPORT_SUB_YiXinSession) || (defined IMPORT_SUB_YiXinTimeline) || (defined IMPORT_SUB_YiXinFav)
 #import "YXApi.h"
 #endif
-//FacebookMessenger需要引入的头文件
-#ifdef IMPORT_FacebookMessenger
-#import <FBSDKMessengerShareKit/FBSDKMessengerShareKit.h>
-#endif
 //Line需要引入的头文件
 #ifdef IMPORT_Line
 #import <LineSDK/LineSDK.h>
@@ -308,12 +304,6 @@
         case SSDKPlatformTypeYiXin:
 #if (defined IMPORT_SUB_YiXinSession) || (defined IMPORT_SUB_YiXinTimeline) || (defined IMPORT_SUB_YiXinFav)
             [ShareSDKConnector connectYiXin:[YXApi class]];
-#endif
-            break;
-            //FacebookMessager
-        case SSDKPlatformTypeFacebookMessenger:
-#ifdef IMPORT_FacebookMessenger
-            [ShareSDKConnector connectFacebookMessenger:[FBSDKMessengerSharer class]];
 #endif
             break;
             //Line

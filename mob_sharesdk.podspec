@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.1.1"
+  s.version          = "4.1.2"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
@@ -101,7 +101,7 @@ Pod::Spec.new do |s|
 
         # Facebook
         sp.subspec 'Facebook' do |ssp|
-            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformSDK/FacebookMessengerSDK/FBSDKMessengerShareKit.framework','SDK/ShareSDK/Support/PlatformConnector/FacebookConnector.framework'
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/FacebookConnector.framework'
             ssp.dependency 'mob_sharesdk/ShareSDK'
         end
 

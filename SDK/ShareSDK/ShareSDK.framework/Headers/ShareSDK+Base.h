@@ -94,4 +94,19 @@
 onStateChanged:(SSDKShareStateChangedHandler)stateChangedHandler;
 
 
+/**
+ 分享事件记录
+
+ @param platformType 分享平台
+ @param eventType 分享事件类型
+ */
++ (void)recordShareEventWithPlatform:(SSDKPlatformType)platformType eventType:(SSDKShareEventType)eventType;
+
+/**
+ 是否开启sdk自动统计意向分享事件
+
+ @param record YES:开启 NO:关闭
+ */
++ (void)enableAutomaticRecordingEvent:(BOOL)record;
+
 @end

@@ -231,20 +231,13 @@
 - (void)shareMiniProgram
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    //平台定制
-    //    [parameters SSDKSetupWeChatParamsByTitle:@"MiniProgram"
-    //                                  description:@"test MiniProgram"
-    //                                   webpageUrl:[NSURL URLWithString:@"http://www.mob.com"]
-    //                                         path:@"/page/API/pages/share/share"
-    //                                   thumbImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-    //                                     userName:@"gh_d43f693ca31f"
-    //                           forPlatformSubType:SSDKPlatformSubTypeWechatSession];
     
     [parameters SSDKSetupWeChatMiniProgramShareParamsByTitle:@"MiniProgram"
                                                  description:@"test MiniProgram"
                                                   webpageUrl:[NSURL URLWithString:@"http://www.mob.com"]
                                                         path:@"pages/index/index"
                                                   thumbImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                                hdThumbImage:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522154322305&di=7f4bf3d0803fe8c2c66c140f0a6ea0b4&imgtype=0&src=http%3A%2F%2Fa4.topitme.com%2Fo%2F201007%2F29%2F12803876734174.jpg"
                                                     userName:@"gh_afb25ac019c9"
                                              withShareTicket:YES
                                              miniProgramType:0

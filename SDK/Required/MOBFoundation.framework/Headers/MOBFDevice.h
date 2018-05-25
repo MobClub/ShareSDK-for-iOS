@@ -188,4 +188,18 @@ typedef NS_ENUM(NSUInteger, MOBFIPVersion)
  */
 + (NSString *)idfv;
 
+/**
+ *  获取物理内存
+
+ @return 物理内存
+ */
++ (double)physicalMemory;
+
+/**
+ *  获取存储大小
+
+ @return 存储大小
+ */
++ (long long)diskSpace;
+
 @end

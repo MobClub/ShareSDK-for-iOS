@@ -71,7 +71,7 @@
  *
  *  @param fbmApiClass Facebook Messenger SDK中的类型，应先导入FBSDKMessengerShareKit.framework，再将[FBSDKMessengerSharer class]传入到参数中。
  */
-+ (void)connectFacebookMessenger:(Class)fbmApiClass;
++ (void)connectFacebookMessenger:(Class)fbmApiClass __deprecated_msg("discard form v4.1.2");
 
 /**
  *  链接钉钉以供ShareSDK可以正常使用钉钉进行分享

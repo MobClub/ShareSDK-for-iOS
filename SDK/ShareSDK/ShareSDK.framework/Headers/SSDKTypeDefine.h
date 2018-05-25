@@ -365,6 +365,22 @@ typedef NS_ENUM(NSUInteger, SSDKContentType){
     SSDKContentTypeMiniProgram  = 10
 };
 
+/**
+ 分享行为事件统计
+
+ - SSDKShareEventTypeOpenMenu: 打开分享菜单
+ - SSDKShareEventTypeCloseMenu: 关闭分享菜单
+ - SSDKShareEventTypeOpenEditor: 打开内容编辑视图
+ - SSDKShareEventTypeFailed: 分享失败
+ - SSDKShareEventTypeCancel: 分享取消
+ */
+typedef NS_ENUM(NSUInteger, SSDKShareEventType) {
+    SSDKShareEventTypeOpenMenu,
+    SSDKShareEventTypeCloseMenu,
+    SSDKShareEventTypeOpenEditor,
+    SSDKShareEventTypeFailed,
+    SSDKShareEventTypeCancel
+};
 
 /**
  YouTube 视频的隐私状态
@@ -384,8 +400,7 @@ typedef NS_ENUM(NSUInteger, SSDKPrivacyStatus){
      *  不公开（知道链接的人可以观看）
      */
     SSDKPrivacyStatusUnlisted = 2
-    
-    
+
 };
 
 /**
