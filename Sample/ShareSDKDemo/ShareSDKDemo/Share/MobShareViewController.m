@@ -8,7 +8,7 @@
 
 #import "MobShareViewController.h"
 #import <ShareSDK/ShareSDK+Base.h>
-#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import <ShareSDKUI/ShareSDKUI.h>
 #import <ShareSDKExtension/SSEShareHelper.h>
 #import "AppDelegate.h"
 #import "MobScreenshotCenter.h"
@@ -245,82 +245,91 @@ static const NSInteger otherInfo = 1;
                                         url:[NSURL URLWithString:@"http://mob.com"]
                                       title:@"分享标题"
                                        type:SSDKContentTypeImage];
-    //优先使用平台客户端分享
-//    [shareParams SSDKEnableUseClientShare];
-    //设置微博使用高级接口
-    //2017年6月30日后需申请高级权限
-//    [shareParams SSDKEnableAdvancedInterfaceShare];
-//    设置显示平台 只能分享视频的YouTube MeiPai 不显示
-//    NSArray *items = @[
-//                       @(SSDKPlatformTypeFacebook),
-////                       @(SSDKPlatformTypeFacebookMessenger),
-////                       @(SSDKPlatformTypeInstagram),
-////                       @(SSDKPlatformTypeTwitter),
-//                       @(SSDKPlatformTypeLine),
-//                       @(SSDKPlatformTypeQQ),
-//                       @(SSDKPlatformTypeWechat),
-//                       @(SSDKPlatformTypeSinaWeibo),
-//                       @(SSDKPlatformTypeSMS),
-//                       @(SSDKPlatformTypeMail),
-//                       @(SSDKPlatformTypeCopy)
-//                       ];
     
-    //设置简介版UI 需要  #import <ShareSDKUI/SSUIShareActionSheetStyle.h>
-//    [SSUIShareActionSheetStyle setShareActionSheetStyle:ShareActionSheetStyleSimple];
-//    [ShareSDK setWeiboURL:@"http://www.mob.com"];
+    SSUIPlatformItem *item_1 = [[SSUIPlatformItem alloc] init];
+    item_1.platformName = @"item_1";
+    item_1.iconNormal = [UIImage imageNamed:@"COD13.jpg"];
+    item_1.iconSimple = [UIImage imageNamed:@"D11.jpg"];
+    item_1.platformId = @"123456789";
+    [item_1 addTarget:self action:@selector(test_1:)];
+        
+    NSArray *items = nil;
+//    items = @[
+//              @(SSDKPlatformTypeQQ),
+//              @(SSDKPlatformTypeWechat),
+//              item_1,
+//              @(SSDKPlatformTypeSinaWeibo),
+//              @(SSDKPlatformTypeSMS),
+//              @(SSDKPlatformTypeMail),
+//              @(SSDKPlatformTypeCopy)
+//              ];
+    SSUIShareSheetConfiguration *config = [[SSUIShareSheetConfiguration alloc] init];
+//    config.style = SSUIActionSheetStyleSimple;
     [ShareSDK showShareActionSheet:menuButton
-                             items:nil
+                       customItems:items
                        shareParams:shareParams
-               onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
-                   
-                   switch (state) {
-                           
-                       case SSDKResponseStateBegin:
-                       {
-                           //设置UI等操作
-                           break;
-                       }
-                       case SSDKResponseStateSuccess:
-                       {
-                           //Instagram、Line等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
-                           if (platformType == SSDKPlatformTypeInstagram)
-                           {
-                               break;
-                           }
-                           
-                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-                                                                               message:nil
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"确定"
-                                                                     otherButtonTitles:nil];
-                           [alertView show];
-                           break;
-                       }
-                       case SSDKResponseStateFail:
-                       {
-                           NSLog(@"%@",error);
-                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                           message:[NSString stringWithFormat:@"%@",error]
-                                                                          delegate:nil
-                                                                 cancelButtonTitle:@"OK"
-                                                                 otherButtonTitles:nil, nil];
-                           [alert show];
-                           break;
-                       }
-                       case SSDKResponseStateCancel:
-                       {
-                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
-                                                                               message:nil
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"确定"
-                                                                     otherButtonTitles:nil];
-                           [alertView show];
-                           break;
-                       }
-                       default:
-                           break;
-                   }
-               }];
+                sheetConfiguration:config
+                    onStateChanged:^(SSDKResponseState state,
+                                     SSDKPlatformType platformType,
+                                     NSDictionary *userData,
+                                     SSDKContentEntity *contentEntity,
+                                     NSError *error,
+                                     BOOL end)
+     {
+         
+         switch (state) {
+                 
+             case SSDKResponseStateBegin:
+             {
+                 //设置UI等操作
+                 break;
+             }
+             case SSDKResponseStateSuccess:
+             {
+                 //Instagram、Line等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
+                 if (platformType == SSDKPlatformTypeInstagram)
+                 {
+                     break;
+                 }
+                 
+                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                                                                     message:nil
+                                                                    delegate:nil
+                                                           cancelButtonTitle:@"确定"
+                                                           otherButtonTitles:nil];
+                 [alertView show];
+                 break;
+             }
+             case SSDKResponseStateFail:
+             {
+                 NSLog(@"%@",error);
+                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
+                                                                 message:[NSString stringWithFormat:@"%@",error]
+                                                                delegate:nil
+                                                       cancelButtonTitle:@"OK"
+                                                       otherButtonTitles:nil, nil];
+                 [alert show];
+                 break;
+             }
+             case SSDKResponseStateCancel:
+             {
+                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
+                                                                     message:nil
+                                                                    delegate:nil
+                                                           cancelButtonTitle:@"确定"
+                                                           otherButtonTitles:nil];
+                 [alertView show];
+                 break;
+             }
+             default:
+                 break;
+         }
+     }];
+}
+
+- (void)test_1:(SSUIPlatformItem *)item
+{
+    NSLog(@"costom item click , id :%@",item.platformId);
 }
 
 #pragma mark - Table view data source

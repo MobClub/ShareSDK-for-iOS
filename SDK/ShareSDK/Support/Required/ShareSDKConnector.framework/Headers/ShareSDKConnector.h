@@ -94,4 +94,11 @@
  */
 + (void)connectMeiPai:(Class)MPShareSDKClass;
 
+/**
+ *  链接CMCC以供ShareSDK可以正常使用CMCC进行授权
+ *
+ *  @param TYRZUILoginClass CMCC SDK中的类型，应先导入TYRZSDK.framework，再将[TYRZUILoginClass class]传入到此参数。
+ */
++ (void)connectCMCC:(Class)TYRZUILoginClass;
+
 @end

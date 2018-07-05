@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.1.2"
+  s.version          = "4.1.3"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
@@ -181,6 +181,13 @@ Pod::Spec.new do |s|
         # DingTalk
         sp.subspec 'DingTalk' do |ssp|
             ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformSDK/DingTalkSDK/DTShareKit.framework','SDK/ShareSDK/Support/PlatformConnector/DingTalkConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # DingTalk
+        sp.subspec 'CMCC' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformSDK/CMCCSDK/TYRZSDK.framework','SDK/ShareSDK/Support/PlatformConnector/CMCCConnector.framework'
+            ssp.resources = 'SDK/ShareSDK/Support/PlatformSDK/CMCCSDK/Resource.bundle'
             ssp.dependency 'mob_sharesdk/ShareSDK'
         end
     end

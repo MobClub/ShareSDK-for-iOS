@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.1.2</string>
+	<string>4.1.3</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -183,6 +183,16 @@
 				<string>yx0d9a9f9088ea44d78680f3274da1765f</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>twitter</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>twitterkit-viOnkeLpHBKs6KXV7MPpeGyzE</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
@@ -259,6 +269,7 @@
 		<string>fb-messenger-platform-20150714</string>
 		<string>fb-messenger</string>
 		<string>fbauth2</string>
+		<string>twitterauth</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

@@ -381,6 +381,18 @@
  */
 - (void)SSDKSetupLineAuthType:(NSString *)authType;
 
+
+/**
+ 设置CMCC应用信息
+
+ @param appid 应用标识
+ @param appkey 应用密钥
+ @param displayUI 是否显示SDK的授权界面
+ */
+- (void)SSDKSetupCMCCByAppId:(NSString *)appid
+                      appKey:(NSString *)appkey
+                   displayUI:(BOOL)displayUI;
+
 //打开短信登录的国家列表选择
 - (void)SSDKSetpSMSOpenCountryList:(BOOL)open;
 @end

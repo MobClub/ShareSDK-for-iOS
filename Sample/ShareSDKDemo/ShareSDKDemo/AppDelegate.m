@@ -13,6 +13,8 @@
 #import "WXApi.h"
 #import "MobScreenshotCenter.h"
 
+#import <ShareSDK/SSDKAuthViewStyle.h>
+
 @interface AppDelegate ()<WXApiDelegate>
 
 @end

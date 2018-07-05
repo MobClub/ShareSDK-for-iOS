@@ -158,3 +158,4 @@
 
 "ShareSDKConnector_Error_Weibo_NOLibShare" = "Share platform［Weibo］has not yet add libWeiboSDK.a! Unable to do so";
 "ShareSDKConnector_Error_Weibo_Auth" = "Share platform [Weibo] authorization call failed";
+"ShareSDKConnector_Error_CMCC_NOLibShare" = "Share platform［CMCC］has not yet add TYRZSDK.framework! Unable to do so";

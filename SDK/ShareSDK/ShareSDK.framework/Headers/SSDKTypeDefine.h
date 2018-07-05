@@ -58,6 +58,22 @@ extern NSString *const SSDKHttpMethodHead;
 extern NSString *const SSDKAuthSettingKeyScopes;
 
 /**
+ *  授权设置键名， 其对应键值为SSDKAuthSettingQQAuthType，如:@{SSDKAuthSettingKeyQQAuthType : @(SSDKAuthSettingQQAuthTypeQR)}
+ */
+extern NSString *const SSDKAuthSettingKeyQQAuthType;
+
+typedef NS_ENUM(NSUInteger, SSDKAuthSettingQQAuthType) {
+    /**
+     *  默认授权方式
+     */
+    SSDKAuthSettingQQAuthTypeNormal    = 0,
+    /**
+     *  二维码授权方式
+     */
+    SSDKAuthSettingQQAuthTypeQR        = 1,
+};
+
+/**
  *  平台类型
  */
 typedef NS_ENUM(NSUInteger, SSDKPlatformType){
@@ -216,11 +232,11 @@ typedef NS_ENUM(NSUInteger, SSDKPlatformType){
     /**
      *  支付宝好友
      */
-    SSDKPlatformTypeAliSocial        = 50,
+    SSDKPlatformTypeAliSocial           = 50,
     /**
      *  支付宝朋友圈
      */
-    SSDKPlatformTypeAliSocialTimeline= 51,
+    SSDKPlatformTypeAliSocialTimeline   = 51,
     /**
      *  钉钉
      */
@@ -233,6 +249,10 @@ typedef NS_ENUM(NSUInteger, SSDKPlatformType){
      *  美拍
      */
     SSDKPlatformTypeMeiPai              = 54,
+    /**
+     *  中国移动
+     */
+    SSDKPlatformTypeCMCC                = 55,
     /**
      *  易信
      */

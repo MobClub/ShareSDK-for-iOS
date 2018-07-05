@@ -49,6 +49,10 @@
 #import <KakaoOpenSDK/KakaoOpenSDK.h>
 #endif
 
+#ifdef IMPORT_CMCC
+#import <TYRZSDK/TYRZUILogin.h>
+#endif
+
 //微信回调
 #if (defined IMPORT_SUB_WechatSession) || (defined IMPORT_SUB_WechatTimeline) || (defined IMPORT_SUB_WechatFav)
 @interface MOBShareSDKHelper ()<WXApiDelegate>
@@ -280,6 +284,11 @@
 #ifdef IMPORT_Print
     [platforems addObject:@(SSDKPlatformTypePrint)];
 #endif
+    //CMCC
+#ifdef IMPORT_CMCC
+    [platforems addObject:@(SSDKPlatformTypeCMCC)];
+#endif
+    
     return platforems;
     
 }
@@ -348,6 +357,12 @@
         case SSDKPlatformTypeKakao:
 #if (defined IMPORT_SUB_KakaoTalk) || (defined IMPORT_SUB_KakaoStory)
             [ShareSDKConnector connectKaKao:[KOSession class]];
+#endif
+            break;
+            
+        case SSDKPlatformTypeCMCC:
+#ifdef IMPORT_CMCC
+            [ShareSDKConnector connectCMCC:TYRZUILogin.class];
 #endif
             break;
         default:
@@ -610,6 +625,11 @@
         case SSDKPlatformTypeSMS:
 #ifdef IMPORT_SMS
             [appInfo SSDKSetpSMSOpenCountryList:MOBSSDKSMSOpenCountryList];
+#endif
+            break;
+        case SSDKPlatformTypeCMCC:
+#ifdef IMPORT_CMCC
+            [appInfo SSDKSetupCMCCByAppId:MOBSSDKCMCCAppId appKey:MOBSSDKCMCCAppKey displayUI:MOBSSDKCMCCDisplayUI];
 #endif
             break;
         default:

@@ -196,7 +196,15 @@
     config.cancelButtonTitle = @"cancel";
     config.shareButtonTitle = @"send";
     
-    [ShareSDK showShareEditor:SSDKPlatformSubTypeWechatSession otherPlatforms:nil shareParams:params editorConfiguration:config onStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+    [ShareSDK showShareEditor:SSDKPlatformSubTypeWechatSession
+               otherPlatforms:nil
+                  shareParams:params
+          editorConfiguration:config
+               onStateChanged:^(SSDKResponseState state,
+                                SSDKPlatformType platformType,
+                                NSDictionary *userData,
+                                SSDKContentEntity *contentEntity,
+                                NSError *error, BOOL end) {
         
         if (state == SSDKResponseStateSuccess)
         {

@@ -58,6 +58,8 @@
                                        url:[NSURL URLWithString:@"http://www.mob.com"]
                                      title:@"Share SDK"
                                       type:SSDKContentTypeWebPage];
+    [parameters setValue:@(0) forKey:@"group_id"];
+
     //平台定制
 //    [parameters SSDKSetupVKontakteParamsByText:@"Share SDK Link Desc"
 //                                        images:image
@@ -67,6 +69,7 @@
 //                                      latitude:0
 //                                     longitude:0
 //                                          type:SSDKContentTypeWebPage];
+    
     [self shareWithParameters:parameters];
 }
 

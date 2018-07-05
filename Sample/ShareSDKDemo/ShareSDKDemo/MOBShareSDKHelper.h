@@ -35,6 +35,7 @@
 #define IMPORT_SUB_YiXinSession //注释此行则 不开启【 易信好友 】平台
 #define IMPORT_SUB_YiXinTimeline //注释此行则 不开启【 易信朋友圈 】平台
 #define IMPORT_SUB_YiXinFav //注释此行则 不开启【 易信收藏 】平台
+#define IMPORT_CMCC//注释此行则 不开启【 中国移动 】平台
 //海外平台
 #define IMPORT_Facebook //注释此行则 不开启【 Facebook 】平台
 #define IMPORT_FacebookMessenger //注释此行则 不开启【 FacebookMessenger 】平台
@@ -555,9 +556,9 @@
  */
 #ifdef IMPORT_Twitter
     //ConsumerKey
-    #define MOBSSDKTwitterConsumerKey @"LRBM0H75rWrU9gNHvlEAA2aOy"
+    #define MOBSSDKTwitterConsumerKey @"viOnkeLpHBKs6KXV7MPpeGyzE"
     //ConsumerSecret
-    #define MOBSSDKTwitterConsumerSecret @"gbeWsZvA9ELJSdoBzJ5oLKX0TU09UOwrzdGfo9Tg7DjyGuMe8G"
+    #define MOBSSDKTwitterConsumerSecret @"NJEglQUy2rqZ9Io9FcAU9p17omFqbORknUpRrCDOK46aAbIiey"
     //RedirectUri
     #define MOBSSDKTwitterRedirectUri @"http://mob.com"
 #endif
@@ -853,6 +854,14 @@
     #define MOBSSDKTumblrConsumerSecret @"3Rt0sPFj7u2g39mEVB3IBpOzKnM3JnTtxX2bao2JKk4VV1gtNo"
     //CallbackUrl
     #define MOBSSDKTumblrCallbackUrl @"http://sharesdk.cn"
+#endif
+
+#pragma mark - 中国移动平台配置信息
+
+#ifdef IMPORT_CMCC
+    #define MOBSSDKCMCCAppId @"300011862498"
+    #define MOBSSDKCMCCAppKey @"38D9CA1CC280C5F207E2C343745D4A4B"
+    #define MOBSSDKCMCCDisplayUI YES
 #endif
 
 #pragma mark - SMS平台配置信息
