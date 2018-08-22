@@ -288,6 +288,10 @@
 #ifdef IMPORT_CMCC
     [platforems addObject:@(SSDKPlatformTypeCMCC)];
 #endif
+    //Telegram
+#ifdef IMPORT_Telegram
+    [platforems addObject:@(SSDKPlatformTypeTelegram)];
+#endif
     
     return platforems;
     
@@ -636,7 +640,6 @@
             break;
     }
 }
-
 
 + (MOBShareSDKHelper *)shareInstance
 {

@@ -859,7 +859,7 @@
                        resolveFinalUrl:(BOOL)resolveFinalUrl;
 
 /**
- *  设置微信分享参数
+ *  设置易信分享参数
  *
  *  @param text         文本
  *  @param title        标题
@@ -996,4 +996,23 @@
 - (void)SSDKSetupYouTubeParamsByVideo:(id)video
                                 parts:(NSString *)parts
                            jsonString:(NSString *)jsonString;
+
+/**
+ *  设置Telegram分享参数
+ *
+ *  @param text  分享文本
+ *  @param image 分享图片，可以为UIImage、NSString（图片路径）、NSURL（图片路径）、SSDKImage。
+ *  @param audio 分享音频, NSURL（文件路径）注：只允许指定本地资源
+ *  @param video 分享视频, NSURL（文件路径）注：只允许指定本地资源
+ *  @param file  分享视频, NSURL（文件路径）注：只允许指定本地资源
+ *  @param point 分享菜单的显示位置，仅用于iPad版
+ *  @param type  分享类型，仅支持Text、Image、Audio、Video、File
+ */
+- (void)SSDKSetupTelegramParamsByText:(NSString *)text
+                                image:(id)image
+                                audio:(NSURL *)audio
+                                video:(NSURL *)video
+                                 file:(NSURL *)file
+                     menuDisplayPoint:(CGPoint)point
+                                 type:(SSDKContentType)type;
 @end

@@ -56,6 +56,7 @@
 #define IMPORT_VKontakte //注释此行则 不开启【 VKontakte 】平台
 #define IMPORT_Instapaper //注释此行则 不开启【 Instapaper 】平台
 #define IMPORT_Tumblr //注释此行则 不开启【 Tumblr 】平台
+#define IMPORT_Telegram //注释此行则 不开启【 Telegram 】平台
 //系统平台
 #define IMPORT_SMS //注释此行则 不开启【 SMS 】平台
 #define IMPORT_Mail //注释此行则 不开启【 Mail 】平台
@@ -200,9 +201,9 @@
 */
 #if (defined IMPORT_SUB_WechatSession) || (defined IMPORT_SUB_WechatTimeline) || (defined IMPORT_SUB_WechatFav)
     //AppID
-    #define MOBSSDKWeChatAppID @"wx4868b35061f87885"
+    #define MOBSSDKWeChatAppID @"wx617c77c82218ea2c"
     //AppSecret
-    #define MOBSSDKWeChatAppSecret @"64020361b8ec4c99936c0e3999a9f249"
+    #define MOBSSDKWeChatAppSecret @"c7253e5289986cf4c4c74d1ccc185fb1"
     //是否默认返回 UnionID v4.0.2增加
     #define MOBSSDKWeChatBackUnionID NO
 // 如需测试小程序 需要修改 bundleID 为  com.tencent.wc.xin.SDKSample
@@ -747,8 +748,8 @@
  */
 #ifdef IMPORT_Pinterest
     //ClientId
-    #define MOBSSDKPinterestClientId @"4759388231231868449"
-//#define MOBSSDKPinterestClientId @"4799618093317899411"
+//    #define MOBSSDKPinterestClientId @"4759388231231868449"
+#define MOBSSDKPinterestClientId @"4799618093317899411"
 //#define MOBSSDKPinterestAppSecret @"17690a5c8ac6e30a27b27c153442c9dab9e2ba9049e72d3b93e633175501384f"
 
 #endif

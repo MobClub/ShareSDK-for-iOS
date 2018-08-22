@@ -230,6 +230,10 @@ typedef NS_ENUM(NSUInteger, SSDKPlatformType){
      */
     SSDKPlatformTypeFacebookMessenger   = 46,
     /**
+     *  Telegram
+     */
+    SSDKPlatformTypeTelegram            = 47,
+    /**
      *  支付宝好友
      */
     SSDKPlatformTypeAliSocial           = 50,

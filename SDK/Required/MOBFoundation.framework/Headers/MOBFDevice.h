@@ -202,4 +202,11 @@ typedef NS_ENUM(NSUInteger, MOBFIPVersion)
  */
 + (long long)diskSpace;
 
+/**
+ *  cpu 类型
+ *
+ *  @return cpu 类型
+ */
++ (NSString *)cpuType;
+
 @end

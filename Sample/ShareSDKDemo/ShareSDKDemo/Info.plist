@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.1.3</string>
+	<string>4.1.4</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -80,7 +80,7 @@
 			<string>wechat</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wx4868b35061f87885</string>
+				<string>wx617c77c82218ea2c</string>
 			</array>
 		</dict>
 		<dict>
@@ -120,7 +120,7 @@
 			<string>pin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>pdk4759388231231868449</string>
+				<string>pdk4799618093317899411</string>
 			</array>
 		</dict>
 		<dict>
@@ -270,6 +270,8 @@
 		<string>fb-messenger</string>
 		<string>fbauth2</string>
 		<string>twitterauth</string>
+		<string>tg</string>
+		<string>telegram</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

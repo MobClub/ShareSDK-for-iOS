@@ -90,6 +90,7 @@ static const NSInteger otherInfo = 1;
                                 @(SSDKPlatformTypeVKontakte),
                                 @(SSDKPlatformTypeInstapaper),
                                 @(SSDKPlatformTypeTumblr),
+                                @(SSDKPlatformTypeTelegram),
                                 ];
     _systemPlatforemArray = @[
                               @(SSDKPlatformTypeSMS),
@@ -647,6 +648,7 @@ static const NSInteger otherInfo = 1;
                            if(loadingViewController!= nil)
                            {
                                [loadingViewController.progressView setProgress:1 animated:YES];
+                               loadingViewController.httpServiceModel = nil;
                                [loadingViewController closeAct:nil];
                            }
                        }

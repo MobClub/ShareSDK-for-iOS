@@ -204,6 +204,7 @@
              if(state == SSDKResponseStateSuccess || state == SSDKResponseStateFail)
              {
                  [loadingViewController.progressView setProgress:1 animated:YES];
+                 loadingViewController.httpServiceModel = nil;
                  [loadingViewController closeAct:nil];
              }
              [mobTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];

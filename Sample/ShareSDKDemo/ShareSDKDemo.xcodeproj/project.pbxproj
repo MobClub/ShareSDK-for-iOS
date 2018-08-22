@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F7B82952114408D006E0F0A /* MOBTelegramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B82942114408D006E0F0A /* MOBTelegramViewController.m */; };
+		2F7B829721144580006E0F0A /* TelegramConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7B829621144580006E0F0A /* TelegramConnector.framework */; };
 		2F7CA96620BC1F7100472124 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7CA96520BC1F7000472124 /* TencentOpenAPI.framework */; };
 		2F7CA96820BC1F9700472124 /* QQConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7CA96720BC1F9700472124 /* QQConnector.framework */; };
 		44009A0E1EC46A38001730C0 /* MobShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44009A0C1EC46A38001730C0 /* MobShareViewController.m */; };
@@ -156,6 +158,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F7B82932114408D006E0F0A /* MOBTelegramViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOBTelegramViewController.h; sourceTree = "<group>"; };
+		2F7B82942114408D006E0F0A /* MOBTelegramViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOBTelegramViewController.m; sourceTree = "<group>"; };
+		2F7B829621144580006E0F0A /* TelegramConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TelegramConnector.framework; sourceTree = "<group>"; };
 		2F7CA96520BC1F7000472124 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		2F7CA96720BC1F9700472124 /* QQConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QQConnector.framework; sourceTree = "<group>"; };
 		44009A0B1EC46A38001730C0 /* MobShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobShareViewController.h; sourceTree = "<group>"; };
@@ -418,6 +423,7 @@
 				444D9EFD1FD13F28001393FC /* WhatsAppConnector.framework in Frameworks */,
 				444D9EF71FD13F28001393FC /* ShareSDKUI.framework in Frameworks */,
 				444D9F041FD13F28001393FC /* CopyConnector.framework in Frameworks */,
+				2F7B829721144580006E0F0A /* TelegramConnector.framework in Frameworks */,
 				444D9EE21FD13F28001393FC /* RennSDK.framework in Frameworks */,
 				444D9EE71FD13F28001393FC /* libAPOpenSdk.a in Frameworks */,
 				446212FA1E6D8C2200C609C9 /* libstdc++.tbd in Frameworks */,
@@ -575,6 +581,8 @@
 				440755A41ED713D9004011AA /* MOBPrintViewController.m */,
 				4497F9011F1F391D00C0237E /* MOBMoreShareViewController.h */,
 				4497F9001F1F391D00C0237E /* MOBMoreShareViewController.m */,
+				2F7B82932114408D006E0F0A /* MOBTelegramViewController.h */,
+				2F7B82942114408D006E0F0A /* MOBTelegramViewController.m */,
 			);
 			name = SharePlatformViewControllers;
 			path = ../PlatformViewControllers;
@@ -737,6 +745,7 @@
 		444D9EC51FD13F27001393FC /* PlatformConnector */ = {
 			isa = PBXGroup;
 			children = (
+				2F7B829621144580006E0F0A /* TelegramConnector.framework */,
 				502D18BF20C7E2A9002EA632 /* CMCCConnector.framework */,
 				2F7CA96720BC1F9700472124 /* QQConnector.framework */,
 				444D9EC61FD13F27001393FC /* PrintConnector.framework */,
@@ -1044,6 +1053,7 @@
 				4462829B1EE15FB700AA62EC /* MOBShareSDKHelper.m in Sources */,
 				4441A83C1EE80100001F6DF6 /* MOBVKontakteViewController.m in Sources */,
 				4441A82A1EE7DE83001F6DF6 /* MOBRenrenViewController.m in Sources */,
+				2F7B82952114408D006E0F0A /* MOBTelegramViewController.m in Sources */,
 				445FD4A41EE909A7004DF6B8 /* MOBPinterestViewController.m in Sources */,
 				446212641E6D8B5800C609C9 /* main.m in Sources */,
 				44A094C31EA4C1AA004C66A6 /* MOBSMSViewController.m in Sources */,

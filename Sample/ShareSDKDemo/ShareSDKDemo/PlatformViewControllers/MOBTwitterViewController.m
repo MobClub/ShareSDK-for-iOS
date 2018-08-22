@@ -24,9 +24,9 @@
     [super viewDidLoad];
     platformType = SSDKPlatformTypeTwitter;
     self.title = @"Twitter";
-    shareIconArray = @[@"textIcon",@"textAndImageIcon",@"videoIcon",@"videoIcon"];
-    shareTypeArray = @[@"文字",@"文字+图片",@"文字+视频",@"文字+视频 进度"];
-    selectorNameArray = @[@"shareText",@"shareImage",@"shareVideo",@"shareVideoProgress"];
+    shareIconArray = @[@"textIcon",@"textAndImageIcon",@"webURLIcon",@"videoIcon",@"videoIcon"];
+    shareTypeArray = @[@"文字",@"文字+图片",@"链接",@"文字+视频",@"文字+视频 进度"];
+    selectorNameArray = @[@"shareText",@"shareImage",@"shareLink",@"shareVideo",@"shareVideoProgress"];
 }
 
 /**
@@ -81,6 +81,18 @@
 //                                        latitude:0
 //                                       longitude:0
 //                                            type:SSDKContentTypeImage];
+    [self shareWithParameters:parameters];
+}
+
+- (void)shareLink
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //通用参数设置
+    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                       url:[NSURL URLWithString:@"http://www.mob.com"]
+                                     title:nil
+                                      type:SSDKContentTypeWebPage];
     [self shareWithParameters:parameters];
 }
 
@@ -172,6 +184,7 @@
              if(state == SSDKResponseStateSuccess || state == SSDKResponseStateFail)
              {
                  [loadingViewController.progressView setProgress:1 animated:YES];
+                 loadingViewController.httpServiceModel = nil;
                  [loadingViewController closeAct:nil];
              }
              [mobTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];

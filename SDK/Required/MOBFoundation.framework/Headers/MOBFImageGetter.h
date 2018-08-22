@@ -54,6 +54,19 @@
 
 
 /**
+ *  获取图片
+ *
+ *  @param url            图片路径
+ *  @param allowReadCache 是否允许读取缓存
+ *  @param resultHandler  返回事件
+ *
+ *  @return 服务观察者
+ */
+- (MOBFImageObserver *)getImageWithURL:(NSURL *)url
+                        allowReadCache:(BOOL)allowReadCache
+                                result:(MOBFImageGetterResultHandler)resultHandler;
+
+/**
  获取图片数据
 
  @param url           图片路径
@@ -65,10 +78,36 @@
                                     result:(MOBFImageDataGetterResultHandler)resultHandler;
 
 /**
+ 获取图片数据
+ 
+ @param url            图片路径
+ @param allowReadCache 是否允许读取缓存
+ @param resultHandler  返回事件
+ 
+ @return 服务观察者
+ */
+- (MOBFImageObserver *)getImageDataWithURL:(NSURL *)url
+                            allowReadCache:(BOOL)allowReadCache
+                                    result:(MOBFImageDataGetterResultHandler)resultHandler;
+
+/**
  *  移除图片观察者
  *
  *  @param imageObserver 图片观察者
  */
 - (void)removeImageObserver:(MOBFImageObserver *)imageObserver;
+
+/**
+ *  删除磁盘中缓存中图片
+ *
+ *  @param url 图片地址
+ */
+- (void)removeImageForURL:(nullable NSURL *)url;
+
+/**
+ *  删除当前缓存策略下磁盘目录中所有图片
+ *
+ */
+- (void)clearDisk;
 
 @end
