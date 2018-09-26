@@ -141,6 +141,14 @@
                            type:(SSDKContentType)type
              forPlatformSubType:(SSDKPlatformType)platformSubType;
 
+- (void)SSDKSetupQQParamsByText:(NSString *)text
+                          title:(NSString *)title
+                            url:(NSURL *)url
+                     thumbImage:(id)thumbImage
+                          image:(id)image
+                           type:(SSDKContentType)type
+             forPlatformSubType:(SSDKPlatformType)platformSubType __deprecated_msg("discard form v4.2.0");
+
 
 #pragma mark - SinaWeibo
 
@@ -576,6 +584,12 @@
                                  tags:(NSArray *)tags
                          platformType:(SSDKPlatformType)platformType;
 
+- (void)SSDKSetupEvernoteParamsByText:(NSString *)text
+                               images:(id)images
+                                title:(NSString *)title
+                             notebook:(NSString *)notebook
+                                 tags:(NSArray *)tags
+                         platformType:(SSDKPlatformType)platformType __deprecated_msg("discard form v4.2.0");
 
 #pragma mark - Google+
 /**
@@ -609,7 +623,7 @@
                     ipadExecParams:(NSDictionary *)ipadExecParams
                      ipadMarkParam:(NSString *)ipadMarkParam
                               type:(SSDKContentType)type
-                   platformSubType:(SSDKPlatformType)platformSubType __deprecated_msg("Discard form v4.2.0. Using 'SSDKSetupKaKaoParamsByTitle:desc:imageURL:url:templateId:templateArgs:' instead.");
+                forPlatformSubType:(SSDKPlatformType)platformSubType __deprecated_msg("Discard form v4.2.0. Using 'SSDKSetupKaKaoParamsByTitle:desc:imageURL:url:templateId:templateArgs:' instead.");
 
 /**
  设置KaKaoTalk分享参数，支持链接分享和本地文件分享
@@ -695,6 +709,7 @@
  */
 - (void)SSDKSetupMeiPaiParamsByUrl:(NSURL *)url contentType:(SSDKContentType)type;
 
+- (void)SSDKSetupMeiPaiParamsByUrl:(NSURL *)url type:(SSDKContentType)type __deprecated_msg("Discard form v4.2.0");
 
 #pragma mark - Pocket
 
