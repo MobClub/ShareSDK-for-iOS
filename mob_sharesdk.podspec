@@ -69,11 +69,11 @@ Pod::Spec.new do |s|
             ssp.dependency 'mob_sharesdk/ShareSDK'
         end
 
-        # 支付宝（AliPaySocial）
+        # 支付宝（AliSocial）
         sp.subspec 'AliPaySocial' do |ssp|
             ssp.vendored_libraries = 'SDK/ShareSDK/Support/PlatformSDK/APSocialSDK/*.a'
             ssp.source_files = "SDK/ShareSDK/Support/PlatformSDK/APSocialSDK/*.{h,m}"
-            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/AliPayConnector.framework'
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/AliSocialConnector.framework'
             ssp.public_header_files = "SDK/ShareSDK/Support/PlatformSDK/APSocialSDK/*.h"
             ssp.dependency 'mob_sharesdk/ShareSDK'
         end
@@ -95,7 +95,7 @@ Pod::Spec.new do |s|
         sp.subspec 'Yixin' do |ssp|
             ssp.vendored_libraries = "SDK/ShareSDK/Support/PlatformSDK/YiXinSDK/*.a"
             ssp.source_files = "SDK/ShareSDK/Support/PlatformSDK/YiXinSDK/*.{h,m}"
-            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/YiXinConnector.framework'
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/EasyChatConnector.framework'
             ssp.public_header_files = "SDK/ShareSDK/Support/PlatformSDK/YiXinSDK/*.h"
             ssp.dependency 'mob_sharesdk/ShareSDK'
         end
