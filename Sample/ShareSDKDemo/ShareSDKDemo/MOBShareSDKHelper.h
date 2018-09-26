@@ -56,12 +56,13 @@
 #define IMPORT_VKontakte //注释此行则 不开启【 VKontakte 】平台
 #define IMPORT_Instapaper //注释此行则 不开启【 Instapaper 】平台
 #define IMPORT_Tumblr //注释此行则 不开启【 Tumblr 】平台
-#define IMPORT_Telegram //注释此行则 不开启【 Telegram 】平台
 //系统平台
 #define IMPORT_SMS //注释此行则 不开启【 SMS 】平台
 #define IMPORT_Mail //注释此行则 不开启【 Mail 】平台
 #define IMPORT_Copy //注释此行则 不开启【 Copy 】平台
 #define IMPORT_Print //注释此行则 不开启【 Print 】平台
+#define IMPORT_Telegram //注释此行则 不开启【 Telegram 】平台
+#define IMPORT_Reddit //注释此行则 不开启【 Reddit 】平台
 
 /**
  以下为各平台的相关参数设置
@@ -107,7 +108,7 @@
     //RedirectUri
     #define MOBSSDKSinaWeiboRedirectUri @"http://www.sharesdk.cn"
     //AuthType 授权优先类型 web sso both
-    #define MOBSSDKSinaWeiboAuthType SSDKAuthTypeBoth
+    #define MOBSSDKSinaWeiboAuthType SSDKAuthorizeTypeBoth
 #endif
 
 
@@ -169,7 +170,7 @@
     //AppKey
     #define MOBSSDKQQAppKey @"aed9b0303e3ed1e27bae87c33761161d"
     //AuthType
-    #define MOBSSDKQQAuthType SSDKAuthTypeBoth
+    #define MOBSSDKQQAuthType SSDKAuthorizeTypeBoth
     //useTIM 是否优先使用TIM客户端
     #define MOBSSDKQQUseTIM YES
     //是否默认返回 UnionID v4.0.2增加
@@ -204,10 +205,6 @@
     #define MOBSSDKWeChatAppID @"wx617c77c82218ea2c"
     //AppSecret
     #define MOBSSDKWeChatAppSecret @"c7253e5289986cf4c4c74d1ccc185fb1"
-    //是否默认返回 UnionID v4.0.2增加
-    #define MOBSSDKWeChatBackUnionID NO
-// 如需测试小程序 需要修改 bundleID 为  com.tencent.wc.xin.SDKSample
-// MOBSSDKWeChatAppID @"wxd930ea5d5a258f4f"
 #endif
 
 
@@ -423,7 +420,7 @@
     //secretKey
     #define MOBSSDKRenrenSecretKey @"f29df781abdd4f49beca5a2194676ca4"
     //AuthType 授权优先类型 web sso both
-    #define MOBSSDKRenrenAuthType SSDKAuthTypeBoth
+    #define MOBSSDKRenrenAuthType SSDKAuthorizeTypeBoth
 #endif
 
 #pragma mark - 易信平台配置信息
@@ -455,7 +452,7 @@
     //RedirectUri
     #define MOBSSDKYiXinRedirectUri @"https://open.yixin.im/resource/oauth2_callback.html"
     //AuthType 授权优先类型 web sso both
-    #define MOBSSDKYiXinAuthType SSDKAuthTypeBoth
+    #define MOBSSDKYiXinAuthType SSDKAuthorizeTypeBoth
 #endif
 
 
@@ -494,7 +491,7 @@
     //displayName facebook客户端分享必须
     #define MOBSSDKFacebookDisplayName @"shareSDK"
     //AuthType 授权优先类型 web sso both
-    #define MOBSSDKFacebookAuthType SSDKAuthTypeBoth
+    #define MOBSSDKFacebookAuthType SSDKAuthorizeTypeBoth
 #endif
 
 #pragma mark - FacebookMessager平台配置信息
@@ -592,7 +589,7 @@
 */
 #ifdef IMPORT_Line
     //AuthType 授权优先类型 web sso both
-    #define MOBSSDKLineAuthType SSDKAuthTypeBoth
+    #define MOBSSDKLineAuthType SSDKAuthorizeTypeBoth
 #endif
 
 
@@ -647,10 +644,10 @@
      
      授权：客户端SSO 应用内web
      
-     分享：KakaoTalk   客户端 文字 图片 链接 App
+     分享：KakaoTalk    链接 文件
           KakaoStory  客户端 文字
                    应用内web 文字 图片 链接
-     注：KakaoTalk 分享的图片必须是网络图片
+     注：KakaoTalk 分享的链接必现需要在kakao后台注册, 不要开启转短链,否则会报错
      
      分享详例：MOBKakaoTalkViewController MOBKakaoStoryViewController
      
@@ -664,7 +661,7 @@
     //redirectUri
     #define MOBSSDKKaKaoRedirectUri @"http://www.mob.com/oauth"
     //AuthType 授权优先类型 web sso both
-    #define MOBSSDKKaKaoAuthType SSDKAuthTypeBoth
+    #define MOBSSDKKaKaoAuthType SSDKAuthorizeTypeBoth
 #endif
 
 #pragma mark - YouTube平台配置信息
@@ -748,9 +745,7 @@
  */
 #ifdef IMPORT_Pinterest
     //ClientId
-//    #define MOBSSDKPinterestClientId @"4759388231231868449"
-#define MOBSSDKPinterestClientId @"4799618093317899411"
-//#define MOBSSDKPinterestAppSecret @"17690a5c8ac6e30a27b27c153442c9dab9e2ba9049e72d3b93e633175501384f"
+#define MOBSSDKPinterestClientId @"4987008320438021391"
 
 #endif
 
@@ -773,7 +768,7 @@
     //RedirectUri
     #define MOBSSDKPocketRedirectUri @"pocketapp1234"
     //AuthType 授权优先类型 web sso both
-    #define MOBSSDKPocketAuthType SSDKAuthTypeBoth
+    #define MOBSSDKPocketAuthType SSDKAuthorizeTypeBoth
 #endif
 
 
@@ -815,7 +810,7 @@
     //SecretKey
     #define MOBSSDKVKontakteSecretKey @"ZHG2wGymmNUCRLG2r6CY"
     //AuthType 授权优先类型 web sso both
-    #define MOBSSDKVKontakteAuthType SSDKAuthTypeBoth
+    #define MOBSSDKVKontakteAuthType SSDKAuthorizeTypeBoth
 #endif
 
 #pragma mark - Instapaper平台配置信息
@@ -865,6 +860,18 @@
     #define MOBSSDKCMCCDisplayUI YES
 #endif
 
+#pragma mark - reddit
+#ifdef IMPORT_Reddit
+#define MOBSSDKRedditAppKey @"ObzXn50T7Cg0Xw"
+#define MOBSSDKRedditRedirectUri @"https://www.mob.com/reddit_callback"
+#endif
+
+#pragma mark - telegram
+#ifdef IMPORT_Telegram
+#define MOBSSDKTelegramBotToken @"600852601:AAElp9J93JiYevLocDIEYPhEYulnMFuB_nQ"
+#define MOBSSDKTelegramBotDomain @"http://127.0.0.1"
+#endif
+
 #pragma mark - SMS平台配置信息
 /*
     分享详例：MOBSMSViewController
@@ -893,6 +900,5 @@
     
 }
 + (MOBShareSDKHelper *)shareInstance;
-//保存选择的平台 可用于UI排序
-@property (nonatomic,strong)NSArray *platforems;
+
 @end

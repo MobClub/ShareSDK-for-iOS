@@ -1,7 +1,5 @@
 /**
- * Copyright 2015 Kakao Corp.
- *
- * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
+ * Copyright 2015-2018 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,11 +16,14 @@
 
 #import "KOSessionTask.h"
 #import "KOUser.h"
+#import "KOUserMe.h"
 
 /*!
  @header KOSessionTask+UserManagementAPI.h
- 인증된 session 정보를 바탕으로 각종 사용자 관리 API를 호출할 수 있습니다.
+ @abstract 인증된 session 정보를 바탕으로 각종 사용자 관리 API를 호출할 수 있습니다.
  */
+
+typedef void (^KOSessionTaskUserMeCompletionHandler)(NSError *error, KOUserMe *me);
 
 /*!
  인증된 session 정보를 바탕으로 각종 사용자 관리 API를 호출할 수 있습니다.
@@ -31,27 +32,26 @@
 #pragma mark - UserManagement
 
 /*!
- @abstract 현재 로그인된 사용자에 대한 정보를 얻을 수 있습니다.
- @param completionHandler 사용자 정보를 얻어 처리하는 핸들러
- @discussion
+ * @method userMeTaskWithCompletion:
+ * @abstract 현재 로그인된 사용자에 대한 정보를 얻을 수 있습니다.
+ * @param completion 사용자 정보를 얻어 처리하는 핸들러
  */
-+ (instancetype)meTaskWithCompletionHandler:(KOSessionTaskCompletionHandler)completionHandler;
++ (instancetype)userMeTaskWithCompletion:(KOSessionTaskUserMeCompletionHandler)completion;
 
 /*!
- @abstract 현재 로그인된 사용자에 대한 정보를 얻을 수 있습니다.
- @param secureResource 프로필, 썸네일 이미지 등의 리소스 정보들에 대해 https를 지원하는 형식으로 응답을 받을지의 여부. YES일 경우 https지원, NO일 경우 http지원.
- @param completionHandler 사용자 정보를 얻어 처리하는 핸들러
- @discussion
+ * @method userMeTaskWithPropertyKeys:completion:
+ * @abstract 현재 로그인된 사용자에 대한 정보를 얻을 수 있습니다.
+ * @param propertyKeys 특정 프로퍼티를 지정하여 받고 싶을 경우 요청할 프로퍼티 키 이름 목록.
+ * @param completion 사용자 정보를 얻어 처리하는 핸들러
  */
-+ (instancetype)meTaskWithSecureResource:(BOOL)secureResource
-                       completionHandler:(KOSessionTaskCompletionHandler)completionHandler;
++ (instancetype)userMeTaskWithPropertyKeys:(NSArray<NSString *> *)propertyKeys completion:(KOSessionTaskUserMeCompletionHandler)completion;
 
 /*!
  @abstract 현재 로그인된 사용자의 속성(Property)를 설정할 수 있습니다.
  @param properties 갱신할 사용자 정보
  @param completionHandler 요청 완료시 실행될 핸들러
  */
-+ (instancetype)profileUpdateTaskWithProperties:(NSDictionary *)properties
++ (instancetype)profileUpdateTaskWithProperties:(NSDictionary<NSString *, NSString *> *)properties
                               completionHandler:(void (^)(BOOL success, NSError *error))completionHandler;
 
 /*!
@@ -59,7 +59,7 @@
  @param properties 가입시 함께 설정할 사용자 정보
  @param completionHandler 요청 완료시 실행될 핸들러
  */
-+ (instancetype)signupTaskWithProperties:(NSDictionary *)properties
++ (instancetype)signupTaskWithProperties:(NSDictionary<NSString *, NSString *> *)properties
                        completionHandler:(void (^)(BOOL success, NSError *error))completionHandler;
 
 /*!
@@ -67,5 +67,16 @@
  @param completionHandler 요청 완료시 실행될 핸들러
  */
 + (instancetype)unlinkTaskWithCompletionHandler:(void (^)(BOOL success, NSError *error))completionHandler;
+
+
+
++ (instancetype)meTaskWithCompletionHandler:(KOSessionTaskCompletionHandler)completionHandler DEPRECATED_MSG_ATTRIBUTE("전화번호 로그인이 오픈되면서 이메일이 없는 카카오계정이 존재할 수 있습니다. 다양한 상황에 대처할 수 있는 /v2/user/me가 적용된 userMeTaskWithCompletion: 메소드를 사용해주세요.");
++ (instancetype)meTaskWithSecureResource:(BOOL)secureResource
+                       completionHandler:(KOSessionTaskCompletionHandler)completionHandler DEPRECATED_MSG_ATTRIBUTE("전화번호 로그인이 오픈되면서 이메일이 없는 계정이 존재할 수 있습니다. 다양한 상황에 대처할 수 있는 /v2/user/me가 적용된 userMeTaskWithCompletion: 메소드를 사용해주세요.");
++ (instancetype)meTaskWithPropertyKeys:(NSArray<NSString *> *)propertyKeys
+                     completionHandler:(KOSessionTaskCompletionHandler)completionHandler DEPRECATED_MSG_ATTRIBUTE("전화번호 로그인이 오픈되면서 이메일이 없는 계정이 존재할 수 있습니다. 다양한 상황에 대처할 수 있는 /v2/user/me가 적용된 userMeTaskWithCompletion: 메소드를 사용해주세요.");
++ (instancetype)meTaskWithSecureResource:(BOOL)secureResource
+                            propertyKeys:(NSArray<NSString *> *)propertyKeys
+                       completionHandler:(KOSessionTaskCompletionHandler)completionHandler DEPRECATED_MSG_ATTRIBUTE("전화번호 로그인이 오픈되면서 이메일이 없는 계정이 존재할 수 있습니다. 다양한 상황에 대처할 수 있는 /v2/user/me가 적용된 userMeTaskWithCompletion: 메소드를 사용해주세요.");
 
 @end

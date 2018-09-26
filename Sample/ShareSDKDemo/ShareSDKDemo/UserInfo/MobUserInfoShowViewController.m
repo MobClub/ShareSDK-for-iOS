@@ -58,9 +58,10 @@
 
 - (IBAction)clearAct:(id)sender
 {
-    [ShareSDK cancelAuthorize:platformType];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"AuthInfoUPData" object:nil userInfo:nil];
-    [self tapAct];
+    [ShareSDK cancelAuthorize:platformType result:^(NSError *error) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"AuthInfoUPData" object:nil userInfo:nil];
+        [self tapAct];
+    }];
 }
 
 - (void)tapAct
@@ -73,68 +74,11 @@
     }];
 }
 
-- (NSString *)getUserInfoStr:(SSDKUser *)userInfo
-{
-    NSMutableString *str = [[NSMutableString alloc] init];
-    if(userInfo.uid != nil)
-    {
-        [str appendFormat:@"uid : %@\n\n",userInfo.uid];
-    }
-    if(userInfo.nickname != nil)
-    {
-        [str appendFormat:@"nickname : %@\n\n",userInfo.nickname];
-    }
-    if(userInfo.icon != nil)
-    {
-        [str appendFormat:@"icon : %@\n\n",userInfo.icon];
-    }
-    [str appendFormat:@"gender : %ld\n\n",(long)userInfo.gender];
-    if(userInfo.url != nil)
-    {
-        [str appendFormat:@"url : %@\n\n",userInfo.url];
-    }
-    if(userInfo.aboutMe != nil)
-    {
-        [str appendFormat:@"aboutMe : %@\n\n",userInfo.aboutMe];
-    }
-    if(userInfo.birthday != nil)
-    {
-        [str appendFormat:@"birthday : %@\n\n",userInfo.birthday];
-    }
-    if(userInfo.educations != nil)
-    {
-        [str appendFormat:@"educations : %@\n\n",userInfo.educations];
-    }
-    if(userInfo.works != nil)
-    {
-        [str appendFormat:@"works : %@\n\n",userInfo.works];
-    }
-    [str appendFormat:@"level : %ld\n\n",(long)userInfo.level];
-    [str appendFormat:@"friendCount : %ld\n\n",(long)userInfo.friendCount];
-    [str appendFormat:@"followerCount : %ld\n\n",(long)userInfo.followerCount];
-    [str appendFormat:@"shareCount : %ld\n\n",(long)userInfo.shareCount];
-    if(userInfo.verifyReason != nil)
-    {
-        [str appendFormat:@"verifyReason : %@\n\n",userInfo.verifyReason];
-    }
-    [str appendFormat:@"verifyType : %ld\n\n",(long)userInfo.verifyType];
-    [str appendFormat:@"regAt : %f\n\n",userInfo.regAt];
-    if(userInfo.credential != nil)
-    {
-        [str appendFormat:@"credential : %@\n\n",userInfo.credential];
-    }
-    if(userInfo.rawData != nil)
-    {
-        [str appendFormat:@"rawData : %@\n\n",userInfo.rawData];
-    }
-    return str;
-}
-
 - (void)setUserInfo:(SSDKUser *)userInfo
 {
     platformType = userInfo.platformType;
     myTextView.contentOffset = CGPointZero;
-    myTextView.text = [self getUserInfoStr:userInfo];
+    myTextView.text = userInfo.dictionaryValue.debugDescription;
     [UIView animateWithDuration:0.15 animations:^{
         self.view.alpha = 1;
     }];

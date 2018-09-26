@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MOBSDKDef.h"
 
 /**
  MobSDK
@@ -33,6 +34,20 @@
  @return 应用密钥
  */
 + (NSString * _Nullable)appSecret;
+
+/**
+ 获取当前国际域名
+
+ @return 域名
+ */
++ (NSString *_Nullable)getInternationalDomain;
+
+/**
+ 设置国际域名
+
+ @param domainType 域名类型
+ */
++ (void)setInternationalDomain:(MOBFSDKDomainType)domainType;
 
 /**
  变更应用密钥，针对服务器刷新应用密钥后，可以通过该方法进行修改

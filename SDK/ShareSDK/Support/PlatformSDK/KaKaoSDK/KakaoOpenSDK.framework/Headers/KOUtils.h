@@ -1,7 +1,5 @@
 /**
- * Copyright 2015 Kakao Corp.
- *
- * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
+ * Copyright 2015-2016 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,16 +20,15 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
 @interface KOUtils : NSObject
 
-/*!
+/*
  @abstract 카카오링크 콜백 URL 정보를 얻는다.
  */
-+ (NSString *)kakaoLinkCallbackURL;
++ (NSString *)kakaoLinkCallbackURL DEPRECATED_ATTRIBUTE;
 
-/*!
+/*
  @abstract SDK 기본 헤더 정보를 얻는다.
  */
 + (NSString *)kaHeader;

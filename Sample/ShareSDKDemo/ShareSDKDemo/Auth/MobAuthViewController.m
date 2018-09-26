@@ -68,7 +68,9 @@
                                 @(SSDKPlatformTypeInstapaper),
                                 @(SSDKPlatformTypePinterest),
                                 @(SSDKPlatformTypePocket),
-                                @(SSDKPlatformTypeTumblr)
+                                @(SSDKPlatformTypeTumblr),
+                                @(SSDKPlatformTypeTelegram),
+                                @(SSDKPlatformTypeReddit),
                                 ];
     _titleArray = @[@"  国内平台",@"  海外平台"];
     _platforemUserInfos = [[NSMutableDictionary alloc] init];
@@ -166,14 +168,15 @@
         cell.imageView.image = icon;
         cell.textLabel.textAlignment = NSTextAlignmentLeft;
         //检测平台是否已授权
-        if(![ShareSDK hasAuthorized:platformType])
+        BOOL hasAuthed = [ShareSDK hasAuthorized:platformType];
+        if(hasAuthed)
         {
-            NSInteger tag = indexPath.section * 1000 + indexPath.row;
-            cell.accessoryView = [self getAuthButton:tag];
+             cell.accessoryView = [self getInfoView:platformType];
         }
         else
         {
-            cell.accessoryView = [self getInfoView:platformType];
+            NSInteger tag = indexPath.section * 1000 + indexPath.row;
+            cell.accessoryView = [self getAuthButton:tag];
         }
     }
     return cell;
@@ -209,11 +212,7 @@
     if([_platforemUserInfos valueForKey:key])
     {
         SSDKUser *user = [_platforemUserInfos valueForKey:key];
-        //uid 可用于和自身用户系统进行用户绑定 使用
-        NSLog(@"user uid %@",user.uid);
-        NSLog(@"user nickname %@",user.nickname);
-        NSLog(@"user icon %@",user.icon);
-        NSLog(@"user rawData %@",user.rawData);
+        NSLog(@"%@",user.dictionaryValue);
         textLabel.text = user.nickname;
         [[MOBFImageGetter sharedInstance] getImageWithURL:[NSURL URLWithString:user.icon]
                                                    result:^(UIImage *image, NSError *error) {
@@ -230,13 +229,11 @@
         //获取平台授权用户信息
         [ShareSDK getUserInfo:platformType
                onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
+                   
                    if(state == SSDKResponseStateSuccess)
                    {
                        [_platforemUserInfos setObject:user forKey:key];
-                       //uid 可用于和自身用户系统进行用户绑定 使用
-                       NSLog(@"user uid %@",user.uid);
-                       NSLog(@"user nickname %@",user.nickname);
-                       NSLog(@"user icon %@",user.icon);
+                    
                        textLabel.text = user.nickname;
                        [[MOBFImageGetter sharedInstance] getImageWithURL:[NSURL URLWithString:user.icon]
                                                                   result:^(UIImage *image, NSError *error) {
@@ -409,10 +406,12 @@
                     platformType = [_platforemArray[_selectIndexPath.row] integerValue];
                 }
                 //取消平台授权
-                [ShareSDK cancelAuthorize:platformType];
-                NSString *key = [NSString stringWithFormat:@"%@",@(platformType)];
-                [_platforemUserInfos removeObjectForKey:key];
-                [myTableView reloadRowsAtIndexPaths:@[_selectIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+                [ShareSDK cancelAuthorize:platformType result:^(NSError *error) {
+                    
+                    NSString *key = [NSString stringWithFormat:@"%@",@(platformType)];
+                    [_platforemUserInfos removeObjectForKey:key];
+                    [myTableView reloadRowsAtIndexPaths:@[_selectIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+                }];
             }
         }
     }

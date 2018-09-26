@@ -9,7 +9,8 @@
 #ifndef SSETypeDefine_h
 #define SSETypeDefine_h
 
-#import <ShareSDK/SSDKTypeDefine.h>
+#import <ShareSDK/ShareSDK.h>
+@class SSEFriendsPaging;
 
 /**
  *  添加/关注好友状态变更回调处理器
@@ -27,8 +28,15 @@ typedef void(^SSDKAddFriendStateChangedHandler) (SSDKResponseState state, SSDKUs
  *  @param paging 好友列表分页信息，当且仅当state为SSDKResponseStateSuccess时返回
  *  @param error  错误信息，当且仅当state为SSDKResponseStateFail时返回
  */
-typedef void(^SSDKGetFriendsStateChangedHandler) (SSDKResponseState state, SSDKFriendsPaging *paging,  NSError *error);
+typedef void(^SSDKGetFriendsStateChangedHandler) (SSDKResponseState state, SSEFriendsPaging *paging,  NSError *error);
 
-
+/**
+ *  调用API状态变更回调处理器
+ *
+ *  @param state            状态
+ *  @param data             返回数据
+ *  @param error            错误信息
+ */
+typedef void(^SSDKCallApiStateChangedHandler)(SSDKResponseState state, id data, NSError *error);
 
 #endif /* SSETypeDefine_h */

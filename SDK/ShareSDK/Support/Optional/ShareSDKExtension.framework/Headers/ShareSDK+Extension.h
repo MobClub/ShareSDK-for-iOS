@@ -24,14 +24,32 @@
 + (BOOL)isClientInstalled:(SSDKPlatformType)platformType;
 
 /**
+ *  获取当前授权用户
+ *
+ *  @param platformType 平台类型
+ *
+ *  @return 用户信息
+ */
++ (SSDKUser *)currentUser:(SSDKPlatformType)platformType;
+
+/**
+ *  设置当前授权用户
+ *
+ *  @param user         用户信息
+ *  @param platformType 平台类型
+ */
++ (void)setCurrentUser:(SSDKUser *)user forPlatformType:(SSDKPlatformType)platformType;
+
+/**
  *  根据API接口返回的原始数据来创建用户对象
  *
- *  @param rawData 原始数据
+ *  @param userRawData 用户资料
+ *  @param credentialRawData 用户授权信息
  *  @param platformType 平台类型
  *
  *  @return 用户信息对象
  */
-+ (SSDKUser *)userByRawData:(NSDictionary *)rawData forPlatformType:(SSDKPlatformType)platformType;
++ (SSDKUser *)userByRawData:(NSDictionary *)userRawData credential:(NSDictionary *)credentialRawData forPlatformType:(SSDKPlatformType)platformType;
 
 /**
  *  添加/关注好友
@@ -45,21 +63,6 @@
    onStateChanged:(SSDKAddFriendStateChangedHandler)stateChangedHandler;
 
 /**
- *  添加好友
- *
- *  @param platformType         平台类型
- *  @param user                 需要加为好友的用户信息
- *  @param authorizeHandler     授权处理器
- *  @param viewDisplayHandler   视图显示处理器
- *  @param stateChangedHandler  状态变更回调处理器
- */
-+ (void)addFriend:(SSDKPlatformType)platformType
-             user:(SSDKUser *)user
-      onAuthorize:(SSDKNeedAuthorizeHandler)authorizeHandler
-    onViewDisplay:(SSDKAddFriendViewDisplayHandler)viewDisplayHandler
-   onStateChanged:(SSDKAddFriendStateChangedHandler)stateChangedHandler;
-
-/**
  *  获取好友列表
  *
  *  @param platformType       平台类型
@@ -70,41 +73,9 @@
 + (void)getFriends:(SSDKPlatformType)platformType
             cursor:(NSUInteger)cursor
               size:(NSUInteger)size
-    onStateChanged:(SSDKGetFriendsStateChangedHandler)stateChangedHandler;
-
-/**
- *  获取好友列表
- *
- *  @param platformType       平台类型
- *  @param cursor             分页游标
- *  @param size               分页大小
- *  @param authorizeHandler   授权处理器
- *  @param stateChangedHandler 状态变更回调处理
- */
-+ (void)getFriends:(SSDKPlatformType)platformType
-            cursor:(NSUInteger)cursor
-              size:(NSUInteger)size
-       onAuthorize:(SSDKNeedAuthorizeHandler)authorizeHandler
     onStateChanged:(SSDKGetFriendsStateChangedHandler)stateChangedHandler;
 
 #pragma - mark 原Base层
-
-/**
- *  调用分享平台API
- *
- *  @param type                平台类型
- *  @param url                 接口请求地址
- *  @param method              请求方式：GET/POST/DELETE
- *  @param parameters          请求参数
- *  @param authorizeHandler    授权处理器
- *  @param stateChangedHandler 状态变更回调处理
- */
-+ (void)callApi:(SSDKPlatformType)type
-            url:(NSString *)url
-         method:(NSString *)method
-     parameters:(NSMutableDictionary *)parameters
-    onAuthorize:(SSDKNeedAuthorizeHandler)authorizeHandler
- onStateChanged:(SSDKCallApiStateChangedHandler)stateChangedHandler;
 
 /**
  *  调用分享平台API
@@ -116,7 +87,6 @@
  *  @param method              请求方式：GET/POST/DELETE
  *  @param parameters          请求参数
  *  @param headers             请求头
- *  @param authorizeHandler    授权处理器
  *  @param stateChangedHandler 状态变更回调处理
  */
 + (void)callApi:(SSDKPlatformType)type
@@ -124,7 +94,6 @@
          method:(NSString *)method
      parameters:(NSMutableDictionary *)parameters
         headers:(NSMutableDictionary *)headers
-    onAuthorize:(SSDKNeedAuthorizeHandler)authorizeHandler
  onStateChanged:(SSDKCallApiStateChangedHandler)stateChangedHandler;
 
 

@@ -1,0 +1,54 @@
+//
+//  PrefixHeader.pch
+//  ShareSDKDemo
+//
+//  Created by Max on 2018/6/15.
+//  Copyright © 2018年 Max. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDK/ShareSDK+Base.h>
+
+#define SSDKAlertAuthCallback   NSString *result;\
+id des = nil;\
+if (state == SSDKResponseStateSuccess)\
+{\
+result = @"Success";\
+des = user.dictionaryValue;\
+}\
+else if (state == SSDKResponseStateCancel)\
+{\
+result = @"Cancel";\
+}\
+else\
+{\
+result = @"Failed";\
+des = error;\
+}\
+[[[UIAlertView alloc] initWithTitle:result message:[NSString stringWithFormat:@"%@",des] delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil] show]
+
+
+#define   SSDKAlertShareCallback      NSString *result;\
+id des = nil;\
+if (state == SSDKResponseStateSuccess)\
+{\
+result = @"Success";\
+des = [NSString stringWithFormat:@"userData:%@\nentity:%@",userData,contentEntity];\
+}\
+else if (state == SSDKResponseStateCancel)\
+{\
+result = @"Cancel";\
+}\
+else\
+{\
+result = @"Failed";\
+des = error;\
+}\
+[[[UIAlertView alloc] initWithTitle:result message:[NSString stringWithFormat:@"%@",des] delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil] show]
+#endif /* PrefixHeader_pch */

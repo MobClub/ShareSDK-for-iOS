@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ShareSDK/SSDKHttpServiceModel.h>
+#import <ShareSDK/SSDKSession.h>
 
 @interface MOBLoadingViewController : UIViewController
 
 - (IBAction)closeAct:(UIButton *)sender;
 
 @property (nonatomic,weak) IBOutlet UIProgressView *progressView;
-@property (nonatomic,weak) SSDKHttpServiceModel *httpServiceModel;
+
+@property (strong, nonatomic) SSDKSession *session;
+
+- (void)hidden;
+
 @end

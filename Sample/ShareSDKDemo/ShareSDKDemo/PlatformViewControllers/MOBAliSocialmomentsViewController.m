@@ -17,7 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    platformType = SSDKPlatformTypeAliSocial;
+    platformType = SSDKPlatformTypeAliSocialTimeline;
     self.title = @"支付宝朋友圈";
     shareIconArray = @[@"imageIcon",@"webURLIcon"];
     shareTypeArray = @[@"图片",@"链接"];

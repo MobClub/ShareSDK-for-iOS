@@ -19,9 +19,9 @@
     [super viewDidLoad];
     platformType = SSDKPlatformTypeTelegram;
     self.title = @"Telegram";
-    shareIconArray = @[@"textIcon",@"imageIcon",@"audioURLIcon",@"videoIcon",@"imageIcon"];
-    shareTypeArray = @[@"文字",@"图片",@"音频",@"视频",@"文件(图片、音频、视频及其他类型)"];
-    selectorNameArray = @[@"shareText",@"shareImage",@"shareAudio",@"shareVideo",@"shareFile"];
+    shareIconArray = @[@"textIcon",@"webURLIcon",@"imageIcon",@"audioURLIcon",@"videoIcon",@"imageIcon"];
+    shareTypeArray = @[@"文字",@"链接",@"图片",@"音频",@"视频",@"文件(图片、音频、视频及其他类型)"];
+    selectorNameArray = @[@"shareText",@"shareLink",@"shareImage",@"shareAudio",@"shareVideo",@"shareFile"];
 }
 
 /**
@@ -31,7 +31,7 @@
 {
     //通用参数设置
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKSetupShareParamsByText:@"[Share SDK](https://www.mob.com)"
+    [parameters SSDKSetupShareParamsByText:@"Share SDK"
                                     images:nil
                                        url:nil
                                      title:nil
@@ -44,6 +44,18 @@
     //                                         file:nil
     //                             menuDisplayPoint:CGPointZero
     //                                         type:SSDKContentTypeText];
+    [self shareWithParameters:parameters];
+}
+
+-(void)shareLink
+{
+    //通用参数设置
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+                                    images:nil
+                                       url:[NSURL URLWithString:@"https://www.mob.com"]
+                                     title:nil
+                                      type:SSDKContentTypeWebPage];
     [self shareWithParameters:parameters];
 }
 

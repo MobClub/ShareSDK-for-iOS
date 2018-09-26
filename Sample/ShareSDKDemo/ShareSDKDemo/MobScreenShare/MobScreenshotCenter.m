@@ -10,6 +10,7 @@
 #import <ShareSDKExtension/SSEShareHelper.h>
 #import "MobUIScreenshotShare.h"
 #import <UIKit/UIKit.h>
+#import <ShareSDK/SSDKImage.h>
 
 @implementation MobScreenshotCenter
 

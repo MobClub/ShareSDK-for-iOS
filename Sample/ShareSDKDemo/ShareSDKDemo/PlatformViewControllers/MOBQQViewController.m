@@ -130,7 +130,7 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
+    [parameters SSDKSetupShareParamsByText:@"111"
                                     images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
                                        url:[NSURL URLWithString:@"http://www.mob.com"]
                                      title:@"Share SDK"

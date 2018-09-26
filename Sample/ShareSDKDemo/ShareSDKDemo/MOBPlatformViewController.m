@@ -114,11 +114,11 @@
 
 - (void)shareWithParameters:(NSMutableDictionary *)parameters
 {
-    if(_isShare)
-    {
-        return;
-    }
-    _isShare = YES;
+//    if(_isShare)
+//    {
+//        return;
+//    }
+//    _isShare = YES;
     if(parameters.count == 0){
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@""
                                                             message:@"请先设置分享参数"
@@ -131,7 +131,7 @@
     [ShareSDK share:platformType
          parameters:parameters
      onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
-         if(state == SSDKResponseStateBeginUPLoad){
+         if(state == SSDKResponseStateUpload){
              return ;
          }
          NSString *titel = @"";
@@ -150,7 +150,7 @@
              case SSDKResponseStateFail:
              {
                  _isShare = NO;
-                 NSLog(@"error :%@",error);
+                 NSLog(@"---------------->share error :%@",error);
                  titel = @"分享失败";
                  typeStr = [NSString stringWithFormat:@"%@",error];
                  typeColor = [UIColor redColor];
@@ -242,7 +242,7 @@
 {
     if(alertView.tag == 1000 && buttonIndex == 1)
     {
-        [ShareSDK cancelAuthorize:platformType];
+        [ShareSDK cancelAuthorize:platformType result:nil];
         if(isTest)
         {
             [mobTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];

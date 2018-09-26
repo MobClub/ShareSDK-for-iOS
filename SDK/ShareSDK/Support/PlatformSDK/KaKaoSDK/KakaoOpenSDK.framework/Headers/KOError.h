@@ -1,7 +1,5 @@
 /**
- * Copyright 2015-2016 Kakao Corp.
- *
- * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
+ * Copyright 2015-2018 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +35,7 @@ extern NSString *const KOErrorDomain;
  @constant  KOErrorHTTP http 프로토콜 오류
  @constant  KOErrorNotSupported 지원하지 않는 기능
  @constant  KOErrorBadParameter 파라미터 이상
+ @constant  KOErrorIllegalState 작업을 실행하기에 적절하지 않은 상태
  @constant  KOServerErrorUnknown 일반적인 서버 오류 응답. message를 확인해야 함
  @constant  KOServerErrorBadParameter 파라미터 이상
  @constant  KOServerErrorUnSupportedApi 지원되지 않은 API 호출
@@ -84,12 +83,13 @@ typedef enum {
     KOErrorHTTP = 9,
     KOErrorNotSupported = 10,
     KOErrorBadParameter = 11,
+    KOErrorIllegalState = 14,
 
     KOServerErrorUnknown = -1,
     KOServerErrorBadParameter = -2,
     KOServerErrorUnSupportedApi = -3,
     KOServerErrorBlocked = -4,
-    KOServerErrorSecurity = -5,
+    KOServerErrorPermission = -5,
     KOServerErrorMisConfigured = -6,
     KOServerErrorInternal = -9,
     KOServerErrorApiLimitExceed = -10,
@@ -126,6 +126,6 @@ typedef enum {
 
     KOServerErrorPushNotExistPushToken = -901,
 
-    KOServerErrorUnderMaintenance = -9798
+    KOServerErrorUnderMaintenance = -9798,
 
 } KOErrorCode;

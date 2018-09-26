@@ -16,7 +16,7 @@
     platformType = SSDKPlatformSubTypeYiXinTimeline;
     self.title = @"易信朋友圈";
     shareIconArray = @[@"textIcon",@"imageIcon",@"webURLIcon",@"audioURLIcon",@"videoURLIcon",@"appInfoIcon"];
-    shareTypeArray = @[@"文字 APP",@"图片 APP",@"链接 APP",@"音乐链接 APP",@"视频链接 APP",@"应用消息 APP"];
+    shareTypeArray = @[@"文字 APP",@"图片 APP",@"链接 APP",@"音乐链接 APP",@"视频链接 APP"];
     selectorNameArray = @[@"shareText",@"shareImage",@"shareLink",@"shareAudio",@"shareVideo",@"shareApp"];
 }
 
@@ -26,7 +26,6 @@
 -(void)shareText
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKEnableUseClientShare];
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:@"Share SDK"
                                     images:nil
@@ -56,7 +55,7 @@
 - (void)shareImage
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKEnableUseClientShare];
+
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:@"Share SDK"
                                     images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
@@ -83,7 +82,7 @@
 - (void)shareLink
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKEnableUseClientShare];
+
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
                                     images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
@@ -110,7 +109,6 @@
 - (void)shareAudio
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKEnableUseClientShare];
     //网络音频
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:@"崔健"
@@ -137,7 +135,7 @@
 - (void)shareVideo
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKEnableUseClientShare];
+
     //网络视频
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:@"视频"
@@ -164,7 +162,6 @@
 - (void)shareApp
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKEnableUseClientShare];
     //平台定制
     [parameters SSDKSetupYiXinParamsByText:@"Share SDK"
                                      title:@"App消息"
@@ -172,7 +169,7 @@
                                 thumbImage:nil
                                      image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
                               musicFileURL:nil
-                                   extInfo:nil
+                                   extInfo:@"ext"
                                   fileData:[@"13232" dataUsingEncoding:NSUTF8StringEncoding]
                                    comment:nil
                                   toUserId:nil

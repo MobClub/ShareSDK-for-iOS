@@ -44,8 +44,6 @@
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
-    //使用微信app的插件进行分享
-    [parameters SSDKEnableExtensionShare];
     [self shareWithParameters:parameters];
 }
 
@@ -60,7 +58,6 @@
                                        url:[NSURL URLWithString:@"http://www.mob.com"]
                                      title:nil
                                       type:SSDKContentTypeWebPage];
-    [parameters SSDKEnableExtensionShare];
     [self shareWithParameters:parameters];
 }
 
@@ -75,7 +72,6 @@
                                        url:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"]]
                                      title:nil
                                       type:SSDKContentTypeFile];
-    [parameters SSDKEnableExtensionShare];
     [self shareWithParameters:parameters];
 }
 
@@ -99,7 +95,6 @@
                                      title:nil
                                       type:SSDKContentTypeImage];
     //使用微信app的插件进行分享
-    [parameters SSDKEnableExtensionShare];
     [self shareWithParameters:parameters];
 }
 
@@ -114,7 +109,6 @@
                                        url:[NSURL URLWithString:@"http://www.mob.com"]
                                      title:nil
                                       type:SSDKContentTypeWebPage];
-    [parameters SSDKEnableExtensionShare];
     [self shareWithParameters:parameters];
 }
 
@@ -129,7 +123,7 @@
                                        url:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"]]
                                      title:nil
                                       type:SSDKContentTypeFile];
-    [parameters SSDKEnableExtensionShare];
+
     [self shareWithParameters:parameters];
 }
 

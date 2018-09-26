@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.1.4"
+  s.version          = "4.2.0"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
   s.platform         = :ios
   s.ios.deployment_target = "8.0"
   s.frameworks       = 'JavaScriptCore'
+  s.libraries        = 'sqlite3'
   s.default_subspecs = 'ShareSDK'
   s.dependency 'MOBFoundation'
 
@@ -19,7 +20,7 @@ Pod::Spec.new do |s|
         sp.resources = 'SDK/ShareSDK/Support/Required/ShareSDK.bundle'
     end
 
-    # 各个平台：需要集成哪些平台需要选择相应的平台语句，如果以下语句没有对应的平台，则是：1、不需要（如Twitter），2、ShareSDK尚未支持。
+    # 各个平台：每个平台都必须要有ShareSDK.bundle和对应的Connector
     s.subspec 'ShareSDKPlatforms' do |sp|
 
         # QQ
@@ -79,7 +80,7 @@ Pod::Spec.new do |s|
 
         # Kakao
         sp.subspec 'Kakao' do |ssp|
-            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformSDK/KaKaoSDK/KakaoOpenSDK.framework','SDK/ShareSDK/Support/PlatformConnector/KakaoConnector.framework'
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformSDK/KaKaoSDK/KakaoOpenSDK.framework','SDK/ShareSDK/Support/PlatformSDK/KaKaoSDK/KakaoCommon.framework','SDK/ShareSDK/Support/PlatformSDK/KaKaoSDK/KakaoLink.framework','SDK/ShareSDK/Support/PlatformConnector/KakaoConnector.framework'
             ssp.dependency 'mob_sharesdk/ShareSDK'
         end
 
@@ -102,6 +103,12 @@ Pod::Spec.new do |s|
         # Facebook
         sp.subspec 'Facebook' do |ssp|
             ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/FacebookConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # Messenger
+        sp.subspec 'Messenger' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/FacebookMessengerConnector.framework'
             ssp.dependency 'mob_sharesdk/ShareSDK'
         end
 
@@ -184,7 +191,7 @@ Pod::Spec.new do |s|
             ssp.dependency 'mob_sharesdk/ShareSDK'
         end
 
-        # DingTalk
+        # CMCC
         sp.subspec 'CMCC' do |ssp|
             ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformSDK/CMCCSDK/TYRZSDK.framework','SDK/ShareSDK/Support/PlatformConnector/CMCCConnector.framework'
             ssp.resources = 'SDK/ShareSDK/Support/PlatformSDK/CMCCSDK/Resource.bundle'
@@ -196,6 +203,85 @@ Pod::Spec.new do |s|
             ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/TelegramConnector.framework'
             ssp.dependency 'mob_sharesdk/ShareSDK'
         end
+
+        # Reddit
+        sp.subspec 'Reddit' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/RedditConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # DouBan
+        sp.subspec 'DouBan' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/DouBanConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # Flickr
+        sp.subspec 'Flickr' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/FlickrConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # KaiXin
+        sp.subspec 'KaiXin' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/KaiXinConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # LinkedIn
+        sp.subspec 'LinkedIn' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/LinkedInConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # MingDao
+        sp.subspec 'MingDao' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/MingDaoConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # Pinterest
+        sp.subspec 'Pinterest' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/PinterestConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # Pocket
+        sp.subspec 'Pocket' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/PocketConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # Print
+        sp.subspec 'Print' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/PrintConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # TencentWeibo
+        sp.subspec 'TencentWeibo' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/TencentWeiboConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # Tumblr
+        sp.subspec 'Tumblr' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/TumblrConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # VKontakte
+        sp.subspec 'VKontakte' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/VKontakteConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # YouDaoNote
+        sp.subspec 'YouDaoNote' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/YouDaoNoteConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
     end
 
     # ShareSDK 配置文件模块

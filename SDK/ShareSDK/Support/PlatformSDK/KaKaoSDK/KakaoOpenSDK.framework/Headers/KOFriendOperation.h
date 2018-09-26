@@ -1,7 +1,5 @@
 /**
- * Copyright 2015 Kakao Corp.
- *
- * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
+ * Copyright 2015-2018 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +16,7 @@
 
 /*!
  @header KOFriendOperation.h
- 연산된 친구 목록 페이징의 정보를 처리하기 위한 Context를 정의한다.
+ @abstract 연산된 친구 목록 페이징의 정보를 처리하기 위한 Context를 정의한다.
  */
 #import "KOBaseContext.h"
 
@@ -30,8 +28,8 @@
  */
 typedef NS_ENUM(NSInteger, KOFriendOperationType) {
     KOFriendOperationTypeIntersection = 0,
-    KOFriendOperationTypeUnion,
-    KOFriendOperationTypeSubtraction
+    KOFriendOperationTypeUnion = 1,
+    KOFriendOperationTypeSubtraction = 2
 };
 
 extern NSString* convertriendOperationTypeString(KOFriendOperationType type);
@@ -40,7 +38,7 @@ extern NSString* convertriendOperationTypeString(KOFriendOperationType type);
 
 /*!
  @class KOFriendOperation
- @discussion 연산된 친구 목록 페이징의 정보를 처리하기 위한 Context.
+ @abstract 연산된 친구 목록 페이징의 정보를 처리하기 위한 Context.
  */
 @interface KOFriendOperation : KOBaseContext
 
@@ -61,24 +59,6 @@ extern NSString* convertriendOperationTypeString(KOFriendOperationType type);
  @abstract 연산 타입.
  */
 @property (nonatomic, readonly) KOFriendOperationType operationType;
-
-/*!
- @property secureResource
- @abstract 프로필 이미지, 썸네일 등의 리소스 url을 https로 반환할지 여부.
- */
-@property (nonatomic, readonly) BOOL secureResource;
-
-/*!
- @property limit
- @abstract 요청 시 제한하는 친구의 수.
- */
-@property (nonatomic, readonly) NSInteger limit;
-
-/*!
- @property ordering
- @abstract 정렬 방법.
- */
-@property (nonatomic, readonly) KOOrdering ordering;
 
 /*!
  친구 목록 연산 페이징 Context 를 생성한다.

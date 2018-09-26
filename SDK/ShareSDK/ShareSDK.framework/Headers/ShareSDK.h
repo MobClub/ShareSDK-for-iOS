@@ -7,13 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSMutableDictionary+SSDKInit.h"
+
+#import "SSDKRegister.h"
 #import "NSMutableDictionary+SSDKShare.h"
-#import "SSDKTypeDefine.h"
-#import "SSDKUserQueryConditional.h"
-#import "SSDKCredential.h"
-#import "SSDKAuthViewStyle.h"
 #import "SSDKUser.h"
+#import "SSDKCredential.h"
+#import "SSDKSession.h"
+#import "SSDKImage.h"
+#import "SSDKContentEntity.h"
+#import "SSDKAuthViewStyle.h"
+#import "NSMutableDictionary+SSDKInit.h" //Deprecated
 
 /**
  *  ShareSDK APIs
@@ -23,28 +26,25 @@
 #pragma mark - 初始化
 
 /**
- *  初始化ShareSDK应用
- *
- *  @param activePlatforms          使用的分享平台集合，如:@[@(SSDKPlatformTypeSinaWeibo), @(SSDKPlatformTypeTencentWeibo)];
- *  @param importHandler           导入回调处理，当某个平台的功能需要依赖原平台提供的SDK支持时，需要在此方法中对原平台SDK进行导入操作。具体的导入方式可以参考ShareSDKConnector.framework中所提供的方法。
- *  @param configurationHandler     配置回调处理，在此方法中根据设置的platformType来填充应用配置信息
+ ShareSDK 平台注册方法
+
+ @param importHandler 用于设置各平台注册信息，也可在mob管理后台进行注册
  */
-+ (void)registerActivePlatforms:(NSArray *)activePlatforms
-                       onImport:(SSDKImportHandler)importHandler
-                onConfiguration:(SSDKConfigurationHandler)configurationHandler;
++ (void)registPlatforms:(void(^)(SSDKRegister *platformsRegister))importHandler;
 
 #pragma mark - 授权
 
 /**
- *  分享平台授权
- *
- *  @param platformType       平台类型
- *  @param settings    授权设置,目前只接受SSDKAuthSettingKeyScopes属性设置，如新浪微博关注官方微博：@{SSDKAuthSettingKeyScopes : @[@"follow_app_official_microblog"]}，类似“follow_app_official_microblog”这些字段是各个社交平台提供的。
- *  @param stateChangedHandler 授权状态变更回调处理
+ 授权
+ 
+ @param platformType 平台类型
+ @param settings 授权设置,接受scopes属性设置，如新浪微博关注官方微博：@{@"scopes" : @[@"follow_app_official_microblog"]}，类似“follow_app_official_microblog”这些字段是各个社交平台提供的。QQ平台如设置二维码授权,添加字段为QQAuthType：@{@"QQAuthType":@1}, 0为网页账号密码登录授权
+ @param stateChangedHandler 授权状态变更回调处理
+ @return 会话id
  */
-+ (void)authorize:(SSDKPlatformType)platformType
-         settings:(NSDictionary *)settings
-   onStateChanged:(SSDKAuthorizeStateChangedHandler)stateChangedHandler;
++ (SSDKSession *)authorize:(SSDKPlatformType)platformType
+                  settings:(NSDictionary *)settings
+            onStateChanged:(SSDKAuthorizeStateChangedHandler)stateChangedHandler;
 
 /**
  *  判断分享平台是否授权
@@ -59,41 +59,43 @@
  *
  *  @param platformType  平台类型
  */
-+ (void)cancelAuthorize:(SSDKPlatformType)platformType;
++ (void)cancelAuthorize:(SSDKPlatformType)platformType result:(void(^)(NSError *error))result;
 
 #pragma mark - 用户
 
 /**
- *  获取授权用户信息
- *
- *  @param platformType       平台类型
- *  @param stateChangedHandler 状态变更回调处理
- */
-+ (void)getUserInfo:(SSDKPlatformType)platformType
-     onStateChanged:(SSDKGetUserStateChangedHandler)stateChangedHandler;
+ 获取授权用户信息
 
-/**
- *  获取用户信息
- *
- *  @param platformType       平台类型
- *  @param conditional        查询条件，如果为nil则获取当前授权用户信息
- *  @param stateChangedHandler 状态变更回调处理
+ @param platformType 平台类型
+ @param stateChangedHandler 状态变更回调处理
  */
-+ (void)getUserInfo:(SSDKPlatformType)platformType
-        conditional:(SSDKUserQueryConditional *)conditional
-     onStateChanged:(SSDKGetUserStateChangedHandler)stateChangedHandler;
++ (SSDKSession *)getUserInfo:(SSDKPlatformType)platformType
+              onStateChanged:(SSDKGetUserStateChangedHandler)stateChangedHandler;
+
 
 #pragma mark - 分享
 
 /**
- *  分享内容
- *
- *  @param platformType             平台类型
- *  @param parameters               分享参数
- *  @param stateChangedHandler       状态变更回调处理
+ 分享内容
+ 
+ @param platformType 平台类型
+ @param parameters 分享参数
+ @param stateChangedHandler 状态变更回调处理
+ @return 会话
  */
-+ (void)share:(SSDKPlatformType)platformType
-   parameters:(NSMutableDictionary *)parameters
-onStateChanged:(SSDKShareStateChangedHandler)stateChangedHandler;
++ (SSDKSession *)share:(SSDKPlatformType)platformType
+            parameters:(NSMutableDictionary *)parameters
+        onStateChanged:(SSDKShareStateChangedHandler)stateChangedHandler;
 
+
+#pragma mark - Deprecated
+
+typedef void(^SSDKImportHandler) (SSDKPlatformType platformType) __deprecated_msg("Discard form v4.2.0");
+typedef void(^SSDKConfigurationHandler) (SSDKPlatformType platformType, NSMutableDictionary *appInfo) __deprecated_msg("Discard form v4.2.0");
+
++ (void)registerActivePlatforms:(NSArray *)activePlatforms
+                       onImport:(SSDKImportHandler)importHandler
+                onConfiguration:(SSDKConfigurationHandler)configurationHandler __deprecated_msg("Discard form v4.2.0. Use 'registPlatforms:' instead.");
+
++ (void)cancelAuthorize:(SSDKPlatformType)platformType __deprecated_msg("Discard form v4.2.0. Use 'cancelAuthorize:result:' instead.");
 @end

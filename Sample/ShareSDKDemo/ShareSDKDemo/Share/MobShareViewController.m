@@ -15,7 +15,7 @@
 
 #import "MOBLoadingViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import <ShareSDK/SSDKVideoUploadCenter.h>
+//#import <ShareSDK/SSDKVideoUploadCenter.h>
 #import <ShareSDKUI/SSUIShareActionSheetStyle.h>
 
 #import "MOBShareSDKHelper.h"
@@ -36,7 +36,7 @@
     IBOutlet UIButton *menuButton;
     //视频分享菜单
     MOBLoadingViewController *loadingViewController;
-    SSDKHttpServiceModel *httpServiceModel;
+    //    SSDKHttpServiceModel *httpServiceModel;
 }
 
 @end
@@ -48,6 +48,10 @@ static const NSInteger otherInfo = 1;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    loadingViewController = [[MOBLoadingViewController alloc] initWithNibName:@"MOBLoadingViewController" bundle:nil];
+    loadingViewController.view.frame = [UIScreen mainScreen].bounds;
+    
     _platforemArray = @[
                         @(SSDKPlatformSubTypeQQFriend),
                         @(SSDKPlatformSubTypeQZone),
@@ -91,6 +95,7 @@ static const NSInteger otherInfo = 1;
                                 @(SSDKPlatformTypeInstapaper),
                                 @(SSDKPlatformTypeTumblr),
                                 @(SSDKPlatformTypeTelegram),
+                                @(SSDKPlatformTypeReddit),
                                 ];
     _systemPlatforemArray = @[
                               @(SSDKPlatformTypeSMS),
@@ -152,64 +157,64 @@ static const NSInteger otherInfo = 1;
     }
     
     //也可以 使用 摇一摇后马上分享
-//    [SSEShareHelper beginShakeShare:nil
-//                          onEndSake:nil
-//                 onWillShareHandler:^(SSEShareHandler shareHandler){
-//                     NSLog(@"======开始分享");
-//                     //构造分享参数
-//                     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-//                     NSArray* imageArray = @[[UIImage imageNamed:@"shareImg.png"]];
-//                     if (imageArray)
-//                     {
-//                         [shareParams SSDKSetupShareParamsByText:@"摇着摇着就可以分享出去了，使用ShareSDK分享就是便捷方便。 http://www.mob.com/"
-//                                                          images:imageArray
-//                                                             url:nil
-//                                                           title:nil
-//                                                            type:SSDKContentTypeImage];
-//                         //回调分享
-//                         if (shareHandler)
-//                         {
-//                             shareHandler (SSDKPlatformTypeSinaWeibo, shareParams);
-//                         }
-//                     }
-//                 }
-//                 onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
-//                     switch (state)
-//                     {
-//                         case SSDKResponseStateSuccess:
-//                         {
-//                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-//                                                                                 message:nil
-//                                                                                delegate:nil
-//                                                                       cancelButtonTitle:@"确定"
-//                                                                       otherButtonTitles:nil];
-//                             [alertView show];
-//                             break;
-//                         }
-//                         case SSDKResponseStateFail:
-//                         {
-//                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享失败"
-//                                                                                 message:[NSString stringWithFormat:@"%@", error]
-//                                                                                delegate:nil
-//                                                                       cancelButtonTitle:@"确定"
-//                                                                       otherButtonTitles:nil];
-//                             [alertView show];
-//                             break;
-//                         }
-//                         case SSDKResponseStateCancel:
-//                         {
-//                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
-//                                                                                 message:nil
-//                                                                                delegate:nil
-//                                                                       cancelButtonTitle:@"确定"
-//                                                                       otherButtonTitles:nil];
-//                             [alertView show];
-//                             break;
-//                         }
-//                         default:
-//                             break;
-//                     }
-//                 }];
+    //    [SSEShareHelper beginShakeShare:nil
+    //                          onEndSake:nil
+    //                 onWillShareHandler:^(SSEShareHandler shareHandler){
+    //                     NSLog(@"======开始分享");
+    //                     //构造分享参数
+    //                     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    //                     NSArray* imageArray = @[[UIImage imageNamed:@"shareImg.png"]];
+    //                     if (imageArray)
+    //                     {
+    //                         [shareParams SSDKSetupShareParamsByText:@"摇着摇着就可以分享出去了，使用ShareSDK分享就是便捷方便。 http://www.mob.com/"
+    //                                                          images:imageArray
+    //                                                             url:nil
+    //                                                           title:nil
+    //                                                            type:SSDKContentTypeImage];
+    //                         //回调分享
+    //                         if (shareHandler)
+    //                         {
+    //                             shareHandler (SSDKPlatformTypeSinaWeibo, shareParams);
+    //                         }
+    //                     }
+    //                 }
+    //                 onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+    //                     switch (state)
+    //                     {
+    //                         case SSDKResponseStateSuccess:
+    //                         {
+    //                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+    //                                                                                 message:nil
+    //                                                                                delegate:nil
+    //                                                                       cancelButtonTitle:@"确定"
+    //                                                                       otherButtonTitles:nil];
+    //                             [alertView show];
+    //                             break;
+    //                         }
+    //                         case SSDKResponseStateFail:
+    //                         {
+    //                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享失败"
+    //                                                                                 message:[NSString stringWithFormat:@"%@", error]
+    //                                                                                delegate:nil
+    //                                                                       cancelButtonTitle:@"确定"
+    //                                                                       otherButtonTitles:nil];
+    //                             [alertView show];
+    //                             break;
+    //                         }
+    //                         case SSDKResponseStateCancel:
+    //                         {
+    //                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
+    //                                                                                 message:nil
+    //                                                                                delegate:nil
+    //                                                                       cancelButtonTitle:@"确定"
+    //                                                                       otherButtonTitles:nil];
+    //                             [alertView show];
+    //                             break;
+    //                         }
+    //                         default:
+    //                             break;
+    //                     }
+    //                 }];
 }
 
 - (void)showPrompt
@@ -243,9 +248,11 @@ static const NSInteger otherInfo = 1;
     NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]];
     [shareParams SSDKSetupShareParamsByText:@"分享内容"
                                      images:imageArray
-                                        url:[NSURL URLWithString:@"http://mob.com"]
+                                        url:[NSURL URLWithString:@"https://www.mob.com"]
                                       title:@"分享标题"
-                                       type:SSDKContentTypeImage];
+                                       type:SSDKContentTypeAuto];
+    
+//    []
     
     SSUIPlatformItem *item_1 = [[SSUIPlatformItem alloc] init];
     item_1.platformName = @"item_1";
@@ -253,19 +260,20 @@ static const NSInteger otherInfo = 1;
     item_1.iconSimple = [UIImage imageNamed:@"D11.jpg"];
     item_1.platformId = @"123456789";
     [item_1 addTarget:self action:@selector(test_1:)];
-        
+    
     NSArray *items = nil;
-//    items = @[
-//              @(SSDKPlatformTypeQQ),
-//              @(SSDKPlatformTypeWechat),
-//              item_1,
-//              @(SSDKPlatformTypeSinaWeibo),
-//              @(SSDKPlatformTypeSMS),
-//              @(SSDKPlatformTypeMail),
-//              @(SSDKPlatformTypeCopy)
-//              ];
+    //    items = @[
+    //              @(SSDKPlatformTypeQQ),
+    //              @(SSDKPlatformTypeWechat),
+    //              item_1,
+    //              @(SSDKPlatformTypeSinaWeibo),
+    //              @(SSDKPlatformTypeSMS),
+    //              @(SSDKPlatformTypeMail),
+    //              @(SSDKPlatformTypeCopy)
+    //              ];
     SSUIShareSheetConfiguration *config = [[SSUIShareSheetConfiguration alloc] init];
-//    config.style = SSUIActionSheetStyleSimple;
+    //    config.style = SSUIActionSheetStyleSimple;
+//    config.menuBackgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
     [ShareSDK showShareActionSheet:menuButton
                        customItems:items
                        shareParams:shareParams
@@ -279,7 +287,7 @@ static const NSInteger otherInfo = 1;
      {
          
          switch (state) {
-                 
+             
              case SSDKResponseStateBegin:
              {
                  //设置UI等操作
@@ -323,7 +331,7 @@ static const NSInteger otherInfo = 1;
                  break;
              }
              default:
-                 break;
+             break;
          }
      }];
 }
@@ -343,17 +351,17 @@ static const NSInteger otherInfo = 1;
 {
     switch (section) {
         case 0:
-            return 1;
+        return 1;
         case 1:
-            return _platforemArray.count;
+        return _platforemArray.count;
         case 2:
-            return _overseasPlatforemArray.count;
+        return _overseasPlatforemArray.count;
         case 3:
-            return _systemPlatforemArray.count;
+        return _systemPlatforemArray.count;
         case 4:
-            return otherInfo;
+        return otherInfo;
         default:
-            return  0;
+        return  0;
     }
 }
 
@@ -378,14 +386,14 @@ static const NSInteger otherInfo = 1;
     id obj = nil;
     switch (indexPath.section) {
         case 1:
-            obj = _platforemArray[indexPath.row];
-            break;
+        obj = _platforemArray[indexPath.row];
+        break;
         case 2:
-            obj = _overseasPlatforemArray[indexPath.row];
-            break;
+        obj = _overseasPlatforemArray[indexPath.row];
+        break;
         case 3:
-            obj = _systemPlatforemArray[indexPath.row];
-            break;
+        obj = _systemPlatforemArray[indexPath.row];
+        break;
     }
     if([obj isKindOfClass:[NSString class]])
     {
@@ -458,14 +466,14 @@ static const NSInteger otherInfo = 1;
     id obj = nil;
     switch (indexPath.section) {
         case 1:
-            obj = _platforemArray[indexPath.row];
-            break;
+        obj = _platforemArray[indexPath.row];
+        break;
         case 2:
-            obj = _overseasPlatforemArray[indexPath.row];
-            break;
+        obj = _overseasPlatforemArray[indexPath.row];
+        break;
         case 3:
-            obj = _systemPlatforemArray[indexPath.row];
-            break;
+        obj = _systemPlatforemArray[indexPath.row];
+        break;
     }
     NSInteger platformType = [obj integerValue];
     NSString *platformTypeName = [NSString stringWithFormat:@"ShareType_%zi",platformType];
@@ -515,8 +523,7 @@ static const NSInteger otherInfo = 1;
                        ];
     
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-    //优先使用平台客户端分享
-    [shareParams SSDKEnableUseClientShare];
+    
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"];
     [shareParams SSDKSetupShareParamsByText:@"Share SDK"
                                      images:nil
@@ -572,88 +579,94 @@ static const NSInteger otherInfo = 1;
 - (void)shareWithParameters:(NSMutableDictionary *)shareParams items:(NSArray *)items filePath:(NSString *)filePath
 {
     __weak __typeof__ (self) weakSelf = self;
-    [ShareSDK showShareActionSheet:menuButton
-                             items:items
-                       shareParams:shareParams
-               onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
-                   
-                   switch (state) {
-                           
-                       case SSDKResponseStateBeginUPLoad:
-                       {
-                           httpServiceModel = [[SSDKVideoUploadCenter shareInstance]
-                                               uploadProgressWithPlatformType:platformType
-                                               fileURL:[NSURL URLWithString:filePath]
-                                               tag:nil
-                                               progressEvent:^(int64_t totalBytes, int64_t loadedBytes) {
-                                                   if(loadingViewController != nil)
+    loadingViewController.session = [ShareSDK showShareActionSheet:menuButton
+                                                             items:items
+                                                       shareParams:shareParams
+                                               onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+                                                   
+                                                   switch (state) {
+                                                       
+                                                       case SSDKResponseStateUpload:
+                                                       {
+                                                           SSDKUploadState state = [userData[@"progressInfo"][@"state"] integerValue];
+                                                           
+                                                           switch (state)
+                                                           {
+                                                               case SSDKUploadStateBegin:
+                                                               [weakSelf showLoading];
+                                                               break;
+                                                               
+                                                               case SSDKUploadStateUploading:
+                                                               {
+                                                                   unsigned long long totalBytes = [userData[@"progressInfo"][@"totalBytes"] unsignedLongLongValue];
+                                                                   unsigned long long loadedBytes = [userData[@"progressInfo"][@"loadedBytes"] unsignedLongLongValue];
+                                                                   
+                                                                   CGFloat temp =  loadedBytes*1.0/totalBytes;
+                                                                   
+                                                                   if(temp > loadingViewController.progressView.progress )
+                                                                   {
+                                                                       [loadingViewController.progressView setProgress:temp animated:YES];
+                                                                   }
+                                                               }
+                                                               break;
+                                                               
+                                                               case SSDKUploadStateFinish:
+                                                               {
+                                                                   [loadingViewController.progressView setProgress:1 animated:YES];
+                                                                   [loadingViewController hidden];
+                                                               }
+                                                               break;
+                                                               
+                                                               default:
+                                                               break;
+                                                           }
+                                                           break;
+                                                       }
+                                                       case SSDKResponseStateSuccess:
+                                                       {
+                                                           //Instagram、FacebookMessage等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
+                                                           if (platformType == SSDKPlatformTypeInstagram || platformType == SSDKPlatformTypeFacebookMessenger)
+                                                           {
+                                                               break;
+                                                           }
+                                                           
+                                                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                                                                                                               message:nil
+                                                                                                              delegate:nil
+                                                                                                     cancelButtonTitle:@"确定"
+                                                                                                     otherButtonTitles:nil];
+                                                           [alertView show];
+                                                           break;
+                                                       }
+                                                       case SSDKResponseStateFail:
+                                                       {
+                                                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
+                                                                                                           message:[NSString stringWithFormat:@"%@",error]
+                                                                                                          delegate:nil
+                                                                                                 cancelButtonTitle:@"OK"
+                                                                                                 otherButtonTitles:nil, nil];
+                                                           [alert show];
+                                                           break;
+                                                       }
+                                                       case SSDKResponseStateCancel:
+                                                       {
+                                                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
+                                                                                                               message:nil
+                                                                                                              delegate:nil
+                                                                                                     cancelButtonTitle:@"确定"
+                                                                                                     otherButtonTitles:nil];
+                                                           [alertView show];
+                                                           break;
+                                                       }
+                                                       default:
+                                                       break;
+                                                   }
+                                                   
+                                                   if(state != SSDKResponseStateUpload)
                                                    {
-                                                       CGFloat temp =  loadedBytes*1.0/totalBytes;
-                                                       if(temp > 0.95)
-                                                       {
-                                                           temp = 0.95; //上传完后还需要的发布
-                                                       }
-                                                       if(temp > loadingViewController.progressView.progress )
-                                                       {
-                                                           [loadingViewController.progressView setProgress:temp animated:YES];
-                                                       }
+                                                       [loadingViewController hidden];
                                                    }
                                                }];
-                           [weakSelf showLoading];
-                           break;
-                       }
-                       case SSDKResponseStateSuccess:
-                       {
-                           //Instagram、FacebookMessage等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
-                           if (platformType == SSDKPlatformTypeInstagram || platformType == SSDKPlatformTypeFacebookMessenger)
-                           {
-                               break;
-                           }
-                           
-                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-                                                                               message:nil
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"确定"
-                                                                     otherButtonTitles:nil];
-                           [alertView show];
-                           break;
-                       }
-                       case SSDKResponseStateFail:
-                       {
-                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                           message:[NSString stringWithFormat:@"%@",error]
-                                                                          delegate:nil
-                                                                 cancelButtonTitle:@"OK"
-                                                                 otherButtonTitles:nil, nil];
-                           [alert show];
-                           break;
-                       }
-                       case SSDKResponseStateCancel:
-                       {
-                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
-                                                                               message:nil
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"确定"
-                                                                     otherButtonTitles:nil];
-                           [alertView show];
-                           break;
-                       }
-                       default:
-                           break;
-                   }
-                   if(state != SSDKResponseStateBeginUPLoad)
-                   {
-                       if(state == SSDKResponseStateSuccess || state == SSDKResponseStateFail)
-                       {
-                           if(loadingViewController!= nil)
-                           {
-                               [loadingViewController.progressView setProgress:1 animated:YES];
-                               loadingViewController.httpServiceModel = nil;
-                               [loadingViewController closeAct:nil];
-                           }
-                       }
-                   }
-               }];
     //    //设置 点击就分享
     //    [sheet.directSharePlatforms addObject:@(SSDKPlatformTypeFacebook)];
     //    [sheet.directSharePlatforms addObject:@(SSDKPlatformTypeYouTube)];
@@ -666,12 +679,8 @@ static const NSInteger otherInfo = 1;
  */
 -(void)showLoading
 {
-    if(loadingViewController == nil)
-    {
-        loadingViewController = [[MOBLoadingViewController alloc] initWithNibName:@"MOBLoadingViewController" bundle:nil];
-        loadingViewController.view.frame = [UIScreen mainScreen].bounds;
-    }
-    loadingViewController.httpServiceModel = httpServiceModel;
+
+    //    loadingViewController.httpServiceModel = httpServiceModel;
     [self.navigationController.view addSubview:loadingViewController.view];
     loadingViewController.view.alpha = 0;
     [UIView animateWithDuration:0.25 animations:^{

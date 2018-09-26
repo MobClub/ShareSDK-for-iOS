@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.1.4</string>
+	<string>4.2.0</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -120,7 +120,7 @@
 			<string>pin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>pdk4799618093317899411</string>
+				<string>pdk4987008320438021391</string>
 			</array>
 		</dict>
 		<dict>
@@ -193,6 +193,16 @@
 				<string>twitterkit-viOnkeLpHBKs6KXV7MPpeGyzE</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>renren</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>rm226427$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
@@ -200,14 +210,13 @@
 	<string>1412473428822331</string>
 	<key>KAKAO_APP_KEY</key>
 	<string>9c17eb03317e0e627ec95a400f5785fb</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>kakaotalk-5.9.7</string>
 		<string>pinterestsdk.v1</string>
 		<string>vkauthorize</string>
 		<string>storylink</string>
-		<string>kakao48d3f524e4a636b08d81b3ceb50f1003</string>
+		<string>kakao9c17eb03317e0e627ec95a400f5785fb</string>
 		<string>kakaolink</string>
 		<string>storykompassauth</string>
 		<string>kakaokompassauth</string>
@@ -269,9 +278,13 @@
 		<string>fb-messenger-platform-20150714</string>
 		<string>fb-messenger</string>
 		<string>fbauth2</string>
+		<string>fbapi20130214</string>
 		<string>twitterauth</string>
 		<string>tg</string>
 		<string>telegram</string>
+		<string>renrenapi</string>
+		<string>renrenios</string>
+		<string>renreniphone</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -283,7 +296,7 @@
 	<key>MOBAppKey</key>
 	<string>moba6b6c6d6</string>
 	<key>MOBAppSecret</key>
-	<string>b89d2427a3bc7ad1aea1e1e8c1d36bf3</string>
+	<string></string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

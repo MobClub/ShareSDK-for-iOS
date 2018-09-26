@@ -9,8 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "SSDKTypeDefine.h"
 
+extern NSString *const SSDKAuthTypeBoth;
+extern NSString *const SSDKAuthTypeSSO;
+extern NSString *const SSDKAuthTypeWeb;
+
 /**
- *  初始化分享平台相关
+ *  初始化分享平台相关 ( **注意此文件接口于 v4.2.0已废弃** )
  */
 @interface NSMutableDictionary (SSDKInit)
 
@@ -21,7 +25,7 @@
  *                      例如在配置新浪微博的初始化信息中设置授权配置信息:
  *                      [appInfo SSDKSetAuthSettings:@[@"follow_app_official_microblog"]];
  */
-- (void)SSDKSetAuthSettings:(NSArray *)authSettings;
+- (void)SSDKSetAuthSettings:(NSArray *)authSettings __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置新浪微博应用信息
@@ -34,7 +38,7 @@
 - (void)SSDKSetupSinaWeiboByAppKey:(NSString *)appKey
                          appSecret:(NSString *)appSecret
                        redirectUri:(NSString *)redirectUri
-                          authType:(NSString *)authType;
+                          authType:(NSString *)authType __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置微信(微信好友，微信朋友圈、微信收藏)应用信息
@@ -43,7 +47,7 @@
  *  @param appSecret  应用密钥
  */
 - (void)SSDKSetupWeChatByAppId:(NSString *)appId
-                     appSecret:(NSString *)appSecret;
+                     appSecret:(NSString *)appSecret __deprecated_msg("Discard form v4.2.0");
 
 
 /**
@@ -55,7 +59,7 @@
  */
 - (void)SSDKSetupWeChatByAppId:(NSString *)appId
                      appSecret:(NSString *)appSecret
-                   backUnionID:(BOOL)backUnionID;
+                   backUnionID:(BOOL)backUnionID __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置Twitter应用信息
@@ -66,7 +70,7 @@
  */
 - (void)SSDKSetupTwitterByConsumerKey:(NSString *)consumerKey
                        consumerSecret:(NSString *)consumerSecret
-                          redirectUri:(NSString *)redirectUri;
+                          redirectUri:(NSString *)redirectUri __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置QQ分享平台（QQ空间，QQ好友分享）应用信息
@@ -77,7 +81,7 @@
  */
 - (void)SSDKSetupQQByAppId:(NSString *)appId
                     appKey:(NSString *)appKey
-                  authType:(NSString *)authType;
+                  authType:(NSString *)authType __deprecated_msg("Discard form v4.2.0");
 
 
 /**
@@ -91,7 +95,7 @@
 - (void)SSDKSetupQQByAppId:(NSString *)appId
                     appKey:(NSString *)appKey
                   authType:(NSString *)authType
-                    useTIM:(BOOL)useTIM;
+                    useTIM:(BOOL)useTIM __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置QQ分享平台（QQ空间，QQ好友分享）应用信息 4.0.0增加
@@ -106,7 +110,7 @@
                     appKey:(NSString *)appKey
                   authType:(NSString *)authType
                     useTIM:(BOOL)useTIM
-               backUnionID:(BOOL)backUnionID;
+               backUnionID:(BOOL)backUnionID __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置Facebook应用信息 不需要使用facebook客户端分享
@@ -117,7 +121,7 @@
  */
 - (void)SSDKSetupFacebookByApiKey:(NSString *)apiKey
                         appSecret:(NSString *)appSecret
-                         authType:(NSString *)authType;
+                         authType:(NSString *)authType __deprecated_msg("Discard form v4.2.0");
 
 
 /**
@@ -132,7 +136,7 @@
 - (void)SSDKSetupFacebookByApiKey:(NSString *)apiKey
                         appSecret:(NSString *)appSecret
                       displayName:(NSString *)displayName
-                         authType:(NSString *)authType;
+                         authType:(NSString *)authType __deprecated_msg("Discard form v4.2.0");
 
 
 /**
@@ -144,7 +148,7 @@
  */
 - (void)SSDKSetupTencentWeiboByAppKey:(NSString *)appKey
                             appSecret:(NSString *)appSecret
-                          redirectUri:(NSString *)redirectUri;
+                          redirectUri:(NSString *)redirectUri __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置豆瓣应用信息
@@ -155,7 +159,7 @@
  */
 - (void)SSDKSetupDouBanByApiKey:(NSString *)apiKey
                          secret:(NSString *)secret
-                    redirectUri:(NSString *)redirectUri;
+                    redirectUri:(NSString *)redirectUri __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置人人网应用信息
@@ -168,7 +172,7 @@
 - (void)SSDKSetupRenRenByAppId:(NSString *)appId
                         appKey:(NSString *)appKey
                      secretKey:(NSString *)secretKey
-                      authType:(NSString *)authType;
+                      authType:(NSString *)authType __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置开心网应用信息
@@ -179,7 +183,7 @@
  */
 - (void)SSDKSetupKaiXinByApiKey:(NSString *)apiKey
                       secretKey:(NSString *)secretKey
-                    redirectUri:(NSString *)redirectUri;
+                    redirectUri:(NSString *)redirectUri __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置Pocket应用信息
@@ -190,7 +194,7 @@
  */
 - (void)SSDKSetupPocketByConsumerKey:(NSString *)consumerKey
                          redirectUri:(NSString *)redirectUri
-                            authType:(NSString *)authType;
+                            authType:(NSString *)authType __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置Google＋应用信息
@@ -201,7 +205,7 @@
  */
 - (void)SSDKSetupGooglePlusByClientID:(NSString *)clientId
                          clientSecret:(NSString *)clientSecret
-                          redirectUri:(NSString *)redirectUri;
+                          redirectUri:(NSString *)redirectUri __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置Instagram应用信息
@@ -212,7 +216,7 @@
  */
 - (void)SSDKSetupInstagramByClientID:(NSString *)clientId
                         clientSecret:(NSString *)clientSecret
-                         redirectUri:(NSString *)redirectUri;
+                         redirectUri:(NSString *)redirectUri __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置LinkedIn应用信息
@@ -223,7 +227,7 @@
  */
 - (void)SSDKSetupLinkedInByApiKey:(NSString *)apiKey
                         secretKey:(NSString *)secretKey
-                      redirectUrl:(NSString *)redirectUrl;
+                      redirectUrl:(NSString *)redirectUrl __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置Tumblr应用信息
@@ -234,7 +238,7 @@
  */
 - (void)SSDKSetupTumblrByConsumerKey:(NSString *)consumerKey
                       consumerSecret:(NSString *)consumerSecret
-                         callbackUrl:(NSString *)callbackUrl;
+                         callbackUrl:(NSString *)callbackUrl __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置Flickr应用信息
@@ -243,7 +247,7 @@
  *  @param apiSecret 应用密钥
  */
 - (void)SSDKSetupFlickrByApiKey:(NSString *)apiKey
-                      apiSecret:(NSString *)apiSecret;
+                      apiSecret:(NSString *)apiSecret __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置有道云笔记应用信息
@@ -254,7 +258,7 @@
  */
 - (void)SSDKSetupYouDaoNoteByConsumerKey:(NSString *)consumerKey
                           consumerSecret:(NSString *)consumerSecret
-                           oauthCallback:(NSString *)oauthCallback;
+                           oauthCallback:(NSString *)oauthCallback __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置印象笔记应用信息，注：中国版和国际版都是调用此接口进行初始化操作。
@@ -265,21 +269,21 @@
  */
 - (void)SSDKSetupEvernoteByConsumerKey:(NSString *)consumerKey
                         consumerSecret:(NSString *)consumerSecret
-                               sandbox:(BOOL)sandbox;
+                               sandbox:(BOOL)sandbox __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置支付宝好友应用信息
  *
  *  @param appId 应用标识
  */
-- (void)SSDKSetupAliSocialByAppId:(NSString *)appId;
+- (void)SSDKSetupAliSocialByAppId:(NSString *)appId __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置Pinterest应用信息
  *
  *  @param clientId 应用标识
  */
-- (void)SSDKSetupPinterestByClientId:(NSString *)clientId;
+- (void)SSDKSetupPinterestByClientId:(NSString *)clientId __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置KaKao应用信息
@@ -292,7 +296,7 @@
 - (void)SSDKSetupKaKaoByAppKey:(NSString *)appKey
                     restApiKey:(NSString *)restApiKey
                    redirectUri:(NSString *)redirectUri
-                      authType:(NSString *)authType;
+                      authType:(NSString *)authType __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置Dropbox应用信息
@@ -303,7 +307,7 @@
  */
 - (void)SSDKSetupDropboxByAppKey:(NSString *)appKey
                        appSecret:(NSString *)appSecret
-                   oauthCallback:(NSString *)oauthCallback;
+                   oauthCallback:(NSString *)oauthCallback __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置VKontakte应用信息
@@ -312,11 +316,11 @@
  *  @param secretKey     应用密钥
  */
 - (void)SSDKSetupVKontakteByApplicationId:(NSString *)applicationId
-                                secretKey:(NSString *)secretKey;
+                                secretKey:(NSString *)secretKey __deprecated_msg("Discard form v4.2.0");
 
 - (void)SSDKSetupVKontakteByApplicationId:(NSString *)applicationId
                                 secretKey:(NSString *)secretKey
-                                 authType:(NSString *)authType;
+                                 authType:(NSString *)authType __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置明道应用信息
@@ -327,7 +331,7 @@
  */
 - (void)SSDKSetupMingDaoByAppKey:(NSString *)appKey
                        appSecret:(NSString *)appSecret
-                     redirectUri:(NSString *)redirectUri;
+                     redirectUri:(NSString *)redirectUri __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置易信(易信好友，易信朋友圈、易信收藏)应用信息
@@ -340,7 +344,7 @@
 - (void)SSDKSetupYiXinByAppId:(NSString *)appId
                     appSecret:(NSString *)appSecret
                   redirectUri:(NSString *)redirectUri
-                     authType:(NSString *)authType;
+                     authType:(NSString *)authType __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置Instapaper
@@ -349,20 +353,20 @@
  *  @param consumerSecret 应用密钥
  */
 - (void)SSDKSetupInstapaperByConsumerKey:(NSString *)consumerKey
-                          consumerSecret:(NSString *)consumerSecret;
+                          consumerSecret:(NSString *)consumerSecret __deprecated_msg("Discard form v4.2.0");
 /**
  *  设置钉钉应用信息
  *
  *  @param appId 应用标识
  */
-- (void)SSDKSetupDingTalkByAppId:(NSString *)appId;
+- (void)SSDKSetupDingTalkByAppId:(NSString *)appId __deprecated_msg("Discard form v4.2.0");
 
 /**
  设置美拍应用信息
 
  @param appKey 应用标识
  */
-- (void)SSDKSetupMeiPaiByAppKey:(NSString *)appKey;
+- (void)SSDKSetupMeiPaiByAppKey:(NSString *)appKey __deprecated_msg("Discard form v4.2.0");
 
 /**
  设置youtube应用信息
@@ -374,12 +378,12 @@
  */
 - (void)SSDKSetupYouTubeByClientId:(NSString *)clientId
                       clientSecret:(NSString *)clientSecret
-                       redirectUri:(NSString *)redirectUri;
+                       redirectUri:(NSString *)redirectUri __deprecated_msg("Discard form v4.2.0");
 /**
  *  设置Line应用信息
  *  @param authType  授权方式。值可以是：SSDKAuthTypeSSO、SSDKAuthTypeWeb、SSDKAuthTypeBoth，分别代表SSO、网页授权、SSO＋网页授权。
  */
-- (void)SSDKSetupLineAuthType:(NSString *)authType;
+- (void)SSDKSetupLineAuthType:(NSString *)authType __deprecated_msg("Discard form v4.2.0");
 
 
 /**
@@ -391,8 +395,8 @@
  */
 - (void)SSDKSetupCMCCByAppId:(NSString *)appid
                       appKey:(NSString *)appkey
-                   displayUI:(BOOL)displayUI;
+                   displayUI:(BOOL)displayUI __deprecated_msg("Discard form v4.2.0");
 
 //打开短信登录的国家列表选择
-- (void)SSDKSetpSMSOpenCountryList:(BOOL)open;
+- (void)SSDKSetpSMSOpenCountryList:(BOOL)open __deprecated_msg("Discard form v4.2.0");
 @end

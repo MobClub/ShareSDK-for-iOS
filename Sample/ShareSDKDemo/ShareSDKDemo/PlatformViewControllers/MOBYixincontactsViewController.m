@@ -16,7 +16,7 @@
     platformType = SSDKPlatformSubTypeYiXinSession;
     self.title = @"易信好友";
     shareIconArray = @[@"textIcon",@"imageIcon",@"webURLIcon",@"audioURLIcon",@"videoURLIcon",@"appInfoIcon"];
-    shareTypeArray = @[@"文字 APP",@"图片 APP",@"链接 APP",@"音乐链接 APP",@"视频链接 APP",@"应用消息 APP"];
+    shareTypeArray = @[@"文字 APP",@"图片 APP",@"链接 APP",@"音乐链接 APP",@"视频链接 APP", @"应用"];
     selectorNameArray = @[@"shareText",@"shareImage",@"shareLink",@"shareAudio",@"shareVideo",@"shareApp"];
 }
 
@@ -26,7 +26,6 @@
 -(void)shareText
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKEnableUseClientShare];
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:@"Share SDK"
                                     images:nil
@@ -56,10 +55,9 @@
 - (void)shareImage
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKEnableUseClientShare];
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                    images:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535089990492&di=db8e887518ffd7a2f90c63a2f1bf72ed&imgtype=0&src=http%3A%2F%2Fpic24.photophoto.cn%2F20120923%2F0036036811313662_b.jpg"
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
@@ -83,10 +81,9 @@
 - (void)shareLink
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKEnableUseClientShare];
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                    images:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535089990492&di=db8e887518ffd7a2f90c63a2f1bf72ed&imgtype=0&src=http%3A%2F%2Fpic24.photophoto.cn%2F20120923%2F0036036811313662_b.jpg"
                                        url:[NSURL URLWithString:@"https://www.mob.com"]
                                      title:@"Share SDK"
                                       type:SSDKContentTypeWebPage];
@@ -110,7 +107,6 @@
 - (void)shareAudio
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKEnableUseClientShare];
     //网络音频
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:@"崔健"
@@ -137,7 +133,6 @@
 - (void)shareVideo
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKEnableUseClientShare];
     //网络视频
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:@"视频"
@@ -164,7 +159,6 @@
 - (void)shareApp
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKEnableUseClientShare];
     //平台定制
     [parameters SSDKSetupYiXinParamsByText:@"Share SDK"
                                      title:@"App消息"
@@ -172,7 +166,7 @@
                                 thumbImage:nil
                                      image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
                               musicFileURL:nil
-                                   extInfo:nil
+                                   extInfo:@"ext"
                                   fileData:[@"13232" dataUsingEncoding:NSUTF8StringEncoding]
                                    comment:nil
                                   toUserId:nil

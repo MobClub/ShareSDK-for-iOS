@@ -15,9 +15,9 @@
     [super viewDidLoad];
     platformType = SSDKPlatformSubTypeKakaoStory;
     self.title = @"KakaoStory";
-    shareIconArray = @[@"textIcon",@"imageIcon",@"webURLIcon",@"textIcon"];
-    shareTypeArray = @[@"文字",@"图片",@"链接",@"文字 APP"];
-    selectorNameArray = @[@"shareText",@"shareImage",@"shareLink",@"shareTextForAPP"];
+    shareIconArray = @[@"textIcon",@"imageIcon",@"webURLIcon"];
+    shareTypeArray = @[@"文字",@"图片",@"链接"];
+    selectorNameArray = @[@"shareText",@"shareImage",@"shareLink"];
 }
 
 /**
@@ -27,28 +27,9 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                    images:nil
-                                       url:nil
-                                     title:nil
-                                      type:SSDKContentTypeText];
-    //平台定制
-    //    [parameters SSDKSetupKaKaoParamsByText:@"Share SDK"
-    //                                    images:nil
-    //                                     title:nil
-    //                                       url:nil
-    //                                permission:nil
-    //                               enableShare:YES
-    //                                 imageSize:CGSizeZero
-    //                            appButtonTitle:nil
-    //                          androidExecParam:nil
-    //                          androidMarkParam:nil
-    //                          iphoneExecParams:nil
-    //                           iphoneMarkParam:nil
-    //                            ipadExecParams:nil
-    //                             ipadMarkParam:nil
-    //                                      type:SSDKContentTypeText
-    //                        forPlatformSubType:platformType];
+    [parameters SSDKSetupKakaoStoryParamsByContent:@"ShareSDK test" title:nil images:nil url:nil permission:1 sharable:YES androidExecParam:nil iosExecParam:nil];
+    
+    
     [self shareWithParameters:parameters];
 }
 
@@ -59,29 +40,9 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                       url:nil
-                                     title:nil
-                                      type:SSDKContentTypeImage];
     
-    //平台定制
-    //    [parameters SSDKSetupKaKaoParamsByText:@"Share SDK"
-    //                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-    //                                     title:nil
-    //                                       url:nil
-    //                                permission:nil
-    //                               enableShare:YES
-    //                                 imageSize:CGSizeZero
-    //                            appButtonTitle:nil
-    //                          androidExecParam:nil
-    //                          androidMarkParam:nil
-    //                          iphoneExecParams:nil
-    //                           iphoneMarkParam:nil
-    //                            ipadExecParams:nil
-    //                             ipadMarkParam:nil
-    //                                      type:SSDKContentTypeImage
-    //                        forPlatformSubType:platformType];
+    [parameters SSDKSetupKakaoStoryParamsByContent:@"images" title:nil images:@[@"http://g.hiphotos.baidu.com/image/pic/item/060828381f30e92446c5b90241086e061d95f7a4.jpg",@"http://a.hiphotos.baidu.com/image/pic/item/0824ab18972bd4077557733177899e510eb3096d.jpg"] url:nil permission:0 sharable:YES androidExecParam:@{@"andParam1":@"value1", @"andParam2":@"value2"} iosExecParam:@{@"iosParam1":@"value1", @"iosParam2":@"value2"}];
+    
     [self shareWithParameters:parameters];
 }
 
@@ -90,7 +51,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                    images:@[@"http://g.hiphotos.baidu.com/image/pic/item/060828381f30e92446c5b90241086e061d95f7a4.jpg",@"http://a.hiphotos.baidu.com/image/pic/item/0824ab18972bd4077557733177899e510eb3096d.jpg"]
                                        url:[NSURL URLWithString:@"http://www.mob.com"]
                                      title:@"Share SDK"
                                       type:SSDKContentTypeWebPage];
@@ -113,37 +74,6 @@
     //                                      type:SSDKContentTypeWebPage
     //                        forPlatformSubType:platformType];
     
-    [self shareWithParameters:parameters];
-}
-
-//文字 客户端
-- (void)shareTextForAPP
-{
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKEnableUseClientShare];
-    //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                    images:nil
-                                       url:nil
-                                     title:nil
-                                      type:SSDKContentTypeText];
-    //平台定制
-    //    [parameters SSDKSetupKaKaoParamsByText:@"Share SDK"
-    //                                    images:nil
-    //                                     title:nil
-    //                                       url:nil
-    //                                permission:nil
-    //                               enableShare:nil
-    //                                 imageSize:CGSizeZero
-    //                            appButtonTitle:nil
-    //                          androidExecParam:nil
-    //                          androidMarkParam:nil
-    //                          iphoneExecParams:nil
-    //                           iphoneMarkParam:nil
-    //                            ipadExecParams:nil
-    //                             ipadMarkParam:nil
-    //                                      type:SSDKContentTypeText
-    //                        forPlatformSubType:platformType];
     [self shareWithParameters:parameters];
 }
 

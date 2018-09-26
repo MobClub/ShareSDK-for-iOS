@@ -1,7 +1,5 @@
 /**
- * Copyright 2015-2016 Kakao Corp.
- *
- * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
+ * Copyright 2015-2018 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +14,10 @@
  * limitations under the License.
  */
 
+/*!
+ @header KOAgeAuthQueryStringBuilder.h
+ @abstract 연령인증시 필요한 파라미터입니다.
+ */
 
 #ifndef KOAgeAuthQueryStringBuilder_h
 #define KOAgeAuthQueryStringBuilder_h
@@ -24,7 +26,7 @@
 
 /*!
  @class KOAgeAuthQueryStringBuilder
- @discussion 연령인증시 필요한 파라미터를 Builder pattern 을 이용해서 세팅한다.
+ @abstract 연령인증시 필요한 파라미터를 Builder pattern 을 이용해서 세팅한다.
  */
 @interface KOAgeAuthQueryStringBuilder : NSObject
 
@@ -41,7 +43,7 @@
 @property (nonatomic) KOAgeAuthLimit limit;
 
 /*!
- @property isWestrnAge
+ @property isWesternAge
  @abstract 나이의 기준이 한국식인지 외국식인지의 여부(optional, default false)
  */
 @property (nonatomic) BOOL isWesternAge;

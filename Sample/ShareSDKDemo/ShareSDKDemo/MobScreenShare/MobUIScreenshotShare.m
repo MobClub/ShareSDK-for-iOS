@@ -276,11 +276,6 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 - (void)closeMainView
 {
-    [self closeMainView:nil];
-}
-
-- (void)closeMainView:(void(^)(void))completion
-{
     CGRect newRect = _mainView.frame;
     newRect.origin.y += CGRectGetHeight(newRect);
     __weak __typeof__ (self) weakSelf = self;
@@ -290,10 +285,6 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     }completion:^(BOOL finished) {
         [weakSelf _clear];
         weakSelf.window = nil;
-        if (completion)
-        {
-            completion();
-        }
     }];
 }
 
@@ -462,7 +453,7 @@ static NSString * const cellReuseIdentifier = @"cellReuseIdentifier";
         NSString *iconImageName = [NSString stringWithFormat:@"Icon/sns_icon_%ld.png",(long)platformType];
         UIImage *icon = [UIImage imageWithContentsOfFile:[_uiBundle pathForResource:(iconImageName) ofType:nil]];
         cell.imageView.image = icon;
-        NSString *platformTypeName = [NSString stringWithFormat:@"ShareType_%zi",platformType];
+        NSString *platformTypeName = [NSString stringWithFormat:@"ShareType_%lu",(unsigned long)platformType];
         NSString *titel = NSLocalizedStringWithDefaultValue(platformTypeName, @"ShareSDKUI_Localizable", _uiBundle, platformTypeName, nil);
         cell.titelLabel.text = titel;
     }
@@ -474,9 +465,8 @@ static NSString * const cellReuseIdentifier = @"cellReuseIdentifier";
 {
     id obj = activePlatformsArray[indexPath.row];
     NSInteger platformType = [obj integerValue];
-    [self closeMainView:^{
-        _selecetedPlatformType(platformType);
-    }];
+    _selecetedPlatformType(platformType);
+    [self closeMainView];
 }
 
 @end

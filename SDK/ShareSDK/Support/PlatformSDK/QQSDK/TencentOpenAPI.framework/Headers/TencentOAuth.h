@@ -230,13 +230,6 @@ typedef enum
 		 inSafari:(BOOL)bInSafari;
 
 /**
- * 登录授权<web为二维码扫码方式>
- *
- * \param permissions 授权信息列
- */
-- (BOOL)authorizeWithQRlogin:(NSArray *)permissions;
-
-/**
  * 增量授权，因用户没有授予相应接口调用的权限，需要用户确认是否授权
  * \param permissions 需增量授权的信息列表
  * \return 增量授权调用是否成功

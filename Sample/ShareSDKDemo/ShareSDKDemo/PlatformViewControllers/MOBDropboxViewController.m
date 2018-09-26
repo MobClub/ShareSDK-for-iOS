@@ -8,12 +8,12 @@
 
 #import "MOBDropboxViewController.h"
 #import "MOBLoadingViewController.h"
-#import <ShareSDK/SSDKVideoUploadCenter.h>
+//#import <ShareSDK/SSDKVideoUploadCenter.h>
 
 @interface MOBDropboxViewController ()
 {
     MOBLoadingViewController *loadingViewController;
-    SSDKHttpServiceModel *httpServiceModel;
+    //    SSDKHttpServiceModel *httpServiceModel;
 }
 
 @end
@@ -23,6 +23,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    loadingViewController = [[MOBLoadingViewController alloc] initWithNibName:@"MOBLoadingViewController" bundle:nil];
+    loadingViewController.view.frame = [UIScreen mainScreen].bounds;
     platformType = SSDKPlatformTypeDropbox;
     self.title = @"Dropbox";
     shareIconArray = @[@"imageIcon",@"videoIcon"];
@@ -41,8 +43,8 @@
                                      title:nil
                                       type:SSDKContentTypeImage];
     //平台定制
-//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
-//    [parameters SSDKSetupDropboxParamsByAttachment:[NSURL fileURLWithPath:filePath]];
+    //    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
+    //    [parameters SSDKSetupDropboxParamsByAttachment:[NSURL fileURLWithPath:filePath]];
     [self shareWithParameters:parameters];
 }
 
@@ -55,79 +57,81 @@
     //平台定制
     //    parameters = [self shareParameters];
     __weak __typeof__ (self) weakSelf = self;
-    [ShareSDK share:platformType
-         parameters:parameters
-     onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
-         NSString *titel = @"";
-         switch (state) {
-             case SSDKResponseStateBeginUPLoad:
-             {
-                 httpServiceModel = [[SSDKVideoUploadCenter shareInstance]
-                                     uploadProgressWithPlatformType:platformType
-                                     fileURL:[NSURL URLWithString:filePath]
-                                     tag:nil
-                                     progressEvent:^(int64_t totalBytes, int64_t loadedBytes) {
-                                         if(loadingViewController != nil)
+    loadingViewController.session = [ShareSDK share:platformType
+                                         parameters:parameters
+                                     onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+                                         NSString *titel = @"";
+                                         switch (state) {
+                                             case SSDKResponseStateUpload:
+                                             {
+                                                 SSDKUploadState state = [userData[@"progressInfo"][@"state"] integerValue];
+                                                 
+                                                 switch (state)
+                                                 {
+                                                     case SSDKUploadStateBegin:
+                                                     [weakSelf showLoading];
+                                                     break;
+                                                     
+                                                     case SSDKUploadStateUploading:
+                                                     {
+                                                         unsigned long long totalBytes = [userData[@"progressInfo"][@"totalBytes"] unsignedLongLongValue];
+                                                         unsigned long long loadedBytes = [userData[@"progressInfo"][@"loadedBytes"] unsignedLongLongValue];
+                                                         
+                                                         CGFloat temp =  loadedBytes*1.0/totalBytes;
+                                                         
+                                                         if(temp > loadingViewController.progressView.progress )
+                                                         {
+                                                             [loadingViewController.progressView setProgress:temp animated:YES];
+                                                         }
+                                                     }
+                                                     break;
+                                                     
+                                                     case SSDKUploadStateFinish:
+                                                     {
+                                                         [loadingViewController.progressView setProgress:1 animated:YES];
+                                                         [loadingViewController hidden];
+                                                     }
+                                                     break;
+                                                     
+                                                     default:
+                                                     break;
+                                                 }
+                                                 break;
+                                             }
+                                             case SSDKResponseStateSuccess:
+                                             {
+                                                 titel = @"分享成功";
+                                                 break;
+                                             }
+                                             case SSDKResponseStateFail:
+                                             {
+                                                 titel = @"分享失败";
+                                                 break;
+                                             }
+                                             case SSDKResponseStateCancel:
+                                             {
+                                                 titel = @"分享已取消";
+                                                 break;
+                                             }
+                                             default:
+                                             break;
+                                         }
+                                         if(state != SSDKResponseStateUpload)
                                          {
-                                             CGFloat temp =  loadedBytes*1.0/totalBytes;
-                                             if(temp > 0.95)
-                                             {
-                                                 temp = 0.95; //上传完后还需要进行发布
-                                             }
-                                             if(temp > loadingViewController.progressView.progress )
-                                             {
-                                                 [loadingViewController.progressView setProgress:temp animated:YES];
-                                             }
+                                             [loadingViewController hidden];
+                                             [mobTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+                                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:titel
+                                                                                                 message:nil
+                                                                                                delegate:nil
+                                                                                       cancelButtonTitle:@"确定"
+                                                                                       otherButtonTitles:nil];
+                                             [alertView show];
                                          }
                                      }];
-                 [weakSelf showLoading];
-                 break;
-             }
-             case SSDKResponseStateSuccess:
-             {
-                 titel = @"分享成功";
-                 break;
-             }
-             case SSDKResponseStateFail:
-             {
-                 titel = @"分享失败";
-                 break;
-             }
-             case SSDKResponseStateCancel:
-             {
-                 titel = @"分享已取消";
-                 break;
-             }
-             default:
-             break;
-         }
-         if(state != SSDKResponseStateBeginUPLoad)
-         {
-             if(state == SSDKResponseStateSuccess || state == SSDKResponseStateFail)
-             {
-                 [loadingViewController.progressView setProgress:1 animated:YES];
-                 loadingViewController.httpServiceModel = nil;
-                 [loadingViewController closeAct:nil];
-             }
-             [mobTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:titel
-                                                                 message:nil
-                                                                delegate:nil
-                                                       cancelButtonTitle:@"确定"
-                                                       otherButtonTitles:nil];
-             [alertView show];
-         }
-     }];
 }
 
 -(void)showLoading
 {
-    if(loadingViewController == nil)
-    {
-        loadingViewController = [[MOBLoadingViewController alloc] initWithNibName:@"MOBLoadingViewController" bundle:nil];
-        loadingViewController.view.frame = [UIScreen mainScreen].bounds;
-    }
-    loadingViewController.httpServiceModel = httpServiceModel;
     [self.navigationController.view addSubview:loadingViewController.view];
     loadingViewController.view.alpha = 0;
     [UIView animateWithDuration:0.25 animations:^{

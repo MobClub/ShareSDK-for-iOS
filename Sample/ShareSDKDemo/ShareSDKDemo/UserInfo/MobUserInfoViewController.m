@@ -63,6 +63,8 @@
                                 @(SSDKPlatformTypePinterest),
                                 @(SSDKPlatformTypePocket),
                                 @(SSDKPlatformTypeTumblr),
+                                @(SSDKPlatformTypeTelegram),
+                                @(SSDKPlatformTypeReddit),
                                 ];
     _titleArray = @[@"  国内平台",@"  海外平台"];
     
@@ -149,7 +151,7 @@
         }
         else
         {
-            NSString *platformTypeName = [NSString stringWithFormat:@"ShareType_%zi",platformType];
+            NSString *platformTypeName = [NSString stringWithFormat:@"ShareType_%zi",(unsigned long)platformType];
             cell.textLabel.text = NSLocalizedStringWithDefaultValue(platformTypeName, @"ShareSDKUI_Localizable", _uiBundle, platformTypeName, nil);
         }
         //icon
@@ -204,11 +206,11 @@
 
 - (void)getUserInfoAct:(UIButton *)button
 {
-    if(_isGetUserInfo)
-    {
-        return;
-    }
-    _isGetUserInfo = YES;
+//    if(_isGetUserInfo)
+//    {
+//        return;
+//    }
+//    _isGetUserInfo = YES;
     NSIndexPath *indexPath = nil;
     SSDKPlatformType platformType = 0;
     if(button.tag >= 1000)//国外

@@ -30,6 +30,19 @@ extern NSString *const SSDKImageSettingQualityKey;
 @interface SSDKImage : NSObject
 
 /**
+ 图片路径
+ */
+@property (strong, nonatomic) NSURL *URL;
+
+/**
+ 初始化图片
+
+ @param object （NSString、UIImage、NSData）
+ @return 图片模型
+ */
++ (instancetype)imageWithObject:(id)object;
+
+/**
  *  初始化图片
  *
  *  @param URL 图片路径
@@ -54,6 +67,13 @@ extern NSString *const SSDKImageSettingQualityKey;
  *  @param handler 处理器
  */
 - (void)getNativeImage:(void(^)(UIImage *image))handler;
+
+/**
+ *  获取原生图片数据
+ *
+ *  @param handler 处理器
+ */
+- (void)getNativeImageData:(void(^)(NSData *imageData))handler;
 
 /**
  *  获取图片数据

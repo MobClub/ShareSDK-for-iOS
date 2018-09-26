@@ -9,69 +9,8 @@
 #ifndef ShareSDK_SSDKTypeDefine_h
 #define ShareSDK_SSDKTypeDefine_h
 
-#import "SSDKContentEntity.h"
-
-@protocol ISSDKAuthView;
-
+@class SSDKContentEntity;
 @class SSDKUser;
-@class SSDKFriendsPaging;
-@class UIView;
-@class SSDKAddFriendView;
-
-/**
- *  结合SSO和Web授权方式
- */
-extern NSString *const SSDKAuthTypeBoth;
-/**
- *  SSO授权方式
- */
-extern NSString *const SSDKAuthTypeSSO;
-/**
- *  网页授权方式
- */
-extern NSString *const SSDKAuthTypeWeb;
-
-/**
- *  HTTP的GET请求方式
- */
-extern NSString *const SSDKHttpMethodGet;
-/**
- *  HTTP的POST请求方式
- */
-extern NSString *const SSDKHttpMethodPost;
-/**
- *  HTTP的DELETE请求方式
- */
-extern NSString *const SSDKHttpMethodDelete;
-/**
- *  HTTP的PUT请求方式
- */
-extern NSString *const SSDKHttpMethodPut;
-/**
- *  HTTP的HEAD请求方式
- */
-extern NSString *const SSDKHttpMethodHead;
-
-/**
- *  授权设置键名， 其对应键值为NSArray，数组中元素为NSString，如:@{SSDKAuthSettingKeyScopes : @[@"all", @"mail"]}
- */
-extern NSString *const SSDKAuthSettingKeyScopes;
-
-/**
- *  授权设置键名， 其对应键值为SSDKAuthSettingQQAuthType，如:@{SSDKAuthSettingKeyQQAuthType : @(SSDKAuthSettingQQAuthTypeQR)}
- */
-extern NSString *const SSDKAuthSettingKeyQQAuthType;
-
-typedef NS_ENUM(NSUInteger, SSDKAuthSettingQQAuthType) {
-    /**
-     *  默认授权方式
-     */
-    SSDKAuthSettingQQAuthTypeNormal    = 0,
-    /**
-     *  二维码授权方式
-     */
-    SSDKAuthSettingQQAuthTypeQR        = 1,
-};
 
 /**
  *  平台类型
@@ -236,11 +175,11 @@ typedef NS_ENUM(NSUInteger, SSDKPlatformType){
     /**
      *  支付宝好友
      */
-    SSDKPlatformTypeAliSocial           = 50,
+    SSDKPlatformTypeAliSocial        = 50,
     /**
      *  支付宝朋友圈
      */
-    SSDKPlatformTypeAliSocialTimeline   = 51,
+    SSDKPlatformTypeAliSocialTimeline= 51,
     /**
      *  钉钉
      */
@@ -257,6 +196,10 @@ typedef NS_ENUM(NSUInteger, SSDKPlatformType){
      *  中国移动
      */
     SSDKPlatformTypeCMCC                = 55,
+    /**
+     * Reddit
+     */
+    SSDKPlatformTypeReddit              = 56,
     /**
      *  易信
      */
@@ -302,7 +245,7 @@ typedef NS_ENUM(NSUInteger, SSDKEvernoteHostType){
 };
 
 /**
- *  回复状态
+ *  回调状态
  */
 typedef NS_ENUM(NSUInteger, SSDKResponseState){
     
@@ -327,8 +270,8 @@ typedef NS_ENUM(NSUInteger, SSDKResponseState){
     SSDKResponseStateCancel     = 3,
     
     
-    //视频文件开始上传
-    SSDKResponseStateBeginUPLoad = 4
+    //视频文件上传
+    SSDKResponseStateUpload     = 4
 };
 
 /**
@@ -390,6 +333,19 @@ typedef NS_ENUM(NSUInteger, SSDKContentType){
 };
 
 /**
+ 授权方式
+
+ - SSDKAuthorizeTypeSSO: SSO授权
+ - SSDKAuthorizeTypeWeb: 网页授权
+ - SSDKAuthorizeTypeBoth: SSO＋网页授权
+ */
+typedef NS_ENUM(NSUInteger, SSDKAuthorizeType) {
+    SSDKAuthorizeTypeSSO,
+    SSDKAuthorizeTypeWeb,
+    SSDKAuthorizeTypeBoth,
+};
+
+/**
  分享行为事件统计
 
  - SSDKShareEventTypeOpenMenu: 打开分享菜单
@@ -404,6 +360,19 @@ typedef NS_ENUM(NSUInteger, SSDKShareEventType) {
     SSDKShareEventTypeOpenEditor,
     SSDKShareEventTypeFailed,
     SSDKShareEventTypeCancel
+};
+
+/**
+ 文件上传状态
+
+ - SSDKUploadStateBegin: 开始上传
+ - SSDKUploadStateUploading: 上传中
+ - SSDKUploadStateFinish: 结束上传
+ */
+typedef NS_ENUM(NSUInteger, SSDKUploadState) {
+    SSDKUploadStateBegin = 1,
+    SSDKUploadStateUploading,
+    SSDKUploadStateFinish,
 };
 
 /**
@@ -426,35 +395,6 @@ typedef NS_ENUM(NSUInteger, SSDKPrivacyStatus){
     SSDKPrivacyStatusUnlisted = 2
 
 };
-
-/**
- *  配置分享平台回调处理器
- *
- *  @param platformType 需要初始化的分享平台类型
- *  @param appInfo      需要初始化的分享平台应用信息
- */
-typedef void(^SSDKConfigurationHandler) (SSDKPlatformType platformType, NSMutableDictionary *appInfo);
-
-/**
- *  导入原平台SDK回调处理器
- *
- *  @param platformType 需要导入原平台SDK的平台类型
- */
-typedef void(^SSDKImportHandler) (SSDKPlatformType platformType);
-
-/**
- *  授权视图显示回调处理器
- *
- *  @param view 授权视图
- */
-typedef void(^SSDKAuthorizeViewDisplayHandler) (UIView<ISSDKAuthView> *view);
-
-/**
- *  添加好友视图显示回调处理器，仅用于Facebook添加好友时触发
- *
- *  @param view 添加好友视图
- */
-typedef void(^SSDKAddFriendViewDisplayHandler) (SSDKAddFriendView *view);
 
 /**
  *  授权状态变化回调处理器
@@ -485,28 +425,5 @@ typedef void(^SSDKGetUserStateChangedHandler) (SSDKResponseState state, SSDKUser
  */
 typedef void(^SSDKShareStateChangedHandler) (SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity,  NSError *error);
 
-/**
- *  调用API状态变更回调处理器
- *
- *  @param state            状态
- *  @param data             返回数据
- *  @param error            错误信息
- */
-typedef void(^SSDKCallApiStateChangedHandler)(SSDKResponseState state, id data, NSError *error);
-
-/**
- *  需要授权回调处理器
- *
- *  @param authorizeStateChangedHandler 授权状态回调
- */
-typedef void(^SSDKNeedAuthorizeHandler)(SSDKAuthorizeStateChangedHandler authorizeStateChangedHandler);
-
-/**
- *  HTTP上传数据情况
- *
- *  @param totalBytes  总字节数
- *  @param loadedBytes 上传字节数据
- */
-typedef void(^SSDKHttpUploadProgressHandler) (int64_t totalBytes, int64_t loadedBytes);
 
 #endif

@@ -107,6 +107,7 @@
 - (void)shareAssetVideo
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"];
+    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
     NSURL *url = [NSURL URLWithString:path];
     ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
     __weak __typeof__ (self) weakSelf = self;
@@ -114,10 +115,10 @@
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         //iPad版本QQ 暂时未支持此功能
         //通用参数设置
-        [parameters SSDKSetupShareParamsByText:nil
-                                        images:nil
+        [parameters SSDKSetupShareParamsByText:@"text"
+                                        images:path1
                                            url:assetURL
-                                         title:@"Share SDK"
+                                         title:@"title"
                                           type:SSDKContentTypeVideo];
         //平台定制
 //            [parameters SSDKSetupQQParamsByText:nil

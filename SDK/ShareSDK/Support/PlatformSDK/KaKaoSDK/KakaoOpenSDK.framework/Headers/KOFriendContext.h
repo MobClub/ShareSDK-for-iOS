@@ -1,7 +1,5 @@
 /**
- * Copyright 2015 Kakao Corp.
- *
- * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
+ * Copyright 2015-2018 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +16,7 @@
 
 /*!
  @header KOFriendContext.h
- 친구 목록 페이징의 정보를 처리하기 위한 Context를 정의한다.
+ @abstract 친구 목록 페이징의 정보를 처리하기 위한 Context를 정의한다.
  */
 #import "KOBaseContext.h"
 
@@ -30,8 +28,8 @@
  */
 typedef NS_ENUM(NSInteger, KOFriendServiceType) {
     KOFriendServiceTypeTalk = 0,
-    KOFriendServiceTypeStory,
-    KOFriendServiceTypeTalkAndStory
+    KOFriendServiceTypeStory = 1,
+    KOFriendServiceTypeTalkAndStory = 2
 };
 
 /*!
@@ -42,8 +40,8 @@ typedef NS_ENUM(NSInteger, KOFriendServiceType) {
  */
 typedef NS_ENUM(NSInteger, KOFriendFilterType) {
     KOFriendFilterTypeAll = 0,
-    KOFriendFilterTypeRegistered,
-    KOFriendFilterTypeInvitableNotRegistered
+    KOFriendFilterTypeRegistered = 1,
+    KOFriendFilterTypeInvitableNotRegistered = 2
 };
 
 /*!
@@ -56,10 +54,10 @@ typedef NS_ENUM(NSInteger, KOFriendFilterType) {
  */
 typedef NS_ENUM(NSInteger, KOFriendOrderType) {
     KOFriendOrderTypeNickName = 0,
-    KOFriendOrderTypeRecentChatting,
-    KOFriendOrderTypeTalkUserCreatedAt,
-    KOFriendOrderTypeAge,
-    KOFriendOrderTypeAffinity
+    KOFriendOrderTypeRecentChatting = 1,
+    KOFriendOrderTypeTalkUserCreatedAt = 2,
+    KOFriendOrderTypeAge = 3,
+    KOFriendOrderTypeAffinity = 4
 };
 
 extern NSString* convertFriendServiceTypeString(KOFriendServiceType type);
@@ -68,7 +66,7 @@ extern NSString* convertFriendOrderTypeString(KOFriendOrderType type);
 
 /*!
  @class KOFriendContext
- @discussion 친구 목록 페이징의 정보를 처리하기 위한 Context
+ @abstract 친구 목록 페이징의 정보를 처리하기 위한 Context
  */
 @interface KOFriendContext : KOBaseContext
 
@@ -85,28 +83,10 @@ extern NSString* convertFriendOrderTypeString(KOFriendOrderType type);
 @property (nonatomic, readonly) KOFriendFilterType filterType;
 
 /*!
- @property secureResource
- @abstract 프로필 이미지, 썸네일 등의 리소스 url을 https로 반환할지 여부.
- */
-@property (nonatomic, readonly) BOOL secureResource;
-
-/*!
- @property limit
- @abstract 요청 시 제한하는 친구의 수.
- */
-@property (nonatomic, readonly) NSInteger limit;
-
-/*!
  @property orderType
  @abstract 친구 정렬 타입.
  */
 @property (nonatomic, readonly) KOFriendOrderType orderType;
-
-/*!
- @property ordering
- @abstract 정렬 방법.
- */
-@property (nonatomic, readonly) KOOrdering ordering;
 
 /*!
  친구 페이징 Context 를 생성한다.

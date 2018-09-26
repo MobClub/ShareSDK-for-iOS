@@ -8,18 +8,47 @@
 
 #import <Foundation/Foundation.h>
 
+
+/**
+ 请求Token 类型
+
+ @param authCode 授权返回的authCode
+ @param ^getUserinfo 继续获取用户信息
+ */
+typedef void(^SSDKRequestTokenOperation)(NSString *authCode, void(^getUserinfo)(NSString *uid, NSString *token));
+
+/**
+ 刷新Token 类型
+
+ @param uid 当前请求的用户id
+ @param ^getUserinfo 继续获取用户信息
+ */
+typedef void(^SSDKRefreshTokenOperation)(NSString *uid, void(^getUserinfo)(NSString *token));
+
 /**
  *  微信连接器
  */
 @interface WeChatConnector : NSObject
 
 /**
- *  链接微信API已供ShareSDK可以正常使用微信的相关功能（授权、分享）
- *
- *  @param weChatClass 微信SDK中的类型，应先导入libWXApi.a，再传入[WXApi class]到此参数。注：此参数不能为nil，否则会导致授权、分享无法正常使用
- *  @param delegate 对于需要获取微信回复或请求时传入该委托对象。该对象必须实现WXApiDelegate协议中的方法。
+ 在用户不希望暴露微信appSecret情况下，可以设置此block，传入token继续请求用户信息
+ 
+ @param operation 请求authToken业务
  */
-+ (void)connect:(Class)wxApiClass;
-+ (void)connect:(Class)wxApiClass delegate:(id)delegate;
++ (void)setRequestAuthTokenOperation:(SSDKRequestTokenOperation)operation;
+
+/**
+ 微信token过期时，在此block中刷新，执行getUserInfo继续执行
+ 
+ @param operation 刷新token业务
+ */
++ (void)setRefreshAuthTokenOperation:(SSDKRefreshTokenOperation)operation;
+
+/**
+ 可以获取被sharesdk截取的微信sdk回调
+
+ @param operation 设置的回调block
+ */
++ (void)setWXCallbackOperation:(void(^)(id req,id resp))operation;
 
 @end

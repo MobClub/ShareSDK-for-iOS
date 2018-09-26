@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ShareSDK/ShareSDK.h>
+@class SSDKImage;
 
 /**
  *  分享事件处理器
@@ -49,16 +50,16 @@ typedef void(^SSEOneKeyShareStateChangeHandler) (SSDKPlatformType platformType, 
  */
 @interface SSEShareHelper : NSObject
 
-/**
- *  一键分享
- *
- *  @param platforms           平台标识列表，如:@[@(SSDKPlatformTypeSinaWeibo), @(SSDKPlatformTypeTencentWeibo)]
- *  @param parameters          分享参数
- *  @param stateChangedHandler 状态变更事件
- */
-+ (void)oneKeyShare:(NSArray *)platforms
-         parameters:(NSMutableDictionary *)parameters
-     onStateChanged:(SSEOneKeyShareStateChangeHandler)stateChangedHandler;
+///**
+// *  一键分享
+// *
+// *  @param platforms           平台标识列表，如:@[@(SSDKPlatformTypeSinaWeibo), @(SSDKPlatformTypeTencentWeibo)]
+// *  @param parameters          分享参数
+// *  @param stateChangedHandler 状态变更事件
+// */
+//+ (void)oneKeyShare:(NSArray *)platforms
+//         parameters:(NSMutableDictionary *)parameters
+//     onStateChanged:(SSEOneKeyShareStateChangeHandler)stateChangedHandler;
 
 /**
  *  屏幕截图分享
@@ -77,8 +78,8 @@ typedef void(^SSEOneKeyShareStateChangeHandler) (SSDKPlatformType platformType, 
  *  @param willShareHandler    将要分享事件，在此事件中处理要分享的平台、参数
  *  @param stateChangedHandler 状态变更事件
  */
-+ (void)beginShakeShare:(void(^)())beginShakeHandler
-              onEndSake:(void(^)())endShakeHandler
++ (void)beginShakeShare:(void(^)(void))beginShakeHandler
+              onEndSake:(void(^)(void))endShakeHandler
      onWillShareHandler:(SSEShakeWillShareHandler)willShareHandler
          onStateChanged:(SSDKShareStateChangedHandler)stateChangedHandler;
 
