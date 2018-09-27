@@ -37,7 +37,7 @@ typedef NS_ENUM(NSUInteger, SSDKGender)
 /**
  *  平台类型
  */
-@property (nonatomic) NSInteger platformType;
+@property (nonatomic) SSDKPlatformType platformType;
 
 /**
  *  授权凭证， 为nil则表示尚未授权
