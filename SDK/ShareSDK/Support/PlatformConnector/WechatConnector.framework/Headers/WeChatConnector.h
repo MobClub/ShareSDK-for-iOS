@@ -51,4 +51,14 @@ typedef void(^SSDKRefreshTokenOperation)(NSString *uid, void(^getUserinfo)(NSStr
  */
 + (void)setWXCallbackOperation:(void(^)(id req,id resp))operation;
 
+
+/**
+ 拉起小程序功能
+
+ @param userName 拉起的小程序的username
+ @param path 拉起小程序页面的可带参路径，不填默认拉起小程序首页
+ @param miniProgramType //拉起小程序的类型, 0:正式版; 1:开发版; 2:体验版
+ */
++ (BOOL)openMiniProgramWithUserName:(NSString *)userName path:(NSString *)path miniProgramType:(NSInteger)miniProgramType;
+
 @end
