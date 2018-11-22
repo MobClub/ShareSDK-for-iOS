@@ -171,9 +171,12 @@
 #ifdef IMPORT_Reddit
         [platformsRegister setupRedditByAppKey:MOBSSDKRedditAppKey redirectUri:MOBSSDKRedditRedirectUri];
 #endif
+        
+#ifdef IMPORT_ESurfing
+        [platformsRegister setupESurfingByAppKey:MOBSSDKESurfingAppkey appSecret:MOBSSDKESurfingAppSecret appName:MOBSSDKESurfingAppName];
+#endif
     }];
     
-        
 #define InitTest
 #ifdef InitTest
                 [self testShare];
@@ -183,9 +186,7 @@
 
 + (void)testShare
 {
-//    [WeChatConnector setWXCallbackOperation:^(id req, id resp) {
-//        NSLog(@"%@,%@",resp,req);
-//    }];
+//    [WeChatConnector openMiniProgramWithUserName:@"gh_afb25ac019c9" path:@"pages/index/index" miniProgramType:0];
 }
 
 + (MOBShareSDKHelper *)shareInstance

@@ -21,6 +21,7 @@
 "ShareSDK_fileNotLoaded" = "文件未加载";
 "ShareSDK_cancel" = "取消";
 "ShareSDK_authTitle" = "授权";
+"ShareSDK_shareTitle" = "分享";
 "ShareSDK_Error_Read_Data" = "数据解析错误";
 "ShareSDK_Error_Facebook_ShareType" = "分享状态未知";
 "ShareSDK_Error_NetVideo" = "暂不支持网络视频";

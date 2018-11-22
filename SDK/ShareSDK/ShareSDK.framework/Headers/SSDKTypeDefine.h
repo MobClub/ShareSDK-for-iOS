@@ -175,11 +175,11 @@ typedef NS_ENUM(NSUInteger, SSDKPlatformType){
     /**
      *  支付宝好友
      */
-    SSDKPlatformTypeAliSocial        = 50,
+    SSDKPlatformTypeAliSocial           = 50,
     /**
      *  支付宝朋友圈
      */
-    SSDKPlatformTypeAliSocialTimeline= 51,
+    SSDKPlatformTypeAliSocialTimeline   = 51,
     /**
      *  钉钉
      */
@@ -200,6 +200,14 @@ typedef NS_ENUM(NSUInteger, SSDKPlatformType){
      * Reddit
      */
     SSDKPlatformTypeReddit              = 56,
+    /**
+     * 天翼
+     */
+    SSDKPlatformTypeESurfing            = 57,
+    /**
+     * Facebook账户系统
+     */
+    SSDKPlatformTypeFacebookAccount     = 58,
     /**
      *  易信
      */
@@ -252,7 +260,7 @@ typedef NS_ENUM(NSUInteger, SSDKResponseState){
     /**
      *  开始
      */
-    SSDKResponseStateBegin     = 0,
+    SSDKResponseStateBegin      = 0,
     
     /**
      *  成功

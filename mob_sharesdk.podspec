@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.2.0"
+  s.version          = "4.2.1"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
@@ -279,6 +279,20 @@ Pod::Spec.new do |s|
         # YouDaoNote
         sp.subspec 'YouDaoNote' do |ssp|
             ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformConnector/YouDaoNoteConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # ESurfing(天翼)
+        sp.subspec 'ESurfing' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformSDK/ESurfingSDK/EAccountSDKArchive.framework','SDK/ShareSDK/Support/PlatformConnector/ESurfingConnector.framework'
+            ssp.resources = 'SDK/ShareSDK/Support/PlatformSDK/ESurfingSDK/HTMLResource.bundle'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # FacebookAccount
+        sp.subspec 'FacebookAccount' do |ssp|
+            ssp.vendored_frameworks = 'SDK/ShareSDK/Support/PlatformSDK/FacebookAccountSDK/AccountKit.framework','SDK/ShareSDK/Support/PlatformConnector/FacebookAccountConnector.framework'
+            ssp.resources = 'SDK/ShareSDK/Support/PlatformSDK/FacebookAccountSDK/AccountKitStrings.bundle'
             ssp.dependency 'mob_sharesdk/ShareSDK'
         end
 

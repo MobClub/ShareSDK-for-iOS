@@ -56,13 +56,15 @@
 #define IMPORT_VKontakte //注释此行则 不开启【 VKontakte 】平台
 #define IMPORT_Instapaper //注释此行则 不开启【 Instapaper 】平台
 #define IMPORT_Tumblr //注释此行则 不开启【 Tumblr 】平台
+#define IMPORT_Telegram //注释此行则 不开启【 Telegram 】平台
+#define IMPORT_Reddit //注释此行则 不开启【 Reddit 】平台
+#define IMPORT_ESurfing //注释此行则 不开启【 天翼 】平台
 //系统平台
 #define IMPORT_SMS //注释此行则 不开启【 SMS 】平台
 #define IMPORT_Mail //注释此行则 不开启【 Mail 】平台
 #define IMPORT_Copy //注释此行则 不开启【 Copy 】平台
 #define IMPORT_Print //注释此行则 不开启【 Print 】平台
-#define IMPORT_Telegram //注释此行则 不开启【 Telegram 】平台
-#define IMPORT_Reddit //注释此行则 不开启【 Reddit 】平台
+
 
 /**
  以下为各平台的相关参数设置
@@ -515,6 +517,38 @@
      分享详例：MOBMessengerViewController
 */
 
+#pragma mark - FacebookAccountKit平台配置信息
+
+/*
+ 确保已在应用面板中启用 Account Kit。您可以在应用面板的 Account Kit 版块找到 Account Kit 客户端口令。应用名称将用于登录界面 UI。
+ 
+ Demo的口令与秘钥
+ 
+ Token:c30c08723aa8c48fbd5e01d1c3103891
+ Secret:cbb4fcd506dfecbb56e86344287548d9
+ 
+ <plist version="1.0">
+ <dict>
+ ...
+ <key>FacebookAppID</key>
+ <string>{your-app-id}</string>
+ <key>AccountKitClientToken</key>
+ <string>{your-account-kit-client-token}</string>
+ <key>CFBundleURLTypes</key>
+ <array>
+ <dict>
+ <key>CFBundleURLSchemes</key>
+ <array>
+ <string>ak{your-app-id}</string>
+ </array>
+ </dict>
+ </array>
+ ...
+ </dict>
+ </plist>复制代码
+
+ */
+
 #pragma mark - Instagram平台配置信息
 /*
      info.plist 中需要设置 白名单 LSApplicationQueriesSchemes
@@ -870,6 +904,13 @@
 #ifdef IMPORT_Telegram
 #define MOBSSDKTelegramBotToken @"600852601:AAElp9J93JiYevLocDIEYPhEYulnMFuB_nQ"
 #define MOBSSDKTelegramBotDomain @"http://127.0.0.1"
+#endif
+
+#pragma mark - ESurfing
+#ifdef IMPORT_ESurfing
+#define MOBSSDKESurfingAppkey @"8148612606"
+#define MOBSSDKESurfingAppSecret @"mCltrhUqwshFa86egDTs0491ibaAulKA"
+#define MOBSSDKESurfingAppName @"shareSDK"
 #endif
 
 #pragma mark - SMS平台配置信息

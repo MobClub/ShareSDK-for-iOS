@@ -22,6 +22,7 @@
 "ShareSDK_fileNotLoaded" = "The necessary files are not loaded";
 "ShareSDK_cancel" = "cancel";
 "ShareSDK_authTitle" = "auth";
+"ShareSDK_shareTitle" = "share";
 "ShareSDK_Error_Read_Data" = "Data parsing error";
 "ShareSDK_Error_Facebook_ShareType" = "The sharing status is unknown";
 "ShareSDK_Error_NetVideo" = "No support for online video";

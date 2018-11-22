@@ -88,13 +88,21 @@
 
 - (void)shareLink
 {
+    //Twitter链接分享 卡片效果(小图、大图、视频、应用下载4种效果) 请查看官方API:https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards
+    // 注意：如果你的链接已经根据"Twitter官方API卡片效果文档"对网址内容进行改造 以下images参数请一定设置为nil 否则展示的是内容含有链接的图片分享。
+    // 如Demo地址 http://f.moblink.mob.com/twitter/bigcard/ 和 http://f.moblink.mob.com/twitter/smallcard/ 网址内容html中head已经改造过
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                       url:[NSURL URLWithString:@"http://www.mob.com"]
+                                    images:nil//[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                       url:[NSURL URLWithString:@"http://f.moblink.mob.com/twitter/bigcard/"]
                                      title:nil
                                       type:SSDKContentTypeWebPage];
+//    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+//                                    images:nil
+//                                       url:[NSURL URLWithString:@"http://f.moblink.mob.com/twitter/smallcard/"]
+//                                     title:nil
+//                                      type:SSDKContentTypeWebPage];
     [self shareWithParameters:parameters];
 }
 
