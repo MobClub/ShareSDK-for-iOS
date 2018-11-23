@@ -5,15 +5,16 @@
 <font size=2 color=#ff0000>由于苹果审核政策需求，对于那些需要客户端分享的平台，例如微信，QQ，QQ空间等，我们的分享菜单的方法里已经处理，没有安装客户端是不会在分享菜单上显示的，只有安装了才会显示。</font>
 
 ### 当前版本更新（4.2.1）
->更新说明:[详情](http://bbs.mob.com/thread-25962-1-1.html)
->1、新增FacebookAccountKit平台
->2、新增天翼平台
->3、调整微信和QQ平台uid策略,uid使用用户唯一标识openid, 其他数据如unionid(若存在)可从rawdata字段中获取
->4、优化YouTube平台，平台返回401错误码区分授权错误与无频道
->5、修复与firebase兼容问题
->6、修复QQ平台text与title参数对调问题
+
+>更新说明:[详情](http://bbs.mob.com/thread-25962-1-1.html)  
+>1、新增FacebookAccountKit平台  
+>2、新增天翼平台  
+>3、调整微信和QQ平台uid策略,uid使用用户唯一标识openid, 其他数据如unionid(若存在)可从rawdata字段中获取  
+>4、优化YouTube平台，平台返回401错误码区分授权错误与无频道  
+>5、修复与firebase兼容问题  
+>6、修复QQ平台text与title参数对调问题  
+>[更多版本更新说明](i_update.md)  
 >
->[更多版本更新说明](i_update.md)
 
 ### 一、获取AppKey
 如何在我们的官网注册应用得到appkey，请点击 [链接](http://bbs.mob.com/forum.php?mod=viewthread&tid=8212&extra=page%3D1) 看里面的操作步骤。
@@ -112,7 +113,9 @@ pod 'mob_sharesdk/ShareSDKExtension'
 #### 第一步：设置ShareSDK的Appkey并初始化对应的第三方社交平台
 在项目工程的Info.plist 中如图增加 MOBAppkey 和 MOBAppSecret 两个字段  
 在 MOBAppkey中 设置ShareSDK的appKey，如果尚未在ShareSDK官网注册过App，请移步到登录后台进行应用注册  也可以点击链接看里面的操作步骤。  
-![](images/sharesdk_ios_appkey.jpeg)  
+
+![](images/sharesdk_ios_appkey.jpeg) 
+
 >友情提示：如果您同时多个MOBSDK产品 在info.plist中的设置一次就可以了。  
 
 **打开\*AppDelegate.m(\*代表你的工程名字)导入头文件**
@@ -375,10 +378,11 @@ pod 'mob_sharesdk/ShareSDKExtension'
 根据自身项目配置分享/授权平台来添加白名单，如项目中使用了微博、新浪、QQ分享只需添加与之相关的值，下图是因为ShareSDK提供的Demo，它集成了所有平台。  
 ![](images/sharesdk_ios_queriesSchemes.png)  
 ![](images/sharesdk_ios_queriesSchemes_other.png)
-
-<br />
-**URL Schemes 配置:**
-可选：支持微信所需的相关配置及代码 在微信开放平台（[http://open.weixin.qq.com/](http://open.weixin.qq.com/)）注册应用并取得应用的AppID，然后打开下图位置，在URL Types中添加微信AppID  
+  
+  
+  
+**URL Schemes 配置:**  
+可选：支持微信所需的相关配置及代码 在微信开放平台[http://open.weixin.qq.com](http://open.weixin.qq.com/)注册应用并取得应用的AppID，然后打开下图位置，在URL Types中添加微信AppID  
 ![](images/sharesdk_ios_urlschemes01.png)
 
 打开**\*AppDelegate.m**(\*代表你的工程名字)文件，导入微信SDK的头文件并初始化：  
@@ -395,8 +399,8 @@ pod 'mob_sharesdk/ShareSDKExtension'
 可选：支持QQ所需的相关配置及代码 登录腾讯开放平台（http://open.qq.com/ ）注册成为开发者并登记应用取得AppId，然后打开下图位置，在URL Types中添加QQ的AppID，其格式为：”QQ” ＋ AppId的16进制（如果appId转换的16进制数不够8位则在前面补0，如转换的是：5FB8B52，则最终填入为：QQ05FB8B52 注意：转换后的字母要大写） 转换16进制的方法：echo ‘ibase=10;obase=16;801312852’ |bc，其中801312852为QQ的AppID，见下图  
 ![](images/sharesdk_ios_project_qqappid.png)  
 ![](images/sharesdk_ios_urlschemes02.png)  
-
-然后打开工程中的**\*AppDelegate.m**(\*代表你的工程名字)文件，导入QQSDK的头文件并初始化：  
+  
+然后打开工程中的 \*AppDelegate.m (\*代表你的工程名字)文件，导入QQSDK的头文件并初始化：  
 
 ```objc
 #import <ShareSDK/ShareSDK.h>
