@@ -1,21 +1,26 @@
-## 概述
+# ShareSDK For iOS
+**文档语言 :** **中文** | **[English](README_EN.md)**
 
->ShareSDK是一种社会化分享组件，为iOS、Android、WP8 的APP提供社会化功能，集成了一些常用的类库和接口，缩短开发者的开发时间，还有社会化统计分析管理后台。
+### 概述
+>ShareSDK是一个完全免费的社会化分享组件，为移动端的iOS/Android App提供社会化功能。本组件是iOS组件，提供简单轻巧的接口，能快速实现第三方登录、获取用户信息、社会化平台分享，获取好友等功能。本组件支持国内外超过四十个主流社交平台。
+>集成本组件将大大缩短开发者的开发时间。同时还提供的专业的后台统计等丰富的扩展功能，助力App的推广运营。
 
-<font size=2 color=#ff0000>由于苹果审核政策需求，对于那些需要客户端分享的平台，例如微信，QQ，QQ空间等，我们的分享菜单的方法里已经处理，没有安装客户端是不会在分享菜单上显示的，只有安装了才会显示。</font>
+- - - - -
 
 ### 当前版本更新（4.2.1）
 
->更新说明:[详情](http://bbs.mob.com/thread-25962-1-1.html)  
->1、新增FacebookAccountKit平台  
->2、新增天翼平台  
->3、调整微信和QQ平台uid策略,uid使用用户唯一标识openid, 其他数据如unionid(若存在)可从rawdata字段中获取  
->4、优化YouTube平台，平台返回401错误码区分授权错误与无频道  
->5、修复与firebase兼容问题  
->6、修复QQ平台text与title参数对调问题  
->[更多版本更新说明](i_update.md)  
->
+更新说明:[详情](http://bbs.mob.com/thread-25962-1-1.html)  
+1. 新增FacebookAccountKit平台  
+2. 新增天翼平台  
+3. 调整微信和QQ平台uid策略,uid使用用户唯一标识openid, 其他数据如unionid(若存在)可从rawdata字段中获取  
+4. 优化YouTube平台，平台返回401错误码区分授权错误与无频道  
+5. 修复与firebase兼容问题  
+6. 修复QQ平台text与title参数对调问题 
 
+
+[更多版本更新说明](i_update.md)  
+
+- - - - - 
 ### 一、获取AppKey
 如何在我们的官网注册应用得到appkey，请点击 [链接](http://bbs.mob.com/forum.php?mod=viewthread&tid=8212&extra=page%3D1) 看里面的操作步骤。
 
@@ -250,6 +255,8 @@ pod 'mob_sharesdk/ShareSDKExtension'
 ```
 
 2.调用构造分享参数接口和分享的接口
+
+<font size=2 color=#ff0000>由于苹果审核政策需求，对于那些需要客户端分享的平台，例如微信，QQ，QQ空间等，我们的分享菜单的方法里已经处理，没有安装客户端是不会在分享菜单上显示的，只有安装了才会显示。</font>
 
 ```objc
 // 使用ShareSDK提供的分享菜单
