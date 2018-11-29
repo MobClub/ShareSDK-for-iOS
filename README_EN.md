@@ -11,7 +11,6 @@ Main features:
 
 >ShareSDK contains the over 40 platforms,such as:
 Sina,WeChat,Tencent QQ,Facebook/FB Messenger,Twitter, Google+, Instagram and many other mainly social platforms.You can always choose the platforms you want.
-
 >We promise that ShareSDK plugin is FREE forever!Welcome to use ShareSDK!
 
 ## Installation
