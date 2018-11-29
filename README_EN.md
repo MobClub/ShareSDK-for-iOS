@@ -4,7 +4,7 @@
 ### Overview
 >ShareSDK is a kind of social sharing component for mobile app (Android/iOS). 
 ShareSDK supports some convenient interface or framework, and help to easily integrate SNS module feature.
-Main features:
+>Main features:
 * Authorize(Third Part Login)
 * Get User Info(such as userid, nickname etc.)
 * Share 
