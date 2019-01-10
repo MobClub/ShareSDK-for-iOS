@@ -405,4 +405,11 @@
 <!--    AppId="2015072400185895"-->
 <!--    Enable="true"/>-->
 
+<!--    <Telegram-->
+<!--    Id="47"-->
+<!--    SortId="47"-->
+<!--    BotToken="600852601:AAElp9J93JiYevLocDIEYPhEYulnMFuB_nQ"-->
+<!--    BotDomain="http://127.0.0.1"-->
+<!--    Enable="true"/>-->
+
 </DevInfor>

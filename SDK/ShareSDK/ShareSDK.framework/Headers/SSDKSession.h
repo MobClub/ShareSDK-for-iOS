@@ -16,6 +16,11 @@
 @property (assign, nonatomic, readonly) BOOL isCancelled;
 
 /**
+ session的目标平台
+ */
+@property (assign, nonatomic) NSInteger platformType;
+
+/**
  主动取消此次会话
  */
 - (void) cancel;

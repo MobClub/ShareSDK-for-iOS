@@ -26,7 +26,6 @@
  */
 + (NSDictionary *)configWithPlatform:(SSDKPlatformType)platform;
 
-
 /**
  获取激活的平台列表
 
@@ -61,7 +60,6 @@
  @param record YES:开启 NO:关闭
  */
 + (void)enableAutomaticRecordingEvent:(BOOL)record;
-
 
 #pragma mark - Deprecated
 

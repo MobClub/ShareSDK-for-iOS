@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Telegram</key>
+	<dict>
+		<key>BotDomain</key>
+		<string>bot_domain</string>
+		<key>BotToken</key>
+		<string>bot_token</string>
+		<key>PlatformID</key>
+		<integer>47</integer>
+	</dict>
 	<key>ShareContentMapField</key>
 	<dict>
 		<key>urlName</key>

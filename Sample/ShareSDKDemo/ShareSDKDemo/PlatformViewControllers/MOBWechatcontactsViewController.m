@@ -61,25 +61,25 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                       url:nil
-                                     title:nil
-                                      type:SSDKContentTypeImage];
+//    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+//                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+//                                       url:nil
+//                                     title:nil
+//                                      type:SSDKContentTypeImage];
     //平台定制
-//        [parameters SSDKSetupWeChatParamsByText:@"Share SDK"
-//                                          title:nil
-//                                            url:nil
-//                                     thumbImage:nil
-//                                          image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-//                                   musicFileURL:nil
-//                                        extInfo:nil
-//                                       fileData:nil
-//                                   emoticonData:nil
-//                            sourceFileExtension:nil
-//                                 sourceFileData:nil
-//                                           type:SSDKContentTypeImage
-//                             forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+        [parameters SSDKSetupWeChatParamsByText:@"Share SDK"
+                                          title:nil
+                                            url:nil
+                                     thumbImage:nil
+                                          image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                   musicFileURL:nil
+                                        extInfo:nil
+                                       fileData:nil
+                                   emoticonData:nil
+                            sourceFileExtension:nil
+                                 sourceFileData:nil
+                                           type:SSDKContentTypeAuto
+                             forPlatformSubType:SSDKPlatformSubTypeWechatSession];
     
     [self shareWithParameters:parameters];
 }

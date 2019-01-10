@@ -60,7 +60,7 @@ typedef NS_ENUM(NSUInteger, SSDKGender)
 @property (nonatomic, copy) NSString *icon;
 
 /**
- *  性别
+ *  性别 男-0 女-1 未知-2
  */
 @property (nonatomic) NSInteger gender;
 
@@ -123,6 +123,11 @@ typedef NS_ENUM(NSUInteger, SSDKGender)
  *  职业信息
  */
 @property (nonatomic, retain) NSArray *works;
+
+/**
+ *  标签
+ */
+@property (strong, nonatomic) NSArray *tags;
 
 /**
  *  原始数据

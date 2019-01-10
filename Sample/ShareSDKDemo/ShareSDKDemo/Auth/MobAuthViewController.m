@@ -12,6 +12,7 @@
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 #import <MOBFoundation/MOBFoundation.h>
 
+
 @interface MobAuthViewController ()
 {
     IBOutlet UITableView *myTableView;
@@ -27,7 +28,6 @@
 @end
 
 @implementation MobAuthViewController
-
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -108,19 +108,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(section == 0)
+    switch (section)
     {
-        return _platforemArray.count;
+        case 0:
+            return _platforemArray.count;
+        case 1:
+            return _overseasPlatforemArray.count;
+        default:
+            return 0;
     }
-    else if(section == 1)
-    {
-        return _overseasPlatforemArray.count;
-    }
-    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseCell"];
     if (cell == nil)
     {
@@ -289,6 +290,12 @@
                      NSString *key = [NSString stringWithFormat:@"%@",@(platformType)];
                      [_platforemUserInfos setObject:user forKey:key];
                      [myTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                     
+//                     if (user.tags)
+//                     {
+//                         [[[UIAlertView alloc] initWithTitle:@"Tags" message:user.tags.description delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
+//                     }
+                     
                      break;
                  }
                  case SSDKResponseStateFail:
@@ -348,16 +355,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
     SSDKPlatformType platformType = 0;
     _selectIndexPath = indexPath;
+    if (indexPath.section == 0)//国内
+    {
+        platformType = [_platforemArray[indexPath.row] integerValue];
+    }
     if(indexPath.section == 1)//国外
     {
         platformType = [_overseasPlatforemArray[indexPath.row] integerValue];
     }
-    else//国内
-    {
-        platformType = [_platforemArray[indexPath.row] integerValue];
-    }
+    
     //检测平台是否已授权
     if([ShareSDK hasAuthorized:platformType])
     {
@@ -372,7 +382,7 @@
         }
         else if(platformType == SSDKPlatformSubTypeKakaoTalk)
         {
-           name = @"Kakao";
+            name = @"Kakao";
         }
         else
         {
@@ -388,6 +398,7 @@
         alertView.tag = 10002;
         [alertView show];
     }
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -403,7 +414,7 @@
                 {
                     platformType = [_overseasPlatforemArray[_selectIndexPath.row] integerValue];
                 }
-                else//国内
+                if(_selectIndexPath.section == 0)//国内
                 {
                     platformType = [_platforemArray[_selectIndexPath.row] integerValue];
                 }
@@ -418,6 +429,5 @@
         }
     }
 }
-
 
 @end

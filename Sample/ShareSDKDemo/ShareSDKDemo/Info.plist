@@ -21,7 +21,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.2.1</string>
+	<string>4.2.2</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -306,7 +306,7 @@
 	<key>MOBAppKey</key>
 	<string>moba6b6c6d6</string>
 	<key>MOBAppSecret</key>
-	<string></string>
+	<string>b89d2427a3bc7ad1aea1e1e8c1d36bf3</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

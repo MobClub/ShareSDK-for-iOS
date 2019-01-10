@@ -21,6 +21,7 @@
 {
     //开启截屏分享监听 与ShareSDK本身无关
     [[MobScreenshotCenter shareInstance] start];
+    
     self.window.backgroundColor = [UIColor whiteColor];
     
 //    [MobSDK setInternationalDomain:MOBFSDKDomainTypeUS];

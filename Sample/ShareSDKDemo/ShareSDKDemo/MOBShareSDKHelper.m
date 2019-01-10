@@ -187,6 +187,7 @@
 + (void)testShare
 {
 //    [WeChatConnector openMiniProgramWithUserName:@"gh_afb25ac019c9" path:@"pages/index/index" miniProgramType:0];
+    
 }
 
 + (MOBShareSDKHelper *)shareInstance
