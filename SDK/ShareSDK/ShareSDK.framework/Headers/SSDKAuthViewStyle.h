@@ -95,4 +95,11 @@
  */
 + (void)setStatusBarStyle:(UIStatusBarStyle)style;
 
+/**
+ *  设置标题
+ *
+ *  @param shareTitle 分享标题
+ */
++ (void)setShareTitle:(NSString *)shareTitle;
+
 @end

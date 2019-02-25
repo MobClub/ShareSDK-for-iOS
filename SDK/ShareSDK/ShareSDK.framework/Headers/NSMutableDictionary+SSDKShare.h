@@ -153,7 +153,7 @@
 #pragma mark - SinaWeibo
 
 /*
- 设置新浪微博分享参数
+ 设置新浪微博分享参数， linkCard分享模式必要参数为 text,title,image,url,type，其中image仅支持网络连接，type为webpage
  
  @param text      文本
  @param title     标题
@@ -178,6 +178,23 @@
                                    objectID:(NSString *)objectID
                              isShareToStory:(BOOL)shareToStory
                                        type:(SSDKContentType)type;
+
+
+/**
+ 新浪微博设置linkcard分享方式
+
+ @param text 描述
+ @param title 标题
+ @param cardTitle 卡片标题
+ @param cardSummary 卡片摘要
+ @param images 图片，只支持网络图片
+ @param url 跳转链接
+ */
+- (void)SSDKSetupSinaWeiboLinkCardShareParamsByText:(NSString *)text
+                                          cardTitle:(NSString *)cardTitle
+                                        cardSummary:(NSString *)cardSummary
+                                             images:(id)images
+                                                url:(NSURL *)url;
 
 
 #pragma mark - Facebook

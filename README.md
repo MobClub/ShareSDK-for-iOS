@@ -7,15 +7,18 @@
 
 - - - - -
 
-### 当前版本更新（4.2.1）
+### 当前版本更新（4.2.3）
 
-更新说明:[详情](http://bbs.mob.com/thread-25962-1-1.html)  
-1. 新增FacebookAccountKit平台  
-2. 新增天翼平台  
-3. 调整微信和QQ平台uid策略,uid使用用户唯一标识openid, 其他数据如unionid(若存在)可从rawdata字段中获取  
-4. 优化YouTube平台，平台返回401错误码区分授权错误与无频道  
-5. 修复与firebase兼容问题  
-6. 修复QQ平台text与title参数对调问题 
+更新说明:[详情](http://bbs.mob.com/thread-26127-1-1.html)  
+
+1. 新增新浪微博LinkCard功能
+2. 修复新版Telegram客户端无法分享文本的Bug
+3. 优化新浪微博平台获取用户信息及授权
+4. 调整Line平台单独使用分享功能时无需注册ChannelID(除授权外)
+5. 优化意向统计
+6. 修复VKontakte平台判断是否安装客户端的API
+7. 修复对新版Messenger客户端不兼容链接分享的问题，同时去除此平台多图和相册视频分享功能
+8. 去除Google plus分享功能，google官方关停公告(授权不受此影响)
 
 
 [更多版本更新说明](i_update.md)  

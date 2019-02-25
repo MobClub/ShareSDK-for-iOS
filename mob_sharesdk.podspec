@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.2.2"
+  s.version          = "4.2.3"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
 
   s.homepage         = 'http://www.mob.com'
-  s.source           = { :http => 'http://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.2.2.zip' }
+  s.source           = { :http => 'http://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.2.3.zip' }
   s.platform         = :ios
   s.ios.deployment_target = "8.0"
   s.frameworks       = 'JavaScriptCore'

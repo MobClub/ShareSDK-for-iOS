@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MOBFoundation/MOBFoundation.h>
 
 /**
  *  好友分页信息
