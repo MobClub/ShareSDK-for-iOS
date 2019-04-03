@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/SinaWeiboConnector.framework'
             ssp.frameworks = 'ImageIO'
             ssp.libraries = 'sqlite3'
-            ssp.source_files = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/*.{h,m}"
+            #ssp.source_files = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/*.{h,m}"
             ssp.public_header_files = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/*.h"
             ssp.dependency 'mob_sharesdk/ShareSDK'
         end
@@ -45,7 +45,7 @@ Pod::Spec.new do |s|
         # WeChat
         sp.subspec 'WeChat' do |ssp|
             ssp.vendored_libraries = "ShareSDK/Support/PlatformSDK/WeChatSDK/*.a"
-            ssp.source_files = "ShareSDK/Support/PlatformSDK/WeChatSDK/*.{h,m}"
+            #ssp.source_files = "ShareSDK/Support/PlatformSDK/WeChatSDK/*.{h,m}"
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/WechatConnector.framework'
             ssp.public_header_files = "ShareSDK/Support/PlatformSDK/WeChatSDK/*.h"
             ssp.libraries = 'sqlite3'
@@ -55,7 +55,7 @@ Pod::Spec.new do |s|
         # WeChatFull
         sp.subspec 'WeChatFull' do |ssp|
             ssp.vendored_libraries = "ShareSDK/Support/PlatformSDK/WeChatSDKFull/*.a"
-            ssp.source_files = "ShareSDK/Support/PlatformSDK/WeChatSDKFull/*.{h,m}"
+            #ssp.source_files = "ShareSDK/Support/PlatformSDK/WeChatSDKFull/*.{h,m}"
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/WechatConnector.framework'
             ssp.public_header_files = "ShareSDK/Support/PlatformSDK/WeChatSDKFull/*.h"
             ssp.libraries = 'sqlite3'
@@ -72,7 +72,7 @@ Pod::Spec.new do |s|
         # 支付宝（AliSocial）
         sp.subspec 'AliPaySocial' do |ssp|
             ssp.vendored_libraries = 'ShareSDK/Support/PlatformSDK/APSocialSDK/*.a'
-            ssp.source_files = "ShareSDK/Support/PlatformSDK/APSocialSDK/*.{h,m}"
+            #ssp.source_files = "ShareSDK/Support/PlatformSDK/APSocialSDK/*.{h,m}"
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/AliSocialConnector.framework'
             ssp.public_header_files = "ShareSDK/Support/PlatformSDK/APSocialSDK/*.h"
             ssp.dependency 'mob_sharesdk/ShareSDK'
@@ -94,7 +94,7 @@ Pod::Spec.new do |s|
         # Yixin
         sp.subspec 'Yixin' do |ssp|
             ssp.vendored_libraries = "ShareSDK/Support/PlatformSDK/YiXinSDK/*.a"
-            ssp.source_files = "ShareSDK/Support/PlatformSDK/YiXinSDK/*.{h,m}"
+            #ssp.source_files = "ShareSDK/Support/PlatformSDK/YiXinSDK/*.{h,m}"
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/EasyChatConnector.framework'
             ssp.public_header_files = "ShareSDK/Support/PlatformSDK/YiXinSDK/*.h"
             ssp.dependency 'mob_sharesdk/ShareSDK'
