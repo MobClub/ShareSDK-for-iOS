@@ -209,6 +209,10 @@ typedef NS_ENUM(NSUInteger, SSDKPlatformType){
      */
     SSDKPlatformTypeFacebookAccount     = 58,
     /**
+     * 抖音
+     */
+    SSDKPlatformTypeDouyin              = 59,
+    /**
      *  易信
      */
     SSDKPlatformTypeYiXin               = 994,

@@ -357,4 +357,14 @@
                     appSecret:(NSString *)appSecret
                       appName:(NSString *)appName;
 
+
+/**
+ 设置抖音应用信息
+ 
+ @param appKey 应用标识
+ @param appSecret 应用密钥
+ */
+- (void)setupDouyinByAppKey:(NSString *)appKey
+                  appSecret:(NSString *)appSecret;
+
 @end

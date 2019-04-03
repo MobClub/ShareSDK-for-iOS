@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.2.3"
+  s.version          = "4.2.4"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
 
   s.homepage         = 'http://www.mob.com'
-  s.source           = { :http => 'https://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.2.3.zip' }
+  s.source           = { :http => 'https://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.2.4.zip' }
   s.platform         = :ios
   s.ios.deployment_target = "8.0"
   s.frameworks       = 'JavaScriptCore'
@@ -293,6 +293,14 @@ Pod::Spec.new do |s|
         sp.subspec 'FacebookAccount' do |ssp|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/FacebookAccountSDK/AccountKit.framework','ShareSDK/Support/PlatformConnector/FacebookAccountConnector.framework'
             ssp.resources = 'ShareSDK/Support/PlatformSDK/FacebookAccountSDK/AccountKitStrings.bundle'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+
+        # Douyin(抖音)
+        sp.subspec 'Douyin' do |ssp|
+            ssp.vendored_libraries = "ShareSDK/Support/PlatformSDK/DouyinOpenSDK/*.a"
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/DouyinConnector.framework'
+            ssp.public_header_files = "ShareSDK/Support/PlatformSDK/DouyinOpenSDK/*.h"
             ssp.dependency 'mob_sharesdk/ShareSDK'
         end
 

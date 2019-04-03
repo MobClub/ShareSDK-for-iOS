@@ -2,6 +2,13 @@
 
 [论坛发版列表](http://bbs.mob.com/forum.php?mod=forumdisplay&fid=2&filter=typeid&typeid=36)  
 
+### v4.2.4[详情](http://bbs.mob.com/thread-26192-1-1.html)
+>1、新增抖音平台含分享、授权
+>2、优化配置加载时效
+>3、调整WhatsApp分享
+>4、修复使用分平台号，导致unity插件授权可能存在的问题
+>5、对其他平台优化
+
 ### v4.2.3[详情](http://bbs.mob.com/thread-26127-1-1.html)
 >1、新增新浪微博LinkCard功能
 >2、修复新版Telegram客户端无法分享文本的Bug
