@@ -47,7 +47,8 @@
                         @(SSDKPlatformSubTypeYiXinSession),
                         @(SSDKPlatformTypeCMCC),
                         @(SSDKPlatformTypeESurfing),
-                        @(SSDKPlatformTypeFacebookAccount)
+                        @(SSDKPlatformTypeFacebookAccount),
+                        @(SSDKPlatformTypeDouyin),
                         ];
     _overseasPlatforemArray = @[
                                 @(SSDKPlatformTypeFacebook),

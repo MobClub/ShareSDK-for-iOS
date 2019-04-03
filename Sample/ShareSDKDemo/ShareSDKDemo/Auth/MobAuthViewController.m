@@ -39,6 +39,7 @@
     [super viewDidLoad];
     
     _platforemArray = @[
+                        @(SSDKPlatformTypeDouyin),
                         @(SSDKPlatformTypeSMS),
                         @(SSDKPlatformSubTypeQQFriend),
                         @(SSDKPlatformSubTypeWechatSession),
@@ -53,7 +54,7 @@
                         @(SSDKPlatformSubTypeYiXinSession),
                         @(SSDKPlatformTypeCMCC),
                         @(SSDKPlatformTypeESurfing),
-                        @(SSDKPlatformTypeFacebookAccount)
+                        @(SSDKPlatformTypeFacebookAccount),
                         ];
     _overseasPlatforemArray = @[
                                 @(SSDKPlatformTypeFacebook),

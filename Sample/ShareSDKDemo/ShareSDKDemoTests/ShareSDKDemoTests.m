@@ -15,6 +15,7 @@
 #import <objc/message.h>
 #import <FacebookAccountConnector/FacebookAccountConnector.h>
 #import <MOBFoundation/MOBFoundation.h>
+#import <Photos/Photos.h>
 
 @interface ShareSDKDemoTests : XCTestCase
 
@@ -7329,6 +7330,134 @@
             XCTAssertNil(error);
             terminate();
         }];
+    }];
+}
+
+
+#pragma mark - 抖音授权
+
+- (void)testDouyinAuth
+{
+    [self _wait:100 testOperation:^(void (^terminate)(void)) {
+        [ShareSDK authorize:SSDKPlatformTypeDouyin settings:nil onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
+            
+            XCTAssertNil(error);
+            terminate();
+        }];
+    }];
+}
+
+- (void)testDouyinGetUserinfoUnAuthed
+{
+    [self _wait:20 testOperation:^(void (^terminate)(void)) {
+        
+        [ShareSDK cancelAuthorize:SSDKPlatformTypeDouyin result:^(NSError *error) {
+            
+            [ShareSDK getUserInfo:SSDKPlatformTypeDouyin onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
+                
+                NSLog(@"%@",user.dictionaryValue);
+                XCTAssertNil(error);
+                terminate();
+            }];
+            
+        }];
+    }];
+}
+
+#pragma mark - 抖音分享
+
+- (void)testDouyinShareImagesWithCommonParams
+{
+    [self _wait:20 testOperation:^(void (^terminate)(void)) {
+        
+        // 通用参数设置----图片分享可以使用相册地址、沙盒路径、网络图片地址
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"];
+//        UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];//[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"];
+//        NSString *imageURL = @"http://www.mob.com/assets/images/ShareSDK_pic_1-09d293a6.png";
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters SSDKSetupShareParamsByText:nil
+                                        images:@[path]
+                                           url:nil
+                                         title:nil
+                                          type:SSDKContentTypeImage];
+        [ShareSDK share:SSDKPlatformTypeDouyin parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+            XCTAssertNil(error);
+            terminate();
+        }];
+    }];
+}
+
+- (void)testDouyinShareImagesWithCustomParams
+{
+
+    __block NSMutableArray *assetLocalIds = [NSMutableArray array];
+    [self _wait:15 testOperation:^(void (^terminate)(void)) {
+        [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
+            UIImage *image1 = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"D11" ofType:@"jpg"]];
+//            UIImage *image2 = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]];
+            
+            PHAssetChangeRequest *req_1 = [PHAssetChangeRequest creationRequestForAssetFromImage:image1];
+            NSString *localId_1 = req_1.placeholderForCreatedAsset.localIdentifier;
+            [assetLocalIds addObject:localId_1];
+            
+//            PHAssetChangeRequest *req_2 = [PHAssetChangeRequest creationRequestForAssetFromImage:image2];
+//            NSString *localId_2 = req_2.placeholderForCreatedAsset.localIdentifier;
+//            [assetLocalIds addObject:localId_2];
+            
+        } error:nil];
+        
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters SSDKSetupDouyinParamesByAssetLocalIds:assetLocalIds type:SSDKContentTypeImage];
+        [ShareSDK share:SSDKPlatformTypeDouyin parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+            XCTAssertNil(error);
+            terminate();
+        }];
+    }];
+}
+
+- (void)testDouyinShareVideoWithCommonParams
+{
+    [self _wait:10 testOperation:^(void (^terminate)(void)) {
+        
+        NSString *videoPath = [[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"];
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters SSDKSetupShareParamsByText:nil
+                                        images:nil
+                                           url:[NSURL URLWithString:videoPath]
+                                         title:nil
+                                          type:SSDKContentTypeVideo];
+        [ShareSDK share:SSDKPlatformTypeDouyin parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+            XCTAssertNil(error);
+            terminate();
+        }];
+    }];
+}
+
+- (void)testDouyinShareVideosWithCustomParams
+{
+    __block NSMutableArray *assetLocalIds = [NSMutableArray array];
+    [self _wait:15 testOperation:^(void (^terminate)(void)) {
+        [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
+            NSURL *url_1 = [[NSBundle mainBundle] URLForResource:@"cat" withExtension:@"mp4"];
+            NSURL *url_2 = [[NSBundle mainBundle] URLForResource:@"cat" withExtension:@"mp4"];
+            
+            PHAssetChangeRequest *req_1 = [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:url_1];
+            NSString *localId_1 = req_1.placeholderForCreatedAsset.localIdentifier;
+            [assetLocalIds addObject:localId_1];
+            
+            PHAssetChangeRequest *req_2 = [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:url_2];
+            NSString *localId_2 = req_2.placeholderForCreatedAsset.localIdentifier;
+            [assetLocalIds addObject:localId_2];
+        } error:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+            [parameters SSDKSetupDouyinParamesByAssetLocalIds:assetLocalIds type:SSDKContentTypeVideo];
+            
+            [ShareSDK share:SSDKPlatformTypeDouyin parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+                XCTAssertNil(error);
+                terminate();
+            }];
+        });
     }];
 }
 

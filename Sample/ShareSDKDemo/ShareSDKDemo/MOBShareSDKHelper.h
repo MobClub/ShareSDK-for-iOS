@@ -36,6 +36,7 @@
 #define IMPORT_SUB_YiXinTimeline //注释此行则 不开启【 易信朋友圈 】平台
 #define IMPORT_SUB_YiXinFav //注释此行则 不开启【 易信收藏 】平台
 #define IMPORT_CMCC//注释此行则 不开启【 中国移动 】平台
+#define IMPORT_Douyin//注释此行则 不开启【 抖音 】平台
 //海外平台
 #define IMPORT_Facebook //注释此行则 不开启【 Facebook 】平台
 #define IMPORT_FacebookMessenger //注释此行则 不开启【 FacebookMessenger 】平台
@@ -911,6 +912,12 @@
 #define MOBSSDKESurfingAppkey @"8148612606"
 #define MOBSSDKESurfingAppSecret @"mCltrhUqwshFa86egDTs0491ibaAulKA"
 #define MOBSSDKESurfingAppName @"shareSDK"
+#endif
+
+#pragma mark - 抖音平台配置信息
+#ifdef IMPORT_Douyin
+#define MOBSSDKDouyinAppKey @"aw9ivykfjvi4hpwo"
+#define MOBSSDKDouyinAppSecret @"42b4caa6bda60bd49f05f06d0a4956e1"
 #endif
 
 #pragma mark - SMS平台配置信息

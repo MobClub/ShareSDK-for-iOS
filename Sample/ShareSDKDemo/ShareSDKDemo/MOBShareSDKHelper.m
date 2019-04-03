@@ -175,6 +175,11 @@
 #ifdef IMPORT_ESurfing
         [platformsRegister setupESurfingByAppKey:MOBSSDKESurfingAppkey appSecret:MOBSSDKESurfingAppSecret appName:MOBSSDKESurfingAppName];
 #endif
+
+#ifdef IMPORT_Douyin
+        [platformsRegister setupDouyinByAppKey:MOBSSDKDouyinAppKey appSecret:MOBSSDKDouyinAppSecret];
+#endif
+        
     }];
     
 #define InitTest

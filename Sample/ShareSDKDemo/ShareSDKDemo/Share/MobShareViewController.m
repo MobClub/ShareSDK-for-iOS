@@ -53,6 +53,7 @@ static const NSInteger otherInfo = 1;
     loadingViewController.view.frame = [UIScreen mainScreen].bounds;
     
     _platforemArray = @[
+                        @(SSDKPlatformTypeDouyin),
                         @(SSDKPlatformSubTypeQQFriend),
                         @(SSDKPlatformSubTypeQZone),
                         @(SSDKPlatformSubTypeWechatSession),

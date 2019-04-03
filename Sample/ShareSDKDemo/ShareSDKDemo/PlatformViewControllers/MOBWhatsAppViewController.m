@@ -78,7 +78,7 @@
     
     [parameters SSDKSetupWhatsAppParamsByText:@"Share SDK"
                                         image:nil
-                                        audio:[[NSBundle mainBundle] pathForResource:@"music" ofType:@"mp3"]
+                                        audio:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"music" ofType:@"mp3"]]
                                         video:nil
                              menuDisplayPoint:CGPointZero
                                          type:SSDKContentTypeAudio];
