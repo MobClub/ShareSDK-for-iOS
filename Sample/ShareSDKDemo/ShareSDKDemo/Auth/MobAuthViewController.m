@@ -280,6 +280,12 @@
         //setting = @{SSDKAuthSettingKeyQQAuthType:@(SSDKAuthSettingQQAuthTypeQR)};
     }
     
+    if (platformType == SSDKPlatformTypeFacebook)
+    {
+        // 新增一种模式
+        setting = @{@"isBrowser":@(YES)};
+    }
+        
     [ShareSDK authorize:platformType
                settings:setting
          onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {

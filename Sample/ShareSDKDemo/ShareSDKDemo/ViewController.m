@@ -52,6 +52,8 @@ static NSString * const cellReuseIdentifier = @"cellReuseIdentifier";
     userInfoViewController = [[MobUserInfoViewController alloc] initWithNibName:@"MobUserInfoViewController" bundle:nil];
     viewControllerArray = @[shareViewController,authViewController,userInfoViewController];
     isFirst = YES;
+    
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
 }
 
 - (void)viewDidAppear:(BOOL)animated

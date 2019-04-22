@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MOBFoundation/MOBFDataModel.h>
 
 @interface SSDKUserQueryCondition : MOBFDataModel
 

@@ -10,6 +10,8 @@
 #import "MobScreenshotCenter.h"
 #import <MOBFoundation/MobSDK.h>
 //#import <Social/Social.h>
+#import <WechatConnector/WechatConnector.h>
+//#import <ShareSDKExtension/ShareSDK+Extension.h>
 
 @interface AppDelegate ()
 
@@ -20,6 +22,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//    [WeChatConnector setLang:@"zh_CN"];
+    
     //SLComposeViewController *composeVc = [SLComposeViewController composeViewControllerForServiceType:@""];
     //开启截屏分享监听 与ShareSDK本身无关
     [[MobScreenshotCenter shareInstance] start];

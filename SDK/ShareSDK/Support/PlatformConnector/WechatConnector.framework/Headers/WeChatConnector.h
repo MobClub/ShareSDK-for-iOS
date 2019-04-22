@@ -61,4 +61,10 @@ typedef void(^SSDKRefreshTokenOperation)(NSString *uid, void(^getUserinfo)(NSStr
  */
 + (BOOL)openMiniProgramWithUserName:(NSString *)userName path:(NSString *)path miniProgramType:(NSInteger)miniProgramType;
 
+/**
+ 指定返回用户信息的语言，zh_CN 简体中文，zh_TW 繁体中文，en 英文。默认为en。
+ @param lang 语言
+ */
++ (void)setLang:(NSString *)lang;
+
 @end

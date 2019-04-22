@@ -20,6 +20,9 @@
 
 #import "MOBShareSDKHelper.h"
 
+#import "MOBRollLabel.h"
+#import "MOBAboutLinkCardViewController.h"
+
 @interface MobShareViewController ()
 {
     IBOutlet UITableView *myTableView;
@@ -37,6 +40,8 @@
     //视频分享菜单
     MOBLoadingViewController *loadingViewController;
     //    SSDKHttpServiceModel *httpServiceModel;
+    IBOutlet UIView *noticeView;
+    MOBRollLabel *_rollLabel;
 }
 
 @end
@@ -114,6 +119,22 @@ static const NSInteger otherInfo = 1;
     onShakeShare = NO;
     shakeShareView.layer.masksToBounds = YES;
     shakeShareView.layer.cornerRadius = 15;
+    
+    
+    _rollLabel = [[MOBRollLabel alloc] initWithFrame:CGRectMake(35, 0,   [UIScreen mainScreen].bounds.size.width - 35, 35) font:[UIFont systemFontOfSize:15] textColor:[UIColor colorWithRed:244.0/255.0 green:103.0/255.0 blue:2.0/255.0 alpha:1]];
+    _rollLabel.backgroundColor = [UIColor clearColor];
+    _rollLabel.text = @"好消息：Linkcard 重磅上线！错过它，就错过了全世界~  ";
+    _rollLabel.rollSpeed = 0.2;
+    [noticeView addSubview:_rollLabel];
+    [noticeView sendSubviewToBack:_rollLabel];
+}
+
+- (IBAction)buttonNotice:(UIButton *)sender
+{
+    MOBAboutLinkCardViewController *aboutLinkCardVC = [MOBAboutLinkCardViewController new];
+    AppDelegate *application = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    UINavigationController *navigationController = (UINavigationController *)application.window.rootViewController;
+    [navigationController pushViewController:aboutLinkCardVC animated:YES];
 }
 
 - (IBAction)buttonAct:(UIButton *)sender
