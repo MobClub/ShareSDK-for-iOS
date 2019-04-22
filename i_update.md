@@ -2,6 +2,11 @@
 
 [论坛发版列表](http://bbs.mob.com/forum.php?mod=forumdisplay&fid=2&filter=typeid&typeid=36)  
 
+### v4.2.5[详情](http://bbs.mob.com/thread-26210-1-1.html)  
+>1、优化相关平台Web授权的自动清理缓存  
+>2、更新Facebook平台授权，兼容新版Facebook  
+>3、添加微信平台，用户信息语言区域控制API  
+
 ### v4.2.4[详情](http://bbs.mob.com/thread-26192-1-1.html)  
 >1、新增抖音平台含分享、授权  
 >2、优化配置加载时效  
