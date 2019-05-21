@@ -31,22 +31,22 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                    images:nil
-                                       url:nil
-                                     title:nil
-                                      type:SSDKContentTypeText];
+//    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+//                                    images:nil
+//                                       url:nil
+//                                     title:nil
+//                                      type:SSDKContentTypeText];
     
     //平台定制
-//    [parameters SSDKSetupQQParamsByText:@"Share SDK"
-//                                  title:nil
-//                                    url:nil
-//                          audioFlashURL:nil
-//                          videoFlashURL:nil
-//                             thumbImage:nil
-//                                 images:nil
-//                                   type:SSDKContentTypeText
-//                     forPlatformSubType:SSDKPlatformSubTypeQQFriend];
+    [parameters SSDKSetupQQParamsByText:@"Share SDK"
+                                  title:nil
+                                    url:nil
+                          audioFlashURL:nil
+                          videoFlashURL:nil
+                             thumbImage:nil
+                                 images:nil
+                                   type:SSDKContentTypeText
+                     forPlatformSubType:SSDKPlatformSubTypeQQFriend];
     [self shareWithParameters:parameters];
 }
 
@@ -105,23 +105,23 @@
 - (void)shareAudio
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                       url:[NSURL URLWithString:@"http://i.y.qq.com/v8/playsong.html?hostuin=0&songid=&songmid=002x5Jje3eUkXT&_wv=1&source=qq&appshare=iphone&media_mid=002x5Jje3eUkXT""http://www.mob.com"]
-                                     title:@"Share SDK"
-                                      type:SSDKContentTypeAudio];
+//    //通用参数设置
+//    [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
+//                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+//                                       url:[NSURL URLWithString:@"http://i.y.qq.com/v8/playsong.html?hostuin=0&songid=&songmid=002x5Jje3eUkXT&_wv=1&source=qq&appshare=iphone&media_mid=002x5Jje3eUkXT"]
+//                                     title:@"Share SDK"
+//                                      type:SSDKContentTypeAudio];
     
     //平台定制
-//        [parameters SSDKSetupQQParamsByText:@"Share SDK Link Desc"
-//                                      title:@"Share SDK"
-//                                        url:[NSURL URLWithString:@"http://i.y.qq.com/v8/playsong.html?hostuin=0&songid=&songmid=002x5Jje3eUkXT&_wv=1&source=qq&appshare=iphone&media_mid=002x5Jje3eUkXT"]
-//                              audioFlashURL:[NSURL URLWithString:@"http://i.y.qq.com/v8/playsong.html?hostuin=0&songid=&songmid=002x5Jje3eUkXT&_wv=1&source=qq&appshare=iphone&media_mid=002x5Jje3eUkXT"]
-//                              videoFlashURL:nil
-//                                 thumbImage:nil
-//                                     images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-//                                       type:SSDKContentTypeAudio
-//                         forPlatformSubType:SSDKPlatformSubTypeQQFriend];
+        [parameters SSDKSetupQQParamsByText:@"Share SDK Link Desc"
+                                      title:@"Share SDK"
+                                        url:[NSURL URLWithString:@"https://i.y.qq.com/v8/playsong.html?songmid=&_wv=1&songid=4797678&source=qq&platform=1&appsongtype=1&_wv=1&appshare=iphone&type=0&media_mid=001AFWGk4MKbvX&hosteuin=owEzoivFoio5"]
+                              audioFlashURL:[NSURL URLWithString:@"http://ra01.sycdn.kuwo.cn/resource/n3/32/56/3260586875.mp3"]
+                              videoFlashURL:nil
+                                 thumbImage:nil
+                                     images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                       type:SSDKContentTypeAudio
+                         forPlatformSubType:SSDKPlatformSubTypeQQFriend];
     
     [self shareWithParameters:parameters];
 }

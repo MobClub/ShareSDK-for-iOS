@@ -22,6 +22,7 @@
 
 #import "MOBRollLabel.h"
 #import "MOBAboutLinkCardViewController.h"
+#import "MOBAboutMobLinkViewController.h"
 
 @interface MobShareViewController ()
 {

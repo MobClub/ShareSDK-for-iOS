@@ -122,4 +122,13 @@
  */
 + (NSData *)dataByHexString:(NSString *)string;
 
+
+/**
+ *  @brief    转换版本号
+ 
+ *  @param ver 版本号
+ *  @return 转换为5位整数表示。
+ */
++ (NSInteger)convertVersion:(NSString *)ver;
+
 @end

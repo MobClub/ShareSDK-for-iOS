@@ -42,6 +42,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //平台定制
     
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
     NSString *path = [[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"];
     [parameters SSDKSetupKaKaoTalkParamsByUrl:[NSURL fileURLWithPath:path ] templateId:@"11820" templateArgs:nil];
     

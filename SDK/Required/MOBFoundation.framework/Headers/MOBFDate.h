@@ -121,4 +121,13 @@
                   minute:(NSInteger)minute
                   second:(NSInteger)second;
 
+
+/**
+ *  0点毫秒数
+
+ *
+ *  @return 0点毫秒数
+ */
++ (NSTimeInterval)zeroTimeInterval;
+
 @end
