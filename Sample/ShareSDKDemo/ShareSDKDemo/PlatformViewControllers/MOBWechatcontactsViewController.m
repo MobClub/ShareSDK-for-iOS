@@ -107,8 +107,8 @@
 //                                 sourceFileData:nil
 //                                           type:SSDKContentTypeWebPage
 //                             forPlatformSubType:SSDKPlatformSubTypeWechatSession];
-    
-    [self shareWithParameters:parameters];
+
+        [self shareWithParameters:parameters];
 }
 
 - (void)shareAudio
@@ -124,10 +124,10 @@
     //平台定制
 //    [parameters SSDKSetupWeChatParamsByText:@"崔健"
 //                                      title:@"一无所有"
-//                                        url:[NSURL URLWithString:@"http://i.y.qq.com/v8/playsong.html?hostuin=0&songid=&songmid=002x5Jje3eUkXT&_wv=1&source=qq&appshare=iphone&media_mid=002x5Jje3eUkXT"]
+//                                        url:[NSURL URLWithString:@"https://i.y.qq.com/v8/playsong.html?songmid=&_wv=1&songid=4797678&source=qq&platform=1&appsongtype=1&_wv=1&appshare=iphone&type=0&media_mid=001AFWGk4MKbvX&hosteuin=owEzoivFoio5"]
 //                                 thumbImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
 //                                      image:nil
-//                               musicFileURL:[NSURL URLWithString:@"http://i.y.qq.com/v8/playsong.html?hostuin=0&songid=&songmid=002x5Jje3eUkXT&_wv=1&source=qq&appshare=iphone&media_mid=002x5Jje3eUkXT"]
+//                               musicFileURL:[NSURL URLWithString:@"http://ra01.sycdn.kuwo.cn/resource/n3/32/56/3260586875.mp3"]
 //                                    extInfo:nil
 //                                   fileData:nil
 //                               emoticonData:nil

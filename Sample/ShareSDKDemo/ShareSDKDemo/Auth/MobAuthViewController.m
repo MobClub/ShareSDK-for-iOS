@@ -218,14 +218,17 @@
         SSDKUser *user = [_platforemUserInfos valueForKey:key];
         NSLog(@"%@",user.dictionaryValue);
         textLabel.text = user.nickname;
-        [[MOBFImageGetter sharedInstance] getImageWithURL:[NSURL URLWithString:user.icon]
-                                                   result:^(UIImage *image, NSError *error) {
-                                                       NSLog(@"result");
-                                                       if(error == nil)
-                                                       {
-                                                           imageView.image = image;
-                                                       }
-                                                   }];
+        if (user.icon)
+        {
+            [[MOBFImageGetter sharedInstance] getImageWithURL:[NSURL URLWithString:user.icon]
+                                                       result:^(UIImage *image, NSError *error) {
+                                                           NSLog(@"result");
+                                                           if(error == nil)
+                                                           {
+                                                               imageView.image = image;
+                                                           }
+                                                       }];
+        }
     }
     else
     {
@@ -292,7 +295,7 @@
              switch (state) {
                  case SSDKResponseStateSuccess:
                  {
-                     NSLog(@"授权 成功");
+                     NSLog(@"授权 成功 user:%@",user.dictionaryValue);
                      _isAuth = NO;
                      NSString *key = [NSString stringWithFormat:@"%@",@(platformType)];
                      [_platforemUserInfos setObject:user forKey:key];

@@ -145,25 +145,25 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //网络视频
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"视频"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                       url:[NSURL URLWithString:@"http://v.youku.com/v_show/id_XNTUxNDY1NDY4.html"]
-                                     title:@"乔布斯"
-                                      type:SSDKContentTypeVideo];
+//    [parameters SSDKSetupShareParamsByText:@"视频"
+//                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+//                                       url:[NSURL URLWithString:@"http://v.youku.com/v_show/id_XNTUxNDY1NDY4.html"]
+//                                     title:@"乔布斯"
+//                                      type:SSDKContentTypeVideo];
     //平台定制
-    //        [parameters SSDKSetupWeChatParamsByText:@"视频"
-    //                                          title:@"乔布斯"
-    //                                            url:[NSURL URLWithString:@"http://v.youku.com/v_show/id_XNTUxNDY1NDY4.html"]
-    //                                     thumbImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-    //                                          image:nil
-    //                                   musicFileURL:nil
-    //                                        extInfo:nil
-    //                                       fileData:nil
-    //                                   emoticonData:nil
-    //                            sourceFileExtension:nil
-    //                                 sourceFileData:nil
-    //                                           type:SSDKContentTypeVideo
-    //                             forPlatformSubType:SSDKPlatformSubTypeWechatTimeline];
+            [parameters SSDKSetupWeChatParamsByText:@"视频"
+                                              title:@"乔布斯"
+                                                url:[NSURL URLWithString:@"http://v.youku.com/v_show/id_XNTUxNDY1NDY4.html"]
+                                         thumbImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                              image:nil
+                                       musicFileURL:nil
+                                            extInfo:nil
+                                           fileData:nil
+                                       emoticonData:nil
+                                sourceFileExtension:nil
+                                     sourceFileData:nil
+                                               type:SSDKContentTypeVideo
+                                 forPlatformSubType:SSDKPlatformSubTypeWechatTimeline];
     [self shareWithParameters:parameters];
 }
 
