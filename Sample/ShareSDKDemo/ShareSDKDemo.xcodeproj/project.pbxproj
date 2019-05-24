@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B1CB3FC228159EB00CFCCE1 /* MOBDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500EB258216DF6370099DB35 /* MOBDebug.framework */; };
 		0B2F8DCE21F71333002D6E46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44B0708F1F78EF550087CE45 /* LaunchScreen.storyboard */; };
 		0B2F8DFC21FF020D002D6E46 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B2F8DF821FF020D002D6E46 /* WeiboSDK.bundle */; };
 		0B2F8DFD21FF020D002D6E46 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2F8DF921FF020D002D6E46 /* libWeiboSDK.a */; };
@@ -477,7 +476,6 @@
 		44FD96E41F790DDB00F7087E /* videoURLIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "videoURLIcon@2x.png"; sourceTree = "<group>"; };
 		44FD96E51F790DDB00F7087E /* webURLIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webURLIcon@2x.png"; sourceTree = "<group>"; };
 		500123D321C9FD6200893FC2 /* tags@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tags@2x.png"; sourceTree = "<group>"; };
-		500EB258216DF6370099DB35 /* MOBDebug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBDebug.framework; sourceTree = "<group>"; };
 		50120BEA21119CA800BB934D /* libAPOpenSdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAPOpenSdk.a; sourceTree = "<group>"; };
 		50120BEB21119CA800BB934D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		50120BEC21119CA800BB934D /* APOpenAPIObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APOpenAPIObject.h; sourceTree = "<group>"; };
@@ -581,7 +579,6 @@
 				50120C5D21119CA800BB934D /* InstapaperConnector.framework in Frameworks */,
 				50120C5121119CA800BB934D /* QQConnector.framework in Frameworks */,
 				50120C5B21119CA800BB934D /* CopyConnector.framework in Frameworks */,
-				0B1CB3FC228159EB00CFCCE1 /* MOBDebug.framework in Frameworks */,
 				5042CAAB211C421C002714B9 /* KakaoOpenSDK.framework in Frameworks */,
 				50120C5A21119CA800BB934D /* MeiPaiConnector.framework in Frameworks */,
 				50120C6B21119CA800BB934D /* DouBanConnector.framework in Frameworks */,
@@ -1240,7 +1237,6 @@
 		50120C2F21119CA800BB934D /* Required */ = {
 			isa = PBXGroup;
 			children = (
-				500EB258216DF6370099DB35 /* MOBDebug.framework */,
 				50120C3121119CA800BB934D /* MOBFoundation.framework */,
 			);
 			path = Required;
