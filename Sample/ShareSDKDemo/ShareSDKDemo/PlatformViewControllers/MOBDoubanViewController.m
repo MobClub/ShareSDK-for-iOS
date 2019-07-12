@@ -28,7 +28,7 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
                                     images:nil
                                        url:nil
                                      title:nil
@@ -50,8 +50,8 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                    images:[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
@@ -71,10 +71,10 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                       url:[NSURL URLWithString:@"http://www.mob.com"]
-                                     title:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
+                                       url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
+                                     title:SHARESDKDEMO_TITLE
                                       type:SSDKContentTypeWebPage];
     
     //平台定制

@@ -57,13 +57,11 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
-    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
-    NSString *path2 = [[NSBundle mainBundle] pathForResource:@"D11" ofType:@"jpg"];
-    NSString *path3 = [[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"];
-    NSString *path4 = [[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"];
+    NSString *path1 = SHARESDKDEMO_IMAGE_LOCALPATH;
+    NSString *path2 = [[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                    images:@[path1,path2,path3,path4]
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:@[path1,path2]
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
@@ -83,11 +81,11 @@
 - (void)shareLink
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://n1.itc.cn/img8/wb/common/2016/08/13/qianfan.png"]];
+    NSData *data = [NSData dataWithContentsOfURL:SHARESDKDEMO_IMAGE_URL];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
                                     images:[UIImage imageWithData:data]
-                                       url:[NSURL URLWithString:@"https://www.mob.com"]
+                                       url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
                                      title:@"Share SDK"
                                       type:SSDKContentTypeWebPage];
     //平台定制

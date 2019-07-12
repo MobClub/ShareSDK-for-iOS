@@ -29,9 +29,9 @@
 {
     // 通用参数设置----图片分享可以使用相册地址、沙盒路径、网络图片地址
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"D11" ofType:@"jpg"];
-    UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
-    NSString *imageURL = @"http://www.mob.com/assets/images/ShareSDK_pic_1-09d293a6.png";
+    NSString *path = SHARESDKDEMO_IMAGE_LOCALPATH;
+//    UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
+//    NSString *imageURL = @"http://www.mob.com/assets/images/ShareSDK_pic_1-09d293a6.png";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
 //    [parameters SSDKSetupShareParamsByText:nil
 //                                    images:@[path]
@@ -93,7 +93,7 @@
     
     // 同步
     [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
-        UIImage *image1 = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]];
+        UIImage *image1 = [UIImage imageWithContentsOfFile:SHARESDKDEMO_IMAGE_LOCALPATH];
 //        UIImage *image2 = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"D11" ofType:@"jpg"]];
 //        UIImage *image3 = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
 //        UIImage *image4 = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]];

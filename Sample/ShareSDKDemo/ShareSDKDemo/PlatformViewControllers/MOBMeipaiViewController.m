@@ -35,7 +35,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:nil
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
@@ -66,7 +66,7 @@
  */
 - (void)shareAssetImage
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
+    NSString *path = SHARESDKDEMO_IMAGE_LOCALPATH;
     ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
     __weak __typeof__ (self) weakSelf = self;
     UIImage *image = [UIImage imageWithContentsOfFile:path];

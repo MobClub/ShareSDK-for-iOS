@@ -278,9 +278,9 @@
     #pragma mark - 调用授权
     NSDictionary *setting = nil;
     
-    // QQ 新增了二维码授权,SSDKAuthSettingQQAuthTypeNormal(默认授权)、SSDKAuthSettingQQAuthTypeQR(二维码授权)未安装QQ客户端时才有效果
+    // QQ 新增了二维码授权,@0(默认授权)、@1(二维码授权)未安装QQ客户端时才有效果
     if (platformType == SSDKPlatformTypeQQ || platformType == SSDKPlatformSubTypeQQFriend || platformType == SSDKPlatformSubTypeQZone) {
-        //setting = @{SSDKAuthSettingKeyQQAuthType:@(SSDKAuthSettingQQAuthTypeQR)};
+//        setting = @{@"QQAuthType":@(1)};
     }
     
     if (platformType == SSDKPlatformTypeFacebook)

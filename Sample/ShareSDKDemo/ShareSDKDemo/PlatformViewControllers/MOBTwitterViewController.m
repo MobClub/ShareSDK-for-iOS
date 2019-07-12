@@ -46,7 +46,7 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:[NSString stringWithFormat:@"Share SDK %0.0f",[[NSDate date] timeIntervalSince1970]]
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
                                     images:nil
                                        url:nil
                                      title:nil
@@ -67,12 +67,11 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //图片最多4张 GIF只能1张
-    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
+    NSString *path1 = SHARESDKDEMO_IMAGE_LOCALPATH;
     NSString *path2 = [[NSBundle mainBundle] pathForResource:@"D11" ofType:@"jpg"];
     NSString *path3 = [[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"];
-    NSString *path4 = [[NSBundle mainBundle] pathForResource:@"res6" ofType:@"gif"];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
                                     images:@[path1,path2,path3]
                                        url:nil
                                      title:nil

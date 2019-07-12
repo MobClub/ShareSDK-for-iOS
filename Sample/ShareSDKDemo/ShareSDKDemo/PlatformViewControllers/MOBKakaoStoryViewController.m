@@ -27,7 +27,15 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupKakaoStoryParamsByContent:@"ShareSDK test" title:nil images:nil url:nil permission:1 sharable:YES androidExecParam:nil iosExecParam:nil];
+    [parameters SSDKSetupKakaoStoryParamsByContent:SHARESDKDEMO_TEXT
+                                             title:nil
+                                            images:nil
+                                               url:nil
+                                        permission:1
+                                          sharable:YES
+                                  androidExecParam:nil
+                                      iosExecParam:nil
+     ];
     
     
     [self shareWithParameters:parameters];
@@ -41,7 +49,15 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
     
-    [parameters SSDKSetupKakaoStoryParamsByContent:@"images" title:nil images:@[@"http://g.hiphotos.baidu.com/image/pic/item/060828381f30e92446c5b90241086e061d95f7a4.jpg",@"http://a.hiphotos.baidu.com/image/pic/item/0824ab18972bd4077557733177899e510eb3096d.jpg"] url:nil permission:0 sharable:YES androidExecParam:@{@"andParam1":@"value1", @"andParam2":@"value2"} iosExecParam:@{@"iosParam1":@"value1", @"iosParam2":@"value2"}];
+    [parameters SSDKSetupKakaoStoryParamsByContent:@"images"
+                                             title:nil
+                                            images:@[@"http://g.hiphotos.baidu.com/image/pic/item/060828381f30e92446c5b90241086e061d95f7a4.jpg",@"http://a.hiphotos.baidu.com/image/pic/item/0824ab18972bd4077557733177899e510eb3096d.jpg"]
+                                               url:nil
+                                        permission:0
+                                          sharable:YES
+                                  androidExecParam:@{@"andParam1":@"value1", @"andParam2":@"value2"}
+                                      iosExecParam:@{@"iosParam1":@"value1", @"iosParam2":@"value2"}
+     ];
     
     [self shareWithParameters:parameters];
 }
@@ -50,10 +66,10 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
-                                    images:@[@"http://g.hiphotos.baidu.com/image/pic/item/060828381f30e92446c5b90241086e061d95f7a4.jpg",@"http://a.hiphotos.baidu.com/image/pic/item/0824ab18972bd4077557733177899e510eb3096d.jpg"]
-                                       url:[NSURL URLWithString:@"http://www.mob.com"]
-                                     title:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:@[SHARESDKDEMO_IMAGE_STRING]
+                                       url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
+                                     title:SHARESDKDEMO_TITLE
                                       type:SSDKContentTypeWebPage];
     
     //平台定制

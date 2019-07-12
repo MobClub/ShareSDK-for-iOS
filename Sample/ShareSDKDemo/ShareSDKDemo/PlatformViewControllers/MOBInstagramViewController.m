@@ -36,7 +36,7 @@
     
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:nil
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
