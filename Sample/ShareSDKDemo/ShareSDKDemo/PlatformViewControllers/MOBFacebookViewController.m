@@ -46,8 +46,8 @@
 //                                     title:nil
 //                                      type:SSDKContentTypeImage];
     //平台定制
-    [parameters SSDKSetupFacebookParamsByText:@"Share SDK"
-                                        image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+    [parameters SSDKSetupFacebookParamsByText:SHARESDKDEMO_TEXT
+                                        image:SHARESDKDEMO_IMAGE_LOCALPATH
                                           url:nil
                                      urlTitle:nil
                                       urlName:nil
@@ -65,22 +65,22 @@
     //Facebook分享链接带图片参数已失效,如分享链接时显示卡片效果需在链接中配置meta标签
     //   具体配置请参考Facebook官方文档：https://developers.facebook.com/docs/sharing/webmasters#markup
     //   及工具分享调试器：https://developers.facebook.com/tools/debug/
-    //   测试链接大图效果http://f.moblink.mob.com/facebook/bigcard/、小图效果http://f.moblink.mob.com/facebook/smallcard/
-    [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
-                                    images:nil
-                                       url:[NSURL URLWithString:@"http://f.moblink.mob.com/facebook/bigcard/"]
-                                     title:@"Share SDK"
-                                      type:SSDKContentTypeWebPage];
+    //   测试链接大图效果http://m.93lj.com/facebook/bigcard/、小图效果http://m.93lj.com/facebook/smallcard/
+//    [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
+//                                    images:nil
+//                                       url:[NSURL URLWithString:@"http://m.93lj.com/facebook/bigcard/"]
+//                                     title:@"Share SDK"
+//                                      type:SSDKContentTypeWebPage];
     //平台定制
-//        [parameters SSDKSetupFacebookParamsByText:@"Share SDK Link Desc"
-//                                            image:nil
-//                                              url:[NSURL URLWithString:@"http://f.moblink.mob.com/facebook/bigcard/"]
-//                                         urlTitle:@"Share SDK"
-//                                          urlName:nil
-//                                   attachementUrl:nil
-//                                          hashtag:@"#MobData"
-//                                            quote:@"Mob官网 - 全球领先的移动开发者服务平台"
-//                                             type:SSDKContentTypeWebPage];
+        [parameters SSDKSetupFacebookParamsByText:@"Share SDK Link Desc"
+                                            image:nil
+                                              url:[NSURL URLWithString:@"http://m.93lj.com/facebook/bigcard/"]
+                                         urlTitle:@"Share SDK"
+                                          urlName:nil
+                                   attachementUrl:nil
+                                          hashtag:@"#MobData"
+                                            quote:@"Mob官网 - 全球领先的移动开发者服务平台"
+                                             type:SSDKContentTypeWebPage];
     
     [self shareWithParameters:parameters];
 }

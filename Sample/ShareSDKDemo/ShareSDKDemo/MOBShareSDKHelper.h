@@ -37,6 +37,8 @@
 #define IMPORT_SUB_YiXinFav //注释此行则 不开启【 易信收藏 】平台
 #define IMPORT_CMCC//注释此行则 不开启【 中国移动 】平台
 #define IMPORT_Douyin//注释此行则 不开启【 抖音 】平台
+//#define IMPORT_WeWork//注释此行则 不开启【 企业微信 】平台
+
 //海外平台
 #define IMPORT_Facebook //注释此行则 不开启【 Facebook 】平台
 #define IMPORT_FacebookMessenger //注释此行则 不开启【 FacebookMessenger 】平台
@@ -919,6 +921,14 @@
 #define MOBSSDKDouyinAppKey @"aw9ivykfjvi4hpwo"
 #define MOBSSDKDouyinAppSecret @"42b4caa6bda60bd49f05f06d0a4956e1"
 #endif
+
+//#pragma mark - 企业微信平台配置信息
+//#ifdef IMPORT_WeWork
+//#define MOBSSDKWeWorkAppKey @"wwautha21eaecf93f0e3ba000012"
+//#define MOBSSDKWeWorkCorpId @"wwa21eaecf93f0e3ba"
+//#define MOBSSDKWeWorkAgentId @"1000012"
+//#define MOBSSDKWeWorkAppSecret @"dW7e27P7Hc8NiYdRxnbTeOLgfI1ugR72e-PM8uusq2s"
+//#endif
 
 #pragma mark - SMS平台配置信息
 /*

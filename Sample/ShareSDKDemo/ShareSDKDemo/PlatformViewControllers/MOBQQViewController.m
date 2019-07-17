@@ -38,7 +38,7 @@
 //                                      type:SSDKContentTypeText];
     
     //平台定制
-    [parameters SSDKSetupQQParamsByText:@"Share SDK"
+    [parameters SSDKSetupQQParamsByText:SHARESDKDEMO_TEXT
                                   title:nil
                                     url:nil
                           audioFlashURL:nil
@@ -57,8 +57,8 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                    images:[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:SHARESDKDEMO_IMAGE_STRING //[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
@@ -82,9 +82,9 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                       url:[NSURL URLWithString:@"http://www.mob.com"]
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
+                                       url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
                                      title:@"Share SDK"
                                       type:SSDKContentTypeWebPage];
     
@@ -130,22 +130,22 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"111"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                       url:[NSURL URLWithString:@"http://www.mob.com"]
-                                     title:@"Share SDK"
-                                      type:SSDKContentTypeVideo];
+//    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+//                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
+//                                       url:[NSURL URLWithString:@"http://www.mob.com"]
+//                                     title:SHARESDKDEMO_TITLE
+//                                      type:SSDKContentTypeVideo];
     
     //平台定制
-    //    [parameters SSDKSetupQQParamsByText:@"Share SDK Link Desc"
-    //                                  title:@"Share SDK"
-    //                                    url:[NSURL URLWithString:@"https://www.mob.com"]
-    //                          audioFlashURL:nil
-    //                          videoFlashURL:nil
-    //                             thumbImage:nil
-    //                                 images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-    //                                   type:SSDKContentTypeWebPage
-    //                     forPlatformSubType:SSDKPlatformSubTypeQQFriend];
+        [parameters SSDKSetupQQParamsByText:SHARESDKDEMO_TEXT
+                                      title:SHARESDKDEMO_TITLE
+                                        url:[NSURL URLWithString:SHARESDKDEMO_VIDEO_AD_STRING]
+                              audioFlashURL:nil
+                              videoFlashURL:[NSURL URLWithString:SHARESDKDEMO_VIDEO_AD_STRING]
+                                 thumbImage:nil
+                                     images:SHARESDKDEMO_IMAGE_LOCALPATH
+                                       type:SSDKContentTypeVideo
+                         forPlatformSubType:SSDKPlatformSubTypeQQFriend];
     
     [self shareWithParameters:parameters];
 }

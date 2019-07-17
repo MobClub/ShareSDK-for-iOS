@@ -27,10 +27,10 @@
 {
     //通用参数设置
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKSetupShareParamsByText:@"Share SDK "
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
                                     images:nil
                                        url:nil
-                                     title:@"Share SDK"
+                                     title:SHARESDKDEMO_TITLE
                                       type:SSDKContentTypeText];
     //平台定制
 //    [parameters SSDKSetupYouDaoNoteParamsByText:@"Share SDK"
@@ -55,9 +55,9 @@
 //                                     title:@"Share SDK"
 //                                      type:SSDKContentTypeImage];
     //平台定制
-    [parameters SSDKSetupYouDaoNoteParamsByText:@"Share SDK"
-                                         images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                          title:@"Share SDK"
+    [parameters SSDKSetupYouDaoNoteParamsByText:SHARESDKDEMO_TEXT
+                                         images:SHARESDKDEMO_IMAGE_LOCALPATH
+                                          title:SHARESDKDEMO_TITLE
                                          source:@"MOB"
                                          author:@"mob"
                                        notebook:nil];

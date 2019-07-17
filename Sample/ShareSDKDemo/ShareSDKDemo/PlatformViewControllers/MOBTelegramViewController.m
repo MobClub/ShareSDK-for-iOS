@@ -31,7 +31,7 @@
 {
     //通用参数设置
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
                                     images:nil
                                        url:nil
                                      title:nil
@@ -51,9 +51,9 @@
 {
     //通用参数设置
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
                                     images:nil
-                                       url:[NSURL URLWithString:@"https://www.mob.com"]
+                                       url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
                                      title:nil
                                       type:SSDKContentTypeWebPage];
     [self shareWithParameters:parameters];
@@ -66,8 +66,8 @@
 {
     //通用参数设置
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];

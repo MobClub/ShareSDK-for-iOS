@@ -8,6 +8,7 @@
 
 #import "MOBSinaWeiboViewController.h"
 #import <Photos/Photos.h>
+#import <ShareSDKExtension/ShareSDK+Extension.h>
 
 @interface MOBSinaWeiboViewController ()
 
@@ -20,17 +21,15 @@
     [super viewDidLoad];
     platformType = SSDKPlatformTypeSinaWeibo;
     self.title = @"新浪微博";
-    shareIconArray = @[@"textIcon",@"textAndImageIcon",@"webURLIcon",@"videoIcon",@"webURLIcon"];
-    shareTypeArray = @[@"文字 SDK",@"文字+图片 SDK",@"链接 SDK",@"视频 SDK",@"分享LinkCard"];
-    selectorNameArray = @[@"shareText",@"shareImages",@"shareLink",@"shareVideos",@"shareLinkCard"];
+    shareIconArray = @[@"textIcon",@"textAndImageIcon",@"mutImageIcon",@"imageIcon",@"videoIcon",@"videoIcon",@"webURLIcon",@"webURLIcon"];
+    shareTypeArray = @[@"文字 SDK",@"文字+单图 SDK",@"文字+多图 SDK",@"故事板图片 SDK",@"视频 SDK",@"故事板视频 SDK",@"链接 SDK",@"分享LinkCard"];
+    selectorNameArray = @[@"shareText",@"shareImage",@"shareImages",@"shareImageStory",@"shareVideos",@"shareVideoStory",@"shareLink",@"shareLinkCard"];
 }
 
 - (void)shareText
 {
-    //v4.0.1 不在区分网页与客户端 有客户端则有限调用客户端进行分享 无客户端则调用SDK自带分享页面
-    //此页面不需要设置 安全域名 并可以分享话题 如果希望使用api进行分享则参考 shareTextByAPI shareImageByAPI
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
                                     images:nil
                                        url:nil
                                      title:nil
@@ -49,21 +48,19 @@
     [self shareWithParameters:parameters];
 }
 
-- (void)shareImages
+- (void)shareImage
 {
-    //v4.0.1 不在区分网页与客户端 有客户端则有限调用客户端进行分享 无客户端则调用SDK自带分享页面
-    //此页面不需要设置 安全域名 并可以分享话题 如果希望使用api进行分享则参考 shareTextByAPI shareImageByAPI
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                    images:@[[UIImage imageNamed:@"COD13.jpg"],[UIImage imageNamed:@"D45.jpg"]]
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:@[SHARESDKDEMO_IMAGE_STRING]
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
     //平台定制
 //    [parameters SSDKSetupSinaWeiboShareParamsByText:@"Share SDK"
 //                                              title:nil
-//                                             images:@[[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"],
-//                                                      [[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]]
+//                                             images:@[[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+//                                                      ]
 //                                              video:nil
 //                                                url:nil
 //                                           latitude:0 longitude:0
@@ -73,80 +70,72 @@
     [self shareWithParameters:parameters];
 }
 
+- (void)shareImages
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:@[@"http://www.mob.com/assets/images/ShareSDK_pic_1-09d293a6.png",SHARESDKDEMO_IMAGE_LOCALPATH]
+                                       url:nil
+                                     title:nil
+                                      type:SSDKContentTypeImage];
+    //平台定制
+    //    [parameters SSDKSetupSinaWeiboShareParamsByText:@"Share SDK"
+    //                                              title:nil
+    //                                             images:@[[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+    //                                                      ,[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]
+    //                                                      ]
+    //                                              video:nil
+    //                                                url:nil
+    //                                           latitude:0 longitude:0
+    //                                           objectID:nil
+    //                                     isShareToStory:NO
+    //                                               type:SSDKContentTypeImage];
+    [self shareWithParameters:parameters];
+}
+
+- (void)shareImageStory
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //平台定制
+    [parameters SSDKSetupSinaWeiboShareParamsByText:SHARESDKDEMO_TEXT
+                                              title:nil
+                                             images:@[SHARESDKDEMO_IMAGE_LOCALPATH
+                                                      ]
+                                              video:nil
+                                                url:nil
+                                           latitude:0 longitude:0
+                                           objectID:nil
+                                     isShareToStory:YES
+                                               type:SSDKContentTypeImage];
+    [self shareWithParameters:parameters];
+}
+
 - (void)shareLink
 {
-    //v4.0.1 不在区分网页与客户端 有客户端则有限调用客户端进行分享 无客户端则调用SDK自带分享页面
-    //此页面不需要设置 安全域名 并可以分享话题 如果希望使用api进行分享则参考 shareTextByAPI shareImageByAPI
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKSetupShareParamsByText:@"我是Text"
-                                    images:[UIImage imageNamed:@"COD13.jpg"]
-                                       url:[NSURL URLWithString:@"http://www.mob.com"]
-                                     title:@"我是title"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
+                                       url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
+                                     title:SHARESDKDEMO_TITLE
                                       type:SSDKContentTypeWebPage];
     
     [self shareWithParameters:parameters];
 }
 
+// LinkCard功能需要去管理后台申请
 - (void)shareLinkCard
 {
-    //v4.0.1 不在区分网页与客户端 有客户端则有限调用客户端进行分享 无客户端则调用SDK自带分享页面
-    //此页面不需要设置 安全域名 并可以分享话题 如果希望使用api进行分享则参考 shareTextByAPI shareImageByAPI
     //图片必须为网络地址图片
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
     [parameters SSDKSetupSinaWeiboLinkCardShareParamsByText:@"我是Text"
                                                   cardTitle:@"cardTitle"
                                                 cardSummary:@"summary"
-                                                     images:@"http://www.mob.com/assets/images/ShareSDK_pic_1-09d293a6.png"
-                                                        url:[NSURL URLWithString:@"http://www.mob.com"]];
+                                                     images:@"http://download.sdk.mob.com/web/images/2019/06/20/10/1560998253715/635_635_42.62.png"
+                                                        url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]];
     
     [self shareWithParameters:parameters];
 }
-
-
-//- (void)shareTextByAPI
-//{
-//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//    //text需要附 安全域
-//    [parameters SSDKSetupShareParamsByText:@"Share SDK http://www.mob.com"
-//                                    images:nil
-//                                       url:nil
-//                                     title:nil
-//                                      type:SSDKContentTypeText];
-//    [parameters SSDKEnableSinaWeiboAPIShare];
-    //平台定制
-//    [parameters SSDKSetupSinaWeiboShareParamsByText:@"Share SDK http://www.mob.com/"
-//                                              title:nil
-//                                              image:nil
-//                                                url:nil
-//                                           latitude:nil
-//                                          longitude:nil
-//                                           objectID:nil
-//                                               type:SSDKContentTypeText];
-//    [self shareWithParameters:parameters];
-//}
-
-//- (void)shareImageByAPI
-//{
-//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//    //text需要附 安全域
-//    [parameters SSDKSetupShareParamsByText:@"Share SDK http://www.mob.com"
-//                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-//                                       url:nil
-//                                     title:nil
-//                                      type:SSDKContentTypeImage];
-//    [parameters SSDKEnableSinaWeiboAPIShare];
-    //平台定制
-    //    [parameters SSDKSetupSinaWeiboShareParamsByText:nil
-    //                                              title:nil
-    //                                              image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-    //                                                url:nil
-    //                                           latitude:nil
-    //                                          longitude:nil
-    //                                           objectID:nil
-    //                                               type:SSDKContentTypeImage];
-//    [self shareWithParameters:parameters];
-//}
 
 - (void)shareVideos
 {
@@ -164,6 +153,25 @@
                                      isShareToStory:NO
                                                type:SSDKContentTypeVideo];
 
+    [self shareWithParameters:parameters];
+}
+
+- (void)shareVideoStory
+{
+    NSString *videoPath = [[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"];
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters SSDKSetupSinaWeiboShareParamsByText:@"ShareSDK"
+                                              title:nil
+                                             images:nil
+                                              video:videoPath
+                                                url:nil
+                                           latitude:0
+                                          longitude:0
+                                           objectID:nil
+                                     isShareToStory:YES
+                                               type:SSDKContentTypeVideo];
+    
     [self shareWithParameters:parameters];
 }
 

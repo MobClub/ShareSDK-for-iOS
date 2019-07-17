@@ -20,9 +20,9 @@
     [super viewDidLoad];
     platformType = SSDKPlatformTypeWhatsApp;
     self.title = @"WhatsApp";
-    shareIconArray = @[@"textIcon",@"imageIcon",@"audioURLIcon",@"videoIcon"];
-    shareTypeArray = @[@"文字",@"图片",@"音频",@"视频"];
-    selectorNameArray = @[@"shareText",@"shareImage",@"shareAudio",@"shareVideo"];
+    shareIconArray = @[@"textIcon",@"textIcon",@"imageIcon",@"audioURLIcon",@"videoIcon"];
+    shareTypeArray = @[@"文字", @"文字-系统",@"图片-只有系统",@"音频-只有系统",@"视频-只有系统"];
+    selectorNameArray = @[@"shareText", @"shareTextSystem", @"shareImage",@"shareAudio",@"shareVideo"];
 }
 
 /**
@@ -32,20 +32,39 @@
 {
     //通用参数设置
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-        [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                        images:nil
-                                           url:nil
-                                         title:nil
-                                          type:SSDKContentTypeText];
+//    [parameters SSDKSetupShareParamsByText:@"https://www.mob.com"
+//                                        images:nil
+//                                           url:nil
+//                                         title:nil
+//                                          type:SSDKContentTypeText];
     //平台定制
-//    [parameters SSDKSetupWhatsAppParamsByText:@"Share SDK"
-//                                        image:nil
-//                                        audio:nil
-//                                        video:nil
-//                             menuDisplayPoint:CGPointZero
-//                                         type:SSDKContentTypeText];
+    [parameters SSDKSetupWhatsAppParamsByText:SHARESDKDEMO_TEXT
+                                        image:nil
+                                        audio:nil
+                                        video:nil
+                             menuDisplayPoint:CGPointZero
+                                         type:SSDKContentTypeText];
     [self shareWithParameters:parameters];
 }
+
+/**
+ 分享文字
+ */
+-(void)shareTextSystem
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+
+    //平台定制
+    [parameters SSDKSetupWhatsAppParamsByText:SHARESDKDEMO_TEXT
+                                        image:nil
+                                        audio:nil
+                                        video:nil
+                             menuDisplayPoint:CGPointZero
+                                    useSystem:YES
+                                         type:SSDKContentTypeText];
+    [self shareWithParameters:parameters];
+}
+
 
 /**
  分享图片
@@ -54,8 +73,8 @@
 {
     //通用参数设置
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-        [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                        images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+        [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                        images:SHARESDKDEMO_IMAGE_LOCALPATH
                                            url:nil
                                          title:nil
                                           type:SSDKContentTypeImage];

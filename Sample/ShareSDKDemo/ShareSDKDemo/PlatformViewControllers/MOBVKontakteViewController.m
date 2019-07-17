@@ -52,11 +52,11 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
-    [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
+    UIImage *image = [UIImage imageWithContentsOfFile:SHARESDKDEMO_IMAGE_LOCALPATH];
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
                                     images:image
-                                       url:[NSURL URLWithString:@"http://www.mob.com"]
-                                     title:@"Share SDK"
+                                       url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
+                                     title:SHARESDKDEMO_TITLE
                                       type:SSDKContentTypeWebPage];
     [parameters setValue:@(0) forKey:@"group_id"];
 
@@ -80,8 +80,8 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"]];
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+    UIImage *image = SHARESDKDEMO_IMAGE;
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
                                     images:image
                                        url:nil
                                      title:nil

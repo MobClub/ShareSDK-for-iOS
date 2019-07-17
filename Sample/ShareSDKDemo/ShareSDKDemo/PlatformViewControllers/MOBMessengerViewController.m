@@ -21,7 +21,7 @@
     platformType = SSDKPlatformTypeFacebookMessenger;
     self.title = @"Messenger";
     shareIconArray = @[@"imageIcon",@"imageIcon",@"videoIcon",@"audioURLIcon",@"webURLIcon",@"mutImageIcon",@"videoIcon"];
-    shareTypeArray = @[@"图片",@"GIF",@"本地视频",@"本地音频",@"链接",@"多图-废弃不可用",@"相册视频-废弃不可用"];
+    shareTypeArray = @[@"图片",@"GIF",@"本地视频",@"本地音频",@"链接",@"多图",@"相册视频"];
     selectorNameArray = @[@"shareImage",@"shareGIF",@"shareVideo",@"shareAudio",@"shareLink",@"shareImages",@"shareAssetVideo"];
 }
 
@@ -34,7 +34,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:nil
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
@@ -115,10 +115,10 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
     //图片必须为网络图片
-    [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
-                                    images:@"http://ww4.sinaimg.cn/bmiddle/005Q8xv4gw1evlkov50xuj30go0a6mz3.jpg"
-                                       url:[NSURL URLWithString:@"http://sharesdk.mob.com/"]
-                                     title:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:SHARESDKDEMO_IMAGE_STRING
+                                       url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
+                                     title:SHARESDKDEMO_TITLE
                                       type:SSDKContentTypeWebPage];
     //平台定制
 //        [parameters SSDKSetupFacebookMessengerParamsByTitle:@"Share SDK"
@@ -137,14 +137,12 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
-    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
-    NSString *path2 = [[NSBundle mainBundle] pathForResource:@"D11" ofType:@"jpg"];
-    NSString *path3 = [[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"];
-    NSString *path4 = [[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"];
+    NSString *path1 = SHARESDKDEMO_IMAGE_LOCALPATH;
+    NSString *path2 = [[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"];
     
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:nil
-                                    images:@[path1,path2,path3,path4]
+                                    images:@[path1,path2]
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeFBMessageImages];
