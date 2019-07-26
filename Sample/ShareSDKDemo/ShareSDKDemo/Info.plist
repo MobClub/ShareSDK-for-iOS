@@ -8,6 +8,10 @@
 	<string>ShareSDK</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -21,7 +25,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.2.6</string>
+	<string>4.2.9</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -227,13 +231,17 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
-			<array/>
+			<array>
+				<string>moba0b0c0d0</string>
+			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
-			<array/>
+			<array>
+				<string>wwautha21eaecf93f0e3ba000012</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
@@ -308,6 +316,8 @@
 		<string>instagram</string>
 		<string>fbauth</string>
 		<string>fb-messenger-platform-20150714</string>
+		<string>fb-messenger-api20140430</string>
+		<string>fb-messenger-share-api</string>
 		<string>fb-messenger</string>
 		<string>fbauth2</string>
 		<string>fbapi</string>
@@ -320,6 +330,8 @@
 		<string>renreniphone</string>
 		<string>douyinsharesdk</string>
 		<string>douyinopensdk</string>
+		<string>wxwork</string>
+		<string>wxworkrdm</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -329,9 +341,9 @@
 		<string>1521201864</string>
 	</dict>
 	<key>MOBAppKey</key>
-	<string>moba6b6c6d6</string>
+	<string>moba0b0c0d0</string>
 	<key>MOBAppSecret</key>
-	<string>b89d2427a3bc7ad1aea1e1e8c1d36bf3</string>
+	<string>5713f0d88511f9f4cf100cade0610a34</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

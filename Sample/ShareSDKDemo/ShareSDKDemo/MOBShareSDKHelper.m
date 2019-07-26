@@ -179,6 +179,10 @@
 #ifdef IMPORT_Douyin
         [platformsRegister setupDouyinByAppKey:MOBSSDKDouyinAppKey appSecret:MOBSSDKDouyinAppSecret];
 #endif
+
+#ifdef IMPORT_WeWork
+        [platformsRegister setupWeWorkByAppKey:MOBSSDKWeWorkAppKey corpId:MOBSSDKWeWorkCorpId agentId:MOBSSDKWeWorkAgentId appSecret:MOBSSDKWeWorkAppSecret];
+#endif
         
     }];
     

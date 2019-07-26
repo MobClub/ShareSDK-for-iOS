@@ -7461,6 +7461,219 @@
     }];
 }
 
+#pragma mark - 企业微信授权
+
+- (void)testWeworkAuth
+{
+    [self _wait:100 testOperation:^(void (^terminate)(void)) {
+        [ShareSDK authorize:SSDKPlatformTypeWework settings:nil onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
+            
+            XCTAssertNil(error);
+            terminate();
+        }];
+    }];
+}
+
+- (void)testWeworkGetUserinfoUnAuthed
+{
+    [self _wait:20 testOperation:^(void (^terminate)(void)) {
+        
+        [ShareSDK cancelAuthorize:SSDKPlatformTypeWework result:^(NSError *error) {
+            
+            [ShareSDK getUserInfo:SSDKPlatformTypeWework onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
+                
+                NSLog(@"%@",user.dictionaryValue);
+                XCTAssertNil(error);
+                terminate();
+            }];
+            
+        }];
+    }];
+}
+
+#pragma mark - 企业微信分享
+
+- (void)testWeworkShareTextWithCommonParams
+{
+    [self _wait:20 testOperation:^(void (^terminate)(void)) {
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TESTS_TEXT
+                                        images:nil
+                                           url:nil
+                                         title:nil
+                                          type:SSDKContentTypeText];
+        [ShareSDK share:SSDKPlatformTypeWework parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+            XCTAssertNil(error);
+            terminate();
+        }];
+    }];
+}
+
+- (void)testWeworkShareTextWithCustomParams
+{
+    [self _wait:20 testOperation:^(void (^terminate)(void)) {
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters SSDKSetupWeWorkParamsByText:SHARESDKDEMO_TESTS_TEXT
+                                          title:nil
+                                            url:nil
+                                     thumbImage:nil
+                                          image:nil
+                                          video:nil
+                                       fileData:nil
+                                           type:SSDKContentTypeText];
+        [ShareSDK share:SSDKPlatformTypeWework parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+            XCTAssertNil(error);
+            terminate();
+        }];
+    }];
+}
+
+- (void)testWeworkShareImagesWithCommonParams
+{
+    [self _wait:20 testOperation:^(void (^terminate)(void)) {
+        
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters SSDKSetupShareParamsByText:nil
+                                        images:SHARESDKDEMO_TESTS_IMAGE_LOCALPATH
+                                           url:nil
+                                         title:@"share.jpg"
+                                          type:SSDKContentTypeImage];
+        [ShareSDK share:SSDKPlatformTypeWework parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+            XCTAssertNil(error);
+            terminate();
+        }];
+    }];
+}
+
+- (void)testWeworkShareImagesWithCustomParams
+{
+    [self _wait:20 testOperation:^(void (^terminate)(void)) {
+        
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters SSDKSetupWeWorkParamsByText:nil
+                                          title:@"share.jpg"
+                                            url:nil
+                                     thumbImage:nil
+                                          image:SHARESDKDEMO_TESTS_IMAGE_LOCALPATH
+                                          video:nil
+                                       fileData:nil
+                                           type:SSDKContentTypeImage];
+        [ShareSDK share:SSDKPlatformTypeWework parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+            XCTAssertNil(error);
+            terminate();
+        }];
+    }];
+}
+
+- (void)testWeworkShareLinkWithCommonParams
+{
+    [self _wait:20 testOperation:^(void (^terminate)(void)) {
+        
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TESTS_TEXT
+                                        images:[[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"]
+                                           url:[NSURL URLWithString:SHARESDKDEMO_TESTS_URLSTRING]
+                                         title:SHARESDKDEMO_TESTS_TITLE
+                                          type:SSDKContentTypeWebPage];
+        [ShareSDK share:SSDKPlatformTypeWework parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+            XCTAssertNil(error);
+            terminate();
+        }];
+    }];
+}
+
+- (void)testWeworkShareLinkWithCustomParams
+{
+    [self _wait:20 testOperation:^(void (^terminate)(void)) {
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters SSDKSetupWeWorkParamsByText:SHARESDKDEMO_TESTS_TEXT
+                                          title:SHARESDKDEMO_TESTS_TITLE
+                                            url:[NSURL URLWithString:SHARESDKDEMO_TESTS_URLSTRING]
+                                     thumbImage:[[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"]
+                                          image:nil
+                                          video:nil
+                                       fileData:nil
+                                           type:SSDKContentTypeWebPage];
+        [ShareSDK share:SSDKPlatformTypeWework parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+            XCTAssertNil(error);
+            terminate();
+        }];
+    }];
+}
+
+- (void)testWeworkShareVideoWithCommonParams
+{
+    [self _wait:20 testOperation:^(void (^terminate)(void)) {
+        
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters SSDKSetupShareParamsByText:nil
+                                        images:nil
+                                           url:[NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"]]
+                                         title:@"share.mp4"
+                                          type:SSDKContentTypeVideo];
+        [ShareSDK share:SSDKPlatformTypeWework parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+            XCTAssertNil(error);
+            terminate();
+        }];
+    }];
+}
+
+- (void)testWeworkShareVideoWithCustomParams
+{
+    [self _wait:20 testOperation:^(void (^terminate)(void)) {
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters SSDKSetupWeWorkParamsByText:nil
+                                          title:@"share.mp4"
+                                            url:nil
+                                     thumbImage:nil
+                                          image:nil
+                                          video:[[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"]
+                                       fileData:nil
+                                           type:SSDKContentTypeVideo];
+        [ShareSDK share:SSDKPlatformTypeWework parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+            XCTAssertNil(error);
+            terminate();
+        }];
+    }];
+}
+
+- (void)testWeworkShareFileWithCommonParams
+{
+    [self _wait:20 testOperation:^(void (^terminate)(void)) {
+        
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters SSDKSetupShareParamsByText:nil
+                                        images:nil
+                                           url:[NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"music" ofType:@"mp3"]]
+                                         title:@"share.mp3"
+                                          type:SSDKContentTypeFile];
+        [ShareSDK share:SSDKPlatformTypeWework parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+            XCTAssertNil(error);
+            terminate();
+        }];
+    }];
+}
+
+- (void)testWeworkShareFileWithCustomParams
+{
+    [self _wait:20 testOperation:^(void (^terminate)(void)) {
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters SSDKSetupWeWorkParamsByText:nil
+                                          title:@"share.mp3"
+                                            url:nil
+                                     thumbImage:nil
+                                          image:nil
+                                          video:nil
+                                       fileData:[[NSBundle mainBundle] pathForResource:@"music" ofType:@"mp3"]
+                                           type:SSDKContentTypeFile];
+        [ShareSDK share:SSDKPlatformTypeWework parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+            XCTAssertNil(error);
+            terminate();
+        }];
+    }];
+}
+
+
 #pragma mark - 短链
 
 - (void)testConvertUrl

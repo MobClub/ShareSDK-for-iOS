@@ -182,12 +182,16 @@
                  selectIndexPath = nil;
              }
          }
-         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:titel
-                                                             message:typeStr
-                                                            delegate:nil
-                                                   cancelButtonTitle:@"确定"
-                                                   otherButtonTitles:nil];
-         [alertView show];
+         
+         dispatch_async(dispatch_get_main_queue(), ^{
+             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:titel
+                                                                 message:typeStr
+                                                                delegate:nil
+                                                       cancelButtonTitle:@"确定"
+                                                       otherButtonTitles:nil];
+             [alertView show];
+         });
+         
      }];
 }
 

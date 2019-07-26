@@ -37,8 +37,8 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];

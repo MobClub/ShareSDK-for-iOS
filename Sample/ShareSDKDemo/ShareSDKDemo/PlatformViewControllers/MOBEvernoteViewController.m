@@ -33,10 +33,10 @@
 - (void)shareText
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
                                     images:nil
                                        url:nil
-                                     title:@"Share SDK"
+                                     title:SHARESDKDEMO_TITLE
                                       type:SSDKContentTypeText];
     // title text 必填
     //    [parameters SSDKSetupEvernoteParamsByText:@"Share SDK"
@@ -55,10 +55,10 @@
 - (void)shareImage
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
                                        url:nil
-                                     title:@"Share SDK"
+                                     title:SHARESDKDEMO_TITLE
                                       type:SSDKContentTypeImage];
     // title text 必填
     //    [parameters SSDKSetupEvernoteParamsByText:@"Share SDK"

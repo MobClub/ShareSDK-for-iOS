@@ -11,17 +11,24 @@
 #import <MOBFoundation/MobSDK.h>
 //#import <Social/Social.h>
 #import <WechatConnector/WechatConnector.h>
-//#import <ShareSDKExtension/ShareSDK+Extension.h>
+#import <ShareSDKExtension/ShareSDK+Extension.h>
+#import <ShareSDKExtension/SSEFriendsPaging.h>
 
-@interface AppDelegate ()
+//#import <MobLinkPro/MLSDKScene.h>
+//#import <MobLinkPro/MobLink.h>
+//#import <MobLinkPro/IMLSDKRestoreDelegate.h>
+
+#import <ShareSDKExtension/SSERestoreSceneHeader.h>
+
+@interface AppDelegate () <ISSERestoreSceneDelegate>
 
 @end
 
-@implementation AppDelegate
-
+@implementation AppDelegate 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [ShareSDK setRestoreSceneDelegate:self];
 //    [WeChatConnector setLang:@"zh_CN"];
     
     //SLComposeViewController *composeVc = [SLComposeViewController composeViewControllerForServiceType:@""];
@@ -62,6 +69,16 @@
 //        [platformsRegister setupCMCCByAppId:@"300011862498" appKey:@"38D9CA1CC280C5F207E2C343745D4A4B" displayUI:YES];
 //        [platformsRegister setupYouDaoNoteWithConsumerKey:@"dcde25dca105bcc36884ed4534dab940" consumerSecret:@"d98217b4020e7f1874263795f44838fe" oauthCallback:@"http://www.sharesdk.cn/"];
 //    }];
+
+//    // 测试Twitter好友列表
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [ShareSDK getFriends:SSDKPlatformTypeTwitter cursor:-1 size:40 onStateChanged:^(SSDKResponseState state, SSEFriendsPaging *paging, NSError *error) {
+//            NSLog(@"state:%d",state);
+//            NSLog(@"paging.user.count:%d",paging.users.count);
+//            NSLog(@"paging.nextCursor:%lld",(long long)paging.nextCursor);
+//            NSLog(@"paging.hasNext:%d",paging.hasNext);
+//        }];
+//    });
     
     return YES;
 }
@@ -103,6 +120,31 @@
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
 {
     return  YES;
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray* _Nullable))restorationHandler
+{
+    NSLog(@"continueUserActivity %@", userActivity.webpageURL);
+    return YES;
+}
+
+
+
+#pragma mark - ISSERestoreSceneDelegate
+
+- (void)ISSEWillRestoreScene:(SSERestoreScene *)scene Restore:(void (^)(BOOL))restoreHandler
+{
+    restoreHandler(YES);
+}
+
+- (void)ISSECompleteRestoreScene:(SSERestoreScene *)scene
+{
+    
+}
+
+- (void)ISSENotFoundScene:(SSERestoreScene *)scene
+{
+    
 }
 
 @end

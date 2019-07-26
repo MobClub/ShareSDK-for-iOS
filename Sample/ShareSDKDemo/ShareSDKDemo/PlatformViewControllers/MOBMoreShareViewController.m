@@ -34,13 +34,11 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     platformType = SSDKPlatformTypeWechat;
     
-    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
-    NSString *path2 = [[NSBundle mainBundle] pathForResource:@"D11" ofType:@"jpg"];
-    NSString *path3 = [[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"];
-    NSString *path4 = [[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"];
+    NSString *path1 = SHARESDKDEMO_IMAGE_LOCALPATH;
+    NSString *path2 = [[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"];
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:nil
-                                    images:@[path1,path2,path3,path4,@"http://ww4.sinaimg.cn/bmiddle/005Q8xv4gw1evlkov50xuj30go0a6mz3.jpg"]
+                                    images:@[path1,path2,SHARESDKDEMO_IMAGE_STRING]
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
@@ -55,7 +53,7 @@
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:nil
                                     images:nil
-                                       url:[NSURL URLWithString:@"http://www.mob.com"]
+                                       url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
                                      title:nil
                                       type:SSDKContentTypeWebPage];
     [self shareWithParameters:parameters];
@@ -84,13 +82,13 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     platformType = SSDKPlatformTypeQQ;
     
-    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
+    NSString *path1 = SHARESDKDEMO_IMAGE_LOCALPATH;
     NSString *path2 = [[NSBundle mainBundle] pathForResource:@"D11" ofType:@"jpg"];
     NSString *path3 = [[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"];
     NSString *path4 = [[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"];
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:nil
-                                    images:@[path1,path2,path3,path4,@"http://ww4.sinaimg.cn/bmiddle/005Q8xv4gw1evlkov50xuj30go0a6mz3.jpg"]
+                                    images:@[path1,path2,path3,path4,SHARESDKDEMO_IMAGE_STRING]
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
@@ -106,7 +104,7 @@
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:nil
                                     images:nil
-                                       url:[NSURL URLWithString:@"http://www.mob.com"]
+                                       url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
                                      title:nil
                                       type:SSDKContentTypeWebPage];
     [self shareWithParameters:parameters];

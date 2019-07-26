@@ -80,6 +80,7 @@ static const NSInteger otherInfo = 1;
                         @(SSDKPlatformSubTypeYiXinSession),
                         @(SSDKPlatformSubTypeYiXinTimeline),
                         @(SSDKPlatformSubTypeYiXinFav),
+                        @(SSDKPlatformTypeWework),
                         ];
     _overseasPlatforemArray = @[
                                 @(SSDKPlatformTypeFacebook),
@@ -124,7 +125,7 @@ static const NSInteger otherInfo = 1;
     
     _rollLabel = [[MOBRollLabel alloc] initWithFrame:CGRectMake(35, 0,   [UIScreen mainScreen].bounds.size.width - 35, 35) font:[UIFont systemFontOfSize:15] textColor:[UIColor colorWithRed:244.0/255.0 green:103.0/255.0 blue:2.0/255.0 alpha:1]];
     _rollLabel.backgroundColor = [UIColor clearColor];
-    _rollLabel.text = @"好消息：Linkcard 重磅上线！错过它，就错过了全世界~  ";
+    _rollLabel.text = @"好消息：Share+Link 重磅上线！一键实现分享闭环！错过它，就错过了全世界~  ";
     _rollLabel.rollSpeed = 0.2;
     [noticeView addSubview:_rollLabel];
     [noticeView sendSubviewToBack:_rollLabel];
@@ -132,10 +133,10 @@ static const NSInteger otherInfo = 1;
 
 - (IBAction)buttonNotice:(UIButton *)sender
 {
-    MOBAboutLinkCardViewController *aboutLinkCardVC = [MOBAboutLinkCardViewController new];
+    MOBAboutMobLinkViewController *aboutMobLinkCardVC = [MOBAboutMobLinkViewController new];
     AppDelegate *application = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     UINavigationController *navigationController = (UINavigationController *)application.window.rootViewController;
-    [navigationController pushViewController:aboutLinkCardVC animated:YES];
+    [navigationController pushViewController:aboutMobLinkCardVC animated:YES];
 }
 
 - (IBAction)buttonAct:(UIButton *)sender

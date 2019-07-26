@@ -20,7 +20,7 @@
     platformType = SSDKPlatformTypeGooglePlus;
     self.title = @"Google+";
     shareIconArray = @[@"textIcon",@"webURLIcon"];
-    shareTypeArray = @[@"文字",@"链接"];
+    shareTypeArray = @[@"文字 不支持",@"链接 不支持"];
     selectorNameArray = @[@"shareText",@"shareWebPage"];
 }
 
@@ -58,8 +58,8 @@
 //                                     title:@"Share SDK"
 //                                      type:SSDKContentTypeWebPage];
     //平台定制
-    [parameters SSDKSetupGooglePlusParamsByText:@"Share SDK"
-                                            url:[NSURL URLWithString:@"http://sharesdk.mob.com/"]
+    [parameters SSDKSetupGooglePlusParamsByText:SHARESDKDEMO_TITLE
+                                            url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
                                            type:SSDKContentTypeWebPage];
     [self shareWithParameters:parameters];
 }

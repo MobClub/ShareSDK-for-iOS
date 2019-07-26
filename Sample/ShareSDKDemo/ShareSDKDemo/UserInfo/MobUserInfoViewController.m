@@ -49,6 +49,7 @@
                         @(SSDKPlatformTypeESurfing),
                         @(SSDKPlatformTypeFacebookAccount),
                         @(SSDKPlatformTypeDouyin),
+                        @(SSDKPlatformTypeWework),
                         ];
     _overseasPlatforemArray = @[
                                 @(SSDKPlatformTypeFacebook),

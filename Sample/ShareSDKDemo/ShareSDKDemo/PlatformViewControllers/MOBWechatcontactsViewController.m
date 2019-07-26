@@ -31,7 +31,7 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
                                     images:nil
                                        url:nil
                                      title:nil
@@ -67,11 +67,11 @@
 //                                     title:nil
 //                                      type:SSDKContentTypeImage];
     //平台定制
-        [parameters SSDKSetupWeChatParamsByText:@"Share SDK"
+        [parameters SSDKSetupWeChatParamsByText:SHARESDKDEMO_TEXT
                                           title:nil
                                             url:nil
                                      thumbImage:nil
-                                          image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                          image:SHARESDKDEMO_IMAGE_LOCALPATH
                                    musicFileURL:nil
                                         extInfo:nil
                                        fileData:nil
@@ -88,10 +88,10 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                       url:[NSURL URLWithString:@"https://www.mob.com"]
-                                     title:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
+                                       url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
+                                     title:SHARESDKDEMO_TITLE
                                       type:SSDKContentTypeWebPage];
     //平台定制
 //        [parameters SSDKSetupWeChatParamsByText:@"Share SDK Link Desc"
@@ -143,25 +143,25 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //网络视频
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"视频"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                       url:[NSURL URLWithString:@"http://v.youku.com/v_show/id_XNTUxNDY1NDY4.html"]
-                                     title:@"乔布斯"
-                                      type:SSDKContentTypeVideo];
+//    [parameters SSDKSetupShareParamsByText:@"视频"
+//                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+//                                       url:[NSURL URLWithString:@"http://v.youku.com/v_show/id_XNTUxNDY1NDY4.html"]
+//                                     title:@"乔布斯"
+//                                      type:SSDKContentTypeVideo];
     //平台定制
-//        [parameters SSDKSetupWeChatParamsByText:@"视频"
-//                                          title:@"乔布斯"
-//                                            url:[NSURL URLWithString:@"http://v.youku.com/v_show/id_XNTUxNDY1NDY4.html"]
-//                                     thumbImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-//                                          image:nil
-//                                   musicFileURL:nil
-//                                        extInfo:nil
-//                                       fileData:nil
-//                                   emoticonData:nil
-//                            sourceFileExtension:nil
-//                                 sourceFileData:nil
-//                                           type:SSDKContentTypeVideo
-//                             forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+        [parameters SSDKSetupWeChatParamsByText:SHARESDKDEMO_TEXT
+                                          title:SHARESDKDEMO_TITLE
+                                            url:[NSURL URLWithString:SHARESDKDEMO_VIDEO_AD_STRING]
+                                     thumbImage:SHARESDKDEMO_IMAGE_LOCALPATH
+                                          image:nil
+                                   musicFileURL:nil
+                                        extInfo:nil
+                                       fileData:nil
+                                   emoticonData:nil
+                            sourceFileExtension:nil
+                                 sourceFileData:nil
+                                           type:SSDKContentTypeVideo
+                             forPlatformSubType:SSDKPlatformSubTypeWechatSession];
     [self shareWithParameters:parameters];
 }
 
@@ -212,7 +212,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //平台定制
     [parameters SSDKSetupWeChatParamsByText:@"share SDK"
-                                      title:@"file"
+                                      title:@"file.mp4"
                                         url:nil
                                  thumbImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
                                       image:nil
@@ -237,7 +237,7 @@
                                                   webpageUrl:[NSURL URLWithString:@"http://www.mob.com"]
                                                         path:@"pages/index/index"
                                                   thumbImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                                hdThumbImage:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522154322305&di=7f4bf3d0803fe8c2c66c140f0a6ea0b4&imgtype=0&src=http%3A%2F%2Fa4.topitme.com%2Fo%2F201007%2F29%2F12803876734174.jpg"
+                                                hdThumbImage:@"http://download.sdk.mob.com/web/images/2019/06/20/10/1560998253715/635_635_42.62.png"
                                                     userName:@"gh_afb25ac019c9"
                                              withShareTicket:YES
                                              miniProgramType:0

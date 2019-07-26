@@ -27,7 +27,7 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
                                     images:nil
                                        url:nil
                                      title:nil
@@ -55,10 +55,10 @@
 - (void)shareImage
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-
+    
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:SHARESDKDEMO_IMAGE_STRING
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
@@ -84,10 +84,10 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
 
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                       url:[NSURL URLWithString:@"https://www.mob.com"]
-                                     title:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:SHARESDKDEMO_IMAGE_STRING
+                                       url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
+                                     title:SHARESDKDEMO_TITLE
                                       type:SSDKContentTypeWebPage];
     //平台定制
     //    [parameters SSDKSetupYiXinParamsByText:@"Share SDK"
@@ -138,10 +138,10 @@
 
     //网络视频
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"视频"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                       url:[NSURL URLWithString:@"http://v.youku.com/v_show/id_XNTUxNDY1NDY4.html"]
-                                     title:@"乔布斯"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
+                                       url:[NSURL URLWithString:SHARESDKDEMO_VIDEO_AD_STRING]
+                                     title:SHARESDKDEMO_TITLE
                                       type:SSDKContentTypeVideo];
     //平台定制
     //    [parameters SSDKSetupYiXinParamsByText:@"Share SDK"

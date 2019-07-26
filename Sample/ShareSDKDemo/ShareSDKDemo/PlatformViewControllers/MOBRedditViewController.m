@@ -31,7 +31,7 @@
 {
     //通用参数设置
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
                                     images:nil
                                        url:nil
                                      title:@"mob"
@@ -48,7 +48,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters SSDKSetupShareParamsByText:nil
                                     images:nil
-                                       url:[NSURL URLWithString:@"http://www.mob.com"]
+                                       url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
                                      title:@"mob"
                                       type:SSDKContentTypeWebPage];
     [self shareWithParameters:parameters];
