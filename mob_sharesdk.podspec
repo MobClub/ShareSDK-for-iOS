@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.2.9"
+  s.version          = "4.2.9.1"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
 
   s.homepage         = 'http://www.mob.com'
-  s.source           = { :http => 'https://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.2.9.zip' }
+  s.source           = { :http => 'https://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.2.9.1.zip' }
   s.platform         = :ios
   s.ios.deployment_target = "8.0"
   s.frameworks       = 'JavaScriptCore'
@@ -433,6 +433,18 @@ Pod::Spec.new do |s|
             }
         end
 
+        # WeWork(企业微信)
+        sp.subspec 'WeWork' do |ssp|
+            ssp.vendored_libraries = "ShareSDK/Support/PlatformSDK/WXWorkSDK/*.a"
+            ssp.source_files = "ShareSDK/Support/PlatformSDK/WXWorkSDK/*.{h,m}"
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/WeworkConnector.framework'
+            ssp.public_header_files = "ShareSDK/Support/PlatformSDK/WXWorkSDK/*.h"
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+            ssp.resource_bundles = {
+                'ShareSDK_JS_WeWork' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/WeWork.js']
+            }
+        end
+
     end
 
     # ShareSDK 配置文件模块
@@ -454,4 +466,11 @@ Pod::Spec.new do |s|
         sp.resources = 'ShareSDK/Support/Optional/ShareSDKUI.bundle'
         sp.dependency 'mob_sharesdk/ShareSDK'
     end
+
+    # ShareSDK提供闭环分享场景还原
+    s.subspec 'ShareSDKRestoreScene' do |sp|
+        sp.dependency 'mob_sharesdk/ShareSDKExtension'
+        sp.dependency 'mob_linksdk_pro'
+    end
+
 end
