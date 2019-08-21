@@ -35,6 +35,16 @@ Pod::Spec.new do |s|
             }
         end
 
+        # QQ 精简版
+        sp.subspec 'QQ_Lite' do |ssp|
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/QQConnector.framework'
+            ssp.libraries = 'sqlite3'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+            ssp.resource_bundles = {
+                'ShareSDK_JS_QQ' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/QQ.js']
+            }
+        end
+
         # SinaWeibo
         sp.subspec 'SinaWeibo' do |ssp|
             ssp.vendored_libraries = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/*.a"
@@ -44,6 +54,17 @@ Pod::Spec.new do |s|
             ssp.libraries = 'sqlite3'
             ssp.source_files = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/*.{h,m}"
             ssp.public_header_files = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/*.h"
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+            ssp.resource_bundles = {
+                'ShareSDK_JS_SinaWeibo' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/SinaWeibo.js']
+            }
+        end
+
+        # SinaWeibo 精简版
+        sp.subspec 'SinaWeibo_Lite' do |ssp|
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/SinaWeiboConnector.framework'
+            ssp.frameworks = 'ImageIO'
+            ssp.libraries = 'sqlite3'
             ssp.dependency 'mob_sharesdk/ShareSDK'
             ssp.resource_bundles = {
                 'ShareSDK_JS_SinaWeibo' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/SinaWeibo.js']
@@ -69,6 +90,16 @@ Pod::Spec.new do |s|
             ssp.source_files = "ShareSDK/Support/PlatformSDK/WeChatSDKFull/*.{h,m}"
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/WechatConnector.framework'
             ssp.public_header_files = "ShareSDK/Support/PlatformSDK/WeChatSDKFull/*.h"
+            ssp.libraries = 'sqlite3'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+            ssp.resource_bundles = {
+                'ShareSDK_JS_WeChat' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/WeChat.js']
+            }
+        end
+
+        # WeChat 精简版
+        sp.subspec 'WeChat_Lite' do |ssp|
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/WechatConnector.framework'
             ssp.libraries = 'sqlite3'
             ssp.dependency 'mob_sharesdk/ShareSDK'
             ssp.resource_bundles = {
