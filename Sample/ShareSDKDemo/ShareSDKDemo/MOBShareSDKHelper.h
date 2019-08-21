@@ -720,9 +720,9 @@
 */
 #ifdef IMPORT_YouTube
     //ClientId
-    #define MOBSSDKYouTubeClientId @"906418427202-jinnbqal1niq4s8isbg2ofsqc5ddkcgr.apps.googleusercontent.com"
+    #define MOBSSDKYouTubeClientId @"232554794995.apps.googleusercontent.com"//@"906418427202-jinnbqal1niq4s8isbg2ofsqc5ddkcgr.apps.googleusercontent.com"
     //ClientSecret
-    #define MOBSSDKYouTubeClientSecret @""
+    #define MOBSSDKYouTubeClientSecret @"PEdFgtrMw97aCvf0joQj7EMk"//@""
     //RedirectUri
     #define MOBSSDKYouTubeRedirectUri @"http://localhost"
 #endif

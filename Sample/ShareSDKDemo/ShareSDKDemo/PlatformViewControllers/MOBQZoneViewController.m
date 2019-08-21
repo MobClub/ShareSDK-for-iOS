@@ -8,6 +8,7 @@
 
 #import "MOBQZoneViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
 
 @interface MOBQZoneViewController ()
 
@@ -20,9 +21,9 @@
     [super viewDidLoad];
     platformType = SSDKPlatformSubTypeQZone;
     self.title = @"QZone";
-    shareIconArray = @[@"textIcon",@"imageIcon",@"webURLIcon",@"videoIcon"];
-    shareTypeArray = @[@"文字",@"图片",@"链接",@"相册视频"];
-    selectorNameArray = @[@"shareText",@"shareImage",@"shareLink",@"shareAssetVideo"];
+    shareIconArray = @[@"textIcon",@"imageIcon",@"webURLIcon",@"videoIcon",@"videoIcon"];
+    shareTypeArray = @[@"文字",@"图片",@"链接",@"相册视频",@"本地视频"];
+    selectorNameArray = @[@"shareText",@"shareImage",@"shareLink",@"shareAssetVideo",@"shareVideo"];
 }
 
 /**
@@ -109,27 +110,62 @@
     NSURL *url = [NSURL URLWithString:path];
     ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
     __weak __typeof__ (self) weakSelf = self;
-    [assetsLibrary writeVideoAtPathToSavedPhotosAlbum:url completionBlock:^(NSURL *assetURL, NSError *error) {
-        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-        //iPad版本QQ 暂时未支持此功能
-        //通用参数设置
-        [parameters SSDKSetupShareParamsByText:@"text"
-                                        images:path1
-                                           url:assetURL
-                                         title:@"title"
-                                          type:SSDKContentTypeVideo];
-        //平台定制
-//            [parameters SSDKSetupQQParamsByText:nil
-//                                          title:nil
-//                                            url:assetURL
-//                                  audioFlashURL:nil
-//                                  videoFlashURL:nil
-//                                     thumbImage:nil
-//                                         images:nil
-//                                           type:SSDKContentTypeVideo
-//                             forPlatformSubType:SSDKPlatformSubTypeQZone];
-        [weakSelf shareWithParameters:parameters];
+    
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        if(status == PHAuthorizationStatusAuthorized)
+        {
+            [assetsLibrary writeVideoAtPathToSavedPhotosAlbum:url completionBlock:^(NSURL *assetURL, NSError *error) {
+                NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+                //iPad版本QQ 暂时未支持此功能
+                //通用参数设置
+                [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                                images:path1
+                                                   url:assetURL
+                                                 title:@"Share SDK"
+                                                  type:SSDKContentTypeVideo];
+                //平台定制
+                //            [parameters SSDKSetupQQParamsByText:SHARESDKDEMO_TEXT
+                //                                          title:@"Share SDK"
+                //                                            url:assetURL
+                //                                  audioFlashURL:nil
+                //                                  videoFlashURL:nil
+                //                                     thumbImage:nil
+                //                                         images:nil
+                //                                           type:SSDKContentTypeVideo
+                //                             forPlatformSubType:SSDKPlatformSubTypeQZone];
+                [weakSelf shareWithParameters:parameters];
+            }];
+        }
     }];
+    
+    
+}
+
+- (void)shareVideo
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"];
+    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
+    
+    NSURL *url = [NSURL URLWithString:path];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:path1
+                                       url:url
+                                        title:@"Share SDK"
+                                        type:SSDKContentTypeVideo];
+    
+    //平台定制
+//    [parameters SSDKSetupQQParamsByText:SHARESDKDEMO_TEXT
+//                                  title:@"Share SDK"
+//                                    url:url
+//                          audioFlashURL:nil
+//                          videoFlashURL:nil
+//                             thumbImage:nil
+//                                 images:nil
+//                                   type:SSDKContentTypeVideo
+//                     forPlatformSubType:SSDKPlatformSubTypeQZone];
+    [self shareWithParameters:parameters];
+    
 }
 
 

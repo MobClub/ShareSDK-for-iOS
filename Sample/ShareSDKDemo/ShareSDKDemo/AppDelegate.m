@@ -80,6 +80,7 @@
 //        }];
 //    });
     
+    
     return YES;
 }
 
@@ -134,6 +135,7 @@
 
 - (void)ISSEWillRestoreScene:(SSERestoreScene *)scene Restore:(void (^)(BOOL))restoreHandler
 {
+    
     restoreHandler(YES);
 }
 

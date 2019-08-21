@@ -29,7 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Share+Link 分享闭环";
+    self.title = @"闭环分享";
     [self navBarSetup];
 }
 
@@ -46,7 +46,7 @@
 {
     btn.userInteractionEnabled = NO;
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-    NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"moblink_ext" ofType:@"jpeg"]];
+    NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"moblink_ext" ofType:@"jpg"]];
     [shareParams SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
                                      images:imageArray
                                         url:[NSURL URLWithString:@"http://m.93lj.com/sharelink?mobid=ziqMNf"]

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "SSDKTypeDefine.h"
 
 @interface NSMutableDictionary (SSDKShare)
 
@@ -140,6 +141,30 @@
                          images:(id)images
                            type:(SSDKContentType)type
              forPlatformSubType:(SSDKPlatformType)platformSubType;
+
+/**
+ v4.3.0 为QQ平台支持小程序分享增加，使用小程序分享 请在白名单中(LSApplicationQueriesSchemes)添加mqqopensdkminiapp
+ 
+ @param title 标题
+ @param description 详细说明
+ @param webpageUrl 网址
+ @param hdThumbImage 高清缩略图
+ @param miniAppID 必填，小程序的AppId（注：必须在QQ互联平台中，将该小程序与分享的App绑定）
+ @param miniPath 必填，小程序的展示路径
+ @param miniWebpageUrl 必填，兼容低版本的网页链接
+ @param miniProgramType 非必填，小程序的类型，默认正式版(3)，可选测试版(1)、预览版(4)
+ @param platformSubType 分享自平台 小程序暂只支持 SSDKPlatformSubTypeQQFriend（QQ好友分享)
+ */
+- (void)SSDKSetupQQMiniProgramShareParamsByTitle:(NSString *)title
+                                     description:(NSString *)description
+                                      webpageUrl:(NSURL *)webpageUrl
+                                    hdThumbImage:(id)hdThumbImage
+                                       miniAppID:(NSString *)miniAppID
+                                        miniPath:(NSString *)miniPath
+                                  miniWebpageUrl:(NSString *)miniWebpageUrl
+                                 miniProgramType:(NSUInteger)miniProgramType
+                              forPlatformSubType:(SSDKPlatformType)platformSubType;
+
 
 - (void)SSDKSetupQQParamsByText:(NSString *)text
                           title:(NSString *)title

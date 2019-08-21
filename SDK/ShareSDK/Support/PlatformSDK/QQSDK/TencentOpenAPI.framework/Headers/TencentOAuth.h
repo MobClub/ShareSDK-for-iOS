@@ -17,18 +17,16 @@
 @class TencentApiReq;
 @class TencentApiResp;
 
-typedef enum
-{
+typedef NS_ENUM(NSUInteger, TencentAuthorizeState) {
     kTencentNotAuthorizeState,
     kTencentSSOAuthorizeState,
     kTencentWebviewAuthorzieState,
-} TencentAuthorizeState;
+};
 
-typedef enum
-{
+typedef NS_ENUM(NSUInteger, TencentAuthMode) {
     kAuthModeClientSideToken,
     kAuthModeServerSideCode,
-} TencentAuthMode;
+};
 
 #pragma mark - TencentOAuth(授权登录及相关开放接口调用)
 
@@ -153,14 +151,14 @@ typedef enum
  * 用来获得当前手机qq的版本号
  * \return 返回手机qq版本号
  **/
-+ (QQVersion)iphoneQQVersion;
++ (int)iphoneQQVersion __attribute__((deprecated("已过期, 建议删除调用")));
 
 
 /**
  * 用来获得当前手机TIM的版本号
  * \return 返回手机qq版本号
  **/
-+ (QQVersion)iphoneTIMVersion;
++ (int)iphoneTIMVersion __attribute__((deprecated("已过期, 建议删除调用")));
 
 /**
  * 初始化TencentOAuth对象
@@ -196,13 +194,13 @@ typedef enum
  * 判断用户手机上的手机QQ是否支持SSO登录
  * \return YES:支持 NO:不支持
  */
-+ (BOOL)iphoneQQSupportSSOLogin;
++ (BOOL)iphoneQQSupportSSOLogin __attribute__((deprecated("QQ版本均支持SSO登录。该接口已过期, 建议删除调用")));
 
 /**
  * 判断用户手机上的手机TIM是否支持SSO登录
  * \return YES:支持 NO:不支持
  */
-+ (BOOL)iphoneTIMSupportSSOLogin;
++ (BOOL)iphoneTIMSupportSSOLogin __attribute__((deprecated("TIM版本均支持SSO登录。该接口已过期, 建议删除调用")));
 
 /**
  * 登录授权
@@ -269,6 +267,20 @@ typedef enum
  * \return 处理结果，YES表示可以 NO表示不行
  */
 + (BOOL)CanHandleOpenURL:(NSURL *)url;
+
+/**
+ * (静态方法)处理应用的UniversalLink拉起协议
+ * \param url 处理被其他应用呼起时的逻辑
+ * \return 处理结果，YES表示成功，NO表示失败
+ */
++ (BOOL)HandleUniversalLink:(NSURL *)url;
+
+/**
+ * (静态方法)sdk是否可以处理应用的Universallink拉起协议
+ * \param url 处理被其他应用呼起时的逻辑
+ * \return 处理结果，YES表示可以 NO表示不行
+ */
++ (BOOL)CanHandleUniversalLink:(NSURL *)url;
 
 /**
  * (静态方法)获取TencentOAuth调用的上一次错误信息
@@ -364,6 +376,12 @@ typedef enum
  * unionID获得
  */
 - (void)didGetUnionID;
+
+/**
+ * 强制网页登录，包括账号密码登录和二维码登录
+ * return YES时，就算本地有手Q也会打开web界面
+ */
+- (BOOL)forceWebLogin;
 @end
 
 #pragma mark - TencentSessionDelegate(开放接口回调协议)

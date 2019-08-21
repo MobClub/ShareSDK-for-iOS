@@ -279,9 +279,11 @@
     #pragma mark - 调用授权
     NSDictionary *setting = nil;
     
-    // QQ 新增了二维码授权,@0(默认授权)、@1(二维码授权)未安装QQ客户端时才有效果
+    // QQ 新增了二维码授权,QQAuthType授权类型 @0(优先客户端授权，未安装客户端进行web授权)、@1(优先客户端授权，未安装客户端进行二维码授权)
+    // QQ 新增强制网页或二维码授权,QQForceWebLogin @1(强制根据QQAuthType进行 web授权或二维码授权)
+    // 可不设置，默认为 @"QQAuthType":@(0),@"QQForceWebLogin"=@(0)
     if (platformType == SSDKPlatformTypeQQ || platformType == SSDKPlatformSubTypeQQFriend || platformType == SSDKPlatformSubTypeQZone) {
-//        setting = @{@"QQAuthType":@(1)};
+//        setting = @{@"QQAuthType":@(0),@"QQForceWebLogin":@(0)};
     }
     
     if (platformType == SSDKPlatformTypeFacebook)

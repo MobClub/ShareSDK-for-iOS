@@ -13,10 +13,10 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 #define SHARESDKDEMO_URLSTRING @"http://m.93lj.com/sharelink?mobid=ziqMNf"
-#define SHARESDKDEMO_TEXT @"Share+Link 重磅上线！一键实现分享闭环！错过它，就错过了全世界~  ahmn.t4m.cn/ziqMNf 点击立即使用"
+#define SHARESDKDEMO_TEXT @"闭环分享重磅上线！一键实现闭环分享！错过它，就错过了全世界~  ahmn.t4m.cn/ziqMNf 点击立即使用"
 #define SHARESDKDEMO_TITLE @"Share SDK"
-#define SHARESDKDEMO_IMAGE_STRING @"http://download.sdk.mob.com/web/images/2019/06/20/10/1560998253715/635_635_42.62.png"
-#define SHARESDKDEMO_IMAGE_LOCALPATH [[NSBundle mainBundle] pathForResource:@"moblink_ext" ofType:@"jpeg"]
+#define SHARESDKDEMO_IMAGE_STRING @"http://download.sdk.mob.com/web/images/2019/07/30/14/1564468183056/750_750_65.12.png"
+#define SHARESDKDEMO_IMAGE_LOCALPATH [[NSBundle mainBundle] pathForResource:@"moblink_ext" ofType:@"jpg"]
 #define SHARESDKDEMO_IMAGE [UIImage imageWithContentsOfFile:SHARESDKDEMO_IMAGE_LOCALPATH]
 #define SHARESDKDEMO_IMAGE_URL [NSURL URLWithString:SHARESDKDEMO_IMAGE_STRING]
 

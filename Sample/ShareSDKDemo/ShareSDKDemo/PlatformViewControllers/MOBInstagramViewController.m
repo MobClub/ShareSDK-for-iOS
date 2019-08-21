@@ -35,14 +35,14 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:nil
-                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
-                                       url:nil
-                                     title:nil
-                                      type:SSDKContentTypeImage];
+//    [parameters SSDKSetupShareParamsByText:nil
+//                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
+//                                       url:nil
+//                                     title:nil
+//                                      type:SSDKContentTypeImage];
     //平台定制
-//    [parameters SSDKSetupInstagramByImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-//                         menuDisplayPoint:CGPointMake(0, 0)];
+    [parameters SSDKSetupInstagramByImage:SHARESDKDEMO_IMAGE_LOCALPATH
+                         menuDisplayPoint:CGPointMake(0, 0)];
     
     [self shareWithParameters:parameters];
 }

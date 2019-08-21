@@ -11,9 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-
-typedef enum
-{
+typedef NS_ENUM(NSInteger,QQApiSendResultCode) {
     EQQAPISENDSUCESS = 0,
     EQQAPIQQNOTINSTALLED = 1,  //QQ未安装
     EQQAPIQQNOTSUPPORTAPI = 2,  // QQ api不支持
@@ -24,37 +22,48 @@ typedef enum
     EQQAPIAPPSHAREASYNC = 7,
     EQQAPIQQNOTSUPPORTAPI_WITH_ERRORSHOW = 8,  //QQ api不支持 && SDK显示error提示（已废弃）
     EQQAPIMESSAGEARKCONTENTNULL = 9,  //ark内容为空
+    EQQAPIMESSAGE_MINI_CONTENTNULL = 10,  //小程序参数为空
     EQQAPISENDFAILD = -1,  //发送失败
     EQQAPISHAREDESTUNKNOWN = -2, //未指定分享到QQ或TIM
     EQQAPITIMSENDFAILD = -3,  //发送失败
-    
     EQQAPITIMNOTINSTALLED = 11, //TIM未安装
     EQQAPITIMNOTSUPPORTAPI = 12, // TIM api不支持
-    
+    EQQAPI_INCOMING_PARAM_ERROR = 13, // 外部传参错误
+    EQQAPI_THIRD_APP_GROUP_ERROR_APP_NOT_AUTHORIZIED = 14, // APP未获得授权
+    EQQAPI_THIRD_APP_GROUP_ERROR_CGI_FAILED = 15, // CGI请求失败
+    EQQAPI_THIRD_APP_GROUP_ERROR_HAS_BINDED = 16, // 该组织已经绑定群聊
+    EQQAPI_THIRD_APP_GROUP_ERROR_NOT_BINDED = 17, // 该组织尚未绑定群聊
     EQQAPIQZONENOTSUPPORTTEXT = 10000,  //qzone分享不支持text类型分享
     EQQAPIQZONENOTSUPPORTIMAGE = 10001,  //qzone分享不支持image类型分享
     EQQAPIVERSIONNEEDUPDATE = 10002,  //当前QQ版本太低，需要更新至新版本才可以支持
     ETIMAPIVERSIONNEEDUPDATE = 10004,  //当前TIM版本太低，需要更新至新版本才可以支持
-} QQApiSendResultCode;
+};
 
 #pragma mark - QQApiObject(分享对象类型)
 
 // QQApiObject control flags
-enum
-{
+typedef NS_ENUM(NSUInteger,kQQAPICtrlFlag) {
     kQQAPICtrlFlagQZoneShareOnStart = 0x01,
     kQQAPICtrlFlagQZoneShareForbid = 0x02,
     kQQAPICtrlFlagQQShare = 0x04,
     kQQAPICtrlFlagQQShareFavorites = 0x08, //收藏
     kQQAPICtrlFlagQQShareDataline = 0x10,  //数据线
     kQQAPICtrlFlagQQShareEnableArk = 0x20, //支持ARK
+    kQQAPICtrlFlagQQShareEnableMiniProgram = 0x40, //支持小程序
 };
 
 // 分享到QQ或TIM
-typedef enum ShareDestType {
+typedef NS_ENUM(NSUInteger, ShareDestType) {
     ShareDestTypeQQ = 0,
     ShareDestTypeTIM,
-}ShareDestType;
+};
+
+//小程序的类型
+typedef NS_ENUM(NSUInteger, MiniProgramType) {
+    MiniProgramType_Test=1,     // 测试版
+    MiniProgramType_Online=3,   // 正式版,默认
+    MiniProgramType_Preview=4,  // 预览版
+};
 
 // QQApiObject
 /** \brief 所有在QQ及插件间发送的数据对象的根类。
@@ -81,6 +90,15 @@ __attribute__((visibility("default"))) @interface ArkObject : NSObject
 
 - (id)initWithData:(NSString *)arkData qqApiObject:(QQApiObject*)qqApiObject;
 + (id)objectWithData:(NSString *)arkData qqApiObject:(QQApiObject*)qqApiObject;
+@end
+
+#pragma mark QQ小程序
+__attribute__((visibility("default"))) @interface QQApiMiniProgramObject : NSObject
+@property(nonatomic,retain) QQApiObject* qqApiObject; //原有老版本的QQApiObject
+@property(nonatomic,retain) NSString* miniAppID; //必填，小程序的AppId（注：必须在QQ互联平台中，将该小程序与分享的App绑定）
+@property(nonatomic,retain) NSString* miniPath; //必填，小程序的展示路径
+@property(nonatomic,retain) NSString* webpageUrl; //必填，兼容低版本的网页链接
+@property(nonatomic,assign) MiniProgramType miniprogramType; //非必填，小程序的类型，默认正式版(3)，可选测试版(1)、预览版(4)
 @end
 
 // QQApiResultObject
@@ -113,12 +131,12 @@ __attribute__((visibility("default"))) @interface QQApiResultObject : QQApiObjec
 @end
 
 // QQApiURLObject
-typedef enum QQApiURLTargetType{
+typedef NS_ENUM(NSUInteger, QQApiURLTargetType) {
     QQApiURLTargetTypeNotSpecified = 0x00,
     QQApiURLTargetTypeAudio   = 0x01,
     QQApiURLTargetTypeVideo   = 0x02,
     QQApiURLTargetTypeNews    = 0x03
-}QQApiURLTargetType;
+};
 
 /** @brief URL对象类型。
  
@@ -205,6 +223,55 @@ __attribute__((visibility("default"))) @interface QQApiURLObject : QQApiObject
 @interface QQApiImageObject : QQApiExtendObject
 @end
 
+// QQApiImageForQQAvatarObject
+/** @brief 图片对象
+ 用于设置QQ头像内容的对象，是一个指定为图片类型的<code>QQApiExtendObject</code>
+ */
+@interface QQApiImageForQQAvatarObject : QQApiExtendObject
+@end
+/**
+ * @brief 视频对象
+ * 用于设置动态头像
+ * assetURL可传ALAsset的ALAssetPropertyAssetURL，或者PHAsset的localIdentifier
+ 从手Q返回的错误码：
+ //第三方设置动态头像结果
+ @"ret=0"//设置成功
+ @"ret=-10&error_des=user cancel"//用户取消设置
+ @"ret=-11&error_des=pasteboard have no video data"//剪切板没有数据
+ @"ret=-12&error_des=export data failed"//从剪切板导出数据到本地失败
+ @"ret=-13&error_des=url param invalid"//sdk传递过来的数据有误
+ @"ret=-14&error_des=video param invalid"//视频的参数不符合要求（检测第三方视频源方案：1、分辨率跟480*480保持一致；2、视频长度0.5s～8s）
+ @"ret=-15&error_des=app authorised failed"//应用鉴权失败
+ @"ret=-16&error_des=upload video failed"//设置头像，上传到后台失败
+ @"ret=-17&error_des=account diff"//账号不一致
+ */
+@interface QQApiVideoForQQAvatarObject : QQApiExtendObject
+@property(nonatomic, retain) NSString *assetURL;
+@end
+
+// QQApiImageArrayForFaceCollectionObject
+/** @brief 图片数组对象
+   用于分享图片组到表情收藏，是一个指定为图片类型的<code>QQApiObject</code>
+ */
+@interface QQApiImageArrayForFaceCollectionObject : QQApiObject
+
+@property(nonatomic,retain) NSArray* imageDataArray;///图片数组
+
+/**
+ 初始化方法
+ @param imageDataArray 图片数组
+ */
+- (id)initWithImageArrayData:(NSArray*)imageDataArray;
+/**
+ helper方法获取一个autorelease的<code>QQApiObject</code>对象
+ @param imageDataArray 发送的多张图片队列
+ @return
+ 一个自动释放的<code>QQApiObject</code>实例
+ */
++ (id)objectWithimageDataArray:(NSArray *)imageDataArray;
+
+@end
+
 // QQApiImageArrayForQZoneObject
 /** @brief 图片对象
  用于分享图片到空间，走写说说路径，是一个指定为图片类型的，当图片数组为空时，默认走文本写说说<code>QQApiObject</code>
@@ -236,18 +303,24 @@ __attribute__((visibility("default"))) @interface QQApiURLObject : QQApiObject
 
 // QQApiVideoForQZoneObject
 /** @brief 视频对象
- 用于分享视频到空间，走写说说路径<code>QQApiObject</code>
- assetURL可传ALAsset的ALAssetPropertyAssetURL，或者PHAsset的localIdentifier
-  @param extMap 扩展字段
+ 用于分享视频到空间，走写说说路径<code>QQApiObject</code>,assetURL和videoData两个参数必须设置至少一个参数，如果assetURL设置了忽略videoData参数
+ @param assetURL可传ALAsset的ALAssetPropertyAssetURL，或者PHAsset的localIdentifier
+ @param extMap 扩展字段
+ @param videoData 视频数据，大小不超过50M
  */
 @interface QQApiVideoForQZoneObject : QQApiObject
 
 @property(nonatomic, retain) NSString *assetURL;
 @property(nonatomic,retain) NSDictionary* extMap; // 扩展字段
+@property(nonatomic,retain) NSData* videoData;
 
 - (id)initWithAssetURL:(NSString*)assetURL title:(NSString*)title extMap:(NSDictionary *)extMap;
 
 + (id)objectWithAssetURL:(NSString*)assetURL title:(NSString*)title extMap:(NSDictionary *)extMap;
+
+- (id)initWithVideoData:(NSData*)videoData title:(NSString*)title extMap:(NSDictionary *)extMap;
+
++ (id)objectWithVideoData:(NSData*)videoData title:(NSString*)title extMap:(NSDictionary *)extMap;
 
 @end
 
@@ -413,66 +486,24 @@ __attribute__((visibility("default"))) @interface QQApiURLObject : QQApiObject
 @property(nonatomic,retain) NSURL* target;///<广告目标链接
 @end
 
-#pragma mark - QQApiObject(关系链对象)
-
-// QQApiAddFriendObject
-/** \brief 添加好友
- */
-@interface QQApiAddFriendObject : QQApiObject
-@property (nonatomic,retain)NSString* openID;
-@property (nonatomic,retain)NSString* subID;
-@property (nonatomic,retain)NSString* remark;
-
--(id)initWithOpenID:(NSString*)openID; ///<初始化方法
-+(id)objecWithOpenID:(NSString*)openID; ///<工厂方法，获取一个QQApiAddFriendObject对象.
-
-@end
-
-// QQApiGameConsortiumBindingGroupObject
-/** \brief 游戏公会绑定群
- */
-@interface QQApiGameConsortiumBindingGroupObject : QQApiObject
-@property (nonatomic,retain)NSString* signature;
-@property (nonatomic,retain)NSString* unionid;
-@property (nonatomic,retain)NSString* zoneID;
-@property (nonatomic,retain)NSString* appDisplayName;
-
--(id)initWithGameConsortium:(NSString*)signature unionid:(NSString*)unionid zoneID:(NSString*)zoneID appDisplayName:(NSString*)appDisplayName; ///<初始化方法
-+(id)objectWithGameConsortium:(NSString*)signature unionid:(NSString*)unionid zoneID:(NSString*)zoneID appDisplayName:(NSString*)appDisplayName; ///<工厂方法，获取一个QQApiAddFriendObject对象.
-
-@end
-
-// QQApiGameConsortiumBindingGroupObject
-/** \brief 加入群
- */
-@interface QQApiJoinGroupObject : QQApiObject
-@property (nonatomic,retain)NSString* groupUin;
-@property (nonatomic,retain)NSString* groupKey;
-
-- (id)initWithGroupInfo:(NSString*)groupUin key:(NSString*)groupKey; ///<初始化方法
-+ (id)objectWithGroupInfo:(NSString*)groupUin key:(NSString*)groupKey; ///<同时提供群号和群KEY 工厂方法，获取一个QQApiAddFriendObject对象.
-+ (id)objectWithGroupKey:(NSString*)groupKey; ///<只需要群的KEY 工厂方法，获取一个QQApiAddFriendObject对象.
-
-@end
 
 #pragma mark - QQApi请求消息类型
 
 /**
  QQApi请求消息类型
  */
-enum QQApiInterfaceReqType
-{
+typedef NS_ENUM(NSUInteger, QQApiInterfaceReqType) {
     EGETMESSAGEFROMQQREQTYPE = 0,   ///< 手Q -> 第三方应用，请求第三方应用向手Q发送消息
     ESENDMESSAGETOQQREQTYPE = 1,    ///< 第三方应用 -> 手Q，第三方应用向手Q分享消息
     ESHOWMESSAGEFROMQQREQTYPE = 2,   ///< 手Q -> 第三方应用，请求第三方应用展现消息中的数据
-    ESENDMESSAGEARKTOQQREQTYPE = 3    ///< 第三方应用 -> 手Q，第三方应用向手Q分享Ark消息
+    ESENDMESSAGEARKTOQQREQTYPE = 3,    ///< 第三方应用 -> 手Q，第三方应用向手Q分享Ark消息
+    ESENDMESSAGE_MINI_TOQQREQTYPE = 4  ///< 第三方应用 -> 手Q，第三方应用向手Q分享小程序消息
 };
 
 /**
  QQApi应答消息类型
  */
-enum QQApiInterfaceRespType
-{
+typedef NS_ENUM(NSUInteger, QQApiInterfaceRespType) {
     ESHOWMESSAGEFROMQQRESPTYPE = 0, ///< 第三方应用 -> 手Q，第三方应用应答消息展现结果
     EGETMESSAGEFROMQQRESPTYPE = 1,  ///< 第三方应用 -> 手Q，第三方应用回应发往手Q的消息
     ESENDMESSAGETOQQRESPTYPE = 2    ///< 手Q -> 第三方应用，手Q应答处理分享消息的结果
@@ -534,13 +565,19 @@ enum QQApiInterfaceRespType
  \return 新创建的SendMessageToQQReq请求实例
  */
 + (SendMessageToQQReq *)reqWithArkContent:(ArkObject *)message;
-
+/**
+ * 创建一个支持小程序的消息请求实例
+ * @param miniMessage 小程序实例对象
+ * @return 消息请求实例
+ */
++(SendMessageToQQReq*) reqWithMiniContent:(QQApiMiniProgramObject *)miniMessage;
 /** 具体分享消息 */
 @property (nonatomic, retain) QQApiObject *message;
 
 /** 支持Ark的具体分享消息 */
 @property (nonatomic, retain) ArkObject *arkMessage;
-
+/** 支持小程序的具体分享消息 */
+@property (nonatomic, retain) QQApiMiniProgramObject *miniMessage;
 @end
 
 /**

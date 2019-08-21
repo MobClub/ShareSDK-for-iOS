@@ -10,10 +10,10 @@
 #define ShareSDKDemoTestsPrefixHeader_pch
 
 #define SHARESDKDEMO_TESTS_URLSTRING @"http://m.93lj.com/sharelink?mobid=ziqMNf"
-#define SHARESDKDEMO_TESTS_TEXT @"Share+Link 重磅上线！一键实现分享闭环！错过它，就错过了全世界~  ahmn.t4m.cn/ziqMNf 点击立即使用"
+#define SHARESDKDEMO_TESTS_TEXT @"闭环分享重磅上线！一键实现闭环分享！错过它，就错过了全世界~  ahmn.t4m.cn/ziqMNf 点击立即使用"
 #define SHARESDKDEMO_TESTS_TITLE @"Share SDK"
 #define SHARESDKDEMO_TESTS_IMAGE_STRING @"http://download.sdk.mob.com/web/images/2019/06/20/10/1560998253715/635_635_42.62.png"
-#define SHARESDKDEMO_TESTS_IMAGE_LOCALPATH [[NSBundle mainBundle] pathForResource:@"moblink_ext" ofType:@"jpeg"]
+#define SHARESDKDEMO_TESTS_IMAGE_LOCALPATH [[NSBundle mainBundle] pathForResource:@"moblink_ext" ofType:@"jpg"]
 #define SHARESDKDEMO_TESTS_IMAGE [UIImage imageWithContentsOfFile:SHARESDKDEMO_TESTS_IMAGE_LOCALPATH]
 #define SHARESDKDEMO_TESTS_IMAGE_URL [NSURL URLWithString:SHARESDKDEMO_TESTS_IMAGE_STRING]
 

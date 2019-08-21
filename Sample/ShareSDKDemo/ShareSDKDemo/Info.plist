@@ -25,7 +25,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.2.9</string>
+	<string>4.3.0</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -232,7 +232,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>moba0b0c0d0</string>
+				<string>ssdkmoba0b0c0d0</string>
 			</array>
 		</dict>
 		<dict>
@@ -242,6 +242,14 @@
 			<array>
 				<string>wwautha21eaecf93f0e3ba000012</string>
 			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string></string>
+			<key>CFBundleURLSchemes</key>
+			<array/>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
@@ -332,6 +340,7 @@
 		<string>douyinopensdk</string>
 		<string>wxwork</string>
 		<string>wxworkrdm</string>
+		<string>mqqopensdkminiapp</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

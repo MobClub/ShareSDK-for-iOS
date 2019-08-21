@@ -19,9 +19,9 @@
     [super viewDidLoad];
     platformType = SSDKPlatformSubTypeQQFriend;
     self.title = @"QQ好友";
-    shareIconArray = @[@"textIcon",@"imageIcon",@"webURLIcon",@"audioURLIcon",@"videoIcon"];
-    shareTypeArray = @[@"文字",@"图片",@"链接",@"音乐链接",@"视频链接"];
-    selectorNameArray = @[@"shareText",@"shareImage",@"shareLink",@"shareAudio",@"shareVideo"];
+    shareIconArray = @[@"textIcon",@"imageIcon",@"webURLIcon",@"audioURLIcon",@"videoIcon",@"miniIcon"];
+    shareTypeArray = @[@"文字",@"图片",@"链接",@"音乐链接",@"视频链接",@"小程序"];
+    selectorNameArray = @[@"shareText",@"shareImage",@"shareLink",@"shareAudio",@"shareVideo",@"shareMiniProgram"];
 }
 
 /**
@@ -58,7 +58,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
-                                    images:SHARESDKDEMO_IMAGE_STRING //[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]
+                                    images:SHARESDKDEMO_IMAGE_LOCALPATH//[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]//SHARESDKDEMO_IMAGE_STRING //[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
@@ -83,7 +83,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
-                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
+                                    images:SHARESDKDEMO_IMAGE_STRING//SHARESDKDEMO_IMAGE_LOCALPATH
                                        url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
                                      title:@"Share SDK"
                                       type:SSDKContentTypeWebPage];
@@ -150,6 +150,20 @@
     [self shareWithParameters:parameters];
 }
 
+- (void)shareMiniProgram
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters SSDKSetupQQMiniProgramShareParamsByTitle:SHARESDKDEMO_TITLE
+                                             description:SHARESDKDEMO_TEXT
+                                              webpageUrl:[NSURL URLWithString:SHARESDKDEMO_VIDEO_AD_STRING]
+                                            hdThumbImage:SHARESDKDEMO_IMAGE_STRING//SHARESDKDEMO_IMAGE_LOCALPATH
+                                               miniAppID:@"1108318575"
+                                                miniPath:@"pages/index/index"
+                                          miniWebpageUrl:@"www.qq.com"
+                                         miniProgramType:3
+                                      forPlatformSubType:SSDKPlatformSubTypeQQFriend];
+    [self shareWithParameters:parameters];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
