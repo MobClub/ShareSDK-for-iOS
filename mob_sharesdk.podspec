@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.3.2.1"
+  s.version          = "4.3.2"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
@@ -501,7 +501,7 @@ Pod::Spec.new do |s|
     # ShareSDK提供闭环分享场景还原
     s.subspec 'ShareSDKRestoreScene' do |sp|
         sp.dependency 'mob_sharesdk/ShareSDKExtension'
-        sp.dependency 'mob_linksdk_pro'
+        sp.vendored_frameworks = "ShareSDK/Support/Optional/ShareSDKLink.framework"
     end
 
 end
