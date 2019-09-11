@@ -344,7 +344,7 @@ typedef NS_ENUM(NSUInteger, SSDKContentType){
     //v3.6.2 增加
     SSDKContentTypeFBMessageVideo = 9,
     
-    //3.6.3 小程序分享(暂时仅微信可用)
+    //3.6.3 小程序分享(暂时仅微信 QQ可用)
     SSDKContentTypeMiniProgram  = 10
 };
 

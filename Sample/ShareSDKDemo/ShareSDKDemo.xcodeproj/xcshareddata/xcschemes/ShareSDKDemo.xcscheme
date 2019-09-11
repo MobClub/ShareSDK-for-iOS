@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -26,52 +26,9 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      codeCoverageEnabled = "YES"
-      onlyGenerateCoverageForSpecifiedTargets = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "44F1FD231F8F60D100366259"
-               BuildableName = "ShareSDKDemoTests.xctest"
-               BlueprintName = "ShareSDKDemoTests"
-               ReferencedContainer = "container:ShareSDKDemo.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "505FA44321146579003B478C"
-               BuildableName = "ShareSDKDemoTests2.xctest"
-               BlueprintName = "ShareSDKDemoTests2"
-               ReferencedContainer = "container:ShareSDKDemo.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5096880F213FC8550098E76E"
-               BuildableName = "ShareSDKDemoUITests.xctest"
-               BlueprintName = "ShareSDKDemoUITests"
-               ReferencedContainer = "container:ShareSDKDemo.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4462125E1E6D8B5800C609C9"
-            BuildableName = "ShareSDKDemo.app"
-            BlueprintName = "ShareSDKDemo"
-            ReferencedContainer = "container:ShareSDKDemo.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -93,8 +50,6 @@
             ReferencedContainer = "container:ShareSDKDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

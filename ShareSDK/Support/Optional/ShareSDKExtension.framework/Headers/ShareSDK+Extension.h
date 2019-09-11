@@ -9,7 +9,6 @@
 #import <ShareSDK/ShareSDK.h>
 #import "SSETypeDefine.h"
 #import <ShareSDKExtension/SSERestoreSceneHeader.h>
-
 /**
  *  ShareSDK扩展类目
  */

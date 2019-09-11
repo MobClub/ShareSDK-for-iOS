@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <ShareSDK/ShareSDK.h>
-
+#import <ShareSDKExtension/SSERestoreSceneHeader.h>
 @interface MOBPlatformViewController : UIViewController <UIAlertViewDelegate>
 {
     IBOutlet UITableView *mobTableView;

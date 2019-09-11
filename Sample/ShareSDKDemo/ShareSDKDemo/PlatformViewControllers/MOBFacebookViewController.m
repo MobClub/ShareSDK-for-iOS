@@ -28,9 +28,9 @@
     [super viewDidLoad];
     platformType = SSDKPlatformTypeFacebook;
     self.title = @"Facebook";
-    shareIconArray = @[@"textAndImageIcon",@"mutImageIcon",@"webURLIcon",@"videoURLIcon",@"webURLIcon"];
-    shareTypeArray = @[@"单图",@"多图",@"链接 APP",@"相册视频",@"应用邀请"];
-    selectorNameArray = @[@"shareImage",@"shareImages",@"shareLink",@"shareAssetVideo",@"shareApp"];
+    shareIconArray = @[@"textAndImageIcon",@"mutImageIcon",@"webURLIcon",@"videoURLIcon"];
+    shareTypeArray = @[@"单图",@"多图",@"链接 APP",@"相册视频"];
+    selectorNameArray = @[@"shareImage",@"shareImages",@"shareLink",@"shareAssetVideo"];
 }
 
 /**
@@ -142,19 +142,19 @@
     }];
 }
 
-- (void)shareApp
-{
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params SSDKSetupFacebookParamsByText:nil
-                                    image:@"http://www.mob.com/public/images/logo_black.png"
-                                      url:[NSURL URLWithString:@"https://fb.me/1492137904189216"]
-                                 urlTitle:nil
-                                  urlName:nil
-                           attachementUrl:nil
-                                  hashtag:nil
-                                    quote:nil
-                                     type:SSDKContentTypeApp];
-    
-    [self shareWithParameters:params];
-}
+//- (void)shareApp
+//{
+//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+//    [params SSDKSetupFacebookParamsByText:nil
+//                                    image:@"http://www.mob.com/public/images/logo_black.png"
+//                                      url:[NSURL URLWithString:@"https://fb.me/1492137904189216"]
+//                                 urlTitle:nil
+//                                  urlName:nil
+//                           attachementUrl:nil
+//                                  hashtag:nil
+//                                    quote:nil
+//                                     type:SSDKContentTypeApp];
+//    
+//    [self shareWithParameters:params];
+//}
 @end

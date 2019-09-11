@@ -125,11 +125,13 @@ static const NSInteger otherInfo = 1;
     
     _rollLabel = [[MOBRollLabel alloc] initWithFrame:CGRectMake(35, 0,   [UIScreen mainScreen].bounds.size.width - 35, 35) font:[UIFont systemFontOfSize:15] textColor:[UIColor colorWithRed:244.0/255.0 green:103.0/255.0 blue:2.0/255.0 alpha:1]];
     _rollLabel.backgroundColor = [UIColor clearColor];
-    _rollLabel.text = @"好消息：Share+Link 重磅上线！一键实现分享闭环！错过它，就错过了全世界~  ";
+    _rollLabel.text = @"好消息：闭环分享重磅上线！一键实现闭环分享！错过它，就错过了全世界~  ";
     _rollLabel.rollSpeed = 0.2;
     [noticeView addSubview:_rollLabel];
     [noticeView sendSubviewToBack:_rollLabel];
 }
+
+
 
 - (IBAction)buttonNotice:(UIButton *)sender
 {
