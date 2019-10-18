@@ -100,22 +100,22 @@
 //                   UITableViewCell *cell = [mobTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
 //                   cell.detailTextLabel.text = [NSString stringWithFormat:@"%lld/%lld",loadedBytes,totalBytes];
 //               } onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
-//                   NSString *titel;
+//                   NSString *title;
 //                   switch (state) {
 //                       case SSDKResponseStateSuccess:
 //                       {
-//                           titel = @"分享成功";
+//                           title = @"分享成功";
 //                           break;
 //                       }
 //                       case SSDKResponseStateFail:
 //                       {
-//                           titel = @"分享失败";
+//                           title = @"分享失败";
 //                           NSLog(@"error :%@",error);
 //                           break;
 //                       }
 //                       case SSDKResponseStateCancel:
 //                       {
-//                           titel = @"分享已取消";
+//                           title = @"分享已取消";
 //                           break;
 //                       }
 //                       default:
@@ -124,12 +124,9 @@
 //                   UITableViewCell *cell = [mobTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
 //                   cell.detailTextLabel.text = @"";
 //                   [mobTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-//                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:titel
-//                                                                       message:nil
-//                                                                      delegate:nil
-//                                                             cancelButtonTitle:@"确定"
-//                                                             otherButtonTitles:nil];
-//                   [alertView show];
+//                   UIAlertControllerAlertCreate(title, nil)
+//                   .addCancelAction(@"确定", 0)
+//                   .showFromViewController(self);
 //               }];
 //    //取消上传
 ////    [self performSelector:@selector(stopUpdata) withObject:nil afterDelay:2.5];
@@ -158,7 +155,7 @@
     loadingViewController.session = [ShareSDK share:platformType
                                          parameters:parameters
                                      onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
-                                         NSString *titel = @"";
+                                         NSString *title = @"";
                                          switch (state) {
                                              case SSDKResponseStateUpload:
                                              {
@@ -198,18 +195,18 @@
                                              }
                                              case SSDKResponseStateSuccess:
                                              {
-                                                 titel = @"分享成功";
+                                                 title = @"分享成功";
                                                  break;
                                              }
                                              case SSDKResponseStateFail:
                                              {
-                                                 titel = @"分享失败";
+                                                 title = @"分享失败";
                                                  NSLog(@"error :%@",error);
                                                  break;
                                              }
                                              case SSDKResponseStateCancel:
                                              {
-                                                 titel = @"分享已取消";
+                                                 title = @"分享已取消";
                                                  break;
                                              }
                                              default:
@@ -219,12 +216,9 @@
                                          {
                                              [loadingViewController hidden];
                                              [mobTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-                                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:titel
-                                                                                                 message:nil
-                                                                                                delegate:nil
-                                                                                       cancelButtonTitle:@"确定"
-                                                                                       otherButtonTitles:nil];
-                                             [alertView show];
+                                             UIAlertControllerAlertCreate(title,nil)
+                                             .addCancelAction(@"确定", 0)
+                                             .showFromViewController(self);
                                          }
                                      }];
 }

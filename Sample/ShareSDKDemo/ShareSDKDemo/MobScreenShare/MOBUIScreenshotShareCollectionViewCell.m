@@ -35,12 +35,12 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
         rect.origin.y = CGRectGetMaxY(self.imageView.frame);
         rect.size.height = 30;
         rect.size.width = CGRectGetWidth(frame);
-        self.titelLabel = [[UILabel alloc] initWithFrame:rect];
-        self.titelLabel.textAlignment = NSTextAlignmentCenter;
-        self.titelLabel.textColor = UIColorFromRGB(0x515151);
-        self.titelLabel.font = [UIFont systemFontOfSize:12];
-        self.titelLabel.adjustsFontSizeToFitWidth = YES;
-        [self addSubview:self.titelLabel];
+        self.titleLabel = [[UILabel alloc] initWithFrame:rect];
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+        self.titleLabel.textColor = UIColorFromRGB(0x515151);
+        self.titleLabel.font = [UIFont systemFontOfSize:12];
+        self.titleLabel.adjustsFontSizeToFitWidth = YES;
+        [self addSubview:self.titleLabel];
     }
     return self;
 }

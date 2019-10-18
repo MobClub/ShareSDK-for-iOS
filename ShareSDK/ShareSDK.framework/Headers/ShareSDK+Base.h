@@ -91,3 +91,5 @@ typedef void(^SSDKNeedAuthorizeHandler)(SSDKAuthorizeStateChangedHandler authori
 onStateChanged:(SSDKShareStateChangedHandler)stateChangedHandler __deprecated_msg("Discard form v4.2.0");
 
 @end
+
+

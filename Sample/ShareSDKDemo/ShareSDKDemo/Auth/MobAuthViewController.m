@@ -11,7 +11,7 @@
 #import <ShareSDK/ShareSDK+Base.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 #import <MOBFoundation/MOBFoundation.h>
-
+#import <ShareSDK/SSDKAuthViewManager.h>
 
 @interface MobAuthViewController ()
 {
@@ -22,7 +22,6 @@
     NSArray *_titleArray;
     NSIndexPath *_selectIndexPath;
     NSMutableDictionary *_platforemUserInfos;
-    BOOL _isAuth;
 }
 
 @end
@@ -77,6 +76,7 @@
                                 @(SSDKPlatformTypeReddit),
                                 ];
     _titleArray = @[@"  国内平台",@"  海外平台"];
+    
     _platforemUserInfos = [[NSMutableDictionary alloc] init];
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"];
     _uiBundle = [NSBundle bundleWithPath:bundlePath];
@@ -141,8 +141,8 @@
     }
     if([obj isKindOfClass:[NSString class]])
     {
-        NSString *titel = obj;
-        cell.textLabel.text = titel;
+        NSString *title = obj;
+        cell.textLabel.text = title;
         cell.imageView.image = nil;
         cell.textLabel.textAlignment = NSTextAlignmentLeft;
     }
@@ -200,6 +200,7 @@
     button.layer.borderColor = [MOBFColor colorWithRGB:0xff7800].CGColor;
     button.tag = tag;
     [button addTarget:self action:@selector(authAct:) forControlEvents:UIControlEventTouchUpInside];
+    button.tapSpaceTime(5);
     return button;
 }
 
@@ -259,11 +260,6 @@
 
 - (void)authAct:(UIButton *)button
 {
-    if(_isAuth)
-    {
-        return;
-    }
-    _isAuth = YES;
     NSIndexPath *indexPath = nil;
     SSDKPlatformType platformType = 0;
     if(button.tag >= 1000)//国外
@@ -295,44 +291,35 @@
     [ShareSDK authorize:platformType
                settings:setting
          onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
+             [button cancelRecordTime];
              switch (state) {
                  case SSDKResponseStateSuccess:
                  {
                      NSLog(@"授权 成功 user:%@",user.dictionaryValue);
-                     _isAuth = NO;
+                     
                      NSString *key = [NSString stringWithFormat:@"%@",@(platformType)];
                      [_platforemUserInfos setObject:user forKey:key];
                      [myTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-                     
-//                     if (user.tags)
-//                     {
-//                         [[[UIAlertView alloc] initWithTitle:@"Tags" message:user.tags.description delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
-//                     }
+                     UIAlertControllerAlertCreate(@"授权成功", nil)
+                     .addCancelAction(@"确认", 0)
+                     .showFromViewController([MOBApplication sharedApplication].window.rootViewController);
                      
                      break;
                  }
                  case SSDKResponseStateFail:
                  {
                      NSLog(@"%@",error);
-                     _isAuth = NO;
-                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"授权失败"
-                                                                         message:[NSString stringWithFormat:@"%@",error]
-                                                                        delegate:nil
-                                                               cancelButtonTitle:@"确认"
-                                                               otherButtonTitles: nil];
-                     [alertView show];
+                     UIAlertControllerAlertCreate(@"授权失败", [NSString stringWithFormat:@"%@", error])
+                     .addCancelAction(@"确认", 0)
+                     .showFromViewController([MOBApplication sharedApplication].window.rootViewController);
                      break;
                  }
                      break;
                  case SSDKResponseStateCancel:
-                 {
-                     _isAuth = NO;
-                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"授权取消"
-                                                                         message:nil
-                                                                        delegate:nil
-                                                               cancelButtonTitle:@"确认"
-                                                               otherButtonTitles: nil];
-                     [alertView show];
+                 { 
+                     UIAlertControllerAlertCreate(@"授权取消", nil)
+                     .addCancelAction(@"确认", 0)
+                     .showFromViewController([MOBApplication sharedApplication].window.rootViewController);
                      break;
                  }
                  default:
@@ -403,44 +390,38 @@
             name = NSLocalizedStringWithDefaultValue(platformTypeName, @"ShareSDKUI_Localizable", _uiBundle, platformTypeName, nil);
         }
         NSString *info = [NSString stringWithFormat:@"是否取消 '%@' 的授权",name];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:info
-                                                            message:nil
-                                                           delegate:self
-                                                  cancelButtonTitle:@"暂不"
-                                                  otherButtonTitles:@"确认取消",nil];
-        alertView.tag = 10002;
-        [alertView show];
+       
+        
+        UIAlertControllerAlertCreate(info, nil)
+        .addCancelAction(@"暂不", 0)
+        .addDefaultAction(@"确认取消", 1)
+        .actionTap(^(NSInteger index, UIAlertAction * _Nonnull action) {
+            if (index == 1) {
+                if(_selectIndexPath != nil)
+                {
+                    SSDKPlatformType platformType = 0;
+                    if(_selectIndexPath.section == 1)//国外
+                    {
+                        platformType = [_overseasPlatforemArray[_selectIndexPath.row] integerValue];
+                    }
+                    if(_selectIndexPath.section == 0)//国内
+                    {
+                        platformType = [_platforemArray[_selectIndexPath.row] integerValue];
+                    }
+                    //取消平台授权
+                    [ShareSDK cancelAuthorize:platformType result:^(NSError *error) {
+                        
+                        NSString *key = [NSString stringWithFormat:@"%@",@(platformType)];
+                        [_platforemUserInfos removeObjectForKey:key];
+                        [myTableView reloadRowsAtIndexPaths:@[_selectIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+                    }];
+                }
+            }
+
+        })
+        .showFromViewController(self);
     }
     
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if(alertView.tag == 10002)
-    {
-        if(buttonIndex == 1)
-        {
-            if(_selectIndexPath != nil)
-            {
-                SSDKPlatformType platformType = 0;
-                if(_selectIndexPath.section == 1)//国外
-                {
-                    platformType = [_overseasPlatforemArray[_selectIndexPath.row] integerValue];
-                }
-                if(_selectIndexPath.section == 0)//国内
-                {
-                    platformType = [_platforemArray[_selectIndexPath.row] integerValue];
-                }
-                //取消平台授权
-                [ShareSDK cancelAuthorize:platformType result:^(NSError *error) {
-                    
-                    NSString *key = [NSString stringWithFormat:@"%@",@(platformType)];
-                    [_platforemUserInfos removeObjectForKey:key];
-                    [myTableView reloadRowsAtIndexPaths:@[_selectIndexPath] withRowAnimation:UITableViewRowAnimationNone];
-                }];
-            }
-        }
-    }
 }
 
 @end

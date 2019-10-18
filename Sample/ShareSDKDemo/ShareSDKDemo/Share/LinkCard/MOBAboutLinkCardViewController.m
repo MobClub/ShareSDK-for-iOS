@@ -70,33 +70,25 @@
                      break;
                  }
                  
-                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-                                                                     message:nil
-                                                                    delegate:nil
-                                                           cancelButtonTitle:@"确定"
-                                                           otherButtonTitles:nil];
-                 [alertView show];
+                 
+                 UIAlertControllerAlertCreate(@"分享成功", [NSString stringWithFormat:@"%@",error])
+                 .addCancelAction(@"确定", 0)
+                 .showFromViewController(self);
                  break;
              }
              case SSDKResponseStateFail:
              {
                  NSLog(@"%@",error);
-                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                 message:[NSString stringWithFormat:@"%@",error]
-                                                                delegate:nil
-                                                       cancelButtonTitle:@"OK"
-                                                       otherButtonTitles:nil, nil];
-                 [alert show];
+                 UIAlertControllerAlertCreate(@"分享失败", [NSString stringWithFormat:@"%@",error])
+                 .addCancelAction(@"OK", 0)
+                 .showFromViewController(self);
                  break;
              }
              case SSDKResponseStateCancel:
              {
-                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
-                                                                     message:nil
-                                                                    delegate:nil
-                                                           cancelButtonTitle:@"确定"
-                                                           otherButtonTitles:nil];
-                 [alertView show];
+                 UIAlertControllerAlertCreate(@"分享已取消", nil)
+                 .addCancelAction(@"确定", 0)
+                 .showFromViewController(self);
                  break;
              }
              default:
@@ -132,12 +124,10 @@
 - (void)shareWithParameters:(NSMutableDictionary *)parameters
 {
     if(parameters.count == 0){
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@""
-                                                            message:@"请先设置分享参数"
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"取消"
-                                                  otherButtonTitles:nil];
-        [alertView show];
+       
+        UIAlertControllerAlertCreate(@"请先设置分享参数", nil)
+        .addCancelAction(@"取消", 0)
+        .showFromViewController(self);
         return;
     }
     [ShareSDK share:SSDKPlatformTypeSinaWeibo
@@ -146,14 +136,14 @@
          if(state == SSDKResponseStateUpload){
              return ;
          }
-         NSString *titel = @"";
+         NSString *title = @"";
          NSString *typeStr = @"";
          UIColor *typeColor = [UIColor grayColor];
          switch (state) {
              case SSDKResponseStateSuccess:
              {
                  NSLog(@"分享成功");
-                 titel = @"分享成功";
+                 title = @"分享成功";
                  typeStr = @"成功";
                  typeColor = [UIColor blueColor];
                  break;
@@ -161,26 +151,24 @@
              case SSDKResponseStateFail:
              {
                  NSLog(@"---------------->share error :%@",error);
-                 titel = @"分享失败";
+                 title = @"分享失败";
                  typeStr = [NSString stringWithFormat:@"%@",error];
                  typeColor = [UIColor redColor];
                  break;
              }
              case SSDKResponseStateCancel:
              {
-                 titel = @"分享已取消";
+                 title = @"分享已取消";
                  typeStr = @"取消";
                  break;
              }
              default:
                  break;
          }
-         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:titel
-                                                             message:typeStr
-                                                            delegate:nil
-                                                   cancelButtonTitle:@"确定"
-                                                   otherButtonTitles:nil];
-         [alertView show];
+        
+        UIAlertControllerAlertCreate(title, typeStr)
+        .addCancelAction(@"确定", 0)
+        .showFromViewController(self);
      }];
 }
 

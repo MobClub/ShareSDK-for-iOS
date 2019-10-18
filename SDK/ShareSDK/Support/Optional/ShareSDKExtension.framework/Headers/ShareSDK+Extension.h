@@ -114,4 +114,6 @@
  */
 + (void)setRestoreSceneDelegate:(id<ISSERestoreSceneDelegate>)delegate;
 
+
+
 @end

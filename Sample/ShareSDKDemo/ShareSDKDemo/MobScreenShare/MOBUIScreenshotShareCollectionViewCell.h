@@ -11,5 +11,5 @@
 @interface MOBUIScreenshotShareCollectionViewCell : UICollectionViewCell
 
 @property(nonatomic,strong)UIImageView *imageView;
-@property(nonatomic,strong)UILabel *titelLabel;
+@property(nonatomic,strong)UILabel *titleLabel;
 @end

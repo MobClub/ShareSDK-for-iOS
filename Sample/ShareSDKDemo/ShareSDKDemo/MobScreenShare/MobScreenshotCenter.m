@@ -11,7 +11,6 @@
 #import "MobUIScreenshotShare.h"
 #import <UIKit/UIKit.h>
 #import <ShareSDK/SSDKImage.h>
-
 @implementation MobScreenshotCenter
 
 + (MobScreenshotCenter *)shareInstance
@@ -24,6 +23,7 @@
     return center;
 }
 
+
 /**
  截图并显示UI
  
@@ -31,9 +31,7 @@
  @param duration 持续时间 SSEScreenCaptureUIModeAlert 模式生效
  @param useClientShare 是否优先使用客户端进行分享
  */
-- (void)screenCaptureShareWithMode:(SSEScreenCaptureUIMode)mode
-                           duration:(NSTimeInterval)duration
-                     useClientShare:(BOOL)useClientShare{
+- (void)screenCaptureShareWithMode:(SSEScreenCaptureUIMode)mode duration:(NSTimeInterval)duration useClientShare:(BOOL)useClientShare{
     if([MobUIScreenshotShare shareInstance].window != nil)
     {
         return;
@@ -58,29 +56,29 @@
                     //            }
                     if(mode == SSEScreenCaptureUIModeAlert)
                     {
-////                        //提示窗大小
-                        CGRect rect = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds) - 130 , 100, 120, 160);
-//                        //显示时间
+                        ////                        //提示窗大小
+                        CGRect rect = CGRectMake(CGRectGetWidth([MOBApplication sharedApplication].window.frame) - 130 , 100, 120, 160);
+                        //                        //显示时间
                         NSTimeInterval showTime = 3.0;
                         [[MobUIScreenshotShare shareInstance] showAlertModeWithImage:image
                                                                                frame:rect
                                                                             duration:showTime
                                                                selecetedPlatformType:^(SSDKPlatformType platformType) {
-                                                                   if (shareHandler)
-                                                                   {
-                                                                       shareHandler(platformType , params);
-                                                                   }
-                                                               }];
+                            if (shareHandler)
+                            {
+                                shareHandler(platformType , params);
+                            }
+                        }];
                     }
                     else
                     {
                         [[MobUIScreenshotShare shareInstance] showDefaultModeWithImage:image
                                                                  selecetedPlatformType:^(SSDKPlatformType platformType) {
-                                                                     if (shareHandler)
-                                                                     {
-                                                                         shareHandler(platformType , params);
-                                                                     }
-                                                                 }];
+                            if (shareHandler)
+                            {
+                                shareHandler(platformType , params);
+                            }
+                        }];
                     }
                 }
             }];
@@ -91,35 +89,42 @@
 
 /**
  处理分享返回事件
-
+ 
  @return SSDKShareStateChangedHandler
  */
 - (SSDKShareStateChangedHandler)_myShareStateChangedHandler
 {
     return ^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error)
     {
+        UIViewController *vc = [MOBApplication sharedApplication].window.rootViewController;
         switch (state) {
             case SSDKResponseStateBegin:
                 break;
             case SSDKResponseStateSuccess:
             {
                 NSString *msg = @"分享成功";
-                UIAlertView *alerView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alerView show];
+                
+                
+                
+                UIAlertControllerAlertCreate(@"提示", msg)
+                .addCancelAction(@"OK", 0)
+                .showFromViewController(vc);
                 break;
             }
             case SSDKResponseStateFail:
             {
                 NSString *msg = [NSString stringWithFormat:@"分享失败 \nuserData = %@\ncontent entity = %@\nerror = %@", userData, contentEntity, error];
-                UIAlertView *alerView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alerView show];
+                UIAlertControllerAlertCreate(@"提示", msg)
+                .addCancelAction(@"OK", 0)
+                .showFromViewController(vc);
                 break;
             }
             case SSDKResponseStateCancel:
             {
                 NSString *msg = @"分享取消";
-                UIAlertView *alerView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alerView show];
+                UIAlertControllerAlertCreate(@"提示", msg)
+                .addCancelAction(@"OK", 0)
+                .showFromViewController(vc);
                 break;
             }
             default:
@@ -139,8 +144,8 @@
 - (void)_userDidTakeScreenshot:(NSNotification *)notification
 {
     [self screenCaptureShareWithMode:SSEScreenCaptureUIModeAlert
-                             duration:3.0
-                       useClientShare:YES];
+                            duration:3.0
+                      useClientShare:YES];
 }
 
 - (void)stop

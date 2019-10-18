@@ -39,12 +39,20 @@ typedef void (^sendResultBlock)(NSDictionary *result);
 @interface QQApiInterface : NSObject
 
 /**
- 处理由手Q唤起的跳转请求
+ 处理由手Q唤起的普通跳转请求
  \param url 待处理的url跳转请求
  \param delegate 第三方应用用于处理来至QQ请求及响应的委托对象
  \return 跳转请求处理结果，YES表示成功处理，NO表示不支持的请求协议或处理失败
  */
 + (BOOL)handleOpenURL:(NSURL *)url delegate:(id<QQApiInterfaceDelegate>)delegate;
+
+/**
+ 处理由手Q唤起的universallink跳转请求
+ \param universallink 待处理的universallink跳转请求
+ \param delegate 第三方应用用于处理来至QQ请求及响应的委托对象
+ \return 跳转请求处理结果，YES表示成功处理，NO表示不支持的请求协议或处理失败
+ */
++ (BOOL)handleOpenUniversallink:(NSURL*)universallink delegate:(id<QQApiInterfaceDelegate>)delegate;
 
 /**
  向手Q发起分享请求

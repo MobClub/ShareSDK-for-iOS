@@ -17,7 +17,8 @@ class ViewController: UIViewController, ISSERestoreSceneDelegate {
         ShareSDK.setRestoreSceneDelegate(self)
         
         ShareSDK.registPlatforms { register in
-            register?.setupWeChat(withAppId: "wx617c77c82218ea2c", appSecret: "c7253e5289986cf4c4c74d1ccc185fb1")
+            register?.setupWeChat(withAppId: "wx617c77c82218ea2c", appSecret: "c7253e5289986cf4c4c74d1ccc185fb1",universalLink: "https://www.sandslee.com/")
+            
             register?.setupSinaWeibo(withAppkey: "568898243", appSecret: "38a4f8204cc784f81f9f0daaf31e02e3", redirectUrl: "http://www.sharesdk.cn")
             register?.setupQQ(withAppId: "100371282", appkey: "aed9b0303e3ed1e27bae87c33761161d")
         }

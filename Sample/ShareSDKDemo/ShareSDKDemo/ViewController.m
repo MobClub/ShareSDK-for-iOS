@@ -44,6 +44,7 @@ static NSString * const cellReuseIdentifier = @"cellReuseIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     self.edgesForExtendedLayout = UIRectEdgeNone;
     buttonArray = @[shareButton,authButton,userInfoButton];
     [myCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellReuseIdentifier];
@@ -52,7 +53,7 @@ static NSString * const cellReuseIdentifier = @"cellReuseIdentifier";
     userInfoViewController = [[MobUserInfoViewController alloc] initWithNibName:@"MobUserInfoViewController" bundle:nil];
     viewControllerArray = @[shareViewController,authViewController,userInfoViewController];
     isFirst = YES;
-    
+
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
 }
 
@@ -152,6 +153,8 @@ static NSString * const cellReuseIdentifier = @"cellReuseIdentifier";
     NSInteger page=scrollView.contentOffset.x/CGRectGetWidth(scrollView.frame);
     UIButton *button = buttonArray[page];
     [self buttonAct:button];
+    
 }
 
 @end
+

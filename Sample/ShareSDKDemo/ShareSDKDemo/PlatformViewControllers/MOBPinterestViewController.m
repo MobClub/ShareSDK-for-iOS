@@ -15,9 +15,9 @@
     [super viewDidLoad];
     platformType = SSDKPlatformTypePinterest;
     self.title = @"Pinterest";
-    shareIconArray = @[@"imageIcon"];
-    shareTypeArray = @[@"图片"];
-    selectorNameArray = @[@"shareImage"];
+    shareIconArray = @[@"imageIcon",@"webURLIcon"];
+    shareTypeArray = @[@"图片",@"链接"];
+    selectorNameArray = @[@"shareImage",@"shareLink"];
 }
 
 /**
@@ -29,8 +29,20 @@
 
     [parameters SSDKSetupPinterestParamsByImage:SHARESDKDEMO_IMAGE_STRING
                                            desc:SHARESDKDEMO_TEXT
+                                            url:nil
+                                      boardName:@"ShareSDK"];
+    [self shareWithParameters:parameters];
+    
+}
+- (void)shareLink
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+
+    [parameters SSDKSetupPinterestParamsByImage:SHARESDKDEMO_IMAGE_STRING
+                                           desc:SHARESDKDEMO_TEXT
                                             url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
                                       boardName:@"ShareSDK"];
     [self shareWithParameters:parameters];
+    
 }
 @end

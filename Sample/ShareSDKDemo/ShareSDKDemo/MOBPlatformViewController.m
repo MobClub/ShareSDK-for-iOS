@@ -120,12 +120,9 @@
 //    }
 //    _isShare = YES;
     if(parameters.count == 0){
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@""
-                                                            message:@"请先设置分享参数"
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"取消"
-                                                  otherButtonTitles:nil];
-        [alertView show];
+        UIAlertControllerAlertCreate(@"", @"请先设置分享参数")
+        .addCancelAction(@"取消", 0)
+        .showFromViewController(self);
         return;
     }
     [ShareSDK share:platformType
@@ -134,7 +131,7 @@
          if(state == SSDKResponseStateUpload){
              return ;
          }
-         NSString *titel = @"";
+         NSString *title = @"";
          NSString *typeStr = @"";
          UIColor *typeColor = [UIColor grayColor];
          switch (state) {
@@ -142,7 +139,7 @@
              {
                  NSLog(@"分享成功");
                  _isShare = NO;
-                 titel = @"分享成功";
+                 title = @"分享成功";
                  typeStr = @"成功";
                  typeColor = [UIColor blueColor];
                  break;
@@ -151,7 +148,7 @@
              {
                  _isShare = NO;
                  NSLog(@"---------------->share error :%@",error);
-                 titel = @"分享失败";
+                 title = @"分享失败";
                  typeStr = [NSString stringWithFormat:@"%@",error];
                  if (platformType == SSDKPlatformTypeGooglePlus)
                  {
@@ -164,7 +161,7 @@
              case SSDKResponseStateCancel:
              {
                  _isShare = NO;
-                 titel = @"分享已取消";
+                 title = @"分享已取消";
                  typeStr = @"取消";
                  break;
              }
@@ -177,19 +174,16 @@
              if(selectIndexPath != nil)
              {
                  UITableViewCell *cell = [mobTableView cellForRowAtIndexPath:selectIndexPath];
-                 cell.detailTextLabel.text = titel;
+                 cell.detailTextLabel.text = title;
                  cell.detailTextLabel.textColor = typeColor;
                  selectIndexPath = nil;
              }
          }
          
          dispatch_async(dispatch_get_main_queue(), ^{
-             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:titel
-                                                                 message:typeStr
-                                                                delegate:nil
-                                                       cancelButtonTitle:@"确定"
-                                                       otherButtonTitles:nil];
-             [alertView show];
+             UIAlertControllerAlertCreate(title, typeStr)
+             .addCancelAction(@"确定", 0)
+             .showFromViewController(self);
          });
          
      }];
@@ -207,13 +201,19 @@
             {
                 if([ShareSDK hasAuthorized:platformType])
                 {
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"是否取消授权"
-                                                                        message:nil
-                                                                       delegate:self
-                                                              cancelButtonTitle:@"暂不"
-                                                              otherButtonTitles:@"确认",nil];
-                    alertView.tag = 1000;
-                    [alertView show];
+                    UIAlertControllerAlertCreate(@"是否取消授权", nil)
+                    .addCancelAction(@"暂不", 0)
+                    .addDefaultAction(@"确认", 1)
+                    .actionTap(^(NSInteger index, UIAlertAction * _Nonnull action) {
+                        if (index == 1) {
+                            [ShareSDK cancelAuthorize:platformType result:nil];
+                            if(isTest)
+                            {
+                                [mobTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+                            }
+                        }
+                    })
+                    .showFromViewController(self);
                 }
                 else
                 {
@@ -247,17 +247,7 @@
     }
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if(alertView.tag == 1000 && buttonIndex == 1)
-    {
-        [ShareSDK cancelAuthorize:platformType result:nil];
-        if(isTest)
-        {
-            [mobTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-        }
-    }
-}
+
 
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -308,47 +298,41 @@
     [ShareSDK authorize:platformType
                settings:nil
          onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
-             NSString *titel = @"";
+             NSString *title = @"";
              switch (state)
              {
                  case SSDKResponseStateSuccess:
                  {
                      
-                     titel = @"授权成功";
+                     title = @"授权成功";
                      NSLog(@"%@",user.rawData);
                      if(isTest)
                      {
                          [mobTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
                      }
-                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:titel
-                                                                         message:nil
-                                                                        delegate:nil
-                                                               cancelButtonTitle:@"确定"
-                                                               otherButtonTitles:nil];
-                     [alertView show];
+                     
+                     UIAlertControllerAlertCreate(title, nil)
+                     .addCancelAction(@"确定", 0)
+                     .showFromViewController(self);
                      break;
                  }
                  case SSDKResponseStateFail:
                  {
-                     titel = @"授权失败";
+                     title = @"授权失败";
                      NSLog(@"error :%@",error);
-                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
-                                                                         message:[NSString stringWithFormat:@"%@", error]
-                                                                        delegate:nil
-                                                               cancelButtonTitle:@"确定"
-                                                               otherButtonTitles:nil];
-                     [alertView show];
+                    
+                     UIAlertControllerAlertCreate(title, [NSString stringWithFormat:@"%@", error])
+                     .addCancelAction(@"确定", 0)
+                     .showFromViewController(self);
                      break;
                  }
                  case SSDKResponseStateCancel:
                  {
-                     titel = @"取消授权";
-                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:titel
-                                                                         message:nil
-                                                                        delegate:nil
-                                                               cancelButtonTitle:@"确定"
-                                                               otherButtonTitles:nil];
-                     [alertView show];
+                     title = @"取消授权";
+                     
+                     UIAlertControllerAlertCreate(title, nil)
+                     .addCancelAction(@"确定", 0)
+                     .showFromViewController(self);
                       break;
                  }
                  default:
@@ -359,21 +343,19 @@
 
 - (void)isInstallAPP
 {
-    NSString *titel = @"";
+    NSString *title = @"";
     if([ShareSDK isClientInstalled:platformType])
     {
-        titel = @"已安装";
+        title = @"已安装";
     }
     else
     {
-        titel = @"未安装";
+        title = @"未安装";
     }
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:titel
-                                                        message:nil
-                                                       delegate:nil
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil];
-    [alertView show];
+    
+    UIAlertControllerAlertCreate(title, nil)
+    .addCancelAction(@"确定", 0)
+    .showFromViewController(self);
 }
 
 @end

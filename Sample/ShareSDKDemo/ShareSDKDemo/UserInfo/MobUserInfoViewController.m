@@ -132,8 +132,8 @@
     }
     if([obj isKindOfClass:[NSString class]])
     {
-        NSString *titel = obj;
-        cell.textLabel.text = titel;
+        NSString *title = obj;
+        cell.textLabel.text = title;
         cell.imageView.image = nil;
         cell.textLabel.textAlignment = NSTextAlignmentLeft;
     }
@@ -242,24 +242,20 @@
                    case SSDKResponseStateFail:
                    {
                        _isGetUserInfo = NO;
-                       UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"授权失败"
-                                                                           message:[NSString stringWithFormat:@"%@",error]
-                                                                          delegate:nil
-                                                                 cancelButtonTitle:@"确认"
-                                                                 otherButtonTitles: nil];
-                       [alertView show];
+                    
+                       UIAlertControllerAlertCreate(@"授权失败", [NSString stringWithFormat:@"%@", error])
+                       .addCancelAction(@"确认", 0)
+                       .showFromViewController([MOBApplication sharedApplication].window.rootViewController);
                        break;
                    }
                        break;
                    case SSDKResponseStateCancel:
                    {
                        _isGetUserInfo = NO;
-                       UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"授权取消"
-                                                                           message:nil
-                                                                          delegate:nil
-                                                                 cancelButtonTitle:@"确认"
-                                                                 otherButtonTitles: nil];
-                       [alertView show];
+                     
+                       UIAlertControllerAlertCreate(@"授权取消", nil)
+                       .addCancelAction(@"确认", 0)
+                       .showFromViewController([MOBApplication sharedApplication].window.rootViewController);
                        break;
                    }
                    default:
@@ -276,8 +272,8 @@
         userInfoShowViewController = [[MobUserInfoShowViewController alloc] initWithNibName:@"MobUserInfoShowViewController" bundle:nil];
         userInfoShowViewController.view.frame = [UIScreen mainScreen].bounds;
     }
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    UIWindow *window = appDelegate.window;
+    
+    UIWindow *window = self.view.window;
     [window addSubview:userInfoShowViewController.view];
     [userInfoShowViewController setUserInfo:user];
 }

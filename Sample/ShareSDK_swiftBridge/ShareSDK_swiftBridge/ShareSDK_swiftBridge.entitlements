@@ -5,6 +5,7 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:ahmn.t4m.cn</string>
+		<string>applinks:www.sandslee.com</string>
 	</array>
 </dict>
 </plist>

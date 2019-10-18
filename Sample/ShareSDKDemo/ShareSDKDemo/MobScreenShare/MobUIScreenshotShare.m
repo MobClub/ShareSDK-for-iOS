@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <ShareSDK/ShareSDK+Base.h>
 
+#import <objc/message.h>
 #define UIColorFromRGB(rgbValue) [UIColor \
 colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
@@ -61,12 +62,11 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 {
     _image = image;
     _selecetedPlatformType = selecetedPlatformType;
-    if(self.window == nil)
-    {
-        self.window = [[UIWindow alloc] initWithFrame:rect];
-        self.window.backgroundColor = [UIColor clearColor];
-        self.window.windowLevel = UIWindowLevelAlert + 2; //等级需按各APP情况自行设定
-    }
+
+    self.window = [[UIWindow alloc] initWithFrame:rect];
+    self.window.backgroundColor = [UIColor clearColor];
+    self.window.windowLevel = [MOBApplication sharedApplication].window.windowLevel + 2; //等级需按各APP情况自行设定
+    [[MOBApplication sharedApplication] showWindow:self.window];
     _alterView = [self myAlertView];
     CGRect imageRect = self.window.bounds;
     imageRect.origin = CGPointMake(6, 6);
@@ -167,16 +167,13 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 - (void)showDefaultModeWithImage:(UIImage *)image
            selecetedPlatformType:(MUSSSelecetedPlatformType)selecetedPlatformType
 {
-    if(self.window == nil)
-    {
-        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        self.window.backgroundColor = [UIColor clearColor];
-        self.window.windowLevel = UIWindowLevelAlert + 2; //等级需按各APP情况自行设定
-    }
-    else
-    {
-        self.window.frame =[UIScreen mainScreen].bounds;
-    }
+    
+    self.window = [[UIWindow alloc] initWithFrame:[MOBApplication sharedApplication].window.bounds];
+    self.window.backgroundColor = [UIColor clearColor];
+        
+    self.window.windowLevel = [MOBApplication sharedApplication].window.windowLevel + 2; //等级需按各APP情况自行设定
+    [[MOBApplication sharedApplication] showWindow:self.window];
+    
     
     //背景
     _bgView = [[UIView alloc] initWithFrame:self.window.bounds];
@@ -210,7 +207,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     toolRect.size.height = 160;
     UIBlurEffect * blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
     UIVisualEffectView * toolView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-     toolView.frame = toolRect;
+    toolView.frame = toolRect;
     //添加线
     CGRect rect = toolView.bounds;
     rect.size.height = 1;
@@ -454,8 +451,8 @@ static NSString * const cellReuseIdentifier = @"cellReuseIdentifier";
         UIImage *icon = [UIImage imageWithContentsOfFile:[_uiBundle pathForResource:(iconImageName) ofType:nil]];
         cell.imageView.image = icon;
         NSString *platformTypeName = [NSString stringWithFormat:@"ShareType_%lu",(unsigned long)platformType];
-        NSString *titel = NSLocalizedStringWithDefaultValue(platformTypeName, @"ShareSDKUI_Localizable", _uiBundle, platformTypeName, nil);
-        cell.titelLabel.text = titel;
+        NSString *title = NSLocalizedStringWithDefaultValue(platformTypeName, @"ShareSDKUI_Localizable", _uiBundle, platformTypeName, nil);
+        cell.titleLabel.text = title;
     }
     return cell;
 }

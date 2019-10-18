@@ -2,7 +2,7 @@
 //  NSMutableDictionary+SSERestoreScene.h
 //  ShareSDKExtension
 //
-//  Created by 麻小亮 on 2019/8/28.
+//  Created by maxl on 2019/8/28.
 //  Copyright © 2019 mob. All rights reserved.
 //
 

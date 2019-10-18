@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKExtension/SSERestoreSceneHeader.h>
-@interface MOBPlatformViewController : UIViewController <UIAlertViewDelegate>
+@interface MOBPlatformViewController : UIViewController 
 {
     IBOutlet UITableView *mobTableView;
     NSArray *shareTypeArray;

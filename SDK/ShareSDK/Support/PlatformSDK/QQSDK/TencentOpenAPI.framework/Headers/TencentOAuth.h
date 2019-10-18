@@ -277,8 +277,9 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
 
 /**
  * (静态方法)sdk是否可以处理应用的Universallink拉起协议
- * \param url 处理被其他应用呼起时的逻辑
+ * \param url 处理被其他应用呼起时的逻辑(应用的Universallink链接须满足官网注册时的格式要求)
  * \return 处理结果，YES表示可以 NO表示不行
+ * 注：在调用其他Universallink相关处理接口之前，均需进行此项判断
  */
 + (BOOL)CanHandleUniversalLink:(NSURL *)url;
 

@@ -136,8 +136,8 @@ static const NSInteger otherInfo = 1;
 - (IBAction)buttonNotice:(UIButton *)sender
 {
     MOBAboutMobLinkViewController *aboutMobLinkCardVC = [MOBAboutMobLinkViewController new];
-    AppDelegate *application = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    UINavigationController *navigationController = (UINavigationController *)application.window.rootViewController;
+    
+    UINavigationController *navigationController = (UINavigationController *)self.view.window.rootViewController;
     [navigationController pushViewController:aboutMobLinkCardVC animated:YES];
 }
 
@@ -182,72 +182,64 @@ static const NSInteger otherInfo = 1;
                          onStateChanged:nil];
     }
     
-    //也可以 使用 摇一摇后马上分享
-    //    [SSEShareHelper beginShakeShare:nil
-    //                          onEndSake:nil
-    //                 onWillShareHandler:^(SSEShareHandler shareHandler){
-    //                     NSLog(@"======开始分享");
-    //                     //构造分享参数
-    //                     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-    //                     NSArray* imageArray = @[[UIImage imageNamed:@"shareImg.png"]];
-    //                     if (imageArray)
-    //                     {
-    //                         [shareParams SSDKSetupShareParamsByText:@"摇着摇着就可以分享出去了，使用ShareSDK分享就是便捷方便。 http://www.mob.com/"
-    //                                                          images:imageArray
-    //                                                             url:nil
-    //                                                           title:nil
-    //                                                            type:SSDKContentTypeImage];
-    //                         //回调分享
-    //                         if (shareHandler)
-    //                         {
-    //                             shareHandler (SSDKPlatformTypeSinaWeibo, shareParams);
-    //                         }
-    //                     }
-    //                 }
-    //                 onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
-    //                     switch (state)
-    //                     {
-    //                         case SSDKResponseStateSuccess:
-    //                         {
-    //                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-    //                                                                                 message:nil
-    //                                                                                delegate:nil
-    //                                                                       cancelButtonTitle:@"确定"
-    //                                                                       otherButtonTitles:nil];
-    //                             [alertView show];
-    //                             break;
-    //                         }
-    //                         case SSDKResponseStateFail:
-    //                         {
-    //                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享失败"
-    //                                                                                 message:[NSString stringWithFormat:@"%@", error]
-    //                                                                                delegate:nil
-    //                                                                       cancelButtonTitle:@"确定"
-    //                                                                       otherButtonTitles:nil];
-    //                             [alertView show];
-    //                             break;
-    //                         }
-    //                         case SSDKResponseStateCancel:
-    //                         {
-    //                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
-    //                                                                                 message:nil
-    //                                                                                delegate:nil
-    //                                                                       cancelButtonTitle:@"确定"
-    //                                                                       otherButtonTitles:nil];
-    //                             [alertView show];
-    //                             break;
-    //                         }
-    //                         default:
-    //                             break;
-    //                     }
-    //                 }];
+//    也可以 使用 摇一摇后马上分享
+//        [SSEShareHelper beginShakeShare:nil
+//                              onEndSake:nil
+//                     onWillShareHandler:^(SSEShareHandler shareHandler){
+//                         NSLog(@"======开始分享");
+//                         //构造分享参数
+//                         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+//                         NSArray* imageArray = @[[UIImage imageNamed:@"shareImg.png"]];
+//                         if (imageArray)
+//                         {
+//                             [shareParams SSDKSetupShareParamsByText:@"摇着摇着就可以分享出去了，使用ShareSDK分享就是便捷方便。 http://www.mob.com/"
+//                                                              images:imageArray
+//                                                                 url:nil
+//                                                               title:nil
+//                                                                type:SSDKContentTypeImage];
+//                             //回调分享
+//                             if (shareHandler)
+//                             {
+//                                 shareHandler (SSDKPlatformTypeSinaWeibo, shareParams);
+//                             }
+//                         }
+//                     }
+//                     onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+//                         switch (state)
+//                         {
+//                             case SSDKResponseStateSuccess:
+//                             {
+//
+//                             UIAlertControllerAlertCreate(@"分享成功", nil)
+//                                 .addCancelAction(@"确定", 0)
+//                                 .showFromViewController(self);
+//                                 break;
+//                             }
+//                             case SSDKResponseStateFail:
+//                             {
+//                            UIAlertControllerAlertCreate(@"分享失败", [NSString stringWithFormat:@"%@",error])
+//                                 .addCancelAction(@"确定", 0)
+//                                 .showFromViewController(self);
+//                                 break;
+//                             }
+//                             case SSDKResponseStateCancel:
+//                             {
+//                             UIAlertControllerAlertCreate(@"分享已取消", nil)
+//                                 .addCancelAction(@"确定", 0)
+//                                 .showFromViewController(self);
+//                                 break;
+//                             }
+//                             default:
+//                                 break;
+//                         }
+//                     }];
 }
 
 - (void)showPrompt
 {
     isAnimate = YES;
-    AppDelegate *application = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    UIWindow *window = application.window;
+    
+    UIWindow *window = self.view.window;
     [window addSubview:shakeShareView];
     shakeShareView.center = window.center;
     shakeShareView.alpha = 0;
@@ -288,17 +280,17 @@ static const NSInteger otherInfo = 1;
     [item_1 addTarget:self action:@selector(test_1:)];
     
     NSArray *items = nil;
-    //    items = @[
-    //              @(SSDKPlatformTypeQQ),
-    //              @(SSDKPlatformTypeWechat),
-    //              item_1,
-    //              @(SSDKPlatformTypeSinaWeibo),
-    //              @(SSDKPlatformTypeSMS),
-    //              @(SSDKPlatformTypeMail),
-    //              @(SSDKPlatformTypeCopy)
-    //              ];
+        items = @[
+                  @(SSDKPlatformTypeQQ),
+                  @(SSDKPlatformTypeWechat),
+                  item_1,
+                  @(SSDKPlatformTypeSinaWeibo),
+                  @(SSDKPlatformTypeSMS),
+                  @(SSDKPlatformTypeMail),
+                  @(SSDKPlatformTypeCopy)
+                  ];
     SSUIShareSheetConfiguration *config = [[SSUIShareSheetConfiguration alloc] init];
-    //    config.style = SSUIActionSheetStyleSimple;
+        config.style = SSUIActionSheetStyleSimple;
 //    config.menuBackgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
     [ShareSDK showShareActionSheet:menuButton
                        customItems:items
@@ -326,34 +318,24 @@ static const NSInteger otherInfo = 1;
                  {
                      break;
                  }
-                 
-                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-                                                                     message:nil
-                                                                    delegate:nil
-                                                           cancelButtonTitle:@"确定"
-                                                           otherButtonTitles:nil];
-                 [alertView show];
+                 UIAlertControllerAlertCreate(@"分享成功", nil)
+                 .addCancelAction(@"确定", 0)
+                 .showFromViewController(self.view.window.rootViewController);
                  break;
              }
              case SSDKResponseStateFail:
              {
                  NSLog(@"%@",error);
-                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                 message:[NSString stringWithFormat:@"%@",error]
-                                                                delegate:nil
-                                                       cancelButtonTitle:@"OK"
-                                                       otherButtonTitles:nil, nil];
-                 [alert show];
+                 UIAlertControllerAlertCreate(@"分享失败", [NSString stringWithFormat:@"%@",error])
+                 .addCancelAction(@"OK", 0)
+                 .showFromViewController(self.view.window.rootViewController);
                  break;
              }
              case SSDKResponseStateCancel:
              {
-                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
-                                                                     message:nil
-                                                                    delegate:nil
-                                                           cancelButtonTitle:@"确定"
-                                                           otherButtonTitles:nil];
-                 [alertView show];
+                 UIAlertControllerAlertCreate(@"分享已取消", nil)
+                 .addCancelAction(@"确定", 0)
+                 .showFromViewController(self.view.window.rootViewController);
                  break;
              }
              default:
@@ -423,8 +405,8 @@ static const NSInteger otherInfo = 1;
     }
     if([obj isKindOfClass:[NSString class]])
     {
-        NSString *titel = obj;
-        cell.textLabel.text = titel;
+        NSString *title = obj;
+        cell.textLabel.text = title;
         cell.imageView.image = nil;
         cell.textLabel.textAlignment = NSTextAlignmentLeft;
     }
@@ -483,8 +465,8 @@ static const NSInteger otherInfo = 1;
         if (viewControllerClass)
         {
             UIViewController *viewController = [[viewControllerClass alloc] init];
-            AppDelegate *application = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            UINavigationController *navigationController = (UINavigationController *)application.window.rootViewController;
+           
+            UINavigationController *navigationController = (UINavigationController *)self.view.window.rootViewController;
             [navigationController pushViewController:viewController animated:YES];
         }
         return;
@@ -512,8 +494,7 @@ static const NSInteger otherInfo = 1;
     if (viewControllerClass)
     {
         UIViewController *viewController = [[viewControllerClass alloc] init];
-        AppDelegate *application = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        UINavigationController *navigationController = (UINavigationController *)application.window.rootViewController;
+        UINavigationController *navigationController = (UINavigationController *)self.view.window.rootViewController;
         [navigationController pushViewController:viewController animated:YES];
     }
 }
@@ -655,33 +636,24 @@ static const NSInteger otherInfo = 1;
                                                            {
                                                                break;
                                                            }
-                                                           
-                                                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-                                                                                                               message:nil
-                                                                                                              delegate:nil
-                                                                                                     cancelButtonTitle:@"确定"
-                                                                                                     otherButtonTitles:nil];
-                                                           [alertView show];
-                                                           break;
+                                                           UIAlertControllerAlertCreate(@"分享成功", nil)
+                                                           .addCancelAction(@"确定", 0)
+                                                           .showFromViewController(self);
+                                                             break;
                                                        }
                                                        case SSDKResponseStateFail:
                                                        {
-                                                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                                                           message:[NSString stringWithFormat:@"%@",error]
-                                                                                                          delegate:nil
-                                                                                                 cancelButtonTitle:@"OK"
-                                                                                                 otherButtonTitles:nil, nil];
-                                                           [alert show];
+                                                           
+                                                           UIAlertControllerAlertCreate(@"分享失败", [NSString stringWithFormat:@"%@",error])
+                                                           .addCancelAction(@"OK", 0)
+                                                           .showFromViewController(self);
                                                            break;
                                                        }
                                                        case SSDKResponseStateCancel:
                                                        {
-                                                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
-                                                                                                               message:nil
-                                                                                                              delegate:nil
-                                                                                                     cancelButtonTitle:@"确定"
-                                                                                                     otherButtonTitles:nil];
-                                                           [alertView show];
+                                                           UIAlertControllerAlertCreate(@"分享已取消", nil)
+                                                           .addCancelAction(@"确定", 0)
+                                                           .showFromViewController(self);
                                                            break;
                                                        }
                                                        default:

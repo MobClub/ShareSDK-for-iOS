@@ -244,7 +244,10 @@
     [self navBarSetup];
 }
 
-
+- (void)dealloc
+{
+    
+}
 - (void)navBarSetup
 {
     UIButton *rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 22, 44)];
@@ -319,33 +322,27 @@
             }
             case SSDKResponseStateSuccess:
             {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-                                                                    message:nil
-                                                                   delegate:nil
-                                                          cancelButtonTitle:@"确定"
-                                                          otherButtonTitles:nil];
-                [alertView show];
+                
+                UIAlertControllerAlertCreate(@"分享成功", nil)
+                .addCancelAction(@"确定", 0)
+                .showFromViewController(self);
                 break;
             }
             case SSDKResponseStateFail:
             {
                 NSLog(@"%@",error);
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                message:[NSString stringWithFormat:@"%@",error]
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil, nil];
-                [alert show];
+                
+                UIAlertControllerAlertCreate(@"分享失败", [NSString stringWithFormat:@"%@",error])
+                .addCancelAction(@"OK", 0)
+                .showFromViewController(self);
                 break;
             }
             case SSDKResponseStateCancel:
             {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
-                                                                    message:nil
-                                                                   delegate:nil
-                                                          cancelButtonTitle:@"确定"
-                                                          otherButtonTitles:nil];
-                [alertView show];
+                
+                UIAlertControllerAlertCreate(@"分享已取消", nil)
+                .addCancelAction(@"确定", 0)
+                .showFromViewController(self);
                 break;
             }
             default:

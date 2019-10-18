@@ -35,7 +35,7 @@
 #endif
 
 #if (defined IMPORT_SUB_WechatSession) || (defined IMPORT_SUB_WechatTimeline) || (defined IMPORT_SUB_WechatFav)
-        [platformsRegister setupWeChatWithAppId:MOBSSDKWeChatAppID appSecret:MOBSSDKWeChatAppSecret];
+        [platformsRegister setupWeChatWithAppId:MOBSSDKWeChatAppID appSecret:MOBSSDKWeChatAppSecret universalLink:@"https://www.sandslee.com/"];
 #endif
 
 #if (defined IMPORT_AliPaySocial) || (defined IMPORT_AliPaySocialTimeline)

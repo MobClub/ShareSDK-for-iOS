@@ -247,6 +247,7 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kakaotalk-5.9.7</string>
+		<string>weixinULAPI</string>
 		<string>pinterestsdk.v1</string>
 		<string>vkauthorize</string>
 		<string>storylink</string>
