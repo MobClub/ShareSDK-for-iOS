@@ -1,6 +1,6 @@
 //
 //  UIButton+LimitTimes.m
-//  TikTokOpenSDKDemo
+//  ShareSDKDemo
 //
 //  Created by maxl on 2019/10/11.
 //  Copyright © 2019 bytedance.co. All rights reserved.
@@ -15,19 +15,13 @@ static const void *MOBButtonRuntimeLimitTapTimes      = &MOBButtonRuntimeLimitTa
 static const void *MOBButtonRuntimeLimitTapLastTimes  = &MOBButtonRuntimeLimitTapLastTimes;
 static const void *MOBButtonRuntimeLimitTapSpaceTimes = &MOBButtonRuntimeLimitTapSpaceTimes;
 static const void *MOBButtonRuntimeLimitIsStop        = &MOBButtonRuntimeLimitIsStop;
-static inline NSMutableSet *UIButtonSwizzledSet(){
-    static NSMutableSet *set = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        set = [NSMutableSet set];
-    });
-    return set;
-}
+
+static NSString *UI_swizzleButtonMethodName = @"MOB_UI_swizzleButtonLimitTimeMethod";
+
 static inline void UI_swizzleButtonIfNeed(Class swizzleClass){
-    NSMutableSet *buttonTapSet = UIButtonSwizzledSet();
-    @synchronized (buttonTapSet) {
-        NSString *className = NSStringFromClass(swizzleClass);
-        if ([buttonTapSet containsObject:className]) return;
+    @synchronized (swizzleClass) {
+        if (class_getMethodImplementation(swizzleClass, NSSelectorFromString(UI_swizzleButtonMethodName)) !=_objc_msgForward) return;
+        class_addMethod(swizzleClass, NSSelectorFromString(UI_swizzleButtonMethodName), imp_implementationWithBlock(^(id object,SEL sel){}), "v@:");
         SEL buttonTapSelector = sel_registerName("_sendActionsForEvents:withEvent:");
         __block void (* oldImp) (__unsafe_unretained id, SEL,UIControlEvents,id) = NULL;
         id newImpBlock = ^ (__unsafe_unretained UIButton* self,UIControlEvents events, id a){
@@ -66,12 +60,11 @@ static inline void UI_swizzleButtonIfNeed(Class swizzleClass){
                 oldImp(self,buttonTapSelector,events,a);
             }
         };
+        Method buttonTapMethod = class_getInstanceMethod(swizzleClass, buttonTapSelector);
         IMP newImp = imp_implementationWithBlock(newImpBlock);
-        if (!class_addMethod(swizzleClass, buttonTapSelector, newImp, "v@:")) {
-            Method buttonTapMethod = class_getInstanceMethod(swizzleClass, buttonTapSelector);
+        if (!class_addMethod(swizzleClass, buttonTapSelector, newImp, method_getTypeEncoding(buttonTapMethod))) {
             oldImp = (__typeof__ (oldImp))method_setImplementation(buttonTapMethod, newImp);
         }
-        [buttonTapSet addObject:className];
     }
 }
 
@@ -95,6 +88,7 @@ static inline void UI_swizzleButtonIfNeed(Class swizzleClass){
         return self;
     };
 }
+
 - (void)cancelRecordTime{
     if (!objc_getAssociatedObject(self, MOBButtonRuntimeLimitTapLastTimes)) return;
     objc_setAssociatedObject(self, MOBButtonRuntimeLimitTapLastTimes, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);

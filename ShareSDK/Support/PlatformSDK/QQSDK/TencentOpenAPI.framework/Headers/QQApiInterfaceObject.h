@@ -60,6 +60,7 @@ typedef NS_ENUM(NSUInteger, ShareDestType) {
 
 //小程序的类型
 typedef NS_ENUM(NSUInteger, MiniProgramType) {
+    MiniProgramType_Develop=0,  // 开发版
     MiniProgramType_Test=1,     // 测试版
     MiniProgramType_Online=3,   // 正式版,默认
     MiniProgramType_Preview=4,  // 预览版
@@ -69,10 +70,10 @@ typedef NS_ENUM(NSUInteger, MiniProgramType) {
 /** \brief 所有在QQ及插件间发送的数据对象的根类。
  */
 __attribute__((visibility("default"))) @interface QQApiObject : NSObject
-@property(nonatomic,retain) NSString* title; ///< 标题，最长128个字符
-@property(nonatomic,retain) NSString* description; ///<简要描述，最长512个字符
-
-@property (nonatomic, assign) uint64_t cflag;
+@property(nonatomic, retain) NSString* title; ///< 标题，最长128个字符
+@property(nonatomic, retain) NSString* description; ///<简要描述，最长512个字符
+@property(nonatomic, retain) NSString* universalLink; ///(>=3.3.7)支持第三方传入在互联开放平台注册的universallink
+@property(nonatomic, assign) uint64_t cflag;
 /*
  * 分享到QQ/TIM
  * SDK根据是否安装对应客户端进行判断，判断顺序：QQ > TIM
@@ -93,6 +94,7 @@ __attribute__((visibility("default"))) @interface ArkObject : NSObject
 @end
 
 #pragma mark QQ小程序
+//分享小程序消息 - QQ 8.0.8
 __attribute__((visibility("default"))) @interface QQApiMiniProgramObject : NSObject
 @property(nonatomic,retain) QQApiObject* qqApiObject; //原有老版本的QQApiObject
 @property(nonatomic,retain) NSString* miniAppID; //必填，小程序的AppId（注：必须在QQ互联平台中，将该小程序与分享的App绑定）
@@ -101,6 +103,12 @@ __attribute__((visibility("default"))) @interface QQApiMiniProgramObject : NSObj
 @property(nonatomic,assign) MiniProgramType miniprogramType; //非必填，小程序的类型，默认正式版(3)，可选测试版(1)、预览版(4)
 @end
 
+//唤起小程序 - QQ 8.1.8
+__attribute__((visibility("default"))) @interface QQApiLaunchMiniProgramObject : QQApiObject
+@property(nonatomic,retain) NSString* miniAppID; //必填，小程序的AppId（注：必须在QQ互联平台中，将该小程序与分享的App绑定）
+@property(nonatomic,retain) NSString* miniPath; //必填，小程序的展示路径
+@property(nonatomic,assign) MiniProgramType miniprogramType; //非必填，小程序的类型，默认正式版(3)，可选测试版(1)、开发版(0)
+@end
 // QQApiResultObject
 /** \brief 用于请求回应的数据类型。
  <h3>可能错误码及描述如下:</h3>
@@ -473,6 +481,26 @@ __attribute__((visibility("default"))) @interface QQApiURLObject : QQApiObject
 +(id)objectWithDictionary:(NSDictionary*)dic;
 -(NSDictionary*)toDictionary;
 @end
+
+// QQApiExtraServiceObject;
+/**
+ @brief OpenSDK扩展支持的服务，通用接口，后续会扩充能力
+ @param serviceID [必选] 扩展支持的服务类型ID，参考官方文档说明
+ @param openID    [必选] 授权登录后对该用户的唯一标识
+ @param toUin     [可选] 对方的QQ号码
+ @param extraInfo [可选] 扩展字段
+ @note 该接口的使用须先登录
+ */
+@interface QQApiExtraServiceObject : QQApiObject
+@property (nonatomic,retain) NSString* serviceID;
+@property (nonatomic,retain) NSString* openID;
+@property (nonatomic,retain) NSString* toUin;
+@property (nonatomic,retain) NSDictionary* extraInfo;
+
+- (id)initWithOpenID:(NSString *)openID serviceID:(NSString *)serviceID;
++ (id)objecWithOpenID:(NSString *)openID serviceID:(NSString *)serviceID;
+@end
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Ad item object definition

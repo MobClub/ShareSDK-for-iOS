@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.3.3"
+  s.version          = "4.3.4"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
 
   s.homepage         = 'http://www.mob.com'
-  s.source           = { :http => 'https://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.3.3.zip' }
+  s.source           = { :http => 'https://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.3.4.zip' }
   s.platform         = :ios
   s.ios.deployment_target = "8.0"
   s.frameworks       = 'JavaScriptCore'
@@ -455,10 +455,7 @@ Pod::Spec.new do |s|
 
         # Douyin(抖音)
         sp.subspec 'Douyin' do |ssp|
-            ssp.vendored_libraries = "ShareSDK/Support/PlatformSDK/DouyinOpenSDK/*.a"
-            ssp.source_files = "ShareSDK/Support/PlatformSDK/DouyinOpenSDK/*.{h,m}"
-            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/DouyinConnector.framework'
-            ssp.public_header_files = "ShareSDK/Support/PlatformSDK/DouyinOpenSDK/*.h"
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/DouyinOpenSDK/TikTokOpenPlatformSDK.framework','ShareSDK/Support/PlatformConnector/DouyinConnector.framework'
             ssp.dependency 'mob_sharesdk/ShareSDK'
             ssp.resource_bundles = {
                 'ShareSDK_JS_Douyin' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/Douyin.js']
@@ -474,6 +471,14 @@ Pod::Spec.new do |s|
             ssp.dependency 'mob_sharesdk/ShareSDK'
             ssp.resource_bundles = {
                 'ShareSDK_JS_WeWork' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/WeWork.js']
+            }
+        end
+        # Apple(苹果)
+        sp.subspec 'Apple' do |ssp|
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/AppleAccountConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+            ssp.resource_bundles = {
+                'ShareSDK_JS_Apple' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/Apple.js']
             }
         end
 

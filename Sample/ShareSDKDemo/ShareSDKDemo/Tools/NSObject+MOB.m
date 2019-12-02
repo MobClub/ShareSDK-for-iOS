@@ -10,20 +10,13 @@
 #import <objc/message.h>
 
 static const void *MOBRuntimeDeallocTasks = &MOBRuntimeDeallocTasks;
+static const void *MOBRuntimeDeallocClassTag = &MOBRuntimeDeallocClassTag;
 
-static inline NSMutableSet *MOBSwizzledSet(){
-    static NSMutableSet *set = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        set = [NSMutableSet set];
-    });
-    return set;
-}
+
 static inline void mob_swizzleDeallocIfNeed(Class swizzleClass){
-    NSMutableSet *deallocSet = MOBSwizzledSet();
-    @synchronized (deallocSet) {
-        NSString *className = NSStringFromClass(swizzleClass);
-        if ([deallocSet containsObject:className]) return;
+    @synchronized (swizzleClass) {
+        if (objc_getAssociatedObject(swizzleClass, MOBRuntimeDeallocClassTag)) return;
+        objc_setAssociatedObject(swizzleClass, MOBRuntimeDeallocClassTag, @1, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         SEL deallocSelector = sel_registerName("dealloc");
         
         __block void (* oldImp) (__unsafe_unretained id, SEL) = NULL;
@@ -57,7 +50,6 @@ static inline void mob_swizzleDeallocIfNeed(Class swizzleClass){
             oldImp = (__typeof__ (oldImp))method_getImplementation(deallocMethod);
             oldImp = (__typeof__ (oldImp))method_setImplementation(deallocMethod, newImp);
         }
-        [deallocSet addObject:className];
     }
 }
 

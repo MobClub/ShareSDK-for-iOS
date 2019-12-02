@@ -1,6 +1,6 @@
 //
 //  UIButton+LimitTimes.h
-//  TikTokOpenSDKDemo
+//  ShareSDKDemo
 //
 //  Created by maxl on 2019/10/11.
 //  Copyright © 2019 bytedance.co. All rights reserved.

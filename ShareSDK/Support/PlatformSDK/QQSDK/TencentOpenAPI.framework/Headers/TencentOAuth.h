@@ -68,6 +68,9 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
 /** 第三方应用在互联开放平台申请的appID */
 @property(nonatomic, retain) NSString* appId;
 
+/** 第三方应用在互联开放平台注册的UniversalLink */
+@property(nonatomic, retain) NSString* universalLink;
+
 /** 主要是互娱的游戏设置uin */
 @property(nonatomic, retain) NSString* uin;
 
@@ -105,8 +108,7 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
 - (NSDate *)getCachedExpirationDate;
 
 /**
- * 上次登录的token是否过期
- *
+ * 上次登录的token是否过期(本地判断)
  **/
 - (BOOL)isCachedTokenValid;
 
@@ -169,6 +171,16 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
 - (id)initWithAppId:(NSString *)appId
         andDelegate:(id<TencentSessionDelegate>)delegate;
 
+/**
+* 初始化TencentOAuth对象（>=3.3.7）
+* \param appId 第三方应用在互联开放平台申请的唯一标识
+* \param universalLink 第三方应用在互联开放平台注册的universallink，和bundleID一一对应
+* \param delegate 第三方应用用于接收请求返回结果的委托对象
+* \return 初始化后的授权登录对象
+*/
+- (id)initWithAppId:(NSString *)appId
+   andUniversalLink:(NSString *)universalLink
+        andDelegate:(id<TencentSessionDelegate>)delegate;
 
 /**
  * 判断用户手机上是否安装手机QQ
@@ -440,7 +452,6 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
  */
 - (void)getUserInfoResponse:(APIResponse*) response;
 
-
 /**
  * 社交API统一回调接口
  * \param response API返回结果，具体定义参见sdkdef.h文件中\ref APIResponse
@@ -465,6 +476,7 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
  * \param viewController 需要关闭的viewController
  */
 - (void)tencentOAuth:(TencentOAuth *)tencentOAuth doCloseViewController:(UIViewController *)viewController;
+
 @end
 
 #pragma mark - TencentWebViewDelegate(H5登录webview旋转方向回调)

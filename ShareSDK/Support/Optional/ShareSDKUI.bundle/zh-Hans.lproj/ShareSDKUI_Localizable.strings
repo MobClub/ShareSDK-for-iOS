@@ -59,7 +59,8 @@
 "ShareType_58" = "FacebookAccount";
 "ShareType_59" = "抖音";
 "ShareType_60" = "企业微信";
-
+"ShareType_61" = "苹果";
+"ShareType_62" = "TikTok";
 "ShareType_994" = "易信";
 "ShareType_995" = "Kakao";
 "ShareType_996" = "Evernote";

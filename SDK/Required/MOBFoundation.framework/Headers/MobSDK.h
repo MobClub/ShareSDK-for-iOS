@@ -101,4 +101,16 @@
  */
 + (void)clearUser;
 
+/**
+ *  添加渠道标识
+ *
+ *  @param name  应用名称
+    (分享 =SHARESDK、短信 =SMSSDK、深度链接 =MOBLINK, 推送 =MOBPUSH, 秒验 =SECVERIFY)
+ *  @param channelTag 渠道标识号
+    (cocos2d = 1、unity3=  2、javascript = 3、flutter =4、apicloud =5、quicksdk= 6、native =0(默认值))
+ *  例： [MobSDK addChannelWithSdkName:@"SHARESDK" channel:@"0"] 
+ */
++ (void)addChannelWithSdkName:(NSString * _Nullable)name
+                      channel:(NSString * _Nullable)channelTag;
+
 @end

@@ -213,9 +213,21 @@ typedef NS_ENUM(NSUInteger, SSDKPlatformType){
      */
     SSDKPlatformTypeDouyin              = 59,
     /**
+     * 抖音
+     */
+    SSDKPlatformTypeTikTokChina         = SSDKPlatformTypeDouyin,
+    /**
      * 企业微信
      */
     SSDKPlatformTypeWework              = 60,
+    /**
+     * 苹果
+     */
+    SSDKPlatformTypeAppleAccount        = 61,
+    /**
+     * 抖音国际版
+     */
+    SSDKPlatformTypeTikTokI18N          = 62,
     /**
      *  易信
      */

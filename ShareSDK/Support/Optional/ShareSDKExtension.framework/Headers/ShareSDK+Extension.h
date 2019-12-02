@@ -9,8 +9,9 @@
 #import <ShareSDK/ShareSDK.h>
 #import "SSETypeDefine.h"
 #import <ShareSDKExtension/SSERestoreSceneHeader.h>
+
 /**
- *  ShareSDK扩展类目
+ * ShareSDK扩展类目
  */
 @interface ShareSDK (Extension)
 
@@ -97,14 +98,6 @@
  onStateChanged:(SSDKCallApiStateChangedHandler)stateChangedHandler;
 
 
-/**
- * 生成链接地址的二维码图片
- *
- * @param URL 链接地址
- * @param size 二维码宽度
- * @return 二维码图片 UIImage
- */
-+ (UIImage *)getQRCodeWithURL:(NSURL *)URL withSize:(CGFloat)size;
 
 
 /**
@@ -113,7 +106,5 @@
  @param delegate 场景还原设置代理
  */
 + (void)setRestoreSceneDelegate:(id<ISSERestoreSceneDelegate>)delegate;
-
-
 
 @end

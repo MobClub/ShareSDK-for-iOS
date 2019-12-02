@@ -368,11 +368,19 @@
  */
 - (void)setupDouyinByAppKey:(NSString *)appKey
                   appSecret:(NSString *)appSecret;
+/**
+设置抖音国际版应用信息
+ 
+@param appKey 应用标识
+@param appSecret 应用密钥
+ */
+- (void)setupTikTokByAppKey:(NSString *)appKey
+                  appSecret:(NSString *)appSecret;
 
 /**
  设置企业微信应用信息
  
- @param appSchema 应用schema
+ @param appKey 应用appKey
  @param corpId 企业ID
  @param agentId 应用编号
  @param appSecret 应用密钥

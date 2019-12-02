@@ -12,6 +12,7 @@
 #import <ShareSDK/ShareSDK.h>
 @class SSEFriendsPaging;
 
+
 /**
  *  添加/关注好友状态变更回调处理器
  *

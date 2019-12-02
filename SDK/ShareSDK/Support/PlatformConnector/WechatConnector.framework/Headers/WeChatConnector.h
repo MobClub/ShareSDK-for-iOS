@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <ShareSDK/ShareSDK.h>
 
 /**
  请求Token 类型
 
  @param authCode 授权返回的authCode
- @param ^getUserinfo 继续获取用户信息
+ @param getUserinfo 继续获取用户信息
  */
 typedef void(^SSDKRequestTokenOperation)(NSString *authCode, void(^getUserinfo)(NSString *uid, NSString *token));
 
@@ -21,9 +21,17 @@ typedef void(^SSDKRequestTokenOperation)(NSString *authCode, void(^getUserinfo)(
  刷新Token 类型
 
  @param uid 当前请求的用户id
- @param ^getUserinfo 继续获取用户信息
+ @param getUserinfo 继续获取用户信息
  */
 typedef void(^SSDKRefreshTokenOperation)(NSString *uid, void(^getUserinfo)(NSString *token));
+
+/**
+小程序回调回应用程序
+
+@param uid 当前请求的用户id
+@param getUserinfo 继续获取用户信息
+*/
+typedef void(^SSDKOpenAppFromMiniProgramCallback)(SSDKResponseState state, NSString *extStr, NSError *error);
 
 /**
  *  微信连接器
@@ -60,6 +68,29 @@ typedef void(^SSDKRefreshTokenOperation)(NSString *uid, void(^getUserinfo)(NSStr
  @param miniProgramType //拉起小程序的类型, 0:正式版; 1:开发版; 2:体验版
  */
 + (BOOL)openMiniProgramWithUserName:(NSString *)userName path:(NSString *)path miniProgramType:(NSInteger)miniProgramType;
+
+/**
+拉起小程序功能
+
+@param userName 拉起的小程序的username
+@param path 拉起小程序页面的可带参路径，不填默认拉起小程序首页
+@param miniProgramType 拉起小程序的类型, 0:正式版; 1:开发版; 2:体验版
+@param extMsg 拉起小程序带带自定义参数 ext信息
+@param extDic 拉起小程序带带自定义参数 可存放图片等比较大的数据
+@param complete 打开小程序是否成功
+*/
++ (void)openMiniProgramWithUserName:(NSString *)userName
+                               path:(NSString *)path
+                    miniProgramType:(NSInteger)miniProgramType
+                             extMsg:(NSString *)extMsg
+                             extDic:(NSDictionary *)extDic
+                           complete:(void(^)(BOOL success))complete;
+
+
+/// 小程序带参数打开应用程序进行监听，结果通过callback回调
+/// 注意此回调callback将被单例持有 可通过openAppFromMiniProgramWithCallback:nil 进行释放取消监听或者其他值进行更换
+/// @param callback 回调
++ (void)openAppFromMiniProgramWithCallback:(SSDKOpenAppFromMiniProgramCallback)callback;
 
 /**
  指定返回用户信息的语言，zh_CN 简体中文，zh_TW 繁体中文，en 英文。默认为en。
