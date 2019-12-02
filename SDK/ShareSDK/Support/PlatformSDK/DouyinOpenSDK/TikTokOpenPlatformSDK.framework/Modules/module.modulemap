@@ -1,0 +1,6 @@
+framework module TikTokOpenPlatformSDK {
+  umbrella header "TikTokOpenPlatformSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}
