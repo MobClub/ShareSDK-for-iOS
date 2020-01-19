@@ -86,4 +86,4 @@ typedef NS_ENUM(NSUInteger, AKFLoginFlowState)
   AKFLoginFlowStateCountryCode,
 };
 
-extern const NSUInteger AKFLoginFlowStateCount;
+FOUNDATION_EXPORT const NSUInteger AKFLoginFlowStateCount;

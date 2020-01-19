@@ -1,0 +1,18 @@
+//
+//  SSDKTiledLayerChainModel.m
+//  SSDKCategory
+//
+//  Created by maxl on 2019/1/4.
+//  Copyright © 2019 mob. All rights reserved.
+//
+
+#import "SSDKTiledLayerChainModel.h"
+#define SSDKCATEGORY_CHAIN_TILEDLAYER_IMPLEMENTATION(SSDKMethod,SSDKParaType) SSDKCATEGORY_CHAIN_LAYERCLASS_IMPLEMENTATION(SSDKMethod,SSDKParaType, SSDKTiledLayerChainModel *, CATiledLayer)
+
+@implementation SSDKTiledLayerChainModel
+SSDKCATEGORY_CHAIN_TILEDLAYER_IMPLEMENTATION(levelsOfDetail, size_t)
+SSDKCATEGORY_CHAIN_TILEDLAYER_IMPLEMENTATION(levelsOfDetailBias,size_t)
+SSDKCATEGORY_CHAIN_TILEDLAYER_IMPLEMENTATION(tileSize,CGSize)
+@end
+SSDKCATEGORY_LAYER_IMPLEMENTATION(CATiledLayer, SSDKTiledLayerChainModel)
+#undef SSDKCATEGORY_CHAIN_TILEDLAYER_IMPLEMENTATION

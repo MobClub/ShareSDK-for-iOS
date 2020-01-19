@@ -30,7 +30,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupUI];
-    self.title = @"苹果登录";
+    self.title = @"Apple登录";
     
     [AppleAccountConnector addObserve:self isFirstAddCallBack:NO forAppleAccountLoginStateHandler:^(SSDKAppleAccountState state, SSDKUser * _Nonnull user, NSError * _Nonnull error) {
         NSLog(@"%@", user.rawData);
@@ -47,7 +47,7 @@
         t2 = v = [self createTextFiledByContentType:UITextContentTypePassword];
         UIButton *appleLogin = [UIButton buttonWithType:UIButtonTypeCustom];
         appleLogin.translatesAutoresizingMaskIntoConstraints = NO;
-        [appleLogin setTitle:@"苹果登录" forState:UIControlStateNormal];
+        [appleLogin setTitle:@"Apple登录" forState:UIControlStateNormal];
         [appleLogin addTarget:self action:@selector(appleLogin) forControlEvents:UIControlEventTouchUpInside];
         [appleLogin setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [self.view addSubview:appleLogin];

@@ -1,19 +1,19 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.3.4"
+  s.version          = "4.3.5"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
 
   s.homepage         = 'http://www.mob.com'
-  s.source           = { :http => 'https://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.3.4.zip' }
+  s.source           = { :http => 'https://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.3.5.zip' }
   s.platform         = :ios
   s.ios.deployment_target = "8.0"
   s.frameworks       = 'JavaScriptCore'
   s.libraries        = 'sqlite3'
   s.default_subspecs = 'ShareSDK'
   s.dependency 'MOBFoundation'
-
+  
 
   # 核心模块
     s.subspec 'ShareSDK' do |sp|
@@ -72,7 +72,7 @@ Pod::Spec.new do |s|
             }
         end
 
-        # WeChat
+        #WeChat
         sp.subspec 'WeChat' do |ssp|
             ssp.vendored_libraries = "ShareSDK/Support/PlatformSDK/WeChatSDK/*.a"
             ssp.source_files = "ShareSDK/Support/PlatformSDK/WeChatSDK/*.{h,m}"
@@ -85,7 +85,7 @@ Pod::Spec.new do |s|
             }
         end
 
-        # WeChatFull
+        #WeChatFull
         sp.subspec 'WeChatFull' do |ssp|
             ssp.vendored_libraries = "ShareSDK/Support/PlatformSDK/WeChatSDKFull/*.a"
             ssp.source_files = "ShareSDK/Support/PlatformSDK/WeChatSDKFull/*.{h,m}"
@@ -163,8 +163,21 @@ Pod::Spec.new do |s|
 
         # Facebook
         sp.subspec 'Facebook' do |ssp|
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/FacebookConnector.framework','ShareSDK/Support/PlatformSDK/FacebookSDK/FBSDKLoginKit.framework','ShareSDK/Support/PlatformSDK/FacebookSDK/FBSDKCoreKit.framework','ShareSDK/Support/PlatformSDK/FacebookSDK/FBSDKShareKit.framework'
+            ssp.library = 'c++', 'stdc++','z'
+            ssp.resources = 'ShareSDK/Support/PlatformSDK/FacebookSDK/FacebookSDKStrings.bundle'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+            ssp.ios.weak_framework = 'Accelerate', 'Accounts', 'CoreLocation', 'Social', 'Security', 'QuartzCore', 'CoreGraphics', 'UIKit', 'AudioToolbox','AuthenticationServices','SafariServices','Accelerate','CoreServices'
+            ssp.resource_bundles = {
+                'ShareSDK_JS_Facebook' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/Facebook.js']
+            }
+        end
+        
+        # Facebook 精简版
+        sp.subspec 'Facebook_Lite' do |ssp|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/FacebookConnector.framework'
             ssp.dependency 'mob_sharesdk/ShareSDK'
+            ssp.ios.weak_framework  = 'AuthenticationServices','SafariServices','Accelerate','CoreServices'
             ssp.resource_bundles = {
                 'ShareSDK_JS_Facebook' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/Facebook.js']
             }
@@ -473,15 +486,20 @@ Pod::Spec.new do |s|
                 'ShareSDK_JS_WeWork' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/WeWork.js']
             }
         end
-        # Apple(苹果)
+        # Apple
         sp.subspec 'Apple' do |ssp|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/AppleAccountConnector.framework'
             ssp.dependency 'mob_sharesdk/ShareSDK'
-            ssp.resource_bundles = {
-                'ShareSDK_JS_Apple' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/Apple.js']
-            }
+            ssp.weak_framework = 'AuthenticationServices'
         end
-
+        
+        # Osis(绿洲)
+        sp.subspec 'Oasis' do |ssp|
+            
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/OasisConnector.framework','ShareSDK/Support/PlatformSDK/OasisSDK/OasisSDK.framework'
+            
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
     end
 
     # ShareSDK 配置文件模块

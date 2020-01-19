@@ -102,15 +102,12 @@
 + (void)clearUser;
 
 /**
- *  添加渠道标识
- *
- *  @param name  应用名称
-    (分享 =SHARESDK、短信 =SMSSDK、深度链接 =MOBLINK, 推送 =MOBPUSH, 秒验 =SECVERIFY)
- *  @param channelTag 渠道标识号
-    (cocos2d = 1、unity3=  2、javascript = 3、flutter =4、apicloud =5、quicksdk= 6、native =0(默认值))
- *  例： [MobSDK addChannelWithSdkName:@"SHARESDK" channel:@"0"] 
+ 获取用户隐私协议
+ 
+ @param type 协议类型 (1= url类型, 2=  富文本类型)
+ @param data  title=标题,content=内容(type=1，返回url,type = 2时返回富文本)
  */
-+ (void)addChannelWithSdkName:(NSString * _Nullable)name
-                      channel:(NSString * _Nullable)channelTag;
++ (void)getPrivacyPolicy:(NSString * _Nullable)type
+             compeletion:(void (^ _Nullable)(NSDictionary * _Nullable data,NSError * _Nullable error))result;
 
 @end

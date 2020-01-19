@@ -221,9 +221,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>ssdkmoba0b0c0d0</string>
-			</array>
+			<array/>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
@@ -249,17 +247,41 @@
 			<key>CFBundleURLName</key>
 			<string></string>
 			<key>CFBundleURLSchemes</key>
-			<array/>
+			<array>
+				<string>oasis568898243</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.232554794995-85agj9jh8br7dtf8ornec6ndi7drh0kv</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ssdkmoba0b0c0d0</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<false/>
 	<key>FacebookAppID</key>
 	<string>1412473428822331</string>
 	<key>KAKAO_APP_KEY</key>
 	<string>9c17eb03317e0e627ec95a400f5785fb</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>oasis</string>
+		<string>fbshareextension</string>
+		<string>fbapi20160328</string>
+		<string>fbapi20150629</string>
 		<string>mqqopensdkminiapp</string>
 		<string>snssdk1180</string>
 		<string>snssdk1233</string>

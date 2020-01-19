@@ -40,4 +40,4 @@ typedef NS_ENUM(NSUInteger, AKFTextPosition) {
   AKFTextPositionBelowBody,
 };
 
-extern const NSUInteger AKFTextPositionCount;
+FOUNDATION_EXPORT const NSUInteger AKFTextPositionCount;

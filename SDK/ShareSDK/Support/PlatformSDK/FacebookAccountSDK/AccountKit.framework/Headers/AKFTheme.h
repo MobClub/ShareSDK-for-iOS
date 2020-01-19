@@ -54,7 +54,7 @@ typedef NS_ENUM(NSInteger, AKFButtonTranslucentStyle) {
   AKFButtonTranslucentStyleBlurDark,
 };
 
-extern const NSUInteger AKFHeaderTextTypeCount;
+FOUNDATION_EXPORT const NSUInteger AKFHeaderTextTypeCount;
 
 /**
   A theme for the Account Kit UI

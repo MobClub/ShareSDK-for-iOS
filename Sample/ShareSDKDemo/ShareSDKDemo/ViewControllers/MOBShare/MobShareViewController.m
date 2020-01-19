@@ -61,6 +61,7 @@ static const NSInteger otherInfo = 1;
     loadingViewController.view.frame = [UIScreen mainScreen].bounds;
     
     _platforemArray = @[
+                        @(SSDKPlatformTypeOasis),
                         @(SSDKPlatformTypeDouyin),
                         @(SSDKPlatformSubTypeQQFriend),
                         @(SSDKPlatformSubTypeQZone),
@@ -348,6 +349,8 @@ static const NSInteger otherInfo = 1;
 
 - (void)test_1:(SSUIPlatformItem *)item
 {
+    
+    
     NSLog(@"costom item click , id :%@",item.platformId);
 }
 
