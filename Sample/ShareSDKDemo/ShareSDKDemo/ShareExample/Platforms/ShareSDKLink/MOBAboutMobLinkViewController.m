@@ -352,7 +352,7 @@
                 
                 UIAlertControllerAlertCreate(@"分享成功", nil)
                 .addCancelAction(@"确定")
-                .showFromViewController(self);
+                .present();
                 break;
             }
             case SSDKResponseStateFail:
@@ -361,7 +361,7 @@
                 
                 UIAlertControllerAlertCreate(@"分享失败", [NSString stringWithFormat:@"%@",error])
                 .addCancelAction(@"OK")
-                .showFromViewController(self);
+                .present();
                 break;
             }
             case SSDKResponseStateCancel:
@@ -369,7 +369,7 @@
                 
                 UIAlertControllerAlertCreate(@"分享已取消", nil)
                 .addCancelAction(@"确定")
-                .showFromViewController(self);
+                .present();
                 break;
             }
             default:

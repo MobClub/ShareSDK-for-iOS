@@ -20,7 +20,9 @@ SSDKCATEGORY_CHAIN_TABLEVIEWCELL_IMPLEMENTATION(userInteractionEnabledWhileDragg
 
 - (SSDKTableViewCellChainModel * _Nonnull (^)(BOOL, BOOL))editingWithAnimated{
     return ^ (BOOL editing, BOOL animated){
-        [(UITableViewCell *)self.view setEditing:editing animated:animated];
+        [self enumerateObjectsUsingBlock:^(UITableViewCell * _Nonnull obj) {
+            [obj setEditing:editing animated:animated];
+        }];
         return self;
     };
 }

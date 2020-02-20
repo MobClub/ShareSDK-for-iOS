@@ -2,7 +2,7 @@
 //  MobSDK.h
 //  MOBFoundation
 //
-//  Created by 冯鸿杰 on 17/2/23.
+//  Created by liyc on 17/2/23.
 //  Copyright © 2017年 MOB. All rights reserved.
 //
 
@@ -100,14 +100,5 @@
  清空用户
  */
 + (void)clearUser;
-
-/**
- 获取用户隐私协议
- 
- @param type 协议类型 (1= url类型, 2=  富文本类型)
- @param data  title=标题,content=内容(type=1，返回url,type = 2时返回富文本)
- */
-+ (void)getPrivacyPolicy:(NSString * _Nullable)type
-             compeletion:(void (^ _Nullable)(NSDictionary * _Nullable data,NSError * _Nullable error))result;
 
 @end

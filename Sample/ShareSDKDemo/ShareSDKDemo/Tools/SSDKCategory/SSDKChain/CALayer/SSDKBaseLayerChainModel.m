@@ -7,15 +7,14 @@
 //
 
 #import "SSDKBaseLayerChainModel.h"
-
+#import "SSDKChainBaseModel+SSDKPrivate.h"
 #define SSDKCATEGORY_CHAIN_BASELAYER_IMPLEMENTATION(SSDKMethod,SSDKParaType) SSDKCATEGORY_CHAIN_LAYERCLASS_IMPLEMENTATION(SSDKMethod,SSDKParaType, id, CALayer)
 
 @implementation SSDKBaseLayerChainModel
 
-- (instancetype)initWithLayer:(CALayer *)layer{
-    if (self = [super init]) {
-        _layer = layer;
-        _layerClass = [layer class];
+- (instancetype)initWithLayer:(CALayer *)layer modelClass:(nonnull Class)modelClass{
+    if (self = [super initWithModelObject:layer modelClass:modelClass]) {
+        
     }
     return self;
 }
@@ -70,7 +69,9 @@ SSDKCATEGORY_CHAIN_BASELAYER_IMPLEMENTATION(style, NSDictionary *)
 
 - (id  _Nonnull (^)( NSDictionary<NSString *,id<CAAction>>  * _Nonnull))actions{
     return ^ (NSDictionary<NSString *,id<CAAction>> * dic){
-        self.layer.actions = dic;
+        [self enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj) {
+            obj.actions = dic;
+        }];
         return self;
     };
 }
@@ -78,24 +79,31 @@ SSDKCATEGORY_CHAIN_BASELAYER_IMPLEMENTATION(style, NSDictionary *)
 - (id (^)(CGSize shadowOffset, CGFloat shadowRadius, UIColor *shadowColor, CGFloat shadowOpacity))shadow
 {
     return ^ id (CGSize shadowOffset, CGFloat shadowRadius, UIColor *shadowColor, CGFloat shadowOpacity) {
-        [self.layer setShadowOffset:shadowOffset];
-        [self.layer setShadowRadius:shadowRadius];
-        [self.layer setShadowColor:shadowColor.CGColor];
-        [self.layer setShadowOpacity:shadowOpacity];
+        [self enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj) {
+            [obj setShadowOffset:shadowOffset];
+            [obj setShadowRadius:shadowRadius];
+            [obj setShadowColor:shadowColor.CGColor];
+            [obj setShadowOpacity:shadowOpacity];
+        }];
+        
         return self;
     };
 }
 
 - (id  _Nonnull (^)(void))removeFromSuperlayer{
     return ^(){
-        [self.layer removeFromSuperlayer];
+        [self enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj) {
+            [obj removeFromSuperlayer];
+        }];
         return self;
     };
 }
 
 - (id  _Nonnull (^)(CALayer * _Nonnull))addToSuperLayer{
     return ^ (CALayer *layer){
-        [layer addSublayer:self.layer];
+        [self enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj) {
+            [layer addSublayer:obj];
+        }];
         return self;
     };
 }
@@ -123,14 +131,18 @@ SSDKCATEGORY_CHAIN_BASELAYER_IMPLEMENTATION(style, NSDictionary *)
 
 - (id  _Nonnull (^)(CALayer * _Nonnull, CALayer * _Nonnull))relpaceSublayer{
     return ^ (CALayer *oldLayer, CALayer *newLayer){
-        [self.layer replaceSublayer:oldLayer with:newLayer];
+        [self enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj) {
+            [obj replaceSublayer:oldLayer with:newLayer];
+        }];
         return self;
     };
 }
 
 - (id  _Nonnull (^)(CALayer * _Nonnull))setToMask{
     return ^ (CALayer *layer){
-        layer.mask = self.layer;
+        [self enumerateObjectsUsingBlock:^(CALayer *  _Nonnull obj) {
+            layer.mask = obj;
+        }];
         return self;
     };
 }
@@ -138,7 +150,9 @@ SSDKCATEGORY_CHAIN_BASELAYER_IMPLEMENTATION(style, NSDictionary *)
 - (id  _Nonnull (^)(CAAnimation * _Nonnull, NSString * _Nonnull))addAnimation{
     return ^ (CAAnimation *ani, NSString *key){
         if (ani && key) {
-            [self.layer addAnimation:ani forKey:key];
+            [self enumerateObjectsUsingBlock:^(id  _Nonnull obj) {
+                [obj addAnimation:ani forKey:key];
+            }];
         }
         return self;
     };
@@ -147,7 +161,9 @@ SSDKCATEGORY_CHAIN_BASELAYER_IMPLEMENTATION(style, NSDictionary *)
 - (id  _Nonnull (^)(NSString * _Nonnull))removeAnimation{
     return ^ (NSString *key){
         if (key) {
-            [self.layer removeAnimationForKey:key];
+            [self enumerateObjectsUsingBlock:^(id  _Nonnull obj) {
+                [obj removeAnimationForKey:key];
+            }];
         }
         return self;
     };
@@ -155,7 +171,9 @@ SSDKCATEGORY_CHAIN_BASELAYER_IMPLEMENTATION(style, NSDictionary *)
 
 - (id  _Nonnull (^)(void))removeAllAnimation{
     return ^ (){
-        [self.layer removeAllAnimations];
+        [self enumerateObjectsUsingBlock:^(id  _Nonnull obj) {
+            [obj removeAllAnimations];
+        }];
         return self;
     };
 }
@@ -163,11 +181,15 @@ SSDKCATEGORY_CHAIN_BASELAYER_IMPLEMENTATION(style, NSDictionary *)
 - (id  _Nonnull (^)(SSDKAssignLayerLoad _Nonnull))assignTo{
     return ^ (void (^assignTo)(id layer)){
         if (assignTo) {
-            assignTo(self->_layer);
+            assignTo(self.layer);
         }
         assignTo = nil;
         return self;
     };
+}
+
+- (CALayer *)layer{
+    return self.effectiveObjects.firstObject;
 }
 
 @end

@@ -15,7 +15,9 @@ SSDKCATEGORY_CHAIN_SCROLLVIEW_IMPLEMENTATION(delegate, id<UIScrollViewDelegate>)
 - (id _Nonnull (^)(void))adJustedContentIOS11{
     return ^ (){
         if (@available(iOS 11.0, *)) {
-            [(UIScrollView *)self.view adJustedContentIOS11];
+            [self enumerateObjectsUsingBlock:^(UIScrollView * _Nonnull obj) {
+                [obj adJustedContentIOS11];
+            }];
         }
         return self;
     };
@@ -41,14 +43,18 @@ SSDKCATEGORY_CHAIN_SCROLLVIEW_IMPLEMENTATION(maximumZoomScale, CGFloat)
 
 - (id  _Nonnull (^)(CGPoint, BOOL))contentOffsetAnimated{
     return ^ (CGPoint point, BOOL animated){
-        [(UIScrollView *)self.view setContentOffset:point animated:animated];
+        [self enumerateObjectsUsingBlock:^(UIScrollView * _Nonnull obj) {
+            [obj setContentOffset:point animated:animated];
+        }];
         return self;
     };
 }
 
 - (id  _Nonnull (^)(CGRect, BOOL))contentOffsetToVisible{
     return ^ (CGRect rect, BOOL animated){
-        [(UIScrollView *)self.view scrollRectToVisible:rect animated:animated];
+        [self enumerateObjectsUsingBlock:^(UIScrollView * _Nonnull obj) {
+            [obj scrollRectToVisible:rect animated:animated];
+        }];
         return self;
     };
 }

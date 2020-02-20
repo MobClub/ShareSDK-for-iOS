@@ -105,7 +105,7 @@
                 NSString *msg = @"分享成功";
                 UIAlertControllerAlertCreate(@"提示", msg)
                 .addCancelAction(@"OK")
-                .show();
+                .present();
                 break;
             }
             case SSDKResponseStateFail:
@@ -113,7 +113,7 @@
                 NSString *msg = [NSString stringWithFormat:@"分享失败 \nuserData = %@\ncontent entity = %@\nerror = %@", userData, contentEntity, error];
                 UIAlertControllerAlertCreate(@"提示", msg)
                 .addCancelAction(@"OK")
-                .show();
+                .present();
                 break;
             }
             case SSDKResponseStateCancel:
@@ -121,7 +121,7 @@
                 NSString *msg = @"分享取消";
                 UIAlertControllerAlertCreate(@"提示", msg)
                 .addCancelAction(@"OK")
-                .show();
+                .present();
                 break;
             }
             default:

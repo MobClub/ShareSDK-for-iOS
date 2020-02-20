@@ -13,6 +13,7 @@
 #import "MOBShareContentViewController.h"
 #import "MOBSharePlatformViewController.h"
 #import "MOBShareExample.h"
+#import "MOBPolicyManager.h"
 @interface MOBMainTableHeaderFooterView : UITableViewHeaderFooterView
 @end
 
@@ -50,6 +51,7 @@
 
 //点击跳转
 - (void)createData{
+    SSDKWEAK
     self.dataSource = [MobSharePlatformStyleModel shareDisplayDataSourceHandle:^(MobSharePlatformStyleModel * _Nonnull model) {
         switch (model.platStyle) {
             //跳转到"按内容分享页面"
@@ -58,7 +60,7 @@
                 MOBShareContentViewController *vc = [MOBShareContentViewController new];
                 vc.title = model.name;
                 
-                [self.navigationController pushViewController:vc animated:YES];
+                [weakSelf.navigationController pushViewController:vc animated:YES];
             }
                 break;
             //跳转到"按平台分享页面"
@@ -66,7 +68,7 @@
                 
                 MOBSharePlatformViewController *vc = [MOBSharePlatformViewController new];
                 vc.title = model.name;
-                [self.navigationController pushViewController:vc animated:YES];
+                [weakSelf.navigationController pushViewController:vc animated:YES];
             }
                 break;
             //弹出分享菜单
@@ -114,13 +116,11 @@
     _tableViewBackgroundShadow.backgroundColor = [UIColor whiteColor];
     [self.tableView insertSubview:_tableViewBackgroundShadow atIndex:0];
     
-    
-}
-
-- (void)viewSafeAreaInsetsDidChange{
-    [super viewSafeAreaInsetsDidChange];
-    
-    
+    self.navigationBar.leftButton.makeChain
+    .text(@"     ", UIControlStateNormal)
+    .numberOfLines(2)
+    .textColor(UIColor.whiteColor, UIControlStateNormal)
+    .adjustsFontSizeToFitWidth(YES);
 }
 
 - (void)viewDidLayoutSubviews{
@@ -187,6 +187,10 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
     [super touchesBegan:touches withEvent:event];
+}
+
+- (void)leftButtonTap:(UIButton *)button{
+    [[MOBPolicyManager defaultManager] clearCache];
 }
 
 @end

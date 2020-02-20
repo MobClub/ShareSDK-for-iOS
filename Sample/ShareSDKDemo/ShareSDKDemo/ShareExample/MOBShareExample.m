@@ -12,6 +12,7 @@
 #import <ShareSDKExtension/SSEShareHelper.h>
 #import "MOBShakeView.h"
 #import "MOBAboutMobLinkViewController.h"
+#import "MOBPolicyManager.h"
 @implementation MOBShareExample{
     BOOL isAnimate, onShakeShare;
     MOBShakeView *shakeShareView;
@@ -220,8 +221,10 @@
     }
     UIAlertControllerAlertCreate(title, message)
     .addCancelAction(@"确认")
-    .show();
+    .showAnimated(YES)
+    .present();
 }
+
 
 
 - (void)sharePlatType:(SSDKPlatformType)type state:(SSDKResponseState)state error:(NSError *)error{
@@ -263,7 +266,8 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         UIAlertControllerAlertCreate(title, typeStr)
         .addCancelAction(@"确定")
-        .show();
+        .showAnimated(YES)
+        .present();
     });
 }
 
@@ -272,7 +276,7 @@
 
 - (void)shareLink{
     MOBAboutMobLinkViewController *vc = [MOBAboutMobLinkViewController new];
-    [[UIApplication currentToNavgationController] pushViewController:vc animated:YES];
+    vc.showType(SSDKControllerShowTypeNavigationVC).push();
 }
 
 

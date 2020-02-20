@@ -12,7 +12,7 @@
 #import <ShareSDKExtension/SSEFriendsPaging.h>
 #import <Bugly/Bugly.h>
 #import "MOBPlatformDataSource.h"
-
+#import "MOBPolicyManager.h"
 @interface AppDelegate () <ISSERestoreSceneDelegate>
 
 @end
@@ -42,7 +42,11 @@
     
     //初始化数据源
     [MOBPlatformDataSource dataSource];
+    
+    [[MOBPolicyManager defaultManager] show];
+    
     return YES;
+    
 }
 
 #pragma mark - ISSERestoreSceneDelegate
@@ -63,10 +67,6 @@
             [[UIApplication currentToNavgationController] pushViewController:sceneVC animated:YES];
         }];
     }
-}
-
-- (void)applicationWillResignActive:(UIApplication *)application{
-    
 }
 
 @end

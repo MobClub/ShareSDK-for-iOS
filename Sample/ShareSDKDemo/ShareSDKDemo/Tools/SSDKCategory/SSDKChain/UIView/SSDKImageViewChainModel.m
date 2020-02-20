@@ -20,14 +20,18 @@ SSDKCATEGORY_CHAIN_IMAGEVIEW_IMPLEMENTATION(animationRepeatCount, NSInteger)
 
 - (SSDKImageViewChainModel * _Nonnull (^)(void))startAnimating{
     return ^ (){
-        [self startAnimating];
+        [self enumerateObjectsUsingBlock:^(UIImageView * _Nonnull obj) {
+            [obj startAnimating];
+        }];
         return self;
     };
 }
 
 - (SSDKImageViewChainModel * _Nonnull (^)(void))stopAnimating{
     return ^ (){
-        [self stopAnimating];
+        [self enumerateObjectsUsingBlock:^(UIImageView * _Nonnull obj) {
+            [obj stopAnimating];
+        }];
         return self;
     };
 }

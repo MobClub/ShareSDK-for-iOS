@@ -48,6 +48,10 @@
                     //                             forPlatformSubType:SSDKPlatformSubTypeQZone];
                     [self shareWithParameters:parameters];
                 }];
+            }else{
+                UIAlertControllerAlertCreate(@"", @"存储到相册失败")
+                .addDefaultAction(@"OK")
+                .present();
             }
         }];
     }];
@@ -192,6 +196,10 @@
                 //                             forPlatformSubType:SSDKPlatformSubTypeQZone];
                [weakSelf shareWithParameters:parameters];
             }];
+        }else{
+            UIAlertControllerAlertCreate(@"", @"存储到相册失败")
+            .addDefaultAction(@"OK")
+            .present();
         }
     }];
     

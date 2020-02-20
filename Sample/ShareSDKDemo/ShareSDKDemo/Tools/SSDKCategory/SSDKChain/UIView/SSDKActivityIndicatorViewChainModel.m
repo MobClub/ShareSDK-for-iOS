@@ -17,7 +17,9 @@ SSDKCATEGORY_CHAIN_ACTIVITY_IMPLEMENTATION(color,UIColor *)
 - (SSDKActivityIndicatorViewModel * _Nonnull (^)(void))startAnimating{
     return ^()
     {
-        [(UIActivityIndicatorView *)self.view startAnimating];
+        [self enumerateObjectsUsingBlock:^(UIActivityIndicatorView * _Nonnull obj) {
+            [obj startAnimating];
+        }];
         return self;
     };
 }
@@ -26,7 +28,9 @@ SSDKCATEGORY_CHAIN_ACTIVITY_IMPLEMENTATION(color,UIColor *)
 - (SSDKActivityIndicatorViewModel * _Nonnull (^)(void))stopAnimating{
     return ^()
     {
-        [(UIActivityIndicatorView *)self.view stopAnimating];
+        [self enumerateObjectsUsingBlock:^(UIActivityIndicatorView * _Nonnull obj) {
+            [obj stopAnimating];
+        }];
         return self;
     };
 }

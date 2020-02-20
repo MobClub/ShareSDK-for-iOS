@@ -8,18 +8,21 @@
 
 #import "SSDKBaseViewChainModel.h"
 #import "UIView+SSDKCategory.h"
+#import "SSDKChainBaseModel+SSDKPrivate.h"
 #import <objc/runtime.h>
-
+#import "SSDKGestureChainHeader.h"
 #define SSDKCATEGORY_CHAIN_VIEW_IMPLEMENTATION(SSDKMethod,SSDKParaType) SSDKCATEGORY_CHAIN_VIEWCLASS_IMPLEMENTATION(SSDKMethod,SSDKParaType, id,UIView)
 
 
 #define     SSDKCATEGORY_CHAIN_LAYER_IMPLEMENTATION(SSDKMethod,SSDKParaType) \
 - (id (^)(SSDKParaType SSDKMethod))SSDKMethod    \
 {   \
-    return ^id (SSDKParaType SSDKMethod) {    \
-        self.view.layer.SSDKMethod = SSDKMethod;   \
-        return self;    \
-    };\
+return ^id (SSDKParaType SSDKMethod) {    \
+[self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {\
+obj.layer.SSDKMethod = SSDKMethod;\
+}];\
+return self;    \
+};\
 }
 
 @interface SSDKBaseViewChainModel ()
@@ -27,16 +30,15 @@
 @end
 @implementation SSDKBaseViewChainModel
 
-- (instancetype)initWithTag:(NSInteger)tag andView:(UIView *)view{
-    if (self = [super init]) {
+- (instancetype)initWithTag:(NSInteger)tag andView:(UIView *)view modelClass:(nonnull Class)modelClass{
+    if (self = [super initWithModelObject:view modelClass:modelClass]) {
         _tag = tag;
-        _view = view;
-        _viewClass = [view class];
         [view setTag:tag];
     }
     return self;
 }
 #pragma mark - frame -
+
 SSDKCATEGORY_CHAIN_VIEW_IMPLEMENTATION(bounds, CGRect)
 
 SSDKCATEGORY_CHAIN_VIEW_IMPLEMENTATION(frame, CGRect)
@@ -79,7 +81,7 @@ SSDKCATEGORY_CHAIN_VIEW_IMPLEMENTATION(autoresizesSubviews, BOOL)
 }
 
 - (CGFloat (^)(void))visibleAlpha{
-    return ^(){
+    return ^{
         return [self.view visibleAlpha];
     };
 }
@@ -132,14 +134,19 @@ SSDKCATEGORY_CHAIN_VIEW_IMPLEMENTATION(transform, CGAffineTransform)
 
 - (id  _Nonnull (^)(BOOL))endEditing{
     return ^(BOOL end){
-        [self.view endEditing:end];
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            [obj endEditing:end];
+        }];
+        
         return self;
     };
 }
 
 - (id  _Nonnull (^)(UIView * _Nonnull))addToSuperView{
     return ^(UIView *superView){
-        [superView addSubview:self.view];
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            [superView addSubview:obj];
+        }];
         return self;
     };
 }
@@ -154,7 +161,9 @@ SSDKCATEGORY_CHAIN_VIEW_IMPLEMENTATION(transform, CGAffineTransform)
 - (id  _Nonnull (^)(UIGestureRecognizer * _Nonnull))addGesture{
     return ^(UIGestureRecognizer *ges){
         if (!ges) return self;
-        [self.view addGestureRecognizer:ges];
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            [obj addGestureRecognizer:ges];
+        }];
         return self;
     };
 }
@@ -162,9 +171,11 @@ SSDKCATEGORY_CHAIN_VIEW_IMPLEMENTATION(transform, CGAffineTransform)
 - (id  _Nonnull (^)(void (^ _Nonnull)(id _Nonnull)))addGestureBlock{
     return ^( void (^ ges) (id)){
         if (ges) {
-            [self.view addGestureRecognizer:UITapGestureRecognizerCreateWithTarget(ges)];
+            [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+                [obj addGestureRecognizer:UITapGestureRecognizerCreateWithTarget(ges)];
+            }];
         }
-
+        
         return self;
     };
 }
@@ -172,7 +183,9 @@ SSDKCATEGORY_CHAIN_VIEW_IMPLEMENTATION(transform, CGAffineTransform)
 - (id  _Nonnull (^)(UIGestureRecognizer * _Nonnull))removeGesture{
     return ^(UIGestureRecognizer *ges){
         if (!ges) return self;
-        [self.view removeGestureRecognizer:ges];
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            [obj removeGestureRecognizer:ges];
+        }];
         return self;
     };
 }
@@ -294,7 +307,9 @@ SSDKCATEGORY_CHAIN_VIEW_IMPLEMENTATION(transform, CGAffineTransform)
 - (id (^)(CGFloat cornerRadius))cornerRadius
 {
     return ^__kindof SSDKBaseViewChainModel *(CGFloat cornerRadius) {
-        [self.view.layer setCornerRadius:cornerRadius];
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            [obj.layer setCornerRadius:cornerRadius];
+        }];
         return self;
     };
 }
@@ -302,8 +317,11 @@ SSDKCATEGORY_CHAIN_VIEW_IMPLEMENTATION(transform, CGAffineTransform)
 - (id (^)(CGFloat borderWidth, UIColor *borderColor))border
 {
     return ^__kindof SSDKBaseViewChainModel *(CGFloat borderWidth, UIColor *borderColor) {
-        [self.view.layer setBorderWidth:borderWidth];
-        [self.view.layer setBorderColor:borderColor.CGColor];
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            [obj.layer setBorderWidth:borderWidth];
+            [obj.layer setBorderColor:borderColor.CGColor];
+        }];
+        
         return self;
     };
 }
@@ -311,31 +329,39 @@ SSDKCATEGORY_CHAIN_VIEW_IMPLEMENTATION(transform, CGAffineTransform)
 - (id (^)(CGSize shadowOffset, CGFloat shadowRadius, UIColor *shadowColor, CGFloat shadowOpacity))shadow
 {
     return ^ SSDKBaseViewChainModel *(CGSize shadowOffset, CGFloat shadowRadius, UIColor *shadowColor, CGFloat shadowOpacity) {
-        [self.view.layer setShadowOffset:shadowOffset];
-        [self.view.layer setShadowRadius:shadowRadius];
-        [self.view.layer setShadowColor:shadowColor.CGColor];
-        [self.view.layer setShadowOpacity:shadowOpacity];
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            [obj.layer setShadowOffset:shadowOffset];
+            [obj.layer setShadowRadius:shadowRadius];
+            [obj.layer setShadowColor:shadowColor.CGColor];
+            [obj.layer setShadowOpacity:shadowOpacity];
+        }];
         return self;
     };
 }
 
 - (id  _Nonnull (^)(float))layerOpacity{
     return ^ (float opacity){
-        self.view.layer.opacity = opacity;
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            obj.layer.opacity = opacity;
+        }];
         return self;
     };
 }
 
 - (id  _Nonnull (^)(BOOL))layerOpaque{
     return ^ (BOOL opaque){
-        self.view.layer.opaque = opaque;
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            obj.layer.opaque = opaque;
+        }];
         return self;
     };
 }
 
 - (id  _Nonnull (^)(UIColor * _Nonnull))layerBackGroundColor{
     return ^ (UIColor *color){
-        self.view.layer.backgroundColor = color.CGColor;
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            obj.layer.backgroundColor = color.CGColor;
+        }];
         return self;
     };
 }
@@ -357,7 +383,10 @@ SSDKCATEGORY_CHAIN_LAYER_IMPLEMENTATION(shadowPath, CGPathRef);
 
 - (id  _Nonnull (^)(CATransform3D))layerTransform{
     return ^ (CATransform3D ta){
-        self.view.layer.transform = ta;
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            obj.layer.transform = ta;
+        }];
+        
         return self;
     };
 }
@@ -374,28 +403,38 @@ SSDKCATEGORY_CHAIN_LAYER_IMPLEMENTATION(shadowPath, CGPathRef);
 
 - (id  _Nonnull (^)(void))removeFormSuperView{
     return ^ (){
-        [self.view removeFromSuperview];
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            [obj removeFromSuperview];
+        }];
+        
         return self;
     };
 }
 
 - (id  _Nonnull (^)(void))sizeToFit{
     return ^ (){
-        [self.view sizeToFit];
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            [obj sizeToFit];
+        }];
         return self;
     };
 }
 
 - (id  _Nonnull (^)(void))layoutIfNeeded{
     return ^ (){
-        [self.view layoutIfNeeded];
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            [obj layoutIfNeeded];
+        }];
+        
         return self;
     };
 }
 
 - (id  _Nonnull (^)(NSInteger))makeTag{
     return ^ (NSInteger tag){
-        self.view.tag = tag;
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            obj.tag = tag;
+        }];
         self.tag = tag;
         return self;
     };
@@ -403,28 +442,38 @@ SSDKCATEGORY_CHAIN_LAYER_IMPLEMENTATION(shadowPath, CGPathRef);
 
 - (id  _Nonnull (^)(void))setNeedsLayout{
     return ^ (){
-        [self.view setNeedsLayout];
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            [obj setNeedsLayout];
+        }];
         return self;
     };
 }
 - (id  _Nonnull (^)(void))setNeedsDisplay{
     return ^ (){
-        [self.view setNeedsDisplay];
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            [obj setNeedsDisplay];
+        }];
         return self;
     };
 }
 
 - (CGSize (^)(CGSize))sizeToFitSize{
     return ^ (CGSize size){
-       return [self.view sizeThatFits:size];
+        return [self.view sizeThatFits:size];
     };
 }
 
 - (id (^)(CGRect))setNeedsDisplayRect{
     return ^ (CGRect rect){
-        [self.view setNeedsDisplayInRect:rect];
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            [obj setNeedsDisplayInRect:rect];
+        }];
         return self;
     };
+}
+
+- (UIView *)view{
+    return self.effectiveObjects.firstObject;
 }
 
 @end

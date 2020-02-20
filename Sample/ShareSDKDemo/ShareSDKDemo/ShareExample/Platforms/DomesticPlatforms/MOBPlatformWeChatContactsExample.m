@@ -296,7 +296,7 @@
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertControllerAlertCreate(title, typeStr).addCancelAction(@"确定").show();
+            UIAlertControllerAlertCreate(title, typeStr).addCancelAction(@"确定").present();
         });
     }];
     

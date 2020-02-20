@@ -1,6 +1,6 @@
 //
 //  SSDKCommonViewController.m
-//  ShareSDKDemo
+//  mob
 //
 //  Created by maxl on 2018/12/20.
 //  Copyright © 2018 mob. All rights reserved.
@@ -21,6 +21,7 @@
     BOOL _isConformsNavigationBar;
     BOOL _isConformsTableView;
     BOOL _isConformsCollectionView;
+    BOOL _isRespondsSafeAreaSel;
 }
 
 @end
@@ -34,6 +35,7 @@ static NSMutableSet *_ssdkCommonProtocolSwizzleSet(){
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         set = [NSMutableSet set];
+        
     });
     return set;
 }
@@ -83,7 +85,9 @@ static void _ssdkCommonProtocolSwizzle(id self){
         if (_isConformsTableView || _isConformsCollectionView) {
             _ssdkCommonProtocolSwizzle(self);
         }
-
+        if ([self respondsToSelector:@selector(viewSafeAreaInsetsChanged:)]) {
+            _isRespondsSafeAreaSel = YES;
+        }
     }
     return self;
 }
@@ -105,8 +109,18 @@ static void _ssdkCommonProtocolSwizzle(id self){
     if (_isConformsCollectionView) {
         [self commonSetupCollectionView];
     }
+    
+
     // Do any additional setup after loading the view.
 }
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    if (_isRespondsSafeAreaSel) {
+        [self viewSafeAreaInsetsChanged:SSDKSafeArea(self.view)];
+    }
+}
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 }
@@ -219,6 +233,8 @@ static void _ssdkCommonProtocolSwizzle(id self){
 - (void)viewSafeAreaInsetsDidChange API_AVAILABLE(ios(11.0)){
     [super viewSafeAreaInsetsDidChange];
     UIEdgeInsets edge = SSDKSafeArea(self.view);
+    CGFloat barHeight = kDefaultNavigationBarHeight;
+    
     SSDKCommonNavigationBar *view = nil;
     if (_isConformsNavigationBar) {
         view = [(id<SSDKCommonNavigationProtocol>)self navigationBar];
@@ -226,7 +242,7 @@ static void _ssdkCommonProtocolSwizzle(id self){
         [view resetLayout:edge];
         [view mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.mas_offset(0);
-            make.height.mas_equalTo(kDefaultNavigationBarHeight);
+            make.height.mas_equalTo(barHeight);
         }];
     }
     UIView *tableView;
@@ -265,8 +281,16 @@ static void _ssdkCommonProtocolSwizzle(id self){
             make.bottom.mas_offset(- edge.bottom);
         }];
     }
-    [self.view layoutIfNeeded];
+    
+    if (_isRespondsSafeAreaSel) {
+        [self viewSafeAreaInsetsChanged:edge];
+    }
+    if (_isRespondsSafeAreaSel||_isConformsTableView || _isConformsNavigationBar || _isConformsCollectionView) {
+        [self.view layoutIfNeeded];
+    }
+
 }
+
 
 
 - (void)commonSetupCollectionView{
@@ -333,9 +357,10 @@ static void _ssdkCommonProtocolSwizzle(id self){
     }
     [view addSubview:bar];
     if (self.view == view) {
+        CGFloat barHeight = kDefaultNavigationBarHeight;
         [bar mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.mas_offset(0);
-            make.height.mas_equalTo(kDefaultNavigationBarHeight);
+            make.height.mas_equalTo(barHeight);
         }];
     }
 }

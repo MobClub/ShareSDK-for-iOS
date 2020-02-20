@@ -63,7 +63,8 @@ static time_t lasAuthTime;
             
             userInfoShowViewController.hidesBottomBarWhenPushed = YES;
             
-            userInfoShowViewController.showAnimated(NO);
+            userInfoShowViewController.present();
+            
             [userInfoShowViewController setUserInfo:user];
             self.vc = userInfoShowViewController;
             lasAuthTime = 0;
@@ -106,7 +107,9 @@ static time_t lasAuthTime;
        [UIView animateWithDuration:0.15 animations:^{
             self.vc.view.alpha = 0;
         }completion:^(BOOL finished) {
+            SSDKWEAK
             [self.vc dismissViewControllerAnimated:NO completion:^{
+                SSDKSTRONG
                 [self changeView];
             }];
         }];

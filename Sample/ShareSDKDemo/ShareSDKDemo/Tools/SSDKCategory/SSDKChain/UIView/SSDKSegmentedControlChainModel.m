@@ -25,7 +25,9 @@ SSDKCATEGORY_CHAIN_SEGMENT_IMPLEMENTATION(apportionsSegmentWidthsByContent, BOOL
 
 - (SSDKSegmentedControlChainModel * _Nonnull (^)(void))removeAllSegments{
     return ^ (){
-        [(UISegmentedControl *)self.view removeAllSegments];
+        [self enumerateObjectsUsingBlock:^(UISegmentedControl * _Nonnull obj) {
+           [obj removeAllSegments];
+        }];
         return self;
     };
 }
@@ -38,21 +40,27 @@ SSDKCATEGORY_CHAIN_SEGMENT_IMPLEMENTATION(selectedSegmentIndex, NSInteger)
 
 - (SSDKSegmentedControlChainModel * _Nonnull (^)(UIImage * _Nonnull, UIControlState, UIBarMetrics))setBackgroundImage{
     return ^ (UIImage * _Nonnull a , UIControlState b, UIBarMetrics c){
-        [(UISegmentedControl *)self.view setBackgroundImage:a forState:b barMetrics:c];
+        [self enumerateObjectsUsingBlock:^(UISegmentedControl * _Nonnull obj) {
+            [obj setBackgroundImage:a forState:b barMetrics:c];
+        }];
         return self;
     };
 }
 
 - (SSDKSegmentedControlChainModel * _Nonnull (^)(UIImage * _Nonnull, UIControlState, UIControlState, UIBarMetrics))setDividerImage{
     return ^ (UIImage * _Nonnull a , UIControlState b, UIControlState b1, UIBarMetrics c){
-        [(UISegmentedControl *)self.view setDividerImage:a forLeftSegmentState:b rightSegmentState:b1 barMetrics:c];
+        [self enumerateObjectsUsingBlock:^(UISegmentedControl * _Nonnull obj) {
+            [obj setDividerImage:a forLeftSegmentState:b rightSegmentState:b1 barMetrics:c];
+        }];
         return self;
     };
 }
 
 - (SSDKSegmentedControlChainModel * _Nonnull (^)(NSDictionary<NSAttributedStringKey,id> * _Nonnull, UIControlState))setTitleTextAttributes{
     return ^ (NSDictionary<NSAttributedStringKey,id> * _Nonnull a, UIControlState b){
-        [(UISegmentedControl *)self.view setTitleTextAttributes:a forState:b];
+        [self enumerateObjectsUsingBlock:^(UISegmentedControl * _Nonnull obj) {        
+            [obj setTitleTextAttributes:a forState:b];
+        }];
         return self;
     };
 }
@@ -60,7 +68,9 @@ SSDKCATEGORY_CHAIN_SEGMENT_IMPLEMENTATION(selectedSegmentIndex, NSInteger)
 
 - (SSDKSegmentedControlChainModel * _Nonnull (^)(UIOffset, UISegmentedControlSegment, UIBarMetrics))setContentPositionAdjustment{
     return ^ (UIOffset a, UISegmentedControlSegment b, UIBarMetrics c){
-        [(UISegmentedControl *)self.view setContentPositionAdjustment:a forSegmentType:b barMetrics:c];
+        [self enumerateObjectsUsingBlock:^(UISegmentedControl * _Nonnull obj) {
+            [obj setContentPositionAdjustment:a forSegmentType:b barMetrics:c];
+        }];
         return self;
     };
 }

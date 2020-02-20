@@ -22,7 +22,7 @@
  *
  *  @return 图片服务实例
  */
-+ (instancetype)sharedInstance;
++ (instancetype _Nullable )sharedInstance;
 
 /**
  初始化图片服务实例
@@ -30,7 +30,7 @@
  @param cachePolicy 缓存策略
  @return 图片服务实例
  */
-- (instancetype)initWithCachePolicy:(MOBFImageCachePolicy *)cachePolicy;
+- (instancetype _Nullable )initWithCachePolicy:(MOBFImageCachePolicy *_Nullable)cachePolicy;
 
 /**
  *  是否存在图片缓存
@@ -39,7 +39,7 @@
  *
  *  @return YES 表示图片已缓存，NO 图片未缓存
  */
-- (BOOL)existsImageCacheWithURL:(NSURL *)url;
+- (BOOL)existsImageCacheWithURL:(NSURL *_Nullable)url;
 
 /**
  *  获取图片
@@ -49,8 +49,8 @@
  *
  *  @return 服务观察者
  */
-- (MOBFImageObserver *)getImageWithURL:(NSURL *)url
-                                result:(MOBFImageGetterResultHandler)resultHandler;
+- (MOBFImageObserver *_Nonnull)getImageWithURL:(NSURL *_Nullable)url
+                                        result:(MOBFImageGetterResultHandler _Nullable )resultHandler;
 
 
 /**
@@ -62,9 +62,9 @@
  *
  *  @return 服务观察者
  */
-- (MOBFImageObserver *)getImageWithURL:(NSURL *)url
+- (MOBFImageObserver *_Nullable)getImageWithURL:(NSURL * _Nullable)url
                         allowReadCache:(BOOL)allowReadCache
-                                result:(MOBFImageGetterResultHandler)resultHandler;
+                                result:(MOBFImageGetterResultHandler _Nullable )resultHandler;
 
 /**
  获取图片数据
@@ -74,8 +74,8 @@
 
  @return 服务观察者
  */
-- (MOBFImageObserver *)getImageDataWithURL:(NSURL *)url
-                                    result:(MOBFImageDataGetterResultHandler)resultHandler;
+- (MOBFImageObserver *_Nullable)getImageDataWithURL:(NSURL * _Nullable)url
+                                    result:(MOBFImageDataGetterResultHandler _Nullable)resultHandler;
 
 /**
  获取图片数据
@@ -86,16 +86,16 @@
  
  @return 服务观察者
  */
-- (MOBFImageObserver *)getImageDataWithURL:(NSURL *)url
+- (MOBFImageObserver *_Nullable)getImageDataWithURL:(NSURL * _Nullable)url
                             allowReadCache:(BOOL)allowReadCache
-                                    result:(MOBFImageDataGetterResultHandler)resultHandler;
+                                    result:(MOBFImageDataGetterResultHandler _Nullable)resultHandler;
 
 /**
  *  移除图片观察者
  *
  *  @param imageObserver 图片观察者
  */
-- (void)removeImageObserver:(MOBFImageObserver *)imageObserver;
+- (void)removeImageObserver:(MOBFImageObserver * _Nullable)imageObserver;
 
 /**
  *  删除磁盘中缓存中图片

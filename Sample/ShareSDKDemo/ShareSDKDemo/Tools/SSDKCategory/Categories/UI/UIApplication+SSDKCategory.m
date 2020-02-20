@@ -10,6 +10,7 @@
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 #import "UIDevice+SSDKCategory.h"
+#import "UIView+SSDKCategory.h"
 #import <pthread.h>
 #import <objc/message.h>
 #import "SSDKScenePackage.h"
@@ -81,7 +82,7 @@ return objc_getAssociatedObject(self, @selector(_setter_:)); \
 }
 
 + (__kindof UIViewController *)rootViewController{
-    return [self window].rootViewController;
+    return ([self keyWindow]?:[self window]).rootViewController;
 }
 
 + (__kindof UIViewController *)currentTopViewController{

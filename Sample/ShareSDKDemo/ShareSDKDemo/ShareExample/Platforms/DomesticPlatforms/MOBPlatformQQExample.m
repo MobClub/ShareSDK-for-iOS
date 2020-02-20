@@ -168,7 +168,6 @@
                                           miniWebpageUrl:@"www.qq.com"
                                          miniProgramType:3
                                       forPlatformSubType:SSDKPlatformSubTypeQQFriend];
-    
     [self shareWithParameters:parameters];
 }
 

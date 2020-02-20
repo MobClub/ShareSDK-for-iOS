@@ -31,7 +31,9 @@ SSDKCATEGORY_CHAIN_SLIDER_IMPLEMENTATION(thumbTintColor ,UIColor *);
 
 - (SSDKSliderViewChainModel * _Nonnull (^)(float, BOOL))setValueAnimated{
     return ^ (float v, BOOL a){
-        [(UISlider *)self.view setValue:v animated:a];
+        [self enumerateObjectsUsingBlock:^(UISlider * _Nonnull obj) {
+            [obj setValue:v animated:a];
+        }];
         return self;
     };
 }

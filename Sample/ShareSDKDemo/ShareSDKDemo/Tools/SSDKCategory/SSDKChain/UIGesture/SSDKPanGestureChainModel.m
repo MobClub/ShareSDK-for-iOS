@@ -14,7 +14,9 @@ SSDKCATEGORY_CHAIN_PANGESTURE_IMPLEMENTATION(maximumNumberOfTouches, NSUInteger)
 
 - (SSDKPanGestureChainModel * _Nonnull (^)(CGPoint, UIView * _Nonnull))translation{
     return ^ (CGPoint translation, UIView *view){
-        [(UIPanGestureRecognizer *)self.gesture setTranslation:translation inView:view];
+        [self enumerateObjectsUsingBlock:^(UIPanGestureRecognizer * _Nonnull obj) {
+            [obj setTranslation:translation inView:view];
+        }];
         return self;
     };
 }

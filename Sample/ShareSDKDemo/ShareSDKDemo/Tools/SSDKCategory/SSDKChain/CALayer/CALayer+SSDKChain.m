@@ -7,11 +7,11 @@
 //
 
 #import "CALayer+SSDKChain.h"
-#define SSDKCATEGORY_ADDSUBLAYER(method, modelClass, LayerClass)\
-- (modelClass * _Nonnull (^)(void))method{\
+#define SSDKCATEGORY_ADDSUBLAYER(method, ModelClass, LayerClass)\
+- (ModelClass * _Nonnull (^)(void))method{\
 return ^ (){\
 LayerClass *layer = [LayerClass layer];\
-modelClass *chainModel = [[modelClass alloc] initWithLayer:layer];\
+ModelClass *chainModel = [[ModelClass alloc] initWithLayer:layer modelClass:[LayerClass class]];\
 [self addSublayer:layer];\
 return chainModel;\
 };\

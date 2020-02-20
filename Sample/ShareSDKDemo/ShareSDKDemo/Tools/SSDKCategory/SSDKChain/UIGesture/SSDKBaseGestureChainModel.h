@@ -6,27 +6,25 @@
 //  Copyright © 2018 mob. All rights reserved.
 //
 
-#import "SSDKChainDefine.h"
+#import "SSDKChainBaseModel.h"
 
-#define SSDKCATEGORY_CHAIN_GESTURECLASS_IMPLEMENTATION(SSDKMethod,SSDKParaType, SSDKModelType, SSDKPropertyClass) SSDKCATEGORY_CHAIN_IMPLEMENTATION(SSDKMethod,SSDKParaType, gesture, SSDKModelType, SSDKPropertyClass)
+#define SSDKCATEGORY_CHAIN_GESTURECLASS_IMPLEMENTATION(SSDKMethod,SSDKParaType, SSDKModelType, SSDKPropertyClass) SSDKCATEGORY_CHAIN_IMPLEMENTATION(SSDKMethod,SSDKParaType, SSDKModelType, SSDKPropertyClass)
 
 #define SSDKCATEGORY_GESTURE_IMPLEMENTATION(SSDKClass, modelType)\
 @implementation SSDKClass (EXT)\
 - (modelType *)makeChain{\
-    return [[modelType alloc] initWithGesture:self];\
+    return [[modelType alloc] initWithGesture:self modelClass:[SSDKClass class]];\
 }\
 @end
 NS_ASSUME_NONNULL_BEGIN
 
 
 
-@interface SSDKBaseGestureChainModel <__covariant  ObjectType> : NSObject
+@interface SSDKBaseGestureChainModel <__covariant  ObjectType> : SSDKChainBaseModel<ObjectType>
 
-- (instancetype)initWithGesture:(UIGestureRecognizer *)gesture;
+- (instancetype)initWithGesture:(UIGestureRecognizer *)gesture modelClass:(Class)modelClass;
 
 @property (nonatomic, strong, readonly) __kindof UIGestureRecognizer * gesture;
-
-@property (nonatomic, assign, readonly) Class  gestureClass;
 
 SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ delegate) (id<UIGestureRecognizerDelegate> delegate);
 
@@ -63,4 +61,5 @@ SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ removeAllTargetBlock)(void);
 SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ addToSuperView) (UIView *view);
 
 @end
+
 NS_ASSUME_NONNULL_END

@@ -108,7 +108,7 @@
                                             
                                              UIAlertControllerAlertCreate(title, nil)
                                              .addCancelAction(@"确定")
-                                             .show();
+                                             .present();
                                          }
                                      }];
 }

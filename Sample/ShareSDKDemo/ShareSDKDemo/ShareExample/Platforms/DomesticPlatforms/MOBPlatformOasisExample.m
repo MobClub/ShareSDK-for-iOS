@@ -28,7 +28,7 @@
     [parameters SSDKSetupOasisParamsByTitle:@"SHARESDK"
                                         text:@"为开发者提供40+主流平台的分享与授权等社会化功能，效果稳定，完整清晰统计分享数据"
                                assetLocalIds:nil
-                                      image:@"https://tva1.sinaimg.cn/large/6f8a2832gy1g8ph7fs6cdj22yo1o0kju.jpg"
+                                      image:[UIImage imageWithContentsOfFile:SHARESDKDEMO_IMAGE_LOCALPATH]
                                        video:nil
                                fileExtension:nil
                                         type:SSDKContentTypeImage];
@@ -114,7 +114,7 @@
         }else{
             UIAlertControllerAlertCreate(@"", [NSString stringWithFormat:@"%@",error])
             .addCancelAction(@"OK")
-            .show();
+            .present();
         }
     }];
 }

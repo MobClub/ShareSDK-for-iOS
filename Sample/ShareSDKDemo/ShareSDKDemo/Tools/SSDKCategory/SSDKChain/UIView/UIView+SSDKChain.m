@@ -8,21 +8,21 @@
 
 #import "UIView+SSDKChain.h"
 
-#define SSDKCATEGORY_ADDVIEW(method, modelClass, ViewClass)\
-- (modelClass * (^)(NSInteger tag))method    \
+#define SSDKCATEGORY_ADDVIEW(method, ModelClass, ViewClass)\
+- (ModelClass * (^)(NSInteger tag))method    \
 {   \
     return ^(NSInteger tag) {      \
         ViewClass *view = [[ViewClass alloc] init];       \
         [self addSubview:view];                            \
-        modelClass *chainModel = [[modelClass alloc] initWithTag:tag andView:view]; \
+ModelClass *chainModel = [[ModelClass alloc] initWithTag:tag andView:view modelClass:[ViewClass class]]; \
         return chainModel;      \
     };      \
 }
-#define SSDKCATEGORY_ADDLAYER(method, modelClass, LayerClass)\
-- (modelClass * _Nonnull (^)(void))method{\
+#define SSDKCATEGORY_ADDLAYER(method, ModelClass, LayerClass)\
+- (ModelClass * _Nonnull (^)(void))method{\
 return ^ (){\
     LayerClass *layer = [LayerClass layer];\
-    modelClass *chainModel = [[modelClass alloc] initWithLayer:layer];\
+ModelClass *chainModel = [[ModelClass alloc] initWithLayer:layer modelClass:[LayerClass class]];\
     [self.layer addSublayer:layer];\
     return chainModel;\
 };\
@@ -51,7 +51,7 @@ SSDKCATEGORY_ADDVIEW(addTableView, SSDKTableViewChainModel, UITableView);
         layout.sectionInset = UIEdgeInsetsZero;
         UICollectionView *view = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         [self addSubview:view];
-        SSDKCollectionViewChainModel *chainModel = [[SSDKCollectionViewChainModel alloc] initWithTag:tag andView:view];
+        SSDKCollectionViewChainModel *chainModel = [[SSDKCollectionViewChainModel alloc] initWithTag:tag andView:view modelClass:[UICollectionView class]];
         return chainModel;
     };
 }

@@ -72,9 +72,13 @@
         NSLog(@"开始上传");
     }else{
         [ShareSDK authorize:SSDKPlatformTypeYouTube settings:nil onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
-            NSMutableDictionary *parameters = [self shareParameters];
-            [self shareWithParameters:parameters];
-            NSLog(@"开始上传");
+            if (state == SSDKResponseStateSuccess) {
+                NSMutableDictionary *parameters = [self shareParameters];
+                [self shareWithParameters:parameters];
+                NSLog(@"开始上传");
+            }else{
+                [[MOBShareExample defaultExample] sharePlatType:self.platformType state:state error:error];
+            }
         }];
     }
 
@@ -212,7 +216,7 @@
                                             
                                              UIAlertControllerAlertCreate(title,nil)
                                              .addCancelAction(@"确定")
-                                             .show();
+                                             .present();
                                          }
                                      }];
 }

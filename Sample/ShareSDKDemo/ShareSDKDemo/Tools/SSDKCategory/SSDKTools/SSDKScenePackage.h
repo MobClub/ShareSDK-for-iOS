@@ -44,18 +44,60 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+typedef NS_ENUM(NSUInteger, SSDKControllerShowType) {
+    SSDKControllerShowTypeWindow = 0,//展示在新window中
+    SSDKControllerShowTypeRootVC,//根视图展示
+    SSDKControllerShowTypeCurrentVC,//当前显示控制器
+    SSDKControllerShowTypeNavigationVC,//当前导航控制器
+};
+
 @interface UIViewController (SSDKScenePackage)
 
-//弹出一个控制器后多少秒内消失
-- (void)showInNewWindowAndDissmissAfterTime:(NSTimeInterval)time;
+//展示方式
+@property (nonatomic, copy, readonly) UIViewController * (^ showType)(SSDKControllerShowType type);
 
-//全局弹出控制器，与当前界面完全独立
-- (void)showInNewWindow;
+//是否以动画的形式展示
+@property (nonatomic, copy, readonly) UIViewController * (^ showAnimated) (BOOL animated);
 
-@property (nonatomic, weak, readonly) UIViewController *( ^ show) (void);
+//多少秒后消失
+@property (nonatomic, copy, readonly) UIViewController * (^ dismissTime)(NSTimeInterval dismissTime);
 
-@property (nonatomic, weak, readonly) UIViewController *( ^ showAnimated) (BOOL animated);
+
+//是否以动画的形式消失
+@property (nonatomic, copy, readonly) UIViewController * (^ dismissAnimated) (BOOL animated);
+
+//push出的navigationBar是否隐藏
+@property (nonatomic, copy, readonly) UIViewController * (^ navigationBarHidden)(BOOL isHidden);
+
+//显示当前控制器
+@property (nonatomic, copy, readonly) UIViewController *( ^ push) (void);
+
+@property (nonatomic, copy, readonly) UIViewController *( ^ pushWithNavigation) (void (^ navigationConntroller)(UINavigationController *navigationController));
+
+@property (nonatomic, copy, readonly) UIViewController *( ^ present) (void);
 
 @end
+
+
+@interface UIViewController (SSDKScenePackageLifeEvents)
+
+- (void)addViewWillAppearBlock:(void (^) (UIViewController * vc, BOOL animated))block;
+
+- (void)addViewDidLoadBlock:(void (^) (UIViewController * vc))block;
+
+- (void)addViewDidAppearBlock:(void (^) (UIViewController * vc, BOOL animated))block;
+
+- (void)addViewWillDisappearBlock:(void (^) (UIViewController * vc, BOOL animated))block;
+
+- (void)addViewDidDisappearBlock:(void (^) (UIViewController * vc, BOOL animated))block;
+
+- (void)addLoadViewBlock:(void (^) (UIViewController * vc))block;
+
+@property (nonatomic, copy, readonly) UIViewController *  ( ^ ssdk_once)(BOOL once);
+
+
+@end
+
+
 
 NS_ASSUME_NONNULL_END

@@ -63,14 +63,18 @@ SSDKCATEGORY_CHAIN_TEXTFIELD_IMPLEMENTATION(textContentType, UITextContentType);
 
 - (SSDKTextFieldChainModel * _Nonnull (^)(UIFont * _Nonnull))placeholderFont{
     return ^(UIFont *font){
-        [self.view setValue:font forKeyPath:@"_placeholderLabel.font"];
+        [self enumerateObjectsUsingBlock:^(UITextField * _Nonnull obj) {
+            [obj setValue:font forKeyPath:@"_placeholderLabel.font"];
+        }];
         return self;
     };
 }
 
 - (SSDKTextFieldChainModel * _Nonnull (^)(UIColor * _Nonnull))placeholderColor{
     return ^(UIColor *color){
-        [self.view setValue:color forKeyPath:@"_placeholderLabel.textColor"];
+        [self enumerateObjectsUsingBlock:^(UITextField * _Nonnull obj) {
+            [obj setValue:color forKeyPath:@"_placeholderLabel.textColor"];
+        }];
         return self;
     };
 }

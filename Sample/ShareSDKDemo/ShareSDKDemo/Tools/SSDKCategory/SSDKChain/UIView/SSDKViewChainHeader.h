@@ -29,4 +29,5 @@
 #import "SSDKSliderViewChainModel.h"
 #import "SSDKSegmentedControlChainModel.h"
 #import "SSDKBaseViewChainModel+Masonry.h"
+#import "SSDKWebViewChainModel.h"
 #endif /* SSDKViewChainHeader_h */

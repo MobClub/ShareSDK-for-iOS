@@ -387,7 +387,7 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
     
     UIAlertControllerAlertCreate(title, nil)
     .addCancelAction(@"确定")
-    .show();
+    .present();
 }
 
 #pragma mark - 分享 -

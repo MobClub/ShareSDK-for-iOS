@@ -6,27 +6,25 @@
 //  Copyright © 2019 mob. All rights reserved.
 //
 
-#import "SSDKChainDefine.h"
+#import "SSDKChainBaseModel.h"
 
-#define SSDKCATEGORY_CHAIN_LAYERCLASS_IMPLEMENTATION(SSDKMethod,SSDKParaType, SSDKModelType, SSDKPropertyClass) SSDKCATEGORY_CHAIN_IMPLEMENTATION(SSDKMethod,SSDKParaType, layer, SSDKModelType, SSDKPropertyClass)
+#define SSDKCATEGORY_CHAIN_LAYERCLASS_IMPLEMENTATION(SSDKMethod,SSDKParaType, SSDKModelType, SSDKPropertyClass) SSDKCATEGORY_CHAIN_IMPLEMENTATION(SSDKMethod,SSDKParaType, SSDKModelType, SSDKPropertyClass)
 
 #define SSDKCATEGORY_LAYER_IMPLEMENTATION(SSDKClass, modelType)\
 @implementation SSDKClass (EXT)\
 - (modelType *)makeChain{\
-    return [[modelType alloc] initWithLayer:self];\
+    return [[modelType alloc] initWithLayer:self modelClass:[SSDKClass class]];\
 }\
 @end
 NS_ASSUME_NONNULL_BEGIN
 
 
 typedef void(^SSDKAssignLayerLoad)(__kindof CALayer *layer);
-@interface SSDKBaseLayerChainModel <__covariant  ObjectType> : NSObject
+@interface SSDKBaseLayerChainModel <__covariant  ObjectType> : SSDKChainBaseModel<  ObjectType>
 
-- (instancetype)initWithLayer:(CALayer *)layer;
+- (instancetype)initWithLayer:(CALayer *)layer modelClass:(Class)modelClass;
 
 @property (nonatomic, strong, readonly) __kindof CALayer * layer;
-
-@property (nonatomic, assign, readonly) Class  layerClass;
 
 SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ bounds) (CGRect bounds);
 SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ position) (CGPoint position);

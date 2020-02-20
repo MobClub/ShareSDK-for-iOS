@@ -42,64 +42,83 @@ SSDKCATEGORY_CHAIN_BUTTONLABEL_IMPLEMENTATION(baselineAdjustment, UIBaselineAdju
 
 - (SSDKButtonChainModel * _Nonnull (^)(UIImage * _Nonnull, UIControlState))image{
     return ^ (UIImage *image, UIControlState state){
-        [(UIButton *)self.view setImage:image forState:state];
+        [self enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj) {
+            [obj setImage:image forState:state];
+        }];
         return self;
     };
 }
 
 - (SSDKButtonChainModel * _Nonnull (^)(NSString * _Nonnull, UIControlState))text{
     return ^ (NSString *text, UIControlState state){
-        [(UIButton *)self.view setTitle:text forState:state];
+        [self enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj) {
+            [obj setTitle:text forState:state];
+        }];
         return self;
     };
 }
 
 - (SSDKButtonChainModel * _Nonnull (^)(UIImage * _Nonnull, UIControlState))backgroundImage{
     return ^ (UIImage *image, UIControlState state){
-        [(UIButton *)self.view setBackgroundImage:image forState:state];
+        [self enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj) {
+            [obj setBackgroundImage:image forState:state];
+        }];
         return self;
     };
 }
 
 - (SSDKButtonChainModel * _Nonnull (^)(NSAttributedString * _Nonnull, UIControlState))attributedTitle{
     return ^ (NSAttributedString *title, UIControlState state){
-        [(UIButton *)self.view setAttributedTitle:title forState:state];
+        [self enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj) {
+            [obj setAttributedTitle:title forState:state];
+        }];
         return self;
     };
 }
 
 - (SSDKButtonChainModel * _Nonnull (^)(UIFont * _Nonnull))font{
     return ^ (UIFont *font){
-        [(UIButton *)self.view titleLabel].font = font;
+        
+        [self enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj) {
+            obj.titleLabel.font = font;
+        }];
         return self;
     };
 }
 
 - (SSDKButtonChainModel * _Nonnull (^)(UIColor * _Nonnull, UIControlState))textColor{
     return ^ (UIColor *color, UIControlState state){
-        [(UIButton *)self.view setTitleColor:color forState:state];
+        [self enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj) {
+            [obj setTitleColor:color forState:state];
+        }];
         return self;
     };
 }
 
 - (SSDKButtonChainModel * _Nonnull (^)(UIColor * _Nonnull, UIControlState))titleShadow{
     return ^ (UIColor *color, UIControlState state){
-        [(UIButton *)self.view setTitleShadowColor:color forState:state];
+        [self enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj) {
+             [(UIButton *)obj setTitleShadowColor:color forState:state];
+        }];
         return self;
     };
 }
 
 - (SSDKButtonChainModel * _Nonnull (^)(SSDKButtonImageDirection, CGFloat))imageDirection{
     return ^ (SSDKButtonImageDirection direction, CGFloat space){
-        [(UIButton *)self.view imageDirection:direction space:space];
+        [self enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj) {
+            [obj imageDirection:direction space:space];
+        }];
         return self;
     };
 }
 - (SSDKButtonChainModel * _Nonnull (^)(SSDKButtonImageTitleBlock _Nonnull))imageAndTitle{
     return ^ (SSDKButtonImageTitleBlock block){
         if (block) {
-            UIButton *button = self.view;
-            block(button.imageView,button.titleLabel);
+            [self enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj) {
+                block(obj.imageView,obj.titleLabel);
+            }];
+            
         }
         return self;
     };

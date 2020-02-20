@@ -25,7 +25,9 @@ SSDKCATEGORY_CHAIN_GRADIENTLAYER_IMPLEMENTATION(endPoint, CGPoint)
                 [bridgeColors addObject:color];
             }
         }
-        [(CAGradientLayer *)self.layer setColors:bridgeColors];
+        [self enumerateObjectsUsingBlock:^(CAGradientLayer * _Nonnull obj) {
+            [obj setColors:bridgeColors];
+        }];
         return self;
     };
 }

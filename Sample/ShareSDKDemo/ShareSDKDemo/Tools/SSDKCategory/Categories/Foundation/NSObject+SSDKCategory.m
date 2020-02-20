@@ -356,7 +356,7 @@ static inline void ssdk_swizzleDeallocIfNeed(Class swizzleClass){
         
         id newImpBlock = ^ (__unsafe_unretained id self){
             
-            NSMutableArray *deallocTask = objc_getAssociatedObject(self, &ssdkRuntimeDeallocTasks);
+            NSMutableArray *deallocTask = objc_getAssociatedObject(self, ssdkRuntimeDeallocTasks);
             @synchronized (deallocTask) {
                 if (deallocTask.count > 0) {
                     [deallocTask enumerateObjectsUsingBlock:^(ssdk_deallocTask obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -410,11 +410,11 @@ static inline void ssdk_swizzleDeallocIfNeed(Class swizzleClass){
 
 //dealloc
 - (NSMutableArray<ssdk_deallocTask> *)ssdk_deallocTasks{
-    NSMutableArray *tasks = objc_getAssociatedObject(self, &ssdkRuntimeDeallocTasks);
+    NSMutableArray *tasks = objc_getAssociatedObject(self, ssdkRuntimeDeallocTasks);
     if (tasks) return tasks;
     tasks = [NSMutableArray array];
     ssdk_swizzleDeallocIfNeed(object_getClass(self));
-    objc_setAssociatedObject(self, &ssdkRuntimeDeallocTasks, tasks, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, ssdkRuntimeDeallocTasks, tasks, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     return tasks;
 }
 

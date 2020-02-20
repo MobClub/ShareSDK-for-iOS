@@ -6,25 +6,31 @@
 //  Copyright © 2018 mob. All rights reserved.
 //
 
-#import "SSDKChainDefine.h"
+#import "SSDKChainBaseModel.h"
 
 
-#define SSDKCATEGORY_CHAIN_VIEWCLASS_IMPLEMENTATION(SSDKMethod,SSDKParaType, SSDKModelType, SSDKPropertyClass) SSDKCATEGORY_CHAIN_IMPLEMENTATION(SSDKMethod,SSDKParaType, view, SSDKModelType, SSDKPropertyClass)
+#define SSDKCATEGORY_CHAIN_VIEWCLASS_IMPLEMENTATION(SSDKMethod,SSDKParaType, SSDKModelType, SSDKPropertyClass) SSDKCATEGORY_CHAIN_IMPLEMENTATION(SSDKMethod,SSDKParaType, SSDKModelType, SSDKPropertyClass)
 
 
 #define SSDKCATEGORY_VIEW_IMPLEMENTATION(SSDKClass, modelType)\
+@interface modelType(EffectiveEXT)\
+@property (nonatomic, strong, readonly) NSMutableArray <SSDKClass *>* effectiveObjects;\
+@end\
 @implementation SSDKClass (EXT)\
 - (modelType *)makeChain{\
-    return [[modelType alloc] initWithTag:self.tag andView:self];\
+    return [[modelType alloc] initWithTag:self.tag andView:self modelClass:[SSDKClass class]];\
 }\
 @end
+
+
 NS_ASSUME_NONNULL_BEGIN
 
 
 typedef void(^SSDKAssignViewLoad)(__kindof UIView *view);
-@interface SSDKBaseViewChainModel <__covariant  ObjectType> : NSObject
 
-- (instancetype)initWithTag:(NSInteger)tag andView:(UIView *)view;
+@interface SSDKBaseViewChainModel <__covariant  ObjectType> : SSDKChainBaseModel<ObjectType>
+
+- (instancetype)initWithTag:(NSInteger)tag andView:(UIView *)view modelClass:(Class)modelClass;
 
 @property (nonatomic, assign, readonly) NSInteger tag;
 
@@ -183,7 +189,6 @@ SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ shadowPath) (CGPathRef shadowPath);
 
 
 SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ assignTo)(SSDKAssignViewLoad assignTo);
-
 SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ sizeToFit) (void);
 SSDKCATEGORY_CHAIN_PROPERTY CGSize (^ sizeToFitSize) (CGSize size);
 SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ removeFormSuperView) (void);
@@ -191,6 +196,7 @@ SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ layoutIfNeeded) (void);
 SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ setNeedsLayout) (void);
 SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ setNeedsDisplay) (void);
 SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ setNeedsDisplayRect) (CGRect rect);
+
 @end
 
 NS_ASSUME_NONNULL_END

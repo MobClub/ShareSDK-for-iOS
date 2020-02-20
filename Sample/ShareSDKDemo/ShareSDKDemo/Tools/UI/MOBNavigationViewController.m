@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+   
     self.navigationBar.middleButton.makeChain
     .text(self.title, UIControlStateNormal)
     .font(Font(PingFangMedium, 17))

@@ -31,7 +31,7 @@ static inline CGFloat SSDKDegreesToRadians(CGFloat degrees) {
 #define SSDK_SCALE [UIScreen screenScale]
 
 //仅仅是状态栏的高度
-#define kStatusBarHeight ([UIApplication statusBarFrame].size.height)
+#define kStatusBarHeight (SSDKSafeArea([UIApplication window]).top)
 
 //当前显示的navigationbar的高度
 #define kNavigationBarHeight \
@@ -44,7 +44,7 @@ static inline CGFloat SSDKDegreesToRadians(CGFloat degrees) {
     height;\
 })
 
-#define kDefaultNavigationBarHeight ([UIApplication statusBarFrame].size.height + 44)
+#define kDefaultNavigationBarHeight (SSDKSafeArea([UIApplication window]).top + 44)
 
 //这个高度如果有tabbar高度则包含tabbar高度，否则不包含
 #define KHomeIndicatorHeight (SSDKSafeArea([UIApplication currentTopViewController].view).bottom)
@@ -54,7 +54,7 @@ static inline CGFloat SSDKDegreesToRadians(CGFloat degrees) {
 
 #define SSDKSafeArea(view)\
 ({\
-UIEdgeInsets safeInsets = UIEdgeInsetsZero;\
+UIEdgeInsets safeInsets = UIEdgeInsetsMake(20, 0, 0, 0);\
 if(view){\
 static IMP imp = _objc_msgForward;\
 static dispatch_once_t onceToken;\

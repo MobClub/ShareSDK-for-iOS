@@ -13,7 +13,7 @@
 
 "ShareSDK_permissionDenied" = "Permission denied";
 "ShareSDK_platformUninit" = "Platform configuration error";
-"ShareSDK_unSupportContentType" = "Unsupport content type";
+"ShareSDK_PrivacyUnagreement" = "No privacy agreement was agreed";
 "ShareSDK_unsetURLScheme" = "Not configured urlscheme";
 "ShareSDK_paramsError" = "Parameter error";
 "ShareSDK_paramsLack" = "Lack of necessary parameters";

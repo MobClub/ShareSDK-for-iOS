@@ -18,44 +18,60 @@ SSDKCATEGORY_CHAIN_CONTROL_IMPLEMENTATION(contentHorizontalAlignment, UIControlC
 
 - (id  _Nonnull (^)(id _Nonnull, SEL _Nonnull, UIControlEvents))addTarget{
     return ^ (id target, SEL action, UIControlEvents events){
-        [(UIControl *)(self.view) addTarget:target action:action forControlEvents:events];
+        [self enumerateObjectsUsingBlock:^(UIControl * _Nonnull obj) {
+            [obj addTarget:target action:action forControlEvents:events];
+        }];
         return self;
     };
 }
 - ( id  _Nonnull (^)(id _Nonnull, SEL _Nonnull, UIControlEvents))setTarget{
     return ^ (id target, SEL action, UIControlEvents events){
-        [(UIControl *)(self.view) setTarget:target eventAction:action forControlEvents:events];
+        [self enumerateObjectsUsingBlock:^(UIControl * _Nonnull obj) {
+             [obj setTarget:target eventAction:action forControlEvents:events];
+        }];
+       
         return self;
     };
 }
 - (id  _Nonnull (^)(SSDKTargetActionBlock _Nonnull, UIControlEvents))addTargetBlock{
     return ^ (controlTargeAction block, UIControlEvents events){
-        [(UIControl *)(self.view) addEventBlock:block forEvents:events];
+        [self enumerateObjectsUsingBlock:^(UIControl * _Nonnull obj) {
+            [obj addEventBlock:block forEvents:events];
+        }];
         return self;
     };
 }
 - (id  _Nonnull (^)(SSDKTargetActionBlock _Nonnull, UIControlEvents))setTargetBlock{
     return ^ (controlTargeAction block, UIControlEvents events){
-        [(UIControl *)(self.view) setEventBlock:block forEvents:events];
+        [self enumerateObjectsUsingBlock:^(UIControl * _Nonnull obj) {
+            [obj setEventBlock:block forEvents:events];
+        }];
         return self;
     };
 }
 
 - ( id  _Nonnull (^)(id _Nonnull, SEL _Nonnull, UIControlEvents))removeTarget{
     return ^ (id target, SEL action, UIControlEvents events){
-        [(UIControl *)(self.view) removeTarget:target action:action forControlEvents:events];
+        [self enumerateObjectsUsingBlock:^(UIControl * _Nonnull obj) {
+            [obj removeTarget:target action:action forControlEvents:events];
+        }];
         return self;
     };
 }
 - ( id  _Nonnull (^)(void))removeAllTarget{
     return ^ (){
-        [(UIControl *)(self.view) removeAllEvents];
+        [self enumerateObjectsUsingBlock:^(UIControl * _Nonnull obj) {
+            [obj removeAllEvents];
+        }];
+        
         return self;
     };
 }
 - ( id  _Nonnull (^)(UIControlEvents))removeAllTargetBlock{
     return ^ (UIControlEvents events){
-        [(UIControl *)(self.view) removeAllEventBlocksForEvents:events];
+        [self enumerateObjectsUsingBlock:^(UIControl * _Nonnull obj) {
+            [obj removeAllEventBlocksForEvents:events];            
+        }];
         return self;
     };
 }

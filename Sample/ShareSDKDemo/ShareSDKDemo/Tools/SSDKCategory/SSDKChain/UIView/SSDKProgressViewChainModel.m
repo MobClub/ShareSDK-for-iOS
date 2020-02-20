@@ -20,7 +20,9 @@ SSDKCATEGORY_CHAIN_PROGRESS_IMPLEMENTATION(observedProgress, NSProgress *)
 
 - (SSDKProgressViewChainModel * _Nonnull (^)(float, BOOL))setProgressAnimated{
     return ^ (float p, BOOL a){
-        [(UIProgressView *)self.view setProgress:p animated:a];
+        [self enumerateObjectsUsingBlock:^(UIProgressView * _Nonnull obj) {
+            [obj setProgress:p animated:a];            
+        }];
         return self;
     };
 }

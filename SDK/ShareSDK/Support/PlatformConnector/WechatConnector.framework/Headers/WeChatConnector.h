@@ -67,7 +67,7 @@ typedef void(^SSDKOpenAppFromMiniProgramCallback)(SSDKResponseState state, NSStr
  @param path 拉起小程序页面的可带参路径，不填默认拉起小程序首页
  @param miniProgramType //拉起小程序的类型, 0:正式版; 1:开发版; 2:体验版
  */
-+ (BOOL)openMiniProgramWithUserName:(NSString *)userName path:(NSString *)path miniProgramType:(NSInteger)miniProgramType;
++ (void)openMiniProgramWithUserName:(NSString *)userName path:(NSString *)path miniProgramType:(NSInteger)miniProgramType complete:(void(^) (BOOL success))complete;
 
 /**
 拉起小程序功能

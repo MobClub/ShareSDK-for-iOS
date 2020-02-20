@@ -74,6 +74,7 @@ static void * kMobTabbarItemKey = &kMobTabbarItemKey;
     _lastSelectedIndex = -1;
     [super viewDidLoad];
     [self  setupUI];
+    self.tabBar.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
 }
 

@@ -14,14 +14,18 @@ SSDKCATEGORY_CHAIN_SCROLLLAYER_IMPLEMENTATION(scrollMode, CAScrollLayerScrollMod
 
 - (SSDKScrollLayerChainModel * _Nonnull (^)(CGRect))scrollToRect{
     return ^ (CGRect rect){
-        [(CAScrollLayer *)self.layer scrollToRect:rect];
+        [self enumerateObjectsUsingBlock:^(CAScrollLayer * _Nonnull obj) {
+            [obj scrollToRect:rect];
+        }];
         return self;
     };
 }
 
 - (SSDKScrollLayerChainModel * _Nonnull (^)(CGPoint))scrollToPoint{
     return ^ (CGPoint point){
-       [(CAScrollLayer *)self.layer scrollToPoint:point];
+        [self enumerateObjectsUsingBlock:^(CAScrollLayer * _Nonnull obj) {       
+            [obj scrollToPoint:point];
+        }];
         return self;
     };
 }

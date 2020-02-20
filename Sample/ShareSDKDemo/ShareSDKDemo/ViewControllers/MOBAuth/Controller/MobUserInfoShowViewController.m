@@ -67,43 +67,38 @@
     
     
     UIButtonModelCreate()
+    .multiple(2)
     .masksToBounds(YES)
     .cornerRadius(15)
     .addToSuperView(mainView)
     .font(Font(PingFangReguler, 14))
     .textColor(UIColor.whiteColor, UIControlStateNormal)
+    .part_first()
     .text(@"复制", UIControlStateNormal)
-    .makeMasonry(^(MASConstraintMaker * _Nonnull make) {
-        make.left.equalTo(mainView.mas_centerX).offset(6.5);
-        make.bottom.mas_offset(-12);
-        make.width.mas_equalTo(90);
-        make.height.mas_equalTo(30);
-    })
-    .assignTo(^(__kindof UIView * _Nonnull view) {
-        copyButton = view;
-    })
     .backgroundImage([UIImage imageWithColor:UIColorHexString(@"0x00b2ff")], UIControlStateNormal)
-    .addTarget(self, @selector(copyAct:), UIControlEventTouchUpInside);
-    
-    UIButtonModelCreate()
-    .masksToBounds(YES)
-    .cornerRadius(15)
-    .font(Font(PingFangReguler, 14))
-    .addToSuperView(mainView)
-    .textColor(UIColor.whiteColor, UIControlStateNormal)
+    .addTarget(self, @selector(copyAct:), UIControlEventTouchUpInside)
+    .part_sencond()
     .text(@"清除信息", UIControlStateNormal)
-    .makeMasonry(^(MASConstraintMaker * _Nonnull make) {
-        
+    .backgroundImage([UIImage imageWithColor:[UIColor lightGrayColor]], UIControlStateNormal)
+    .addTarget(self, @selector(clearAct:), UIControlEventTouchUpInside)
+    .assignToObjects(^(NSArray<UIButton *> * _Nonnull objs) {
+        copyButton = objs[0];
+        clearButon = objs[1];
+    });
+    
+    [clearButon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(mainView.mas_centerX).offset(-6.5);
         make.bottom.mas_offset(-12);
         make.width.mas_equalTo(90);
         make.height.mas_equalTo(30);
-    })
-    .assignTo(^(__kindof UIView * _Nonnull view) {
-        clearButon = view;
-    })
-    .backgroundImage([UIImage imageWithColor:[UIColor lightGrayColor]], UIControlStateNormal)
-    .addTarget(self, @selector(clearAct:), UIControlEventTouchUpInside);
+    }];
+    
+    [copyButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(mainView.mas_centerX).offset(6.5);
+        make.bottom.mas_offset(-12);
+        make.width.mas_equalTo(90);
+        make.height.mas_equalTo(30);
+    }];
     
     UIButtonModelCreate()
     .masksToBounds(YES)
@@ -135,7 +130,7 @@
         });
     }
     return _myTextView;
-
+    
 }
 
 
@@ -176,7 +171,7 @@
     if (self.myTextView.text.length == 0) {
         self.myTextView.text = [userInfo.dictionaryValue debugDescription];
     }
-
+    
     [UIView animateWithDuration:0.15 animations:^{
         self.view.alpha = 1;
     }];

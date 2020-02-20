@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^MOBFSetImageBlock)(UIImage * _Nullable image, NSError *error);
+typedef void(^MOBFSetImageBlock)(UIImage * _Nullable image, NSError * _Nullable error);
 
 @interface UIView (MOBFWebCache)
 

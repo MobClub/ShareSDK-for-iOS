@@ -13,6 +13,7 @@
 "ShareSDK_permissionDenied" = "权限拒绝";
 "ShareSDK_platformUninit" = "平台配置错误";
 "ShareSDK_unSupportContentType" = "不支持的contentType";
+"ShareSDK_PrivacyUnagreement" = "隐私协议未同意";
 "ShareSDK_unsetURLScheme" = "未配置urlScheme";
 "ShareSDK_paramsError" = "参数错误";
 "ShareSDK_paramsLack" = "缺少必要参数";

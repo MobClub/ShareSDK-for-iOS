@@ -21,7 +21,9 @@ SSDKCATEGORY_CHAIN_DATEPICKER_IMPLEMENTATION(minuteInterval, NSInteger)
 
 - (SSDKDatePickerViewChainModel * _Nonnull (^)(NSDate * _Nonnull, BOOL))setDateWithAnimated{
     return ^ (NSDate *date, BOOL animated){
-        [(UIDatePicker *)self.view setDate:date animated:animated];
+        [self enumerateObjectsUsingBlock:^(UIDatePicker * _Nonnull obj) {
+            [obj setDate:date animated:animated];
+        }];
         return self;
     };
 }

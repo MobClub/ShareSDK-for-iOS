@@ -20,7 +20,9 @@ SSDKCATEGORY_CHAIN_COLLECTIONVIEW_IMPLEMENTATION(allowsMultipleSelection, BOOL)
 - (SSDKCollectionViewChainModel * _Nonnull (^)(void))adJustedContentIOS11{
     return ^ (){
         if (@available(iOS 11.0, *)) {
-            [(UICollectionView *)self.view setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+            [self enumerateObjectsUsingBlock:^(UICollectionView * _Nonnull obj) {
+                [obj setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+            }];
         }
         return self;
     };
@@ -28,14 +30,18 @@ SSDKCATEGORY_CHAIN_COLLECTIONVIEW_IMPLEMENTATION(allowsMultipleSelection, BOOL)
 
 - (SSDKCollectionViewChainModel * _Nonnull (^)(UINib * _Nonnull, NSString * _Nonnull))registerCellNib{
     return ^ (UINib *nib, NSString *identifier){
-        [(UICollectionView *)self.view registerNib:nib forCellWithReuseIdentifier:identifier];
+        [self enumerateObjectsUsingBlock:^(UICollectionView * _Nonnull obj) {
+            [obj registerNib:nib forCellWithReuseIdentifier:identifier];
+        }];
         return self;
     };
 }
 
 - (SSDKCollectionViewChainModel * _Nonnull (^)(Class  _Nonnull __unsafe_unretained, NSString * _Nonnull))registerCellClass{
     return ^ (Class class, NSString *identifier){
-        [(UICollectionView *)self.view registerClass:class forCellWithReuseIdentifier:identifier];
+        [self enumerateObjectsUsingBlock:^(UICollectionView * _Nonnull obj) {
+            [obj registerClass:class forCellWithReuseIdentifier:identifier];
+        }];
         return self;
     };
 }

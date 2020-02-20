@@ -21,10 +21,11 @@
 @implementation MOBMainShareNormalTableViewCell
 
 - (void)setup{
-    self.backgroundColor = UIColorHexString(@"F7F8F9");
+    
+    UIViewModelWithArray(@[self,self.contentView])
+    .backgroundColor(UIColorHexString(@"f7f7f9"));
     self.contentView.layer.masksToBounds = NO;
     self.contentView.clipsToBounds = NO;
-    self.contentView.backgroundColor = UIColorHexString(@"F7F8F9");
 }
 
 - (void)setData:(MobSharePlatformStyleGroupModel *)data{

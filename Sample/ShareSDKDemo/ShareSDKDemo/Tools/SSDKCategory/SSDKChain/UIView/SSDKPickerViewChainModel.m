@@ -22,7 +22,9 @@ SSDKCATEGORY_CHAIN_PICKER_IMPLEMENTATION(showsSelectionIndicator, BOOL)
 
 - (SSDKPickerViewChainModel * _Nonnull (^)(void))reloadAllComponents{
     return ^ (){
-        [(UIPickerView *)self.view reloadAllComponents];
+        [self enumerateObjectsUsingBlock:^(UIPickerView * _Nonnull obj) {
+            [obj reloadAllComponents];
+        }];
         return self;
     };
 }
@@ -35,7 +37,10 @@ SSDKCATEGORY_CHAIN_PICKER_IMPLEMENTATION(showsSelectionIndicator, BOOL)
 
 - (SSDKPickerViewChainModel * _Nonnull (^)(NSInteger))reloadComponent{
     return ^ (NSInteger n){
-        [(UIPickerView *)self.view reloadComponent:1];
+        [self enumerateObjectsUsingBlock:^(UIPickerView * _Nonnull obj) {
+            [obj reloadComponent:n];
+        }];
+        
         return self;
     };
 }

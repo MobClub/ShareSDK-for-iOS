@@ -8,14 +8,16 @@
 
 #import "SSDKBaseViewChainModel+Masonry.h"
 
-#define     SSDKCATEGORY_CHAIN_MASONRY_IMPLEMENTATION(methodName, masonryMethod) \
+#define   SSDKCATEGORY_CHAIN_MASONRY_IMPLEMENTATION(methodName, masonryMethod) \
 - (id (^)( void (^constraints)(MASConstraintMaker *)) )methodName    \
 {   \
 return ^id ( void (^constraints)(MASConstraintMaker *) ) {  \
-if (self.view.superview) { \
-[self.view masonryMethod:constraints];    \
-}   \
-return self;    \
+[self enumerateObjectsUsingBlock:^(UIView*  _Nonnull obj) {\
+if (obj.superview) { \
+[obj masonryMethod:constraints];\
+}\
+}];\
+return self;\
 };  \
 }
 #define     SSDKCATEGORY_CHAIN_MASONRY_IMPLEMENTATION_NULL(methodName, masonryMethod) \

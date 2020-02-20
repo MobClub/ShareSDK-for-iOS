@@ -1,6 +1,6 @@
 //
 //  SSDKCommonViewController.h
-//  ShareSDKDemo
+//  mob
 //
 //  Created by maxl on 2018/12/20.
 //  Copyright © 2018 mob. All rights reserved.
@@ -84,10 +84,18 @@ typedef NS_ENUM(NSInteger, SSDKAppOrientation) {
 };
 
 
+@protocol SSDKCommonViewControllerProtocol <NSObject>
 
+
+@optional
+
+//安全区域变化
+- (void)viewSafeAreaInsetsChanged:(UIEdgeInsets)edges;
+
+@end
 #pragma mark - 基础控制器 -
 
-@interface SSDKCommonViewController : UIViewController
+@interface SSDKCommonViewController : UIViewController <SSDKCommonViewControllerProtocol>
 
 /**
  是否可以左滑
