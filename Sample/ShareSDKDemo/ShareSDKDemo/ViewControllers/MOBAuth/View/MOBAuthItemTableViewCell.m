@@ -101,26 +101,53 @@
     self.imageV.image = ui.image;
     self.name.text = ui.name;
     SSDKWEAK
-    model.handler = ^(BOOL isAuthor) {
+    model.handler = ^(MOBAuthStatus authorStatus) {
         SSDKSTRONG
         if (!self) return;
-        if (!isAuthor) {
-            self.authButton.makeChain
-            .borderColor(UIColorHexString(@"FF7800").CGColor)
-            .borderWidth(1)
-            .textColor(UIColorHexString(@"FF7800"), UIControlStateNormal)
-            .text(@"授权", UIControlStateNormal)
-            .backgroundColor([UIColor whiteColor]);
-        }else{
-            self.authButton.makeChain
-            .borderColor(UIColorHexString(@"ffffff").CGColor)
-            .borderWidth(1)
-            .textColor(UIColorHexString(@"ffffff"), UIControlStateNormal)
-            .text(@"查看用户信息", UIControlStateNormal);
+        switch (authorStatus) {
+            case MOBAuthStatusUnAuthor:
+            {
+                self.authButton.makeChain
+                .borderColor(UIColorHexString(@"FF7800").CGColor)
+                .borderWidth(1)
+                .textColor(UIColorHexString(@"FF7800"), UIControlStateNormal)
+                .text(@"授权", UIControlStateNormal)
+                .backgroundColor([UIColor whiteColor]);
+            }
+                break;
+            case MOBAuthStatusAuthoring:
+            {
+                self.authButton.makeChain
+                .borderColor(UIColorHexString(@"FF7800").CGColor)
+                .borderWidth(1)
+                .textColor(UIColorHexString(@"FF7800"), UIControlStateNormal)
+                .text(@"授权中", UIControlStateNormal)
+                .backgroundColor([UIColor whiteColor]);
+            }
+                break;
+            case MOBAuthStatusUserInfoing:{
+                self.authButton.makeChain
+                .borderColor(UIColorHexString(@"ffffff").CGColor)
+                .borderWidth(1)
+                .textColor(UIColorHexString(@"ffffff"), UIControlStateNormal)
+                .text(@"获取用户信息中", UIControlStateNormal);
+            }
+            case MOBAuthStatusAuthored:{
+                self.authButton.makeChain
+                .borderColor(UIColorHexString(@"ffffff").CGColor)
+                .borderWidth(1)
+                .textColor(UIColorHexString(@"ffffff"), UIControlStateNormal)
+                .text(@"查看用户信息", UIControlStateNormal);
+            }
+                break;
+            default:
+                break;
         }
-        self.gradientLayer.hidden = !isAuthor;
+        BOOL isAuthored = authorStatus == MOBAuthStatusAuthored || authorStatus == MOBAuthStatusUserInfoing;
+        
+        self.gradientLayer.hidden = !isAuthored;
         [self.authButton mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(isAuthor?110:75);
+            make.width.mas_equalTo(isAuthored?110:75);
         }];
         [self.authButton layoutIfNeeded];
         SSDKTansactionDisableActions(
@@ -132,11 +159,6 @@
 
 - (void)authorSelected:(UIButton *)button{
     [self.model author];
-}
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

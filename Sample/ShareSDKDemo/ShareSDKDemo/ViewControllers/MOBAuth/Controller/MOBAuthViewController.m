@@ -29,7 +29,7 @@
     
     self.navigationBar.middleButton
     .makeChain
-    .text(@"第三方登录", UIControlStateNormal)
+    .text(@"第三方授权", UIControlStateNormal)
     .textColor(UIColorHexString(@"464646"), UIControlStateNormal)
     .font(Font(PingFangSemibold, 17));
     

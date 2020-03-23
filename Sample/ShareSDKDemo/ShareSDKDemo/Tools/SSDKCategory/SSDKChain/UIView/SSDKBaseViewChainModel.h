@@ -187,7 +187,7 @@ SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ shadowPath) (CGPathRef shadowPath);
 #pragma mark - method -
 
 
-
+SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ bringOwnAtFirst)(void);
 SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ assignTo)(SSDKAssignViewLoad assignTo);
 SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ sizeToFit) (void);
 SSDKCATEGORY_CHAIN_PROPERTY CGSize (^ sizeToFitSize) (CGSize size);

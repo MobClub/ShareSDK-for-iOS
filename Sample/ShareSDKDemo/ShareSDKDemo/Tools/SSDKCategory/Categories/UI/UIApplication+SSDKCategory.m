@@ -73,6 +73,10 @@ return objc_getAssociatedObject(self, @selector(_setter_:)); \
     return [SSDKScenePackage defaultPackage].window;
 }
 
++ (UIWindow *)higherWindow{
+    return [[SSDKScenePackage defaultPackage] higherWindow];
+}
+
 + (UIWindow *)currentKeyWindow{
     return [SSDKScenePackage defaultPackage].keyWindow;
 }
@@ -82,7 +86,7 @@ return objc_getAssociatedObject(self, @selector(_setter_:)); \
 }
 
 + (__kindof UIViewController *)rootViewController{
-    return ([self keyWindow]?:[self window]).rootViewController;
+    return [self window].rootViewController;
 }
 
 + (__kindof UIViewController *)currentTopViewController{

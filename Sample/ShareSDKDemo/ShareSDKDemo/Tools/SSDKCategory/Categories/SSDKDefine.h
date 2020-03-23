@@ -33,17 +33,6 @@ static inline CGFloat SSDKDegreesToRadians(CGFloat degrees) {
 //仅仅是状态栏的高度
 #define kStatusBarHeight (SSDKSafeArea([UIApplication window]).top)
 
-//当前显示的navigationbar的高度
-#define kNavigationBarHeight \
-({\
-    CGFloat height = 0;\
-    UINavigationBar *bar = [UIApplication currentTopViewController].navigationController.navigationBar;\
-    if (!bar.isHidden) {\
-    height = bar.height + kStatusBarHeight;\
-    }\
-    height;\
-})
-
 #define kDefaultNavigationBarHeight (SSDKSafeArea([UIApplication window]).top + 44)
 
 //这个高度如果有tabbar高度则包含tabbar高度，否则不包含

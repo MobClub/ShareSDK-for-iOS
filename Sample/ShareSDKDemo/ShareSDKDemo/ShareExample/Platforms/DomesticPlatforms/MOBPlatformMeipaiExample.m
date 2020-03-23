@@ -58,6 +58,8 @@
  */
 - (void)shareAssetImage
 {
+    
+    
     NSString *path = SHARESDKDEMO_IMAGE_LOCALPATH;
     ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
     __weak __typeof__ (self) weakSelf = self;

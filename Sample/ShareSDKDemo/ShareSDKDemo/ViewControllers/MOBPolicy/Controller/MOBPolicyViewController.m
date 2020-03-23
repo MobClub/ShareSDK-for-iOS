@@ -31,9 +31,10 @@
 @implementation MOBPolicyViewController
 
 - (void)viewDidLoad {
+    [self setupUI];
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
-    [self setupUI];
+    
     [self loadData];
     
     // Do any additional setup after loading the view.
@@ -104,7 +105,7 @@
     .addTarget(self, @selector(cancelClick), UIControlEventTouchUpInside)
     .text(@"取消", UIControlStateNormal)
     .makeMasonry(^(MASConstraintMaker * _Nonnull make) {
-        make.width.mas_equalTo(128);
+        make.width.mas_equalTo(128 * SSDK_SCALE);
         make.height.mas_equalTo(40);
         make.bottom.mas_offset(-20);
         make.right.equalTo(self.contentView.mas_centerX).offset(-9.5);
@@ -115,7 +116,7 @@
     .addTarget(self, @selector(confirmClick), UIControlEventTouchUpInside)
     .text(@"同意", UIControlStateNormal)
     .makeMasonry(^(MASConstraintMaker * _Nonnull make) {
-        make.width.mas_equalTo(128);
+        make.width.mas_equalTo(128 * SSDK_SCALE);
         make.height.mas_equalTo(40);
         make.bottom.mas_offset(-20);
         make.left.equalTo(self.contentView.mas_centerX).offset(9.5);

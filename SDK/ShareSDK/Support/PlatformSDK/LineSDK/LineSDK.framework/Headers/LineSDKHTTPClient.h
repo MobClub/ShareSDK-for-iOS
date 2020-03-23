@@ -18,15 +18,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <LineSDK/LineSDKRequestProtocol.h>
+#import "LineSDKRequestProtocol.h"
+#import "LineSDKAttributes.h"
 
 @class LineSDKConfiguration;
 @class LineSDKAccessToken;
 
 NS_ASSUME_NONNULL_BEGIN
+
+NS_SWIFT_NAME(HTTPClient)
 @interface LineSDKHTTPClient : NSObject
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)init LSDK_UNAVAILABLE("Use `initWithConfiguration:` instead");
 - (instancetype)initWithConfiguration:(LineSDKConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
 - (void)sendWithRequest:(id<LineSDKRequestProtocol>)request
              completion:(void(^)(NSDictionary * _Nullable data, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error))completion;

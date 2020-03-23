@@ -10,6 +10,7 @@
 #import "MOBPlatformMethodProtocol.h"
 #import "MOBPlatfromMethodStyleModel.h"
 #import "MOBShareItemUI.h"
+#import "SSDKImagePicker.h"
 NS_ASSUME_NONNULL_BEGIN
 
 

@@ -32,6 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIWindow *)keyWindow;
 
+//当前场景下层级最高的window
++ (UIWindow *)higherWindow;
+
 //app的 delegate
 + (id<UIApplicationDelegate>)delegate;
 

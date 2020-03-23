@@ -19,15 +19,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) BOOL isSceneApp;
 
 //当前活跃window
-@property (nonatomic, copy, readonly) UIWindow *window;
+@property (nonatomic, strong, readonly) UIWindow *window;
+
+//当前或缺的scene的delegateWindow
+@property (nonatomic, strong, readonly) UIWindow *higherWindow;
+
+//当前活跃windowscene
+@property (nonatomic, copy, readonly) UIWindow *keyWindow;
+
+//当前活跃的scene
+@property (nonatomic, strong, readonly) id currentScene;
 
 //当前活跃的windows
 @property (nonatomic, strong, readonly) NSArray <UIWindow *>* windows;
-
-//当前活跃windowscene
-@property (nonatomic, strong, readonly) id currentScene;
-
-@property (nonatomic, copy, readonly) UIWindow *keyWindow;
 
 @property (nonatomic, assign) UIStatusBarStyle statusBarStyle;
 
@@ -75,6 +79,10 @@ typedef NS_ENUM(NSUInteger, SSDKControllerShowType) {
 @property (nonatomic, copy, readonly) UIViewController *( ^ pushWithNavigation) (void (^ navigationConntroller)(UINavigationController *navigationController));
 
 @property (nonatomic, copy, readonly) UIViewController *( ^ present) (void);
+
+@property (nonatomic, copy, readonly) UIViewController *( ^ presentAnimated) (void);
+
+@property (nonatomic, copy, readonly) UIViewController *( ^ pushAnimated) (void);
 
 @end
 

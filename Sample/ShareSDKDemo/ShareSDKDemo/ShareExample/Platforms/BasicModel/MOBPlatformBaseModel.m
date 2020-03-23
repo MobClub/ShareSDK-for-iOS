@@ -41,8 +41,7 @@ static time_t lasShareTime;
 
 #pragma mark - 分享 -
 - (void)share{
-    
-    if (time(NULL) - lasShareTime <= 4.5 && lasShareTime > 0) return;
+    if (time(NULL) - lasShareTime <= 3 && lasShareTime > 0) return;
     lasShareTime = time(NULL);
     self.platformModel.currentShareModel = self;
     if (self.method) {
@@ -354,7 +353,8 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
     
     NSString *platformTypeName = [NSString stringWithFormat:@"ShareType_%lu",(unsigned long)self.platformType];
     NSString *title = NSLocalizedStringWithDefaultValue(platformTypeName, @"ShareSDKUI_Localizable", MOBPlatformBundle(), platformTypeName, nil);
-    
+    #define NSLocalizedStringWithDefaultValue(key, tbl, bundle, val, comment) \
+    [bundle localizedStringForKey:(key) value:(val) table:(tbl)]
     ui.name = title;
     NSString *iconName = [NSString stringWithFormat:@"sns_icon_%ld",(long)[self platformType]];
     ui.image = UIImageNamed(iconName);

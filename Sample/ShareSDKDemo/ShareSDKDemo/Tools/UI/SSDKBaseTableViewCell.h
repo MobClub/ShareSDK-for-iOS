@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SSDKCategory.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SSDKBaseTableViewCell : UITableViewCell

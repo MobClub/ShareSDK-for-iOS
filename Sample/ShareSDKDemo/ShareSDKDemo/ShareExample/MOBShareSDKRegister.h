@@ -652,7 +652,7 @@
 */
 #ifdef IMPORT_GooglePlus
     //ClientID
-    #define MOBSSDKGooglePlusClientID @"232554794995-85agj9jh8br7dtf8ornec6ndi7drh0kv.apps.googleusercontent.com"
+    #define MOBSSDKGooglePlusClientID @"232554794995-4m0c7j0f289fkq05ee0abkso4p9d904i.apps.googleusercontent.com"
     //ClientSecret
     #define MOBSSDKGooglePlusClientSecret @""
     //RedirectUri
@@ -792,7 +792,7 @@
  */
 #ifdef IMPORT_Pinterest
     //ClientId
-#define MOBSSDKPinterestClientId @"4945875567846113703"
+#define MOBSSDKPinterestClientId @"5057854497590653616"
 
 #endif
 

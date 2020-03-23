@@ -14,6 +14,7 @@
 #import "SSDKCategory.h"
 #import "MOBNavigationViewController.h"
 #import "MOBShareExample.h"
+#import "SSDKImagePicker.h"
 #import <objc/message.h>
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
@@ -22,8 +23,8 @@
 //1 测试 ， 0 线上
 #define isAPPTest 0
 
-#define SHARESDKDEMO_URLSTRING (isAPPTest? @"http://10.18.97.58:2122/share/link/mobid=ziqMNf":@"http://m.93lj.com/sharelink?mobid=ziqMNf")
-#define SHARESDKDEMO_URL_Header (isAPPTest? @"http://10.18.97.58:2122/share/link/":@"http://m.93lj.com/sharelink/")
+#define SHARESDKDEMO_URLSTRING (isAPPTest? @"http://10.18.98.212:8081/share/link/mobid=ziqMNf":@"http://m.93lj.com/sharelink?mobid=ziqMNf")
+#define SHARESDKDEMO_URL_Header (isAPPTest? @"http://10.18.98.212:8081/share/link/":@"http://m.93lj.com/sharelink/")
 #define SHARESDKDEMO_TEXT @"闭环分享重磅上线！一键实现闭环分享！错过它，就错过了全世界~  ahmn.t4m.cn/ziqMNf 点击立即使用"
 #define SHARESDKDEMO_TITLE @"Share SDK"
 #define SHARESDKDEMO_IMAGE_STRING @"http://download.sdk.mob.com/web/images/2019/07/30/14/1564468183056/750_750_65.12.png"
@@ -32,8 +33,8 @@
 #define SHARESDKDEMO_IMAGE_URL [NSURL URLWithString:SHARESDKDEMO_IMAGE_STRING]
 
 //sharesdk视频
-#define SHARESDKDEMO_VIDEO_STRING @"http://mpv.videocc.net/ff2e594dca/a/ff2e594dca272bd9ce1679e375319f7a_3.mp4"
+#define SHARESDKDEMO_VIDEO_STRING @"http://www.mob.com/video/ShareSDK.mp4"
 //sharelink视频
-#define SHARESDKDEMO_VIDEO_AD_STRING @"http://mpv.videocc.net/ff2e594dca/a/ff2e594dca272bd9ce1679e375319f7a_3.mp4"//@"http://mpv.videocc.net/ff2e594dca/2/ff2e594dca23e81723ac9dcebfe52272_3.mp4"
+#define SHARESDKDEMO_VIDEO_AD_STRING @"http://www.mob.com/video/ShareSDK.mp4"//@"http://mpv.videocc.net/ff2e594dca/2/ff2e594dca23e81723ac9dcebfe52272_3.mp4"
 
 #endif /* ShareSDKDemoPrefixHeader_pch */

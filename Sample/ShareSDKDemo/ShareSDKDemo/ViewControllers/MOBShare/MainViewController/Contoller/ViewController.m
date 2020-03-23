@@ -46,7 +46,6 @@
     [super viewDidLoad];
     [self createData];
     [self setupUI];
-    
 }
 
 //点击跳转

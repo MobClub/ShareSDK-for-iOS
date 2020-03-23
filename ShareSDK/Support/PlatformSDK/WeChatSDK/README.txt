@@ -1,5 +1,8 @@
 重要!
 
+SDK1.8.6.2
+1. 修改包含"UIWebView"字符的类名
+
 SDK1.8.6.1
 1.短信授权登录使用的UIWebview切换成WKWebview
 

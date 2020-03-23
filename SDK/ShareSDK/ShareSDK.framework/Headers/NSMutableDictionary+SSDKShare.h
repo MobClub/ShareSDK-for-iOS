@@ -295,11 +295,11 @@
  *  @param quote 话题标签
  随分享的链接一同显示的引文由用户自行高亮选择，也可由开发者预先定义(例如文章的醒目引文) 此参数只适用于链接分享类型
  
- *  @param shareType 包含facebooksdk 
+ *  @param shareType 包含facebooksdk
  
  *  @param type             分享类型
-    当使用客户端分享时,支持Image、WebPage,Video类型
-    当不适用客户端分享是,支持Text、Image、WebPage、App(应用邀请)类型
+ 当使用客户端分享时,支持Image、WebPage,Video类型
+ 当不适用客户端分享是,支持Text、Image、WebPage、App(应用邀请)类型
  */
 
 - (void)SSDKSetupFacebookParamsByText:(NSString *)text
@@ -313,7 +313,15 @@
                             shareType:(SSDKFacebookShareType)shareType
                                  type:(SSDKContentType)type;
 
+/**
+ Facebook 分享参数 SSDKSetupFacebookParamsByText:image:url:urlTitle:urlName:attachementUrl:hashtag:quote:shareType:type的扩展
+ imageAsset 设置分享图片的PHAsset，为一个数组
+ videoAsset  设置分享视频的PHAsset，或localIdentifier
+ 此方法可以将图片与视频的分享内容改为PHAsset 或localIdentifier
+ */
 
+- (void)SSDKSetupFacebookParamsByImagePHAsset:(NSArray*)imageAsset
+                                 videoPHAsset:(id)videoAsset;
 
 #pragma mark - Facebook Messenger
 
@@ -1083,14 +1091,14 @@
 
 /** 设置绿洲分享参数
  
-   
+ 
  * @param title 标题
  
  * @param text 内容
  
  * @param assetLocalIds 相册资源，注：只允许为相册资源且集合传对应的资源localIdentifier，非相册路径
-  如相册路径为“assets-library://asset/asset.mp4?id=E7BEC1A7-D60C-4B41-85AB-B8A1606AB338&ext=mp4”，assetLocalIds为@[@"E7BEC1A7-D60C-4B41-85AB-B8A1606AB338"]
-  assetLocalIds优先级低于image和video
+ 如相册路径为“assets-library://asset/asset.mp4?id=E7BEC1A7-D60C-4B41-85AB-B8A1606AB338&ext=mp4”，assetLocalIds为@[@"E7BEC1A7-D60C-4B41-85AB-B8A1606AB338"]
+ assetLocalIds优先级低于image和video
  
  * @param image  图片，可以为NSString、NSURL、UIImage、NSData、或着以上类型的数组，注：  图片大小限制为10M,  图片最多传12张
  
@@ -1101,12 +1109,12 @@
  * @param type 分享的类型
  */
 - (void)SSDKSetupOasisParamsByTitle:(NSString *)title
-                                text:(NSString *)text
-                       assetLocalIds:(NSArray <NSString *>*)assetLocalIds
-                               image:(id)image
-                               video:(NSData *)video
-                       fileExtension:(NSString *)fileExtension
-                                type:(SSDKContentType)type;
+                               text:(NSString *)text
+                      assetLocalIds:(NSArray <NSString *>*)assetLocalIds
+                              image:(id)image
+                              video:(NSData *)video
+                      fileExtension:(NSString *)fileExtension
+                               type:(SSDKContentType)type;
 
 #pragma mark - Deprecated
 

@@ -22,6 +22,7 @@
     BOOL _isConformsTableView;
     BOOL _isConformsCollectionView;
     BOOL _isRespondsSafeAreaSel;
+    
 }
 
 @end
@@ -73,14 +74,19 @@ static void _ssdkCommonProtocolSwizzle(id self){
 {
     self = [super init];
     if (self) {
+        
         if ([self conformsToProtocol:@protocol(SSDKCommonNavigationProtocol)]) {
             _isConformsNavigationBar = YES;
+            [self _createNavigationbar];
         }
         if ([self conformsToProtocol:@protocol(SSDKCommonTableViewProtocol)]) {
             _isConformsTableView = YES;
+            [self _createTableView];
         }
         if ([self conformsToProtocol:@protocol(SSDKCommonCollectionViewProtocol)]) {
             _isConformsCollectionView = YES;
+            [self _createCollectionView];
+            
         }
         if (_isConformsTableView || _isConformsCollectionView) {
             _ssdkCommonProtocolSwizzle(self);
@@ -92,38 +98,35 @@ static void _ssdkCommonProtocolSwizzle(id self){
     return self;
 }
 
+
+- (void)loadView{
+    [super loadView];
+    
+    if (_isConformsNavigationBar) {
+        [self _loadNavigationBar];
+    }
+    if (_isConformsTableView) {
+        [self _loadTableView];
+    }
+    if (_isConformsCollectionView) {
+        [self _loadCollectionView];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
 #if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_11_0
     self.automaticallyAdjustsScrollViewInsets = NO;
 #endif
-    
     self.view.backgroundColor = [UIColor whiteColor];
-    if (_isConformsNavigationBar) {
-        [self commonSetupNavigationView];
+    if (_isRespondsSafeAreaSel) {
+        [self viewSafeAreaInsetsChanged:SSDKSafeArea(self.view)];
+        [self.view layoutIfNeeded];
     }
-    if (_isConformsTableView) {
-        [self commonSetupTableView];
-    }
-    if (_isConformsCollectionView) {
-        [self commonSetupCollectionView];
-    }
-    
-
     // Do any additional setup after loading the view.
 }
 
-- (void)viewDidLayoutSubviews{
-    [super viewDidLayoutSubviews];
-    if (_isRespondsSafeAreaSel) {
-        [self viewSafeAreaInsetsChanged:SSDKSafeArea(self.view)];
-    }
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}
 - (void)setSwipeCanPop:(BOOL)swipeCanPop{
     _swipeCanPop = swipeCanPop;
     self.navigationController.interactivePopGestureRecognizer.enabled = swipeCanPop;
@@ -173,72 +176,24 @@ static void _ssdkCommonProtocolSwizzle(id self){
 }
 
 
-- (void)commonSetupTableView{
-    id <SSDKCommonTableViewProtocol> vc = (id <SSDKCommonTableViewProtocol>) self;
-    SEL sel = NSSelectorFromString(@"commonTableViewModel:");
-    SSDKCommonTableViewModel *model = [SSDKCommonTableViewModel new];
-    if ([self respondsToSelector:sel]) {
-        [self performSelectorWithArguments:sel,model];
-    }
-    Class class;
-    if (model.clas.length > 0) {
-        class = NSClassFromString(model.clas);
-    }
-    if (![class isSubclassOfClass:[UITableView class]]) {
-        class = [UITableView class];
-    }
-    objc_setAssociatedObject(self, kSSDKCommonViewControllerTableViewModelKey, model, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    UITableViewStyle style = model.style;
-    
-    UITableView *tableView = [class tableViewStyle:style];
-    
-    tableView.makeChain
-    .adJustedContentIOS11()
-    .dataSource(vc)
-    .delegate(vc)
-    .separatorStyle(UITableViewCellSeparatorStyleNone)
-    .clipsToBounds(YES);
-    
-    vc.tableView = tableView;
-    UIView *view = self.view;
-    SEL sel1 = NSSelectorFromString(@"comonTableViewSuperView");
-    if ([self respondsToSelector:sel1]) {
-        view = [self performSelectorWithArguments:sel1];
-    }
-    if (model.tableView) {
-        model.tableView(tableView);
-    }
-    if (view) {
-        [view addSubview:tableView];
-    }
-    
-    UIView *topView = nil;
-    if (_isConformsNavigationBar) {
-        topView = [(id <SSDKCommonNavigationProtocol>) vc navigationBar];
-        [self.view bringSubviewToFront:topView];
-    }
-    
-    if (view == self.view && !model.isCustomLayout) {
-        [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-            if (topView) {
-                make.top.equalTo(topView.mas_bottom);
-            }else{
-                make.top.equalTo(self.view.mas_top).offset(kStatusBarHeight);
-            }
-            make.left.bottom.right.mas_offset(0);
-        }];
-    }
-}
+
 
 - (void)viewSafeAreaInsetsDidChange API_AVAILABLE(ios(11.0)){
     [super viewSafeAreaInsetsDidChange];
     UIEdgeInsets edge = SSDKSafeArea(self.view);
     CGFloat barHeight = kDefaultNavigationBarHeight;
+    CGFloat barHeightReduce = 0;
     
+    if (self.presentingViewController &&  [@[@(UIModalPresentationPageSheet),@(UIModalPresentationFormSheet),@(-2)] containsObject:@(self.presentingViewController.presentedViewController.modalPresentationStyle)] && UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation])) {
+        barHeightReduce = kStatusBarHeight;
+        barHeight -= 24;
+    }
     SSDKCommonNavigationBar *view = nil;
     if (_isConformsNavigationBar) {
         view = [(id<SSDKCommonNavigationProtocol>)self navigationBar];
         if (view.superview != self.view) return;
+        UIEdgeInsets inset = edge;
+        inset.top =  kStatusBarHeight - barHeightReduce;
         [view resetLayout:edge];
         [view mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.mas_offset(0);
@@ -288,12 +243,69 @@ static void _ssdkCommonProtocolSwizzle(id self){
     if (_isRespondsSafeAreaSel||_isConformsTableView || _isConformsNavigationBar || _isConformsCollectionView) {
         [self.view layoutIfNeeded];
     }
-
 }
 
+- (void)_createTableView{
+    id <SSDKCommonTableViewProtocol> vc = (id <SSDKCommonTableViewProtocol>) self;
+    SEL sel = NSSelectorFromString(@"commonTableViewModel:");
+    SSDKCommonTableViewModel *model = [SSDKCommonTableViewModel new];
+    if ([self respondsToSelector:sel]) {
+        [self performSelectorWithArguments:sel,model];
+    }
+    Class class;
+    if (model.clas.length > 0) {
+        class = NSClassFromString(model.clas);
+    }
+    if (![class isSubclassOfClass:[UITableView class]]) {
+        class = [UITableView class];
+    }
+    objc_setAssociatedObject(self, kSSDKCommonViewControllerTableViewModelKey, model, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    UITableViewStyle style = model.style;
+    
+    UITableView *tableView = [class tableViewStyle:style];
+    
+    tableView.makeChain
+    .adJustedContentIOS11()
+    .dataSource(vc)
+    .delegate(vc)
+    .separatorStyle(UITableViewCellSeparatorStyleNone)
+    .clipsToBounds(YES);
+    vc.tableView = tableView;
+}
 
+- (void)_loadTableView{
+    id <SSDKCommonTableViewProtocol> vc = (id <SSDKCommonTableViewProtocol>) self;
+    SSDKCommonTableViewModel *model = vc.tableViewModel;
+    UITableView *tableView = vc.tableView;
+    UIView *view = self.view;
+    SEL sel1 = NSSelectorFromString(@"comonTableViewSuperView");
+    if ([self respondsToSelector:sel1]) {
+        view = [self performSelectorWithArguments:sel1];
+    }
+    if (model.tableView) {
+        model.tableView(tableView);
+    }
+    if (view) {
+        [view addSubview:tableView];
+    }
+    UIView *topView = nil;
+    if (_isConformsNavigationBar) {
+        topView = [(id <SSDKCommonNavigationProtocol>) vc navigationBar];
+        [self.view bringSubviewToFront:topView];
+    }
+    if (view == self.view && !model.isCustomLayout) {
+        [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            if (topView) {
+                make.top.equalTo(topView.mas_bottom);
+            }else{
+                make.top.equalTo(self.view.mas_top).offset(kStatusBarHeight);
+            }
+            make.left.bottom.right.mas_offset(0);
+        }];
+    }
+}
 
-- (void)commonSetupCollectionView{
+- (void)_createCollectionView{
     id <SSDKCommonCollectionViewProtocol> vc = (id <SSDKCommonCollectionViewProtocol>) self;
     SEL sel = NSSelectorFromString(@"commonCollectionModel:");
     SSDKCommonCollectionViewModel *model = [SSDKCommonCollectionViewModel new];
@@ -304,9 +316,6 @@ static void _ssdkCommonProtocolSwizzle(id self){
     if (!layout) {
         layout = [[UICollectionViewFlowLayout alloc] init];
     }
-    if (model.layoutSetting) {
-        model.layoutSetting(layout);
-    }
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     objc_setAssociatedObject(self, kSSDKCommonViewControllerCollectionViewModelKey, model, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     collectionView.makeChain
@@ -316,8 +325,16 @@ static void _ssdkCommonProtocolSwizzle(id self){
     .showsHorizontalScrollIndicator(NO)
     .backgroundColor([UIColor whiteColor])
     .adJustedContentIOS11();
-    
-    vc.collectionView = collectionView;
+     vc.collectionView = collectionView;
+}
+
+- (void)_loadCollectionView{
+    id <SSDKCommonCollectionViewProtocol> vc = (id <SSDKCommonCollectionViewProtocol>) self;
+    SSDKCommonCollectionViewModel *model = vc.collectionViewModel;
+    UICollectionView *collectionView = vc.collectionView;
+    if (model.layoutSetting) {
+        model.layoutSetting(model.layout);
+    }
     SEL sel1 = NSSelectorFromString(@"commonCollectionViewSuperView");
     UIView *view = self.view;
     if ([self respondsToSelector:sel1]) {
@@ -341,15 +358,20 @@ static void _ssdkCommonProtocolSwizzle(id self){
             make.left.bottom.right.mas_offset(0);
         }];
     }
+
 }
 
-
-
-- (void)commonSetupNavigationView{
+- (void)_createNavigationbar{
     SSDKCommonNavigationBar *bar = [SSDKCommonNavigationBar new];
     id <SSDKCommonNavigationProtocol> vc =  (id <SSDKCommonNavigationProtocol>)self;
     [vc setNavigationBar:bar];
     bar.delegate = vc;
+}
+
+
+- (void)_loadNavigationBar{
+    id <SSDKCommonNavigationProtocol> vc =  (id <SSDKCommonNavigationProtocol>)self;
+    SSDKCommonNavigationBar *bar = vc.navigationBar;
     UIView * view = self.view;
     SEL superSel = NSSelectorFromString(@"commonNavigationViewSuperView");
     if ([self respondsToSelector:superSel]) {

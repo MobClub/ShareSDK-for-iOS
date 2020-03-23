@@ -31,6 +31,8 @@ ModelClass *chainModel = [[ModelClass alloc] initWithLayer:layer modelClass:[Lay
 
 @implementation UIView (SSDKChain)
 
+
+
 SSDKCATEGORY_ADDVIEW(addView, SSDKViewChainModel, UIView);
 SSDKCATEGORY_ADDVIEW(addLabel, SSDKLabelChainModel, UILabel);
 SSDKCATEGORY_ADDVIEW(addImageView, SSDKImageViewChainModel, UIImageView);

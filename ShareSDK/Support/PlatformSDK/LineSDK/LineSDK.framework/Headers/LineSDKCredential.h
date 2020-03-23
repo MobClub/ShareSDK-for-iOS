@@ -18,19 +18,82 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LineSDKAttributes.h"
 
 @class LineSDKAccessToken;
+@class LineSDKJSONWebToken;
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ Represents credentials that are used to grant access to the LINE Platform.
+ */
+NS_SWIFT_NAME(Credential)
 @interface LineSDKCredential : NSObject
 
+/**
+ The access token.
+ */
 @property (nonatomic, strong, readonly, nullable) LineSDKAccessToken *accessToken;
+
+/**
+ The set of permissions that the access token holds. The following is a list of
+ the permission codes.
+
+ profile: The permission to get the user’s profile information in the login response.
+ 
+ openid: The permission to get an ID token in the login response.
+ 
+ email: The permission to get the user’s email from an ID Token in the login response.
+ */
 @property (nonatomic, strong, readonly) NSOrderedSet<NSString *> *permissions;
 
-- (instancetype)init NS_UNAVAILABLE;
+/**
+ The ID token returned by the LINE Platform if the OpenID scope is requested in the authorization request. The
+ LINE SDK parses the returned string value to a valid `LineSDKJSONWebToken` object and verifies the token
+ signature and contents before the login process finishes. If the verification fails, the login process fails
+ with an error.
+ */
+@property (nonatomic, strong, readonly) LineSDKJSONWebToken *IDToken;
+
+/**
+ Indicates that the friendship status between the user and the bot changed during the login. `@YES` if the
+ friendship status changed during login; `@NO` otherwise. This value exists only if the `botPrompt` property is
+ specified in the `LineSDKLogin` object.
+ */
+@property (nonatomic, strong, readonly, nullable) NSNumber *friendshipStatusChanged;
+
+/**
+ :nodoc:
+ Use `initWithAccessToken:permissions:` to instantiate an instance of
+ LineSDKCredential.
+ */
+- (instancetype)init LSDK_UNAVAILABLE("Use `initWithAccessToken:permissions:` instead");
+
+/**
+ :nodoc:
+ Instantiates a `LineSDKCredential` object.
+ 
+ @param accessToken A `LineSDKAccessToken` object.
+ @param permissions A set of permissions.
+ */
 - (instancetype)initWithAccessToken:(nullable LineSDKAccessToken *)accessToken
-                        permissions:(NSOrderedSet<NSString *> *)permissions NS_DESIGNATED_INITIALIZER;
+                        permissions:(NSOrderedSet<NSString *> *)permissions;
+
+/**
+ :nodoc:
+ Instantiates a `LineSDKCredential` object.
+ 
+ @param accessToken A `LineSDKAccessToken` object.
+ @param permissions A set of permissions.
+ @param IDToken The received ID token string.
+ @param friendshipStatusChanged Whether the friendship status between the user and the bot changes during the
+ login.
+ */
+- (instancetype)initWithAccessToken:(nullable LineSDKAccessToken *)accessToken
+                        permissions:(NSOrderedSet<NSString *> *)permissions
+                            IDToken:(nullable LineSDKJSONWebToken *)IDToken
+            friendshipStatusChanged:(nullable NSNumber *)friendshipStatusChanged NS_DESIGNATED_INITIALIZER;
 
 @end
 

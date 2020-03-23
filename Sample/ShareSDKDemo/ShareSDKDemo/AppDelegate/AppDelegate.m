@@ -13,7 +13,11 @@
 #import <Bugly/Bugly.h>
 #import "MOBPlatformDataSource.h"
 #import "MOBPolicyManager.h"
-@interface AppDelegate () <ISSERestoreSceneDelegate>
+#import "WXApi.h"
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <LineSDK/LineSDK.h>
+#import "WeiboSDK.h"
+@interface AppDelegate () <ISSERestoreSceneDelegate,WXApiDelegate,QQApiInterfaceDelegate,WeiboSDKDelegate, LineSDKLoginDelegate>
 
 @end
 
@@ -23,18 +27,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-   
+    
     //在MOBShareSDKRegister注册第三方平台信息
-    
+    [[LineSDKLogin sharedInstance]setDelegate:self];
     [ShareSDK setRestoreSceneDelegate:self];
-    
     //开启截屏分享监听 与ShareSDK本身无关
     [[MobScreenshotCenter shareInstance] start];
     
     // 加入Bugly来统计Demo异常情况
     [Bugly startWithAppId:@"b319f530b6"];
     
-    
+    //注册各平台参数
+    [self registerShareSDK];
     //由于iOS13此方法加载时并没有加载window，下面的方法可以将在此处理window相关问题延迟到window加载之后
     [[SSDKScenePackage defaultPackage] addBeforeWindowEvent:^(SSDKScenePackage * _Nonnull application) {
         application.window.backgroundColor = [UIColor whiteColor];
@@ -46,6 +50,191 @@
     [[MOBPolicyManager defaultManager] show];
     
     return YES;
+    
+}
+//ShareSDK注册各平台参数详见
+//MOBShareSDKRegister.m
+- (void)registerShareSDK{
+//     [ShareSDK registPlatforms:^(SSDKRegister *platformsRegister) {
+//
+//    #ifdef IMPORT_SINA_WEIBO
+//            [platformsRegister setupSinaWeiboWithAppkey:MOBSSDKSinaWeiboAppKey appSecret:MOBSSDKSinaWeiboAppSecret redirectUrl:MOBSSDKSinaWeiboRedirectUri];
+//    #endif
+//
+//    #if (defined IMPORT_SUB_QQFriend) || (defined IMPORT_SUB_QZone)
+//            [platformsRegister setupQQWithAppId:MOBSSDKQQAppID appkey:MOBSSDKQQAppKey];
+//    #endif
+//
+//    #if (defined IMPORT_SUB_WechatSession) || (defined IMPORT_SUB_WechatTimeline) || (defined IMPORT_SUB_WechatFav)
+//            [platformsRegister setupWeChatWithAppId:MOBSSDKWeChatAppID appSecret:MOBSSDKWeChatAppSecret universalLink:MOBSSDKWeChatuniversalLink];
+//    #endif
+//
+//    #if (defined IMPORT_AliPaySocial) || (defined IMPORT_AliPaySocialTimeline)
+//            [platformsRegister setupAliSocialWithAppId:MOBSSDKAliPayAppID];
+//    #endif
+//
+//    #ifdef IMPORT_MeiPai
+//            [platformsRegister setupMeiPaiWithAppkey:MOBSSDKMeiPaiAppKey];
+//    #endif
+//
+//    #ifdef IMPORT_DingTalk
+//            [platformsRegister setupDingTalkWithAppId:MOBSSDKDingTalkAppId];
+//    #endif
+//
+//    #ifdef IMPORT_DouBan
+//            [platformsRegister setupDouBanWithApikey:MOBSSDKDouBanApiKey appSecret:MOBSSDKDouBanSecret redirectUrl:MOBSSDKDouBanRedirectUri];
+//    #endif
+//
+//    #ifdef IMPORT_TencentWeibo
+//            [platformsRegister setupTencentWeiboWithAppkey:MOBSSDKTencentWeiboAppKey appSecret:MOBSSDKTencentWeiboAppSecret redirectUrl:MOBSSDKTencentWeiboRedirectUri];
+//    #endif
+//
+//    #ifdef IMPORT_YinXiang
+//            [platformsRegister setupEvernoteByConsumerKey:MOBSSDKEvernoteConsumerKey consumerSecret:MOBSSDKEvernoteConsumerSecret sandbox:MOBSSDKEvernoteSandbox];
+//    #endif
+//
+//    #ifdef IMPORT_YouDaoNote
+//            [platformsRegister setupYouDaoNoteWithConsumerKey:MOBSSDKYouDaoNoteConsumerKey consumerSecret:MOBSSDKYouDaoNoteConsumerSecret oauthCallback:MOBSSDKYouDaoNoteOauthCallback];
+//    #endif
+//
+//    #ifdef IMPORT_Mingdao
+//            [platformsRegister setupMingDaoByAppKey:MOBSSDKMingdaoAppKey appSecret:MOBSSDKMingdaoAppSecret redirectUrl:MOBSSDKMingdaoRedirectUri];
+//    #endif
+//
+//    #ifdef IMPORT_Kaixin
+//            [platformsRegister setupKaiXinByApiKey:MOBSSDKKaiXinApiKey secretKey:MOBSSDKKaiXinSecretKey redirectUrl:MOBSSDKKaiXinRedirectUri];
+//    #endif
+//
+//    #ifdef IMPORT_Renren
+//            [platformsRegister setupRenRenWithAppId:MOBSSDKRenrenAppId appKey:MOBSSDKRenrenAppKey secretKey:MOBSSDKRenrenSecretKey authType:MOBSSDKRenrenAuthType];
+//    #endif
+//
+//    #if (defined IMPORT_SUB_YiXinSession) || (defined IMPORT_SUB_YiXinTimeline) || (defined IMPORT_SUB_YiXinFav)
+//            [platformsRegister setupYiXinByAppId:MOBSSDKYiXinAppId appSecret:MOBSSDKYiXinAppSecret redirectUrl:MOBSSDKYiXinRedirectUri];
+//    #endif
+//
+//    #ifdef IMPORT_Facebook
+//    #pragma mark - Facebook 重设权限
+//            //                  [appInfo SSDKSetAuthSettings:@[
+//            //                                                 @"public_profile",//默认(无需审核)
+//            //                                                 @"user_friends",//好友列表(无需审核)
+//            //                                                 @"email",//邮箱(无需审核)
+//            //                                                 @"user_about_me",//用户个人说明(需审核)
+//            //                                                 @"publish_actions",//应用内分享 必要权限(需审核)
+//            //                                                 @"user_videos"//应用内视频分享 必要权限(需审核)
+//            //                                                 ]];
+//
+//            [platformsRegister setupFacebookWithAppkey:MOBSSDKFacebookAppID appSecret:MOBSSDKFacebookAppSecret displayName:MOBSSDKFacebookDisplayName];
+//    #endif
+//
+//    #ifdef IMPORT_Instagram
+//
+//            [platformsRegister setupInstagramWithClientId:MOBSSDKInstagramClientID clientSecret:MOBSSDKInstagramClientSecret redirectUrl:MOBSSDKInstagramRedirectUri];
+//
+//    //         [platformsRegister setupInstagramInFBWithClientId:MOBSSDKInstagramClientID clientSecret:MOBSSDKInstagramClientSecret redirectUrl:MOBSSDKInstagramRedirectUri];
+//    #endif
+//
+//    #ifdef IMPORT_Twitter
+//            [platformsRegister setupTwitterWithKey:MOBSSDKTwitterConsumerKey secret:MOBSSDKTwitterConsumerSecret redirectUrl:MOBSSDKTwitterRedirectUri];
+//    #endif
+//
+//    #ifdef IMPORT_Line
+//            [platformsRegister setupLineAuthType:MOBSSDKLineAuthType];
+//    #endif
+//
+//    #ifdef IMPORT_GooglePlus
+//            [platformsRegister setupGooglePlusByClientID:MOBSSDKGooglePlusClientID clientSecret:MOBSSDKGooglePlusClientSecret redirectUrl:MOBSSDKGooglePlusRedirectUri];
+//    #endif
+//
+//    #if (defined IMPORT_SUB_KakaoTalk) || (defined IMPORT_SUB_KakaoStory)
+//            [platformsRegister setupKaKaoWithAppkey:MOBSSDKKaKaoAppKey restApiKey:MOBSSDKKaKaoRestApiKey redirectUrl:MOBSSDKKaKaoRedirectUri];
+//    #endif
+//
+//    #ifdef IMPORT_YouTube
+//            [platformsRegister setupYouTubeWithClientId:MOBSSDKYouTubeClientId clientSecret:MOBSSDKYouTubeClientSecret redirectUrl:MOBSSDKYouTubeRedirectUri];
+//    #endif
+//
+//    #ifdef IMPORT_Flickr
+//            [platformsRegister setupFlickrWithApiKey:MOBSSDKFlickrApiKey apiSecret:MOBSSDKFlickrApiSecret];
+//    #endif
+//
+//    #ifdef IMPORT_Dropbox
+//            [platformsRegister setupDropboxWithAppKey:MOBSSDKDropboxAppKey appSecret:MOBSSDKDropboxAppSecret redirectUrl:MOBSSDKDropboxOauthCallback];
+//    #endif
+//
+//    #ifdef IMPORT_Evernote
+//            [platformsRegister setupEvernoteByConsumerKey:MOBSSDKEvernoteConsumerKey consumerSecret:MOBSSDKEvernoteConsumerSecret sandbox:MOBSSDKEvernoteSandbox];
+//    #endif
+//
+//    #ifdef IMPORT_Pinterest
+//            [platformsRegister setupPinterestByClientId:MOBSSDKPinterestClientId];
+//    #endif
+//
+//    #ifdef IMPORT_Pocket
+//            [platformsRegister setupPocketWithConsumerKey:MOBSSDKPocketConsumerKey redirectUrl:MOBSSDKPocketRedirectUri];
+//    #endif
+//
+//    #ifdef IMPORT_LinkedIn
+//            [platformsRegister setupLinkedInByApiKey:MOBSSDKLinkedInApiKey secretKey:MOBSSDKLinkedInSecretKey redirectUrl:MOBSSDKLinkedInRedirectUrl];
+//    #endif
+//
+//    #ifdef IMPORT_VKontakte
+//            [platformsRegister setupVKontakteWithApplicationId:MOBSSDKVKontakteApplicationId secretKey:MOBSSDKVKontakteSecretKey authType:MOBSSDKVKontakteAuthType];
+//    #endif
+//
+//    #ifdef IMPORT_Instapaper
+//            [platformsRegister setupInstapaperWithConsumerKey:MOBSSDKInstapaperConsumerKey consumerSecret:MOBSSDKInstapaperConsumerSecret];
+//    #endif
+//
+//    #ifdef IMPORT_Tumblr
+//            [platformsRegister setupTumblrByConsumerKey:MOBSSDKTumblrConsumerKey consumerSecret:MOBSSDKTumblrConsumerSecret redirectUrl:MOBSSDKTumblrCallbackUrl];
+//    #endif
+//
+//    #ifdef IMPORT_SMS
+//            [platformsRegister setupSMSOpenCountryList:MOBSSDKSMSOpenCountryList];
+//    #endif
+//
+//    #ifdef IMPORT_CMCC
+//            [platformsRegister setupCMCCByAppId:MOBSSDKCMCCAppId appKey:MOBSSDKCMCCAppKey displayUI:MOBSSDKCMCCDisplayUI];
+//    #endif
+//
+//    #ifdef IMPORT_Telegram
+//            [platformsRegister setupTelegramByBotToken:MOBSSDKTelegramBotToken botDomain:MOBSSDKTelegramBotDomain];
+//    #endif
+//
+//    #ifdef IMPORT_Reddit
+//            [platformsRegister setupRedditByAppKey:MOBSSDKRedditAppKey redirectUri:MOBSSDKRedditRedirectUri];
+//    #endif
+//
+//    #ifdef IMPORT_ESurfing
+//            [platformsRegister setupESurfingByAppKey:MOBSSDKESurfingAppkey appSecret:MOBSSDKESurfingAppSecret appName:MOBSSDKESurfingAppName];
+//    #endif
+//
+//    #ifdef IMPORT_Douyin
+//            [platformsRegister setupDouyinByAppKey:MOBSSDKDouyinAppKey appSecret:MOBSSDKDouyinAppSecret];
+//    #endif
+//    #ifdef IMPORT_WeWork
+//            [platformsRegister setupWeWorkByAppKey:MOBSSDKWeWorkAppKey corpId:MOBSSDKWeWorkCorpId agentId:MOBSSDKWeWorkAgentId appSecret:MOBSSDKWeWorkAppSecret];
+//    #endif
+//
+//
+//
+//    #ifdef IMPORT_Oasis
+//            [platformsRegister setOasisByAppkey:MOBSSDKOasisAppKey];
+//    #endif
+//        }];
+}
+
+
+- (void)applicationWillEnterForeground:(UIApplication *)application{
+    
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application{
+    
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application{
     
 }
 
@@ -67,6 +256,73 @@
             [[UIApplication currentToNavgationController] pushViewController:sceneVC animated:YES];
         }];
     }
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    if( [WXApi handleOpenURL:url delegate:self]){
+        
+    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
+        
+    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
+        
+    }
+    
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
+    if( [WXApi handleOpenURL:url delegate:self]){
+        
+    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
+        
+    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
+        
+    }
+    
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    if( [WXApi handleOpenURL:url delegate:self]){
+        
+    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
+        
+    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
+        
+    }
+    return YES;
+}
+
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{
+    
+    if( [WXApi handleOpenUniversalLink:userActivity delegate:self]){
+        
+    }else if ([QQApiInterface handleOpenUniversallink:userActivity.webpageURL delegate:self]){
+        
+    }
+    return YES;
+}
+
+- (void)onReq:(BaseReq *)req{
+    NSLog(@"qqqqqqq===============%@",req);
+}
+- (void)onResp:(BaseResp *)resp{
+    NSLog(@"ppppppp===============%@",resp);
+}
+- (void)didReceiveWeiboRequest:(WBBaseRequest *)request{
+    NSLog(@"wbqqqqq==============%@",request);
+}
+- (void)didReceiveWeiboResponse:(WBBaseResponse *)response{
+    NSLog(@"wbppppp==============%@",response);
+}
+
+
+- (void)didLogin:(LineSDKLogin *)login
+credential:(nullable LineSDKCredential *)credential
+   profile:(nullable LineSDKProfile *)profile
+           error:(nullable NSError *)error{
+    
 }
 
 @end

@@ -138,7 +138,7 @@ static void * kMobTabbarItemKey = &kMobTabbarItemKey;
     if (!_items) {
         _items = @[
             [MOBTabBarItem image:@"tab_icon_share_nor" selectedImage:@"tab_icon_share_sel" title:@"分享" selectedTitle:nil color:UIColorHexString(@"000000") selectedColor:UIColorHexString(@"FF7800") className:@"ViewController"],
-            [MOBTabBarItem image:@"tab_icon_login_nor" selectedImage:@"tab_icon_login_sel" title:@"登录" selectedTitle:nil color:UIColorHexString(@"000000") selectedColor:UIColorHexString(@"FF7800") className:@"MOBAuthViewController"]
+            [MOBTabBarItem image:@"tab_icon_login_nor" selectedImage:@"tab_icon_login_sel" title:@"授权" selectedTitle:nil color:UIColorHexString(@"000000") selectedColor:UIColorHexString(@"FF7800") className:@"MOBAuthViewController"]
         ];
     }
     return _items;

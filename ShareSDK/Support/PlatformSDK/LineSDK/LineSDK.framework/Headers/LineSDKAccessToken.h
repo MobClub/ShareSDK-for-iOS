@@ -18,15 +18,39 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LineSDKAttributes.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ Represents an access token which is used to access the LINE Platform.
+ */
+NS_SWIFT_NAME(AccessToken)
 @interface LineSDKAccessToken : NSObject
 
+/**
+ The access token.
+ */
 @property (nonatomic, copy, readonly) NSString *accessToken;
+
+/**
+ The amount of time in seconds until the access token expires.
+ */
 @property (nonatomic, readonly) NSTimeInterval expiresIn;
 
-- (instancetype)init NS_UNAVAILABLE;
+/**
+ :nodoc:
+ You cannot directly instantiate an LineSDKAccessToken. Use one that has been
+ returned from an LineSDKAPI callback.
+ */
+- (instancetype)init LSDK_UNAVAILABLE("You cannot directly instantiate an LineSDKAccessToken. Use one that has been returned from an LineSDKAPI callback.");
+
+/**
+ Gets the estimated time in UNIX time when the access token expires. The expiration time that is returned by this
+ method is not exact because it is calculated using time values that are cached on the client.
+
+ @return The estimated time in UNIX time of when the access token expires.
+ */
 - (NSDate *)estimatedExpiredDate;
 
 @end

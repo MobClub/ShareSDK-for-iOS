@@ -21,10 +21,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern const NSString *LineSDKServerErrorDomain;
-extern const NSString *LineSDKServerErrorUserInfoKey;
+extern NSString *const LineSDKServerErrorDomain;
+extern NSString *const LineSDKServerErrorUserInfoKey;
 
-extern const NSString *LineSDKInternalErrorDomain;
+extern NSString *const LineSDKInternalErrorDomain;
 typedef NS_ENUM(NSInteger, LineSDKInternalErrorCode) {
     LineSDKInternalErrorCodeUnknown = 0,
     LineSDKInternalErrorCodeLoginError,
@@ -34,10 +34,18 @@ typedef NS_ENUM(NSInteger, LineSDKInternalErrorCode) {
     LineSDKInternalErrorCodeInvalidTokenType,
     LineSDKInternalErrorCodeMissingRequiredField,
     LineSDKInternalErrorCodeInvalidValueType,
-};
+    LineSDKInternalErrorCodeInvalidJSONWebKeyType,
+    LineSDKInternalErrorCodeTokenIDVerificationFailed,
+} NS_SWIFT_NAME(InternalErrorCode);
 
+extern NSString *const LineSDKMessageErrorDomain;
 
-@interface NSError(LineSDK)
+typedef NS_ENUM(NSInteger, LineSDKMessageError) {
+    LineSDKMessageErrorUnknown,
+    LineSDKMessageErrorDiscarded,
+} NS_SWIFT_NAME(MessageError);
+
+@interface NSError (LineSDK)
 
 + (instancetype)LineSDK_socialAPIErrorWithStatusCode:(NSInteger)statusCode
                                                 data:(nullable NSDictionary *)data
@@ -48,16 +56,16 @@ typedef NS_ENUM(NSInteger, LineSDKInternalErrorCode) {
                                              underlyingError:(nullable NSError *)underlyingError;
 
 + (instancetype)LineSDK_internalErrorWithErrorCode:(enum LineSDKInternalErrorCode)errorCode
-                                        desciption:(NSString *)description
+                                       description:(NSString *)description
                                    underlyingError:(nullable NSError *)underlyingError;
 
 + (instancetype)LineSDK_internalErrorWithErrorCode:(enum LineSDKInternalErrorCode)errorCode
-                                        desciption:(NSString *)description;
+                                       description:(NSString *)description;
 
 
 + (instancetype)LineSDK_missingAccessTokenError;
 + (instancetype)LineSDK_invalidTokenTypeWithTokenType:(NSString *)tokenType;
-
++ (instancetype)LineSDK_invalidJSONWebKeyError;
 @end
 
 NS_ASSUME_NONNULL_END

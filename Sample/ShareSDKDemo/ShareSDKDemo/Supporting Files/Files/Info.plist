@@ -166,7 +166,7 @@
 			<string>pinterest</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>pdk4945875567846113703</string>
+				<string>pdk5057854497590653616</string>
 			</array>
 		</dict>
 		<dict>
@@ -278,6 +278,7 @@
 	<string>9c17eb03317e0e627ec95a400f5785fb</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>lineauth2</string>
 		<string>oasis</string>
 		<string>fbshareextension</string>
 		<string>fbapi20160328</string>
@@ -376,7 +377,9 @@
 	<key>LineSDKConfig</key>
 	<dict>
 		<key>ChannelID</key>
-		<string>1521201864</string>
+		<string>1639219273</string>
+		<key>UniversalLink</key>
+		<string>https://ybpre.share2dlink.com/line-auth/</string>
 	</dict>
 	<key>MOBAppKey</key>
 	<string>moba0b0c0d0</string>
@@ -387,11 +390,14 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>分享拍照内容</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>分享拍照视频</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>写入相册视频</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>从手机相册中选择</string>
-	
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

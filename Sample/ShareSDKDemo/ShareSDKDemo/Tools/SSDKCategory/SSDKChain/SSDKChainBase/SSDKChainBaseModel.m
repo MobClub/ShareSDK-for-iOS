@@ -155,6 +155,15 @@
     };
 }
 
+- (id  _Nonnull (^)(void))reverse{
+    return ^{
+        NSArray *array = [[self.effectiveObjects reverseObjectEnumerator] allObjects];
+        [self.effectiveObjects removeAllObjects];
+        [self.effectiveObjects addObjectsFromArray:array];
+        return self;
+    };
+}
+
 - (void)effiveChangeObjectForRange:(NSRange)range{
     [self.effectiveObjects removeAllObjects];
     

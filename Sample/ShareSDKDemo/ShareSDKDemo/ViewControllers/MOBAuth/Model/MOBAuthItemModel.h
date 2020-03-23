@@ -10,6 +10,12 @@
 #import "MOBPlatformBaseModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, MOBAuthStatus) {
+    MOBAuthStatusUnAuthor,
+    MOBAuthStatusAuthoring,
+    MOBAuthStatusAuthored,
+    MOBAuthStatusUserInfoing,
+};
 
 @interface MOBAuthItemModel : NSObject
 
@@ -18,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) MOBShareItemUI * itemUI;
 
 
-@property (nonatomic, copy) void (^ handler) (BOOL isAuthor);
+@property (nonatomic, copy) void (^ handler) (MOBAuthStatus authorStatus);
 
 - (void)author;
 

@@ -7,12 +7,12 @@
 		<key>ShareSDKDemo.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>1</integer>
 		</dict>
 		<key>ShareSDKDemoTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>4</integer>
 		</dict>
 	</dict>
 </dict>

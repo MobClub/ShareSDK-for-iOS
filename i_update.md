@@ -2,6 +2,14 @@
 
 [论坛发版列表](http://bbs.mob.com/forum.php?mod=forumdisplay&fid=2&filter=typeid&typeid=36)  
 
+### v4.3.7[详情](http://bbs.mob.com/thread-26210-1-1.html)  
+>1、line平台更新
+>2、facebook添加对PHAsset的支持
+>3、QQ、新浪、微信、line支持开发者调用原生api
+>4、Kakao接口更新
+>5、微信sdk更新至1.8.6.2
+>6、Message平台更新 
+
 ### v4.2.5[详情](http://bbs.mob.com/thread-26210-1-1.html)  
 >1、优化相关平台Web授权的自动清理缓存  
 >2、更新Facebook平台授权，兼容新版Facebook  

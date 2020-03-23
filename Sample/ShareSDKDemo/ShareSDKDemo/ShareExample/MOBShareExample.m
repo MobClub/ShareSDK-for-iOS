@@ -13,6 +13,8 @@
 #import "MOBShakeView.h"
 #import "MOBAboutMobLinkViewController.h"
 #import "MOBPolicyManager.h"
+#import "SSDKImagePicker.h"
+#import <FBSDKShareKit/FBSDKShareKit.h>
 @implementation MOBShareExample{
     BOOL isAnimate, onShakeShare;
     MOBShakeView *shakeShareView;
@@ -32,7 +34,6 @@
     self = [super init];
     if (self) {
         shakeShareView = [MOBShakeView new];
-        
     }
     return self;
 }
@@ -70,7 +71,7 @@
     //                  @(SSDKPlatformTypeCopy)
     //                  ];
     SSUIShareSheetConfiguration *config = [[SSUIShareSheetConfiguration alloc] init];
-    config.style = SSUIActionSheetStyleSimple;
+//    config.style = SSUIActionSheetStyleSimple;
     //    config.menuBackgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
     [ShareSDK showShareActionSheet:view
                        customItems:items
@@ -101,6 +102,9 @@
 
 
 - (void)shakeShare{
+    
+    
+    
     if(!isAnimate)
     {
         [self showPrompt];
@@ -171,19 +175,21 @@
             isAnimate = NO;
         }];
     }];
+    
+    
 }
 
 #pragma mark - 分享到linkCard -
 - (void)sinaLinkCardShare{
-    //图片必须为网络地址图片
+//    //图片必须为网络地址图片
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    
+
     [parameters SSDKSetupSinaWeiboLinkCardShareParamsByText:@"我是Text"
                                                   cardTitle:@"cardTitle"
                                                 cardSummary:@"summary"
                                                      images:@"http://download.sdk.mob.com/web/images/2019/06/20/10/1560998253715/635_635_42.62.png"
                                                         url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]];
-    
+
     [ShareSDK share:SSDKPlatformTypeSinaWeibo parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
         [self sharePlatType:SSDKPlatformTypeSinaWeibo state:state error:error];
     }];

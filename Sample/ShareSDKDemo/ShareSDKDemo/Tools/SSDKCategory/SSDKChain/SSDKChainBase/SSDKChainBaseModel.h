@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) NSMutableArray *allOjects;
 
+
 @property (nonatomic, strong, readonly) NSMutableArray * effectiveObjects;
 
 //添加的数量，包括原来的创建对象的数量
@@ -50,6 +51,8 @@ SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ part_range) (NSRange range);
 SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ part_all) (void);
 
 SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ assignToObjects)(void (^ objs) (NSArray * objs));
+
+SSDKCATEGORY_CHAIN_PROPERTY ObjectType (^ reverse) (void);
 
 - (void)enumerateObjectsUsingBlock:(void (^)(id _Nonnull))block;
 

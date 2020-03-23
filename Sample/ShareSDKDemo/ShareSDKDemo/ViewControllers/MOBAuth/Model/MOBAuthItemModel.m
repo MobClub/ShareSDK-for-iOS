@@ -27,9 +27,7 @@ static time_t lasAuthTime;
 
 - (void)setModel:(MOBPlatformBaseModel *)model{
     _model = model;
-    
     MOBShareItemUI *ui = [MOBShareItemUI new];
-    
     NSString *platformTypeName = [NSString stringWithFormat:@"ShareType_%lu",(unsigned long)model.converntPlatformType];
     NSString *title = NSLocalizedStringWithDefaultValue(platformTypeName, @"ShareSDKUI_Localizable", MOBPlatformBundle(), platformTypeName, nil);
     
@@ -41,7 +39,6 @@ static time_t lasAuthTime;
 }
 
 - (void)author{
-    
     if (time(NULL) - lasAuthTime <= 4.5 && lasAuthTime > 0) return;
     lasAuthTime = time(NULL);
     if ([ShareSDK hasAuthorized:self.model.platformType]) {
@@ -49,7 +46,6 @@ static time_t lasAuthTime;
             _user = [ShareSDK currentUser:self.model.platformType];
         }
         SSDKWEAK
-
         void(^showUser)(SSDKUser *) = ^(SSDKUser *user) {
             SSDKSTRONG
             if (!self.user) {
@@ -72,10 +68,17 @@ static time_t lasAuthTime;
         if (_user) {
             showUser(_user);
         }else{
+            if (self.handler) {
+                self.handler(MOBAuthStatusUserInfoing);
+            }
             self.model.getUserInfoHandler = ^(SSDKResponseState state, SSDKUser * _Nonnull user, NSError * _Nonnull error) {
                 SSDKSTRONG
                 if (state == SSDKResponseStateSuccess && self.handler) {
                     showUser(user);
+                }else{
+                    if (self.handler) {
+                        self.handler(MOBAuthStatusAuthored);
+                    }
                 }
                 lasAuthTime = 0;
             };
@@ -83,10 +86,16 @@ static time_t lasAuthTime;
         }
     }else{
         SSDKWEAK
+        if (self.handler) {
+            self.handler(MOBAuthStatusAuthoring);
+        }
+
         self.model.authHandler = ^(SSDKResponseState state, SSDKUser * _Nonnull user, NSError * _Nonnull error) {
             SSDKSTRONG
             if (state == SSDKResponseStateSuccess && self.handler) {
-                self.handler(YES);
+                self.handler(MOBAuthStatusAuthored);
+            }else{
+                self.handler(MOBAuthStatusUnAuthor);
             }
             lasAuthTime = 0;
         };
@@ -97,7 +106,7 @@ static time_t lasAuthTime;
 
 - (void)changeView{
     if (self.handler) {
-        self.handler([ShareSDK hasAuthorized:self.model.platformType]);
+        self.handler([ShareSDK hasAuthorized:self.model.platformType]?MOBAuthStatusAuthored:MOBAuthStatusUnAuthor);
     }
 }
 

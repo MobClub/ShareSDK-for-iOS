@@ -9,7 +9,7 @@
 #import "SSDKScenePackage.h"
 #import "NSObject+SSDKCategory.h"
 #import <objc/message.h>
-
+#import "NSString+SSDKCategory.h"
 typedef enum : NSUInteger {
     SSDKScenePackageSceneHookStatusUndefine,
     SSDKScenePackageSceneHookStatusUnstart,
@@ -100,43 +100,56 @@ typedef enum : NSUInteger {
         _hookSceneStatus = SSDKScenePackageSceneHookStatusUndefine;
         _isLoadFirstWindow = YES;
     }
+    
 }
 - (UIWindow *)window{
-    if (!_isSceneApp) return self.currentClickWindow?:[UIApplication sharedApplication].delegate.window;
+    //如果没有适配iOS13，直接返回iOS 13以下方法
+    if (!_isSceneApp) return [UIApplication sharedApplication].delegate.window;
+    
+    //首先，获取当前的scene数组
     NSArray *set = ((NSSet* (*)(id, SEL))objc_msgSend)(UIApplication.sharedApplication,sel_registerName("connectedScenes")).allObjects;
     id delegate;
+    //如果只有一个scene，则直接返回
     if (set.count == 1){
         delegate = ((id (*)(id, SEL))objc_msgSend)(set[0],sel_registerName("delegate"));
     }else{
-        NSInteger lastIndex = -1;
-        NSInteger count = 0;
-        for (int i = 0; i < set.count; i++) {
-            id windowScene = set[i];
+        id clickWindowScene = ((id (*)(id, SEL))objc_msgSend)(self.currentClickWindow,sel_registerName("windowScene"));
+        NSInteger clickStatus = ((NSInteger (*)(id, SEL))objc_msgSend)(clickWindowScene,sel_registerName("activationState"));
+        //获取当前点击的window是否存在，且是否在激活状态
+        if(clickWindowScene && clickStatus == 0){//如果当前有点击过的scene 而且活跃
+            delegate = ((id (*)(id, SEL))objc_msgSend)(clickWindowScene,sel_registerName("delegate"));
+        }else{
+            //重新从sceneList中拆选一个适合的scene
+            //判断当前活跃scene的个数
+            NSInteger lastIndex = -1;
+            NSInteger count = 0;
             
-            NSInteger status = ((NSInteger (*)(id, SEL))objc_msgSend)(windowScene,sel_registerName("activationState"));
-            if (status == 0) {
-                lastIndex = i;
-                count++;
-                if (count > 1) break;
+            for (int i = 0; i < set.count; i++) {
+                id windowScene = set[i];
+                NSInteger status = ((NSInteger (*)(id, SEL))objc_msgSend)(windowScene,sel_registerName("activationState"));
+                if (status == 0) {
+                    lastIndex = i;
+                    count++;
+                    //如果scene活跃超过两个，且上次点击的window也是活跃状态
+                    if (count > 1) break;
+                }
+            }
+            //如果有活跃的scene且活跃的scene只有一个，则返回活跃的scene
+            if (lastIndex!=-1 && count==1) {
+                delegate = ((id (*)(id, SEL))objc_msgSend)(set[lastIndex],sel_registerName("delegate"));
+            }else{
+                //如果有活跃的scene，则记录的第二个活跃的scene，否则取第一个scene
+                id windowScene = lastIndex!=-1?set[lastIndex]:[set firstObject];
+                delegate = ((id (*)(id, SEL))objc_msgSend)(windowScene,sel_registerName("delegate"));
             }
         }
-        if (lastIndex!=-1 && count==1) {
-            delegate = ((id (*)(id, SEL))objc_msgSend)(set[lastIndex],sel_registerName("delegate"));
-        }else if(self.currentClickWindow == nil){
-            delegate = ((id (*)(id, SEL))objc_msgSend)([set firstObject],sel_registerName("delegate"));
-        }
     }
-    
-    if (delegate) {
-        return ((UIWindow* (*)(id, SEL))objc_msgSend)(delegate,sel_registerName("window"));
-    }
-    return self.currentClickWindow;
+    return ((UIWindow* (*)(id, SEL))objc_msgSend)(delegate,sel_registerName("window"));
 }
 
 - (NSArray<UIWindow *> *)windows{
     if (_isSceneApp) {
-        id windowScene = ((id (*)(id, SEL))objc_msgSend)(self.window,sel_registerName("windowScene"));
-        NSArray *windows = ((NSArray <UIWindow *>* (*)(id, SEL))objc_msgSend)(windowScene,sel_registerName("windows"));
+        NSArray *windows = ((NSArray <UIWindow *>* (*)(id, SEL))objc_msgSend)(self.currentScene,sel_registerName("windows"));
         return windows;
     }else{
         return [UIApplication sharedApplication].windows;
@@ -150,7 +163,21 @@ typedef enum : NSUInteger {
     return nil;
 }
 
+- (UIWindow *)higherWindow{
+    return  ({
+        NSArray *windows = self.windows;
+        UIWindow *highWindow = windows.firstObject;
+        for (UIWindow * window  in windows) {
+            if (window.windowLevel > highWindow.windowLevel) {
+                highWindow = window;
+            }
+        }
+        highWindow;
+    });
+}
+
 - (UIWindow *)keyWindow{
+    if (!_isSceneApp) return [UIApplication sharedApplication].keyWindow;
     for (UIWindow *win in self.windows) {
         if (win.isKeyWindow) {
             return win;
@@ -168,10 +195,7 @@ typedef enum : NSUInteger {
         ((void (*) (id , SEL, id))imp)(window, sel, self.currentScene);
     }
 }
-
 - (void)clickUpdateWindow:(UIWindow *)window{
-    if ([window isKindOfClass:NSClassFromString(@"UITextEffectsWindow")]) return;
-    if (window == nil) return;
     if (_isSceneApp) {
         if (((id (*)(id, SEL))objc_msgSend)(self.currentClickWindow,sel_registerName("windowScene"))==((id (*)(id, SEL))objc_msgSend)(window,sel_registerName("windowScene"))) return;
     }else{
@@ -339,6 +363,7 @@ typedef enum : NSUInteger {
         if (_isSceneApp && _hookSceneStatus == SSDKScenePackageSceneHookStatusNeed) {
             [self _scene_init];
             [self _scene_setDelegate];
+            [self _scene_windowHit];
             _hookSceneStatus = SSDKScenePackageSceneHookStatusDone;
         }
     }
@@ -429,7 +454,6 @@ typedef enum : NSUInteger {
                 _isSceneApp = YES;
                 _hookSceneStatus = SSDKScenePackageSceneHookStatusNeed;
                 [self methodSwizzledScene];
-                
             }else{
                 self.isLoadFirstWindow = YES;
             }
@@ -463,7 +487,7 @@ typedef enum : NSUInteger {
 
 - (void)methodSwizzledApplication{
     [self _application_setDelegate];
-    [self _scene_windowHit];
+    
 }
 @end
 
@@ -521,9 +545,9 @@ static void * kSSDKScenePackageReturnNavigationControllerKey = &kSSDKScenePackag
     BOOL showAnimated = [self _ssdk_AssociatedViewControllerboolValue:kSSDKScenePackageShowAnimatedKey default:showStyle == SSDKControllerShowStylePush];
     BOOL dismissAnimated = [self _ssdk_AssociatedViewControllerboolValue:kSSDKScenePackageShowDismissKey default:showStyle == SSDKControllerShowStylePush];
     NSTimeInterval time = [objc_getAssociatedObject(self, kSSDKScenePackageShowDismissTimeKey) doubleValue];
-    UIWindow *currentWindow = [SSDKScenePackage defaultPackage].window;
+    UIWindow *currentWindow = [SSDKScenePackage defaultPackage].higherWindow;
     [currentWindow endEditing:YES];
-    UIWindow *window = [[UIWindow alloc] initWithFrame:currentWindow.bounds];
+    UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     window.windowLevel = currentWindow.windowLevel+1;
     [[SSDKScenePackage defaultPackage] showWindow:window];
     SSDKScenePackageRootViewController *root = [[SSDKScenePackageRootViewController alloc] init];
@@ -741,6 +765,18 @@ static void * kSSDKScenePackageReturnNavigationControllerKey = &kSSDKScenePackag
     };
 }
 
+- (UIViewController * _Nonnull (^)(void))pushAnimated{
+    return ^(){
+        return self.showAnimated(YES).push();
+    };
+}
+
+- (UIViewController * _Nonnull (^)(void))presentAnimated{
+    return ^(){
+        return self.showAnimated(YES).present();
+    };
+}
+
 - (BOOL)_ssdk_isShowing{
     if( objc_getAssociatedObject(self, @selector(__SSDK_showViewController)))return YES;
     objc_setAssociatedObject(self, @selector(__SSDK_showViewController), @1, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -788,19 +824,17 @@ static inline void SSDKScenePackageViewLifeEventSwizzledMethodExp(Class swizzleC
             NSArray * untableTasks = tasks.copy;
             @synchronized (untableTasks) {
                 if (untableTasks.count > 0) {
-                    [untableTasks enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    for (id obj in untableTasks) {
                         if ([objc_getAssociatedObject(obj, kSSDKScenePackageViewLifeEventOnceKey) boolValue]) {
                             [tasks removeObject:obj];
                         }
                         
-                        
                         dispatch_async(dispatch_get_main_queue(), ^{
                             if (obj) {
-                                ((void (^) (id,BOOL))obj)(self,animated);
+                                ((void (^) (id,BOOL))obj)([sel isEqualToString:@"viewDidDisappear:"]?nil:self,animated);
                             }
                         });
-                        
-                    }];
+                    }
                 }
             }
             if (oldImp == NULL) {
@@ -832,26 +866,23 @@ static inline void SSDKScenePackageViewLifeEventSwizzledNoParametersMethodExp(Cl
         if ([sels containsObject:sel]) return;
         [sels addObject: sel];
         SEL selector = NSSelectorFromString(sel);
-        __block void (* oldImp) (__unsafe_unretained id, SEL) = NULL;
-        id newImpBlock = ^ (__unsafe_unretained id self){
+        __block void (* oldImp) ( id, SEL) = NULL;
+        id newImpBlock = ^ ( id self){
             NSMutableDictionary *taskMap = objc_getAssociatedObject(self, kSSDKScenePackageViewLifeEventTasksKey);
             NSMutableArray *tasks = [taskMap objectForKey:sel];
             NSArray * untableTasks = tasks.copy;
             @synchronized (untableTasks) {
                 if (untableTasks.count > 0) {
-                    [untableTasks enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    for (id obj in untableTasks) {
                         if ([objc_getAssociatedObject(obj, kSSDKScenePackageViewLifeEventOnceKey) boolValue]) {
                             [tasks removeObject:obj];
                         }
-                        
                         dispatch_async(dispatch_get_main_queue(), ^{
                             if (obj) {
                                 ((void (^) (id))obj)(self);
                             }
                         });
-                        
-                        
-                    }];
+                    }
                 }
             }
             if (oldImp == NULL) {
@@ -932,5 +963,6 @@ static inline void SSDKScenePackageViewLifeEventSwizzledNoParametersMethodExp(Cl
     };
 }
 @end
+
 
 

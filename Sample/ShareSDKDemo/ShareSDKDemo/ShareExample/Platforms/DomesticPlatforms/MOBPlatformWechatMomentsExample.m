@@ -8,6 +8,7 @@
 
 #import "MOBPlatformWechatMomentsExample.h"
 
+
 @implementation MOBPlatformWechatMomentsExample
 /**
  分享文字
@@ -43,13 +44,35 @@
  */
 - (void)shareImage
 {
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    //通用参数设置
-    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
-                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
-                                       url:nil
-                                     title:nil
-                                      type:SSDKContentTypeImage];
+    
+    [SSDKImagePickerController initWithNavgationControllerConfigureBlock:^(SSDKImagePickerConfigure * _Nonnull configure) {
+        configure.mediaType = SSDKImagePickerMediaTypeImage;
+        configure.operationConfigure.maximumNumberOfImageSelection =1;
+        configure.operationConfigure.minimumNumberOfImageSelection =1;
+    } result:^(SSDKImagePickerCompleteStatus status, SSDKImagePickerResult * _Nullable result) {
+        if (status == SSDKImagePickerCompleteStatusCancel) return;
+        PHAsset *asset = result.selectedElements.firstObject;
+        PHImageRequestOptions *options = [PHImageRequestOptions new];
+        options.networkAccessAllowed = YES;
+        [[PHImageManager defaultManager] requestImageDataForAsset:asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+            if (![info[@"PHImageResultIsDegradedKey"] boolValue]) {
+                SSDKImage *image = [SSDKImage imageWithObject:imageData];
+                NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+                //通用参数设置
+                [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                                images:image.URL
+                                                   url:nil
+                                                 title:nil
+                                         type:SSDKContentTypeImage];
+                [self shareWithParameters:parameters];
+            }
+        }];
+        
+        
+        
+        
+    }].presentAnimated();
+    
     //平台定制
     //        [parameters SSDKSetupWeChatParamsByText:@"Share SDK"
     //                                          title:nil
@@ -65,7 +88,7 @@
     //                                           type:SSDKContentTypeImage
     //                             forPlatformSubType:SSDKPlatformSubTypeWechatTimeline];
     
-    [self shareWithParameters:parameters];
+    
 }
 
 - (void)shareLink

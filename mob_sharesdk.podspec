@@ -1,12 +1,14 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.3.6"
+  s.version          = "4.3.7"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
 
   s.homepage         = 'http://www.mob.com'
-  s.source           = { :http => 'https://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.3.6.zip' }
+
+  s.source           = { :http => 'http://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.3.7.zip' }
+
   s.platform         = :ios
   s.ios.deployment_target = "8.0"
   s.frameworks       = 'JavaScriptCore'
@@ -242,6 +244,7 @@ Pod::Spec.new do |s|
         sp.subspec 'Line' do |ssp|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/LineSDK/LineSDK.framework','ShareSDK/Support/PlatformConnector/LineConnector.framework'
             ssp.dependency 'mob_sharesdk/ShareSDK'
+            ssp.resources = 'ShareSDK/Support/PlatformSDK/LineSDK/LineSDKResource.bundle'
             ssp.resource_bundles = {
                 'ShareSDK_JS_Line' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/Line.js']
             }

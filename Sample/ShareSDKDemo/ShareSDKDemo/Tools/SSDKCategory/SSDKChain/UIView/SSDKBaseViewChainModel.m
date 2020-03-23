@@ -168,6 +168,17 @@ SSDKCATEGORY_CHAIN_VIEW_IMPLEMENTATION(transform, CGAffineTransform)
     };
 }
 
+- (id  _Nonnull (^)(void))bringOwnToFirst{
+    return ^(){
+        [self enumerateObjectsUsingBlock:^(UIView * _Nonnull obj) {
+            [obj.superview bringSubviewToFront:obj];
+        }];
+        return self;
+    };
+}
+
+
+
 - (id  _Nonnull (^)(void (^ _Nonnull)(id _Nonnull)))addGestureBlock{
     return ^( void (^ ges) (id)){
         if (ges) {

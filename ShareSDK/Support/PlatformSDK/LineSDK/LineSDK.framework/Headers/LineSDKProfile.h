@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2016-present, LINE Corporation All rights reserved.
+//  Copyright (c) 2016-present, LINE Corporation. All rights reserved.
 //
 //  You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
 //  copy and distribute this software in source code or binary form for use
@@ -18,24 +18,41 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LineSDKAttributes.h"
+#import "LineSDKUser.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LineSDKProfile : NSObject
+/**
+ Represents a user's LINE profile.
+ */
+NS_SWIFT_NAME(Profile)
+@interface LineSDKProfile : LineSDKUser
 
-@property (nonatomic, copy, readonly) NSString *userID;
-@property (nonatomic, copy, readonly) NSString *displayName;
-@property (nonatomic, copy, readonly, nullable) NSURL *pictureURL;
+/**
+ The user’s status message.
+ */
 @property (nonatomic, copy, readonly, nullable) NSString *statusMessage;
 
-- (instancetype)init NS_UNAVAILABLE;
+/**
+ :nodoc:
+ Use `initWithUserID:displayName:pictureURL:statusMessage:` instead.
+ */
+- (instancetype)init LSDK_UNAVAILABLE("Use `initWithUserID:displayName:pictureURL:statusMessage:` instead");
+
+/**
+ :nodoc:
+ Instantiates a user's profile.
+
+ @param userID The user's user ID.
+ @param displayName The user's display name.
+ @param pictureURL The user's profile media URL.
+ @param statusMessage The user's status message.
+ */
 - (instancetype)initWithUserID:(NSString *)userID
                    displayName:(NSString *)displayName
                     pictureURL:(nullable NSURL *)pictureURL
-                 statusMessage:(nullable NSString *)statusMessage NS_DESIGNATED_INITIALIZER;
-
-- (nullable instancetype)initWithDictionary:(NSDictionary<NSString *, NSString *> *)dictionary
-                                      error:(NSError **)error;
+                 statusMessage:(nullable NSString *)statusMessage;
 
 @end
 

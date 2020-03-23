@@ -72,8 +72,8 @@
     if (!_leftButton && _delegate) {
         _leftButton = [[self getButtonClassIndex:0] buttonWithType:UIButtonTypeCustom];
         _leftButton.makeChain
-        .textColor(UIColorHexString(@"666666"), UIControlStateNormal)
-        .font([UIFont PingFangSCRegularAndSize:17])
+        .textColor(UIColorHexString(@"333333"), UIControlStateNormal)
+        .font([UIFont PingFangSCRegularAndSize:16])
         .userInteractionEnabled(NO)
         .addToSuperView(self.leftView)
         .makeMasonry(^(MASConstraintMaker * _Nonnull make) {
@@ -113,8 +113,8 @@
     if (!_middleButton) {
         _middleButton = [[self getButtonClassIndex:1] buttonWithType:UIButtonTypeCustom];
         _middleButton.makeChain
-        .font([UIFont PingFangSCRegularAndSize:17])
-        .textColor(UIColorHexString(@"1a1d1e"), UIControlStateNormal)
+        .font([UIFont PingFangSCMediumAndSize:18])
+        .textColor(UIColor.darkTextColor, UIControlStateNormal)
         .addToSuperView(self)
         .addTarget(self, @selector(middleButtonTap), UIControlEventTouchUpInside)
         .lineBreakMode(NSLineBreakByWordWrapping)
@@ -140,8 +140,8 @@
     if (!_rightButton && _delegate) {
         _rightButton = [[self getButtonClassIndex:2] buttonWithType:UIButtonTypeCustom];
         _rightButton.makeChain
-        .textColor(UIColorHexString(@"474747"), UIControlStateNormal)
-        .font([UIFont PingFangSCRegularAndSize:17])
+        .textColor(UIColorHexString(@"333333"), UIControlStateNormal)
+        .font([UIFont PingFangSCRegularAndSize:16])
         .userInteractionEnabled(NO)
         .addToSuperView(self.rightView)
         .makeMasonry(^(MASConstraintMaker * _Nonnull make) {
@@ -239,14 +239,14 @@
         make.right.mas_offset(-edge.right);
     }];
     [_middleButton mas_updateConstraints:^(MASConstraintMaker *make) {
-       make.top.mas_offset(kStatusBarHeight);
+       make.top.mas_offset(edge.top);
     }];
     [_leftView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_offset(kStatusBarHeight);
+        make.top.mas_offset(edge.top);
         make.left.mas_offset(edge.left);
     }];
     [_rightView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_offset(kStatusBarHeight);
+        make.top.mas_offset(edge.top);
         make.right.mas_offset(-edge.right);
     }];
 }

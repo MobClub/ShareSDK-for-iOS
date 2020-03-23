@@ -18,21 +18,54 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LineSDKAttributes.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+/**
+ Represents the result of an attempt to verify the access token.
+ */
+NS_SWIFT_NAME(VerifyResult)
 @interface LineSDKVerifyResult : NSObject
 
+/**
+ The channel ID that is used by your app.
+ */
 @property (nonatomic, copy, readonly) NSString *channelID;
+
+/**
+ The amount of time in milliseconds until the access token expires.
+ */
 @property (nonatomic, readonly) NSTimeInterval expiresIn;
+
+/**
+ The set of permissions that the access token holds. The following is a list of the permission codes.
+
+ profile: The permission to get the user’s profile information in the login response.
+ 
+ openid: The permission to get an ID token in the login response.
+ 
+ email: The permission to get the user’s email from an ID Token in the login response.
+ */
 @property (nonatomic, copy, readonly, nullable) NSOrderedSet<NSString *> *permissions;
 
-- (instancetype)init NS_UNAVAILABLE;
+/**
+ :nodoc:
+ Use `initWithChannelID:expiresIn:permissions:` instead.
+ */
+- (instancetype)init LSDK_UNAVAILABLE("Use `initWithChannelID:expiresIn:permissions:` instead");
+
+/**
+ Instantiates a `LineSDKVerifyResult` object.
+
+ @param channelID The channel ID that is used by your app.
+ @param expiresIn The amount of time in milliseconds until the access token expires.
+ @param permissions The set of permissions that the access token holds.
+ */
 - (instancetype)initWithChannelID:(NSString *)channelID
                         expiresIn:(NSTimeInterval)expiresIn
                       permissions:(nullable NSOrderedSet<NSString *> *)permissions NS_DESIGNATED_INITIALIZER;
 
-- (nullable instancetype)initWithDictionary:(NSDictionary<NSString *, id> *)dictionary
-                                      error:(NSError **)error;
-
 @end
+
 NS_ASSUME_NONNULL_END

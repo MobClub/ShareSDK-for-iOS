@@ -7,7 +7,7 @@
 //  文档地址:https://www.mob.com/wiki/detailed?wiki=ShareSDK_chanpinjianjie&id=14
 
 #import "MOBPlatformWechatFavExample.h"
-
+#import "SSDKImagePicker.h"
 @implementation MOBPlatformWechatFavExample
 
 
@@ -41,29 +41,52 @@
 
 - (void)shareImage
 {
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    //通用参数设置
-    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
-                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
-                                       url:nil
-                                     title:nil
-                                      type:SSDKContentTypeImage];
-    //平台定制
-    //        [parameters SSDKSetupWeChatParamsByText:@"Share SDK"
-    //                                          title:nil
-    //                                            url:nil
-    //                                     thumbImage:nil
-    //                                          image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-    //                                   musicFileURL:nil
-    //                                        extInfo:nil
-    //                                       fileData:nil
-    //                                   emoticonData:nil
-    //                            sourceFileExtension:nil
-    //                                 sourceFileData:nil
-    //                                           type:SSDKContentTypeImage
-    //                             forPlatformSubType:SSDKPlatformSubTypeWechatFav];
-    
-   [self shareWithParameters:parameters];
+    [SSDKImagePickerController initWithNavgationControllerConfigureBlock:^(SSDKImagePickerConfigure * _Nonnull configure) {
+        configure.mediaType = SSDKImagePickerMediaTypeImage;
+        configure.operationConfigure.maximumNumberOfImageSelection =1;
+        configure.operationConfigure.minimumNumberOfImageSelection =1;
+    } result:^(SSDKImagePickerCompleteStatus status, SSDKImagePickerResult * _Nullable result) {
+        if (status == SSDKImagePickerCompleteStatusCancel) return;
+        PHAsset *asset = result.selectedElements.firstObject;
+        PHImageRequestOptions *options = [PHImageRequestOptions new];
+        options.networkAccessAllowed = YES;
+        [[PHImageManager defaultManager] requestImageDataForAsset:asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+            if (![info[@"PHImageResultIsDegradedKey"] boolValue]) {
+                SSDKImage *image = [SSDKImage imageWithObject:imageData];
+                NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+                //通用参数设置
+                [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                                images:image.URL
+                                                   url:nil
+                                                 title:nil
+                                         type:SSDKContentTypeImage];
+                [self shareWithParameters:parameters];
+            }
+        }];
+    }].presentAnimated();
+//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+//    //通用参数设置
+//    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+//                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
+//                                       url:nil
+//                                     title:nil
+//                                      type:SSDKContentTypeImage];
+//    //平台定制
+//    //        [parameters SSDKSetupWeChatParamsByText:@"Share SDK"
+//    //                                          title:nil
+//    //                                            url:nil
+//    //                                     thumbImage:nil
+//    //                                          image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+//    //                                   musicFileURL:nil
+//    //                                        extInfo:nil
+//    //                                       fileData:nil
+//    //                                   emoticonData:nil
+//    //                            sourceFileExtension:nil
+//    //                                 sourceFileData:nil
+//    //                                           type:SSDKContentTypeImage
+//    //                             forPlatformSubType:SSDKPlatformSubTypeWechatFav];
+//
+//   [self shareWithParameters:parameters];
 }
 
 - (void)shareLink
