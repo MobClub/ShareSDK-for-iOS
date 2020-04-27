@@ -93,6 +93,13 @@
 + (BOOL)isDingTalkSupportOpenAPI;
 
 /**
+ 检测设备安装的钉钉是否支持钉钉SSO授权.
+ 
+ @return YES 设备安装的钉钉客户端支持钉钉SSO授权. NO 设备安装的钉钉客户端不支持钉钉SSO授权.
+ */
++ (BOOL)isDingTalkSupportSSO;
+
+/**
  获取钉钉在AppStore的安装地址.
  
  @return 钉钉在AppStore的安装地址.
@@ -113,6 +120,13 @@
  @return YES 成功打开钉钉客户端. NO 未能打开钉钉客户端.
  */
 + (BOOL)openDingTalk;
+
+/**
+ 打开支持SSO授权的钉钉客户端
+ 
+ @return YES 成功打开钉钉客户端. NO 未能打开钉钉客户端.
+ */
++ (BOOL)openDingTalkForSSO;
 
 
 /**

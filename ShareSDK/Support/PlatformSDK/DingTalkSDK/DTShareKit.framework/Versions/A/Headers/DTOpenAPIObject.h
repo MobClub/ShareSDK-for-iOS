@@ -59,6 +59,42 @@ typedef NS_ENUM(NSInteger, DTScene)
 @property (nonatomic, copy) NSString *errorMessage;
 @end
 
+@interface DTAuthorizeReq : DTBaseReq
+
+/**
+ 钉钉开放平台第三方应用授权回调页地址
+ @warning 必须保证和在钉钉开放平台应用管理界面配置的“授权回调页”地址一致
+ */
+
+@property (nonatomic, copy) NSString *redirectURI;
+
+/**
+ 钉钉开放平台第三方应用bundleId
+ */
+
+@property (nonatomic, copy) NSString *bundleId;
+
+
+/**
+ 当用户没有安装钉钉客户端或钉钉客户端过低无法支持SSO的时候，返回给应用处理
+ 
+ 默认为YES
+ */
+@property (nonatomic, copy) void (^shouldShowWebViewForAuthIfCannotSSO)();
+
+@end
+
+/**
+ 钉钉客户端处理完第三方应用的认证申请后向第三方应用回送的处理结果
+ */
+@interface DTAuthorizeResp : DTBaseResp
+
+/**
+ 临时授权码
+ */
+@property (nonatomic, copy) NSString *accessCode;
+
+@end
 
 
 ///-----------------------------------------------------------------------------
