@@ -42,6 +42,7 @@
 
 @synthesize tableView = _tableView, navigationBar = _navigationBar;
 
+
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self createData];

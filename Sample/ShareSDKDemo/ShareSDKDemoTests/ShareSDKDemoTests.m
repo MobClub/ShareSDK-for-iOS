@@ -78,7 +78,7 @@
 - (void)testRegistNormal
 {
     [ShareSDK registPlatforms:^(SSDKRegister *platformsRegister) {
-        [platformsRegister setupQQWithAppId:@"1111111" appkey:@"2222222"];
+//        [platformsRegister setupQQWithApid];
         [platformsRegister setupWeChatWithAppId:@"333333" appSecret:@"444444" universalLink:@"https://aa/"];
         [platformsRegister setupSinaWeiboWithAppkey:@"568898243" appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3" redirectUrl:@"http://www.sharesdk.cn"];
         [platformsRegister setupFacebookWithAppkey:@"1412473428822331" appSecret:@"a42f4f3f867dc947b9ed6020c2e93558" displayName:@"shareSDK"];
@@ -108,7 +108,7 @@
 - (void)testRegistParamsIllegal
 {
     [ShareSDK registPlatforms:^(SSDKRegister *platformsRegister) {
-        [platformsRegister setupQQWithAppId:nil appkey:nil];
+//        [platformsRegister setupQQWithAppId:nil appkey:nil];
         [platformsRegister setupWeChatWithAppId:nil appSecret:nil universalLink:nil];
         [platformsRegister setupSinaWeiboWithAppkey:nil appSecret:nil redirectUrl:nil];
         [platformsRegister setupFacebookWithAppkey:nil appSecret:nil displayName:nil];

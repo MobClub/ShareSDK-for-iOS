@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.3.7"
+  s.version          = "4.3.8"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
 
   s.homepage         = 'http://www.mob.com'
 
-  s.source           = { :http => 'http://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.3.7.zip' }
+  s.source           = { :http => 'http://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.3.8.zip' }
 
   s.platform         = :ios
   s.ios.deployment_target = "8.0"
@@ -169,7 +169,7 @@ Pod::Spec.new do |s|
             ssp.library = 'c++', 'stdc++','z'
             ssp.resources = 'ShareSDK/Support/PlatformSDK/FacebookSDK/FacebookSDKStrings.bundle'
             ssp.dependency 'mob_sharesdk/ShareSDK'
-            ssp.ios.weak_framework = 'Accelerate', 'Accounts', 'CoreLocation', 'Social', 'Security', 'QuartzCore', 'CoreGraphics', 'UIKit', 'AudioToolbox','AuthenticationServices','SafariServices','Accelerate','CoreServices'
+            ssp.ios.weak_framework = 'Accelerate', 'Accounts', 'CoreLocation', 'Social', 'Security', 'QuartzCore', 'CoreGraphics', 'UIKit', 'AudioToolbox','AuthenticationServices','SafariServices','CoreServices'
             ssp.resource_bundles = {
                 'ShareSDK_JS_Facebook' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/Facebook.js']
             }
@@ -316,7 +316,7 @@ Pod::Spec.new do |s|
         # CMCC
         sp.subspec 'CMCC' do |ssp|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/CMCCSDK/TYRZSDK.framework','ShareSDK/Support/PlatformConnector/CMCCConnector.framework'
-            ssp.resources = 'ShareSDK/Support/PlatformSDK/CMCCSDK/Resource.bundle'
+            ssp.resources = 'ShareSDK/Support/PlatformSDK/CMCCSDK/TYRZResource.bundle'
             ssp.dependency 'mob_sharesdk/ShareSDK'
             ssp.resource_bundles = {
                 'ShareSDK_JS_CMCC' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/CMCC.js']
@@ -498,9 +498,13 @@ Pod::Spec.new do |s|
         
         # Osis(绿洲)
         sp.subspec 'Oasis' do |ssp|
-            
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/OasisConnector.framework','ShareSDK/Support/PlatformSDK/OasisSDK/OasisSDK.framework'
-            
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+        end
+        
+        # SnapChat
+        sp.subspec 'SnapChat' do |ssp|
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/SnapChatConnector.framework','ShareSDK/Support/PlatformSDK/SnapChat/SCSDKLoginKit.framework','ShareSDK/Support/PlatformSDK/SnapChat/SCSDKCoreKit.framework','ShareSDK/Support/PlatformSDK/SnapChat/SCSDKCreativeKit.framework'
             ssp.dependency 'mob_sharesdk/ShareSDK'
         end
     end
@@ -530,5 +534,4 @@ Pod::Spec.new do |s|
         sp.dependency 'mob_sharesdk/ShareSDKExtension'
         sp.vendored_frameworks = "ShareSDK/Support/Optional/ShareSDKLink.framework"
     end
-
 end

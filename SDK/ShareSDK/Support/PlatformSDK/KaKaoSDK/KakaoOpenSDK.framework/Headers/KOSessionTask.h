@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2018 Kakao Corp.
+ * Copyright 2015 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,22 @@
 #import "KOHTTPMethod.h"
 
 /*!
- @typedef KOSessionTaskCompletionHandler
- @abstract 각종 API 요청 완료시 호출되는 콜백 핸들러
- @param result 해당 API 요청의 결과
- @param error 호출 실패시의 오류 정보
+ * @typedef KOSessionTaskCompletionHandler
+ * @abstract 각종 API 요청 완료시 호출되는 콜백 핸들러
+ * @param result 해당 API 요청의 결과
+ * @param error 호출 실패시의 오류 정보
  */
 typedef void(^KOSessionTaskCompletionHandler)(id result, NSError *error);
 
+/*!
+ * @class KOSessionTask
+ * @abstract 카카오로그인 기반의 API를 호출하는 네트워크 요청 작업
+ * @discussion KOSession을 이용하여 카카오로그인을 수행한 후 발급 받은 access token을 인증 헤더에 담아 API를 호출합니다.<br>
+ *             세션의 상태에 따라 모든 API 요청은 아래와 같이 동작합니다.<br><br>
+ *             - KOSessionStateNotOpen: KOErrorTokenNotFound 에러를 반환합니다.<br>
+ *             - KOSessionStateOpening: 토큰이 발급 중이므로 완료될 때까지 기다린 후에 요청합니다.<br>
+ *             - KOSessionStateOpen: 인스턴스 생성 즉시 요청을 실행합니다.<br>
+ */
 @interface KOSessionTask : NSObject
 
 - (id)initWithPath:(NSString *)path

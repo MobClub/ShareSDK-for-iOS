@@ -31,9 +31,8 @@ static MOBPolicyManager * manager = nil;
 
 - (void)show{
    id cacheKey = [[NSUserDefaults standardUserDefaults] objectForKey:kMOBPolicyManagerSaveKey];
-    
-    if (cacheKey) {
-        self.isAllowPolicy = [cacheKey boolValue];
+    self.isAllowPolicy = [cacheKey boolValue];
+    if (self.isAllowPolicy) {
         return;
     }
     MOBPolicyViewController *vc = [MOBPolicyViewController new];

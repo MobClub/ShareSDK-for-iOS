@@ -58,7 +58,7 @@ static void *SSDKImagePickerElemenPickerModelKey = &SSDKImagePickerElemenPickerM
                 numberOfColumns = self.configure.interfaceConfigure.numberOfColumnsInLandscape;
             }
 
-            CGFloat width = ([UIScreen mainScreen].bounds.size.width - 2.0 * (numberOfColumns - 1)) / numberOfColumns;
+            CGFloat width = ([SSDKScenePackage mainBounds].size.width - 2.0 * (numberOfColumns - 1)) / numberOfColumns;
             size = CGSizeMake(width, width);
         }
     }

@@ -10,7 +10,9 @@
 
 @implementation MOBPlatformVKntakteExample
 
-
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeVKontakte;
+}
 - (void)setup{
     
     self.authHandler = ^(SSDKResponseState state, SSDKUser * _Nonnull user, NSError * _Nonnull error) {
@@ -96,7 +98,5 @@
 }
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeVKontakte;
-}
+
 @end

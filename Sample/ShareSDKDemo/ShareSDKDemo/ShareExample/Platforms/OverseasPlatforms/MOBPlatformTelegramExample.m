@@ -10,6 +10,9 @@
 
 @implementation MOBPlatformTelegramExample
 
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeTelegram;
+}
 
 /**
  分享文字
@@ -125,7 +128,4 @@
 }
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeTelegram;
-}
 @end

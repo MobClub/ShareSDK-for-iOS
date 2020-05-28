@@ -10,6 +10,9 @@
 
 @implementation MOBPlatformDoubanExample
 
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeDouBan;
+}
 /**
  分享文字
  */
@@ -77,7 +80,5 @@
 }
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeDouBan;
-}
+
 @end

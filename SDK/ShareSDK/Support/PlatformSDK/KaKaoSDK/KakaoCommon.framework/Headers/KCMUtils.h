@@ -31,5 +31,6 @@
 + (UIViewController *)topViewController;
 
 + (NSString *)stringFromDate:(NSDate *)date;
++ (NSDate *)dateFromString:(NSString *)string;
 
 @end

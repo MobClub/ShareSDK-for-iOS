@@ -70,6 +70,15 @@ static void * kMobTabbarItemKey = &kMobTabbarItemKey;
 
 @implementation MOBTabBarController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     _lastSelectedIndex = -1;
     [super viewDidLoad];

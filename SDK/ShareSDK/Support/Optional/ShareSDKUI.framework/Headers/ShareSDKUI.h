@@ -13,5 +13,5 @@
 #import <ShareSDKUI/SSUIEditorConfiguration.h>
 #import <ShareSDKUI/SSUIShareSheetConfiguration.h>
 #import <ShareSDKUI/SSUIPlatformItem.h>
-
+#import <ShareSDKUI/SSUITypeDef.h>
 #endif /* ShareSDKUI_h */

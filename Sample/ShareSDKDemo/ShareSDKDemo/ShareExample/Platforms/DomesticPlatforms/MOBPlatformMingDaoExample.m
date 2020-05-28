@@ -9,7 +9,9 @@
 #import "MOBPlatformMingDaoExample.h"
 
 @implementation MOBPlatformMingDaoExample
-
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeMingDao;
+}
 - (void)shareLink
 {
     //webpage image需为 网络图片
@@ -31,7 +33,5 @@
 }
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeMingDao;
-}
+
 @end

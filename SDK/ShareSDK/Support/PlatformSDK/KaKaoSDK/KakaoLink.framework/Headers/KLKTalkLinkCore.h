@@ -1,5 +1,5 @@
 /**
- * Copyright 2017-2018 Kakao Corp.
+ * Copyright 2017 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,12 +41,12 @@ typedef NS_ENUM(NSUInteger, KLKTalkLinkAction) {
 - (NSURLRequest *)requestScrapWithURL:(NSURL *)URL templateId:(NSString *)templateId templateArgs:(NSDictionary<NSString *,NSString *> *)templateArgs error:(NSError **)error;
 - (NSURLRequest *)requestCustomWithTemplateId:(NSString *)templateId templateArgs:(NSDictionary<NSString *,NSString *> *)templateArgs error:(NSError **)error;
 
-- (NSURL *)sharerURLWithTemplate:(KMTTemplate *)templateObj error:(NSError **)error;
+- (NSURL *)sharerURLWithTemplate:(KMTTemplate *)templateObj serverCallbackArgs:(NSDictionary<NSString *,NSString *> *)serverCallbackArgs error:(NSError **)error;
 - (NSURL *)sharerURLWithURL:(NSURL *)URL error:(NSError **)error;
-- (NSURL *)sharerURLWithURL:(NSURL *)URL templateId:(NSString *)templateId templateArgs:(NSDictionary<NSString *,NSString *> *)templateArgs error:(NSError **)error;
-- (NSURL *)sharerURLWithTemplateId:(NSString *)templateId templateArgs:(NSDictionary<NSString *,NSString *> *)templateArgs error:(NSError **)error;
+- (NSURL *)sharerURLWithURL:(NSURL *)URL templateId:(NSString *)templateId templateArgs:(NSDictionary<NSString *,NSString *> *)templateArgs serverCallbackArgs:(NSDictionary<NSString *,NSString *> *)serverCallbackArgs error:(NSError **)error;
+- (NSURL *)sharerURLWithTemplateId:(NSString *)templateId templateArgs:(NSDictionary<NSString *,NSString *> *)templateArgs serverCallbackArgs:(NSDictionary<NSString *,NSString *> *)serverCallbackArgs error:(NSError **)error;
 
-- (void)handleResponseWithResponse:(NSURLResponse *)response data:(NSData *)data completion:(void (^)(NSURL *talkLinkURL, NSDictionary *warningMsg, NSDictionary *argumentMsg, NSError *error))completion;
+- (void)handleResponseWithResponse:(NSURLResponse *)response data:(NSData *)data serverCallbackArgs:(NSDictionary<NSString *,NSString *> *)serverCallbackArgs completion:(void (^)(NSURL *talkLinkURL, NSDictionary *warningMsg, NSDictionary *argumentMsg, NSError *error))completion;
 
 @property (readonly) NSString *executionScheme;
 @property (readonly) NSString *versionScheme;

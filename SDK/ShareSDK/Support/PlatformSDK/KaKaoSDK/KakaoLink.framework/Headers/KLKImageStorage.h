@@ -1,5 +1,5 @@
 /**
- * Copyright 2017-2018 Kakao Corp.
+ * Copyright 2017 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,19 +37,6 @@ typedef void(^KLKUploadImageSuccessHandler)(KLKImageInfo *original);
  @param error 발생한 에러.
  */
 typedef void(^KLKUploadImageFailureHandler)(NSError *error);
-
-/*!
- @typedef KLKDeleteImageSuccessHandler
- @abstract 이미지 삭제에 성공했을 경우 호출되는 완료 핸들러.
- */
-typedef void(^KLKDeleteImageSuccessHandler)(void);
-
-/*!
- @typedef KLKDeleteImageFailureHandler
- @abstract 이미지 삭제 도중 에러가 발생했을 경우 호출되는 완료 핸들러.
- @param error 발생한 에러.
- */
-typedef void(^KLKDeleteImageFailureHandler)(NSError *error);
 
 /*!
  @class KLKImageStorage
@@ -124,17 +111,6 @@ typedef void(^KLKDeleteImageFailureHandler)(NSError *error);
            secureResource:(BOOL)secureResource
                   success:(nullable KLKUploadImageSuccessHandler)success
                   failure:(nullable KLKUploadImageFailureHandler)failure;
-
-/*!
- @method deleteWithImageURL:success:failure:
- @abstract 카카오 이미지 서버에서 이미지를 임의로 삭제 합니다.
- @param imageURL 삭제할 이미지 URL.
- @param success 삭제 성공 핸들러.
- @param failure 삭제 실패 핸들러.
- */
-- (void)deleteWithImageURL:(NSURL *)imageURL
-                   success:(nullable KLKDeleteImageSuccessHandler)success
-                   failure:(nullable KLKDeleteImageFailureHandler)failure;
 
 @end
 

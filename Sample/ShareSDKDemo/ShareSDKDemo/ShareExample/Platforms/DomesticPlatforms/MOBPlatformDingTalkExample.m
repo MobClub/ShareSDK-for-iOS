@@ -9,7 +9,9 @@
 #import "MOBPlatformDingTalkExample.h"
 
 @implementation MOBPlatformDingTalkExample
-
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeDingTalk;
+}
 /**
  分享文字
  */
@@ -75,7 +77,5 @@
 }
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeDingTalk;
-}
+
 @end

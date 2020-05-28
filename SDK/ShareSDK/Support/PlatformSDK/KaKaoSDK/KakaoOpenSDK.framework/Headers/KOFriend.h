@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2018 Kakao Corp.
+ * Copyright 2015 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,9 @@
  */
 #import <Foundation/Foundation.h>
 #import "KOUserInfo.h"
+#import "KOSession.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 /*!
  @abstract KOOSPropertyType 카카오톡 사용자의 디바이스 OS 타입
@@ -73,6 +76,12 @@ extern NSString* convertOSPropertyTypeString(KOOSPropertyType type);
 @property (nonatomic, readonly) NSString *thumbnailURL;
 
 /*!
+ @property favorite
+ @abstract 즐겨찾기 추가 여부
+ */
+@property (nonatomic, readonly) KOOptionalBoolean favorite;
+
+/*!
  @property talkOS
  @abstract 톡에 가입된 기기의 os 정보 (android / ios)
  */
@@ -99,3 +108,5 @@ extern NSString* convertOSPropertyTypeString(KOOSPropertyType type);
 + (instancetype)responseWithDictionary:(NSDictionary *)dictionary;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -36,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)sinaLinkCardShare;
 
 
+
+
 //闭环分享
 - (void)shareLink;
 

@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)showOnScene:(id)scene;
 
+- (void)showOnWindow:(UIWindow *)window;
+
 @end
 
 NS_ASSUME_NONNULL_END

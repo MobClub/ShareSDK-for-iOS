@@ -11,11 +11,13 @@
 @implementation MOBPlatformYouTubeExample{
     MOBLoadingViewController *loadingViewController;
 }
-
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeYouTube;
+}
 
 - (void)setup{
     loadingViewController = [[MOBLoadingViewController alloc] initWithNibName:@"MOBLoadingViewController" bundle:nil];
-    loadingViewController.view.frame = [UIScreen mainScreen].bounds;
+    loadingViewController.view.frame = [SSDKScenePackage mainBounds];
 }
 
 - (NSMutableDictionary *)shareParameters
@@ -233,7 +235,5 @@
 
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeYouTube;
-}
+
 @end

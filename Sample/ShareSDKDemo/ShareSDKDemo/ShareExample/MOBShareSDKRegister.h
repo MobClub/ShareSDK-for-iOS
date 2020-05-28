@@ -23,7 +23,8 @@
 #define IMPORT_SUB_WechatFav //注释此行则 不开启【 微信收藏 】平台
 #define IMPORT_AliPaySocial  //注释此行则 不开启【 支付宝好友 】平台
 #define IMPORT_AliPaySocialTimeline  //注释此行则 不开启【 支付宝朋友圈 】平台
-#define IMPORT_DingTalk //注释此行则 不开启【 钉钉 】平台
+#define IMPORT_DingTalk //注释此行则 不开启【 钉钉 】平台 分享功能
+#define IMPORT_DingTalkAuth //注释此行则 不开启【 钉钉 】平台 授权功能
 #define IMPORT_TencentWeibo //注释此行则 不开启【 腾讯微博 】平台
 #define IMPORT_DouBan //注释此行则 不开启【 豆瓣 】平台
 #define IMPORT_MeiPai //注释此行则 不开启【 美拍 】平台
@@ -40,6 +41,7 @@
 
 #define IMPORT_WeWork//注释此行则 不开启【 企业微信 】平台
 #define IMPORT_Oasis//注释此行则 不开启【 Oasis 】平台
+#define IMPORT_Snapchat //注释此行则 不开启【 Snapchat 】平台
 //海外平台
 #define IMPORT_Facebook //注释此行则 不开启【 Facebook 】平台
 #define IMPORT_FacebookMessenger //注释此行则 不开启【 FacebookMessenger 】平台
@@ -175,6 +177,8 @@
     #define MOBSSDKQQAppID @"100371282"
     //AppKey
     #define MOBSSDKQQAppKey @"aed9b0303e3ed1e27bae87c33761161d"
+    #define MOBSSDKQQUniversalLink @"https://ybpre.share2dlink.com/"
+    #define MOBSSDKQQEnableUniversalLink NO
     //AuthType
     #define MOBSSDKQQAuthType SSDKAuthorizeTypeBoth
     //useTIM 是否优先使用TIM客户端
@@ -192,7 +196,7 @@
      <string>weixin</string>
      
      info.plist 中需要设置 URL Schemes
-     规则 appID 例：wx4868b35061f87885
+     规则 appID 例：wx617c77c82218ea2c
      
      Other Linker Flags 需设置 -ObjC
      
@@ -285,9 +289,18 @@
  
      开放平台地址： https://open.dingtalk.com
 */
+//钉钉分享
 #ifdef IMPORT_DingTalk
     //AppId
     #define MOBSSDKDingTalkAppId @"dingoabcwtuab76wy0kyzo"
+#endif
+
+//钉钉授权
+#ifdef IMPORT_DingTalkAuth
+    //AppId
+    #define MOBSSDKDingTalkAuthAppId @"dingoacafcjgm0etysbv6r"
+    #define MOBSSDKDingTalkAuthAppSecret @"AMDCSN0sgQt2Gzx_xFU0og9cE_P9fDTumRUg3nYdxKrqL-2bgVIlM6Xj4sRzZMTC"
+    #define MOBSSDKDingTalkAuthRedirectUri @"https://www.mob.com/sharesdk/dingding"
 #endif
 
 #pragma mark - 腾讯微博配置信息
@@ -453,11 +466,11 @@
  */
 #if (defined IMPORT_SUB_YiXinSession) || (defined IMPORT_SUB_YiXinTimeline) || (defined IMPORT_SUB_YiXinFav)
     //AppId
-    #define MOBSSDKYiXinAppId @"yx0d9a9f9088ea44d78680f3274da1765f"
+    #define MOBSSDKYiXinAppId @"yxfddfe3934340436da964fd20885fe2a4"
     //AppSecret
-    #define MOBSSDKYiXinAppSecret @"1a5bd421ae089c3"
+    #define MOBSSDKYiXinAppSecret @"574471e102e1e5d2a"
     //RedirectUri
-    #define MOBSSDKYiXinRedirectUri @"https://open.yixin.im/resource/oauth2_callback.html"
+    #define MOBSSDKYiXinRedirectUri @"http://www.mob.com"
     //AuthType 授权优先类型 web sso both
     #define MOBSSDKYiXinAuthType SSDKAuthorizeTypeBoth
 #endif
@@ -730,9 +743,9 @@
 */
 #ifdef IMPORT_YouTube
     //ClientId
-    #define MOBSSDKYouTubeClientId @"232554794995.apps.googleusercontent.com"//@"906418427202-jinnbqal1niq4s8isbg2ofsqc5ddkcgr.apps.googleusercontent.com"
+    #define MOBSSDKYouTubeClientId @"232554794995-4m0c7j0f289fkq05ee0abkso4p9d904i.apps.googleusercontent.com"//@"906418427202-jinnbqal1niq4s8isbg2ofsqc5ddkcgr.apps.googleusercontent.com"
     //ClientSecret
-    #define MOBSSDKYouTubeClientSecret @"PEdFgtrMw97aCvf0joQj7EMk"//@""
+    #define MOBSSDKYouTubeClientSecret @"AIzaSyDO66lmq1iQnPZT5ePqy265QylzaX2WCg8"//@""
     //RedirectUri
     #define MOBSSDKYouTubeRedirectUri @"http://localhost"
 #endif
@@ -831,11 +844,11 @@
  */
 #ifdef IMPORT_LinkedIn
     //ApiKey
-    #define MOBSSDKLinkedInApiKey @"46kic3zr7s4n"
+    #define MOBSSDKLinkedInApiKey @"75x5xdhllzno44"
     //SecretKey
-    #define MOBSSDKLinkedInSecretKey @"RWw6WRl9YJOcdWsj"
+    #define MOBSSDKLinkedInSecretKey @"uiS3nlE7XBGmTL3P"
     //RedirectUrl
-    #define MOBSSDKLinkedInRedirectUrl @"http://baidu.com"
+    #define MOBSSDKLinkedInRedirectUrl @"http://mob.com"
 #endif
 
 #pragma mark - VKontakte平台配置信息
@@ -902,8 +915,8 @@
 #pragma mark - 中国移动平台配置信息
 
 #ifdef IMPORT_CMCC
-    #define MOBSSDKCMCCAppId @"300011862498"
-    #define MOBSSDKCMCCAppKey @"38D9CA1CC280C5F207E2C343745D4A4B"
+    #define MOBSSDKCMCCAppId @"300011961358"
+    #define MOBSSDKCMCCAppKey @"C3E5F3D7B3E78C5978ADFBF94BC3A9FB"
     #define MOBSSDKCMCCDisplayUI YES
 #endif
 
@@ -915,8 +928,8 @@
 
 #pragma mark - telegram
 #ifdef IMPORT_Telegram
-#define MOBSSDKTelegramBotToken @"646009290:AAGSonNPZqyjl0MUER8MdM8pwSPritFVNgI"
-#define MOBSSDKTelegramBotDomain @"http://www.mob.com"
+#define MOBSSDKTelegramBotToken @"1069540655:AAFr-H60Ppbyzc8RsFmO6jgGzGRMTJMswY0"
+#define MOBSSDKTelegramBotDomain @"https://www.mob.com"
 #endif
 
 #pragma mark - ESurfing
@@ -940,11 +953,18 @@
 #define MOBSSDKWeWorkAppSecret @"dW7e27P7Hc8NiYdRxnbTeOLgfI1ugR72e-PM8uusq2s"
 #endif
 
-#ifdef IMPORT_Oasis
-#define MOBSSDKOasisAppKey @"568898243"
+#pragma mark - 绿洲平台配置信息 -
+
+#ifdef IMPORT_Snapchat
+#define MOBSSDKSnapchatClientId @"dc8e6068-0578-41b8-8392-4da009519725"
+#define MOBSSDKSnapchatClientSecret @""
+#define MOBSSDKSnapchatRedirectUrl @"ssdkmoba0b0c0d0://mob"
 #endif
 
-
+#ifdef IMPORT_Oasis
+//与新浪微博一样
+#define MOBSSDKOasisAppKey @"568898243"
+#endif
 #pragma mark - SMS平台配置信息
 /*
     分享详例：MOBSMSViewController

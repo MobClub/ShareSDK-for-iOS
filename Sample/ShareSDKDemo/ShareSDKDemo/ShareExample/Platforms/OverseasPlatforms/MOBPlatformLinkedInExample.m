@@ -10,7 +10,9 @@
 
 @implementation MOBPlatformLinkedInExample
 
-
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeLinkedIn;
+}
 /**
  分享文字
  */
@@ -58,8 +60,6 @@
     [self shareWithParameters:parameters];
 }
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeLinkedIn;
-}
+
 
 @end

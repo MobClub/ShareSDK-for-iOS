@@ -75,12 +75,18 @@ pod 'mob_sharesdk/ShareSDKPlatforms/VKontakte'
 pod 'mob_sharesdk/ShareSDKPlatforms/YouDaoNote'
 pod 'mob_sharesdk/ShareSDKPlatforms/ESurfing'
 pod 'mob_sharesdk/ShareSDKPlatforms/FacebookAccount'
+pod 'mob_sharesdk/ShareSDKPlatforms/Oasis'
+pod 'mob_sharesdk/ShareSDKPlatforms/Apple'
+pod 'mob_sharesdk/ShareSDKPlatforms/SnapChat'
  
 # Config file share module（optional）
 pod 'mob_sharesdk/ShareSDKConfigFile'
  
 # Extension module（optional, but required when UI module is used）
 pod 'mob_sharesdk/ShareSDKExtension'
+
+# ShareSDKRestore
+pod 'mob_sharesdk/ShareSDKRestoreScene'
 
 # ============================== END ShareSDK ==============================
 ```

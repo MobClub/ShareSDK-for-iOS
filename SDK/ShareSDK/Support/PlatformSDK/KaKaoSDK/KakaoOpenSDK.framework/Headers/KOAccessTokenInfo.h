@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2016 Kakao Corp.
+ * Copyright 2015 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,15 +31,15 @@
  @property ID
  @abstract 해당 access token에 해당되는 사용자의 ID
  */
-@property(nonatomic, readonly) NSNumber *ID;
+@property(nonatomic, readonly, nullable) NSNumber *ID;
 
 /*!
  @property expiresInMillis
  @abstract 해당 access token의 남은 만료시간. 0보다 큰 milli-second가 반환됨.
  */
-@property(nonatomic, readonly) NSNumber *expiresInMillis;
+@property(nonatomic, readonly, nullable) NSNumber *expiresInMillis;
 
-+ (instancetype)responseWithDictionary:(NSDictionary *)dictionary;
++ (nonnull instancetype)responseWithDictionary:(nullable NSDictionary *)dictionary;
 
 
 @end

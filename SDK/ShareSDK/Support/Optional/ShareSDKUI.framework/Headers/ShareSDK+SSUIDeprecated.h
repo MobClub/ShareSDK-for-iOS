@@ -7,23 +7,7 @@
 //
 
 #import <ShareSDK/ShareSDK.h>
-
-/**
- *  分享状态变更
- *
- *  @param state         返回状态
- *  @param platformType  平台类型
- *  @param userData      用户数据
- *  @param contentEntity 分享内容实体
- *  @param error         错误信息
- *  @param end           是否已经结束本次分享标识
- */
-typedef void (^SSUIShareStateChangedHandler) (SSDKResponseState state,
-                                              SSDKPlatformType platformType,
-                                              NSDictionary *userData,
-                                              SSDKContentEntity *contentEntity,
-                                              NSError *error,
-                                              BOOL end);
+#import "SSUITypeDef.h"
 
 
 @interface ShareSDK (SSUIDeprecated)

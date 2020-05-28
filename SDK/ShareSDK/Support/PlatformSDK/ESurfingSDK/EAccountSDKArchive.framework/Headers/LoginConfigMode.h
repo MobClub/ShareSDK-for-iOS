@@ -21,6 +21,8 @@ typedef NS_OPTIONS (NSInteger, ThirdLoginType) {
     ThirdLoginEHealthy  = 1 << 4    //翼健康登录
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface LoginConfigMode : NSObject
 
 
@@ -125,8 +127,10 @@ typedef NS_OPTIONS (NSInteger, ThirdLoginType) {
  */
 @property (nonatomic, assign) BOOL                  autoLoginOnly;
 
-
-
+/**
+ Landscape
+ */
+@property (nonatomic, assign) BOOL                  supportLandscape;
 
 #pragma mark -初始化方法
 
@@ -153,3 +157,4 @@ typedef NS_OPTIONS (NSInteger, ThirdLoginType) {
 - (instancetype)initDefaultConfig;
 
 @end
+NS_ASSUME_NONNULL_END

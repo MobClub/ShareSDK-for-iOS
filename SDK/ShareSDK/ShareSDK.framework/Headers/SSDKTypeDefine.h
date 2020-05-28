@@ -231,6 +231,10 @@ typedef NS_ENUM(NSUInteger, SSDKPlatformType){
      */
     SSDKPlatformTypeOasis               = 64,
     /**
+     * SnapChat
+     */
+    SSDKPlatformTypeSnapChat              = 66,
+    /**
      *  易信
      */
     SSDKPlatformTypeYiXin               = 994,

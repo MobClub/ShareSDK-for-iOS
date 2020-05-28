@@ -100,6 +100,7 @@
     MOBShareItemUI *ui = model.itemUI;
     self.imageV.image = ui.image;
     self.name.text = ui.name;
+    
     SSDKWEAK
     model.handler = ^(MOBAuthStatus authorStatus) {
         SSDKSTRONG

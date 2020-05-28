@@ -96,7 +96,7 @@
             make.left.mas_offset(0);
             make.bottom.mas_offset(-_lineHeight);
             make.top.mas_offset(kStatusBarHeight);
-            make.width.lessThanOrEqualTo(@(100));
+            make.width.lessThanOrEqualTo(@(100 * SSDK_SCALE));
         });
      
     }
@@ -119,9 +119,10 @@
         .addTarget(self, @selector(middleButtonTap), UIControlEventTouchUpInside)
         .lineBreakMode(NSLineBreakByWordWrapping)
         .numberOfLines(1)
+        .adjustsFontSizeToFitWidth(YES)
         .makeMasonry(^(MASConstraintMaker * _Nonnull make) {
             make.centerX.equalTo(self);
-            make.width.lessThanOrEqualTo(@([UIScreen mainScreen].bounds.size.width - 200 *SSDK_SCALE));
+            make.width.lessThanOrEqualTo(@([SSDKScenePackage mainBounds].size.width - 200 * SSDK_SCALE));
             make.top.mas_offset(kStatusBarHeight);
             make.bottom.mas_offset(-_lineHeight);
         });

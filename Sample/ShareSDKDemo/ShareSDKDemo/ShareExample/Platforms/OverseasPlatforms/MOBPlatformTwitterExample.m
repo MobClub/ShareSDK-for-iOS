@@ -13,7 +13,7 @@
 }
 - (void)setup{
     loadingViewController = [[MOBLoadingViewController alloc] initWithNibName:@"MOBLoadingViewController" bundle:nil];
-    loadingViewController.view.frame = [UIScreen mainScreen].bounds;
+    loadingViewController.view.frame = [SSDKScenePackage mainBounds];
 }
 /**
  分享文字

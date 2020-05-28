@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2016 Kakao Corp.
+ * Copyright 2015 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,6 +49,6 @@ typedef void(^KOSessionFriendsTaskCompletionHandler)(NSArray<KOFriend *> *friend
  @param completionHandler 카카오 친구 목록 정보를 얻어 처리하는 핸들러.
  */
 + (instancetype)friendsWithOperation:(KOFriendOperation *)operation
-                   completionHandler:(KOSessionFriendsTaskCompletionHandler)completionHandler;
+                   completionHandler:(KOSessionFriendsTaskCompletionHandler)completionHandler DEPRECATED_ATTRIBUTE;
 
 @end

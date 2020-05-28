@@ -10,6 +10,11 @@
 
 @implementation MOBPlatformSinaExample
 
+
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeSinaWeibo;
+}
+
 - (void)setup{
     SSDKWEAK
     [self addListItemWithImage:MOBImageShareIcon name:@"故事板图片" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
@@ -200,7 +205,5 @@
 
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeSinaWeibo;
-}
+
 @end

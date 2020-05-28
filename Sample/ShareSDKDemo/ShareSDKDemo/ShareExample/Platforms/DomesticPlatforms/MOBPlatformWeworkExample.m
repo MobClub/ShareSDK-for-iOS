@@ -10,6 +10,10 @@
 
 @implementation MOBPlatformWeworkExample
 
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeWework;
+}
+
 - (void)shareText
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -74,7 +78,5 @@
     [self shareWithParameters:parameters];
 }
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeWework;
-}
+
 @end

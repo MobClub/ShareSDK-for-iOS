@@ -62,6 +62,7 @@ typedef enum {
 @interface APSendMessageToAPReq : APBaseReq
 // 发送消息的多媒体内容
 @property (nonatomic, strong) APMediaMessage* message;
+// 支付宝9.9.5版本至现在版本，分享入口已合并，这个scene并没有被使用，用户会在跳转进支付宝后选择分享场景（好友、动态、圈子等），但为保证老版本上无问题、建议还是照常传入
 @property (nonatomic, assign) APScene scene;
 @end
 

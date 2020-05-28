@@ -2,7 +2,7 @@
 //  YXApiObject.h
 //  YixinSDK
 //
-//  Version 2.2
+//  Version 2.4.5
 //  Created by yixin ( yixinopen@188.com )
 //  Copyright (c) 2013年 yixin.im All rights reserved.
 //
@@ -26,6 +26,26 @@ enum YXScene {
     kYXSceneSession   = 0,
     kYXSceneTimeline  = 1,
     kYXSceneFavorite  = 2,
+};
+
+// 消息类型
+enum YXMessageType {
+    kYXSendMessageReq   = 1,
+    kYXShowMessageReq   = 2,
+    kYXSendMessageResp  = 3,
+    kYXShowMessageResp  = 4,
+    kYXOAuthMessageReq  = 5,
+    kYXOAuthMessageResp = 6,
+    kYXOAuthTokenMessageResp = 7
+};
+
+// 多媒体类型
+enum YXMediaObjectType {
+    kYXMediaImage       = 1,
+    kYXMediaMusic       = 2,
+    kYXMediaAppExtend   = 3,
+    kYXMediaWebpage     = 4,
+    kYXMediaVideo       = 5
 };
 
 @class UIImage;
@@ -127,7 +147,7 @@ enum YXScene {
 /** 描述内容
  * @note 长度不能超过1K
  */
-@property (nonatomic, retain) NSString *description;
+@property (nonatomic, retain) NSString *msgDescription;
 
 /** 缩略图数据
  * @note 占用内存大小不能超过64K
@@ -273,9 +293,37 @@ enum YXScene {
 @interface SendOAuthToYXResp : YXBaseResp
 
 @property(nonatomic, retain) NSString *authCode;
+@property(nonatomic, retain) NSString *authToken;
 @property(nonatomic, retain) NSString *state;
 @property(nonatomic, assign) long long exprieSeonds;
 
+@end
+
+/*! @brief gameSDK专属。
+ *
+ */
+@interface YXAccountInfo : NSObject
+
+@property (nonatomic,retain)    NSString    *accountId;
+@property (nonatomic,retain)    NSString    *icon;
+@property (nonatomic,assign)    BOOL   ingame;
+@property (nonatomic,retain)    NSString   *nick;
+
++ (YXAccountInfo *)YXAccountInfo: (NSDictionary *)dict;
+@end
+
+
+/*! @brief gameSDK专属。
+ *
+ */
+@interface YXAccountRankInfo : NSObject
+
+@property (nonatomic,retain)    NSString    *accountId;
+@property (nonatomic,retain)    NSString    *icon;
+@property (nonatomic,assign)    double   value;
+@property (nonatomic,retain)    NSString   *nick;
+
++ (YXAccountRankInfo *)YXAccountRankInfo: (NSDictionary *)dict;
 @end
 
 

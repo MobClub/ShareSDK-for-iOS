@@ -22,7 +22,11 @@ typedef NS_ENUM(NSUInteger, SSUIItemAlignment) {
     SSUIItemAlignmentRight,
 };
 
+
 @interface SSUIShareSheetConfiguration : NSObject
+
+
+@property (nonatomic, assign) SSUIUserInterfaceStyle overrideUserInterfaceStyle;
 
 /**
  *  设置ShareSDK UI风格

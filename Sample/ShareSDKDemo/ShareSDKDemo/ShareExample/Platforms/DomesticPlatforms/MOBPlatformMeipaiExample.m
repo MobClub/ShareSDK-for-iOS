@@ -10,7 +10,9 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 
 @implementation MOBPlatformMeipaiExample
-
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeMeiPai;
+}
 - (void)setup{
     SSDKWEAK
     [self addListItemWithImage:MOBVideoShareIcon name:@"本地视频" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
@@ -105,7 +107,5 @@
 }
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeMeiPai;
-}
+
 @end

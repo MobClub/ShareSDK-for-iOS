@@ -16,7 +16,7 @@
     static CGFloat width = 0;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        width = MIN([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
+        width = MIN([SSDKScenePackage mainBounds].size.height, [SSDKScenePackage mainBounds].size.width);
     });
     return width;
 }

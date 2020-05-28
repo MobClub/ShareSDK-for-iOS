@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2016 Kakao Corp.
+ * Copyright 2015 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,16 +25,14 @@
 #import "KOSession.h"
 #import "KOSessionTask.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  인증된 세션정보로 연령인증 관련 API를 정의한다. 제휴를 통해 권한이 부여된 특정 앱에서만 호출 가능합니다.
  */
 @interface KOSessionTask (AgeAuthAPI)
 
-/*!
- @abstract 연령인증 정보를 얻는다. (일부 앱에서만 제한적 허용/deprecated 될 예정)
- @param completionHandler 연령인증 정보를 가져와서 처리하는 핸들러.
- */
-+ (instancetype)ageAuthTaskWithCompletionHandler:(KOSessionTaskCompletionHandler)completionHandler;
++ (instancetype)ageAuthTaskWithCompletionHandler:(nullable KOSessionTaskCompletionHandler)completionHandler DEPRECATED_ATTRIBUTE;
 
 /*!
  @abstract 해당 유저의 연령인증 정보를 얻는다.
@@ -44,8 +42,8 @@
  @param completionHandler 연령인증 정보를 가져와서 처리하는 핸들러.
  */
 + (instancetype)ageAuthTaskWithCompletionHandler: (KOAgeAuthLimit)ageLimit
-                                    propertyKeys: (NSSet<NSNumber *> *)propertyKeys
-                               completionHandler: (KOSessionTaskCompletionHandler)completionHandler;
+                                    propertyKeys: (nullable NSSet<NSNumber *> *)propertyKeys
+                               completionHandler: (nullable KOSessionTaskCompletionHandler)completionHandler;
 
 
 @end
@@ -72,9 +70,16 @@ extern NSString *const KOAgeAuthBypassLimitKey;
 extern NSString *const KOAgeAuthCIKey;
 
 /*!
+ 연령인증 정보 확인 시 사용자 동의 후 CI값 획득 가능 여부에 대한 키 이름
+ */
+extern NSString *const KOAgeAuthCINeedsAgreementKey;
+
+/*!
  연령인증 정보 확인 시 인증날짜에 대한 키 이름
  */
 extern NSString *const KOAgeAuthDateKey;
 
 
 #endif
+
+NS_ASSUME_NONNULL_END

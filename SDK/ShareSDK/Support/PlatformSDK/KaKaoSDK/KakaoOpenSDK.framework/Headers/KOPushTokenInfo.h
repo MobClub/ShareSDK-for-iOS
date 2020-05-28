@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2016 Kakao Corp.
+ * Copyright 2015 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,10 +28,16 @@
 @interface KOPushTokenInfo : NSObject
 
 /*!
+ @property uuid
+ @abstract 해당 사용자의 uuid
+ */
+@property(nonatomic, readonly) NSString *uuid;
+
+/*!
  @property userId
  @abstract 해당 사용자의 아이디
  */
-@property(nonatomic, readonly) NSString *userId;
+@property(nonatomic, readonly) NSString *userId DEPRECATED_MSG_ATTRIBUTE("'userId'는 더 이상 사용하지 않습니다. 'uuid'를 대신 사용하세요.");
 
 /*!
  @property deviceId
@@ -63,11 +69,12 @@
  */
 @property(nonatomic, readonly) NSString *updatedAt;
 
-- (id)initWithUserId:(NSString *)userId
-            deviceId:(NSString *)deviceId
-            pushType:(NSString *)pushType
-           pushToken:(NSString *)pushToken
-           createdAt:(NSString *)createdAt
-           updatedAt:(NSString *)updatedAt;
+- (id)initWithUuid:(NSString *)uuid
+            UserId:(NSString *)userId
+          deviceId:(NSString *)deviceId
+          pushType:(NSString *)pushType
+         pushToken:(NSString *)pushToken
+         createdAt:(NSString *)createdAt
+         updatedAt:(NSString *)updatedAt;
 
 @end

@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface SSUIEditorConfiguration : NSObject
 
+//设置显示模式
+@property (nonatomic, assign) SSUIUserInterfaceStyle overrideUserInterfaceStyle;
 /**
  设置iPhone导航栏背景
  */

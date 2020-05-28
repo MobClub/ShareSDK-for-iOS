@@ -7,7 +7,7 @@
 //
 
 #import <MOBFoundation/MOBFDataModel.h>
-#import "SSDKTypeDefine.h"
+#import <ShareSDK/SSDKTypeDefine.h>
 
 @class SSDKCredential;
 

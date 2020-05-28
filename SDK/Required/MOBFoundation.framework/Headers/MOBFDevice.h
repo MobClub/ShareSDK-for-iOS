@@ -216,4 +216,11 @@ typedef NS_ENUM(NSUInteger, MOBFIPVersion)
  */
 + (int)wifiLevel;
 
+/**
+ *  获取原始当前网络类型
+ *
+ *  @return 网络类型
+ */
++ (NSString *)currentDataNetworkType;
+
 @end

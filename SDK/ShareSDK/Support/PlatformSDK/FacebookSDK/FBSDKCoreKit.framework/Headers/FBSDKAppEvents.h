@@ -171,9 +171,6 @@ FOUNDATION_EXPORT FBSDKAppEventName FBSDKAppEventNameFindLocation;
 /** The booking of an appointment to visit one of your locations. */
 FOUNDATION_EXPORT FBSDKAppEventName FBSDKAppEventNameSchedule;
 
-/** The subsequent subscriptions after the start of a paid subscription for a product or service you offer. */
-FOUNDATION_EXPORT FBSDKAppEventName FBSDKAppEventNameSubscriptionHeartbeat __attribute((deprecated("This attribute is no longer used.")));
-
 /** The start of a free trial of a product or service you offer (example: trial subscription). */
 FOUNDATION_EXPORT FBSDKAppEventName FBSDKAppEventNameStartTrial;
 
@@ -455,6 +452,11 @@ NS_SWIFT_NAME(AppEvents)
  The userID is persisted until it is cleared by passing nil.
  */
 @property (class, nonatomic, copy, nullable) NSString *userID;
+
+/*
+  Returns generated anonymous id that persisted with current install of the app
+*/
+@property (class, nonatomic, readonly) NSString *anonymousID;
 
 /*
  * Basic event logging

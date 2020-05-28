@@ -11,6 +11,9 @@
 
 @implementation MOBPlatformQQExample
 
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformSubTypeQQFriend;
+}
 
 - (void)setup{
     
@@ -51,7 +54,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
     [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
-                                    images:SHARESDKDEMO_IMAGE_STRING//[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]//SHARESDKDEMO_IMAGE_STRING //[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]
+                                    images:[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]//SHARESDKDEMO_IMAGE_STRING //[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
@@ -116,7 +119,7 @@
     [parameters SSDKSetupQQParamsByText:@"Share SDK Link Desc"
                                   title:@"Share SDK"
                                     url:[NSURL URLWithString:@"https://i.y.qq.com/v8/playsong.html?songmid=&_wv=1&songid=4797678&source=qq&platform=1&appsongtype=1&_wv=1&appshare=iphone&type=0&media_mid=001AFWGk4MKbvX&hosteuin=owEzoivFoio5"]
-                          audioFlashURL:[NSURL URLWithString:@"http://ra01.sycdn.kuwo.cn/resource/n3/32/56/3260586875.mp3"]
+                          audioFlashURL:[NSURL URLWithString:@"http://music.163.com/song/media/outer/url?id=133998.mp3"]
                           videoFlashURL:nil
                              thumbImage:nil
                                  images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
@@ -162,7 +165,7 @@
     [parameters SSDKSetupQQMiniProgramShareParamsByTitle:SHARESDKDEMO_TITLE
                                              description:SHARESDKDEMO_TEXT
                                               webpageUrl:[NSURL URLWithString:SHARESDKDEMO_VIDEO_AD_STRING]
-                                            hdThumbImage:SHARESDKDEMO_IMAGE_STRING//SHARESDKDEMO_IMAGE_LOCALPATH
+                                            hdThumbImage:@"http://yjmf.bs2dl.yy.com/NzFmYzRiMjUtZjYzMS00ZjEwLWExZTUtMTYyYWJiMWMyNmM5.jpg"//SHARESDKDEMO_IMAGE_LOCALPATH
                                                miniAppID:@"1108318575"
                                                 miniPath:@"pages/index/index"
                                           miniWebpageUrl:@"www.qq.com"
@@ -174,8 +177,5 @@
 
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformSubTypeQQFriend;
-}
 
 @end

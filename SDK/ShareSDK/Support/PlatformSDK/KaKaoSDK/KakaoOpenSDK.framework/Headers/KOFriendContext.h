@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2018 Kakao Corp.
+ * Copyright 2015 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,17 @@
  */
 #import "KOBaseContext.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  @abstract KOFriendServiceType 서비스 친구 타입.
+ @constant KOFriendServiceTypeDefault 서버 기본값 사용.
  @constant KOFriendServiceTypeTalk 카카오톡 친구.
  @constant KOFriendServiceTypeStory 카카오스토리 친구.
  @constant KOFriendServiceTypeTalkAndStory 카카오톡 + 카카오스토리 친구.
  */
 typedef NS_ENUM(NSInteger, KOFriendServiceType) {
+    KOFriendServiceTypeDefault = -1,
     KOFriendServiceTypeTalk = 0,
     KOFriendServiceTypeStory = 1,
     KOFriendServiceTypeTalkAndStory = 2
@@ -34,11 +38,13 @@ typedef NS_ENUM(NSInteger, KOFriendServiceType) {
 
 /*!
  @abstract KOFriendFilterType 친구 필터링 타입.
+ @constant KOFriendFilterTypeDefault 서버 기본값 사용.
  @constant KOFriendFilterTypeAll 전체 친구.
  @constant KOFriendFilterTypeRegistered 앱 가입 친구.
  @constant KOFriendFilterTypeInvitableNotRegistered 앱 미가입 친구.
  */
 typedef NS_ENUM(NSInteger, KOFriendFilterType) {
+    KOFriendFilterTypeDefault = -1,
     KOFriendFilterTypeAll = 0,
     KOFriendFilterTypeRegistered = 1,
     KOFriendFilterTypeInvitableNotRegistered = 2
@@ -46,18 +52,19 @@ typedef NS_ENUM(NSInteger, KOFriendFilterType) {
 
 /*!
  @abstract KOFriendOrderType 친구 정렬 타입.
+ @constant KOFriendOrderTypeDefault 서버 기본값 사용.
  @constant KOFriendOrderTypeNickName 닉네임 정렬.
- @constant KOFriendOrderTypeRecentChatting 최근 채팅시간 정렬.
- @constant KOFriendOrderTypeTalkUserCreatedAt 카카오톡 가입시간 정렬.
  @constant KOFriendOrderTypeAge 나이 정렬.
- @constant KOFriendOrderTypeAffinity 친밀도 정렬.
+ @constant KOFriendOrderTypeFavorite 즐겨찾기 정렬.
  */
 typedef NS_ENUM(NSInteger, KOFriendOrderType) {
+    KOFriendOrderTypeDefault = -1,
     KOFriendOrderTypeNickName = 0,
-    KOFriendOrderTypeRecentChatting = 1,
-    KOFriendOrderTypeTalkUserCreatedAt = 2,
+    KOFriendOrderTypeRecentChatting DEPRECATED_MSG_ATTRIBUTE("서버에서 더 이상 사용되지 않는 값이므로 요청 파라미터에 추가되지 않습니다.") = 1,
+    KOFriendOrderTypeTalkUserCreatedAt DEPRECATED_MSG_ATTRIBUTE("서버에서 더 이상 사용되지 않는 값이므로 요청 파라미터에 추가되지 않습니다.") = 2,
     KOFriendOrderTypeAge = 3,
-    KOFriendOrderTypeAffinity = 4
+    KOFriendOrderTypeAffinity DEPRECATED_MSG_ATTRIBUTE("서버에서 더 이상 사용되지 않는 값이므로 요청 파라미터에 추가되지 않습니다.") = 4,
+    KOFriendOrderTypeFavorite = 5,
 };
 
 extern NSString* convertFriendServiceTypeString(KOFriendServiceType type);
@@ -87,6 +94,13 @@ extern NSString* convertFriendOrderTypeString(KOFriendOrderType type);
  @abstract 친구 정렬 타입.
  */
 @property (nonatomic, readonly) KOFriendOrderType orderType;
+
+/*!
+ @property favoriteCount;
+ @abstract 내려온 친구 목록 중 즐겨찾기에 등록되어 있는 친구 수
+ @discussion 이 컨텍스트로 KOSessionTask 친구 목록 조회를 요청한 이후에 이 값을 얻을 수 있습니다.
+ */
+@property (nonatomic, readonly) NSNumber *favoriteCount;
 
 /*!
  친구 페이징 Context 를 생성한다.
@@ -138,3 +152,5 @@ extern NSString* convertFriendOrderTypeString(KOFriendOrderType type);
                           orderType:(KOFriendOrderType)orderType
                            ordering:(KOOrdering)ordering;
 @end
+
+NS_ASSUME_NONNULL_END

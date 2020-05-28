@@ -16,22 +16,12 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import "TargetConditionals.h"
 
 #import "FBSDKHashtag.h"
-#import "FBSDKShareAPI.h"
 #import "FBSDKShareConstants.h"
 #import "FBSDKShareLinkContent.h"
 #import "FBSDKShareMediaContent.h"
-#import "FBSDKShareMessengerActionButton.h"
-#import "FBSDKShareMessengerGenericTemplateContent.h"
-#import "FBSDKShareMessengerGenericTemplateElement.h"
-#import "FBSDKShareMessengerMediaTemplateContent.h"
-#import "FBSDKShareMessengerOpenGraphMusicTemplateContent.h"
-#import "FBSDKShareMessengerURLActionButton.h"
-#import "FBSDKShareOpenGraphAction.h"
-#import "FBSDKShareOpenGraphContent.h"
-#import "FBSDKShareOpenGraphObject.h"
 #import "FBSDKSharePhoto.h"
 #import "FBSDKSharePhotoContent.h"
 #import "FBSDKShareVideo.h"

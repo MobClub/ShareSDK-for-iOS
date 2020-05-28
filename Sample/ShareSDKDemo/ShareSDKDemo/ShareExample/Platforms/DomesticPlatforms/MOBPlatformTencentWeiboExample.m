@@ -10,6 +10,9 @@
 
 @implementation MOBPlatformTencentWeiboExample
 
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeTencentWeibo;
+}
 /**
  分享文字
  */
@@ -55,7 +58,5 @@
 }
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeTencentWeibo;
-}
+
 @end

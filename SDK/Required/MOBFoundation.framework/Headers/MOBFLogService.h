@@ -81,6 +81,13 @@
 - (void)writeData:(id<NSCoding>)data;
 
 /**
+ 写入数据数组
+
+ @param data 日志数据
+ */
+- (void)writeDatas:(NSArray *)data;
+
+/**
  同步写入数据
 
  @param data 日志数据

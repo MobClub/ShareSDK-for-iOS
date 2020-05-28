@@ -9,25 +9,27 @@
 #import "MOBPlatformWeChatContactsExample.h"
 #import <WechatConnector/WeChatConnector.h>
 @implementation MOBPlatformWeChatContactsExample
-
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformSubTypeWechatSession;
+}
 - (void)setup{
     
     //当用户自己想处理返回的token时，可以传入appsecret为nil，然后设置一下两个block。
-//       [WeChatConnector setRefreshAuthTokenOperation:^(NSString *uid, void (^getUserinfo)(NSString *token)) {
-//           getUserinfo(@"");
-//       }];
-//
-//
-//       [WeChatConnector setRequestAuthTokenOperation:^(NSString *authCode, void (^getUserinfo)(NSString *uid, NSString *token)) {
-//           //回调处理结果
-//           getUserinfo(@"",@"");
-//       }];
-//
-//
-//       //获取到微信回调的结果
-//       [WeChatConnector setWXCallbackOperation:^(id req, id resp) {
-//
-//       }];
+    //       [WeChatConnector setRefreshAuthTokenOperation:^(NSString *uid, void (^getUserinfo)(NSString *token)) {
+    //           getUserinfo(@"");
+    //       }];
+    //
+    //
+    //       [WeChatConnector setRequestAuthTokenOperation:^(NSString *authCode, void (^getUserinfo)(NSString *uid, NSString *token)) {
+    //           //回调处理结果
+    //           getUserinfo(@"",@"");
+    //       }];
+    //
+    //
+    //       //获取到微信回调的结果
+    //       [WeChatConnector setWXCallbackOperation:^(id req, id resp) {
+    //
+    //       }];
     
     
     SSDKWEAK
@@ -48,19 +50,19 @@
                                      title:nil
                                       type:SSDKContentTypeText];
     //平台定制
-//    [parameters SSDKSetupWeChatParamsByText:@"Share SDK"
-//                                      title:nil
-//                                        url:nil
-//                                 thumbImage:nil
-//                                      image:nil
-//                               musicFileURL:nil
-//                                    extInfo:nil
-//                                   fileData:nil
-//                               emoticonData:nil
-//                        sourceFileExtension:nil
-//                             sourceFileData:nil
-//                                       type:SSDKContentTypeText
-//                         forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+    //    [parameters SSDKSetupWeChatParamsByText:@"Share SDK"
+    //                                      title:nil
+    //                                        url:nil
+    //                                 thumbImage:nil
+    //                                      image:nil
+    //                               musicFileURL:nil
+    //                                    extInfo:nil
+    //                                   fileData:nil
+    //                               emoticonData:nil
+    //                        sourceFileExtension:nil
+    //                             sourceFileData:nil
+    //                                       type:SSDKContentTypeText
+    //                         forPlatformSubType:SSDKPlatformSubTypeWechatSession];
     
     [self shareWithParameters:parameters];
 }
@@ -89,34 +91,34 @@
                                                 images:image.URL
                                                    url:nil
                                                  title:nil
-                                         type:SSDKContentTypeImage];
+                                                  type:SSDKContentTypeImage];
                 [self shareWithParameters:parameters];
             }
         }];
     }].presentAnimated();
-//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//    //通用参数设置
-////    [parameters SSDKSetupShareParamsByText:@"Share SDK"
-////                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-////                                       url:nil
-////                                     title:nil
-////                                      type:SSDKContentTypeImage];
-//    //平台定制
-//        [parameters SSDKSetupWeChatParamsByText:SHARESDKDEMO_TEXT
-//                                          title:nil
-//                                            url:nil
-//                                     thumbImage:nil
-//                                          image:SHARESDKDEMO_IMAGE_LOCALPATH
-//                                   musicFileURL:nil
-//                                        extInfo:nil
-//                                       fileData:nil
-//                                   emoticonData:nil
-//                            sourceFileExtension:nil
-//                                 sourceFileData:nil
-//                                           type:SSDKContentTypeAuto
-//                             forPlatformSubType:SSDKPlatformSubTypeWechatSession];
-//
-//    [self shareWithParameters:parameters];
+    //    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //    //通用参数设置
+    ////    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+    ////                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+    ////                                       url:nil
+    ////                                     title:nil
+    ////                                      type:SSDKContentTypeImage];
+    //    //平台定制
+    //        [parameters SSDKSetupWeChatParamsByText:SHARESDKDEMO_TEXT
+    //                                          title:nil
+    //                                            url:nil
+    //                                     thumbImage:nil
+    //                                          image:SHARESDKDEMO_IMAGE_LOCALPATH
+    //                                   musicFileURL:nil
+    //                                        extInfo:nil
+    //                                       fileData:nil
+    //                                   emoticonData:nil
+    //                            sourceFileExtension:nil
+    //                                 sourceFileData:nil
+    //                                           type:SSDKContentTypeAuto
+    //                             forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+    //
+    //    [self shareWithParameters:parameters];
 }
 
 - (void)shareLink
@@ -129,21 +131,21 @@
                                      title:SHARESDKDEMO_TITLE
                                       type:SSDKContentTypeWebPage];
     //平台定制
-//        [parameters SSDKSetupWeChatParamsByText:@"Share SDK Link Desc"
-//                                          title:@"Share SDK"
-//                                            url:[NSURL URLWithString:@"https://www.mob.com"]
-//                                     thumbImage:nil
-//                                          image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-//                                   musicFileURL:nil
-//                                        extInfo:nil
-//                                       fileData:nil
-//                                   emoticonData:nil
-//                            sourceFileExtension:nil
-//                                 sourceFileData:nil
-//                                           type:SSDKContentTypeWebPage
-//                             forPlatformSubType:SSDKPlatformSubTypeWechatSession];
-
-        [self shareWithParameters:parameters];
+    //        [parameters SSDKSetupWeChatParamsByText:@"Share SDK Link Desc"
+    //                                          title:@"Share SDK"
+    //                                            url:[NSURL URLWithString:@"https://www.mob.com"]
+    //                                     thumbImage:nil
+    //                                          image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+    //                                   musicFileURL:nil
+    //                                        extInfo:nil
+    //                                       fileData:nil
+    //                                   emoticonData:nil
+    //                            sourceFileExtension:nil
+    //                                 sourceFileData:nil
+    //                                           type:SSDKContentTypeWebPage
+    //                             forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+    
+    [self shareWithParameters:parameters];
 }
 
 - (void)shareAudio
@@ -151,25 +153,26 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //网络音频
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"崔健"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                       url:[NSURL URLWithString:@"http://i.y.qq.com/v8/playsong.html?hostuin=0&songid=&songmid=002x5Jje3eUkXT&_wv=1&source=qq&appshare=iphone&media_mid=002x5Jje3eUkXT"]
-                                     title:@"一无所有"
-                                      type:SSDKContentTypeAudio];
+    //    [parameters SSDKSetupShareParamsByText:@"Vitas"
+    //                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+    //                                       url:[NSURL URLWithString:@"http://music.163.com/#/song?id=19674655"]
+    //                                     title:@"第七元素"
+    //                                      type:SSDKContentTypeAudio];
+    
     //平台定制
-//    [parameters SSDKSetupWeChatParamsByText:@"崔健"
-//                                      title:@"一无所有"
-//                                        url:[NSURL URLWithString:@"https://i.y.qq.com/v8/playsong.html?songmid=&_wv=1&songid=4797678&source=qq&platform=1&appsongtype=1&_wv=1&appshare=iphone&type=0&media_mid=001AFWGk4MKbvX&hosteuin=owEzoivFoio5"]
-//                                 thumbImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-//                                      image:nil
-//                               musicFileURL:[NSURL URLWithString:@"http://ra01.sycdn.kuwo.cn/resource/n3/32/56/3260586875.mp3"]
-//                                    extInfo:nil
-//                                   fileData:nil
-//                               emoticonData:nil
-//                        sourceFileExtension:nil
-//                             sourceFileData:nil
-//                                       type:SSDKContentTypeAudio
-//                         forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+    [parameters SSDKSetupWeChatParamsByText:@"Vitas"
+                                      title:@"第七元素"
+                                        url:[NSURL URLWithString:@"http://music.163.com/#/song?id=19674655"]
+                                 thumbImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                      image:nil
+                               musicFileURL:[NSURL URLWithString:@"http://music.163.com/song/media/outer/url?id=19674655.mp3"]
+                                    extInfo:nil
+                                   fileData:nil
+                               emoticonData:nil
+                        sourceFileExtension:nil
+                             sourceFileData:nil
+                                       type:SSDKContentTypeAudio
+                         forPlatformSubType:SSDKPlatformSubTypeWechatSession];
     [self shareWithParameters:parameters];
 }
 
@@ -178,25 +181,25 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //网络视频
     //通用参数设置
-//    [parameters SSDKSetupShareParamsByText:@"视频"
-//                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-//                                       url:[NSURL URLWithString:@"http://v.youku.com/v_show/id_XNTUxNDY1NDY4.html"]
-//                                     title:@"乔布斯"
-//                                      type:SSDKContentTypeVideo];
+    //    [parameters SSDKSetupShareParamsByText:@"视频"
+    //                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+    //                                       url:[NSURL URLWithString:@"http://v.youku.com/v_show/id_XNTUxNDY1NDY4.html"]
+    //                                     title:@"乔布斯"
+    //                                      type:SSDKContentTypeVideo];
     //平台定制
-        [parameters SSDKSetupWeChatParamsByText:SHARESDKDEMO_TEXT
-                                          title:SHARESDKDEMO_TITLE
-                                            url:[NSURL URLWithString:SHARESDKDEMO_VIDEO_AD_STRING]
-                                     thumbImage:SHARESDKDEMO_IMAGE_LOCALPATH
-                                          image:nil
-                                   musicFileURL:nil
-                                        extInfo:nil
-                                       fileData:nil
-                                   emoticonData:nil
-                            sourceFileExtension:nil
-                                 sourceFileData:nil
-                                           type:SSDKContentTypeVideo
-                             forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+    [parameters SSDKSetupWeChatParamsByText:SHARESDKDEMO_TEXT
+                                      title:SHARESDKDEMO_TITLE
+                                        url:[NSURL URLWithString:SHARESDKDEMO_VIDEO_AD_STRING]
+                                 thumbImage:SHARESDKDEMO_IMAGE_LOCALPATH
+                                      image:nil
+                               musicFileURL:nil
+                                    extInfo:nil
+                                   fileData:nil
+                               emoticonData:nil
+                        sourceFileExtension:nil
+                             sourceFileData:nil
+                                       type:SSDKContentTypeVideo
+                         forPlatformSubType:SSDKPlatformSubTypeWechatSession];
     [self shareWithParameters:parameters];
 }
 
@@ -271,8 +274,8 @@
                                                  description:@"test MiniProgram"
                                                   webpageUrl:[NSURL URLWithString:@"http://www.mob.com"]
                                                         path:@"pages/index/index"
-                                                  thumbImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                                hdThumbImage:@"http://download.sdk.mob.com/web/images/2019/06/20/10/1560998253715/635_635_42.62.png"
+                                                  thumbImage:SHARESDKDEMO_IMAGE_STRING
+                                                hdThumbImage:SHARESDKDEMO_IMAGE_STRING
                                                     userName:@"gh_afb25ac019c9"
                                              withShareTicket:YES
                                              miniProgramType:0
@@ -283,17 +286,17 @@
 
 - (void)openMiniProgram
 {
-//    BOOL success = [WeChatConnector openMiniProgramWithUserName:@"gh_52568203455c"
-//                                                           path:@"pages/index/index"
-//                                                miniProgramType:0];
-//    if (success)
-//    {
-//        NSLog(@"打开小程序成功");
-//    }
-//    else
-//    {
-//        NSLog(@"打开小程序失败");
-//    }
+    //    BOOL success = [WeChatConnector openMiniProgramWithUserName:@"gh_52568203455c"
+    //                                                           path:@"pages/index/index"
+    //                                                miniProgramType:0];
+    //    if (success)
+    //    {
+    //        NSLog(@"打开小程序成功");
+    //    }
+    //    else
+    //    {
+    //        NSLog(@"打开小程序失败");
+    //    }
     
     // 小程序打开当前应用(回传参数)监听 此回调block将被单例持有 可通过[WeChatConnector openAppFromMiniProgramWithCallback:nil]进行取消监听或更换
     // 注意：只有应用打开的小程序才能进行小程序打开应用且可以多次打开
@@ -328,8 +331,8 @@
     [WeChatConnector openMiniProgramWithUserName:@"gh_52568203455c"
                                             path:@"pages/index/index"
                                  miniProgramType:0
-                                          extMsg:@"extMsg"
-                                          extDic:@{@"key1":@"value1",@"key2":@"value2"}
+                                               extMsg:@"extMsg"
+                                               extDic:@{@"key1":@"value1",@"key2":@"value2"}
                                         complete:^(BOOL success) {
         if (success)
         {
@@ -345,7 +348,5 @@
 
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformSubTypeWechatSession;
-}
+
 @end

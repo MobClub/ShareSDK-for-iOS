@@ -120,11 +120,16 @@ static void _ssdkCommonProtocolSwizzle(id self){
     self.automaticallyAdjustsScrollViewInsets = NO;
 #endif
     self.view.backgroundColor = [UIColor whiteColor];
-    if (_isRespondsSafeAreaSel) {
-        [self viewSafeAreaInsetsChanged:SSDKSafeArea(self.view)];
-        [self.view layoutIfNeeded];
-    }
+    
     // Do any additional setup after loading the view.
+}
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    if ([UIDevice currentDevice].systemVersion.floatValue < 11.0 ) {
+        ((void (*)(id, SEL))objc_msgSend)(self,sel_registerName("ssdk_viewSafeAreaInsetsDidChange"));
+    }
+    
 }
 
 - (void)setSwipeCanPop:(BOOL)swipeCanPop{
@@ -177,9 +182,12 @@ static void _ssdkCommonProtocolSwizzle(id self){
 
 
 
-
-- (void)viewSafeAreaInsetsDidChange API_AVAILABLE(ios(11.0)){
+- (void)viewSafeAreaInsetsDidChange API_AVAILABLE(ios(11.0), tvos(11.0)){
     [super viewSafeAreaInsetsDidChange];
+    [self ssdk_viewSafeAreaInsetsDidChange];
+}
+
+- (void)ssdk_viewSafeAreaInsetsDidChange {
     UIEdgeInsets edge = SSDKSafeArea(self.view);
     CGFloat barHeight = kDefaultNavigationBarHeight;
     CGFloat barHeightReduce = 0;
@@ -241,7 +249,9 @@ static void _ssdkCommonProtocolSwizzle(id self){
         [self viewSafeAreaInsetsChanged:edge];
     }
     if (_isRespondsSafeAreaSel||_isConformsTableView || _isConformsNavigationBar || _isConformsCollectionView) {
-        [self.view layoutIfNeeded];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view layoutIfNeeded];
+        });
     }
 }
 
@@ -325,7 +335,7 @@ static void _ssdkCommonProtocolSwizzle(id self){
     .showsHorizontalScrollIndicator(NO)
     .backgroundColor([UIColor whiteColor])
     .adJustedContentIOS11();
-     vc.collectionView = collectionView;
+    vc.collectionView = collectionView;
 }
 
 - (void)_loadCollectionView{
@@ -358,7 +368,7 @@ static void _ssdkCommonProtocolSwizzle(id self){
             make.left.bottom.right.mas_offset(0);
         }];
     }
-
+    
 }
 
 - (void)_createNavigationbar{

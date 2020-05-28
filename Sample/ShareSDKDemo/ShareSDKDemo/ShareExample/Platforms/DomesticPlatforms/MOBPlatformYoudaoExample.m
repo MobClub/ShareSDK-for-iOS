@@ -10,6 +10,10 @@
 
 @implementation MOBPlatformYoudaoExample
 
+
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeYouDaoNote;
+}
 /**
  文字
  */
@@ -55,7 +59,5 @@
 }
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeYouDaoNote;
-}
+
 @end

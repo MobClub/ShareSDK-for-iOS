@@ -10,6 +10,9 @@
 
 @implementation MOBPlatformRenrenExample
 
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeRenren;
+}
 /**
  分享图片
  */
@@ -56,7 +59,4 @@
 }
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeRenren;
-}
 @end

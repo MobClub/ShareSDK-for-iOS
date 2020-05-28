@@ -11,8 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
-
+typedef void(^ssdk_dismissTask)(UIViewController* object);
 @interface UIViewController (SSDKCategory)
+@property (nonatomic, copy, readonly) UIViewController * _Nonnull (^ssdk_dismissViewControllerAnimated)(ssdk_dismissTask _Nonnull);
 
 - (UINavigationController *)ssdk_navigationController;
 

@@ -8,6 +8,7 @@
 
 #import <ShareSDK/ShareSDK.h>
 #import "ShareSDK+SSUIDeprecated.h"
+#import "SSUITypeDef.h"
 @class SSUIShareSheetConfiguration;
 @class SSUIEditorConfiguration;
 
@@ -21,12 +22,6 @@
  @param error 错误信息
  @param end 是否已经结束本次分享标识
  */
-typedef void (^SSUIShareStateChangedHandler) (SSDKResponseState state,
-                                              SSDKPlatformType platformType,
-                                              NSDictionary *userData,
-                                              SSDKContentEntity *contentEntity,
-                                              NSError *error,
-                                              BOOL end);
 
 @interface ShareSDK (SSUI)
 
@@ -79,5 +74,12 @@ typedef void (^SSUIShareStateChangedHandler) (SSDKResponseState state,
  */
 + (void)dismissShareController:(id)controller;
 
+
+/**
+设置暗黑模式样式
+
+@param style 暗黑模式样式
+*/
++ (void)setUserInterfaceStyle:(SSUIUserInterfaceStyle)style;
 
 @end

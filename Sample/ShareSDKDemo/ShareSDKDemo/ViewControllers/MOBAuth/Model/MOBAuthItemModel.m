@@ -39,7 +39,10 @@ static time_t lasAuthTime;
 }
 
 - (void)author{
+    
     if (time(NULL) - lasAuthTime <= 4.5 && lasAuthTime > 0) return;
+    
+
     lasAuthTime = time(NULL);
     if ([ShareSDK hasAuthorized:self.model.platformType]) {
         if (!_user) {
@@ -89,7 +92,7 @@ static time_t lasAuthTime;
         if (self.handler) {
             self.handler(MOBAuthStatusAuthoring);
         }
-
+        
         self.model.authHandler = ^(SSDKResponseState state, SSDKUser * _Nonnull user, NSError * _Nonnull error) {
             SSDKSTRONG
             if (state == SSDKResponseStateSuccess && self.handler) {

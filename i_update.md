@@ -2,6 +2,13 @@
 
 [论坛发版列表](http://bbs.mob.com/forum.php?mod=forumdisplay&fid=2&filter=typeid&typeid=36)  
 
+### v4.3.8[详情](http://bbs.mob.com/thread-26210-1-1.html)  
+>1、新增snapchat平台
+>2、新增钉钉授权
+>3、分享菜单支持暗黑模式
+>4、更新qq、微信、微博、facebook等平台sdk
+
+
 ### v4.3.7[详情](http://bbs.mob.com/thread-26210-1-1.html)  
 >1、line平台更新
 >2、facebook添加对PHAsset的支持

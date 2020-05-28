@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+typedef NSString SSDKSceneWindowBindKey;
 //兼容iOS13的处理类
 @interface SSDKScenePackage : NSObject
 
@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 //当前或缺的scene的delegateWindow
 @property (nonatomic, strong, readonly) UIWindow *higherWindow;
+
+//屏幕
+@property (nonatomic, assign) CGRect mainBounds;
 
 //当前活跃windowscene
 @property (nonatomic, copy, readonly) UIWindow *keyWindow;
@@ -46,6 +49,14 @@ NS_ASSUME_NONNULL_BEGIN
 //在window第一次加载后进行事件处理，可以保证block执行时必定加载过window
 - (void)addBeforeWindowEvent:(void (^) (SSDKScenePackage *application))event;
 
+//以key值记录当前window
+- (void)recordWindowKey:(NSString *)key;
+
+//获取记录的window，如果window被销毁则为nil
+- (nullable UIWindow *)getRecordWindowKey:(SSDKSceneWindowBindKey *)key;
+
+- (void)removeRecordWindowKey:(SSDKSceneWindowBindKey *)key;
+
 @end
 
 typedef NS_ENUM(NSUInteger, SSDKControllerShowType) {
@@ -66,7 +77,6 @@ typedef NS_ENUM(NSUInteger, SSDKControllerShowType) {
 //多少秒后消失
 @property (nonatomic, copy, readonly) UIViewController * (^ dismissTime)(NSTimeInterval dismissTime);
 
-
 //是否以动画的形式消失
 @property (nonatomic, copy, readonly) UIViewController * (^ dismissAnimated) (BOOL animated);
 
@@ -84,10 +94,14 @@ typedef NS_ENUM(NSUInteger, SSDKControllerShowType) {
 
 @property (nonatomic, copy, readonly) UIViewController *( ^ pushAnimated) (void);
 
+//绑定一个window key
+@property (nonatomic, copy, readonly) UIViewController *( ^ bindRecordWindow) (SSDKSceneWindowBindKey *key);
+
 @end
 
 
 @interface UIViewController (SSDKScenePackageLifeEvents)
+
 
 - (void)addViewWillAppearBlock:(void (^) (UIViewController * vc, BOOL animated))block;
 
@@ -103,9 +117,12 @@ typedef NS_ENUM(NSUInteger, SSDKControllerShowType) {
 
 @property (nonatomic, copy, readonly) UIViewController *  ( ^ ssdk_once)(BOOL once);
 
-
 @end
 
+@interface SSDKScenePackage (Convenient)
 
++ (CGRect)mainBounds;
+
+@end
 
 NS_ASSUME_NONNULL_END

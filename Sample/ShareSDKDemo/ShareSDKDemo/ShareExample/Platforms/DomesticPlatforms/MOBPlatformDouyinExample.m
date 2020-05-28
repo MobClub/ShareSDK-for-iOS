@@ -9,7 +9,9 @@
 #import "MOBPlatformDouyinExample.h"
 #import <Photos/Photos.h>
 @implementation MOBPlatformDouyinExample
-
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeDouyin;
+}
 - (void)setup{
     SSDKWEAK
     [self addListItemWithImage:MOBMutiImageShareIcon name:@"多相册图片" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
@@ -212,7 +214,5 @@
     }];
 }
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeDouyin;
-}
+
 @end

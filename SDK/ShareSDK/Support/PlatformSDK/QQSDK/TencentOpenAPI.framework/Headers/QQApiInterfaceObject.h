@@ -37,6 +37,7 @@ typedef NS_ENUM(NSInteger,QQApiSendResultCode) {
     EQQAPIQZONENOTSUPPORTIMAGE = 10001,  //qzone分享不支持image类型分享
     EQQAPIVERSIONNEEDUPDATE = 10002,  //当前QQ版本太低，需要更新至新版本才可以支持
     ETIMAPIVERSIONNEEDUPDATE = 10004,  //当前TIM版本太低，需要更新至新版本才可以支持
+    EAPPURLTYPESILLEGALITY = 20000,  //(>=3.3.8)第三方APP的info.plist中UrlTypes字段存在QQ的UrlScheme
 };
 
 #pragma mark - QQApiObject(分享对象类型)
@@ -65,6 +66,9 @@ typedef NS_ENUM(NSUInteger, MiniProgramType) {
     MiniProgramType_Online=3,   // 正式版,默认
     MiniProgramType_Preview=4,  // 预览版
 };
+
+/// 打印回调的block
+typedef void(^QQApiLogBolock)(NSString *logStr);
 
 // QQApiObject
 /** \brief 所有在QQ及插件间发送的数据对象的根类。
@@ -106,7 +110,7 @@ __attribute__((visibility("default"))) @interface QQApiMiniProgramObject : NSObj
 //唤起小程序 - QQ 8.1.8
 __attribute__((visibility("default"))) @interface QQApiLaunchMiniProgramObject : QQApiObject
 @property(nonatomic,retain) NSString* miniAppID; //必填，小程序的AppId（注：必须在QQ互联平台中，将该小程序与分享的App绑定）
-@property(nonatomic,retain) NSString* miniPath; //必填，小程序的展示路径
+@property(nonatomic,retain) NSString* miniPath; //小程序的展示路径,不填展示默认小程序首页
 @property(nonatomic,assign) MiniProgramType miniprogramType; //非必填，小程序的类型，默认正式版(3)，可选测试版(1)、开发版(0)
 @end
 // QQApiResultObject

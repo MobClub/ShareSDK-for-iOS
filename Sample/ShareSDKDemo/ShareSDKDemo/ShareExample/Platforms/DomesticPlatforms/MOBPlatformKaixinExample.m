@@ -10,6 +10,9 @@
 
 @implementation MOBPlatformKaixinExample
 
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeKaixin;
+}
 /**
  分享文字
  */
@@ -51,7 +54,5 @@
     [self shareWithParameters:parameters];
 }
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeKaixin;
-}
+
 @end

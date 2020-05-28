@@ -9,7 +9,9 @@
 #import "MOBPlatformKakaoTalkExample.h"
 
 @implementation MOBPlatformKakaoTalkExample
-
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformSubTypeKakaoTalk;
+}
 - (void)shareLink
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -39,7 +41,5 @@
 }
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformSubTypeKakaoTalk;
-}
+
 @end

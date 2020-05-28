@@ -10,6 +10,9 @@
 
 @implementation MOBPlatformLineExample
 
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeLine;
+}
 /**
  分享文字
  */
@@ -50,7 +53,4 @@
 }
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeLine;
-}
 @end

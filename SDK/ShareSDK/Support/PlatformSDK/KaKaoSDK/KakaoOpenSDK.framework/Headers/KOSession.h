@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2018 Kakao Corp.
+ * Copyright 2015 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,8 @@
 #import <KakaoOpenSDK/KOSessionTask.h>
 #import <KakaoOpenSDK/KOToken.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  @abstract KOSessionState Kakao 인증시의 내부 상태값
  @constant KOSessionStateNotOpen 세션이 열리지 않은 상태. 인증이 되지 않은 상태.
@@ -40,7 +42,7 @@ typedef NS_ENUM(NSInteger, KOSessionState) {
  @abstract Kakao 인증 완료시 실행될 Completion Handler
  @param error 오류 정보
  */
-typedef void(^KOSessionCompletionHandler)(NSError *error);
+typedef void(^KOSessionCompletionHandler)(NSError *_Nullable error);
 
 /*!
  @typedef KOCompletionSuccessHandler
@@ -48,7 +50,7 @@ typedef void(^KOSessionCompletionHandler)(NSError *error);
  @param success 성공 여부
  @param error 오류 정보
  */
-typedef void(^KOCompletionSuccessHandler)(BOOL success, NSError *error);
+typedef void(^KOCompletionSuccessHandler)(BOOL success, NSError *_Nullable error);
 
 /*!
  @abstract KOAuthType 카카오계정 로그인시의 인증 타입
@@ -129,9 +131,9 @@ typedef NS_ENUM(NSInteger, KOAgeAuthProperty) {
  */
 @property(nonatomic, readonly) NSString *redirectUri;
 
-@property(nonatomic, readonly, copy) NSString *accessToken DEPRECATED_MSG_ATTRIBUTE("KOToken 타입의 token 속성으로 통합되었습니다. accessToken을 얻고 싶은 경우 token.accessToken을 사용해주세요.");
-@property(nonatomic, readonly, copy) NSString *refreshToken DEPRECATED_MSG_ATTRIBUTE("KOToken 타입의 token 속성으로 통합되었습니다. refreshToken을 얻고 싶은 경우 token.refreshToken을 사용해주세요.");
-@property(nonatomic, readonly, copy) NSDate *expiresAccessTokenTime DEPRECATED_MSG_ATTRIBUTE("KOToken 타입의 token 속성으로 통합되었습니다. access token 만료시각을 얻고 싶은 경우 token.accessTokenExpiresAt을 사용해주세요. 추가적으로 refresh token의 만료시각도 제공됩니다.");
+@property(nullable, nonatomic, readonly, copy) NSString *accessToken DEPRECATED_MSG_ATTRIBUTE("KOToken 타입의 token 속성으로 통합되었습니다. accessToken을 얻고 싶은 경우 token.accessToken을 사용해주세요.");
+@property(nullable, nonatomic, readonly, copy) NSString *refreshToken DEPRECATED_MSG_ATTRIBUTE("KOToken 타입의 token 속성으로 통합되었습니다. refreshToken을 얻고 싶은 경우 token.refreshToken을 사용해주세요.");
+@property(nullable, nonatomic, readonly, copy) NSDate *expiresAccessTokenTime DEPRECATED_MSG_ATTRIBUTE("KOToken 타입의 token 속성으로 통합되었습니다. access token 만료시각을 얻고 싶은 경우 token.accessTokenExpiresAt을 사용해주세요. 추가적으로 refresh token의 만료시각도 제공됩니다.");
 /*!
  * @property token
  * @abstract 로그인 기반 API 인증에 사용되는 OAuth 토큰
@@ -149,17 +151,14 @@ typedef NS_ENUM(NSInteger, KOAgeAuthProperty) {
  *
  *             위 케이스에는 앱을 업데이트하고 재시작해도 로그인이 유지되며 이외 케이스는 토큰을 읽어올 수 없으므로 세션이 닫힌 상태로 초기화됩니다.
  */
-@property(readonly) KOToken *token;
+@property(nullable, readonly) KOToken *token;
 /*!
  * @property state
  * @abstract 인증 상태
  */
 @property(nonatomic, readonly) KOSessionState state;
-/*!
- * @property clientSecret
- * @abstract 클라이언트 시크릿. AppDelegate의 application:didFinishLaunchingWithOptions: 메소드에서 값을 설정해주어야 한다.
- */
-@property(nonatomic, copy) NSString *clientSecret;
+
+@property(nullable, nonatomic, copy) NSString *clientSecret DEPRECATED_MSG_ATTRIBUTE("이 속성은 무시됩니다. 네이티브 앱에서의 사용이 중단되었습니다.");
 
 /*!
  * @property automaticPeriodicRefresh
@@ -173,50 +172,55 @@ typedef NS_ENUM(NSInteger, KOAgeAuthProperty) {
  * @property presentingViewController
  * @abstract login view 가 present 될 뷰컨트롤러를 설정. 지정하지 않을 경우 SDK 자체적으로 최상단 뷰컨트롤러를 탐색합니다.
  */
-@property (nonatomic, weak) UIViewController *presentingViewController;
+@property (nullable, nonatomic, weak) UIViewController *presentingViewController;
+
+/*!
+ * @property modalPresentionStyle
+ * @abstract 로그인 웹뷰의 뷰컨트롤러가 노출되는 modalPresentationStyle을 지정합니다.
+ */
+@property (nonatomic, assign) UIModalPresentationStyle modalPresentionStyle;
 
 @property (nonatomic, assign) UIStatusBarStyle presentedViewStatusBarStyle;
-@property (nonatomic, strong) UIColor *presentedViewBarTitleColor;
-@property (nonatomic, strong) UIColor *presentedViewBarTintColor;
-@property (nonatomic, strong) UIColor *presentedViewBarButtonTintColor;
-@property (nonatomic, strong) UIImage *presentedViewBarBackgroundImage;
+@property (nullable, nonatomic, strong) UIColor *presentedViewBarTitleColor;
+@property (nullable, nonatomic, strong) UIColor *presentedViewBarTintColor;
+@property (nullable, nonatomic, strong) UIColor *presentedViewBarButtonTintColor;
+@property (nullable, nonatomic, strong) UIImage *presentedViewBarBackgroundImage;
 
 
 /*!
  @abstract 현재 session 정보
  */
-
-+ (KOSession *)sharedSession;
++ (nullable KOSession *)sharedSession;
 
 /*!
  카카오계정 로그인 callback인지 여부
  @param url 카카오 계정 인증 요청 code 또는 오류정보를 담은 url
  */
-+ (BOOL)isKakaoAccountLoginCallback:(NSURL *)url;
++ (BOOL)isKakaoAccountLoginCallback:(nullable NSURL *)url;
 
 /*!
  카카오계정 연령인증 callback인지 여부
  @param url 카카오 연령인증 요청결과를 담은 url
  */
-+ (BOOL)isKakaoAgeAuthCallback:(NSURL *)url;
++ (BOOL)isKakaoAgeAuthCallback:(nullable NSURL *)url;
 
 /*!
  KakaoLink 메시지의 Action인지 여부
  @param url KakaoLink 메시지의 execparam 을 담은 url
  */
-+ (BOOL)isKakaoLinkCallback:(NSURL *)url DEPRECATED_ATTRIBUTE;
++ (BOOL)isKakaoLinkCallback:(nullable NSURL *)url DEPRECATED_ATTRIBUTE;
 
 /*!
  KakaoStory Post의 Action인지 여부
  @param url KakaoStory Post 메시지의 execparam 을 담은 url
  */
-+ (BOOL)isStoryPostCallback:(NSURL *)url;
++ (BOOL)isStoryPostCallback:(nullable NSURL *)url;
 
 /*!
  url에 포함된 code 정보로 oauth 인증 토큰을 요청한다. 인증 토큰 요청이 완료되면 completionHandler를 실행한다.
  @param url 인증 요청 code 또는 오류 정보(error, error_description)를 담은 url
  */
-+ (BOOL)handleOpenURL:(NSURL *)url;
++ (BOOL)handleOpenURL:(nullable NSURL *)url;
 
 /*!
  openWithCompletionHandler로 인증 도중에 빠져나와 앱으로 돌아올때의 인증처리를 취소한다. 보통 applicationDidBecomeActive에서 해당 부분을 호출한다.
@@ -237,6 +241,13 @@ typedef NS_ENUM(NSInteger, KOAgeAuthProperty) {
 /*!
  기기의 로그인 수행 가능한 카카오 앱에 로그인 요청을 전달한다.
  @param completionHandler 요청 완료시 실행될 block. 오류 처리와 로그인 완료 작업을 수행한다.
+ @param parameters 인증코드 요청에 추가로 전달할 파라미터
+ */
+- (void)openWithCompletionHandler:(KOSessionCompletionHandler)completionHandler parameters:(nullable NSDictionary<NSString *, NSString *> *)parameters;
+
+/*!
+ 기기의 로그인 수행 가능한 카카오 앱에 로그인 요청을 전달한다.
+ @param completionHandler 요청 완료시 실행될 block. 오류 처리와 로그인 완료 작업을 수행한다.
  @param authType 로그인 요청시의 인증 타입(KOAuthType)의 array(var arguments로서 nil-terminated list). 주의) list의 마지막은 꼭 nil로 끝나야함. 예) KOAuthTypeTalk, KOAuthTypeStory, KOAuthTypeAccount, nil
  */
 - (void)openWithCompletionHandler:(KOSessionCompletionHandler)completionHandler authType:(KOAuthType)authType, ...;
@@ -244,9 +255,42 @@ typedef NS_ENUM(NSInteger, KOAgeAuthProperty) {
 /*!
  기기의 로그인 수행 가능한 카카오 앱에 로그인 요청을 전달한다.
  @param completionHandler 요청 완료시 실행될 block. 오류 처리와 로그인 완료 작업을 수행한다.
+ @param parameters 인증코드 요청에 추가로 전달할 파라미터
+ @param authType 로그인 요청시의 인증 타입(KOAuthType)의 array(var arguments로서 nil-terminated list). 주의) list의 마지막은 꼭 nil로 끝나야함. 예) KOAuthTypeTalk, KOAuthTypeStory, KOAuthTypeAccount, nil
+ */
+- (void)openWithCompletionHandler:(KOSessionCompletionHandler)completionHandler parameters:(nullable NSDictionary<NSString *, NSString *> *)parameters authType:(KOAuthType)authType, ...;
+
+/*!
+ 기기의 로그인 수행 가능한 카카오 앱에 로그인 요청을 전달한다.
+ @param completionHandler 요청 완료시 실행될 block. 오류 처리와 로그인 완료 작업을 수행한다.
  @param authTypes 로그인 요청시의 인증 타입(KOAuthType)의 array.
  */
-- (void)openWithCompletionHandler:(KOSessionCompletionHandler)completionHandler authTypes:(NSArray<NSNumber *> *)authTypes;
+- (void)openWithCompletionHandler:(KOSessionCompletionHandler)completionHandler authTypes:(nullable NSArray<NSNumber *> *)authTypes;
+
+/*!
+ 기기의 로그인 수행 가능한 카카오 앱에 로그인 요청을 전달한다.
+ @param completionHandler 요청 완료시 실행될 block. 오류 처리와 로그인 완료 작업을 수행한다.
+ @param parameters 인증코드 요청에 추가로 전달할 파라미터
+ @param authTypes 로그인 요청시의 인증 타입(KOAuthType)의 array.
+ */
+- (void)openWithCompletionHandler:(KOSessionCompletionHandler)completionHandler parameters:(nullable NSDictionary<NSString *, NSString *> *)parameters authTypes:(nullable NSArray<NSNumber *> *)authTypes;
+
+/*!
+ 이전에 발급 받았던 토큰을 재사용하여 로그인을 시도한다.
+ @param token 로그인 시도할 토큰. 갱신 가능한 토큰이면 로그인에 성공한다.
+ @param completionHandler 요청 완료시 실행될 block. 오류 처리와 로그인 완료 작업을 수행한다.
+ */
+- (void)openWithToken:(nullable KOToken *)token completionHandler:(KOSessionCompletionHandler)completionHandler;
+
+/*!
+ 카카오계정의 특정 서비스를 활용하여 인증처리 후 로그인을 수행합니다. (카카오 내부 서비스 전용)
+ */
+- (void)openWithAccountPath:(NSString *)accountPath
+              accountParams:(nullable NSDictionary<NSString *, NSString *> *)accountParams
+                extraParams:(nullable NSDictionary<NSString *, NSString *> *)extraParams
+          completionHandler:(KOSessionCompletionHandler)completionHandler;
+
+
 
 /*!
  @method updateScopes:completionHandler:
@@ -254,16 +298,17 @@ typedef NS_ENUM(NSInteger, KOAgeAuthProperty) {
  @param scopes 요청할 scope 목록
  @param completionHandler 요청 완료시 실행될 block. 오류 처리와 갱신 완료 작업을 수행한다.
  */
-- (void)updateScopes:(NSArray<NSString *> *)scopes completionHandler:(KOSessionCompletionHandler)completionHandler;
+- (void)updateScopes:(nullable NSArray<NSString *> *)scopes completionHandler:(KOSessionCompletionHandler)completionHandler;
+- (void)updateScopes:(nullable NSArray<NSString *> *)scopes parameters:(nullable NSDictionary<NSString *, NSString *> *)parameters completionHandler:(KOSessionCompletionHandler)completionHandler;
 
 /*!
- 현재 기기에서만 로그아웃한다.
+ 현재 기기에서만 로그아웃한다. 발급 받았던 토큰은 만료된다.
  @param completionHandler 요청 완료시 실행될 block.
  */
 - (void)logoutAndCloseWithCompletionHandler:(KOCompletionSuccessHandler)completionHandler;
 
 /*!
- 인증 토큰을 제거하여 session을 무효화한다.
+ 인증 토큰을 세션 객체에서 제거한다.
  */
 - (void)close;
 
@@ -281,7 +326,7 @@ typedef NS_ENUM(NSInteger, KOAgeAuthProperty) {
 /*!
  새로운 연령 인증이 필요할 경우 사용자에게 연령 인증관련 창을 띄워서 연령 인증을 유도합니다. 제휴를 통해 권한이 부여된 특정 앱에서만 호출 가능합니다.
  */
-- (void)showAgeAuthWithAuthLevel:(KOAgeAuthQueryStringBuilder *) ageAuthQueryStringBuilder
+- (void)showAgeAuthWithAuthLevel:(nullable KOAgeAuthQueryStringBuilder *) ageAuthQueryStringBuilder
                completionHandler:(KOCompletionSuccessHandler)completionHandler;
 
 @end
@@ -291,3 +336,22 @@ typedef NS_ENUM(NSInteger, KOAgeAuthProperty) {
  로그인 인증 정보 변경 노티피케이션 이름
  */
 extern NSString *const KOSessionDidChangeNotification;
+
+// Session open extra parameters (for Kakao Sync)
+/*!
+ 로그인 요청 동적 카카오톡 채널 파라미터 키
+ */
+extern NSString *const KOSessionChannelPublicIdParameterKey;
+extern NSString *const KOSessionExtraPlusFriendPublicIdParameterKey DEPRECATED_MSG_ATTRIBUTE("키 이름이 변경되었습니다. 'KOSessionChannelPublicIdParameterKey'를 사용해주세요.");
+/*!
+ 로그인 요청 동적 서비스약관 파라미터 키
+ */
+extern NSString *const KOSessionServiceTermsParameterKey;
+extern NSString *const KOSessionExtraServiceTermsParameterKey DEPRECATED_MSG_ATTRIBUTE("키 이름이 변경되었습니다. 'KOSessionServiceTermsParameterKey'를 사용해주세요.");
+/*!
+ 로그인 요청 자동로그인 파라미터 키
+ */
+extern NSString *const KOSessionAutoLoginParameterKey;
+
+NS_ASSUME_NONNULL_END
+

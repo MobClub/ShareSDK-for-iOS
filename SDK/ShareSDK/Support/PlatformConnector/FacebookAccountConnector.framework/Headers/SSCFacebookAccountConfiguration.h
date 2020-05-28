@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 @protocol AKFUIManager; // 此协议申明在AccountKit.framework内，可实现对登录界面的深度定制
 
-typedef void(^SSCFBAccountKitAuthResumeHandler)(NSString *autCode, void(^resumeOperation)(NSDictionary *credentialInfo));
+
 
 NS_ASSUME_NONNULL_BEGIN
+
+typedef void(^SSCFBAccountKitAuthResumeHandler)(NSString *autCode, void(^resumeOperation)(NSDictionary *credentialInfo));
 
 @interface SSCFacebookAccountConfiguration : NSObject
 

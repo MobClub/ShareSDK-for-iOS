@@ -14,7 +14,7 @@
 #import "MOBAboutMobLinkViewController.h"
 #import "MOBPolicyManager.h"
 #import "SSDKImagePicker.h"
-#import <FBSDKShareKit/FBSDKShareKit.h>
+
 @implementation MOBShareExample{
     BOOL isAnimate, onShakeShare;
     MOBShakeView *shakeShareView;
@@ -34,6 +34,8 @@
     self = [super init];
     if (self) {
         shakeShareView = [MOBShakeView new];
+        [ShareSDK setUserInterfaceStyle:SSUIUserInterfaceStyleUnspecified];
+        
     }
     return self;
 }
@@ -43,7 +45,6 @@
 
 #pragma mark - 弹框分享 -
 - (void)popShareWithView:(UIView *)view{
-    
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]];
     [shareParams SSDKSetupShareParamsByText:@"分享内容"
@@ -70,7 +71,9 @@
     //                  @(SSDKPlatformTypeMail),
     //                  @(SSDKPlatformTypeCopy)
     //                  ];
+    
     SSUIShareSheetConfiguration *config = [[SSUIShareSheetConfiguration alloc] init];
+//    config.overrideUserInterfaceStyle = SSUIUserInterfaceStyleLight;
 //    config.style = SSUIActionSheetStyleSimple;
     //    config.menuBackgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
     [ShareSDK showShareActionSheet:view
@@ -227,6 +230,7 @@
     }
     UIAlertControllerAlertCreate(title, message)
     .addCancelAction(@"确认")
+    .bindRecordWindow(@"key")
     .showAnimated(YES)
     .present();
 }
@@ -272,6 +276,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         UIAlertControllerAlertCreate(title, typeStr)
         .addCancelAction(@"确定")
+        
         .showAnimated(YES)
         .present();
     });

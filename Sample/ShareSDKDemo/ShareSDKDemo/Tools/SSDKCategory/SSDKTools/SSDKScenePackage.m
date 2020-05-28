@@ -10,6 +10,7 @@
 #import "NSObject+SSDKCategory.h"
 #import <objc/message.h>
 #import "NSString+SSDKCategory.h"
+#import "UIViewController+SSDKCategory.h"
 typedef enum : NSUInteger {
     SSDKScenePackageSceneHookStatusUndefine,
     SSDKScenePackageSceneHookStatusUnstart,
@@ -35,6 +36,8 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, weak) UIWindow *currentClickWindow;
 
+@property (nonatomic, strong) NSMapTable * windowsRecordMap;
+
 @end
 
 @implementation SSDKScenePackage
@@ -55,6 +58,7 @@ typedef enum : NSUInteger {
         _hookDelegateClassNames = [NSMutableSet set];
         _hookApplicationClassNames = [NSMutableSet set];
         _alertWindows = [NSMutableArray array];
+        _windowsRecordMap = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsCopyIn valueOptions:NSPointerFunctionsWeakMemory];
     }
     return self;
 }
@@ -168,7 +172,7 @@ typedef enum : NSUInteger {
         NSArray *windows = self.windows;
         UIWindow *highWindow = windows.firstObject;
         for (UIWindow * window  in windows) {
-            if (window.windowLevel > highWindow.windowLevel) {
+            if (window.windowLevel > highWindow.windowLevel && window.windowLevel < 2000) {
                 highWindow = window;
             }
         }
@@ -176,6 +180,10 @@ typedef enum : NSUInteger {
     });
 }
 
+- (CGRect)mainBounds{
+    if (!_isSceneApp || !self.currentScene) return [UIScreen mainScreen].bounds;
+    return self.window.bounds;
+}
 - (UIWindow *)keyWindow{
     if (!_isSceneApp) return [UIApplication sharedApplication].keyWindow;
     for (UIWindow *win in self.windows) {
@@ -327,7 +335,7 @@ typedef enum : NSUInteger {
         }
         return obj;
     };
-    oldImp = (__typeof__ (oldImp))[self methodImpSet:newImpBlock class:swizzleClass selector:swizzleSelector];
+    oldImp = (__typeof__ (oldImp))[self methodImpSet:newImpBlock class:swizzleClass selector:swizzleSelector encodeTypes:@"@@:{CGPoint=dd}@"];
 }
 
 - (void)_scene_init{
@@ -355,7 +363,7 @@ typedef enum : NSUInteger {
         
     };
     
-    oldImp = (__typeof__ (oldImp))(__typeof__ (oldImp))[self methodImpSet:newImpBlock class:swizzleClass selector:swizzleSelector];
+    oldImp = (__typeof__ (oldImp))(__typeof__ (oldImp))[self methodImpSet:newImpBlock class:swizzleClass selector:swizzleSelector encodeTypes:@"@@:@@"];
 }
 
 - (void)methodSwizzledScene{
@@ -390,7 +398,7 @@ typedef enum : NSUInteger {
         }
     };
     
-    oldImp = (__typeof__ (oldImp))[self methodImpSet:newImpBlock class:swizzleClass selector:swizzleSelector];
+    oldImp = (__typeof__ (oldImp))[self methodImpSet:newImpBlock class:swizzleClass selector:swizzleSelector encodeTypes:@"v@:@"];
 }
 
 - (void)setScene:(id)scene{
@@ -404,7 +412,11 @@ typedef enum : NSUInteger {
     if (!delegate) return;
     @synchronized (self.hookDelegateClassNames) {
         NSString *clasName = NSStringFromClass([delegate class]);
-        if ([self.hookDelegateClassNames containsObject:clasName]) return;
+        for (NSString *className in self.hookDelegateClassNames) {
+            if ([delegate isKindOfClass:NSClassFromString(className)]) {
+                return;
+            }
+        }
         [self hookSceneDelegate:delegate];
         [self.hookDelegateClassNames addObject:clasName];
     }
@@ -415,6 +427,7 @@ typedef enum : NSUInteger {
 - (void)_scene_willConnectToSession:(id)delegate{
     Class swizzleClass = [delegate class];
     if (!swizzleClass) return;
+    
     SEL swizzleSelector = NSSelectorFromString(@"scene:willConnectToSession:options:");
     if (!swizzleSelector) return;
     __block void (* oldImp) (__unsafe_unretained id, SEL,id,id,id) = NULL;
@@ -433,11 +446,10 @@ typedef enum : NSUInteger {
         [[SSDKScenePackage defaultPackage] setIsLoadFirstWindow:YES];
     };
     
-    oldImp = (__typeof__ (oldImp))[self methodImpSet:newImpBlock class:swizzleClass selector:swizzleSelector];
+    oldImp = (__typeof__ (oldImp))[self methodImpSet:newImpBlock class:swizzleClass selector:swizzleSelector encodeTypes:@"v@:@@@"];
 }
 
-- (IMP)methodImpSet:(dispatch_block_t)newImpBlock class:(Class)class selector:(SEL)selector{
-    
+- (IMP)methodImpSet:(dispatch_block_t)newImpBlock class:(Class)class selector:(SEL)selector encodeTypes:(nonnull NSString *)encodeTypes{
     IMP newImp = imp_implementationWithBlock(newImpBlock);
     Method method = class_getInstanceMethod(class, selector);
     IMP imp = method== NULL?_objc_msgForward:NULL;
@@ -481,7 +493,7 @@ typedef enum : NSUInteger {
         }
     };
     
-    oldImp = (__typeof__ (oldImp))[self methodImpSet:newImpBlock class:swizzleClass selector:swizzleSelector];
+    oldImp = (__typeof__ (oldImp))[self methodImpSet:newImpBlock class:swizzleClass selector:swizzleSelector encodeTypes:@"v@:@"];
 }
 
 
@@ -489,6 +501,22 @@ typedef enum : NSUInteger {
     [self _application_setDelegate];
     
 }
+
+
+- (void)recordWindowKey:(NSString *)key{
+    if (self.window) {
+        [_windowsRecordMap setObject:self.window forKey:key];
+    }
+}
+
+- (nullable UIWindow *)getRecordWindowKey:(NSString *)key{
+    return _windowsRecordMap.dictionaryRepresentation[key];
+}
+
+- (void)removeRecordWindowKey:(NSString *)key{
+    [_windowsRecordMap removeObjectForKey:key];
+}
+
 @end
 
 __attribute__((constructor)) static void SSDKScenePackageExcImp(){
@@ -524,7 +552,7 @@ static void * kSSDKScenePackageShowAnimatedKey = &kSSDKScenePackageShowAnimatedK
 static void * kSSDKScenePackageShowDismissKey = &kSSDKScenePackageShowDismissKey;
 static void * kSSDKScenePackageShowNavigationBarKey = &kSSDKScenePackageShowNavigationBarKey;
 static void * kSSDKScenePackageReturnNavigationControllerKey = &kSSDKScenePackageReturnNavigationControllerKey;
-
+static void * kSSDKScenePackageBindWindowKey = &kSSDKScenePackageBindWindowKey;
 @implementation UIViewController (SSDKScenePackage)
 
 - (void)__SSDK_showViewController{
@@ -545,11 +573,43 @@ static void * kSSDKScenePackageReturnNavigationControllerKey = &kSSDKScenePackag
     BOOL showAnimated = [self _ssdk_AssociatedViewControllerboolValue:kSSDKScenePackageShowAnimatedKey default:showStyle == SSDKControllerShowStylePush];
     BOOL dismissAnimated = [self _ssdk_AssociatedViewControllerboolValue:kSSDKScenePackageShowDismissKey default:showStyle == SSDKControllerShowStylePush];
     NSTimeInterval time = [objc_getAssociatedObject(self, kSSDKScenePackageShowDismissTimeKey) doubleValue];
-    UIWindow *currentWindow = [SSDKScenePackage defaultPackage].higherWindow;
+    UIWindow *currentWindow;
+    CGRect frame;
+    UIWindow * recordWindow =  [[SSDKScenePackage defaultPackage] getRecordWindowKey:objc_getAssociatedObject(self, kSSDKScenePackageBindWindowKey)];
+    if (!recordWindow) {
+        currentWindow = [SSDKScenePackage defaultPackage].higherWindow;
+        frame = [SSDKScenePackage mainBounds];
+    }else{
+        frame = recordWindow.bounds;
+        if ([SSDKScenePackage defaultPackage].isSceneApp) {
+            id scene = ((id (*)(id, SEL))objc_msgSend)(recordWindow,sel_registerName("windowScene"));
+            NSArray *windows = ((id (*)(id, SEL))objc_msgSend)(scene,sel_registerName("windows"));
+            UIWindow *highWindow = windows.firstObject;
+            for (UIWindow * window  in windows) {
+                if (window.windowLevel > highWindow.windowLevel && window.windowLevel < 2000) {
+                    highWindow = window;
+                }
+            }
+            currentWindow = highWindow;
+        }else{
+            NSArray *windows = [UIApplication sharedApplication].windows;
+            UIWindow *highWindow = windows.firstObject;
+            for (UIWindow * window  in windows) {
+                if (window.windowLevel > highWindow.windowLevel && window.windowLevel < 2000) {
+                    highWindow = window;
+                }
+            }
+            currentWindow = highWindow;
+        }
+    }
     [currentWindow endEditing:YES];
-    UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    window.windowLevel = currentWindow.windowLevel+1;
-    [[SSDKScenePackage defaultPackage] showWindow:window];
+    UIWindow *window = [[UIWindow alloc] initWithFrame:frame];
+    window.windowLevel = currentWindow.windowLevel;
+    if (recordWindow) {
+        [window showOnWindow:recordWindow];
+    }else{
+        [[SSDKScenePackage defaultPackage] showWindow:window];
+    }
     SSDKScenePackageRootViewController *root = [[SSDKScenePackageRootViewController alloc] init];
     [root.ssdk_once(YES) addViewDidLoadBlock:^(UIViewController * _Nonnull vc) {
         if (vc.navigationController) {
@@ -615,18 +675,29 @@ static void * kSSDKScenePackageReturnNavigationControllerKey = &kSSDKScenePackag
     
     __weak typeof(window)weakWindow = window;
     [self addDeallocTask:^(id  _Nonnull object) {
-        __strong typeof(weakWindow) strongWindow = weakWindow;
-        if (!strongWindow) return;
-        [strongWindow resignKeyWindow];
-        [[SSDKScenePackage defaultPackage].alertWindows removeObject:strongWindow];
-        [strongWindow removeFromSuperview];
-        strongWindow.hidden = YES;
+        if (!weakWindow) return;
+        [weakWindow resignKeyWindow];
+        [[SSDKScenePackage defaultPackage].alertWindows removeObject:weakWindow];
+        [weakWindow removeFromSuperview];
+        weakWindow.hidden = YES;
     }];
+    
+    self.ssdk_dismissViewControllerAnimated(^(UIViewController * _Nonnull object) {
+        if (!object.presentingViewController) return;
+        if (!weakWindow) return;
+        [weakWindow resignKeyWindow];
+        [[SSDKScenePackage defaultPackage].alertWindows removeObject:weakWindow];
+        [weakWindow removeFromSuperview];
+        weakWindow.hidden = YES;
+    });
 }
 
 - (void)__SSDK_showInRootController{
-    
-    UIViewController *viewController = ([SSDKScenePackage defaultPackage].keyWindow?:[SSDKScenePackage defaultPackage].window).rootViewController;
+    UIWindow *window = [[SSDKScenePackage defaultPackage] getRecordWindowKey:objc_getAssociatedObject(self, kSSDKScenePackageBindWindowKey)];
+    if (!window) {
+        window = [SSDKScenePackage defaultPackage].keyWindow?:[SSDKScenePackage defaultPackage].window;
+    }
+    UIViewController *viewController = window.rootViewController;
     UIViewController *vc = [self _ssdk_getTopViewController:viewController];
     if (vc) {
         NSInteger showStyle = [objc_getAssociatedObject(self, kSSDKScenePackageShowStyleKey) integerValue];
@@ -800,6 +871,13 @@ static void * kSSDKScenePackageReturnNavigationControllerKey = &kSSDKScenePackag
     };
 }
 
+- (UIViewController * _Nonnull (^)(NSString * _Nonnull))bindRecordWindow{
+    return ^(NSString * key){
+        objc_setAssociatedObject(self, kSSDKScenePackageBindWindowKey, key, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        return self;
+    };
+}
+
 @end
 
 
@@ -966,3 +1044,10 @@ static inline void SSDKScenePackageViewLifeEventSwizzledNoParametersMethodExp(Cl
 
 
 
+@implementation SSDKScenePackage(Convenient)
+
++ (CGRect)mainBounds{
+    return [SSDKScenePackage defaultPackage].mainBounds;
+}
+
+@end

@@ -16,6 +16,25 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#import "TargetConditionals.h"
+
+#if TARGET_OS_TV
+
+// This is an unfortunate hack for Swift Package Manager support.
+// SPM does not allow us to conditionally exclude Swift files for compilation by platform.
+//
+// So to support tvOS with SPM we need to use runtime availability checks in the Swift files.
+// This means that even though the Swift extension of ShareDialog will never be run for tvOS
+// targets, it still needs to be able to compile. Hence we need to declare it here.
+//
+// The way to fix this is to remove extensions of ObjC types in Swift.
+
+NS_SWIFT_NAME(ShareDialog)
+@interface FBSDKShareDialog : NSObject
+@end
+
+#else
+
 #import <UIKit/UIKit.h>
 
 #import "FBSDKShareDialogMode.h"
@@ -69,3 +88,5 @@ NS_SWIFT_UNAVAILABLE("Use init(fromViewController:content:delegate:).show() inst
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif

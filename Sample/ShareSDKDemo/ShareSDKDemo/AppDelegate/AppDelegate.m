@@ -13,21 +13,26 @@
 #import <Bugly/Bugly.h>
 #import "MOBPlatformDataSource.h"
 #import "MOBPolicyManager.h"
-#import "WXApi.h"
+
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <LineSDK/LineSDK.h>
 #import "WeiboSDK.h"
-@interface AppDelegate () <ISSERestoreSceneDelegate,WXApiDelegate,QQApiInterfaceDelegate,WeiboSDKDelegate, LineSDKLoginDelegate>
+#import <MOBFoundation/MobSDK+Privacy.h>
+#import <MOBFoundation/MOBFoundation.h>
+#import "NSString+SSDKCategory.h"
+#import "WWKApi.h"
+
+
+@interface AppDelegate () <ISSERestoreSceneDelegate,QQApiInterfaceDelegate,WeiboSDKDelegate, LineSDKLoginDelegate>
 
 @end
 
 
 @implementation AppDelegate 
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    
     //在MOBShareSDKRegister注册第三方平台信息
     [[LineSDKLogin sharedInstance]setDelegate:self];
     [ShareSDK setRestoreSceneDelegate:self];
@@ -36,7 +41,6 @@
     
     // 加入Bugly来统计Demo异常情况
     [Bugly startWithAppId:@"b319f530b6"];
-    
     //注册各平台参数
     [self registerShareSDK];
     //由于iOS13此方法加载时并没有加载window，下面的方法可以将在此处理window相关问题延迟到window加载之后
@@ -48,10 +52,12 @@
     [MOBPlatformDataSource dataSource];
     
     [[MOBPolicyManager defaultManager] show];
-    
+ 
     return YES;
     
 }
+
+
 //ShareSDK注册各平台参数详见
 //MOBShareSDKRegister.m
 - (void)registerShareSDK{
@@ -80,7 +86,10 @@
 //    #ifdef IMPORT_DingTalk
 //            [platformsRegister setupDingTalkWithAppId:MOBSSDKDingTalkAppId];
 //    #endif
-//
+////分享与授权不同key
+//    #ifdef IMPORT_DingTalkAuth
+//            [platformsRegister setupDingTalkAuthWithAppId:MOBSSDKDingTalkAuthAppId appSecret:MOBSSDKDingTalkAuthAppSecret redirectUrl:MOBSSDKDingTalkAuthRedirectUri];
+//    #endif
 //    #ifdef IMPORT_DouBan
 //            [platformsRegister setupDouBanWithApikey:MOBSSDKDouBanApiKey appSecret:MOBSSDKDouBanSecret redirectUrl:MOBSSDKDouBanRedirectUri];
 //    #endif
@@ -222,9 +231,39 @@
 //    #ifdef IMPORT_Oasis
 //            [platformsRegister setOasisByAppkey:MOBSSDKOasisAppKey];
 //    #endif
+    
 //        }];
 }
 
+
+//分享示例
+- (void)share{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //通用参数设置
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:nil
+                                       url:nil
+                                     title:nil
+                                      type:SSDKContentTypeText];
+    
+    [ShareSDK share:SSDKPlatformSubTypeWechatFav parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+        
+    }];
+}
+//授权示例
+- (void)auth{
+    [ShareSDK authorize:SSDKPlatformTypeWechat settings:nil onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
+        
+    }];
+}
+
+//获取用户信息
+
+- (void)getUserInfo{
+    [ShareSDK getUserInfo:SSDKPlatformSubTypeWechatFav onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
+        
+    }];
+}
 
 - (void)applicationWillEnterForeground:(UIApplication *)application{
     
@@ -257,65 +296,55 @@
         }];
     }
 }
-
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
-    if( [WXApi handleOpenURL:url delegate:self]){
-        
-    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
-        
-    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
-        
-    }
-    
-    return YES;
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
-    if( [WXApi handleOpenURL:url delegate:self]){
-        
-    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
-        
-    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
-        
-    }
-    
-    return YES;
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-    if( [WXApi handleOpenURL:url delegate:self]){
-        
-    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
-        
-    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
-        
-    }
-    return YES;
-}
-
-
-- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{
-    
-    if( [WXApi handleOpenUniversalLink:userActivity delegate:self]){
-        
-    }else if ([QQApiInterface handleOpenUniversallink:userActivity.webpageURL delegate:self]){
-        
-    }
-    return YES;
-}
-
-- (void)onReq:(BaseReq *)req{
-    NSLog(@"qqqqqqq===============%@",req);
-}
-- (void)onResp:(BaseResp *)resp{
-    NSLog(@"ppppppp===============%@",resp);
-}
-- (void)didReceiveWeiboRequest:(WBBaseRequest *)request{
-    NSLog(@"wbqqqqq==============%@",request);
-}
-- (void)didReceiveWeiboResponse:(WBBaseResponse *)response{
-    NSLog(@"wbppppp==============%@",response);
-}
+//
+//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+//    if( [WXApi handleOpenURL:url delegate:self]){
+//
+//    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
+//
+//    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
+//
+//    }
+//
+//    return YES;
+//}
+//
+//
+//
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+//    if( [WXApi handleOpenURL:url delegate:self]){
+//
+//    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
+//
+//    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
+//
+//    }
+//    return YES;
+//}
+//
+//
+//- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{
+//
+//    if( [WXApi handleOpenUniversalLink:userActivity delegate:self]){
+//
+//    }else if ([QQApiInterface handleOpenUniversallink:userActivity.webpageURL delegate:self]){
+//
+//    }
+//    return YES;
+//}
+//
+//- (void)onReq:(BaseReq *)req{
+//    NSLog(@"qqqqqqq===============%@",req);
+//}
+//- (void)onResp:(BaseResp *)resp{
+//    NSLog(@"ppppppp===============%@",resp);
+//}
+//- (void)didReceiveWeiboRequest:(WBBaseRequest *)request{
+//    NSLog(@"wbqqqqq==============%@",request);
+//}
+//- (void)didReceiveWeiboResponse:(WBBaseResponse *)response{
+//    NSLog(@"wbppppp==============%@",response);
+//}
 
 
 - (void)didLogin:(LineSDKLogin *)login

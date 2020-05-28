@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SSDKTypeDefine.h"
+#import <ShareSDK/SSDKTypeDefine.h>
 
 extern NSString *const SSDKAuthTypeBoth;
 extern NSString *const SSDKAuthTypeSSO;

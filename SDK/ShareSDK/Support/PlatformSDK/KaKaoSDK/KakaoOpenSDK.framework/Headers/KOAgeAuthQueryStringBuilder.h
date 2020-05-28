@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2018 Kakao Corp.
+ * Copyright 2015 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@
  @property isWesternAge
  @abstract 나이의 기준이 한국식인지 외국식인지의 여부(optional, default false)
  */
-@property (nonatomic) BOOL isWesternAge;
+@property (nonatomic) BOOL isWesternAge DEPRECATED_MSG_ATTRIBUTE("만나이 기준으로 전체 변경되어 항상 true로 인식 됩니다.");
 
 /*!
  @property isSkipTerm
@@ -58,9 +58,15 @@
  @property authFrom
  @abstract 서비스 이름(optional, client_id or app_id or service_name)
  */
-@property (nonatomic, copy) NSString *authFrom;
+@property (nonatomic, copy, nullable) NSString *authFrom;
 
-- (NSString *) build;
+/*!
+ @property adultsOnly
+ @abstract 청소년 유해물 여부. true인 경우 여가부 가이드에 따라 서비스 이용 제한나이(age_limit)가 빨간색 텍스트/동그라미로 표시됨.
+ */
+@property (nonatomic) BOOL adultsOnly;
+
+- (nonnull NSString *) build;
 
 @end
 

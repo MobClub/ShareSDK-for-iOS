@@ -25,7 +25,7 @@
 }
 
 + (CGRect)bounds{
-    return [UIScreen mainScreen].bounds;
+    return [SSDKScenePackage mainBounds];
 }
 
 + (CGSize)size{

@@ -23,4 +23,10 @@
     }
 }
 
+- (void)showOnWindow:(UIWindow *)window{
+    if (UIApplication.isSceneApp) {
+        id scene = ((id (*)(id, SEL))objc_msgSend)(window,sel_registerName("windowScene"));
+        [self showOnScene:scene];
+    }
+}
 @end

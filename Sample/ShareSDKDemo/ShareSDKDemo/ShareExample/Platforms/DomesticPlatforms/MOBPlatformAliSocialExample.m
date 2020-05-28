@@ -10,7 +10,9 @@
 
 @implementation MOBPlatformAliSocialExample
 
-
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeAliSocial;
+}
 /**
  分享文字
  */
@@ -78,7 +80,5 @@
 }
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeAliSocial;
-}
+
 @end

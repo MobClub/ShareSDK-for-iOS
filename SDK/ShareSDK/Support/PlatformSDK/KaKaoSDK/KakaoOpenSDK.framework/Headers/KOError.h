@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2018 Kakao Corp.
+ * Copyright 2015 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,13 +36,13 @@ extern NSString *const KOErrorDomain;
  @constant  KOErrorNotSupported 지원하지 않는 기능
  @constant  KOErrorBadParameter 파라미터 이상
  @constant  KOErrorIllegalState 작업을 실행하기에 적절하지 않은 상태
- @constant  KOServerErrorUnknown 일반적인 서버 오류 응답. message를 확인해야 함
+ @constant  KOServerErrorInternal 일반적인 서버 오류 응답. message를 확인해야 함
  @constant  KOServerErrorBadParameter 파라미터 이상
  @constant  KOServerErrorUnSupportedApi 지원되지 않은 API 호출
  @constant  KOServerErrorBlocked 계정 제재 또는 특정 서비스에서 해당 사용자의 제재로 인해 API 호출이 금지된 경우
  @constant  KOServerErrorPermission 해당 API에 대한 권한/퍼미션이 없는 경우
  @constant  KOServerErrorMisConfigured 개발환경 설정 오류 (bundle id 등)
- @constant  KOServerErrorInternal 내부 서버 오류
+ @constant  KOServerErrorDeprecatedApi 삭제 예정 API인 경우. 대상 API의 기존 사용처 중 일부 화이트리스트 조건을 만족하는 앱키에 대해서는 정해진 유예기간 동안 보호를 받아 이 에러가 발생하지 않습니다. 자세한 내용은 API 삭제가 진행될 경우 해당 공지사항을 참고해주세요.
  @constant  KOServerErrorApiLimitExceed API 호출 횟수가 제한을 초과
  @constant  KOServerErrorNotSignedUpUser 미가입(가가입) 사용자
  @constant  KOServerErrorAlreadySignedUpUser 이미 가입된 사용자. 가입된 사용자에 대해 다시 가입 요청(앱 연결 요청)을 한 경우
@@ -85,13 +85,13 @@ typedef enum {
     KOErrorBadParameter = 11,
     KOErrorIllegalState = 14,
 
-    KOServerErrorUnknown = -1,
+    KOServerErrorInternal = -1,
     KOServerErrorBadParameter = -2,
     KOServerErrorUnSupportedApi = -3,
     KOServerErrorBlocked = -4,
     KOServerErrorPermission = -5,
     KOServerErrorMisConfigured = -6,
-    KOServerErrorInternal = -9,
+    KOServerErrorDeprecatedApi = -9,
     KOServerErrorApiLimitExceed = -10,
 
     KOServerErrorNotSignedUpUser = -101,

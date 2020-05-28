@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @class KOToken
  * @abstract 카카오 API에서 제공하는 OAuth 토큰 클래스입니다.
  */
-@interface KOToken : NSObject <NSCopying>
+@interface KOToken : NSObject <NSCopying, NSSecureCoding>
 
 /*!
  * @property accessToken

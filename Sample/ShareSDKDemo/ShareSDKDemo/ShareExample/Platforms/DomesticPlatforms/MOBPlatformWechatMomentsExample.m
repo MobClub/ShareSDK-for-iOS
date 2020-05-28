@@ -10,6 +10,9 @@
 
 
 @implementation MOBPlatformWechatMomentsExample
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformSubTypeWechatTimeline;
+}
 /**
  分享文字
  */
@@ -172,7 +175,5 @@
     [self shareWithParameters:parameters];
 }
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformSubTypeWechatTimeline;
-}
+
 @end

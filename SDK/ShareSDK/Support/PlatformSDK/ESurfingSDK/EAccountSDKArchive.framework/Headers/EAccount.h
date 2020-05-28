@@ -5,29 +5,21 @@
  修订历史：2017、04、26
  删除旧的网关认证接口:gatewayLoginOnly
  修改打开免密登录页面接口的参数。
- */
 
-/*
  SDK说明：
  SDk_Version: 3.1.0
  一些特别说明：凡是涉及到页面操作的接口，请保证在主线程中调用，SDK也保证在主线程中返回
  不涉及到页面操作的接口，SDK会开子线程去处理，不保证在主线程中返回。
  适配系统版本：最低iOS7，最高iOS10.3
- */
 
-/*
  SDK_Version: 3.1.6
  wap页面加载超时设置为30秒.
  添加对使用-force_load接入方式的兼容
- */
 
-/*
  SDK_Version: 3.1.9
  优化网关认证逻辑，提供认证成功率。
  解决一些内部逻辑错误。
- */
 
-/*
  SDK_Version: 3.2.0
  更新日期：2017、12、14
  优化免密登录逻辑。
@@ -35,36 +27,61 @@
  删除获取用户信息接口，
  删除通用请求接口
  添加获取我的页面的cookie的接口
- */
 
-/*
  SDK_Version: 3.2.1
  更新日期：2018、01、31
  优化免密登录页面显示，突出免密登录。
  添加预判断接口的主动调用预判断机制，如果接入方没调用，SDK打开页面前会主动调用。
  解决一些已知的bug.
- */
 
-/*
  SDK_Version: 3.2.1.1
  更新日期：2018、03、27
  优化免密登录流程；
  优化代码；
  第三方登录方式，添加翼健康登录选项
  解决一些已知的bug.
- */
 
-/*
  SDK_Version: 3.2.2
  更新日期：2018、04、24
  解决一些已知的bug.
+
+ SDK_Version: 3.3.3
+ 更新日期：2018、09、13
+ 解决一些已知的bug.
+
+ SDK_Version: 3.4.0
+ 更新日期：2018、11、13
+ 资源包更新
+
+ SDK_Version: 3.5.0
+ 更新日期：2018、12、29
+ 用户协议
+ 
+ SDK_Version: 3.5.3
+ 更新日期：2018、04、02
+ 日志系统
+ 
+ SDK_Version: 3.5.4
+ 更新日期：2018、04、02
+解决一些已知的bug.题
+ 
+ SDK_Version: 3.5.6
+ 更新日期：2019、05、27
+ 解决一些已知的bug
+ 
+ SDK_Version: 3.6.1
+ 更新日期：2019、08、07
+ 解决一些已知的bug
+ 
+ SDK_Version: 3.6.3
+ 更新日期：2019、10、19
+ 解决一些已知的bug
+ 
+ SDK_Version: 3.7.0
+ 更新日期：2019、11、18
+ 解决一些已知的bug
  */
 
-/*
- SDK_Version: 3.3.1
- 更新日期：2018、09、12
- 解决一些已知的bug.
- */
 
 
 #import <Foundation/Foundation.h>
@@ -72,8 +89,6 @@
 #import "LoginConfigMode.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-
 
 
 @interface EAccount : NSObject
@@ -96,9 +111,8 @@ NS_ASSUME_NONNULL_BEGIN
               appSecret:(NSString *)appSecrect
                 appName:(NSString *)appName;
 
-
 /**
-  默认为正式环境的bundleID,需要使用测试环境的bundleID，请添加这个方法。
+  默认使用正式环境的BundleId,需要使用在天翼账号管理平台配置测试环境的BundleId(企业证书重签名ipa或者手动改变BundleId)，请添加这个方法。发布到 APP Store前，请确保。
  */
 
 +(void)setTestBundleId;
@@ -117,13 +131,6 @@ NS_ASSUME_NONNULL_BEGIN
    controller:(nullable UIViewController *)controller
       success:(successHandler)success
       failure:(failureHandler)failure;
-
-
-
-
-
-+ (void)authWithCustomWebAddress:(NSString *)getMobileURLStr webView:(UIWebView *)webview success:(successHandler)completion failure:(failureHandler)fail;
-
 /**
  获取取号/号码验证的code
  
@@ -132,8 +139,6 @@ NS_ASSUME_NONNULL_BEGIN
  @param fail 失败的返回
  */
 + (void)getMobileAccessCode:(NSString *)bussinessType  success:(successHandler)completion failure:(failureHandler)fail;
-
-
 
 /**
  扫码 在webview中加载url
@@ -190,9 +195,6 @@ NS_ASSUME_NONNULL_BEGIN
  @retun 无；
  */
 + (void)getUserDevicesInfo:(NSString *)accessToken success:(successHandler)success failure:(failureHandler)failure;
-
-
-
 
 #pragma mark - “我的”页面模块功能。
 /**
@@ -257,7 +259,6 @@ NS_ASSUME_NONNULL_BEGIN
                    fail:(failureHandler)fail;
 
 
-
 /**
  接入方调用该接口对用户当前网络环境进行检测，判断该用户是否可以取到免密登录。
  
@@ -266,21 +267,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)canGetMobile:(successHandler)success
              failure:(failureHandler)failure;
-
-
-/*---------------------------------------3.3版本----------------------------------------------------*/
-/**
- 打开html文件
- 
- */
-+ (void)MINILogin:(LoginConfigMode *)mode
-       controller:(nullable UIViewController *)controller
-          success:(successHandler)success
-          failure:(failureHandler)failure;
-
-
-
-
 
 
 @end

@@ -116,7 +116,7 @@
 			<string>yixin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>yx0d9a9f9088ea44d78680f3274da1765f</string>
+				<string>yxfddfe3934340436da964fd20885fe2a4</string>
 			</array>
 		</dict>
 		<dict>
@@ -278,6 +278,10 @@
 	<string>9c17eb03317e0e627ec95a400f5785fb</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>bitmoji-sdk</string>
+		<string>sharesdk</string>
+		<string>itms-apps</string>
+		<string>snapchat</string>
 		<string>lineauth2</string>
 		<string>oasis</string>
 		<string>fbshareextension</string>
@@ -398,6 +402,16 @@
 	<string>写入相册视频</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>从手机相册中选择</string>
+	<key>SCSDKClientId</key>
+	<string>dc8e6068-0578-41b8-8392-4da009519725</string>
+	<key>SCSDKRedirectUrl</key>
+	<string>ssdkmoba0b0c0d0://mob</string>
+	<key>SCSDKScopes</key>
+	<array>
+		<string>https://auth.snapchat.com/oauth2/api/user.external_id</string>
+		<string>https://auth.snapchat.com/oauth2/api/user.display_name</string>
+		<string>https://auth.snapchat.com/oauth2/api/user.bitmoji.avatar</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -424,7 +438,5 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 </dict>
 </plist>

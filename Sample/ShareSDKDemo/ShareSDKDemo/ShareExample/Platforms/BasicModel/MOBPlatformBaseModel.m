@@ -83,6 +83,10 @@ NSBundle * const MOBPlatformBundle (void){
 @property (nonatomic, copy) void (^ authHandler) (SSDKResponseState state, SSDKUser* user, NSError *error);
 
 @property (nonatomic, copy) void (^ shareHandler) (SSDKResponseState state, NSDictionary *userData, SSDKContentEntity* contentEntity,  NSError *error);
+
+@property (nonatomic, strong) NSMutableArray <void (^) (SSDKResponseState state, SSDKUser* user, NSError *error)>* authBlocks;
+
+@property (nonatomic, strong) NSMutableArray <void (^) (SSDKResponseState state, SSDKUser* user, NSError *error)>* getuserBlocks;
 @end
 
 //platformType与class对应的map
@@ -130,6 +134,7 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
                 @(SSDKPlatformTypeTwitter),
                 @(SSDKPlatformTypeWhatsApp),
                 @(SSDKPlatformTypeLine),
+                @(SSDKPlatformTypeSnapChat),
                 @(SSDKPlatformTypeGooglePlus),
                 @(SSDKPlatformSubTypeKakaoTalk),
                 @(SSDKPlatformSubTypeKakaoStory),
@@ -153,6 +158,7 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
             @(SSDKPlatformTypeQQ),
             @(SSDKPlatformTypeWechat),
             @(SSDKPlatformTypeSinaWeibo),
+            @(SSDKPlatformTypeDingTalk),
             @(SSDKPlatformTypeTencentWeibo),
             @(SSDKPlatformTypeDouBan),
             @(SSDKPlatformTypeYinXiang),
@@ -170,6 +176,7 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
             @(SSDKPlatformTypeTwitter),
             @(SSDKPlatformTypeGooglePlus),
             @(SSDKPlatformTypeLine),
+            @(SSDKPlatformTypeSnapChat),
             @(SSDKPlatformTypeKakao),
             @(SSDKPlatformTypeInstagram),
             @(SSDKPlatformTypeFlickr),
@@ -183,6 +190,7 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
             @(SSDKPlatformTypeTumblr),
             @(SSDKPlatformTypeTelegram),
             @(SSDKPlatformTypeReddit),
+            @(SSDKPlatformTypeYouTube)
         ];
         
         Protocol *protocol = @protocol(MOBPlatformMethodProtocol);
@@ -285,6 +293,21 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
     
 }
 
+
+- (NSMutableArray<void (^)(SSDKResponseState, SSDKUser *, NSError *)> *)authBlocks{
+    if (!_authBlocks) {
+        _authBlocks = [NSMutableArray array];
+    }
+    return _authBlocks;
+}
+
+- (NSMutableArray<void (^)(SSDKResponseState, SSDKUser *, NSError *)> *)getuserBlocks{
+    if (!_getuserBlocks) {
+        _getuserBlocks = [NSMutableArray array];
+    }
+    return _getuserBlocks;
+}
+
 - (void)dataInit{
     _typesMap = [NSMutableDictionary dictionary];
     
@@ -305,7 +328,7 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
     }
     
     _isAllowAuth = [mobAllowAuthPlatforms containsObject:@(self.converntPlatformType)];
-    
+
     unsigned int count = 0;
     
     Method *list = class_copyMethodList(self.class, &count);
@@ -424,21 +447,34 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
 }
 
 - (void)auth{
+    [[SSDKScenePackage defaultPackage] recordWindowKey:@"key"];
     [ShareSDK authorize:self.platformType settings:self.settings onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [[MOBShareExample defaultExample] authResponseStatus:state error:error];
-            if (self.authHandler) {
-                self.authHandler(state, user, error);
-            }
+            [self.authBlocks.copy enumerateObjectsUsingBlock:^(void (^ _Nonnull obj)(SSDKResponseState, SSDKUser *, NSError *), NSUInteger idx, BOOL * _Nonnull stop) {
+                obj(state, user, error);
+            }];
         });
     }];
 }
 
+- (void)setAuthHandler:(void (^)(SSDKResponseState, SSDKUser * _Nonnull, NSError * _Nonnull))authHandler{
+    if (authHandler) {
+        [self.authBlocks addObject:[authHandler copy]];
+    }
+}
+
+- (void)setGetUserInfoHandler:(void (^)(SSDKResponseState, SSDKUser * _Nonnull, NSError * _Nonnull))getUserInfoHandler{
+    if (getUserInfoHandler) {
+        [self.getuserBlocks addObject:[getUserInfoHandler copy]];
+    }
+
+}
 - (void)getUserInfo{
     [ShareSDK getUserInfo:self.platformType onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
-        if (self.getUserInfoHandler) {
-            self.getUserInfoHandler(state, user, error);
-        }
+        [self.getuserBlocks.copy enumerateObjectsUsingBlock:^(void (^ _Nonnull obj)(SSDKResponseState, SSDKUser *, NSError *), NSUInteger idx, BOOL * _Nonnull stop) {
+            obj(state, user, error);
+        }];
     }];
 }
 

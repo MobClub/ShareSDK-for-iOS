@@ -76,6 +76,8 @@ extern void * kMOBPlatformAuthItemModelKey;
 
 - (void)getUserInfo;
 
+
+
 //授权回调
 
 

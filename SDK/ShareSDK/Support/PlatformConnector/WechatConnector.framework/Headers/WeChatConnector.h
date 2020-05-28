@@ -67,7 +67,10 @@ typedef void(^SSDKOpenAppFromMiniProgramCallback)(SSDKResponseState state, NSStr
  @param path 拉起小程序页面的可带参路径，不填默认拉起小程序首页
  @param miniProgramType //拉起小程序的类型, 0:正式版; 1:开发版; 2:体验版
  */
-+ (void)openMiniProgramWithUserName:(NSString *)userName path:(NSString *)path miniProgramType:(NSInteger)miniProgramType complete:(void(^) (BOOL success))complete;
++ (void)openMiniProgramWithUserName:(NSString *)userName
+                               path:(NSString *)path
+                    miniProgramType:(NSInteger)miniProgramType
+                           complete:(void(^) (BOOL success))complete __deprecated_msg("Discard form v4.3.8");
 
 /**
 拉起小程序功能

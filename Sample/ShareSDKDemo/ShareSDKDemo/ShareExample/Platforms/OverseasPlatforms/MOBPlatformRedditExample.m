@@ -9,7 +9,9 @@
 #import "MOBPlatformRedditExample.h"
 
 @implementation MOBPlatformRedditExample
-
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeReddit;
+}
 /**
  分享文字
  */
@@ -41,7 +43,5 @@
 }
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeReddit;
-}
+
 @end

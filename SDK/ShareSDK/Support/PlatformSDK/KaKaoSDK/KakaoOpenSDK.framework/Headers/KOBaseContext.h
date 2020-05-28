@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2018 Kakao Corp.
+ * Copyright 2015 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +20,18 @@
  */
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  @abstract KOOrdering 정렬 정보.
+ @constant KOOrderingDefault 서버 기본값 사용.
  @constant KOOrderingAscending 오름차순 정렬.
  @constant KOOrderingDescending 내림차순 정렬.
  */
 typedef NS_ENUM(NSInteger, KOOrdering) {
+    KOOrderingDefault = -1,
     KOOrderingAscending = 0,
-    KOOrderingDescending = 1
+    KOOrderingDescending = 1,
 };
 
 extern NSString* convertOrderingString(KOOrdering type);
@@ -66,13 +70,13 @@ extern NSString* convertOrderingString(KOOrdering type);
  @property beforeURL
  @abstract 이전 페이지 목록의 요청 URL.
  */
-@property (nonatomic, readonly) NSString *beforeURL;
+@property (nonatomic, readonly, nullable) NSString *beforeURL;
 
 /*!
  @property afterURL
  @abstract 이후 페이지 목록의 요청 URL.
  */
-@property (nonatomic, readonly) NSString *afterURL;
+@property (nonatomic, readonly, nullable) NSString *afterURL;
 
 /*!
  @property hasMoreItems
@@ -101,3 +105,5 @@ extern NSString* convertOrderingString(KOOrdering type);
 - (void)parseDictionary:(NSDictionary *)dictionary;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -40,6 +40,7 @@
         @(SSDKPlatformTypeOasis),
         @(SSDKPlatformTypeDouyin),
         @(SSDKPlatformSubTypeQQFriend),
+        
         @(SSDKPlatformSubTypeQZone),
         @(SSDKPlatformSubTypeWechatSession),
         @(SSDKPlatformSubTypeWechatTimeline),
@@ -69,6 +70,7 @@
         @(SSDKPlatformTypeTwitter),
         @(SSDKPlatformTypeWhatsApp),
         @(SSDKPlatformTypeLine),
+        @(SSDKPlatformTypeSnapChat),
         @(SSDKPlatformTypeGooglePlus),
         @(SSDKPlatformSubTypeKakaoTalk),
         @(SSDKPlatformSubTypeKakaoStory),

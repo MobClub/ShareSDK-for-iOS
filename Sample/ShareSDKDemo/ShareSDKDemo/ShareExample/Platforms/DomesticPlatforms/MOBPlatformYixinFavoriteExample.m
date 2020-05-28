@@ -9,7 +9,9 @@
 #import "MOBPlatformYixinFavoriteExample.h"
 
 @implementation MOBPlatformYixinFavoriteExample
-
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformSubTypeYiXinFav;
+}
 /**
  分享文字
  */
@@ -99,24 +101,27 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //网络音频
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"崔健"
-                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+    //    [parameters SSDKSetupShareParamsByText:@"崔健"
+    //                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+    //                                       url:[NSURL URLWithString:@"http://i.y.qq.com/v8/playsong.html?hostuin=0&songid=&songmid=002x5Jje3eUkXT&_wv=1&source=qq&appshare=iphone&media_mid=002x5Jje3eUkXT"]
+    //                                     title:@"一无所有"
+    //                                      type:SSDKContentTypeAudio];
+    [parameters SSDKSetupYiXinParamsByText:@"Share SDK"
+                                     title:@"Share SDK"
                                        url:[NSURL URLWithString:@"http://i.y.qq.com/v8/playsong.html?hostuin=0&songid=&songmid=002x5Jje3eUkXT&_wv=1&source=qq&appshare=iphone&media_mid=002x5Jje3eUkXT"]
-                                     title:@"一无所有"
-                                      type:SSDKContentTypeAudio];
-    //平台定制
-    //        [parameters SSDKSetupYiXinParamsByText:@"Share SDK"
-    //                                         title:@"Share SDK"
-    //                                           url:[NSURL URLWithString:@"http://i.y.qq.com/v8/playsong.html?hostuin=0&songid=&songmid=002x5Jje3eUkXT&_wv=1&source=qq&appshare=iphone&media_mid=002x5Jje3eUkXT"]
-    //                                    thumbImage:nil
-    //                                         image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-    //                                  musicFileURL:[NSURL URLWithString:@"http://i.y.qq.com/v8/playsong.html?hostuin=0&songid=&songmid=002x5Jje3eUkXT&_wv=1&source=qq&appshare=iphone&media_mid=002x5Jje3eUkXT"]
-    //                                       extInfo:nil
-    //                                      fileData:nil
-    //                                       comment:nil
-    //                                      toUserId:nil
-    //                                          type:SSDKContentTypeAudio
-    //                            forPlatformSubType:platformType];
+                                thumbImage:nil
+                                     image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                              musicFileURL:[NSURL URLWithString:@"http://i.y.qq.com/v8/playsong.html?hostuin=0&songid=&songmid=002x5Jje3eUkXT&_wv=1&source=qq&appshare=iphone&media_mid=002x5Jje3eUkXT"]
+                           musicLowBandUrl:@"http://i.y.qq.com/v8/playsong.html?hostuin=0&songid=&songmid=002x5Jje3eUkXT&_wv=1&source=qq&appshare=iphone&media_mid=002x5Jje3eUkXT"
+                              musicDataUrl:@"http://i.y.qq.com/v8/playsong.html?hostuin=0&songid=&songmid=002x5Jje3eUkXT&_wv=1&source=qq&appshare=iphone&media_mid=002x5Jje3eUkXT"
+                       musicLowBandDataUrl:@"http://i.y.qq.com/v8/playsong.html?hostuin=0&songid=&songmid=002x5Jje3eUkXT&_wv=1&source=qq&appshare=iphone&media_mid=002x5Jje3eUkXT"
+                                   extInfo:nil
+                                  fileData:nil
+                           videoLowBandUrl:nil
+                                   comment:nil
+                                  toUserId:nil
+                                      type:SSDKContentTypeAudio
+                        forPlatformSubType:self.platformType];
     [self shareWithParameters:parameters];
 }
 
@@ -156,8 +161,12 @@
                                 thumbImage:nil
                                      image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
                               musicFileURL:nil
+                           musicLowBandUrl:nil
+                              musicDataUrl:nil
+                       musicLowBandDataUrl:nil
                                    extInfo:@"ext"
                                   fileData:[@"13232" dataUsingEncoding:NSUTF8StringEncoding]
+                           videoLowBandUrl:nil
                                    comment:nil
                                   toUserId:nil
                                       type:SSDKContentTypeApp
@@ -165,7 +174,5 @@
     [self shareWithParameters:parameters];
 }
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformSubTypeYiXinFav;
-}
+
 @end

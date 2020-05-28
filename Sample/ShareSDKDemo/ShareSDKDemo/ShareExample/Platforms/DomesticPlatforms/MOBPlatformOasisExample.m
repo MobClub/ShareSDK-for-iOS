@@ -9,7 +9,9 @@
 #import "MOBPlatformOasisExample.h"
 #import <Photos/Photos.h>
 @implementation MOBPlatformOasisExample
-
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeOasis;
+}
 - (void)setup{
     SSDKWEAK
     [self addListItemWithImage:MOBImageShareIcon name:@"相册图片" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
@@ -101,7 +103,5 @@
     }].presentAnimated();
 }
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeOasis;
-}
+
 @end

@@ -8,6 +8,8 @@
 
 import UIKit
 
+let queue = DispatchQueue()
+
 class ViewController: UIViewController, ISSERestoreSceneDelegate {
     
     override func viewDidLoad() {

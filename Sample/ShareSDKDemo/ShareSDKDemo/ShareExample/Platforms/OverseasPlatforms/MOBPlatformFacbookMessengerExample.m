@@ -8,7 +8,9 @@
 
 #import "MOBPlatformFacbookMessengerExample.h"
 @implementation MOBPlatformFacbookMessengerExample
-
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeFacebookMessenger;
+}
 - (void)shareLink
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -32,7 +34,5 @@
     [self shareWithParameters:parameters];
 }
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeFacebookMessenger;
-}
+
 @end

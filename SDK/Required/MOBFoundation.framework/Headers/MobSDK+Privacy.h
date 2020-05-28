@@ -46,7 +46,7 @@
  设置是否允许弹窗
  @param show 是否允许展示隐私协议二次弹窗（最好设置为YES，否则可能会导致MobTech部分功能无法使用，默认为YES）
  */
-+ (void)setAllowShowPrivacyWindow:(BOOL)show;
++ (void)setAllowShowPrivacyWindow:(BOOL)show  DEPRECATED_MSG_ATTRIBUTE("deprecated");
 
 /**
  设置隐私协议弹窗色调
@@ -54,7 +54,7 @@
  @param colors 弹窗按钮色调数组（首个元素为拒绝按钮色调，第二个元素为同意按钮色调）
  */
 + (void)setPrivacyBackgroundColor:(UIColor *_Nullable)backColor
-             operationButtonColor:(NSArray <UIColor *>*_Nullable)colors;
+             operationButtonColor:(NSArray <UIColor *>*_Nullable)colors  DEPRECATED_MSG_ATTRIBUTE("deprecated");
 
 
 

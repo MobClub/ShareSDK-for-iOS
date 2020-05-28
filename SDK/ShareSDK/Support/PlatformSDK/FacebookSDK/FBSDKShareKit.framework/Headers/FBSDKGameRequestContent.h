@@ -16,13 +16,13 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#import "TargetConditionals.h"
+
+#if !TARGET_OS_TV
+
 #import <Foundation/Foundation.h>
 
-#if defined BUCK || defined FBSDKCOCOAPODS || defined __cplusplus
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#else
-@import FBSDKCoreKit;
-#endif
+#import "FBSDKCoreKitImport.h"
 
 #import "FBSDKSharingValidation.h"
 
@@ -136,3 +136,5 @@ NS_SWIFT_NAME(GameRequestContent)
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif

@@ -31,7 +31,7 @@
 #endif
         
 #if (defined IMPORT_SUB_QQFriend) || (defined IMPORT_SUB_QZone)
-        [platformsRegister setupQQWithAppId:MOBSSDKQQAppID appkey:MOBSSDKQQAppKey];
+        [platformsRegister setupQQWithAppId:MOBSSDKQQAppID appkey:MOBSSDKQQAppKey enableUniversalLink:MOBSSDKQQEnableUniversalLink universalLink:MOBSSDKQQUniversalLink];
 #endif
         
 #if (defined IMPORT_SUB_WechatSession) || (defined IMPORT_SUB_WechatTimeline) || (defined IMPORT_SUB_WechatFav)
@@ -48,6 +48,10 @@
         
 #ifdef IMPORT_DingTalk
         [platformsRegister setupDingTalkWithAppId:MOBSSDKDingTalkAppId];
+#endif
+        
+#ifdef IMPORT_DingTalkAuth
+        [platformsRegister setupDingTalkAuthWithAppId:MOBSSDKDingTalkAuthAppId appSecret:MOBSSDKDingTalkAuthAppSecret redirectUrl:MOBSSDKDingTalkAuthRedirectUri];
 #endif
         
 #ifdef IMPORT_DouBan
@@ -190,6 +194,10 @@
         
 #ifdef IMPORT_Oasis
         [platformsRegister setOasisByAppkey:MOBSSDKOasisAppKey];
+#endif
+        
+#ifdef IMPORT_Snapchat
+        [platformsRegister setSnapChatClientId:MOBSSDKSnapchatClientId clientSecret:MOBSSDKSnapchatClientSecret redirectUrl:MOBSSDKSnapchatRedirectUrl];
 #endif
     }];
     

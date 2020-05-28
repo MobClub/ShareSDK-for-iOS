@@ -10,6 +10,9 @@
 
 @implementation MOBPlatformYinxiangExample
 
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeYinXiang;
+}
 
 /**
  分享文字
@@ -76,8 +79,5 @@
 }
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeYinXiang;
-}
 
 @end

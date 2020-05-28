@@ -12,6 +12,9 @@
 
 
 
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformSubTypeWechatFav;
+}
 
 - (void)shareText{
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -36,7 +39,7 @@
     //                                       type:SSDKContentTypeText
     //                         forPlatformSubType:SSDKPlatformSubTypeWechatFav];
     
-   [self shareWithParameters:parameters];
+    [self shareWithParameters:parameters];
 }
 
 - (void)shareImage
@@ -59,34 +62,34 @@
                                                 images:image.URL
                                                    url:nil
                                                  title:nil
-                                         type:SSDKContentTypeImage];
+                                                  type:SSDKContentTypeImage];
                 [self shareWithParameters:parameters];
             }
         }];
     }].presentAnimated();
-//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//    //通用参数设置
-//    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
-//                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
-//                                       url:nil
-//                                     title:nil
-//                                      type:SSDKContentTypeImage];
-//    //平台定制
-//    //        [parameters SSDKSetupWeChatParamsByText:@"Share SDK"
-//    //                                          title:nil
-//    //                                            url:nil
-//    //                                     thumbImage:nil
-//    //                                          image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-//    //                                   musicFileURL:nil
-//    //                                        extInfo:nil
-//    //                                       fileData:nil
-//    //                                   emoticonData:nil
-//    //                            sourceFileExtension:nil
-//    //                                 sourceFileData:nil
-//    //                                           type:SSDKContentTypeImage
-//    //                             forPlatformSubType:SSDKPlatformSubTypeWechatFav];
-//
-//   [self shareWithParameters:parameters];
+    //    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //    //通用参数设置
+    //    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+    //                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
+    //                                       url:nil
+    //                                     title:nil
+    //                                      type:SSDKContentTypeImage];
+    //    //平台定制
+    //    //        [parameters SSDKSetupWeChatParamsByText:@"Share SDK"
+    //    //                                          title:nil
+    //    //                                            url:nil
+    //    //                                     thumbImage:nil
+    //    //                                          image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+    //    //                                   musicFileURL:nil
+    //    //                                        extInfo:nil
+    //    //                                       fileData:nil
+    //    //                                   emoticonData:nil
+    //    //                            sourceFileExtension:nil
+    //    //                                 sourceFileData:nil
+    //    //                                           type:SSDKContentTypeImage
+    //    //                             forPlatformSubType:SSDKPlatformSubTypeWechatFav];
+    //
+    //   [self shareWithParameters:parameters];
 }
 
 - (void)shareLink
@@ -113,18 +116,17 @@
     //                                           type:SSDKContentTypeWebPage
     //                             forPlatformSubType:SSDKPlatformSubTypeWechatFav];
     
-   [self shareWithParameters:parameters];
+    [self shareWithParameters:parameters];
 }
 
 - (void)shareAudio
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    //网络音频
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"崔健"
+    [parameters SSDKSetupShareParamsByText:@"Vitas"
                                     images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                       url:[NSURL URLWithString:@"https://www.mob.com"]
-                                     title:@"一无所有"
+                                       url:[NSURL URLWithString:@"http://music.163.com/#/song?id=19674655"]
+                                     title:@"第七元素"
                                       type:SSDKContentTypeAudio];
     //平台定制
     //    [parameters SSDKSetupWeChatParamsByText:@"崔健"
@@ -193,7 +195,4 @@
 
 
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformSubTypeWechatFav;
-}
 @end

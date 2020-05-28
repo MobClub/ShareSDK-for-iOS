@@ -9,7 +9,9 @@
 #import "MOBPlatformAliSocialmomentsExample.h"
 
 @implementation MOBPlatformAliSocialmomentsExample
-
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeAliSocialTimeline;
+}
 /**
  分享图片
  */
@@ -54,7 +56,5 @@
     [self shareWithParameters:parameters];
 }
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeAliSocialTimeline;
-}
+
 @end

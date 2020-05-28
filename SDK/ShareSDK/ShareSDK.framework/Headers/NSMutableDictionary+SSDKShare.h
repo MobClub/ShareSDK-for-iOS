@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "SSDKTypeDefine.h"
+#import <ShareSDK/SSDKTypeDefine.h>
 
 @interface NSMutableDictionary (SSDKShare)
 
@@ -547,8 +547,12 @@
                         thumbImage:(id)thumbImage
                              image:(id)image
                       musicFileURL:(NSURL *)musicFileURL
+                   musicLowBandUrl:(id)musicLowBandUrl
+                      musicDataUrl:(id)musicDataUrl
+               musicLowBandDataUrl:(id)musicLowBandDataUrl
                            extInfo:(NSString *)extInfo
                           fileData:(id)fileData
+                   videoLowBandUrl:(id)videoLowBandUrl
                            comment:(NSString *)comment
                           toUserId:(NSString *)userId
                               type:(SSDKContentType)type
@@ -1115,6 +1119,37 @@
                               video:(NSData *)video
                       fileExtension:(NSString *)fileExtension
                                type:(SSDKContentType)type;
+/** 设置SnapChat分享参数
+
+
+ * @param caption 标题
+
+ * @param attachmentUrl 网页链接
+
+ * @param image 可以为UIImage、NSString、NSURL、SSDKImage
+
+ * @param video  视频，不可与图片混合，可以为NSString、NSURL、NSData
+
+ * @param sticker 贴纸，可以为UIImage、NSString、NSURL、SSDKImage
+
+ * @param stickerAnimated 贴纸是否是动画
+ 
+ * @param stickerRotation 贴纸旋转的角度
+ 
+ * @param cameraViewState 只有在没有视频或图片时有效 0. unknow 1.Front 2.Back
+ 
+ * @param type 分享的类型
+*/
+- (void)SSDKSetupSnapChatParamsByCaption:(NSString *)caption
+                           attachmentUrl:(NSString *)attachmentUrl
+                                   image:(id)image
+                                   video:(id)video
+                                sticker:(id)sticker
+                        stickerAnimated:(BOOL)stickerAnimated
+                        stickerRotation:(CGFloat)stickerRotation
+                         cameraViewState:(NSInteger)cameraViewState
+                                    type:(SSDKContentType)type;
+                                   
 
 #pragma mark - Deprecated
 
