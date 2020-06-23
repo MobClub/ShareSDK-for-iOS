@@ -79,7 +79,7 @@
                 [self shareWithParameters:parameters];
                 NSLog(@"开始上传");
             }else{
-                [[MOBShareExample defaultExample] sharePlatType:self.platformType state:state error:error];
+                [[MOBShareExample defaultExample] authResponseStatus:state error:error];
             }
         }];
     }

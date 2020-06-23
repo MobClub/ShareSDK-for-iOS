@@ -45,7 +45,7 @@
 }
 
 - (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity API_AVAILABLE(ios(13.0)){
-    
+    NSLog(@"%@",NSStringFromSelector(_cmd));
     
 }
 

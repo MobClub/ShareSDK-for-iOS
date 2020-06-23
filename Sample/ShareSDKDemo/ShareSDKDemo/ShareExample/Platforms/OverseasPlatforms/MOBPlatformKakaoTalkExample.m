@@ -15,7 +15,7 @@
 - (void)shareLink
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    //通用参数设置
+//    //通用参数设置
 //    [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
 //                                    images:@"http://www.mob.com/images/logo_black.png"
 //                                       url:[NSURL URLWithString:@"http://www.mob.com"]
@@ -35,7 +35,7 @@
     
 //    NSString *path = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
     NSString *path = [[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"];
-    [parameters SSDKSetupKaKaoTalkParamsByUrl:[NSURL fileURLWithPath:path ] templateId:@"11820" templateArgs:nil];
+    [parameters SSDKSetupKaKaoTalkParamsByUrl:[NSURL fileURLWithPath:path ] templateId:@"11819" templateArgs:nil];
     
     [self shareWithParameters:parameters];
 }

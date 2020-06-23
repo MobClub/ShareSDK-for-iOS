@@ -50,7 +50,9 @@ static time_t lasShareTime;
         self.methodBlock(self.platformModel,[NSMutableDictionary dictionary]);
     }
 }
-
++ (NSArray *)modelPropertyBlacklist{
+    return @[@"platformModel"];
+}
 @end
 
 static NSArray <NSArray <NSNumber *>*>*mobPlatforms = nil;
@@ -127,6 +129,8 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
                 @(SSDKPlatformTypeFacebookAccount),
                 @(SSDKPlatformTypeTencentWeibo),
                 @(SSDKPlatformTypeCMCC),
+                @(SSDKPlatformTypeWatermelonVideo),
+                @(SSDKPlatformTypeKuaiShou)
             ],
             @[
                 @(SSDKPlatformTypeFacebook),
@@ -190,30 +194,23 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
             @(SSDKPlatformTypeTumblr),
             @(SSDKPlatformTypeTelegram),
             @(SSDKPlatformTypeReddit),
-            @(SSDKPlatformTypeYouTube)
+          
         ];
-        
-        Protocol *protocol = @protocol(MOBPlatformMethodProtocol);
-        if (!protocol) return;
         
         NSMutableDictionary *platformMap = [NSMutableDictionary dictionary];
         unsigned int count = 0;
         Class *classes = objc_copyClassList(&count);
+        Class baseClass = [MOBPlatformBaseModel class];
         
         for (unsigned int i = 0; i < count; i++) {
             Class class = classes[i];
             NSString *className = NSStringFromClass(class);
             if (![className hasPrefix:@"MOBPlatform"]) continue;
-            Class checkClass =  class_getSuperclass(class);
-            while (checkClass != [NSObject class]) {
-                if (checkClass != [self class]) {
-                    checkClass = class_getSuperclass(checkClass);
-                }else{
-                    [platformMap setObject:className forKey:@([class platformType])];
-                    break;
-                }
+            if ([class isKindOfClass:object_getClass(baseClass)] && class != baseClass) {
+                [platformMap setObject:className forKey:@([class platformType])];
             }
         }
+        free(classes);
         _platformMap = platformMap.copy;
         
     });
@@ -382,6 +379,8 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
     NSString *iconName = [NSString stringWithFormat:@"sns_icon_%ld",(long)[self platformType]];
     ui.image = UIImageNamed(iconName);
     _itemUI = ui;
+    free(protocolList);
+    free(list);
 }
 
 - (NSArray<MOBSharePlatformShareItemModel *> *)platformTyps{
@@ -416,18 +415,21 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
 #pragma mark - 分享 -
 
 - (void)shareWithParameters:(NSMutableDictionary *)parameters{
+    [parameters SSDKSetShareFlags:@[NSStringFromClass([self class])]];
     self.currentShareModel.parameters = parameters;
     [self sharePlatform];
 }
 
 - (void)sharePlatform{
     //分享
-    
+    NSLog(@"%@", self.currentShareModel.yy_modelDescription);
     [ShareSDK share:self.platformType
          parameters:self.currentShareModel.parameters.mutableCopy
      onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+        
+
         lasShareTime = 0;
-        [[MOBShareExample defaultExample] sharePlatType:self.platformType state:state error:error];
+        [[MOBShareExample defaultExample] sharePlatType:self.platformType userData:userData state:state error:error];
         
         if (self.shareHandler) {
             self.shareHandler(state, userData, contentEntity, error);

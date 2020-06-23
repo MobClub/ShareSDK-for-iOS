@@ -80,6 +80,7 @@ static void * kMobTabbarItemKey = &kMobTabbarItemKey;
 }
 
 - (void)viewDidLoad {
+   
     _lastSelectedIndex = -1;
     [super viewDidLoad];
     [self  setupUI];

@@ -13,17 +13,16 @@
 #import <Bugly/Bugly.h>
 #import "MOBPlatformDataSource.h"
 #import "MOBPolicyManager.h"
-
-#import <TencentOpenAPI/QQApiInterface.h>
 #import <LineSDK/LineSDK.h>
 #import "WeiboSDK.h"
 #import <MOBFoundation/MobSDK+Privacy.h>
 #import <MOBFoundation/MOBFoundation.h>
 #import "NSString+SSDKCategory.h"
 #import "WWKApi.h"
+#import <TencentOpenAPI/QQApiInterface.h>
+#import "WXApi.h"
 
-
-@interface AppDelegate () <ISSERestoreSceneDelegate,QQApiInterfaceDelegate,WeiboSDKDelegate, LineSDKLoginDelegate>
+@interface AppDelegate () <ISSERestoreSceneDelegate,QQApiInterfaceDelegate,WeiboSDKDelegate, LineSDKLoginDelegate,WXApiDelegate>
 
 @end
 
@@ -34,7 +33,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //在MOBShareSDKRegister注册第三方平台信息
+    
     [[LineSDKLogin sharedInstance]setDelegate:self];
+    
     [ShareSDK setRestoreSceneDelegate:self];
     //开启截屏分享监听 与ShareSDK本身无关
     [[MobScreenshotCenter shareInstance] start];
@@ -52,10 +53,17 @@
     [MOBPlatformDataSource dataSource];
     
     [[MOBPolicyManager defaultManager] show];
- 
+//    [WXApi registerApp:@"wx617c77c82218ea2c" universalLink:@"https://ybpre.share2dlink.com/"];
+//    [WXApi checkUniversalLinkReady:^(WXULCheckStep step, WXCheckULStepResult * _Nonnull result) {
+//        NSLog(@"mmmmmmmmmmmm %@  %@  %@  %@",@(step),@(result.success),result.suggestion, result.errorInfo);
+//    }];
+    
+    
+    
     return YES;
     
 }
+
 
 
 //ShareSDK注册各平台参数详见
@@ -297,42 +305,42 @@
     }
 }
 //
-//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
-//    if( [WXApi handleOpenURL:url delegate:self]){
-//
-//    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
-//
-//    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
-//
-//    }
-//
-//    return YES;
-//}
-//
-//
-//
-//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-//    if( [WXApi handleOpenURL:url delegate:self]){
-//
-//    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
-//
-//    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
-//
-//    }
-//    return YES;
-//}
-//
-//
-//- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{
-//
-//    if( [WXApi handleOpenUniversalLink:userActivity delegate:self]){
-//
-//    }else if ([QQApiInterface handleOpenUniversallink:userActivity.webpageURL delegate:self]){
-//
-//    }
-//    return YES;
-//}
-//
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    if( [WXApi handleOpenURL:url delegate:self]){
+
+    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
+
+    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
+
+    }
+
+    return YES;
+}
+
+
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    if( [WXApi handleOpenURL:url delegate:self]){
+
+    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
+
+    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
+
+    }
+    return YES;
+}
+
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{
+    NSLog(@"mmmmmmmmmmmm web::::%@",userActivity.webpageURL);
+    if( [WXApi handleOpenUniversalLink:userActivity delegate:self]){
+
+    }else if ([QQApiInterface handleOpenUniversallink:userActivity.webpageURL delegate:self]){
+
+    }
+    return YES;
+}
+
 //- (void)onReq:(BaseReq *)req{
 //    NSLog(@"qqqqqqq===============%@",req);
 //}

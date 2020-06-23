@@ -11,6 +11,7 @@
 #import "CALayer+SSDKChain.h"
 #import "SSDKGestureChainHeader.h"
 NS_ASSUME_NONNULL_BEGIN
+
 @interface UIView (SSDKChain)
 
 SSDKCATEGORY_STRONG_PROPERTY SSDKViewChainModel *(^ addView)(NSInteger tag);

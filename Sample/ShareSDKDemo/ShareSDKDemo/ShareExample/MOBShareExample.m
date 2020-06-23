@@ -33,6 +33,8 @@
 {
     self = [super init];
     if (self) {
+       
+
         shakeShareView = [MOBShakeView new];
         [ShareSDK setUserInterfaceStyle:SSUIUserInterfaceStyleUnspecified];
         
@@ -45,13 +47,14 @@
 
 #pragma mark - 弹框分享 -
 - (void)popShareWithView:(UIView *)view{
+    
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]];
     [shareParams SSDKSetupShareParamsByText:@"分享内容"
                                      images:imageArray
                                         url:[NSURL URLWithString:@"https://www.mob.com"]
                                       title:@"分享标题"
-                                       type:SSDKContentTypeAuto];
+                                       type:SSDKContentTypeImage];
     
     
     SSUIPlatformItem *item_1 = [[SSUIPlatformItem alloc] init];
@@ -87,7 +90,7 @@
                                      NSError *error,
                                      BOOL end)
      {
-        [self sharePlatType:platformType state:state error:error];
+        [self sharePlatType:platformType userData:userData state:state error:error];
     }];
 }
 
@@ -194,7 +197,7 @@
                                                         url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]];
 
     [ShareSDK share:SSDKPlatformTypeSinaWeibo parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
-        [self sharePlatType:SSDKPlatformTypeSinaWeibo state:state error:error];
+        [self sharePlatType:SSDKPlatformTypeSinaWeibo userData:userData state:state error:error];
     }];
 }
 
@@ -237,10 +240,8 @@
 
 
 
-- (void)sharePlatType:(SSDKPlatformType)type state:(SSDKResponseState)state error:(NSError *)error{
-    if(state == SSDKResponseStateUpload){
-        return ;
-    }
+- (void)sharePlatType:(SSDKPlatformType)type userData:(NSDictionary *)userData state:(SSDKResponseState)state error:(NSError *)error{
+    
     NSString *title = @"";
     NSString *typeStr = @"";
     switch (state) {
@@ -267,18 +268,29 @@
         case SSDKResponseStateCancel:
         {
             title = @"分享已取消";
-            typeStr = @"取消";
+            
+                id a = userData[SSDKShareUserDataHandleOpenObjectKey];
+                if (a == nil) {
+                    typeStr = @"ShareSDK 返回";
+                }else{
+                    typeStr = @"分享平台取消";
+                }
             break;
         }
+            case SSDKResponseStateUpload:
+        {
+            NSLog(@"上传中");
+        }
+            return;
         default:
             break;
     }
     dispatch_async(dispatch_get_main_queue(), ^{
         UIAlertControllerAlertCreate(title, typeStr)
         .addCancelAction(@"确定")
-        
         .showAnimated(YES)
         .present();
+        
     });
 }
 

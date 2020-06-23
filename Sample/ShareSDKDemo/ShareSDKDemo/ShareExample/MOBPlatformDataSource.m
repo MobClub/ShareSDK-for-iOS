@@ -9,6 +9,7 @@
 #import "MOBPlatformDataSource.h"
 #import "MOBAuthItemModel.h"
 #import "MOBShareContentActionModel.h"
+
 @interface MOBPlatformDataSource ()
 
 @property (nonatomic, strong) NSMutableArray *allPlatforms;
@@ -33,14 +34,13 @@
 
 - (void)setup{
     _allPlatforms = [NSMutableArray array];
-
+   
 //    _allPlatforms.addObjectsChain([MOBPlatformBaseModel totalModels]);
     
     NSArray *platforms = @[
         @(SSDKPlatformTypeOasis),
         @(SSDKPlatformTypeDouyin),
         @(SSDKPlatformSubTypeQQFriend),
-        
         @(SSDKPlatformSubTypeQZone),
         @(SSDKPlatformSubTypeWechatSession),
         @(SSDKPlatformSubTypeWechatTimeline),
@@ -75,6 +75,8 @@
         @(SSDKPlatformSubTypeKakaoTalk),
         @(SSDKPlatformSubTypeKakaoStory),
         @(SSDKPlatformTypeYouTube),
+        @(SSDKPlatformTypeWatermelonVideo),
+        @(SSDKPlatformTypeKuaiShou),
         @(SSDKPlatformTypeInstagram),
         @(SSDKPlatformTypeFlickr),
         @(SSDKPlatformTypeDropbox),

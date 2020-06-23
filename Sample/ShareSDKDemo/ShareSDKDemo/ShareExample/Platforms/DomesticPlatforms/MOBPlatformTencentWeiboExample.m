@@ -18,6 +18,7 @@
  */
 - (void)shareText
 {
+    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT

@@ -432,14 +432,19 @@ typedef enum : NSUInteger {
     if (!swizzleSelector) return;
     __block void (* oldImp) (__unsafe_unretained id, SEL,id,id,id) = NULL;
     id newImpBlock = ^ (__unsafe_unretained id object,id obj1,id obj2,id obj3){
+        
+        //1. 如果oldImp为_objc_msgForward，说明子类父类都没有实现，调用的时候要走消息转发
         if ((IMP)oldImp != _objc_msgForward) {
+            
+            //2. 如果oldImp为null，说明子类未实现，父类实现了方法，直接调用父类
             if (oldImp == NULL) {
                 struct objc_super supperInfo = {
                     .receiver = object,
                     .super_class = class_getSuperclass(swizzleClass)
                 };
                 ((void (*) (struct objc_super *, SEL,id,id,id))objc_msgSendSuper)(&supperInfo, swizzleSelector,obj1,obj2,obj3);
-            }else{
+            }else{//3. 如果oldImp不为null，说明子类之前实现过hook方法，调用子类之前的方法
+                
                 oldImp(object,swizzleSelector,obj1,obj2,obj3);
             }
         }
@@ -452,11 +457,15 @@ typedef enum : NSUInteger {
 - (IMP)methodImpSet:(dispatch_block_t)newImpBlock class:(Class)class selector:(SEL)selector encodeTypes:(nonnull NSString *)encodeTypes{
     IMP newImp = imp_implementationWithBlock(newImpBlock);
     Method method = class_getInstanceMethod(class, selector);
-    IMP imp = method== NULL?_objc_msgForward:NULL;
-    if (!class_addMethod(class, selector, newImp, method_getTypeEncoding(method))) {
-        imp = method_setImplementation(method, newImp);
+    //1.  method 为NULL说明 父类子类都没有实现方法,这个时候要走消息转发
+    IMP oldImp = method == NULL?_objc_msgForward:NULL;
+    //2. 如果添加成功说明  子类未实现此selector，父类实现了selector，则oldImp为NULL
+    if (!class_addMethod(class, selector, newImp, method_getTypeEncoding(method)?:encodeTypes.UTF8String)) {
+        //3 .如果未添加成功说明子类已经实现了hook的方法，这个时候重新设置hookMethod的imp，并记录之前的imp
+        oldImp = method_setImplementation(method, newImp);
     }
-    return imp;
+    // 4. 通过oldImp是否为NULL来判定子类之前有无实现hook的方法
+    return oldImp;
 }
 
 - (void)_checkApplicationIsSceneApp:(id)delegate{

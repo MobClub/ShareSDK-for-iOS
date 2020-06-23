@@ -928,7 +928,7 @@
 
 #pragma mark - telegram
 #ifdef IMPORT_Telegram
-#define MOBSSDKTelegramBotToken @"1069540655:AAFr-H60Ppbyzc8RsFmO6jgGzGRMTJMswY0"
+#define MOBSSDKTelegramBotToken @"792340449:AAE9EZeQaXU9wq_r6X7Jalg8jITUEKYr9vw"
 #define MOBSSDKTelegramBotDomain @"https://www.mob.com"
 #endif
 

@@ -4,6 +4,8 @@
 <dict>
 	<key>AccountKitClientToken</key>
 	<string>c30c08723aa8c48fbd5e01d1c3103891</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>zh</string>
 	<key>CFBundleDisplayName</key>
 	<string>ShareSDK</string>
 	<key>CFBundleExecutable</key>
@@ -235,16 +237,6 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>tiktok</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>aw9ivykfjvi4hpwo</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
@@ -278,6 +270,8 @@
 	<string>9c17eb03317e0e627ec95a400f5785fb</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>KwaiAuth2</string>
+		<string>xiguaalipayshare</string>
 		<string>bitmoji-sdk</string>
 		<string>sharesdk</string>
 		<string>itms-apps</string>
@@ -375,6 +369,7 @@
 		<string>wxwork</string>
 		<string>wxworkrdm</string>
 		<string>mqqopensdkminiapp</string>
+		<string>wechat</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

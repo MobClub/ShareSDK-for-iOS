@@ -39,7 +39,7 @@ static time_t lasAuthTime;
 }
 
 - (void)author{
-    
+    _user = nil;
     if (time(NULL) - lasAuthTime <= 4.5 && lasAuthTime > 0) return;
     
 

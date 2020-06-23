@@ -7,8 +7,24 @@
 //  文档地址:https://www.mob.com/wiki/detailed?wiki=ShareSDK_chanpinjianjie&id=14
 
 #import "MOBPlatformRedditExample.h"
-
+#import <RedditConnector/RedditConnector.h>
 @implementation MOBPlatformRedditExample
+
+
+- (void)setup{
+    [self setAuthSetting:@{@"duration":@"permanent"}];
+    
+    //授权设置是否返回refresh_token  请设置duration为permanent
+    //[ShareSDK authorize:self.platformType settings:@{@"duration":@"permanent"} onStateChanged:nil];
+    //如果有refreshtoken可以主动刷新token
+//    [RedditConnector refreshAccessTokenComplete:^(NSString *accessToken, NSError *error) {
+//           NSLog(@"mmmmmmmmm-===%@", accessToken);
+//    }];
+//    [RedditConnector refreshAccessTokenWithRefreshToken:@"151223708895-7614skuuE9TPNe5IyejisfOrgsA" complete:^(NSString *accessToken, NSError *error) {
+//        NSLog(@"mmmmmmm --------%@", accessToken);
+//    }];
+}
+
 + (SSDKPlatformType)platformType{
     return SSDKPlatformTypeReddit;
 }
@@ -40,6 +56,8 @@
                                      title:@"mob"
                                       type:SSDKContentTypeWebPage];
     [self shareWithParameters:parameters];
+//
+    
 }
 
 

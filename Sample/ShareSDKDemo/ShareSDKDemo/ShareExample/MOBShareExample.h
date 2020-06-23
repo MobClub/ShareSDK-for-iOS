@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 //分享状态回调弹框处理
-- (void)sharePlatType:(SSDKPlatformType)type state:(SSDKResponseState)state error:(NSError *)error;
+- (void)sharePlatType:(SSDKPlatformType)type userData:(NSDictionary *)userData state:(SSDKResponseState)state error:(NSError *)error;
 
 //授权回调弹框处理
 - (void)authResponseStatus:(SSDKResponseState)state error:(NSError *)error;

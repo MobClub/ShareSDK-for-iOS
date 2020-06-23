@@ -65,11 +65,11 @@
     //   具体配置请参考Facebook官方文档：https://developers.facebook.com/docs/sharing/webmasters#markup
     //   及工具分享调试器：https://developers.facebook.com/tools/debug/
     //   测试链接大图效果http://m.93lj.com/facebook/bigcard/、小图效果http://m.93lj.com/facebook/smallcard/
-//        [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
-//                                        images:nil
-//                                           url:[NSURL URLWithString:@"http://tech.diary.support.mob.com/sharesdk/demo/index.html"]
-//                                         title:@"Share SDK"
-//                                          type:SSDKContentTypeWebPage];
+    //        [parameters SSDKSetupShareParamsByText:@"Share SDK Link Desc"
+    //                                        images:nil
+    //                                           url:[NSURL URLWithString:@"http://tech.diary.support.mob.com/sharesdk/demo/index.html"]
+    //                                         title:@"Share SDK"
+    //                                          type:SSDKContentTypeWebPage];
     //平台定制
     [parameters SSDKSetupFacebookParamsByText:@"Share SDK Link Desc"
                                         image:nil
@@ -79,8 +79,23 @@
                                attachementUrl:nil
                                       hashtag:@"#MobData"
                                         quote:@"Mob官网 - 全球领先的移动开发者服务平台"
-                                    shareType:SSDKFacebookShareTypeNative
+                                    shareType:SSDKFacebookShareTypeBrowser
                                          type:SSDKContentTypeWebPage];
+    
+//    [parameters SSDKSetupFacebookParamsByText:@"Share SDK Link Desc"
+//                                        image:nil
+//                                          url:[NSURL URLWithString:@"http://tech.diary.support.mob.com/sharesdk/demo/index.html"]
+//                                     urlTitle:@"Share SDK"
+//                                      urlName:nil
+//                               attachementUrl:nil
+//                                      hashtag:@"#MobData"
+//                                        quote:@"Mob官网 - 全球领先的移动开发者服务平台"
+//                               sortShareTypes:@[
+//                                   @(SSDKFacebookShareTypeShareSheet),
+//                                   @(SSDKFacebookShareTypeBrowser),
+//                                   @(SSDKFacebookShareTypeNative)
+//                               ]
+//                                         type:SSDKContentTypeWebPage];
     
     [self shareWithParameters:parameters];
 }
@@ -94,11 +109,11 @@
     NSString *path3 = [[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"];
     NSString *path4 = [[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"];
     //通用参数设置
-//    [parameters SSDKSetupShareParamsByText:nil
-//                                    images:@[path1,path2,path3,path4]
-//                                       url:nil
-//                                     title:nil
-//                                      type:SSDKContentTypeImage];
+    //    [parameters SSDKSetupShareParamsByText:nil
+    //                                    images:@[path1,path2,path3,path4]
+    //                                       url:nil
+    //                                     title:nil
+    //                                      type:SSDKContentTypeImage];
     //平台定制
     [parameters SSDKSetupFacebookParamsByText:@"1231231"
                                         image:@[path1,path2,path3,path4]
@@ -110,7 +125,7 @@
                                         quote:nil
                                     shareType:SSDKFacebookShareTypeNative
                                          type:SSDKContentTypeImage];
-
+    
     [self shareWithParameters:parameters];
 }
 
@@ -122,47 +137,47 @@
     NSString *path4 = [[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //    //通用参数设置
-        [parameters SSDKSetupShareParamsByText:nil
-                                        images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-                                           url:nil
-                                         title:nil
-                                          type:SSDKContentTypeImage];
-//    [parameters SSDKSetupFacebookParamsByText:@"1231231"
-//                                            image:@[path1,path2,path3,path4]
-////                                            image:nil
-//                                              url:nil
-//                                         urlTitle:nil
-//                                          urlName:nil
-//                                   attachementUrl:nil
-//                                          hashtag:@"#MOBData"
-//                                            quote:nil
-//                                        shareType:SSDKFacebookShareTypeNative
-//                                             type:SSDKContentTypeImage];
-        [SSDKImagePickerController initWithNavgationControllerConfigureBlock:^(SSDKImagePickerConfigure * _Nonnull configure) {
-            configure.openSmartAlbumUserLibrary = YES;
-            configure.mediaType = SSDKImagePickerMediaTypeImage;
-            configure.operationConfigure.minimumNumberOfImageSelection = 1;
-            configure.operationConfigure.maximumNumberOfImageSelection = 29;
-        } result:^(SSDKImagePickerCompleteStatus status, SSDKImagePickerResult * _Nullable result) {
-            if (status == SSDKImagePickerCompleteStatusCancel) {
-                
-            }else{
-                NSArray *shareAssets = nil;
-                
-                //分享参数为PHAsset
-                shareAssets = result.selectedElements;
-                
-                //或者PHAsset和localIdentifier混合
-//              shareAssets = result.selectedElements.count > 1?@[result.selectedElements.firstObject,[result.selectedElements.lastObject valueForKeyPath:@"localIdentifier"]]:result.selectedElements;
-                
-                
-                //或者是localIdentifier的数组
-//                shareAssets = [result.selectedElements valueForKeyPath:@"localIdentifier"];
-
-                
-                [parameters SSDKSetupFacebookParamsByImagePHAsset:shareAssets videoPHAsset:nil];
-                [self shareWithParameters:parameters];
-            }}].presentAnimated();
+    [parameters SSDKSetupShareParamsByText:nil
+                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                       url:nil
+                                     title:nil
+                                      type:SSDKContentTypeImage];
+    //    [parameters SSDKSetupFacebookParamsByText:@"1231231"
+    //                                            image:@[path1,path2,path3,path4]
+    ////                                            image:nil
+    //                                              url:nil
+    //                                         urlTitle:nil
+    //                                          urlName:nil
+    //                                   attachementUrl:nil
+    //                                          hashtag:@"#MOBData"
+    //                                            quote:nil
+    //                                        shareType:SSDKFacebookShareTypeNative
+    //                                             type:SSDKContentTypeImage];
+    [SSDKImagePickerController initWithNavgationControllerConfigureBlock:^(SSDKImagePickerConfigure * _Nonnull configure) {
+        configure.openSmartAlbumUserLibrary = YES;
+        configure.mediaType = SSDKImagePickerMediaTypeImage;
+        configure.operationConfigure.minimumNumberOfImageSelection = 1;
+        configure.operationConfigure.maximumNumberOfImageSelection = 29;
+    } result:^(SSDKImagePickerCompleteStatus status, SSDKImagePickerResult * _Nullable result) {
+        if (status == SSDKImagePickerCompleteStatusCancel) {
+            
+        }else{
+            NSArray *shareAssets = nil;
+            
+            //分享参数为PHAsset
+            shareAssets = result.selectedElements;
+            
+            //或者PHAsset和localIdentifier混合
+            //              shareAssets = result.selectedElements.count > 1?@[result.selectedElements.firstObject,[result.selectedElements.lastObject valueForKeyPath:@"localIdentifier"]]:result.selectedElements;
+            
+            
+            //或者是localIdentifier的数组
+            //                shareAssets = [result.selectedElements valueForKeyPath:@"localIdentifier"];
+            
+            
+            [parameters SSDKSetupFacebookParamsByImagePHAsset:shareAssets videoPHAsset:nil];
+            [self shareWithParameters:parameters];
+        }}].presentAnimated();
 }
 
 - (void)shareVideo
@@ -174,28 +189,28 @@
     [assetsLibrary writeVideoAtPathToSavedPhotosAlbum:url completionBlock:^(NSURL *assetURL, NSError *error) {
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         //通用参数设置
-//        [parameters SSDKSetupShareParamsByText:nil
-//                                        images:nil
-//                                           url:assetURL
-//                                         title:nil
-//                                          type:SSDKContentTypeVideo];
+        //        [parameters SSDKSetupShareParamsByText:nil
+        //                                        images:nil
+        //                                           url:assetURL
+        //                                         title:nil
+        //                                          type:SSDKContentTypeVideo];
         NSString *path1 = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
         NSString *path2 = [[NSBundle mainBundle] pathForResource:@"D11" ofType:@"jpg"];
         NSString *path3 = [[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"];
         NSString *path4 = [[NSBundle mainBundle] pathForResource:@"shareImg" ofType:@"png"];
         
-//        //平台定制
-         [parameters SSDKSetupFacebookParamsByText:nil
-                                             image:@[path1,path2,path3,path4]
-                                               url:assetURL
-                                          urlTitle:nil
-                                           urlName:nil
-                                    attachementUrl:nil
-                                           hashtag:@"MobData"
-                                             quote:nil
-                                         shareType:SSDKFacebookShareTypeNative
-                                              type:SSDKContentTypeVideo];
-//
+        //        //平台定制
+        [parameters SSDKSetupFacebookParamsByText:nil
+                                            image:@[path1,path2,path3,path4]
+                                              url:assetURL
+                                         urlTitle:nil
+                                          urlName:nil
+                                   attachementUrl:nil
+                                          hashtag:@"MobData"
+                                            quote:nil
+                                        shareType:SSDKFacebookShareTypeNative
+                                             type:SSDKContentTypeVideo];
+        //
         [weakSelf shareWithParameters:parameters];
     }];
     
@@ -215,18 +230,18 @@
         }else{
             NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
             [parameters SSDKSetupFacebookParamsByText:nil image:nil
-                                                      url:nil
-                                                 urlTitle:nil
-                                                  urlName:nil
-                                           attachementUrl:nil
-                                                  hashtag:@"MobData"
-                                                    quote:nil shareType:SSDKFacebookShareTypeNative
-                                                     type:SSDKContentTypeVideo];
+                                                  url:nil
+                                             urlTitle:nil
+                                              urlName:nil
+                                       attachementUrl:nil
+                                              hashtag:@"MobData"
+                                                quote:nil shareType:SSDKFacebookShareTypeNative
+                                                 type:SSDKContentTypeVideo];
             [parameters SSDKSetupFacebookParamsByImagePHAsset:nil videoPHAsset:result.selectedElements.firstObject];
             [self shareWithParameters:parameters];
         }
     }].presentAnimated();
-                
+    
 }
 
 //SSDKContentTypeAuto会默认将url视作视频，在有图片与视频时可以支持混合分享，只支持shareSheet类型，不支持Navtive类型，所以即使你设置Navtive也会显示为ShareSheet样式，没有视频时有图片时会按图片分享处理，有视频没图片时会当做视频分享处理，图片或者视频分享可以支持ShareSheet和Navtive类型
@@ -258,7 +273,7 @@
                                    attachementUrl:nil
                                           hashtag:@"MobData"
                                             quote:nil
-                                        shareType:SSDKFacebookShareTypeNative
+                                        shareType:SSDKFacebookShareTypeShareSheet
                                              type:SSDKContentTypeAuto];
         //
         [weakSelf shareWithParameters:parameters];
