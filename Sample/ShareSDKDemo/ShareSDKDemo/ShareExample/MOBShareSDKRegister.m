@@ -9,7 +9,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDK/ShareSDK+Base.h>
 #import <WechatConnector/WechatConnector.h>
-
+#import <AuthenticationServices/AuthenticationServices.h>
 @implementation MOBShareSDKRegister
 
 + (void)load
@@ -18,6 +18,7 @@
                                              selector:@selector(_didFinishLaunch:)
                                                  name:UIApplicationDidFinishLaunchingNotification
                                                object:nil];
+    
 }
 
 + (void)_didFinishLaunch:(NSNotification *)notification

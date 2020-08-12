@@ -61,29 +61,29 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
-                                    images:@[SHARESDKDEMO_IMAGE_STRING]
-                                       url:nil
-                                     title:SHARESDKDEMO_TITLE
-                                      type:SSDKContentTypeWebPage];
+//    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+//                                    images:@[SHARESDKDEMO_IMAGE_STRING]
+//                                       url:nil
+//                                     title:SHARESDKDEMO_TITLE
+//                                      type:SSDKContentTypeWebPage];
     
     //平台定制
-    //    [parameters SSDKSetupKaKaoParamsByText:@"Share SDK"
-    //                                    images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-    //                                     title:@"Share SDK"
-    //                                       url:[NSURL URLWithString:@"http://www.mob.com"]
-    //                                permission:nil
-    //                               enableShare:YES
-    //                                 imageSize:CGSizeZero
-    //                            appButtonTitle:nil
-    //                          androidExecParam:nil
-    //                          androidMarkParam:nil
-    //                          iphoneExecParams:nil
-    //                           iphoneMarkParam:nil
-    //                            ipadExecParams:nil
-    //                             ipadMarkParam:nil
-    //                                      type:SSDKContentTypeWebPage
-    //                        forPlatformSubType:platformType];
+        [parameters SSDKSetupKaKaoParamsByText:@"Share SDK"
+                                        images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                         title:@"Share SDK"
+                                           url:[NSURL URLWithString:@"http://www.mob.com"]
+                                    permission:nil
+                                   enableShare:YES
+                                     imageSize:CGSizeZero
+                                appButtonTitle:nil
+                              androidExecParam:nil
+                              androidMarkParam:nil
+                              iphoneExecParams:nil
+                               iphoneMarkParam:nil
+                                ipadExecParams:nil
+                                 ipadMarkParam:nil
+                                          type:SSDKContentTypeWebPage
+                            forPlatformSubType:self.platformType];
     
     [self shareWithParameters:parameters];
 }

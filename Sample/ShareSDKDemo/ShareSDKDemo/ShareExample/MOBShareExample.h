@@ -35,7 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 //新浪LinkCard分享
 - (void)sinaLinkCardShare;
 
-
+//口令分享
+- (void)commandShareWithModelView:(UIView *)modelView;
 
 
 //闭环分享

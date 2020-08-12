@@ -21,8 +21,11 @@
 #import "WWKApi.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 #import "WXApi.h"
-
+#import <ShareSDK/SSDKAuthViewManager.h>
+#import "MOBShareCommandDetailView.h"
 @interface AppDelegate () <ISSERestoreSceneDelegate,QQApiInterfaceDelegate,WeiboSDKDelegate, LineSDKLoginDelegate,WXApiDelegate>
+
+@property (strong, nonatomic) NSDictionary *parameters;
 
 @end
 
@@ -35,11 +38,12 @@
     //在MOBShareSDKRegister注册第三方平台信息
     
     [[LineSDKLogin sharedInstance]setDelegate:self];
-    
     [ShareSDK setRestoreSceneDelegate:self];
+
+    
     //开启截屏分享监听 与ShareSDK本身无关
     [[MobScreenshotCenter shareInstance] start];
-    
+    [SSDKAuthViewManager defaultManager].timeOut = 20;
     // 加入Bugly来统计Demo异常情况
     [Bugly startWithAppId:@"b319f530b6"];
     //注册各平台参数
@@ -53,13 +57,14 @@
     [MOBPlatformDataSource dataSource];
     
     [[MOBPolicyManager defaultManager] show];
-//    [WXApi registerApp:@"wx617c77c82218ea2c" universalLink:@"https://ybpre.share2dlink.com/"];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(allowPolicyAction:) name:@"kMOBPolicyManagerAllowNofitication" object:nil];
+    [WXApi registerApp:@"wx617c77c82218ea2c" universalLink:@"https://ybpre.share2dlink.com/"];
 //    [WXApi checkUniversalLinkReady:^(WXULCheckStep step, WXCheckULStepResult * _Nonnull result) {
 //        NSLog(@"mmmmmmmmmmmm %@  %@  %@  %@",@(step),@(result.success),result.suggestion, result.errorInfo);
 //    }];
     
     
-    
+   
     return YES;
     
 }
@@ -246,6 +251,7 @@
 
 //分享示例
 - (void)share{
+    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
     [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
@@ -285,7 +291,35 @@
     
 }
 
+- (void)allowPolicyAction:(NSNotification *)notification{
+    NSDictionary *dic = notification.userInfo;
+    if([dic boolValueForKey:@"isAllowPolicy" default:NO] && self.parameters){
+        MOBShareCommandDetailView *detailView = [[MOBShareCommandDetailView alloc]initWithFrame:[UIApplication sharedApplication].keyWindow.bounds];
+        [detailView showWithParams:self.parameters];
+    }
+}
+
 #pragma mark - ISSERestoreSceneDelegate
+/**
+ 口令分享代理回调
+ */
+- (void)ISSEWillAlertCommand:(NSDictionary *)parameters error:(NSError *)error{
+    if(parameters){
+        if([[UIApplication sharedApplication].keyWindow.rootViewController.clasName isEqualToString:@"SSDKScenePackageRootViewController"] && [[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController isKindOfClass:[UIAlertController class]]){
+            return;
+        }
+        if([[UIApplication sharedApplication].keyWindow.rootViewController.clasName isEqualToString:@"MOBTabBarController"] && [UIApplication sharedApplication].windows.count > 2){
+            return;
+        }
+        self.parameters = parameters;
+        id cacheKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"kMOBPolicyManagerSaveKey"];
+        if ([cacheKey boolValue]) {
+            MOBShareCommandDetailView *detailView = [[MOBShareCommandDetailView alloc]initWithFrame:[UIApplication sharedApplication].keyWindow.bounds];
+            [detailView showWithParams:parameters];
+        }
+    }
+    
+}
 
 /**
  闭环分享代理回调
@@ -304,6 +338,7 @@
         }];
     }
 }
+
 //
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
     if( [WXApi handleOpenURL:url delegate:self]){
@@ -316,7 +351,16 @@
 
     return YES;
 }
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
+    if( [WXApi handleOpenURL:url delegate:self]){
 
+    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
+
+    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
+
+    }
+    return YES;
+}
 
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
@@ -338,15 +382,15 @@
     }else if ([QQApiInterface handleOpenUniversallink:userActivity.webpageURL delegate:self]){
 
     }
-    return YES;
+    return NO;
 }
 
-//- (void)onReq:(BaseReq *)req{
-//    NSLog(@"qqqqqqq===============%@",req);
-//}
-//- (void)onResp:(BaseResp *)resp{
-//    NSLog(@"ppppppp===============%@",resp);
-//}
+- (void)onReq:(BaseReq *)req{
+    NSLog(@"qqqqqqq===============%@",req);
+}
+- (void)onResp:(BaseResp *)resp{
+    NSLog(@"ppppppp===============%@",resp);
+}
 //- (void)didReceiveWeiboRequest:(WBBaseRequest *)request{
 //    NSLog(@"wbqqqqq==============%@",request);
 //}

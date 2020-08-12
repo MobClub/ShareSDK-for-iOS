@@ -80,16 +80,6 @@
 		D5E946702313D59500E52ED6 /* ShareSDKLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E9466F2313D59400E52ED6 /* ShareSDKLink.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		D53343AF244480120091657F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D53343A9244480120091657F /* ShareSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4140F3031A8378460081DFF3;
-			remoteInfo = ShareSDK;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		504927B22148EDF8007B7FDC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		504927B92148EEA8007B7FDC /* RennSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RennSDK.bundle; sourceTree = "<group>"; };
@@ -172,7 +162,6 @@
 		50BE94F22148EB3E00F51A63 /* ShareSDK_swiftBridge-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShareSDK_swiftBridge-Bridging-Header.h"; sourceTree = "<group>"; };
 		50BE95952148EB8800F51A63 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		50BE95972148EB8D00F51A63 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		D53343A9244480120091657F /* ShareSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShareSDK.xcodeproj; path = ../../ShareSDK/ShareSDK.xcodeproj; sourceTree = "<group>"; };
 		D54BDFC92313C865002DE870 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		D5E9466F2313D59400E52ED6 /* ShareSDKLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKLink.framework; sourceTree = "<group>"; };
 		D5E946712313D71C00E52ED6 /* ShareSDK_swiftBridge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareSDK_swiftBridge.entitlements; sourceTree = "<group>"; };
@@ -477,7 +466,6 @@
 		50BE94D42148EB2700F51A63 = {
 			isa = PBXGroup;
 			children = (
-				D53343A9244480120091657F /* ShareSDK.xcodeproj */,
 				50BE94DF2148EB2700F51A63 /* ShareSDK_swiftBridge */,
 				50BE94DE2148EB2700F51A63 /* Products */,
 				50BE95942148EB8700F51A63 /* Frameworks */,
@@ -517,14 +505,6 @@
 				50BE95952148EB8800F51A63 /* libstdc++.tbd */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D53343AA244480120091657F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D53343B0244480120091657F /* ShareSDK.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -574,28 +554,12 @@
 			mainGroup = 50BE94D42148EB2700F51A63;
 			productRefGroup = 50BE94DE2148EB2700F51A63 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = D53343AA244480120091657F /* Products */;
-					ProjectRef = D53343A9244480120091657F /* ShareSDK.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				50BE94DC2148EB2700F51A63 /* ShareSDK_swiftBridge */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		D53343B0244480120091657F /* ShareSDK.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ShareSDK.framework;
-			remoteRef = D53343AF244480120091657F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		50BE94DB2148EB2700F51A63 /* Resources */ = {
@@ -770,7 +734,10 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = LW5266U92D;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../SDK/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../../SDK/**",
+					"$(PROJECT_DIR)/ShareSDK_swiftBridge",
+				);
 				INFOPLIST_FILE = ShareSDK_swiftBridge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -798,7 +765,10 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = LW5266U92D;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../SDK/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../../SDK/**",
+					"$(PROJECT_DIR)/ShareSDK_swiftBridge",
+				);
 				INFOPLIST_FILE = ShareSDK_swiftBridge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

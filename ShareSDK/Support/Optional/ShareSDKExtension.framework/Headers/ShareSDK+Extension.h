@@ -107,4 +107,11 @@
  */
 + (void)setRestoreSceneDelegate:(id<ISSERestoreSceneDelegate>)delegate;
 
+/**
+ *  口令分享功能
+ *
+ *  @param paramters 口令分享参数
+ *  @param completeHandler 完成回调处理
+ */
++ (void)getCommandText:(NSDictionary *_Nullable)paramters withComplete:(void (^_Nullable) (NSString * _Nullable text, NSError *_Nullable error, void (^ _Nullable complete)(NSString * _Nullable text)))completeHandler;
 @end

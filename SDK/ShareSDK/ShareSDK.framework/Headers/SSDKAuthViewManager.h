@@ -24,6 +24,8 @@
 @property (strong, nonatomic) UIButton *rightButton;
 @property (copy, nonatomic) NSString *shareTitle;
 @property (assign, nonatomic) UIModalPresentationStyle style;
+@property (nonatomic, assign) NSTimeInterval timeOut;
+
 
 + (instancetype)defaultManager;
 

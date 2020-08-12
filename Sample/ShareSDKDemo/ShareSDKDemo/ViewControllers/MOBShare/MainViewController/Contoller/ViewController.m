@@ -91,6 +91,11 @@
                 [[MOBShareExample defaultExample] sinaLinkCardShare];
             }
                 break;
+            //口令分享
+            case MobSharePlatformStyleCommandShare:{
+                [[MOBShareExample defaultExample] commandShareWithModelView:model.view];
+            }
+                break;
             default:
                 break;
         }

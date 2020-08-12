@@ -97,6 +97,7 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
 @implementation MOBPlatformBaseModel
 
 + (void)load{
+//    NSLog(@"super---123123123123123");
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         //国内,海外

@@ -31,7 +31,7 @@
 //                                         title:nil
 //                                          type:SSDKContentTypeText];
     //平台定制
-    [parameters SSDKSetupWhatsAppParamsByText:SHARESDKDEMO_TEXT
+    [parameters SSDKSetupWhatsAppParamsByText:@"http://tech.diary.support.mob.com/sharesdk/demo/index.html"
                                         image:nil
                                         audio:nil
                                         video:nil

@@ -7,7 +7,7 @@
 //
 
 #import "UIViewController+SSDKCategory.h"
-
+#import <objc/message.h>
 static const void *ssdkRuntimeVCDismissKey = &ssdkRuntimeVCDismissKey;
 
 static inline NSMutableSet *ssdkSwizzledVCDismissSet(){

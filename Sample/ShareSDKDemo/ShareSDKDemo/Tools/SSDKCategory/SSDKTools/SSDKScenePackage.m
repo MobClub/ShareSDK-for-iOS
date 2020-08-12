@@ -11,6 +11,7 @@
 #import <objc/message.h>
 #import "NSString+SSDKCategory.h"
 #import "UIViewController+SSDKCategory.h"
+#import "UIWindow+SSDKCategory.h"
 typedef enum : NSUInteger {
     SSDKScenePackageSceneHookStatusUndefine,
     SSDKScenePackageSceneHookStatusUnstart,

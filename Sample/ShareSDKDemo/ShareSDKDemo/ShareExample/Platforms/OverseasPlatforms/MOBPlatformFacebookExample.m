@@ -52,7 +52,7 @@
                                attachementUrl:nil
                                       hashtag:nil
                                         quote:nil
-                                    shareType:SSDKFacebookShareTypeNative
+                                    shareType:SSDKFacebookShareTypeShareSheet
                                          type:SSDKContentTypeImage];
     [self shareWithParameters:parameters];
 }
@@ -73,13 +73,13 @@
     //平台定制
     [parameters SSDKSetupFacebookParamsByText:@"Share SDK Link Desc"
                                         image:nil
-                                          url:[NSURL URLWithString:@"http://tech.diary.support.mob.com/sharesdk/demo/index.html"]
+                                          url:[NSURL URLWithString:@"https://tech.diary.support.mob.com/sharesdk/demo/index.html"]
                                      urlTitle:@"Share SDK"
                                       urlName:nil
                                attachementUrl:nil
                                       hashtag:@"#MobData"
                                         quote:@"Mob官网 - 全球领先的移动开发者服务平台"
-                                    shareType:SSDKFacebookShareTypeBrowser
+                                    shareType:SSDKFacebookShareTypeNative
                                          type:SSDKContentTypeWebPage];
     
 //    [parameters SSDKSetupFacebookParamsByText:@"Share SDK Link Desc"

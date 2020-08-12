@@ -14,6 +14,7 @@
 - (void)setup{
     loadingViewController = [[MOBLoadingViewController alloc] initWithNibName:@"MOBLoadingViewController" bundle:nil];
     loadingViewController.view.frame = [SSDKScenePackage mainBounds];
+    [self setAuthSetting:@{@"scopes":@"read"}];
 }
 /**
  分享文字

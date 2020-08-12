@@ -11,6 +11,7 @@
 #import <MOBFoundation/MOBFoundation.h>
 #import <MOBFoundation/MobSDK+Privacy.h>
 static NSString * kMOBPolicyManagerSaveKey =  @"kMOBPolicyManagerSaveKey";
+static NSString * kMOBPolicyManagerAllowNofitication =  @"kMOBPolicyManagerAllowNofitication";
 
 @interface MOBPolicyManager ()
 
@@ -42,6 +43,7 @@ static MOBPolicyManager * manager = nil;
         [[NSUserDefaults standardUserDefaults] setObject:@(status) forKey:kMOBPolicyManagerSaveKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [self clear];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMOBPolicyManagerAllowNofitication object:nil userInfo:@{@"isAllowPolicy":@(status)}];
     };
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
     vc.present();

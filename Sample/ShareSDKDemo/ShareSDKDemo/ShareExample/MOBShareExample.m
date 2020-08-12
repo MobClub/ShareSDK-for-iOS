@@ -14,6 +14,7 @@
 #import "MOBAboutMobLinkViewController.h"
 #import "MOBPolicyManager.h"
 #import "SSDKImagePicker.h"
+#import "MOBShareCommandAlertView.h"
 
 @implementation MOBShareExample{
     BOOL isAnimate, onShakeShare;
@@ -201,8 +202,43 @@
     }];
 }
 
+#pragma mark - 口令分享
+- (void)commandShareWithModelView:(UIView *)modelView{
+    NSDictionary *parameters = @{@"command":@"commandText",@"detail":@"国家卫健委：昨日新增确诊病例5例,其中本土2例在北京,其中本土2例在北京",@"account":@"小明"};
+    
+    [ShareSDK getCommandText:parameters withComplete:^(NSString * _Nullable text, NSError * _Nullable error, void (^ _Nullable complete)(NSString * _Nullable)) {
+        NSString *command = [NSString stringWithFormat:@"【复制本段内容%@打开👉页面关键字👈去粘贴给好友】",text];
+        if(!error){
+            complete(command);
+            
+            MOBShareCommandAlertView *alertView = [[MOBShareCommandAlertView alloc]initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 270) * 0.5, 125 + (self.isPhoneX ? 24 : 0), 270, 154)];
+            [alertView showWithCommand:command modelView:modelView];
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertControllerAlertCreate(@"分享失败", [NSString stringWithFormat:@"%@",error])
+                .addCancelAction(@"确定")
+                .showAnimated(YES)
+                .present();
+                
+            });
+        }
+    }];
 
+}
 
+- (BOOL)isPhoneX{
+    BOOL iPhoneX = NO;
+    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPhone) {
+        return iPhoneX;
+    }
+    if (@available(iOS 11.0, *)) {
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+        if (mainWindow.safeAreaInsets.bottom > 0.0) {
+            iPhoneX = YES;
+        }
+    }
+    return iPhoneX;
+}
 
 
 

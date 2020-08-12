@@ -8,6 +8,7 @@
 
 #import "UIScreen+SSDKCategory.h"
 #import "UIDevice+SSDKCategory.h"
+#import "SSDKCategory.h"
 @implementation UIScreen (SSDKCategory)
 + (CGFloat)scale{
     static CGFloat screenScale = 0.0;

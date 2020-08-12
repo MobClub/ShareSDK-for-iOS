@@ -44,7 +44,8 @@
     [array addObject:[MobSharePlatformStyleModel shareShot].configureHandle(handle)];
     [array addObject:[MobSharePlatformStyleModel shareShake].configureHandle(handle)];
     [array addObject:[MobSharePlatformStyleModel shareLinkCard].configureHandle(handle)];
-    
+    [array addObject:[MobSharePlatformStyleModel shareCommand].configureHandle(handle)];
+
     model.dataSource = array.copy;
     [dataSource addObject:model];
     return dataSource;
@@ -68,6 +69,9 @@
 }
 + (instancetype)shareLinkCard{
     return [MobSharePlatformStyleModel modelWithStyle:MobSharePlatformStyleLinkCardShare name:@"新浪LinkCard分享" inroduction:@"" image:@"icon_sina" backgroundImage:@""];
+}
++ (instancetype)shareCommand{
+    return [MobSharePlatformStyleModel modelWithStyle:MobSharePlatformStyleCommandShare name:@"口令分享" inroduction:@"" image:@"icon_command" backgroundImage:@""];
 }
 
 @end

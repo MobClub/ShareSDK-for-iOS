@@ -7,7 +7,7 @@
 //
 
 #import "MOBPlatformBaseModel.h"
-#import <FBSDKShareKit/FBSDKShareKit.h>
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MOBPlatformFacbookMessengerExample : MOBPlatformBaseModel

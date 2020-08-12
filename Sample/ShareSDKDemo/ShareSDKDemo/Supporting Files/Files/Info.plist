@@ -259,6 +259,12 @@
 				<string>ssdkmoba0b0c0d0</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array/>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
@@ -271,7 +277,7 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>KwaiAuth2</string>
-		<string>xiguaalipayshare</string>
+		<string>snssdk32</string>
 		<string>bitmoji-sdk</string>
 		<string>sharesdk</string>
 		<string>itms-apps</string>
@@ -421,8 +427,8 @@
 	<false/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>

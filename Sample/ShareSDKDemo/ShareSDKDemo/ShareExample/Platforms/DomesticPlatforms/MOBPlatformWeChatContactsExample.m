@@ -8,7 +8,7 @@
 
 #import "MOBPlatformWeChatContactsExample.h"
 #import <WechatConnector/WeChatConnector.h>
-#import "WXApi.h"
+//#import "WXApi.h"
 @implementation MOBPlatformWeChatContactsExample
 + (SSDKPlatformType)platformType{
     return SSDKPlatformSubTypeWechatSession;

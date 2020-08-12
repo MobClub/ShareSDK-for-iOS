@@ -8,6 +8,7 @@
 
 #import "UIFont+SSDKCategory.h"
 #import "UIDevice+SSDKCategory.h"
+#import "SSDKScenePackage.h"
 #define FontScale ([[UIDevice currentDevice] isPad]? 1 : [UIFont screenWidth] / 375.0)
 
 @implementation UIFont (SSDKCategory)
