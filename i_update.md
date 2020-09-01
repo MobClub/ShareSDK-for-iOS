@@ -2,6 +2,14 @@
 
 [论坛发版列表](http://bbs.mob.com/forum.php?mod=forumdisplay&fid=2&filter=typeid&typeid=36)  
 
+### v4.3.11[详情](http://bbs.mob.com/thread-26210-1-1.html)  
+>1、新增TikTok平台
+>2、对其他平台优化  
+
+### v4.3.10[详情](http://bbs.mob.com/thread-26210-1-1.html)  
+>1、新增口令分享
+>2、对其他平台优化  
+
 ### v4.3.8[详情](http://bbs.mob.com/thread-26210-1-1.html)  
 >1、新增snapchat平台
 >2、新增钉钉授权

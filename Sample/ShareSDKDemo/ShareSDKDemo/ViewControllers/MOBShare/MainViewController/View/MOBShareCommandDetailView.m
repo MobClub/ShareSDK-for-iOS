@@ -55,7 +55,6 @@
     if(parameters){
         self.titleLabel.text = [NSString stringWithFormat:@"%@  给你分享了",[parameters valueForKey:@"account"]];
         self.detailLabel.text = [parameters valueForKey:@"detail"];
-        [self clearPasteBoard];
     }
 }
 
@@ -76,12 +75,6 @@
 - (void)removeView{
     [self removeFromSuperview];
 }
-
-- (void)clearPasteBoard{
-    UIPasteboard *board = [UIPasteboard generalPasteboard];
-    board.string = @"";
-}
-
 
 - (UIView *)contentView{
     if (!_contentView) {

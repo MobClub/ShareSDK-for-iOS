@@ -225,7 +225,10 @@ typedef NS_ENUM(NSUInteger, SSDKPlatformType){
      */
     SSDKPlatformTypeAppleAccount        = 61,
    
-    
+    /**
+     * TikTok
+     */
+    SSDKPlatformTypeTikTok              = 70,
     /**
      * 绿洲
      */
@@ -308,13 +311,18 @@ typedef NS_ENUM(NSUInteger, SSDKResponseState){
     SSDKResponseStateFail       = 2,
     
     /**
-     *  取消
+     *  ShareSDK取消
      */
     SSDKResponseStateCancel     = 3,
     
     
     //视频文件上传
-    SSDKResponseStateUpload     = 4
+    SSDKResponseStateUpload     = 4,
+    
+    /**
+     *  平台取消
+     */
+    SSDKResponseStatePlatformCancel     = 5,
 };
 
 /**

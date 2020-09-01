@@ -313,7 +313,13 @@
                 }
             break;
         }
-            case SSDKResponseStateUpload:
+        case SSDKResponseStatePlatformCancel:
+        {
+            title = @"分享已取消";
+            typeStr = @"分享平台取消";
+            break;
+        }
+        case SSDKResponseStateUpload:
         {
             NSLog(@"上传中");
         }

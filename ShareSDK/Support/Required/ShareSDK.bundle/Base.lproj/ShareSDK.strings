@@ -27,6 +27,7 @@
 "ShareSDK_Error_Facebook_ShareType" = "分享状态未知";
 "ShareSDK_Error_NetVideo" = "暂不支持网络视频";
 "ShareSDK_unsupportFeature" = "暂不支持此功能";
+"ShareSDK_pleaseSelectMoreImage" = "请选择多个图像!";
 
 "AUTH_VIEW_ALERT_TITLE" = "提示";
 "AUTH_VIEW_INPUT_ACCOUNT" = "请输入登录帐号!";

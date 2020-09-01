@@ -65,6 +65,7 @@
         @(SSDKPlatformTypeFacebookAccount),
         @(SSDKPlatformTypeWework),
         @(SSDKPlatformTypeAppleAccount),
+        @(SSDKPlatformTypeTikTok),
         @(SSDKPlatformTypeFacebook),
         @(SSDKPlatformTypeFacebookMessenger),
         @(SSDKPlatformTypeTwitter),

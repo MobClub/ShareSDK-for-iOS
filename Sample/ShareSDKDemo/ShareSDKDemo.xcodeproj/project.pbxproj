@@ -17,9 +17,15 @@
 		7367F15123FD58D6000E5224 /* NSIndexSet+SSDKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367F15023FD58D6000E5224 /* NSIndexSet+SSDKCategory.m */; };
 		738C363623FCD511006683C0 /* SSDKBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 738C363523FCD511006683C0 /* SSDKBaseCollectionViewCell.m */; };
 		9101AE5D24D42F0300C88394 /* MOBCommandShareContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9101AE5C24D42F0300C88394 /* MOBCommandShareContentView.m */; };
+		911CF5D224F93C970059C69A /* TikTokConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 911CF5D124F93C970059C69A /* TikTokConnector.framework */; };
+		9151986824E54142002216F4 /* MOBPlatformTikTokExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 9151986724E54142002216F4 /* MOBPlatformTikTokExample.m */; };
+		9151986B24E54A7E002216F4 /* sns_icon_70@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9151986924E54A7E002216F4 /* sns_icon_70@3x.png */; };
+		9151986C24E54A7E002216F4 /* sns_icon_70@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9151986A24E54A7E002216F4 /* sns_icon_70@2x.png */; };
 		915B12B324CED1DA0099A9BD /* icon_command@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 915B12B124CED1D90099A9BD /* icon_command@2x.png */; };
 		915B12B424CED1DA0099A9BD /* icon_command@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 915B12B224CED1DA0099A9BD /* icon_command@3x.png */; };
 		915B12B724CFCCB90099A9BD /* MOBShareCommandAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 915B12B624CFCCB90099A9BD /* MOBShareCommandAlertView.m */; };
+		9171217024ECDF2900CAF582 /* DouyinOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9171216E24ECDF2800CAF582 /* DouyinOpenSDK.framework */; };
+		91987BD824ED024A00BDE9C8 /* TikTokOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91987BD724ED024A00BDE9C8 /* TikTokOpenSDK.framework */; };
 		91AB6B5F24D0479100600922 /* MOBShareCommandDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AB6B5E24D0479100600922 /* MOBShareCommandDetailView.m */; };
 		D506E0B7240C9FC100F24814 /* SSDKImagePickerAlumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D506E095240C9FC000F24814 /* SSDKImagePickerAlumViewController.m */; };
 		D506E0B8240C9FC100F24814 /* SSDKImagePickerElementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D506E097240C9FC000F24814 /* SSDKImagePickerElementCell.m */; };
@@ -36,7 +42,6 @@
 		D51765CD24CAD817009506CF /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D51765CB24CAD817009506CF /* libWeChatSDK.a */; };
 		D520225123A7507600214F76 /* MOBPlatformDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D520225023A7507600214F76 /* MOBPlatformDataSource.m */; };
 		D520225423A76A9600214F76 /* MOBPlatfromMethodStyleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D520225323A76A9600214F76 /* MOBPlatfromMethodStyleModel.m */; };
-		D520B7AB236C284D00C540FC /* TikTokOpenPlatformSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D520B7AA236C284D00C540FC /* TikTokOpenPlatformSDK.framework */; };
 		D52546E423A083BB00A0F521 /* MobSharePlatformStyleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D52546E323A083BB00A0F521 /* MobSharePlatformStyleModel.m */; };
 		D52546EA23A08FDB00A0F521 /* MOBMainShareNormalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D52546E923A08FDB00A0F521 /* MOBMainShareNormalTableViewCell.m */; };
 		D52546ED23A08FF800A0F521 /* MOBMainShareUniqueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D52546EC23A08FF800A0F521 /* MOBMainShareUniqueTableViewCell.m */; };
@@ -654,10 +659,18 @@
 		738C363523FCD511006683C0 /* SSDKBaseCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDKBaseCollectionViewCell.m; sourceTree = "<group>"; };
 		9101AE5B24D42F0300C88394 /* MOBCommandShareContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOBCommandShareContentView.h; sourceTree = "<group>"; };
 		9101AE5C24D42F0300C88394 /* MOBCommandShareContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOBCommandShareContentView.m; sourceTree = "<group>"; };
+		911CF5D124F93C970059C69A /* TikTokConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TikTokConnector.framework; sourceTree = "<group>"; };
+		9151986624E54142002216F4 /* MOBPlatformTikTokExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOBPlatformTikTokExample.h; sourceTree = "<group>"; };
+		9151986724E54142002216F4 /* MOBPlatformTikTokExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOBPlatformTikTokExample.m; sourceTree = "<group>"; };
+		9151986924E54A7E002216F4 /* sns_icon_70@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sns_icon_70@3x.png"; sourceTree = "<group>"; };
+		9151986A24E54A7E002216F4 /* sns_icon_70@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sns_icon_70@2x.png"; sourceTree = "<group>"; };
 		915B12B124CED1D90099A9BD /* icon_command@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_command@2x.png"; sourceTree = "<group>"; };
 		915B12B224CED1DA0099A9BD /* icon_command@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_command@3x.png"; sourceTree = "<group>"; };
 		915B12B524CFCCB90099A9BD /* MOBShareCommandAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOBShareCommandAlertView.h; sourceTree = "<group>"; };
 		915B12B624CFCCB90099A9BD /* MOBShareCommandAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOBShareCommandAlertView.m; sourceTree = "<group>"; };
+		9171216924EBD64200CAF582 /* ShareSDKDemoRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareSDKDemoRelease.entitlements; sourceTree = "<group>"; };
+		9171216E24ECDF2800CAF582 /* DouyinOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DouyinOpenSDK.framework; sourceTree = "<group>"; };
+		91987BD724ED024A00BDE9C8 /* TikTokOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TikTokOpenSDK.framework; sourceTree = "<group>"; };
 		91AB6B5D24D0479100600922 /* MOBShareCommandDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOBShareCommandDetailView.h; sourceTree = "<group>"; };
 		91AB6B5E24D0479100600922 /* MOBShareCommandDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOBShareCommandDetailView.m; sourceTree = "<group>"; };
 		D506E095240C9FC000F24814 /* SSDKImagePickerAlumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDKImagePickerAlumViewController.m; sourceTree = "<group>"; };
@@ -696,7 +709,6 @@
 		D520225023A7507600214F76 /* MOBPlatformDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOBPlatformDataSource.m; sourceTree = "<group>"; };
 		D520225223A76A9600214F76 /* MOBPlatfromMethodStyleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOBPlatfromMethodStyleModel.h; sourceTree = "<group>"; };
 		D520225323A76A9600214F76 /* MOBPlatfromMethodStyleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOBPlatfromMethodStyleModel.m; sourceTree = "<group>"; };
-		D520B7AA236C284D00C540FC /* TikTokOpenPlatformSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TikTokOpenPlatformSDK.framework; sourceTree = "<group>"; };
 		D522B36B237E7AFC007FE861 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../en.lproj/Main.strings; sourceTree = "<group>"; };
 		D52546E223A083BB00A0F521 /* MobSharePlatformStyleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobSharePlatformStyleModel.h; sourceTree = "<group>"; };
 		D52546E323A083BB00A0F521 /* MobSharePlatformStyleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobSharePlatformStyleModel.m; sourceTree = "<group>"; };
@@ -1461,6 +1473,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				911CF5D224F93C970059C69A /* TikTokConnector.framework in Frameworks */,
 				D52AD51B247F745F003E1CDD /* WebKit.framework in Frameworks */,
 				D5530F4523BB023C007B7E53 /* UIKit.framework in Frameworks */,
 				D53B2C0F241B60AD009E13A3 /* Security.framework in Frameworks */,
@@ -1484,7 +1497,6 @@
 				D5AEC2D7246E6059006E8B2B /* WatermelonVideoConnector.framework in Frameworks */,
 				D52E4EFE243D881400652916 /* SnapChatConnector.framework in Frameworks */,
 				D5A9C8A72367E2D8008040DD /* RennSDK.framework in Frameworks */,
-				D520B7AB236C284D00C540FC /* TikTokOpenPlatformSDK.framework in Frameworks */,
 				D5A9C8C32367E2D8008040DD /* MPShareSDK.framework in Frameworks */,
 				D5A9C90F2367E2D8008040DD /* TencentWeiboConnector.framework in Frameworks */,
 				D5DAB5CD24C6D1ED008F30D8 /* FBSDKCoreKit.framework in Frameworks */,
@@ -1502,6 +1514,7 @@
 				D5F9331024068E35008B2699 /* AccountKit.framework in Frameworks */,
 				D5A9C8BB2367E2D8008040DD /* TYRZSDK.framework in Frameworks */,
 				D5A9C9292367E2D8008040DD /* WechatConnector.framework in Frameworks */,
+				91987BD824ED024A00BDE9C8 /* TikTokOpenSDK.framework in Frameworks */,
 				D5A9C9272367E2D8008040DD /* FacebookConnector.framework in Frameworks */,
 				D530EA322434C66D001E177B /* OasisSDK.framework in Frameworks */,
 				D5A9C9012367E2D8008040DD /* MailConnector.framework in Frameworks */,
@@ -1553,6 +1566,7 @@
 				446212FC1E6D8C3000C609C9 /* libz.tbd in Frameworks */,
 				D5A9C8F72367E2D8008040DD /* TelegramConnector.framework in Frameworks */,
 				D5A9C9392367E2D8008040DD /* DouBanConnector.framework in Frameworks */,
+				9171217024ECDF2900CAF582 /* DouyinOpenSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1605,6 +1619,7 @@
 		446212611E6D8B5800C609C9 /* ShareSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				9171216924EBD64200CAF582 /* ShareSDKDemoRelease.entitlements */,
 				D5A9C6DD2367DCB6008040DD /* ShareSDKDemo.entitlements */,
 				D5A9C8342367E2D7008040DD /* SDK */,
 				D5915FA523B1EF9C00ACF647 /* AppDelegate */,
@@ -1664,6 +1679,14 @@
 				D53B2C09241B5F2A009E13A3 /* LineSDKResource.bundle */,
 			);
 			path = LineSDK;
+			sourceTree = "<group>";
+		};
+		9171217224ECDF3C00CAF582 /* TikTokSDK */ = {
+			isa = PBXGroup;
+			children = (
+				91987BD724ED024A00BDE9C8 /* TikTokOpenSDK.framework */,
+			);
+			path = TikTokSDK;
 			sourceTree = "<group>";
 		};
 		D506E093240C9FC000F24814 /* SSDKImagePickerViewController */ = {
@@ -1735,7 +1758,7 @@
 		D520B7A9236C284D00C540FC /* DouyinOpenSDK */ = {
 			isa = PBXGroup;
 			children = (
-				D520B7AA236C284D00C540FC /* TikTokOpenPlatformSDK.framework */,
+				9171216E24ECDF2800CAF582 /* DouyinOpenSDK.framework */,
 			);
 			path = DouyinOpenSDK;
 			sourceTree = "<group>";
@@ -1866,6 +1889,8 @@
 			children = (
 				D533070C23AC830B00C46620 /* MOBPlatformInstagramExample.h */,
 				D533070D23AC830B00C46620 /* MOBPlatformInstagramExample.m */,
+				9151986624E54142002216F4 /* MOBPlatformTikTokExample.h */,
+				9151986724E54142002216F4 /* MOBPlatformTikTokExample.m */,
 				D533070F23AC834C00C46620 /* MOBPlatformWhatsAppExample.h */,
 				D533071023AC834C00C46620 /* MOBPlatformWhatsAppExample.m */,
 				D531C71D23AB83F500A56285 /* MOBPlatformTwitterExample.h */,
@@ -2513,6 +2538,8 @@
 				D575A85723A8B6F700C4DC21 /* sns_icon_60@3x.png */,
 				D575A81723A8B6EF00C4DC21 /* sns_icon_61@2x.png */,
 				D575A84023A8B6F300C4DC21 /* sns_icon_61@3x.png */,
+				9151986A24E54A7E002216F4 /* sns_icon_70@2x.png */,
+				9151986924E54A7E002216F4 /* sns_icon_70@3x.png */,
 				D530A50523B0AFF100C72A73 /* sns_icon_64@2x.png */,
 				D530A50623B0AFF200C72A73 /* sns_icon_64@3x.png */,
 				D530A50123B0AFDC00C72A73 /* sns_icon_996@2x.png */,
@@ -2938,6 +2965,7 @@
 		D5A9C8372367E2D7008040DD /* PlatformSDK */ = {
 			isa = PBXGroup;
 			children = (
+				9171217224ECDF3C00CAF582 /* TikTokSDK */,
 				D52AD51C247FA231003E1CDD /* SnapChat */,
 				D5B5D25C24470050009D65C0 /* FacebookSDK */,
 				730BFFB923FF897C009D4E3D /* LineSDK */,
@@ -3068,6 +3096,7 @@
 		D5A9C8742367E2D7008040DD /* PlatformConnector */ = {
 			isa = PBXGroup;
 			children = (
+				911CF5D124F93C970059C69A /* TikTokConnector.framework */,
 				D5A9C8812367E2D7008040DD /* AliSocialConnector.framework */,
 				D5A9C87D2367E2D7008040DD /* AppleAccountConnector.framework */,
 				D5A9C8802367E2D7008040DD /* CMCCConnector.framework */,
@@ -3223,14 +3252,14 @@
 		446212571E6D8B5800C609C9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = SSDK;
+				CLASSPREFIX = MOB;
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = mob;
 				TargetAttributes = {
 					4462125E1E6D8B5800C609C9 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = LW5266U92D;
+						DevelopmentTeam = C87V99P45A;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -3469,6 +3498,7 @@
 				D5A9C6BF2367D8A1008040DD /* sy_2@3x.png in Resources */,
 				D575A8B023A8B6F800C4DC21 /* sns_icon_1@3x.png in Resources */,
 				D5A9C6B72367D8A1008040DD /* sy_2@2x.png in Resources */,
+				9151986B24E54A7E002216F4 /* sns_icon_70@3x.png in Resources */,
 				D5A9C6DB2367DC94008040DD /* Main.strings in Resources */,
 				D575A88523A8B6F800C4DC21 /* sns_icon_27@2x.png in Resources */,
 				D575A8AA23A8B6F800C4DC21 /* sns_icon_43@3x.png in Resources */,
@@ -3514,6 +3544,7 @@
 				D575A8BC23A8B6F800C4DC21 /* sns_icon_43@2x.png in Resources */,
 				D5394B6523951FA500A9F716 /* content_icon_audio_sel@3x.png in Resources */,
 				D575A86E23A8B6F800C4DC21 /* sns_icon_50@2x.png in Resources */,
+				9151986C24E54A7E002216F4 /* sns_icon_70@2x.png in Resources */,
 				D575A89C23A8B6F800C4DC21 /* sns_icon_26@2x.png in Resources */,
 				D575A8C023A8B6F800C4DC21 /* sns_icon_23@3x.png in Resources */,
 				D5A9C6332367D8A1008040DD /* grzx_2@2x.png in Resources */,
@@ -3599,6 +3630,7 @@
 				D569B14623D00C1D00A04A9E /* SSDKCommonViewController.m in Sources */,
 				D531C73D23AB86CD00A56285 /* MOBPlatformInstapaperExample.m in Sources */,
 				D531C6FE23AB727600A56285 /* MOBPlatformWeChatContactsExample.m in Sources */,
+				9151986824E54142002216F4 /* MOBPlatformTikTokExample.m in Sources */,
 				D537CF532396089900B5DB26 /* SSDKImageViewChainModel.m in Sources */,
 				D533070223AC7F1500C46620 /* MOBPlatformDropboxExample.m in Sources */,
 				D5325199239E1EC300DCD90D /* MOBShareMainHeaderView.m in Sources */,
@@ -3960,7 +3992,7 @@
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = LW5266U92D;
+				DEVELOPMENT_TEAM = C87V99P45A;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/../../SDK/**",
@@ -3982,15 +4014,15 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.3.10;
+				MARKETING_VERSION = 4.3.11;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mob.product.ShareSDK;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobtech.dailydiary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = ShareSDKDomainDev;
+				PROVISIONING_PROFILE_SPECIFIER = DailyNewMobile;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4003,12 +4035,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = deep;
-				CODE_SIGN_ENTITLEMENTS = ShareSDKDemo/ShareSDKDemo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ShareSDKDemo/ShareSDKDemoRelease.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = LW5266U92D;
+				DEVELOPMENT_TEAM = C87V99P45A;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/../../SDK/**",
@@ -4030,14 +4062,14 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.3.10;
+				MARKETING_VERSION = 4.3.11;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mob.product.ShareSDK;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobtech.dailydiary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ShareSDKDomainDev;
+				PROVISIONING_PROFILE_SPECIFIER = DailyNewMobile;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

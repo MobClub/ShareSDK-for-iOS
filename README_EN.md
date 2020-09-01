@@ -78,7 +78,9 @@ pod 'mob_sharesdk/ShareSDKPlatforms/FacebookAccount'
 pod 'mob_sharesdk/ShareSDKPlatforms/Oasis'
 pod 'mob_sharesdk/ShareSDKPlatforms/Apple'
 pod 'mob_sharesdk/ShareSDKPlatforms/SnapChat'
- 
+pod 'mob_sharesdk/ShareSDKPlatforms/Douyin'
+pod 'mob_sharesdk/ShareSDKPlatforms/TikTok'
+
 # Config file share module（optional）
 pod 'mob_sharesdk/ShareSDKConfigFile'
  

@@ -58,7 +58,7 @@
     
     [[MOBPolicyManager defaultManager] show];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(allowPolicyAction:) name:@"kMOBPolicyManagerAllowNofitication" object:nil];
-    [WXApi registerApp:@"wx617c77c82218ea2c" universalLink:@"https://ybpre.share2dlink.com/"];
+    [WXApi registerApp:@"wx617c77c82218ea2c" universalLink:@"https://bj2ks.share2dlink.com/"];
 //    [WXApi checkUniversalLinkReady:^(WXULCheckStep step, WXCheckULStepResult * _Nonnull result) {
 //        NSLog(@"mmmmmmmmmmmm %@  %@  %@  %@",@(step),@(result.success),result.suggestion, result.errorInfo);
 //    }];

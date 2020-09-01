@@ -50,9 +50,9 @@
     [self shareWithParameters:parameters];
 }
 
-- (void)shareTextImage{
-    [self shareMutiImage];
-}
+//- (void)shareTextImage{
+//    [self shareMutiImage];
+//}
 
 - (void)shareMutiImage
 {

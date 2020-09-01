@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>TikTokAppID</key>
+	<string>aw3vqar8qg1oy91q</string>
 	<key>AccountKitClientToken</key>
 	<string>c30c08723aa8c48fbd5e01d1c3103891</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -30,6 +32,16 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>tiktok</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>aw3vqar8qg1oy91q</string>
+			</array>
+		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
@@ -67,7 +79,7 @@
 			<string>qq</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>tencent100371282</string>
+				<string>tencent1110451818</string>
 				<string>QQ05FB8B52</string>
 			</array>
 		</dict>
@@ -216,7 +228,7 @@
 			<string>douyin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>aw9ivykfjvi4hpwo</string>
+				<string>awycvl19mldccyso</string>
 			</array>
 		</dict>
 		<dict>
@@ -387,9 +399,9 @@
 		<string>https://ybpre.share2dlink.com/line-auth/</string>
 	</dict>
 	<key>MOBAppKey</key>
-	<string>moba0b0c0d0</string>
+	<string>2c574691c6986</string>
 	<key>MOBAppSecret</key>
-	<string>5713f0d88511f9f4cf100cade0610a34</string>
+	<string>4b5cd595eb07b5cf17bb269f7a51391d</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

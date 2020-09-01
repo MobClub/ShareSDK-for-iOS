@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.3.10"
+  s.version          = "4.3.11"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
 
   s.homepage         = 'http://www.mob.com'
 
-  s.source           = { :http => 'https://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.3.10.zip' }
+  s.source           = { :http => 'https://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.3.11.zip' }
 
   s.platform         = :ios
   s.ios.deployment_target = "8.0"
@@ -471,10 +471,19 @@ Pod::Spec.new do |s|
 
         # Douyin(抖音)
         sp.subspec 'Douyin' do |ssp|
-            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/DouyinOpenSDK/TikTokOpenPlatformSDK.framework','ShareSDK/Support/PlatformConnector/DouyinConnector.framework'
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/DouyinOpenSDK/DouyinOpenSDK.framework','ShareSDK/Support/PlatformConnector/DouyinConnector.framework'
             ssp.dependency 'mob_sharesdk/ShareSDK'
             ssp.resource_bundles = {
                 'ShareSDK_JS_Douyin' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/Douyin.js']
+            }
+        end
+        
+        # TikTok(TikTok)
+        sp.subspec 'TikTok' do |ssp|
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/TikTokSDK/TikTokOpenSDK.framework','ShareSDK/Support/PlatformConnector/TikTokConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+            ssp.resource_bundles = {
+                'ShareSDK_JS_Douyin' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/TikTok.js']
             }
         end
 

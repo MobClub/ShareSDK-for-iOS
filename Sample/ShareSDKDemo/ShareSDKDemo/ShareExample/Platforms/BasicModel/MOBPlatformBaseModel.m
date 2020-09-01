@@ -135,6 +135,7 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
             ],
             @[
                 @(SSDKPlatformTypeFacebook),
+                @(SSDKPlatformTypeTikTok),
                 @(SSDKPlatformTypeFacebookMessenger),
                 @(SSDKPlatformTypeTwitter),
                 @(SSDKPlatformTypeWhatsApp),
@@ -195,7 +196,6 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
             @(SSDKPlatformTypeTumblr),
             @(SSDKPlatformTypeTelegram),
             @(SSDKPlatformTypeReddit),
-          
         ];
         
         NSMutableDictionary *platformMap = [NSMutableDictionary dictionary];

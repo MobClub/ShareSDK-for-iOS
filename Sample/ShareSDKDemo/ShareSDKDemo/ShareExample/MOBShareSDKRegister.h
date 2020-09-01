@@ -65,6 +65,8 @@
 #define IMPORT_Telegram //注释此行则 不开启【 Telegram 】平台
 #define IMPORT_Reddit //注释此行则 不开启【 Reddit 】平台
 #define IMPORT_ESurfing //注释此行则 不开启【 天翼 】平台
+#define IMPORT_TikTok //注释此行则 不开启【 TikTOk 】平台
+
 //系统平台
 #define IMPORT_SMS //注释此行则 不开启【 SMS 】平台
 #define IMPORT_Mail //注释此行则 不开启【 Mail 】平台
@@ -174,10 +176,10 @@
 */
 #if (defined IMPORT_SUB_QQFriend) || (defined IMPORT_SUB_QZone)
     //AppID
-    #define MOBSSDKQQAppID @"100371282"
+    #define MOBSSDKQQAppID @"1110451818"//@"100371282"
     //AppKey
-    #define MOBSSDKQQAppKey @"aed9b0303e3ed1e27bae87c33761161d"
-    #define MOBSSDKQQUniversalLink @"https://ybpre.share2dlink.com/"
+    #define MOBSSDKQQAppKey @"OlbzvuSP3Hgj5yNS"//@"aed9b0303e3ed1e27bae87c33761161d"
+    #define MOBSSDKQQUniversalLink @"https://bj2ks.share2dlink.com/"
     #define MOBSSDKQQEnableUniversalLink NO
     //AuthType
     #define MOBSSDKQQAuthType SSDKAuthorizeTypeBoth
@@ -215,7 +217,7 @@
     #define MOBSSDKWeChatAppID @"wx617c77c82218ea2c"
     //AppSecret
     #define MOBSSDKWeChatAppSecret @"c7253e5289986cf4c4c74d1ccc185fb1"
-    #define MOBSSDKWeChatuniversalLink @"https://ybpre.share2dlink.com/"
+    #define MOBSSDKWeChatuniversalLink @"https://bj2ks.share2dlink.com/"
 #endif
 
 
@@ -915,8 +917,8 @@
 #pragma mark - 中国移动平台配置信息
 
 #ifdef IMPORT_CMCC
-    #define MOBSSDKCMCCAppId @"300011961358"
-    #define MOBSSDKCMCCAppKey @"C3E5F3D7B3E78C5978ADFBF94BC3A9FB"
+    #define MOBSSDKCMCCAppId @"300011936870"//@"300011961358"
+    #define MOBSSDKCMCCAppKey @"610FC6F60177B9558C59B45C6FE47B9C"//@"C3E5F3D7B3E78C5978ADFBF94BC3A9FB"
     #define MOBSSDKCMCCDisplayUI YES
 #endif
 
@@ -934,15 +936,21 @@
 
 #pragma mark - ESurfing
 #ifdef IMPORT_ESurfing
-#define MOBSSDKESurfingAppkey @"8148612606"
-#define MOBSSDKESurfingAppSecret @"mCltrhUqwshFa86egDTs0491ibaAulKA"
-#define MOBSSDKESurfingAppName @"shareSDK"
+#define MOBSSDKESurfingAppkey @"8252014408"//@"8148612606"
+#define MOBSSDKESurfingAppSecret @"bkqJOALOPc2i6V6R5mEjqLyuzrxF8rWD"//@"mCltrhUqwshFa86egDTs0491ibaAulKA"
+#define MOBSSDKESurfingAppName @"天天日记"//@"shareSDK"
 #endif
 
 #pragma mark - 抖音平台配置信息
 #ifdef IMPORT_Douyin
-#define MOBSSDKDouyinAppKey @"aw9ivykfjvi4hpwo"
-#define MOBSSDKDouyinAppSecret @"42b4caa6bda60bd49f05f06d0a4956e1"
+#define MOBSSDKDouyinAppKey @"awycvl19mldccyso"
+#define MOBSSDKDouyinAppSecret @"8793a4dfdc3636cbda0924a3cfbc8424"
+#endif
+
+#pragma mark - TikTok平台配置信息
+#ifdef IMPORT_TikTok
+#define MOBSSDKTikTokAppKey @"aw3vqar8qg1oy91q"
+#define MOBSSDKTikTokAppSecret @"18cf1714c53e9f9c64aec484ca4f2e29"
 #endif
 
 #pragma mark - 企业微信平台配置信息

@@ -166,7 +166,7 @@
                                              description:SHARESDKDEMO_TEXT
                                               webpageUrl:[NSURL URLWithString:SHARESDKDEMO_VIDEO_AD_STRING]
                                             hdThumbImage:@"http://yjmf.bs2dl.yy.com/NzFmYzRiMjUtZjYzMS00ZjEwLWExZTUtMTYyYWJiMWMyNmM5.jpg"//SHARESDKDEMO_IMAGE_LOCALPATH
-                                               miniAppID:@"1108318575"
+                                               miniAppID:@"1109762672"
                                                 miniPath:@"pages/index/index"
                                           miniWebpageUrl:@"www.qq.com"
                                          miniProgramType:3

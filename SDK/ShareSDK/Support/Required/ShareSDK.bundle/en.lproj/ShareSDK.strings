@@ -27,6 +27,7 @@
 "ShareSDK_Error_Facebook_ShareType" = "The sharing status is unknown";
 "ShareSDK_Error_NetVideo" = "No support for online video";
 "ShareSDK_unsupportFeature" = "Unsupported Feature！";
+"ShareSDK_pleaseSelectMoreImage" = "please select more than one image!";
 
 "AUTH_VIEW_ALERT_TITLE" = "Tips";
 "AUTH_VIEW_INPUT_ACCOUNT" = "Input your account";

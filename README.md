@@ -7,12 +7,11 @@
 
 - - - - -
 
-### 当前版本更新（4.2.5） 
-更新说明:[详情](http://bbs.mob.com/thread-26210-1-1.html)  
+### 当前版本更新（4.3.11） 
+更新说明:
 
-1. 优化相关平台Web授权的自动清理缓存  
-2. 更新Facebook平台授权，兼容新版Facebook  
-3. 添加微信平台，用户信息语言区域控制API  
+1.  新增TikTok平台
+2. 对其他平台优化  
 
 [更多版本更新说明](i_update.md)  
 
@@ -82,7 +81,8 @@ pod 'mob_sharesdk/ShareSDKPlatforms/VKontakte'
 pod 'mob_sharesdk/ShareSDKPlatforms/YouDaoNote'
 pod 'mob_sharesdk/ShareSDKPlatforms/ESurfing'
 pod 'mob_sharesdk/ShareSDKPlatforms/FacebookAccount'
- 
+pod 'mob_sharesdk/ShareSDKPlatforms/Douyin'
+pod 'mob_sharesdk/ShareSDKPlatforms/TikTok'
  
 # 使用配置文件分享模块（非必需）
 pod 'mob_sharesdk/ShareSDKConfigFile'

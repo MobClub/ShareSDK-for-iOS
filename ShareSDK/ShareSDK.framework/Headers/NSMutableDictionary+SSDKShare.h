@@ -1106,6 +1106,20 @@
                                          type:(SSDKContentType)type;
 
 /**
+ *  设置TikTok分享参数
+ *
+ *  @param assetLocalIds 分享图片/视频集合, 注：只允许为相册资源且集合传对应的资源localIdentifier，非相册路径
+ *       如相册路径为“assets-library://asset/asset.mp4?id=E7BEC1A7-D60C-4B41-85AB-B8A1606AB338&ext=mp4”，assetLocalIds为@[@"E7BEC1A7-D60C-4B41-85AB-B8A1606AB338"]
+ *  @param type  分享类型，仅支持Image、Video
+ *  @param hashtag 唯一标识
+ *  @param extraInfo 额外的数据
+ */
+- (void)SSDKSetupTikTokParamesByAssetLocalIds:(NSArray<NSString *> *)assetLocalIds
+                                      hashtag:(NSString *)hashtag
+                                    extraInfo:(NSDictionary *)extraInfo
+                                         type:(SSDKContentType)type;
+
+/**
  *  设置企业微信分享参数
  *
  *  @param text                 文本
