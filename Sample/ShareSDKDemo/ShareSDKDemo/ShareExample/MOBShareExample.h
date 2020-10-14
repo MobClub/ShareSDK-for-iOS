@@ -38,6 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
 //口令分享
 - (void)commandShareWithModelView:(UIView *)modelView;
 
+//视频二维码分享
+- (void)videoShareWithModelView:(UIView *)modelView;
 
 //闭环分享
 - (void)shareLink;

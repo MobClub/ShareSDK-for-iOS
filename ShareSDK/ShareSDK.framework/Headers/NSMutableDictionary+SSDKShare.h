@@ -525,25 +525,6 @@
                               boardName:(NSString *)boardName;
 
 
-#pragma mark - 豆瓣
-
-/**
- *  设置豆瓣分享参数
- *
- *  @param text  文本
- *  @param image 分享图片，当type为Image时，可以为UIImage、NSString（图片路径）、NSURL（图片路径）、SSDKImage。当type为WebPage时，只能为网络图片，可以传入NSString（图片路径）、NSURL（图片路径）。
- *  @param title 网页标题，仅在type为WebPage时有效。
- *  @param url   网页链接，仅在type为WebPage时有效。
- *  @param urlDesc 网页描述，仅在type为WebPage时有效。
- *  @param type  分享类型，仅支持Text、Image、WebPage类型
- */
-- (void)SSDKSetupDouBanParamsByText:(NSString *)text
-                              image:(id)image
-                              title:(NSString *)title
-                                url:(NSURL *)url
-                            urlDesc:(NSString *)urlDesc
-                               type:(SSDKContentType)type;
-
 
 #pragma mark - Dropbox
 /**
@@ -805,18 +786,6 @@
                                type:(SSDKContentType)type;
 
 
-#pragma mark - 美拍
-
-/**
- 设置 美拍分享参数
- 
- @param url  相册地址 或 本地图片 视频 路径
- @param type 内容类型 只支持图片 和 视频格式，请确认url和对应的type类型一致
- */
-- (void)SSDKSetupMeiPaiParamsByUrl:(NSURL *)url contentType:(SSDKContentType)type;
-
-- (void)SSDKSetupMeiPaiParamsByUrl:(NSURL *)url type:(SSDKContentType)type __deprecated_msg("Discard form v4.2.0");
-
 #pragma mark - Pocket
 
 /**
@@ -831,7 +800,6 @@
                              title:(NSString *)title
                               tags:(id)tags
                            tweetId:(NSString *)tweetId;
-
 
 #pragma mark - SMS
 
@@ -994,22 +962,6 @@
                                  type:(SSDKContentType)type;
 
 
-#pragma mark - TencentWeibo
-
-/**
- *  设置腾讯微博分享参数
- *
- *  @param text      文本
- *  @param images    分享图片列表,传入参数可以为单张图片信息，也可以为一个NSArray，数组元素可以为UIImage、NSString（图片路径）、NSURL（图片路径）、SSDKImage。如: @"http://www.mob.com/images/logo_black.png" 或 @[@"http://www.mob.com/images/logo_black.png"]
- *  @param latitude  纬度
- *  @param longitude 经度
- *  @param type      分享类型, 仅支持Text、Image类型
- */
-- (void)SSDKSetupTencentWeiboShareParamsByText:(NSString *)text
-                                        images:(id)images
-                                      latitude:(double)latitude
-                                     longitude:(double)longitude
-                                          type:(SSDKContentType)type;
 
 #pragma mark - 邮件 Mail
 /**
@@ -1033,22 +985,6 @@
                     bccRecipients:(NSArray *)bccRecipients
                              type:(SSDKContentType)type;
 
-
-#pragma mark - 人人网
-/**
- *  设置人人网分享参数
- *
- *  @param text    文本
- *  @param image   分享图片，可以为UIImage、NSString（图片路径）、NSURL（图片路径）、SSDKImage，仅在type为Image时有效。
- *  @param url     网页链接，仅在type为WebPage时有效。
- *  @param albumId 相册ID，指定分享的图片要放入哪个相册，默认为nil，仅在type为Image时有效。
- *  @param type    分享类型，仅支持Image、WebPage类型
- */
-- (void)SSDKSetupRenRenParamsByText:(NSString *)text
-                              image:(id)image
-                                url:(NSURL *)url
-                            albumId:(NSString *)albumId
-                               type:(SSDKContentType)type;
 
 #pragma mark - 有道云笔记
 /**
@@ -1212,7 +1148,43 @@
                         stickerRotation:(CGFloat)stickerRotation
                          cameraViewState:(NSInteger)cameraViewState
                                     type:(SSDKContentType)type;
-                                   
+
+#pragma mark - 快手
+
+/** 设置快手分享参数
+
+
+ * @param title 标题
+
+ * @param desc 描述
+
+ * @param linkURL 私信-点击的链接地址
+
+ * @param thumbImage  私信-缩略图（不能超过1M）
+
+ * @param openID 要查看的用户的openID，可选
+
+ * @param receiverOpenID 接收方 openid , 可选，当不填时，快手 APP 会调启选择好友界面来确定接收方
+ 
+ * @param localIdentifier 分享的相册图片/视频的相册标识（此参数和path互斥，如同时存在以localIdentifier为准）
+ 
+ * @param path 分享的相册图片/视频的路径（此参数和localIdentifier互斥，如同时存在以localIdentifier为准）
+ 
+ * @param tags 视频分享-标签数组
+ 
+ * @param type 分享的类型
+*/
+- (void)SSDKSetupKuaiShouShareParamsByTitle:(NSString *)title
+                                       desc:(NSString *)desc
+                                    linkURL:(NSString *)linkURL
+                                 thumbImage:(UIImage *)thumbImage
+                                     openID:(NSString *)openID
+                             receiverOpenID:(NSString *)receiverOpenID
+                            localIdentifier:(NSString *)localIdentifier
+                                       path:(NSString *)path
+                                       tags:(NSArray<NSString *> *)tags
+                                  extraInfo:(NSString *)extraInfo
+                                       type:(SSDKContentType)type;
 
 #pragma mark - Deprecated
 

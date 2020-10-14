@@ -114,22 +114,15 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
                 @(SSDKPlatformTypeAliSocial),
                 @(SSDKPlatformTypeAliSocialTimeline),
                 @(SSDKPlatformTypeDingTalk),
-                @(SSDKPlatformTypeTencentWeibo),
-                @(SSDKPlatformTypeDouBan),
-                @(SSDKPlatformTypeMeiPai),
                 @(SSDKPlatformTypeYinXiang),
                 @(SSDKPlatformTypeYouDaoNote),
                 @(SSDKPlatformTypeMingDao),
                 @(SSDKPlatformTypeKaixin),
-                @(SSDKPlatformTypeRenren),
                 @(SSDKPlatformSubTypeYiXinSession),
                 @(SSDKPlatformSubTypeYiXinTimeline),
                 @(SSDKPlatformSubTypeYiXinFav),
                 @(SSDKPlatformTypeWework),
-                @(SSDKPlatformTypeESurfing),
                 @(SSDKPlatformTypeFacebookAccount),
-                @(SSDKPlatformTypeTencentWeibo),
-                @(SSDKPlatformTypeCMCC),
                 @(SSDKPlatformTypeWatermelonVideo),
                 @(SSDKPlatformTypeKuaiShou)
             ],
@@ -160,21 +153,15 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
             ]];
         mobAllowAuthPlatforms = @[
             @(SSDKPlatformTypeDouyin),
-            @(SSDKPlatformTypeSMS),
             @(SSDKPlatformTypeQQ),
             @(SSDKPlatformTypeWechat),
             @(SSDKPlatformTypeSinaWeibo),
             @(SSDKPlatformTypeDingTalk),
-            @(SSDKPlatformTypeTencentWeibo),
-            @(SSDKPlatformTypeDouBan),
             @(SSDKPlatformTypeYinXiang),
             @(SSDKPlatformTypeYouDaoNote),
             @(SSDKPlatformTypeMingDao),
             @(SSDKPlatformTypeKaixin),
-            @(SSDKPlatformTypeRenren),
             @(SSDKPlatformTypeYiXin),
-            @(SSDKPlatformTypeCMCC),
-            @(SSDKPlatformTypeESurfing),
             @(SSDKPlatformTypeFacebookAccount),
             @(SSDKPlatformTypeWework),
             @(SSDKPlatformTypeAppleAccount),
@@ -196,6 +183,7 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
             @(SSDKPlatformTypeTumblr),
             @(SSDKPlatformTypeTelegram),
             @(SSDKPlatformTypeReddit),
+            @(SSDKPlatformTypeKuaiShou)
         ];
         
         NSMutableDictionary *platformMap = [NSMutableDictionary dictionary];

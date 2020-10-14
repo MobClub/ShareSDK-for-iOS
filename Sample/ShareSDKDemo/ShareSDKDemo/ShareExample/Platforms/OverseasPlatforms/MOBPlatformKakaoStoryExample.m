@@ -46,7 +46,7 @@
     
     [parameters SSDKSetupKakaoStoryParamsByContent:@""
                                              title:nil
-                                            images:UIImageNamed(@"COD13.jpg")
+                                            images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
                                                url:nil
                                         permission:0
                                           sharable:YES
@@ -71,7 +71,7 @@
         [parameters SSDKSetupKaKaoParamsByText:@"Share SDK"
                                         images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
                                          title:@"Share SDK"
-                                           url:[NSURL URLWithString:@"http://www.mob.com"]
+                                           url:[NSURL URLWithString:@"https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_10167272897890802832%22%7D&n_type=0&p_from=1"]
                                     permission:nil
                                    enableShare:YES
                                      imageSize:CGSizeZero

@@ -32,6 +32,13 @@
 - (void)ISSEWillAlertCommand:(NSDictionary *)parameters error:(NSError *)error;
 
 /**
+即将弹出视频信息弹框
+
+@param parameters 视频信息参数
+*/
+- (void)ISSEWillAlertVideoInfo:(NSDictionary *)parameters;
+
+/**
  即将进行场景还原(注意: 一旦实现该方法,请务必执行restoreHandler)
  
  @param scene 场景参数

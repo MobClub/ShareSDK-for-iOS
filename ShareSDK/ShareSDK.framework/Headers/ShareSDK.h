@@ -17,8 +17,7 @@
 #import "SSDKContentEntity.h"
 #import "SSDKAuthViewStyle.h"
 #import "NSMutableDictionary+SSDKInit.h" //Deprecated
-
-
+#import "SSDKShareVideoModel.h"
 /**
  错误码
  
@@ -110,6 +109,17 @@
             parameters:(NSMutableDictionary *)parameters
         onStateChanged:(SSDKShareStateChangedHandler)stateChangedHandler;
 
+/**
+ 以系统分享的样式分享内容(目前该方法为了解决Twitter分享时的授权权限问题)
+ 
+ @param platformType 平台类型
+ @param parameters 分享参数
+ @param stateChangedHandler 状态变更回调处理
+ @return 会话
+ */
++ (SSDKSession *)shareByActivityViewController:(SSDKPlatformType)platformType
+            parameters:(NSMutableDictionary *)parameters
+        onStateChanged:(SSDKShareStateChangedHandler)stateChangedHandler;
 
 #pragma mark - Deprecated
 

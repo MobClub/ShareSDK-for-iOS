@@ -43,9 +43,6 @@
         [platformsRegister setupAliSocialWithAppId:MOBSSDKAliPayAppID];
 #endif
         
-#ifdef IMPORT_MeiPai
-        [platformsRegister setupMeiPaiWithAppkey:MOBSSDKMeiPaiAppKey];
-#endif
         
 #ifdef IMPORT_DingTalk
         [platformsRegister setupDingTalkWithAppId:MOBSSDKDingTalkAppId];
@@ -53,14 +50,6 @@
         
 #ifdef IMPORT_DingTalkAuth
         [platformsRegister setupDingTalkAuthWithAppId:MOBSSDKDingTalkAuthAppId appSecret:MOBSSDKDingTalkAuthAppSecret redirectUrl:MOBSSDKDingTalkAuthRedirectUri];
-#endif
-        
-#ifdef IMPORT_DouBan
-        [platformsRegister setupDouBanWithApikey:MOBSSDKDouBanApiKey appSecret:MOBSSDKDouBanSecret redirectUrl:MOBSSDKDouBanRedirectUri];
-#endif
-        
-#ifdef IMPORT_TencentWeibo
-        [platformsRegister setupTencentWeiboWithAppkey:MOBSSDKTencentWeiboAppKey appSecret:MOBSSDKTencentWeiboAppSecret redirectUrl:MOBSSDKTencentWeiboRedirectUri];
 #endif
         
 #ifdef IMPORT_YinXiang
@@ -77,10 +66,6 @@
         
 #ifdef IMPORT_Kaixin
         [platformsRegister setupKaiXinByApiKey:MOBSSDKKaiXinApiKey secretKey:MOBSSDKKaiXinSecretKey redirectUrl:MOBSSDKKaiXinRedirectUri];
-#endif
-        
-#ifdef IMPORT_Renren
-        [platformsRegister setupRenRenWithAppId:MOBSSDKRenrenAppId appKey:MOBSSDKRenrenAppKey secretKey:MOBSSDKRenrenSecretKey authType:MOBSSDKRenrenAuthType];
 #endif
         
 #if (defined IMPORT_SUB_YiXinSession) || (defined IMPORT_SUB_YiXinTimeline) || (defined IMPORT_SUB_YiXinFav)
@@ -167,10 +152,7 @@
 #ifdef IMPORT_SMS
         [platformsRegister setupSMSOpenCountryList:MOBSSDKSMSOpenCountryList];
 #endif
-        
-#ifdef IMPORT_CMCC
-        [platformsRegister setupCMCCByAppId:MOBSSDKCMCCAppId appKey:MOBSSDKCMCCAppKey displayUI:MOBSSDKCMCCDisplayUI];
-#endif
+
         
 #ifdef IMPORT_Telegram
         [platformsRegister setupTelegramByBotToken:MOBSSDKTelegramBotToken botDomain:MOBSSDKTelegramBotDomain];
@@ -180,15 +162,15 @@
         [platformsRegister setupRedditByAppKey:MOBSSDKRedditAppKey redirectUri:MOBSSDKRedditRedirectUri];
 #endif
         
-#ifdef IMPORT_ESurfing
-        [platformsRegister setupESurfingByAppKey:MOBSSDKESurfingAppkey appSecret:MOBSSDKESurfingAppSecret appName:MOBSSDKESurfingAppName];
-#endif
-        
 #ifdef IMPORT_Douyin
         [platformsRegister setupDouyinByAppKey:MOBSSDKDouyinAppKey appSecret:MOBSSDKDouyinAppSecret];
 #endif
 #ifdef IMPORT_TikTok
         [platformsRegister setupTikTokByAppKey:MOBSSDKTikTokAppKey appSecret:MOBSSDKTikTokAppSecret];
+#endif
+        
+#ifdef IMPORT_KuaiShou
+        [platformsRegister setupKuaiShouWithAppId:MOBSSDKKuaiShouAppKey appSecret:MOBSSDKKuaiShouAppSecret universalLink:MOBSSDKKuaiShouUniversalLink delegate:[[UIApplication sharedApplication]delegate]];
 #endif
         
 #ifdef IMPORT_WeWork

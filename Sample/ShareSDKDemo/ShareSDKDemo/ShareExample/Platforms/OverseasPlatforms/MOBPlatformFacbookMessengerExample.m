@@ -26,7 +26,7 @@
     [parameters SSDKSetupFacebookMessengerParamsByTitle:@"Share SDK"
                                                     url:[NSURL URLWithString:@"http://www.mob.com"]
                                               quoteText:@"Share SDK Link Desc"
-                                                 images:@"http://weixintest.ihk.cn/ihkwx_upload/heji/material/img/20160414/1460616012469.jpg"
+                                                 images:@"http://qzonestyle.gtimg.cn/qzone/app/weishi/client/testimage/1024/1.jpg"
                                                     gif:nil
                                                   audio:nil
                                                   video:nil
@@ -50,7 +50,7 @@
     [parameters SSDKSetupFacebookMessengerParamsByTitle:@"Share SDK"
                                                     url:[NSURL URLWithString:@"http://www.mob.com"]
                                               quoteText:@"Share SDK Link Desc"
-                                                 images:@"http://weixintest.ihk.cn/ihkwx_upload/heji/material/img/20160414/1460616012469.jpg"
+                                                 images:@"http://qzonestyle.gtimg.cn/qzone/app/weishi/client/testimage/1024/1.jpg"
                                                     gif:nil
                                                   audio:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"music" ofType:@"mp3"]]
                                                   video:nil
@@ -74,7 +74,7 @@
     [parameters SSDKSetupFacebookMessengerParamsByTitle:@"Share SDK"
                                                     url:[NSURL URLWithString:@"http://www.mob.com"]
                                               quoteText:@"Share SDK Link Desc"
-                                                 images:@"http://weixintest.ihk.cn/ihkwx_upload/heji/material/img/20160414/1460616012469.jpg"
+                                                 images:@"http://qzonestyle.gtimg.cn/qzone/app/weishi/client/testimage/1024/1.jpg"
                                                     gif:nil
                                                   audio:nil
                                                   video:nil
@@ -99,7 +99,7 @@
     [parameters SSDKSetupFacebookMessengerParamsByTitle:@"Share SDK"
                                                     url:[NSURL URLWithString:@"http://www.mob.com"]
                                               quoteText:@"Share SDK Link Desc"
-                                                 images:@"http://weixintest.ihk.cn/ihkwx_upload/heji/material/img/20160414/1460616012469.jpg"
+                                                 images:@"http://qzonestyle.gtimg.cn/qzone/app/weishi/client/testimage/1024/1.jpg"
                                                     gif:nil
                                                   audio:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"music" ofType:@"mp3"]]
                                                   video:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"]]

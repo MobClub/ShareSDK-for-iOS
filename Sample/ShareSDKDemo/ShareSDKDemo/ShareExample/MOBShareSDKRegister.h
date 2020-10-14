@@ -25,18 +25,13 @@
 #define IMPORT_AliPaySocialTimeline  //注释此行则 不开启【 支付宝朋友圈 】平台
 #define IMPORT_DingTalk //注释此行则 不开启【 钉钉 】平台 分享功能
 #define IMPORT_DingTalkAuth //注释此行则 不开启【 钉钉 】平台 授权功能
-#define IMPORT_TencentWeibo //注释此行则 不开启【 腾讯微博 】平台
-#define IMPORT_DouBan //注释此行则 不开启【 豆瓣 】平台
-#define IMPORT_MeiPai //注释此行则 不开启【 美拍 】平台
 #define IMPORT_YinXiang //注释此行则 不开启【 印象笔记 】平台
 #define IMPORT_YouDaoNote //注释此行则 不开启【 有道云笔记 】平台
 #define IMPORT_Mingdao //注释此行则 不开启【 明道 】平台
 #define IMPORT_Kaixin //注释此行则 不开启【 开心网 】平台
-#define IMPORT_Renren //注释此行则 不开启【 人人网 】平台
 #define IMPORT_SUB_YiXinSession //注释此行则 不开启【 易信好友 】平台
 #define IMPORT_SUB_YiXinTimeline //注释此行则 不开启【 易信朋友圈 】平台
 #define IMPORT_SUB_YiXinFav //注释此行则 不开启【 易信收藏 】平台
-#define IMPORT_CMCC//注释此行则 不开启【 中国移动 】平台
 #define IMPORT_Douyin//注释此行则 不开启【 抖音 】平台
 
 #define IMPORT_WeWork//注释此行则 不开启【 企业微信 】平台
@@ -64,8 +59,8 @@
 #define IMPORT_Tumblr //注释此行则 不开启【 Tumblr 】平台
 #define IMPORT_Telegram //注释此行则 不开启【 Telegram 】平台
 #define IMPORT_Reddit //注释此行则 不开启【 Reddit 】平台
-#define IMPORT_ESurfing //注释此行则 不开启【 天翼 】平台
 #define IMPORT_TikTok //注释此行则 不开启【 TikTOk 】平台
+#define IMPORT_KuaiShou //注释此行则 不开启【 快手 】平台
 
 //系统平台
 #define IMPORT_SMS //注释此行则 不开启【 SMS 】平台
@@ -246,34 +241,6 @@
 #endif
 
 
-#pragma mark - 美拍平台配置信息
-/*
-     info.plist 中需要设置 白名单 LSApplicationQueriesSchemes
-     <string>mtmv</string>
-     <string>mpsharesdk10</string>
-     <string>mpsharesdk11</string>
-     
-     info.plist 中需要设置 URL Schemes
-     规则 mp+APPID 例：mp1089867596
-     
-     info.plist 中需要设置 相册权限
-     <key>NSPhotoLibraryUsageDescription</key>
-     <string>从手机相册中选择</string>
-     
-     授权：无
-     
-     分享：仅客户端 本地图片 相册图片 本地视频 相册视频
-     
-     分享详例：MOBMeipaiViewController
- 
-     开放平台地址： http://open.meipai.com
- */
-#ifdef IMPORT_MeiPai
-    //AppKey
-    #define MOBSSDKMeiPaiAppKey @"1089867639"
-#endif
-
-
 #pragma mark - 钉钉平台配置信息
 /*
      info.plist 中需要设置 白名单 LSApplicationQueriesSchemes
@@ -303,40 +270,6 @@
     #define MOBSSDKDingTalkAuthAppId @"dingoacafcjgm0etysbv6r"
     #define MOBSSDKDingTalkAuthAppSecret @"AMDCSN0sgQt2Gzx_xFU0og9cE_P9fDTumRUg3nYdxKrqL-2bgVIlM6Xj4sRzZMTC"
     #define MOBSSDKDingTalkAuthRedirectUri @"https://www.mob.com/sharesdk/dingding"
-#endif
-
-#pragma mark - 腾讯微博配置信息
-/*
-     授权：应用内web
-     
-     分享：应用内 文字 图片
-     
-     分享详例：MOBTencentWeiboViewController
- */
-#ifdef IMPORT_TencentWeibo
-    //AppKey
-    #define MOBSSDKTencentWeiboAppKey @"801307650"
-    //AppSecret
-    #define MOBSSDKTencentWeiboAppSecret @"ae36f4ee3946e1cbb98d6965b0b2ff5c"
-    //RedirectUri
-    #define MOBSSDKTencentWeiboRedirectUri @"http://www.sharesdk.cn"
-#endif
-
-#pragma mark - 豆瓣配置信息
-/*
- 授权：应用内web
- 
- 分享：应用内 文字 图片
- 
- 分享详例：MOBDoubanViewController
- */
-#ifdef IMPORT_DouBan
-    //AppKey
-    #define MOBSSDKDouBanApiKey @"02e2cbe5ca06de5908a863b15e149b0b"
-    //AppSecret
-    #define MOBSSDKDouBanSecret @"9f1e7b4f71304f2f"
-    //RedirectUri
-    #define MOBSSDKDouBanRedirectUri @"http://www.sharesdk.cn"
 #endif
 
 
@@ -421,28 +354,6 @@
     #define MOBSSDKKaiXinSecretKey @"da32179d859c016169f66d90b6db2a23"
     //RedirectUri
     #define MOBSSDKKaiXinRedirectUri @"http://www.sharesdk.cn/"
-#endif
-
-
-#pragma mark - 人人网 平台配置信息
-/*
-     授权：应用内web
-     
-     分享：链接
-     
-     分享详例：MOBRenrenViewController
- 
-     开放平台地址： http://dev.renren.com
- */
-#ifdef IMPORT_Renren
-    //appId
-    #define MOBSSDKRenrenAppId @"226427"
-    //appKey
-    #define MOBSSDKRenrenAppKey @"fc5b8aed373c4c27a05b712acba0f8c3"
-    //secretKey
-    #define MOBSSDKRenrenSecretKey @"f29df781abdd4f49beca5a2194676ca4"
-    //AuthType 授权优先类型 web sso both
-    #define MOBSSDKRenrenAuthType SSDKAuthorizeTypeBoth
 #endif
 
 #pragma mark - 易信平台配置信息
@@ -588,11 +499,11 @@
  */
 #ifdef IMPORT_Instagram
     //OLD
-    #define MOBSSDKInstagramClientID @"ff68e3216b4f4f989121aa1c2962d058"
+    #define MOBSSDKInstagramClientID @"1145188725813939"
     //ClientSecret
-    #define MOBSSDKInstagramClientSecret @"1b2e82f110264869b3505c3fe34e31a1"
+    #define MOBSSDKInstagramClientSecret @"256191f3abb381a9d481f6f9bbaef179"
     //redirectUri
-    #define MOBSSDKInstagramRedirectUri @"http://sharesdk.cn"
+    #define MOBSSDKInstagramRedirectUri @"https://www.mob.com/"
 
     //NEW
     //ClientID
@@ -914,13 +825,6 @@
     #define MOBSSDKTumblrCallbackUrl @"http://sharesdk.cn"
 #endif
 
-#pragma mark - 中国移动平台配置信息
-
-#ifdef IMPORT_CMCC
-    #define MOBSSDKCMCCAppId @"300011936870"//@"300011961358"
-    #define MOBSSDKCMCCAppKey @"610FC6F60177B9558C59B45C6FE47B9C"//@"C3E5F3D7B3E78C5978ADFBF94BC3A9FB"
-    #define MOBSSDKCMCCDisplayUI YES
-#endif
 
 #pragma mark - reddit
 #ifdef IMPORT_Reddit
@@ -934,13 +838,6 @@
 #define MOBSSDKTelegramBotDomain @"https://www.mob.com"
 #endif
 
-#pragma mark - ESurfing
-#ifdef IMPORT_ESurfing
-#define MOBSSDKESurfingAppkey @"8252014408"//@"8148612606"
-#define MOBSSDKESurfingAppSecret @"bkqJOALOPc2i6V6R5mEjqLyuzrxF8rWD"//@"mCltrhUqwshFa86egDTs0491ibaAulKA"
-#define MOBSSDKESurfingAppName @"天天日记"//@"shareSDK"
-#endif
-
 #pragma mark - 抖音平台配置信息
 #ifdef IMPORT_Douyin
 #define MOBSSDKDouyinAppKey @"awycvl19mldccyso"
@@ -951,6 +848,13 @@
 #ifdef IMPORT_TikTok
 #define MOBSSDKTikTokAppKey @"aw3vqar8qg1oy91q"
 #define MOBSSDKTikTokAppSecret @"18cf1714c53e9f9c64aec484ca4f2e29"
+#endif
+
+#pragma mark - 快手平台配置信息
+#ifdef IMPORT_KuaiShou
+#define MOBSSDKKuaiShouAppKey @"ks705657770555308030"
+#define MOBSSDKKuaiShouAppSecret @"RQ17enXUOioeoDMrwk3j2Q"
+#define MOBSSDKKuaiShouUniversalLink @"https://bj2ks.share2dlink.com/"
 #endif
 
 #pragma mark - 企业微信平台配置信息
@@ -966,7 +870,7 @@
 #ifdef IMPORT_Snapchat
 #define MOBSSDKSnapchatClientId @"dc8e6068-0578-41b8-8392-4da009519725"
 #define MOBSSDKSnapchatClientSecret @""
-#define MOBSSDKSnapchatRedirectUrl @"ssdkmoba0b0c0d0://mob"
+#define MOBSSDKSnapchatRedirectUrl @"ssdk2c574691c6986://mob"
 #endif
 
 #ifdef IMPORT_Oasis

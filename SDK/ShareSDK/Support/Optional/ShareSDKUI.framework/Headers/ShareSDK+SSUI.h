@@ -43,6 +43,19 @@
             onStateChanged:(SSUIShareStateChangedHandler)stateChangedHandler;
 
 /**
+  显示分享菜单（此方式只通过openurl跳转，不进行分享参数设置）
+ 
+  @param view view
+  @param items items
+  @param configuration 分享菜单的设置
+
+  */
++ (id)showShareActionSheet:(UIView *)view
+       customItems:(NSArray *)items
+        sheetConfiguration:(SSUIShareSheetConfiguration *)config
+            onStateChanged:(SSUIShareStateChangedHandler)stateChangedHandler;
+
+/**
  设置分享菜单点击后的弹出的编辑界面配置
 
  @param sheet 需要设置的分享菜单

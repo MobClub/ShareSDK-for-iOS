@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>TikTokAppID</key>
-	<string>aw3vqar8qg1oy91q</string>
 	<key>AccountKitClientToken</key>
 	<string>c30c08723aa8c48fbd5e01d1c3103891</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -81,16 +79,6 @@
 			<array>
 				<string>tencent1110451818</string>
 				<string>QQ05FB8B52</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>meipai</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>mp1089867639</string>
 			</array>
 		</dict>
 		<dict>
@@ -206,16 +194,6 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>renren</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>rm226427$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>ak1412473428822331</string>
@@ -268,7 +246,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>ssdkmoba0b0c0d0</string>
+				<string>ssdk2c574691c6986</string>
 			</array>
 		</dict>
 		<dict>
@@ -276,6 +254,16 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array/>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>kuaishou</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ks705657770555308030</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
@@ -288,6 +276,18 @@
 	<string>9c17eb03317e0e627ec95a400f5785fb</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>ksnebula</string>
+		<string>KwaiSDKMediaV2</string>
+		<string>kwai.clip.multi</string>
+		<string>KwaiBundleToken</string>
+		<string>kwaiopenapi</string>
+		<string>kwaiAuth2</string>
+		<string>kwai</string>
+		<string>kakao3rdauth</string>
+		<string>kakaostory-2.9.0</string>
+		<string>instagram-capture</string>
+		<string>instagram</string>
+		<string>instagram-stories</string>
 		<string>KwaiAuth2</string>
 		<string>snssdk32</string>
 		<string>bitmoji-sdk</string>
@@ -377,9 +377,6 @@
 		<string>twitterauth</string>
 		<string>tg</string>
 		<string>telegram</string>
-		<string>renrenapi</string>
-		<string>renrenios</string>
-		<string>renreniphone</string>
 		<string>douyinsharesdk</string>
 		<string>douyinopensdk</string>
 		<string>tiktokopensdk</string>
@@ -396,7 +393,7 @@
 		<key>ChannelID</key>
 		<string>1639219273</string>
 		<key>UniversalLink</key>
-		<string>https://ybpre.share2dlink.com/line-auth/</string>
+		<string>https://bj2ks.share2dlink.com/line-auth</string>
 	</dict>
 	<key>MOBAppKey</key>
 	<string>2c574691c6986</string>
@@ -418,13 +415,15 @@
 	<key>SCSDKClientId</key>
 	<string>dc8e6068-0578-41b8-8392-4da009519725</string>
 	<key>SCSDKRedirectUrl</key>
-	<string>ssdkmoba0b0c0d0://mob</string>
+	<string>ssdk2c574691c6986://mob</string>
 	<key>SCSDKScopes</key>
 	<array>
 		<string>https://auth.snapchat.com/oauth2/api/user.external_id</string>
 		<string>https://auth.snapchat.com/oauth2/api/user.display_name</string>
 		<string>https://auth.snapchat.com/oauth2/api/user.bitmoji.avatar</string>
 	</array>
+	<key>TikTokAppID</key>
+	<string>aw3vqar8qg1oy91q</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

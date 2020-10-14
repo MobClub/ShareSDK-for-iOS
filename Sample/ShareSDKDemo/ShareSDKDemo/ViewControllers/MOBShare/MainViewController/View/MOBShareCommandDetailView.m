@@ -8,7 +8,7 @@
 
 #import "MOBShareCommandDetailView.h"
 #import "MOBAboutMobLinkViewController.h"
-
+#import "MOBPolicyWebViewController.h"
 @interface MOBShareCommandDetailView ()
 
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
@@ -24,7 +24,14 @@
 @property (nonatomic, strong) UILabel *bottomLabel;
 
 @property (nonatomic, strong) UILabel *jumpLabel;
+//视频相关
+@property (nonatomic, strong) UIImageView *videoCoverImg;
 
+@property (nonatomic, strong) UIView *videoCoverView;
+
+@property (nonatomic, strong) UIImageView *videoPlayImg;
+
+@property (nonatomic, strong) NSDictionary *parameters;
 @end
 
 @implementation MOBShareCommandDetailView
@@ -50,13 +57,39 @@
     [self jumpLabel];
 }
 
+//口令弹窗
 - (void)showWithParams:(NSDictionary *)parameters{
     [[UIApplication sharedApplication].windows[0] addSubview:self];
     if(parameters){
-        self.titleLabel.text = [NSString stringWithFormat:@"%@  给你分享了",[parameters valueForKey:@"account"]];
-        self.detailLabel.text = [parameters valueForKey:@"detail"];
+        self.titleLabel.text = [NSString stringWithFormat:@"%@  给你分享了",[parameters valueForKey:@"shareAccount"]];
+        self.detailLabel.text = [parameters valueForKey:@"shareTitle"];
+        self.parameters = parameters;
     }
 }
+
+////视频弹窗
+//- (void)showVideoDetailWithParams:(NSDictionary *)parameters{
+//    [[UIApplication sharedApplication].windows[0] addSubview:self];
+//    self.titleLabel.hidden = YES;
+//    [self.contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.centerY.mas_offset(0);
+//        make.size.mas_offset(CGSizeMake(265, 275));
+//    }];
+//    [self.detailLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_offset(134);
+//        make.left.mas_offset(21);
+//        make.right.mas_offset(-21);
+//    }];
+//    [self.detailButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.mas_offset(-40);
+//        make.centerX.mas_offset(0);
+//        make.size.mas_offset(CGSizeMake(128, 40));
+//    }];
+//    [self videoCoverImg];
+//    [self videoCoverView];
+//    [self videoPlayImg];
+//    self.videoCoverImg.image = [UIImage imageNamed:(nonnull NSString *)];
+//}
 
 - (void)shadowTouchAction{
     CGPoint point = [self.tap locationInView:self];
@@ -68,8 +101,16 @@
 
 - (void)detailAction{
     [self removeView];
-    MOBAboutMobLinkViewController *vc = [MOBAboutMobLinkViewController new];
-    vc.showType(SSDKControllerShowTypeNavigationVC).push();
+    if(self.parameters && [self.parameters objectForKey:@"shareVideoUrl"]){
+        NSURL *url = [NSURL URLWithString:[self.parameters objectForKey:@"shareVideoUrl"]];
+        MOBPolicyWebViewController *webVC = [[MOBPolicyWebViewController alloc]init];
+        webVC.extraInfo = [NSMutableDictionary dictionaryWithDictionary:@{@"url":url}];
+        webVC.showType(SSDKControllerShowTypeNavigationVC).push();
+    }else{
+        MOBAboutMobLinkViewController *vc = [MOBAboutMobLinkViewController new];
+        vc.showType(SSDKControllerShowTypeNavigationVC).push();
+    }
+
 }
 
 - (void)removeView{
@@ -144,7 +185,7 @@
             _detailButton = view;
         })
         .makeMasonry(^(MASConstraintMaker * _Nonnull make) {
-            make.top.mas_offset(133);
+            make.bottom.mas_offset(-40);
             make.centerX.mas_offset(0);
             make.size.mas_offset(CGSizeMake(128, 40));
         });
@@ -193,6 +234,58 @@
         });
     }
     return _jumpLabel;
+}
+
+#pragma mark - 视频
+- (UIImageView *)videoCoverImg {
+    if(!_videoCoverImg){
+        UIImageViewModelCreate()
+        .addToSuperView(self.contentView)
+        .cornerRadius(5)
+        .masksToBounds(YES)
+        .contentMode(UIViewContentModeScaleAspectFit)
+        .assignTo(^(__kindof UIView * _Nonnull view) {
+            _videoCoverImg = view;
+        })
+        .makeMasonry(^(MASConstraintMaker * _Nonnull make) {
+            make.centerX.mas_offset(0);
+            make.top.mas_offset(24);
+            make.width.mas_equalTo(156);
+            make.height.mas_equalTo(100);
+        });
+    }
+    return _videoCoverImg;
+}
+
+- (UIView *)videoCoverView {
+    if(!_videoCoverView){
+        UIViewModelCreate()
+        .addToSuperView(self.videoCoverImg)
+        .assignTo(^(__kindof UIView * _Nonnull view) {
+            _videoCoverView = view;
+        })
+        .backgroundColor([UIColor colorWithWhite:0 alpha:0.4])
+        .makeMasonry(^(MASConstraintMaker * _Nonnull make) {
+            make.edges.mas_offset(0);
+        });
+    }
+    return _videoCoverView;;
+}
+
+- (UIImageView *)videoPlayImg {
+    if(!_videoPlayImg){
+        UIImageViewModelCreate()
+        .addToSuperView(self.videoCoverView)
+        .assignTo(^(__kindof UIView * _Nonnull view) {
+            _videoPlayImg = view;
+        })
+        .image([UIImage imageNamed:@"play"])
+        .makeMasonry(^(MASConstraintMaker * _Nonnull make) {
+            make.centerX.centerY.mas_offset(0);
+            make.size.mas_equalTo(CGSizeMake(20, 22));
+        });
+    }
+    return _videoPlayImg;;
 }
 
 @end

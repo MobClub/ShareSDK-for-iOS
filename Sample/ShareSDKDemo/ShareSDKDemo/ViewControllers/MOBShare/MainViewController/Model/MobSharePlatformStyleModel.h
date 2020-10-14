@@ -19,7 +19,8 @@ typedef NS_ENUM(NSUInteger, MobSharePlatformStyle) {
     MobSharePlatformStyleShotShare,
     MobSharePlatformStyleShakeShare,
     MobSharePlatformStyleLinkCardShare,
-    MobSharePlatformStyleCommandShare
+    MobSharePlatformStyleCommandShare,
+    MobSharePlatformStyleVideoShare
 };
 
 @interface MobSharePlatformStyleBaseModel : NSObject

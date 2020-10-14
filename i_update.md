@@ -2,6 +2,15 @@
 
 [论坛发版列表](http://bbs.mob.com/forum.php?mod=forumdisplay&fid=2&filter=typeid&typeid=36)  
 
+
+### v4.3.13[详情]
+>1、新增快手SDK分享
+>2、对其他平台优化 
+
+### v4.3.12[详情]
+>1、新增视频二维码分享功能
+>2、对其他平台优化  
+
 ### v4.3.11[详情](http://bbs.mob.com/thread-26210-1-1.html)  
 >1、新增TikTok平台
 >2、对其他平台优化  

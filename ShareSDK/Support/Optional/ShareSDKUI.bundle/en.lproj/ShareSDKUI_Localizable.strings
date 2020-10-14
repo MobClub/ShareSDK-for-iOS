@@ -8,10 +8,7 @@
 
 "ShareType_0" = "Unknown";
 "ShareType_1" = "Sina Weibo";
-"ShareType_2" = "Tencent Weibo";
-"ShareType_5" = "Douban";
 "ShareType_6" = "QZone";
-"ShareType_7" = "Renren";
 "ShareType_8" = "Kaixin";
 "ShareType_9" = "Pengyou";
 "ShareType_10" = "Facebook";
@@ -52,10 +49,7 @@
 "ShareType_51" = "AliSocial moments";
 "ShareType_52" = "DingTalk";
 "ShareType_53" = "YouTube";
-"ShareType_54" = "Meipai";
-"ShareType_55" = "CMCC";
 "ShareType_56" = "Reddit";
-"ShareType_57" = "ESurfing";
 "ShareType_58" = "FacebookAccount";
 "ShareType_59" = "Douyin";
 "ShareType_60" = "Wework";

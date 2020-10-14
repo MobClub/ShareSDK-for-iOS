@@ -22,5 +22,6 @@
 #import <ShareSDK/SSDKAuthViewStyle.h>
 #import <ShareSDK/SSDKUserQueryCondition.h>
 #import <ShareSDK/NSMutableDictionary+SSDKInit.h>
+#import <ShareSDK/SSDKShareVideoModel.h>
 
 #endif /* ShareSDKHeader_h */

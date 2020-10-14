@@ -24,6 +24,11 @@
  */
 + (BOOL)isClientInstalled:(SSDKPlatformType)platformType;
 
+
+/// openurl的方式打开APP
+/// @param platformType 平台类型
++ (void)openAppUrl:(SSDKPlatformType)platformType;
+
 /**
  *  获取当前授权用户
  *
@@ -114,4 +119,14 @@
  *  @param completeHandler 完成回调处理
  */
 + (void)getCommandText:(NSDictionary *_Nullable)paramters withComplete:(void (^_Nullable) (NSString * _Nullable text, NSError *_Nullable error, void (^ _Nullable complete)(NSString * _Nullable text)))completeHandler;
+
+/**
+ 视频分享功能
+ @param videoUrl 视频网络地址
+ @param model 参数模型
+ @param completeHandler 回调
+ */
+
+/// 务必先把视频下载到本地，再进行分享！！！
++ (void)shareVideoWithUrl:(NSURL *_Nullable)videoUrl model:(SSDKShareVideoModel *)model withComplete:(void (^_Nullable)(BOOL success, NSError *_Nullable error))completeHandler;
 @end

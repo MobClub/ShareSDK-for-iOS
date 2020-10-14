@@ -228,9 +228,6 @@
 //            [platformsRegister setupRedditByAppKey:MOBSSDKRedditAppKey redirectUri:MOBSSDKRedditRedirectUri];
 //    #endif
 //
-//    #ifdef IMPORT_ESurfing
-//            [platformsRegister setupESurfingByAppKey:MOBSSDKESurfingAppkey appSecret:MOBSSDKESurfingAppSecret appName:MOBSSDKESurfingAppName];
-//    #endif
 //
 //    #ifdef IMPORT_Douyin
 //            [platformsRegister setupDouyinByAppKey:MOBSSDKDouyinAppKey appSecret:MOBSSDKDouyinAppSecret];
@@ -239,7 +236,13 @@
 //            [platformsRegister setupWeWorkByAppKey:MOBSSDKWeWorkAppKey corpId:MOBSSDKWeWorkCorpId agentId:MOBSSDKWeWorkAgentId appSecret:MOBSSDKWeWorkAppSecret];
 //    #endif
 //
+//    #ifdef IMPORT_SMS
+//            [platformsRegister setupSMSOpenCountryList:MOBSSDKSMSOpenCountryList];
+//    #endif
 //
+//    #ifdef IMPORT_CMCC
+//            [platformsRegister setupCMCCByAppId:MOBSSDKCMCCAppId appKey:MOBSSDKCMCCAppKey displayUI:MOBSSDKCMCCDisplayUI];
+//    #endif
 //
 //    #ifdef IMPORT_Oasis
 //            [platformsRegister setOasisByAppkey:MOBSSDKOasisAppKey];
@@ -316,6 +319,35 @@
         if ([cacheKey boolValue]) {
             MOBShareCommandDetailView *detailView = [[MOBShareCommandDetailView alloc]initWithFrame:[UIApplication sharedApplication].keyWindow.bounds];
             [detailView showWithParams:parameters];
+        }
+    }
+    
+}
+
+/**
+ 视频分享代理回调
+ */
+- (void)ISSEWillAlertVideoInfo:(NSDictionary *)parameters{
+    if(parameters){
+        if([[UIApplication sharedApplication].keyWindow.rootViewController.clasName isEqualToString:@"SSDKScenePackageRootViewController"] && [[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController isKindOfClass:[UIAlertController class]]){
+            return;
+        }
+        if([[UIApplication sharedApplication].keyWindow.rootViewController.clasName isEqualToString:@"MOBTabBarController"] && [UIApplication sharedApplication].windows.count > 2){
+            return;
+        }
+        self.parameters = parameters;
+    
+        id cacheKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"kMOBPolicyManagerSaveKey"];
+        if ([cacheKey boolValue]) {
+            NSString *str = [parameters yy_modelToJSONString];
+            //判断是否已经解析过此二维码,如果解析过就不再弹框
+            NSString *cacheStr = [[NSUserDefaults standardUserDefaults]objectForKey:@"videoParams"];
+            if(![cacheStr isEqualToString:str]){
+                [[NSUserDefaults standardUserDefaults]setObject:str forKey:@"videoParams"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+                MOBShareCommandDetailView *detailView = [[MOBShareCommandDetailView alloc]initWithFrame:[UIApplication sharedApplication].keyWindow.bounds];
+                [detailView showWithParams:parameters];
+            }
         }
     }
     

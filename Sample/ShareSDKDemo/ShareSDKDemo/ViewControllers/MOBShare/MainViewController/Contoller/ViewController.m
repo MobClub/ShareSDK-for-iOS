@@ -96,6 +96,11 @@
                 [[MOBShareExample defaultExample] commandShareWithModelView:model.view];
             }
                 break;
+            //视频二维码分享
+            case MobSharePlatformStyleVideoShare:{
+                [[MOBShareExample defaultExample] videoShareWithModelView:model.view];
+            }
+                break;
             default:
                 break;
         }

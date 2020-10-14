@@ -149,28 +149,6 @@
 		<key>AppKey</key>
 		<string>app_key</string>
 	</dict>
-	<key>TencentWeibo</key>
-	<dict>
-		<key>PlatformID</key>
-		<integer>2</integer>
-		<key>RedirectUri</key>
-		<string>redirect_uri</string>
-		<key>AppSecret</key>
-		<string>app_secret</string>
-		<key>AppKey</key>
-		<string>app_key</string>
-	</dict>
-	<key>Douban</key>
-	<dict>
-		<key>PlatformID</key>
-		<integer>5</integer>
-		<key>ApiKey</key>
-		<string>api_key</string>
-		<key>Secret</key>
-		<string>secret</string>
-		<key>RedirectUri</key>
-		<string>redirect_uri</string>
-	</dict>
 	<key>QZone</key>
 	<dict>
 		<key>PlatformID</key>
@@ -181,19 +159,6 @@
 		<string>app_id</string>
 		<key>AppKey</key>
 		<string>app_key</string>
-	</dict>
-	<key>Renren</key>
-	<dict>
-		<key>PlatformID</key>
-		<integer>7</integer>
-		<key>AppId</key>
-		<string>app_id</string>
-		<key>ApiKey</key>
-		<string>app_key</string>
-		<key>SecretKey</key>
-		<string>secret_key</string>
-		<key>AuthType</key>
-		<string>auth_type</string>
 	</dict>
 	<key>KaiXin</key>
 	<dict>

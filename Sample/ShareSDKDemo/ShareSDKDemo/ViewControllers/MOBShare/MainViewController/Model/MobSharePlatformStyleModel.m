@@ -45,6 +45,7 @@
     [array addObject:[MobSharePlatformStyleModel shareShake].configureHandle(handle)];
     [array addObject:[MobSharePlatformStyleModel shareLinkCard].configureHandle(handle)];
     [array addObject:[MobSharePlatformStyleModel shareCommand].configureHandle(handle)];
+    [array addObject:[MobSharePlatformStyleModel shareVideo].configureHandle(handle)];
 
     model.dataSource = array.copy;
     [dataSource addObject:model];
@@ -72,6 +73,9 @@
 }
 + (instancetype)shareCommand{
     return [MobSharePlatformStyleModel modelWithStyle:MobSharePlatformStyleCommandShare name:@"口令分享" inroduction:@"" image:@"icon_command" backgroundImage:@""];
+}
++ (instancetype)shareVideo{
+    return [MobSharePlatformStyleModel modelWithStyle:MobSharePlatformStyleVideoShare name:@"视频二维码" inroduction:@"" image:@"icon_video" backgroundImage:@""];
 }
 
 @end

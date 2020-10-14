@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.3.11"
+  s.version          = "4.3.13"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
 
   s.homepage         = 'http://www.mob.com'
 
-  s.source           = { :http => 'https://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.3.11.zip' }
+  s.source           = { :http => 'https://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.3.13.zip' }
 
   s.platform         = :ios
   s.ios.deployment_target = "8.0"
@@ -110,15 +110,6 @@ Pod::Spec.new do |s|
             }
         end
 
-        # RenRen
-        sp.subspec 'RenRen' do |ssp|
-            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/RenRenSDK/RennSDK.framework' ,'ShareSDK/Support/PlatformConnector/RenrenConnector.framework'
-            ssp.resource = 'ShareSDK/Support/PlatformSDK/RenRenSDK/RennSDK.bundle'
-            ssp.dependency 'mob_sharesdk/ShareSDK'
-            ssp.resource_bundles = {
-                'ShareSDK_JS_RenRen' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/RenRen.js']
-            }
-        end
 
         # 支付宝（AliSocial）
         sp.subspec 'AliPaySocial' do |ssp|
@@ -138,16 +129,6 @@ Pod::Spec.new do |s|
             ssp.dependency 'mob_sharesdk/ShareSDK'
             ssp.resource_bundles = {
                 'ShareSDK_JS_Kakao' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/Kakao.js']
-            }
-        end
-
-        # MeiPai
-        sp.subspec 'MeiPai' do |ssp|
-            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/MPShareSDK/MPShareSDK.framework','ShareSDK/Support/PlatformConnector/MeiPaiConnector.framework'
-            ssp.frameworks = 'AssetsLibrary'
-            ssp.dependency 'mob_sharesdk/ShareSDK'
-            ssp.resource_bundles = {
-                'ShareSDK_JS_Meipai' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/Meipai.js']
             }
         end
 
@@ -313,16 +294,6 @@ Pod::Spec.new do |s|
             }
         end
 
-        # CMCC
-        sp.subspec 'CMCC' do |ssp|
-            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/CMCCSDK/TYRZSDK.framework','ShareSDK/Support/PlatformConnector/CMCCConnector.framework'
-            ssp.resources = 'ShareSDK/Support/PlatformSDK/CMCCSDK/TYRZResource.bundle'
-            ssp.dependency 'mob_sharesdk/ShareSDK'
-            ssp.resource_bundles = {
-                'ShareSDK_JS_CMCC' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/CMCC.js']
-            }
-        end
-
         # Telegram
             sp.subspec 'Telegram' do |ssp|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/TelegramConnector.framework'
@@ -338,15 +309,6 @@ Pod::Spec.new do |s|
             ssp.dependency 'mob_sharesdk/ShareSDK'
             ssp.resource_bundles = {
                 'ShareSDK_JS_Reddit' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/Reddit.js']
-            }
-        end
-
-        # DouBan
-        sp.subspec 'DouBan' do |ssp|
-            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/DouBanConnector.framework'
-            ssp.dependency 'mob_sharesdk/ShareSDK'
-            ssp.resource_bundles = {
-                'ShareSDK_JS_DouBan' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/DouBan.js']
             }
         end
 
@@ -413,15 +375,6 @@ Pod::Spec.new do |s|
             }
         end
 
-        # TencentWeibo
-        sp.subspec 'TencentWeibo' do |ssp|
-            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/TencentWeiboConnector.framework'
-            ssp.dependency 'mob_sharesdk/ShareSDK'
-            ssp.resource_bundles = {
-                'ShareSDK_JS_TencentWeibo' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/TencentWeibo.js']
-            }
-        end
-
         # Tumblr
         sp.subspec 'Tumblr' do |ssp|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/TumblrConnector.framework'
@@ -446,16 +399,6 @@ Pod::Spec.new do |s|
             ssp.dependency 'mob_sharesdk/ShareSDK'
             ssp.resource_bundles = {
                 'ShareSDK_JS_YouDaoNote' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/YouDaoNote.js']
-            }
-        end
-
-        # ESurfing(天翼)
-        sp.subspec 'ESurfing' do |ssp|
-            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/ESurfingSDK/EAccountSDKArchive.framework','ShareSDK/Support/PlatformConnector/ESurfingConnector.framework'
-            ssp.resources = 'ShareSDK/Support/PlatformSDK/ESurfingSDK/HTMLResource.bundle'
-            ssp.dependency 'mob_sharesdk/ShareSDK'
-            ssp.resource_bundles = {
-                'ShareSDK_JS_ESurfing' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/ESurfing.js']
             }
         end
 
@@ -516,11 +459,25 @@ Pod::Spec.new do |s|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/SnapChatConnector.framework','ShareSDK/Support/PlatformSDK/SnapChat/SCSDKLoginKit.framework','ShareSDK/Support/PlatformSDK/SnapChat/SCSDKCoreKit.framework','ShareSDK/Support/PlatformSDK/SnapChat/SCSDKCreativeKit.framework'
             ssp.dependency 'mob_sharesdk/ShareSDK'
         end
-        # KuaiShou
+        
+        # KuaiShou(快手)
         sp.subspec 'KuaiShou' do |ssp|
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/KuaiShouConnector.framework','ShareSDK/Support/PlatformSDK/KwaiSDKLibrary/KwaiSDK.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+            ssp.resource_bundles = {
+                'ShareSDK_JS_KuaiShou' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/KuaiShou.js']
+            }
+        end
+        
+        # KuaiShou(快手) 精简版
+        sp.subspec 'KuaiShou_Lite' do |ssp|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/KuaiShouConnector.framework'
             ssp.dependency 'mob_sharesdk/ShareSDK'
+            ssp.resource_bundles = {
+                'ShareSDK_JS_KuaiShou' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/KuaiShou.js']
+            }
         end
+        
         # WatermelonVideo
         sp.subspec 'WatermelonVideo' do |ssp|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/WatermelonVideoConnector.framework'

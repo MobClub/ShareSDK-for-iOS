@@ -139,40 +139,7 @@ extern NSString *const SSDKAuthTypeWeb;
                          authType:(NSString *)authType __deprecated_msg("Discard form v4.2.0");
 
 
-/**
- *  设置腾讯微博应用信息
- *
- *  @param appKey        应用标识
- *  @param appSecret     应用密钥
- *  @param redirectUri   回调地址
- */
-- (void)SSDKSetupTencentWeiboByAppKey:(NSString *)appKey
-                            appSecret:(NSString *)appSecret
-                          redirectUri:(NSString *)redirectUri __deprecated_msg("Discard form v4.2.0");
 
-/**
- *  设置豆瓣应用信息
- *
- *  @param apiKey      应用标识
- *  @param secret      应用密钥
- *  @param redirectUri 回调地址
- */
-- (void)SSDKSetupDouBanByApiKey:(NSString *)apiKey
-                         secret:(NSString *)secret
-                    redirectUri:(NSString *)redirectUri __deprecated_msg("Discard form v4.2.0");
-
-/**
- *  设置人人网应用信息
- *
- *  @param appId     应用标识
- *  @param appKey    应用Key
- *  @param secretKey 应用密钥
- *  @param authType  授权方式。值可以是：SSDKAuthTypeSSO、SSDKAuthTypeWeb、SSDKAuthTypeBoth，分别代表SSO、网页授权、SSO＋网页授权。
- */
-- (void)SSDKSetupRenRenByAppId:(NSString *)appId
-                        appKey:(NSString *)appKey
-                     secretKey:(NSString *)secretKey
-                      authType:(NSString *)authType __deprecated_msg("Discard form v4.2.0");
 
 /**
  *  设置开心网应用信息
@@ -362,13 +329,6 @@ extern NSString *const SSDKAuthTypeWeb;
 - (void)SSDKSetupDingTalkByAppId:(NSString *)appId __deprecated_msg("Discard form v4.2.0");
 
 /**
- 设置美拍应用信息
-
- @param appKey 应用标识
- */
-- (void)SSDKSetupMeiPaiByAppKey:(NSString *)appKey __deprecated_msg("Discard form v4.2.0");
-
-/**
  设置youtube应用信息
  
  @param clientId 应用标识
@@ -385,17 +345,6 @@ extern NSString *const SSDKAuthTypeWeb;
  */
 - (void)SSDKSetupLineAuthType:(NSString *)authType __deprecated_msg("Discard form v4.2.0");
 
-
-/**
- 设置CMCC应用信息
-
- @param appid 应用标识
- @param appkey 应用密钥
- @param displayUI 是否显示SDK的授权界面
- */
-- (void)SSDKSetupCMCCByAppId:(NSString *)appid
-                      appKey:(NSString *)appkey
-                   displayUI:(BOOL)displayUI __deprecated_msg("Discard form v4.2.0");
 
 //打开短信登录的国家列表选择
 - (void)SSDKSetpSMSOpenCountryList:(BOOL)open __deprecated_msg("Discard form v4.2.0");

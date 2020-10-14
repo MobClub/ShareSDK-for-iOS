@@ -15,7 +15,8 @@
 #import "MOBPolicyManager.h"
 #import "SSDKImagePicker.h"
 #import "MOBShareCommandAlertView.h"
-
+#import "MBProgressHUD.h"
+#import "MOBShareVideoAlertView.h"
 @implementation MOBShareExample{
     BOOL isAnimate, onShakeShare;
     MOBShakeView *shakeShareView;
@@ -204,14 +205,14 @@
 
 #pragma mark - 口令分享
 - (void)commandShareWithModelView:(UIView *)modelView{
-    NSDictionary *parameters = @{@"command":@"commandText",@"detail":@"国家卫健委：昨日新增确诊病例5例,其中本土2例在北京,其中本土2例在北京",@"account":@"小明"};
+    NSDictionary *parameters = @{@"command":@"commandText",@"shareTitle":@"国家卫健委：昨日新增确诊病例5例,其中本土2例在北京,其中本土2例在北京",@"shareAccount":@"小明"};
     
     [ShareSDK getCommandText:parameters withComplete:^(NSString * _Nullable text, NSError * _Nullable error, void (^ _Nullable complete)(NSString * _Nullable)) {
         NSString *command = [NSString stringWithFormat:@"【复制本段内容%@打开👉页面关键字👈去粘贴给好友】",text];
         if(!error){
             complete(command);
             
-            MOBShareCommandAlertView *alertView = [[MOBShareCommandAlertView alloc]initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 270) * 0.5, 125 + (self.isPhoneX ? 24 : 0), 270, 154)];
+            MOBShareCommandAlertView *alertView = [[MOBShareCommandAlertView alloc]initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 270) * 0.5, 125 + (self.isPhoneX ? 24 : 0), 270, 170)];
             [alertView showWithCommand:command modelView:modelView];
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -224,6 +225,61 @@
         }
     }];
 
+}
+
+#pragma mark - 视频二维码分享
+- (void)videoShareWithModelView:(UIView *)modelView{
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"shareVideo" ofType:@"mp4"];
+    if(path){
+        
+        [UIActivityIndicatorView appearanceWhenContainedIn:[MBProgressHUD class], nil].color = [UIColor whiteColor];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:UIApplication.currentTopViewController.view animated:YES];
+        hud.removeFromSuperViewOnHide = YES;
+        hud.label.text = NSLocalizedString(@"正在生成视频二维码…", @"HUD loading title");
+        hud.label.textColor = [UIColor whiteColor];
+        hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+        hud.bezelView.backgroundColor=[UIColor colorWithWhite:0 alpha:0.8];
+
+        SSDKShareVideoModel *model = [[SSDKShareVideoModel alloc]init];
+        model.appName = @"ShareSDK";
+        model.appIcon = @"AppIcon";
+        model.appDesc = @"ShareSDK描述信息";
+        model.appQRcode = @"ShareSDK";
+        model.shareVideoUrl = @"https://www.iqiyi.com/v_19rtv25azc.html";
+        model.shareAccount = @"茨林";
+        model.shareTitle = @"我是一个视频分享详情页的标题，查看详情可以看完整视频";
+        [ShareSDK shareVideoWithUrl:[NSURL fileURLWithPath:path] model:model withComplete:^(BOOL success, NSError * _Nullable error) {
+            [hud hideAnimated:YES];
+            if(success){
+                MBProgressHUD *successHud = [MBProgressHUD showHUDAddedTo:UIApplication.currentTopViewController.view animated:YES];
+                successHud.mode = MBProgressHUDModeText;
+                successHud.removeFromSuperViewOnHide = YES;
+                successHud.label.text = @"视频成功保存到相册";
+                successHud.label.textColor = [UIColor whiteColor];
+                successHud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+                successHud.bezelView.backgroundColor=[UIColor colorWithWhite:0 alpha:0.8];
+                [successHud hideAnimated:YES afterDelay:1];
+
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    MOBShareVideoAlertView *alertView = [[MOBShareVideoAlertView alloc]initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 224) * 0.5, 30 + (self.isPhoneX ? 24 : 0), 224, 290)];
+                    [alertView showWithModel:model modelView:modelView];
+                });
+            }else{
+                UIAlertControllerAlertCreate(@"",error.userInfo[@"description"])
+                .addCancelAction(@"确定")
+                .showAnimated(YES)
+                .present();
+            }
+        }];
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertControllerAlertCreate(@"",@"视频资源未找到")
+            .addCancelAction(@"确定")
+            .showAnimated(YES)
+            .present();
+            
+        });
+    }
 }
 
 - (BOOL)isPhoneX{
@@ -239,9 +295,6 @@
     }
     return iPhoneX;
 }
-
-
-
 
 - (void)authResponseStatus:(SSDKResponseState)state error:(NSError *)error{
     NSString *title = @"";

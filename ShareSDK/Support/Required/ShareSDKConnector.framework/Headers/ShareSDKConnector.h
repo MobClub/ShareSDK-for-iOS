@@ -38,13 +38,6 @@
 + (void)connectQQ:(Class)qqApiInterfaceClass tencentOAuthClass:(Class)tencentOAuthClass __deprecated_msg("Discard form v4.2.0");
 
 /**
- *  连接人人网SDK以供ShareSDK可以正常使用人人网客户端进行SSO授权。
- *
- *  @param rennClientClass 人人网SDK中的类型，应先导入RennSDK.framework,再传入[RennClient class]到此参数。
- */
-+ (void)connectRenren:(Class)rennClientClass __deprecated_msg("Discard form v4.2.0");
-
-/**
  *  链接支付宝好友以供ShareSDK可以正常使用支付宝进行分享
  *
  *  @param apOpenApiClass 支付宝好友SDK中的类型，应先导入libAPOpenSdk.a，再将[APOpenApi class]传入到此参数。注：此参数不能为nil，否则会导致无法正常分享。
@@ -86,18 +79,6 @@
  */
 + (void)connectLine:(Class)lineSDKClass __deprecated_msg("Discard form v4.2.0");
 
-/**
- *  链接MeiPai以供ShareSDK可以正常使用MeiPai进行分享
- *
- *  @param MPShareSDKClass MeiPai SDK中的类型，应先导入MPShareSDK.framework，再将[MPShareSDK class]传入到此参数。
- */
-+ (void)connectMeiPai:(Class)MPShareSDKClass __deprecated_msg("Discard form v4.2.0");
 
-/**
- *  链接CMCC以供ShareSDK可以正常使用CMCC进行授权
- *
- *  @param TYRZUILoginClass CMCC SDK中的类型，应先导入TYRZSDK.framework，再将[TYRZUILoginClass class]传入到此参数。
- */
-+ (void)connectCMCC:(Class)TYRZUILoginClass __deprecated_msg("Discard form v4.2.0");
 
 @end
