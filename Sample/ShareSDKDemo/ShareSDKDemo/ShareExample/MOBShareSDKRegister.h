@@ -112,6 +112,9 @@
     #define MOBSSDKSinaWeiboAppSecret @"38a4f8204cc784f81f9f0daaf31e02e3"
     //RedirectUri
     #define MOBSSDKSinaWeiboRedirectUri @"http://www.sharesdk.cn"
+
+    #define MOBSSDKSinaWeiboUniversalLink @"https://bj2ks.share2dlink.com/"
+
     //AuthType 授权优先类型 web sso both
     #define MOBSSDKSinaWeiboAuthType SSDKAuthorizeTypeBoth
 #endif

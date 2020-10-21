@@ -28,7 +28,7 @@
     [ShareSDK registPlatforms:^(SSDKRegister *platformsRegister) {
         
 #ifdef IMPORT_SINA_WEIBO
-        [platformsRegister setupSinaWeiboWithAppkey:MOBSSDKSinaWeiboAppKey appSecret:MOBSSDKSinaWeiboAppSecret redirectUrl:MOBSSDKSinaWeiboRedirectUri];
+        [platformsRegister setupSinaWeiboWithAppkey:MOBSSDKSinaWeiboAppKey appSecret:MOBSSDKSinaWeiboAppSecret redirectUrl:MOBSSDKSinaWeiboRedirectUri universalLink:MOBSSDKSinaWeiboUniversalLink];
 #endif
         
 #if (defined IMPORT_SUB_QQFriend) || (defined IMPORT_SUB_QZone)

@@ -19,10 +19,12 @@
  @param appkey 应用标识
  @param appSecret 应用密钥
  @param redirectUrl 回调地址
+ @param universalLink ul地址
  */
 - (void)setupSinaWeiboWithAppkey:(NSString *)appkey
                        appSecret:(NSString *)appSecret
-                     redirectUrl:(NSString *)redirectUrl;
+                     redirectUrl:(NSString *)redirectUrl
+                   universalLink:(NSString *)universalLink;
 
 /**
  设置微信(微信好友，微信朋友圈、微信收藏)应用信息

@@ -15,11 +15,11 @@
         SSDKSTRONG
         [self shareMessage];
     }];
-    [self addListItemWithImage:MOBImageShareIcon name:@"相册图片" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+    [self addListItemWithImage:MOBImageShareIcon name:@"单图片" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
         SSDKSTRONG
         [self shareAssetImage];
     }];
-    [self addListItemWithImage:MOBVideoShareIcon name:@"相册视频" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+    [self addListItemWithImage:MOBVideoShareIcon name:@"单视频" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
         SSDKSTRONG
         [self shareVideoImage];
     }];
@@ -32,9 +32,8 @@
 }
 
 - (void)shareMessage{
-    
+    //私信分享只能通过SDK进行分享
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-
     [parameters SSDKSetupKuaiShouShareParamsByTitle:@"title"
                                                desc:@"desc"
                                             linkURL:@"https://www.mob.com"
@@ -42,7 +41,6 @@
                                              openID:nil
                                      receiverOpenID:nil
                                     localIdentifier:nil
-                                               path:nil
                                                tags:nil
                                           extraInfo:@"message"
                                                type:SSDKContentTypeMessage];
@@ -50,7 +48,16 @@
 }
 
 - (void)shareAssetImage{
+    //无SDK时使用该方法通过系统分享
+//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+//    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+//                                    images:@[[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"],[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]]//SHARESDKDEMO_IMAGE_STRING //[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]
+//                                       url:nil
+//                                     title:nil
+//                                      type:SSDKContentTypeImage];
+//    [self shareWithParameters:parameters];
     
+    //有SDK时使用该方法通过快手SDK进行分享
     [SSDKImagePickerController initWithNavgationControllerConfigureBlock:^(SSDKImagePickerConfigure * _Nonnull configure) {
         configure.mediaType = SSDKImagePickerMediaTypeImage;
         configure.operationConfigure.maximumNumberOfImageSelection =1;
@@ -69,7 +76,6 @@
                                                  openID:nil
                                          receiverOpenID:nil
                                         localIdentifier:asset.localIdentifier
-                                                   path:[[NSBundle mainBundle]pathForResource:@"D45" ofType:@"jpg"]
                                                    tags:nil
                                               extraInfo:@"image"
                                                    type:SSDKContentTypeImage];
@@ -77,9 +83,14 @@
     }].presentAnimated();
 }
 
-
 - (void)shareVideoImage{
+    //无SDK时使用该方法通过系统分享
+//    NSURL *url_1 = [[NSBundle mainBundle] URLForResource:@"cat" withExtension:@"mp4"];
+//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+//    [parameters SSDKSetupShareParamsByText:@"123" images:nil url:url_1 title:nil type:SSDKContentTypeVideo];
+//    [self shareWithParameters:parameters];
     
+    //有SDK时使用该方法通过快手SDK进行分享
     [SSDKImagePickerController initWithNavgationControllerConfigureBlock:^(SSDKImagePickerConfigure * _Nonnull configure) {
         configure.mediaType = SSDKImagePickerMediaTypeVideo;
         configure.operationConfigure.maximumNumberOfImageSelection =1;
@@ -98,7 +109,6 @@
                                                  openID:nil
                                          receiverOpenID:nil
                                         localIdentifier:asset.localIdentifier
-                                                   path:[[NSBundle mainBundle]pathForResource:@"shareVideo" ofType:@"mp4"]
                                                    tags:@[@"111",@"2222"]
                                               extraInfo:@"video"
                                                    type:SSDKContentTypeVideo];

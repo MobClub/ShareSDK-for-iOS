@@ -427,6 +427,17 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
             self.currentShareModel.shareHandler(state, userData, contentEntity, error);
         }
     }];
+//    [ShareSDK shareByActivityViewController:self.platformType parameters:self.currentShareModel.parameters.mutableCopy onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+//        lasShareTime = 0;
+//        [[MOBShareExample defaultExample] sharePlatType:self.platformType userData:userData state:state error:error];
+//
+//        if (self.shareHandler) {
+//            self.shareHandler(state, userData, contentEntity, error);
+//        }
+//        if (self.currentShareModel.shareHandler) {
+//            self.currentShareModel.shareHandler(state, userData, contentEntity, error);
+//        }
+//    }];
 }
 
 

@@ -28,6 +28,7 @@
                                           sharable:YES
                                   androidExecParam:nil
                                       iosExecParam:nil
+                                              type:SSDKContentTypeText
      ];
     
     
@@ -35,7 +36,7 @@
 }
 
 /**
- 分享图片
+ 分享单图
  */
 - (void)shareImage
 {
@@ -46,12 +47,35 @@
     
     [parameters SSDKSetupKakaoStoryParamsByContent:@""
                                              title:nil
-                                            images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
+                                            images:@[[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]]
                                                url:nil
                                         permission:0
                                           sharable:YES
                                   androidExecParam:@{@"andParam1":@"value1", @"andParam2":@"value2"}
                                       iosExecParam:@{@"iosParam1":@"value1", @"iosParam2":@"value2"}
+                                              type:SSDKContentTypeImage
+     ];
+    
+    [self shareWithParameters:parameters];
+}
+
+/**
+ 分享多图
+ */
+- (void)shareMutiImage
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //通用参数设置
+    
+    [parameters SSDKSetupKakaoStoryParamsByContent:@""
+                                             title:nil
+                                            images:@[[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"],[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]]
+                                               url:nil
+                                        permission:0
+                                          sharable:YES
+                                  androidExecParam:@{@"andParam1":@"value1", @"andParam2":@"value2"}
+                                      iosExecParam:@{@"iosParam1":@"value1", @"iosParam2":@"value2"}
+                                              type:SSDKContentTypeImage
      ];
     
     [self shareWithParameters:parameters];
@@ -71,7 +95,7 @@
         [parameters SSDKSetupKaKaoParamsByText:@"Share SDK"
                                         images:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
                                          title:@"Share SDK"
-                                           url:[NSURL URLWithString:@"https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_10167272897890802832%22%7D&n_type=0&p_from=1"]
+                                           url:[NSURL URLWithString:@"https://www.qq.com"]
                                     permission:nil
                                    enableShare:YES
                                      imageSize:CGSizeZero

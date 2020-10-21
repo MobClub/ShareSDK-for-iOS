@@ -23,6 +23,7 @@
 #import "WXApi.h"
 #import <ShareSDK/SSDKAuthViewManager.h>
 #import "MOBShareCommandDetailView.h"
+#import <WeiboSDK.h>
 @interface AppDelegate () <ISSERestoreSceneDelegate,QQApiInterfaceDelegate,WeiboSDKDelegate, LineSDKLoginDelegate,WXApiDelegate>
 
 @property (strong, nonatomic) NSDictionary *parameters;
@@ -59,8 +60,12 @@
     [[MOBPolicyManager defaultManager] show];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(allowPolicyAction:) name:@"kMOBPolicyManagerAllowNofitication" object:nil];
     [WXApi registerApp:@"wx617c77c82218ea2c" universalLink:@"https://bj2ks.share2dlink.com/"];
+    [WeiboSDK registerApp:@"568898243" universalLink:@"https://bj2ks.share2dlink.com/"];
 //    [WXApi checkUniversalLinkReady:^(WXULCheckStep step, WXCheckULStepResult * _Nonnull result) {
 //        NSLog(@"mmmmmmmmmmmm %@  %@  %@  %@",@(step),@(result.success),result.suggestion, result.errorInfo);
+//    }];
+//    [WeiboSDK checkUniversalLink:^(WBULCheckStep step, NSError *error) {
+//        NSLog(@"mmmmmmmmmmmm %@  %@",@(step), error);
 //    }];
     
     
@@ -74,10 +79,12 @@
 //ShareSDK注册各平台参数详见
 //MOBShareSDKRegister.m
 - (void)registerShareSDK{
+
 //     [ShareSDK registPlatforms:^(SSDKRegister *platformsRegister) {
-//
+
 //    #ifdef IMPORT_SINA_WEIBO
-//            [platformsRegister setupSinaWeiboWithAppkey:MOBSSDKSinaWeiboAppKey appSecret:MOBSSDKSinaWeiboAppSecret redirectUrl:MOBSSDKSinaWeiboRedirectUri];
+//         [platformsRegister setupSinaWeiboWithAppkey:@"568898243" appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3" redirectUrl:@"http://www.sharesdk.cn" universalLink:@"https://bj2ks.share2dlink.com/"];
+
 //    #endif
 //
 //    #if (defined IMPORT_SUB_QQFriend) || (defined IMPORT_SUB_QZone)
@@ -249,6 +256,7 @@
 //    #endif
     
 //        }];
+    
 }
 
 
@@ -412,6 +420,8 @@
     if( [WXApi handleOpenUniversalLink:userActivity delegate:self]){
 
     }else if ([QQApiInterface handleOpenUniversallink:userActivity.webpageURL delegate:self]){
+
+    }else if ([WeiboSDK handleOpenUniversalLink:userActivity delegate:self]){
 
     }
     return NO;

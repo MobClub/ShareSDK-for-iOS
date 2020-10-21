@@ -17,14 +17,6 @@
 
 - (void)setup{
     SSDKWEAK
-    [self addListItemWithImage:MOBImageShareIcon name:@"故事板图片" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
-        SSDKSTRONG
-        [self shareImageStory];
-    }];
-    [self addListItemWithImage:MOBVideoShareIcon name:@"故事板视频" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
-        SSDKSTRONG
-        [self shareVideoStory];
-    }];
     [self addListItemWithImage:MOBLinkShareIcon name:@"分享LinkCard" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
         SSDKSTRONG
         [self shareLinkCard];
@@ -121,23 +113,6 @@
     [self shareWithParameters:parameters];
 }
 
-- (void)shareImageStory
-{
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    //平台定制
-    [parameters SSDKSetupSinaWeiboShareParamsByText:SHARESDKDEMO_TEXT
-                                              title:nil
-                                             images:@[SHARESDKDEMO_IMAGE_LOCALPATH
-                                                      ]
-                                              video:nil
-                                                url:nil
-                                           latitude:0 longitude:0
-                                           objectID:nil
-                                     isShareToStory:YES
-                                               type:SSDKContentTypeImage];
-    [self shareWithParameters:parameters];
-}
-
 - (void)shareLink
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -183,27 +158,4 @@
 
     [self shareWithParameters:parameters];
 }
-
-- (void)shareVideoStory
-{
-    NSString *videoPath = [[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"];
-    
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKSetupSinaWeiboShareParamsByText:@"ShareSDK"
-                                              title:nil
-                                             images:nil
-                                              video:videoPath
-                                                url:nil
-                                           latitude:0
-                                          longitude:0
-                                           objectID:nil
-                                     isShareToStory:YES
-                                               type:SSDKContentTypeVideo];
-    
-    [self shareWithParameters:parameters];
-}
-
-
-
-
 @end

@@ -735,6 +735,8 @@
  @param sharable 是否允许共享
  @param androidExecParam 安卓扩展参数
  @param iosExecParam iOS扩展参数
+ @param type 分享类型
+
  */
 - (void)SSDKSetupKakaoStoryParamsByContent:(NSString *)content
                                      title:(NSString *)title
@@ -743,7 +745,8 @@
                                 permission:(int)permission
                                   sharable:(BOOL)sharable
                           androidExecParam:(NSDictionary *)androidExecParam
-                              iosExecParam:(NSDictionary *)iosExecParam;
+                              iosExecParam:(NSDictionary *)iosExecParam
+                                      type:(SSDKContentType)type;
 
 
 #pragma mark - LinkedIn
@@ -1167,9 +1170,7 @@
  * @param receiverOpenID 接收方 openid , 可选，当不填时，快手 APP 会调启选择好友界面来确定接收方
  
  * @param localIdentifier 分享的相册图片/视频的相册标识（此参数和path互斥，如同时存在以localIdentifier为准）
- 
- * @param path 分享的相册图片/视频的路径（此参数和localIdentifier互斥，如同时存在以localIdentifier为准）
- 
+  
  * @param tags 视频分享-标签数组
  
  * @param type 分享的类型
@@ -1181,7 +1182,6 @@
                                      openID:(NSString *)openID
                              receiverOpenID:(NSString *)receiverOpenID
                             localIdentifier:(NSString *)localIdentifier
-                                       path:(NSString *)path
                                        tags:(NSArray<NSString *> *)tags
                                   extraInfo:(NSString *)extraInfo
                                        type:(SSDKContentType)type;

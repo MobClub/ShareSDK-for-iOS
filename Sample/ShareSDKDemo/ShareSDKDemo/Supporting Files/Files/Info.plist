@@ -10,6 +10,8 @@
 	<string>ShareSDK</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleGetInfoString</key>
+	<string>weibosdk</string>
 	<key>CFBundleIcons</key>
 	<dict/>
 	<key>CFBundleIcons~ipad</key>
@@ -274,8 +276,11 @@
 	<string>1412473428822331</string>
 	<key>KAKAO_APP_KEY</key>
 	<string>9c17eb03317e0e627ec95a400f5785fb</string>
+	<key>LSApplicationCategoryType</key>
+	<string>weibosdk</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>weibosdk3.3</string>
 		<string>ksnebula</string>
 		<string>KwaiSDKMediaV2</string>
 		<string>kwai.clip.multi</string>
@@ -299,7 +304,6 @@
 		<string>fbshareextension</string>
 		<string>fbapi20160328</string>
 		<string>fbapi20150629</string>
-		<string>mqqopensdkminiapp</string>
 		<string>snssdk1180</string>
 		<string>snssdk1233</string>
 		<string>snssdk1128</string>
@@ -354,6 +358,7 @@
 		<string>mqqwpa</string>
 		<string>wtloginmqq2</string>
 		<string>mqzoneopensdkapiV2</string>
+		<string>mqqopensdkminiapp</string>
 		<string>mqzoneopensdkapi19</string>
 		<string>mqzoneopensdkapi</string>
 		<string>mqzoneopensdk</string>
@@ -383,7 +388,6 @@
 		<string>tiktoksharesdk</string>
 		<string>wxwork</string>
 		<string>wxworkrdm</string>
-		<string>mqqopensdkminiapp</string>
 		<string>wechat</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>

@@ -110,7 +110,7 @@
         onStateChanged:(SSDKShareStateChangedHandler)stateChangedHandler;
 
 /**
- 以系统分享的样式分享内容(目前该方法为了解决Twitter分享时的授权权限问题)
+ 以系统分享的样式分享内容(目前该方法为了解决Twitter分享时的授权权限问题，目前该方法支持  纯文字 链接  单图 多图  图文（注：单图 多图 图文，图片不能超过四张）视频（注：仅支持本地视频））)
  
  @param platformType 平台类型
  @param parameters 分享参数

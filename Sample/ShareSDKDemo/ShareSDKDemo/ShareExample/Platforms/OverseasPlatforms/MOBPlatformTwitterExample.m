@@ -12,10 +12,17 @@
     MOBLoadingViewController *loadingViewController;
 }
 - (void)setup{
+    SSDKWEAK
+    [self addListItemWithImage:MOBTextImageShareIcon name:@"图文" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareTextAndImage];
+    }];
     loadingViewController = [[MOBLoadingViewController alloc] initWithNibName:@"MOBLoadingViewController" bundle:nil];
     loadingViewController.view.frame = [SSDKScenePackage mainBounds];
     [self setAuthSetting:@{@"scopes":@"read"}];
 }
+
+
 /**
  分享文字
  */
@@ -38,9 +45,49 @@
 }
 
 /**
- 分享图片
+ 分享图文
+ */
+- (void)shareTextAndImage
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //图片最多4张 GIF只能1张
+    NSString *path1 = SHARESDKDEMO_IMAGE_LOCALPATH;
+    //通用参数设置
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:@[path1]
+                                       url:nil
+                                     title:nil
+                                      type:SSDKContentTypeImage];
+    [self shareWithParameters:parameters];
+}
+
+/**
+ 分享单图
  */
 - (void)shareImage
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //图片最多4张 GIF只能1张
+    NSString *path1 = SHARESDKDEMO_IMAGE_LOCALPATH;
+    //通用参数设置
+    [parameters SSDKSetupShareParamsByText:nil
+                                    images:@[path1]
+                                       url:nil
+                                     title:nil
+                                      type:SSDKContentTypeImage];
+    //平台定制
+    //        [parameters SSDKSetupTwitterParamsByText:@"Share SDK"
+    //                                          images:path4
+    //                                        latitude:0
+    //                                       longitude:0
+    //                                            type:SSDKContentTypeImage];
+    [self shareWithParameters:parameters];
+}
+
+/**
+ 分享多图
+ */
+- (void)shareMutiImage
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //图片最多4张 GIF只能1张
@@ -48,7 +95,7 @@
     NSString *path2 = [[NSBundle mainBundle] pathForResource:@"D11" ofType:@"jpg"];
     NSString *path3 = [[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+    [parameters SSDKSetupShareParamsByText:nil
                                     images:@[path1,path2,path3]
                                        url:nil
                                      title:nil
