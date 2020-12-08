@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <ShareSDK/SSDKTypeDefine.h>
 
+/// <#Description#>
 @interface NSMutableDictionary (SSDKShare)
 
 /**
@@ -34,6 +35,14 @@
                              title:(NSString *)title
                               type:(SSDKContentType)type;
 
+
+
+/// 设置系统分享-相册图片/视频分享参数
+/// @param imageAsset 图片
+/// @param videoAsset 视频
+- (void)SSDKSetupShareParamsByImageAsset:(NSArray *)imageAsset
+                              videoAsset:(id)videoAsset
+                          completeHandle:(void(^)(BOOL complete))completeHandle;
 
 #pragma mark - Wechat
 
@@ -1178,7 +1187,7 @@
 - (void)SSDKSetupKuaiShouShareParamsByTitle:(NSString *)title
                                        desc:(NSString *)desc
                                     linkURL:(NSString *)linkURL
-                                 thumbImage:(UIImage *)thumbImage
+                                 thumbImage:(id)thumbImage
                                      openID:(NSString *)openID
                              receiverOpenID:(NSString *)receiverOpenID
                             localIdentifier:(NSString *)localIdentifier

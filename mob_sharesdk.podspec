@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "imfung.xcuserdatad"
+  s.version          = "4.3.15"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
 
   s.homepage         = 'http://www.mob.com'
 
-  s.source           = { :http => 'http://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_vimfung.xcuserdatad.zip' }
+  s.source           = { :http => 'https://dev.ios.mob.com/files/download/sharesdk/ShareSDK_For_iOS_v4.3.15.zip' }
 
   s.platform         = :ios
   s.ios.deployment_target = "8.0"
@@ -50,7 +50,7 @@ Pod::Spec.new do |s|
 
         # SinaWeibo
         sp.subspec 'SinaWeibo' do |ssp|
-            ssp.vendored_libraries = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/*.a"
+            ssp.vendored_libraries = 'ShareSDK/Support/PlatformSDK/SinaWeiboSDK/*.a'
             ssp.resources = 'ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.bundle'
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/SinaWeiboConnector.framework'
             ssp.frameworks = 'ImageIO'
@@ -426,7 +426,7 @@ Pod::Spec.new do |s|
             ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/TikTokSDK/TikTokOpenSDK.framework','ShareSDK/Support/PlatformConnector/TikTokConnector.framework'
             ssp.dependency 'mob_sharesdk/ShareSDK'
             ssp.resource_bundles = {
-                'ShareSDK_JS_Douyin' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/TikTok.js']
+                'ShareSDK_JS_TikTok' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/TikTok.js']
             }
         end
 

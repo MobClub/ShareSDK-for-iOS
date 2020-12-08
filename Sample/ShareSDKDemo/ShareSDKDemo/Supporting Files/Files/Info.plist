@@ -280,6 +280,16 @@
 	<string>weibosdk</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>db-auth</string>
+		<string>tumblr</string>
+		<string>mingdao</string>
+		<string>vk</string>
+		<string>pocket</string>
+		<string>youdaonote</string>
+		<string>instapaper</string>
+		<string>linkedin</string>
+		<string>flickr</string>
+		<string>pinterest</string>
 		<string>weibosdk3.3</string>
 		<string>ksnebula</string>
 		<string>KwaiSDKMediaV2</string>
@@ -417,7 +427,7 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>从手机相册中选择</string>
 	<key>SCSDKClientId</key>
-	<string>dc8e6068-0578-41b8-8392-4da009519725</string>
+	<string>dbe54b15-1939-4bfc-b6a0-c30a4af426a6</string>
 	<key>SCSDKRedirectUrl</key>
 	<string>ssdk2c574691c6986://mob</string>
 	<key>SCSDKScopes</key>

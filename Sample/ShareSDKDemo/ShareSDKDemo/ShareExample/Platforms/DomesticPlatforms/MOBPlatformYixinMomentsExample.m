@@ -13,6 +13,20 @@
 + (SSDKPlatformType)platformType{
     return SSDKPlatformSubTypeYiXinTimeline;
 }
+
+- (void)setup {
+    SSDKWEAK
+    [self addListItemWithImage:MOBApplicationShareIcon name:@"系统分享-图片(单图/多图)" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareImageBySystem];
+    }];
+    //系统分享视频只支持本地视频
+    [self addListItemWithImage:MOBApplicationShareIcon name:@"系统分享-视频" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareVideoBySystem];
+    }];
+}
+
 /**
  分享文字
  */
@@ -179,5 +193,30 @@
     [self shareWithParameters:parameters];
 }
 
+#pragma mark - 系统分享方法
+
+- (void)shareImageBySystem
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //通用参数设置(图片数量不能超过10)
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:@[SHARESDKDEMO_IMAGE_STRING,SHARESDKDEMO_IMAGE_STRING]
+                                       url:nil
+                                     title:nil
+                                      type:SSDKContentTypeImage];
+    [self shareByActivityWithParameters:parameters];
+}
+- (void)shareVideoBySystem
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //通用参数设置
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
+                                       url:[NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"cat" ofType:@"mp4"]]
+                                     title:SHARESDKDEMO_TITLE
+                                      type:SSDKContentTypeVideo];
+    [self shareByActivityWithParameters:parameters];
+
+}
 
 @end

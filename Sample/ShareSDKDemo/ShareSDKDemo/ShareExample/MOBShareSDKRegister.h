@@ -871,7 +871,7 @@
 #pragma mark - 绿洲平台配置信息 -
 
 #ifdef IMPORT_Snapchat
-#define MOBSSDKSnapchatClientId @"dc8e6068-0578-41b8-8392-4da009519725"
+#define MOBSSDKSnapchatClientId @"dbe54b15-1939-4bfc-b6a0-c30a4af426a6"
 #define MOBSSDKSnapchatClientSecret @""
 #define MOBSSDKSnapchatRedirectUrl @"ssdk2c574691c6986://mob"
 #endif

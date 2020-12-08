@@ -65,6 +65,9 @@ extern void * kMOBPlatformAuthItemModelKey;
 //设置分享参数，并分享
 - (void)shareWithParameters:(NSMutableDictionary *)parameters;
 
+//设置系统分享参数，并分享
+- (void)shareByActivityWithParameters:(NSMutableDictionary *)parameters;
+
 #pragma mark -  授权设置  -
 
 

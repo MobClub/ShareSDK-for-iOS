@@ -18,30 +18,62 @@
     return SSDKPlatformTypeDropbox;
 }
 
+- (void)setup {
+    SSDKWEAK
+    [self addListItemWithImage:MOBApplicationShareIcon name:@"系统分享-单图" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareImageBySystem];
+    }];
+    [self addListItemWithImage:MOBApplicationShareIcon name:@"系统分享-文件(视频/其他格式文件）" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareFileBySystem];
+    }];
+}
+
+- (void)shareImageBySystem
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    //系统分享单图功能，支持本地图片和网络图片，不支持多图，如果传多个图片，会分享第一个图片资源
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]]
+                                       url:nil
+                                     title:nil
+                                      type:SSDKContentTypeImage];
+    [self shareByActivityWithParameters:parameters];
+}
+
+- (void)shareFileBySystem
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    //系统分享视频/其他格式文件功能，只支持本地资源
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:nil
+                                       url:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"]]
+                                     title:nil
+                                      type:SSDKContentTypeFile];
+    [self shareByActivityWithParameters:parameters];
+}
 
 - (void)shareImage
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    //通用参数设置
-    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
-                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
-                                       url:nil
-                                     title:nil
-                                      type:SSDKContentTypeImage];
-    //平台定制
-    //    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
-    //    [parameters SSDKSetupDropboxParamsByAttachment:[NSURL fileURLWithPath:filePath]];
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
+    [parameters SSDKSetupDropboxParamsByAttachment:[NSURL fileURLWithPath:filePath]];
+    
     [self shareWithParameters:parameters];
 }
 
 - (void)shareFile
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    //通用参数设置
+    
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"];
+
+    //无SDK分享方式
     [parameters SSDKSetupDropboxParamsByAttachment:[NSURL fileURLWithPath:filePath]];
-    //平台定制
-    //    parameters = [self shareParameters];
     __weak __typeof__ (self) weakSelf = self;
     loadingViewController.session = [ShareSDK share:self.platformType
                                          parameters:parameters
@@ -51,34 +83,34 @@
                                              case SSDKResponseStateUpload:
                                              {
                                                  SSDKUploadState state = [userData[@"progressInfo"][@"state"] integerValue];
-                                                 
+
                                                  switch (state)
                                                  {
                                                      case SSDKUploadStateBegin:
                                                      [weakSelf showLoading];
                                                      break;
-                                                     
+
                                                      case SSDKUploadStateUploading:
                                                      {
                                                          unsigned long long totalBytes = [userData[@"progressInfo"][@"totalBytes"] unsignedLongLongValue];
                                                          unsigned long long loadedBytes = [userData[@"progressInfo"][@"loadedBytes"] unsignedLongLongValue];
-                                                         
+
                                                          CGFloat temp =  loadedBytes*1.0/totalBytes;
-                                                         
+
                                                          if(temp > loadingViewController.progressView.progress )
                                                          {
                                                              [loadingViewController.progressView setProgress:temp animated:YES];
                                                          }
                                                      }
                                                      break;
-                                                     
+
                                                      case SSDKUploadStateFinish:
                                                      {
                                                          [loadingViewController.progressView setProgress:1 animated:YES];
                                                          [loadingViewController hidden];
                                                      }
                                                      break;
-                                                     
+
                                                      default:
                                                      break;
                                                  }
@@ -105,7 +137,7 @@
                                          if(state != SSDKResponseStateUpload)
                                          {
                                              [loadingViewController hidden];
-                                            
+
                                              UIAlertControllerAlertCreate(title, nil)
                                              .addCancelAction(@"确定")
                                              .present();

@@ -412,14 +412,13 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
 - (void)sharePlatform{
     //分享
     NSLog(@"%@", self.currentShareModel.yy_modelDescription);
+    //常规分享调用这个方法
     [ShareSDK share:self.platformType
          parameters:self.currentShareModel.parameters.mutableCopy
      onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
-        
-
         lasShareTime = 0;
         [[MOBShareExample defaultExample] sharePlatType:self.platformType userData:userData state:state error:error];
-        
+
         if (self.shareHandler) {
             self.shareHandler(state, userData, contentEntity, error);
         }
@@ -427,20 +426,30 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
             self.currentShareModel.shareHandler(state, userData, contentEntity, error);
         }
     }];
-//    [ShareSDK shareByActivityViewController:self.platformType parameters:self.currentShareModel.parameters.mutableCopy onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
-//        lasShareTime = 0;
-//        [[MOBShareExample defaultExample] sharePlatType:self.platformType userData:userData state:state error:error];
-//
-//        if (self.shareHandler) {
-//            self.shareHandler(state, userData, contentEntity, error);
-//        }
-//        if (self.currentShareModel.shareHandler) {
-//            self.currentShareModel.shareHandler(state, userData, contentEntity, error);
-//        }
-//    }];
 }
 
+- (void)shareByActivityWithParameters:(NSMutableDictionary *)parameters{
+    [parameters SSDKSetShareFlags:@[NSStringFromClass([self class])]];
+    self.currentShareModel.parameters = parameters;
+    [self sharePlatformByActivity];
+}
 
+- (void)sharePlatformByActivity{
+    //分享
+    NSLog(@"%@", self.currentShareModel.yy_modelDescription);
+    //系统分享调用这个方法
+    [ShareSDK shareByActivityViewController:self.platformType parameters:self.currentShareModel.parameters.mutableCopy onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+        lasShareTime = 0;
+        [[MOBShareExample defaultExample] sharePlatType:self.platformType userData:userData state:state error:error];
+
+        if (self.shareHandler) {
+            self.shareHandler(state, userData, contentEntity, error);
+        }
+        if (self.currentShareModel.shareHandler) {
+            self.currentShareModel.shareHandler(state, userData, contentEntity, error);
+        }
+    }];
+}
 
 #pragma mark - 授权和获取用户信息 -
 

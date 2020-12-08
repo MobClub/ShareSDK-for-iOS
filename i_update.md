@@ -2,6 +2,12 @@
 
 [论坛发版列表](http://bbs.mob.com/forum.php?mod=forumdisplay&fid=2&filter=typeid&typeid=36)  
 
+### v4.3.15[详情]
+>1、Facebook、Twitter、LinkedIn等平台新增系统分享接口
+>2、授权页面新增页面加载进度条
+>3、修复已知bug
+
+
 ### v4.3.14[详情]
 >1、微博SDK更新为最新3.3.0
 >2、对其他平台优化

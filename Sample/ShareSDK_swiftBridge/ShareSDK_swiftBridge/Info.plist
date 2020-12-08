@@ -22,6 +22,16 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
+			<string>tiktok</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>aw3vqar8qg1oy91q</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
 			<string>alipayShare</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
@@ -55,18 +65,8 @@
 			<string>qq</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>tencent100371282</string>
+				<string>tencent1110451818</string>
 				<string>QQ05FB8B52</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>meipai</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>mp1089867639</string>
 			</array>
 		</dict>
 		<dict>
@@ -106,17 +106,7 @@
 			<string>yixin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>yx0d9a9f9088ea44d78680f3274da1765f</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>pin</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>pdk4987008320438021391</string>
+				<string>yxfddfe3934340436da964fd20885fe2a4</string>
 			</array>
 		</dict>
 		<dict>
@@ -166,7 +156,7 @@
 			<string>pinterest</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>pdk4799618093317899411</string>
+				<string>pdk5057854497590653616</string>
 			</array>
 		</dict>
 		<dict>
@@ -192,16 +182,6 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>renren</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>rm226427$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>ak1412473428822331</string>
@@ -214,16 +194,14 @@
 			<string>douyin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>aw9ivykfjvi4hpwo</string>
+				<string>awycvl19mldccyso</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>ssdkmoba0b0c0d0</string>
-			</array>
+			<array/>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
@@ -239,15 +217,86 @@
 			<key>CFBundleURLName</key>
 			<string></string>
 			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>oasis568898243</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.232554794995-85agj9jh8br7dtf8ornec6ndi7drh0kv</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ssdk2c574691c6986</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
 			<array/>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>kuaishou</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ks705657770555308030</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>kakaotalk-5.9.7</string>
+		<string>db-auth</string>
+		<string>tumblr</string>
+		<string>mingdao</string>
+		<string>vk</string>
+		<string>pocket</string>
+		<string>youdaonote</string>
+		<string>instapaper</string>
+		<string>linkedin</string>
+		<string>flickr</string>
+		<string>pinterest</string>
+		<string>weibosdk3.3</string>
+		<string>ksnebula</string>
+		<string>KwaiSDKMediaV2</string>
+		<string>kwai.clip.multi</string>
+		<string>KwaiBundleToken</string>
+		<string>kwaiopenapi</string>
+		<string>kwaiAuth2</string>
+		<string>kwai</string>
+		<string>kakao3rdauth</string>
+		<string>kakaostory-2.9.0</string>
+		<string>instagram-capture</string>
+		<string>instagram</string>
+		<string>instagram-stories</string>
+		<string>KwaiAuth2</string>
+		<string>snssdk32</string>
+		<string>bitmoji-sdk</string>
+		<string>sharesdk</string>
+		<string>itms-apps</string>
+		<string>snapchat</string>
+		<string>lineauth2</string>
+		<string>oasis</string>
+		<string>fbshareextension</string>
+		<string>fbapi20160328</string>
+		<string>fbapi20150629</string>
+		<string>snssdk1180</string>
+		<string>snssdk1233</string>
+		<string>snssdk1128</string>
 		<string>weixinULAPI</string>
+		<string>kakaotalk-5.9.7</string>
 		<string>pinterestsdk.v1</string>
 		<string>vkauthorize</string>
 		<string>storylink</string>
@@ -297,6 +346,7 @@
 		<string>mqqwpa</string>
 		<string>wtloginmqq2</string>
 		<string>mqzoneopensdkapiV2</string>
+		<string>mqqopensdkminiapp</string>
 		<string>mqzoneopensdkapi19</string>
 		<string>mqzoneopensdkapi</string>
 		<string>mqzoneopensdk</string>
@@ -311,27 +361,38 @@
 		<string>instagram</string>
 		<string>fbauth</string>
 		<string>fb-messenger-platform-20150714</string>
+		<string>fb-messenger-api20140430</string>
+		<string>fb-messenger-share-api</string>
 		<string>fb-messenger</string>
 		<string>fbauth2</string>
+		<string>fbapi</string>
 		<string>fbapi20130214</string>
 		<string>twitterauth</string>
 		<string>tg</string>
 		<string>telegram</string>
-		<string>renrenapi</string>
-		<string>renrenios</string>
-		<string>renreniphone</string>
+		<string>douyinsharesdk</string>
+		<string>douyinopensdk</string>
+		<string>tiktokopensdk</string>
+		<string>tiktoksharesdk</string>
+		<string>wxwork</string>
+		<string>wxworkrdm</string>
+		<string>wechat</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MOBAppKey</key>
-	<string>moba0b0c0d0</string>
+	<string>2c574691c6986</string>
 	<key>MOBAppSecret</key>
-	<string>5713f0d88511f9f4cf100cade0610a34</string>
+	<string>4b5cd595eb07b5cf17bb269f7a51391d</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>是否允许App访问相册，用来获取图片进行分享</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>写日记添加图片，用来进行图片上传功能</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

@@ -24,7 +24,7 @@
 //1 测试 ， 0 线上
 #define isAPPTest 0
 
-#define SHARESDKDEMO_URLSTRING (isAPPTest? @"http://10.18.98.212:8081/share/link/mobid=ziqMNf":@"http://m.93lj.com/sharelink?mobid=ziqMNf")
+#define SHARESDKDEMO_URLSTRING (isAPPTest? @"http://m.93lj.com/sharelink/?mobid=6496750727844724736":@"http://m.93lj.com/sharelink/?mobid=6496750727844724736")
 #define SHARESDKDEMO_URL_Header (isAPPTest? @"http://10.18.98.212:8081/share/link/":@"http://m.93lj.com/sharelink/")
 #define SHARESDKDEMO_TEXT @"闭环分享重磅上线！一键实现闭环分享！错过它，就错过了全世界~  ahmn.t4m.cn/ziqMNf 点击立即使用"
 #define SHARESDKDEMO_TITLE @"Share SDK"

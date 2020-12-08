@@ -10,6 +10,18 @@
 
 @implementation MOBPlatformInstapaperExample
 
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypeInstapaper;
+}
+
+- (void)setup{
+    SSDKWEAK
+    [self addListItemWithImage:MOBApplicationShareIcon name:@"系统分享-链接" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareLinkBySystem];
+    }];
+}
+
 /**
  分享链接
  */
@@ -33,8 +45,19 @@
     [self shareWithParameters:parameters];
 }
 
+#pragma mark - 系统分享
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypeInstapaper;
+- (void)shareLinkBySystem{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //Text传参与否都不会显示出来
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:nil
+                                       url:[NSURL URLWithString:@"https://tech.diary.support.mob.com/sharesdk/demo/index.html"]
+                                     title:@"Share SDK"
+                                      type:SSDKContentTypeWebPage];
+
+    [self shareByActivityWithParameters:parameters];
 }
+
+
 @end

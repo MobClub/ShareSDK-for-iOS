@@ -91,6 +91,13 @@ typedef NS_ENUM(NSUInteger, MOBFIPVersion)
 + (MOBFNetworkType)currentNetworkType;
 
 /**
+ *  获取当前网络类型字符串
+ *
+ *  @return 网络类型
+ */
++ (NSString *)currentNetworkTypeStr;
+
+/**
  *  获取手机运营商代码
  *
  *  @return 手机运营商代码

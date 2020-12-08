@@ -19,17 +19,41 @@
     //
     [self setAuthSetting:@{@"isBrowser":@(YES)}];
     SSDKWEAK
-    [self addListItemWithImage:MOBImageShareIcon name:@"相册图片" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+    [self addListItemWithImage:MOBApplicationShareIcon name:@"相册图片" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
         SSDKSTRONG
         [self shareAssetImage];
     }];
-    [self addListItemWithImage:MOBVideoShareIcon name:@"相册视频" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+    [self addListItemWithImage:MOBApplicationShareIcon name:@"相册视频" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
         SSDKSTRONG
         [self shareAssetsVideo];
     }];
-    [self addListItemWithImage:MOBVideoShareIcon name:@"视频与图片" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+    [self addListItemWithImage:MOBApplicationShareIcon name:@"视频与图片" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
         SSDKSTRONG
         [self shareVideoImage];
+    }];
+    [self addListItemWithImage:MOBApplicationShareIcon name:@"系统分享-文字" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareTextBySystem];
+    }];
+    [self addListItemWithImage:MOBApplicationShareIcon name:@"系统分享-图片（单图/多图）" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareImageBySystem];
+    }];
+    [self addListItemWithImage:MOBApplicationShareIcon name:@"系统分享-本地视频" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareVideoBySystem];
+    }];
+    [self addListItemWithImage:MOBApplicationShareIcon name:@"系统分享-链接" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareLinkBySystem];
+    }];
+    [self addListItemWithImage:MOBApplicationShareIcon name:@"系统分享-相册图片（单图/多图）" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareAssetImageBySystem];
+    }];
+    [self addListItemWithImage:MOBApplicationShareIcon name:@"系统分享-相册视频" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareAssetVideoBySystem];
     }];
 }
 
@@ -52,7 +76,7 @@
                                attachementUrl:nil
                                       hashtag:nil
                                         quote:nil
-                                    shareType:SSDKFacebookShareTypeShareSheet
+                                    shareType:SSDKFacebookShareTypeNative
                                          type:SSDKContentTypeImage];
     [self shareWithParameters:parameters];
 }
@@ -247,7 +271,7 @@
 //SSDKContentTypeAuto会默认将url视作视频，在有图片与视频时可以支持混合分享，只支持shareSheet类型，不支持Navtive类型，所以即使你设置Navtive也会显示为ShareSheet样式，没有视频时有图片时会按图片分享处理，有视频没图片时会当做视频分享处理，图片或者视频分享可以支持ShareSheet和Navtive类型
 - (void)shareVideoImage{
     NSString *path = [[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"];
-    NSURL *url = [NSURL URLWithString:path];
+    NSURL *url = [NSURL fileURLWithPath:path];
     ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
     __weak __typeof__ (self) weakSelf = self;
     
@@ -280,5 +304,101 @@
     }];
 }
 
+#pragma mark - 系统分享
+
+- (void)shareTextBySystem
+{
+    //系统分享文字
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //通用参数设置
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:nil
+                                       url:nil
+                                     title:nil
+                                      type:SSDKContentTypeText];
+    [self shareByActivityWithParameters:parameters];
+}
+
+- (void)shareImageBySystem
+{
+    //系统分享图片（单图/多图，注：该平台不支持图文分享）
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //通用参数设置
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:@[SHARESDKDEMO_IMAGE_LOCALPATH,SHARESDKDEMO_IMAGE_LOCALPATH]
+                                       url:nil
+                                     title:nil
+                                      type:SSDKContentTypeImage];
+    [self shareByActivityWithParameters:parameters];
+}
+
+- (void)shareAssetImageBySystem
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //系统分享相册图片（单图/多图）
+    [SSDKImagePickerController initWithNavgationControllerConfigureBlock:^(SSDKImagePickerConfigure * _Nonnull configure) {
+        configure.openSmartAlbumUserLibrary = YES;
+        configure.mediaType = SSDKImagePickerMediaTypeImage;
+        configure.operationConfigure.minimumNumberOfImageSelection = 1;
+        configure.operationConfigure.maximumNumberOfImageSelection = 29;
+    } result:^(SSDKImagePickerCompleteStatus status, SSDKImagePickerResult * _Nullable result) {
+        if (status == SSDKImagePickerCompleteStatusCancel) {
+            
+        }else{
+            //分享参数为PHAsset数组
+            [parameters SSDKSetupShareParamsByImageAsset:result.selectedElements videoAsset:nil completeHandle:^(BOOL complete) {
+                if(complete){
+                    [self shareByActivityWithParameters:parameters];
+                }
+            }];
+        }}].presentAnimated();
+}
+
+- (void)shareLinkBySystem{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //平台定制
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:nil
+                                       url:[NSURL URLWithString:@"https://tech.diary.support.mob.com/sharesdk/demo/index.html"]
+                                     title:@"Share SDK"
+                                      type:SSDKContentTypeWebPage];
+
+    [self shareByActivityWithParameters:parameters];
+}
+
+- (void)shareVideoBySystem{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    //通用参数设置
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:nil
+                                       url:url
+                                     title:nil
+                                      type:SSDKContentTypeVideo];
+    [self shareByActivityWithParameters:parameters];
+}
+
+- (void)shareAssetVideoBySystem{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [SSDKImagePickerController initWithNavgationControllerConfigureBlock:^(SSDKImagePickerConfigure * _Nonnull configure) {
+        configure.openSmartAlbumUserLibrary = YES;
+        configure.mediaType = SSDKImagePickerMediaTypeVideo;
+        //视频只能传1个
+        configure.operationConfigure.minimumNumberOfVideoSelection = 1;
+        configure.operationConfigure.maximumNumberOfVideoSelection = 1;
+    } result:^(SSDKImagePickerCompleteStatus status, SSDKImagePickerResult * _Nullable result) {
+        if (status == SSDKImagePickerCompleteStatusCancel) {
+            
+        }else{
+            //分享参数为PHAsset数组
+            [parameters SSDKSetupShareParamsByImageAsset:nil videoAsset:result.selectedElements.firstObject completeHandle:^(BOOL complete) {
+                if(complete){
+                    [self shareByActivityWithParameters:parameters];
+                }
+            }];
+        }
+    }].presentAnimated();
+}
 
 @end

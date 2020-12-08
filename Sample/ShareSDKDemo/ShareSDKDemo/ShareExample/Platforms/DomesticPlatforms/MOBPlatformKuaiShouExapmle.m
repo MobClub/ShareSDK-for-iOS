@@ -23,6 +23,14 @@
         SSDKSTRONG
         [self shareVideoImage];
     }];
+    [self addListItemWithImage:MOBVideoShareIcon name:@"系统分享-单图（本地/网络图片）" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareImageBySystem];
+    }];
+    [self addListItemWithImage:MOBVideoShareIcon name:@"系统分享-本地视频" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareVideoBySystem];
+    }];
     //目前快手scopes仅支持user_info，relation还在内测阶段 cl 2020-09-27
     [self setAuthSetting:@{@"scopes":@[@"user_info"]}];
 }
@@ -48,15 +56,6 @@
 }
 
 - (void)shareAssetImage{
-    //无SDK时使用该方法通过系统分享
-//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
-//                                    images:@[[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"],[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]]//SHARESDKDEMO_IMAGE_STRING //[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]
-//                                       url:nil
-//                                     title:nil
-//                                      type:SSDKContentTypeImage];
-//    [self shareWithParameters:parameters];
-    
     //有SDK时使用该方法通过快手SDK进行分享
     [SSDKImagePickerController initWithNavgationControllerConfigureBlock:^(SSDKImagePickerConfigure * _Nonnull configure) {
         configure.mediaType = SSDKImagePickerMediaTypeImage;
@@ -84,12 +83,6 @@
 }
 
 - (void)shareVideoImage{
-    //无SDK时使用该方法通过系统分享
-//    NSURL *url_1 = [[NSBundle mainBundle] URLForResource:@"cat" withExtension:@"mp4"];
-//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//    [parameters SSDKSetupShareParamsByText:@"123" images:nil url:url_1 title:nil type:SSDKContentTypeVideo];
-//    [self shareWithParameters:parameters];
-    
     //有SDK时使用该方法通过快手SDK进行分享
     [SSDKImagePickerController initWithNavgationControllerConfigureBlock:^(SSDKImagePickerConfigure * _Nonnull configure) {
         configure.mediaType = SSDKImagePickerMediaTypeVideo;
@@ -114,5 +107,24 @@
                                                    type:SSDKContentTypeVideo];
         [self shareWithParameters:parameters];
     }].presentAnimated();
+}
+
+- (void)shareImageBySystem{
+    //系统分享单图（网络图片/本地图片）
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:[[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"]
+                                       url:nil
+                                     title:nil
+                                      type:SSDKContentTypeImage];
+    [self shareByActivityWithParameters:parameters];
+}
+
+- (void)shareVideoBySystem{
+    //系统分享本地视频
+    NSURL *url_1 = [[NSBundle mainBundle] URLForResource:@"cat" withExtension:@"mp4"];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters SSDKSetupShareParamsByText:@"123" images:nil url:url_1 title:nil type:SSDKContentTypeVideo];
+    [self shareByActivityWithParameters:parameters];
 }
 @end

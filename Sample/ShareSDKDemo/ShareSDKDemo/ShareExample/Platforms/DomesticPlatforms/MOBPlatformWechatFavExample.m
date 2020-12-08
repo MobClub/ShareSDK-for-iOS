@@ -66,6 +66,7 @@
                 [self shareWithParameters:parameters];
             }
         }];
+        
     }].presentAnimated();
     //    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //    //通用参数设置

@@ -9,6 +9,17 @@
 #import "MOBPlatformPocketExample.h"
 
 @implementation MOBPlatformPocketExample
++ (SSDKPlatformType)platformType{
+    return SSDKPlatformTypePocket;
+}
+
+- (void)setup{
+    SSDKWEAK
+    [self addListItemWithImage:MOBApplicationShareIcon name:@"系统分享-链接" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareLinkBySystem];
+    }];
+}
 
 /**
  分享链接
@@ -30,7 +41,20 @@
     [self shareWithParameters:parameters];
 }
 
-+ (SSDKPlatformType)platformType{
-    return SSDKPlatformTypePocket;
+#pragma mark - 系统分享
+- (void)shareLinkBySystem
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //Text是链接的标题
+    [parameters SSDKSetupShareParamsByText:@"ShareSDK"
+                                    images:nil
+                                       url:[NSURL URLWithString:@"https://www.mob.com"]
+                                     title:nil
+                                      type:SSDKContentTypeWebPage];
+    
+    [self shareByActivityWithParameters:parameters];
 }
+
+
 @end
+

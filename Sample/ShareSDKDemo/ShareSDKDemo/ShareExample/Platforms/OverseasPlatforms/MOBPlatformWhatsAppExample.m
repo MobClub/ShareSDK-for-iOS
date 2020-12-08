@@ -12,7 +12,7 @@
  
 - (void)setup{
     SSDKWEAK
-    [self addListItemWithImage:MOBTextShareIcon name:@"分享系统文字" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+    [self addListItemWithImage:MOBTextShareIcon name:@"系统分享-文字" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
         SSDKSTRONG
         [self shareTextSystem];
         
