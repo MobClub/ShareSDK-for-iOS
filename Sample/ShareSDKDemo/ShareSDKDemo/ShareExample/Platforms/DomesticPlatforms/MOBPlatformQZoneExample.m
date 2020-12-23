@@ -22,7 +22,7 @@
         SSDKSTRONG
         NSString *path = [[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"];
         NSString *path1 = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
-        NSURL *url = [NSURL URLWithString:path];
+        NSURL *url = [NSURL fileURLWithPath:path];
         ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
         [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
             if(status == PHAuthorizationStatusAuthorized)
@@ -168,7 +168,7 @@
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"];
     NSString *path1 = [[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"];
-    NSURL *url = [NSURL URLWithString:path];
+    NSURL *url = [NSURL fileURLWithPath:path];
     ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
     __weak __typeof__ (self) weakSelf = self;
     

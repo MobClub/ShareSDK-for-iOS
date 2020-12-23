@@ -112,6 +112,8 @@
  */
 + (void)setRestoreSceneDelegate:(id<ISSERestoreSceneDelegate>)delegate;
 
++ (void)setShareVideoEnable:(BOOL)shareVideoEnable;
+
 /**
  *  口令分享功能
  *

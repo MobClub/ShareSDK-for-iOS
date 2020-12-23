@@ -40,7 +40,7 @@
     
     [[LineSDKLogin sharedInstance]setDelegate:self];
     [ShareSDK setRestoreSceneDelegate:self];
-
+    [ShareSDK setShareVideoEnable:YES];
     
     //开启截屏分享监听 与ShareSDK本身无关
     [[MobScreenshotCenter shareInstance] start];

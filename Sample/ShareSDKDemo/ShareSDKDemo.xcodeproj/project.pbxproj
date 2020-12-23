@@ -3945,7 +3945,7 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.3.15;
+				MARKETING_VERSION = 4.3.16;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -3996,7 +3996,7 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.3.15;
+				MARKETING_VERSION = 4.3.16;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
