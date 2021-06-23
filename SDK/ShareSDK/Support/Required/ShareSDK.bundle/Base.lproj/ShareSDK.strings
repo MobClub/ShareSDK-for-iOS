@@ -11,6 +11,7 @@
 */
 
 "ShareSDK_permissionDenied" = "权限拒绝";
+"ShareSDK_NetworkNotAvailable" = "网络不可用";
 "ShareSDK_platformUninit" = "平台配置错误";
 "ShareSDK_unSupportContentType" = "不支持的contentType";
 "ShareSDK_PrivacyUnagreement" = "隐私协议未同意";

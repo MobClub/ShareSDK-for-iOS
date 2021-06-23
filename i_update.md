@@ -2,6 +2,11 @@
 
 [论坛发版列表](http://bbs.mob.com/forum.php?mod=forumdisplay&fid=2&filter=typeid&typeid=36)  
 
+### v4.3.17[详情]
+>1、 Facebook SDK升级为最新版本9.0
+>2、Facebook Messenger分享添加SDK分享，依赖于Facebook SDK
+>3、修复部分bug
+
 ### v4.3.16[详情]
 >1、Facebook SDK升级为最新版本8.2
 >2、默认关闭视频分享功能，给视频分享功能新增开关控制

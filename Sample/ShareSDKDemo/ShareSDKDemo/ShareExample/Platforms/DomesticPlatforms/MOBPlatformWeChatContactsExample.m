@@ -31,9 +31,12 @@
     //       [WeChatConnector setWXCallbackOperation:^(id req, id resp) {
     //
     //       }];
-    
-    
     SSDKWEAK
+    [self addListItemWithImage:MOBImageShareIcon name:@"相册图片" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareAssetImage];
+    }];
+    
     [self addListItemWithImage:MOBMiniProgramShareIcon name:@"打开小程序" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
         [weakSelf openMiniProgram];
     }];
@@ -72,6 +75,21 @@
  分享图片
  */
 - (void)shareImage
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //通用参数设置
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:nil
+                                       url:nil
+                                     title:nil
+                                      type:SSDKContentTypeImage];
+    [self shareWithParameters:parameters];
+}
+
+/**
+ 分享相册图片
+ */
+- (void)shareAssetImage
 {
     
     [SSDKImagePickerController initWithNavgationControllerConfigureBlock:^(SSDKImagePickerConfigure * _Nonnull configure) {
@@ -163,10 +181,10 @@
     //平台定制
     [parameters SSDKSetupWeChatParamsByText:@"Vitas"
                                       title:@"第七元素"
-                                        url:[NSURL URLWithString:@"http://music.163.com/#/song?id=19674655"]
+                                        url:[NSURL URLWithString:@"https://i.y.qq.com/v8/playsong.html?songmid=&_wv=1&songid=4797678&source=qq&platform=1&appsongtype=1&_wv=1&appshare=iphone&type=0&media_mid=001AFWGk4MKbvX&hosteuin=owEzoivFoio5"]
                                  thumbImage:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
                                       image:nil
-                               musicFileURL:[NSURL URLWithString:@"http://music.163.com/song/media/outer/url?id=19674655.mp3"]
+                               musicFileURL:[NSURL URLWithString:@"http://music.163.com/song/media/outer/url?id=133998.mp3"]
                                     extInfo:nil
                                    fileData:nil
                                emoticonData:nil

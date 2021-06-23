@@ -112,6 +112,11 @@
  */
 + (void)setRestoreSceneDelegate:(id<ISSERestoreSceneDelegate>)delegate;
 
+/**
+ 开启视频分享功能
+
+ @param shareVideoEnable 是否开启（默认关闭）
+ */
 + (void)setShareVideoEnable:(BOOL)shareVideoEnable;
 
 /**
@@ -131,4 +136,12 @@
 
 /// 务必先把视频下载到本地，再进行分享！！！
 + (void)shareVideoWithUrl:(NSURL *_Nullable)videoUrl model:(SSDKShareVideoModel *)model withComplete:(void (^_Nullable)(BOOL success, NSError *_Nullable error))completeHandler;
+
+#pragma mark - 平台自定义参数
+
+/**
+ Facebook 开启/禁用自动记录的事件
+ @param enable 开启/禁用
+ */
++ (void)setAutoLogAppEventsEnabled:(BOOL)enable;
 @end

@@ -58,36 +58,9 @@
     //平台定制
     [parameters SSDKSetupFacebookMessengerParamsByTitle:@"Share SDK"
                                                     url:[NSURL URLWithString:@"http://www.mob.com"]
-                                              quoteText:@"Share SDK Link Desc"
                                                  images:@"http://qzonestyle.gtimg.cn/qzone/app/weishi/client/testimage/1024/1.jpg"
-                                                    gif:nil
-                                                  audio:nil
                                                   video:nil
                                                    type:SSDKContentTypeWebPage];
-    
-    [self shareWithParameters:parameters];
-}
-
-- (void)shareAudio{
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    //通用参数设置
-    //图片必须为网络图片
-    //    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
-    //                                    images:SHARESDKDEMO_IMAGE_STRING
-    //                                       url:[NSURL URLWithString:@"http://m.93lj.com/sharelink?mobid=ziqMNf"]
-    //                                     title:SHARESDKDEMO_TITLE
-    //                                      type:SSDKContentTypeWebPage];
-    
-    //[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"music" ofType:@"mp3"]]
-    //平台定制
-    [parameters SSDKSetupFacebookMessengerParamsByTitle:@"Share SDK"
-                                                    url:[NSURL URLWithString:@"http://www.mob.com"]
-                                              quoteText:@"Share SDK Link Desc"
-                                                 images:@"http://qzonestyle.gtimg.cn/qzone/app/weishi/client/testimage/1024/1.jpg"
-                                                    gif:nil
-                                                  audio:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"music" ofType:@"mp3"]]
-                                                  video:nil
-                                                   type:SSDKContentTypeAudio];
     
     [self shareWithParameters:parameters];
 }
@@ -106,10 +79,7 @@
     //平台定制
     [parameters SSDKSetupFacebookMessengerParamsByTitle:@"Share SDK"
                                                     url:[NSURL URLWithString:@"http://www.mob.com"]
-                                              quoteText:@"Share SDK Link Desc"
                                                  images:@"http://qzonestyle.gtimg.cn/qzone/app/weishi/client/testimage/1024/1.jpg"
-                                                    gif:nil
-                                                  audio:nil
                                                   video:nil
                                                    type:SSDKContentTypeImage];
     
@@ -128,17 +98,24 @@
     //                                      type:SSDKContentTypeWebPage];
     
     //[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"music" ofType:@"mp3"]]
-    //平台定制
-    [parameters SSDKSetupFacebookMessengerParamsByTitle:@"Share SDK"
-                                                    url:[NSURL URLWithString:@"http://www.mob.com"]
-                                              quoteText:@"Share SDK Link Desc"
-                                                 images:@"http://qzonestyle.gtimg.cn/qzone/app/weishi/client/testimage/1024/1.jpg"
-                                                    gif:nil
-                                                  audio:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"music" ofType:@"mp3"]]
-                                                  video:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"]]
-                                                   type:SSDKContentTypeVideo];
     
-    [self shareWithParameters:parameters];
+    //经测试发现，messenger只能传输系统相册中的视频
+    [SSDKImagePickerController initWithNavgationControllerConfigureBlock:^(SSDKImagePickerConfigure * _Nonnull configure) {
+        configure.mediaType = SSDKImagePickerMediaTypeVideo;
+        configure.operationConfigure.maximumNumberOfImageSelection =1;
+        configure.operationConfigure.minimumNumberOfImageSelection =1;
+    } result:^(SSDKImagePickerCompleteStatus status, SSDKImagePickerResult * _Nullable result) {
+        if (status == SSDKImagePickerCompleteStatusCancel) return;
+        PHAsset *asset = result.selectedElements.firstObject;
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+
+        [parameters SSDKSetupFacebookMessengerParamsByTitle:@"Share SDK"
+                                                        url:[NSURL URLWithString:@"http://www.mob.com"]
+                                                     images:@"http://qzonestyle.gtimg.cn/qzone/app/weishi/client/testimage/1024/1.jpg"
+                                                      video:asset
+                                                       type:SSDKContentTypeVideo];
+        [self shareWithParameters:parameters];
+    }].presentAnimated();
 }
 
 #pragma mark - 系统分享

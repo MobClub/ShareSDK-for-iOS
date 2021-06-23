@@ -602,16 +602,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D51F416A24A20DE300368F6F /* Embed App Clips */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			name = "Embed App Clips";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D5310E6B23CF004400058431 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1568,7 +1558,6 @@
 			isa = PBXGroup;
 			children = (
 				446212611E6D8B5800C609C9 /* ShareSDKDemo */,
-				44F1FD251F8F60D100366259 /* ShareSDKDemoTests */,
 				50968811213FC8550098E76E /* ShareSDKDemoUITests */,
 				446212601E6D8B5800C609C9 /* Products */,
 				446212F81E6D8C2200C609C9 /* Frameworks */,
@@ -1604,6 +1593,7 @@
 		446212F81E6D8C2200C609C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				44F1FD251F8F60D100366259 /* ShareSDKDemoTests */,
 				D52AD51A247F745F003E1CDD /* WebKit.framework */,
 				D53B2C10241B61A2009E13A3 /* CFNetwork.framework */,
 				D53B2C0E241B60AC009E13A3 /* Security.framework */,
@@ -3128,7 +3118,6 @@
 				4462125C1E6D8B5800C609C9 /* Frameworks */,
 				4462125D1E6D8B5800C609C9 /* Resources */,
 				D5310E6B23CF004400058431 /* Embed Frameworks */,
-				D51F416A24A20DE300368F6F /* Embed App Clips */,
 			);
 			buildRules = (
 			);
@@ -3188,7 +3177,7 @@
 				TargetAttributes = {
 					4462125E1E6D8B5800C609C9 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = C87V99P45A;
+						DevelopmentTeam = Q87QUX3533;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -3921,7 +3910,7 @@
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = C87V99P45A;
+				DEVELOPMENT_TEAM = Q87QUX3533;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/../../SDK/**",
@@ -3945,18 +3934,19 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.3.16;
+				MARKETING_VERSION = 4.3.17;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobtech.dailydiary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MobTech.allkeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = DailyNewMobile;
+				PROVISIONING_PROFILE_SPECIFIER = "Mobtech-Dev";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = NO;
 				VALID_ARCHS = "arm64 arm64e armv7s armv7 x86_64";
 			};
 			name = Debug;
@@ -3972,7 +3962,7 @@
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = C87V99P45A;
+				DEVELOPMENT_TEAM = Q87QUX3533;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/../../SDK/**",
@@ -3996,17 +3986,18 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.3.16;
+				MARKETING_VERSION = 4.3.17;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobtech.dailydiary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MobTech.allkeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = DailyNewMobile;
+				PROVISIONING_PROFILE_SPECIFIER = "Mobtech-Dev";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = NO;
 				VALID_ARCHS = "arm64 arm64e armv7s armv7 x86_64";
 			};
 			name = Release;

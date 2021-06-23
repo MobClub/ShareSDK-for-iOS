@@ -70,7 +70,7 @@ typedef void(^SSDKOpenAppFromMiniProgramCallback)(SSDKResponseState state, NSStr
 + (void)openMiniProgramWithUserName:(NSString *)userName
                                path:(NSString *)path
                     miniProgramType:(NSInteger)miniProgramType
-                           complete:(void(^) (BOOL success))complete __deprecated_msg("Discard form v4.3.16");
+                           complete:(void(^) (BOOL success))complete __deprecated_msg("Discard form v4.3.17");
 
 /**
 拉起小程序功能

@@ -452,6 +452,7 @@ typedef NS_ENUM(NSUInteger, SSDKFacebookShareType){
     */
     SSDKFacebookShareTypeFeedWeb
 };
+
 /**
  *  授权状态变化回调处理器
  *
@@ -489,5 +490,11 @@ typedef void(^SSDKShareStateChangedHandler) (SSDKResponseState state, NSDictiona
  * 当分享状态为取消时，此值为空，表明是用户自己返回app，如果此值不为空，表明是用户点取消返回app
  */
 extern NSString * SSDKShareUserDataHandleOpenObjectKey;
+
+//Facebook开启禁用自动记录的事件通知
+extern NSString * SSDKShareFacebookAutoLogEnableNotification;
+//Facebook自动记录事件开启/禁用
+extern NSString * SSDKShareFacebookAutoLogEnableKey;
+
 
 #endif

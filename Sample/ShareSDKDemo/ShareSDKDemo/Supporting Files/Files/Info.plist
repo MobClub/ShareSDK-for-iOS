@@ -80,7 +80,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>tencent1110451818</string>
-				<string>QQ05FB8B52</string>
+				<string>QQ4230266a</string>
 			</array>
 		</dict>
 		<dict>
@@ -177,10 +177,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>yixin</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>yx0d9a9f9088ea44d78680f3274da1765f</string>
+				<string>moblink</string>
 			</array>
 		</dict>
 		<dict>
@@ -248,7 +248,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>ssdk2c574691c6986</string>
+				<string>ssdkmoba0b0c0d0</string>
 			</array>
 		</dict>
 		<dict>
@@ -271,9 +271,11 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
-	<false/>
+	<true/>
 	<key>FacebookAppID</key>
 	<string>1412473428822331</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<false/>
 	<key>KAKAO_APP_KEY</key>
 	<string>9c17eb03317e0e627ec95a400f5785fb</string>
 	<key>LSApplicationCategoryType</key>
@@ -296,7 +298,6 @@
 		<string>kwai.clip.multi</string>
 		<string>KwaiBundleToken</string>
 		<string>kwaiopenapi</string>
-		<string>kwaiAuth2</string>
 		<string>kwai</string>
 		<string>kakao3rdauth</string>
 		<string>kakaostory-2.9.0</string>
@@ -327,9 +328,7 @@
 		<string>storykompassauth</string>
 		<string>kakaokompassauth</string>
 		<string>yixinfav</string>
-		<string>yixinoauth</string>
 		<string>yixinopenapi</string>
-		<string>yixin</string>
 		<string>pocket-oauth-v1</string>
 		<string>dingtalk-open</string>
 		<string>dingtalk</string>
@@ -346,7 +345,6 @@
 		<string>wtlogintim</string>
 		<string>timopensdkgrouptribeshare</string>
 		<string>timopensdkapiV4</string>
-		<string>timgamebindinggroup</string>
 		<string>timopensdkdataline</string>
 		<string>wtlogintimV1</string>
 		<string>timapiV1</string>
@@ -360,8 +358,6 @@
 		<string>sinaweibosso</string>
 		<string>weixin</string>
 		<string>youtube</string>
-		<string>mpsharesdk11</string>
-		<string>mpsharesdk10</string>
 		<string>mtmv</string>
 		<string>mqqopensdkapiV4</string>
 		<string>mqzone</string>
@@ -407,12 +403,14 @@
 		<key>ChannelID</key>
 		<string>1639219273</string>
 		<key>UniversalLink</key>
-		<string>https://bj2ks.share2dlink.com/line-auth</string>
+		<string>https://70imc.share2dlink.com/line-auth</string>
 	</dict>
 	<key>MOBAppKey</key>
-	<string>2c574691c6986</string>
+	<string>3276d3e413040</string>
 	<key>MOBAppSecret</key>
-	<string>4b5cd595eb07b5cf17bb269f7a51391d</string>
+	<string>4280a3a6df667cfce37528dec03fd9c3</string>
+	<key>MOBNetLater</key>
+	<string>2</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -426,10 +424,12 @@
 	<string>写入相册视频</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>从手机相册中选择</string>
+	<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
+	<true/>
 	<key>SCSDKClientId</key>
-	<string>dbe54b15-1939-4bfc-b6a0-c30a4af426a6</string>
+	<string>dc8e6068-0578-41b8-8392-4da009519725</string>
 	<key>SCSDKRedirectUrl</key>
-	<string>ssdk2c574691c6986://mob</string>
+	<string>ssdkmoba0b0c0d0://mob</string>
 	<key>SCSDKScopes</key>
 	<array>
 		<string>https://auth.snapchat.com/oauth2/api/user.external_id</string>

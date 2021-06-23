@@ -16,6 +16,15 @@
     return SSDKPlatformSubTypeWechatFav;
 }
 
+- (void)setup{
+    SSDKWEAK
+    [self addListItemWithImage:MOBImageShareIcon name:@"相册图片" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareAssetImage];
+    }];
+
+}
+
 - (void)shareText{
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //通用参数设置
@@ -43,6 +52,18 @@
 }
 
 - (void)shareImage
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //通用参数设置
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:nil
+                                       url:nil
+                                     title:nil
+                                      type:SSDKContentTypeImage];
+    [self shareWithParameters:parameters];
+}
+
+- (void)shareAssetImage
 {
     [SSDKImagePickerController initWithNavgationControllerConfigureBlock:^(SSDKImagePickerConfigure * _Nonnull configure) {
         configure.mediaType = SSDKImagePickerMediaTypeImage;

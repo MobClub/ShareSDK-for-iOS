@@ -322,6 +322,18 @@
                             shareType:(SSDKFacebookShareType)shareType
                                  type:(SSDKContentType)type;
 
+//新增设置fromVC的方法
+- (void)SSDKSetupFacebookParamsByText:(NSString *)text
+                                image:(id)image
+                                  url:(NSURL *)url
+                             urlTitle:(NSString *)title
+                              urlName:(NSString *)urlName
+                       attachementUrl:(NSURL *)attachementUrl
+                              hashtag:(NSString *)hashtag
+                                quote:(NSString *)quote
+                                showFromVC:(UIViewController *)showFromVC
+                            shareType:(SSDKFacebookShareType)shareType
+                                 type:(SSDKContentType)type;
 /**
 *  设置Facebook分享参数
 *
@@ -387,13 +399,10 @@
  *  设置Facebook Messenger分享参数
  *
  *  @param image 分享图片，可以为UIImage、NSString（图片路径）、NSURL（图片路径）、SSDKImage。
- *  @param audio 分享音频, 可以为NSData、NSString、NSURL（文件路径）、SSDKData。
  *  @param video 分享视频, 可以为NSData、NSString、NSURL（文件路径）、SSDKData。
  *  @param type  分享类型，仅支持Image、Audio、Video
  */
 - (void)SSDKSetupFacebookMessengerParamsByImage:(id)image
-                                            gif:(id)gif
-                                          audio:(id)audio
                                           video:(id)video
                                            type:(SSDKContentType)type;
 
@@ -405,20 +414,14 @@
  @since ver 3.6.0
  @param title WebPage类型 标题
  @param url   WebPage类型 网址
- @param text  WebPage类型 链接的引用说明
  @param images 分享图片，可以为UIImage、NSString（图片路径）、NSURL（图片路径）、SSDKImage。NSArray 图片数组
  WebPage类型仅支持单张 网络图片
- @param gif   分享GIF图片，可以为UIImage、NSString（图片路径）、NSURL（图片路径）、SSDKImage。
- @param audio 分享音频, 可以为NSData、NSString、NSURL（文件路径）、SSDKData。
  @param video 分享视频, 可以为NSData、NSString、NSURL（文件路径）、SSDKData。
  @param type  分享类型，支持Image、Audio、Video WebPage
  */
 - (void)SSDKSetupFacebookMessengerParamsByTitle:(NSString *)title
                                             url:(NSURL *)url
-                                      quoteText:(NSString *)text
                                          images:(id)images
-                                            gif:(id)gif
-                                          audio:(id)audio
                                           video:(id)video
                                            type:(SSDKContentType)type;
 
@@ -523,12 +526,12 @@
 /**
  *  设置Pinterest分享参数
  *
- *  @param image      分享图片，可以为UIImage、NSString（图片路径）、NSURL（图片路径）、SSDKImage。
+ *  @param imageUrl   分享图片，该平台只支持网络图片
  *  @param desc       图片描述
  *  @param url        链接地址
  *  @param boardName  Board名称
  */
-- (void)SSDKSetupPinterestParamsByImage:(id)image
+- (void)SSDKSetupPinterestParamsByImageUrl:(NSString *)imageUrl
                                    desc:(NSString *)desc
                                     url:(NSURL *)url
                               boardName:(NSString *)boardName;

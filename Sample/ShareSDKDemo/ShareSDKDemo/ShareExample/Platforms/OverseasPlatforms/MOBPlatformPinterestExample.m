@@ -32,22 +32,20 @@
 - (void)shareImage
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-
-    [parameters SSDKSetupPinterestParamsByImage:SHARESDKDEMO_IMAGE_STRING
-                                           desc:SHARESDKDEMO_TEXT
-                                            url:nil
-                                      boardName:@"ShareSDK"];
+    [parameters SSDKSetupPinterestParamsByImageUrl:SHARESDKDEMO_IMAGE_STRING
+                                              desc:SHARESDKDEMO_TEXT
+                                               url:nil
+                                         boardName:@"ShareSDK"];
     [self shareWithParameters:parameters];
     
 }
 - (void)shareLink
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-
-    [parameters SSDKSetupPinterestParamsByImage:SHARESDKDEMO_IMAGE_STRING
-                                           desc:SHARESDKDEMO_TEXT
-                                            url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
-                                      boardName:@"ShareSDK"];
+    [parameters SSDKSetupPinterestParamsByImageUrl:SHARESDKDEMO_IMAGE_STRING
+                                              desc:SHARESDKDEMO_TEXT
+                                               url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
+                                         boardName:@"ShareSDK"];
     [self shareWithParameters:parameters];
     
 }

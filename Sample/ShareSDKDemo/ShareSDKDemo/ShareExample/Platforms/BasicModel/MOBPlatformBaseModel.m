@@ -178,7 +178,6 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
             @(SSDKPlatformTypeLinkedIn),
             @(SSDKPlatformTypeVKontakte),
             @(SSDKPlatformTypeInstapaper),
-            @(SSDKPlatformTypePinterest),
             @(SSDKPlatformTypePocket),
             @(SSDKPlatformTypeTumblr),
             @(SSDKPlatformTypeTelegram),

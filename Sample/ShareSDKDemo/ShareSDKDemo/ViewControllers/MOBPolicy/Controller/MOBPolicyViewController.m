@@ -159,14 +159,12 @@
     }];
     
     _contentTextView.linkTextAttributes = @{NSForegroundColorAttributeName:UIColorHexString(@"FF7800")};
-    SSDKWEAK
-    [MobSDK getPrivacyPolicy:@"1" compeletion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
-        NSString *linkText = data[@"content"]?:@"";
-        NSString *urlDescription = @"《MobService隐私条款》";
-        [attribute appendAttributedString:[[NSAttributedString alloc] initWithString:urlDescription attributes:@{
-            NSFontAttributeName :Font(PingFangReguler, 13),NSLinkAttributeName:linkText}]];
-        weakSelf.contentTextView.attributedText = attribute;
-    }];
+    
+    NSString *linkText = @"http://download.sdk.mob.com/2021/03/03/21/161477643974880.38.html";
+    NSString *urlDescription = @"《MobService隐私条款》";
+    [attribute appendAttributedString:[[NSAttributedString alloc] initWithString:urlDescription attributes:@{
+        NSFontAttributeName :Font(PingFangReguler, 13),NSLinkAttributeName:linkText}]];
+    self.contentTextView.attributedText = attribute;
 }
 
 

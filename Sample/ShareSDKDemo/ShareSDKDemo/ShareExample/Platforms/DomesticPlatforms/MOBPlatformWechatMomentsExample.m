@@ -13,6 +13,16 @@
 + (SSDKPlatformType)platformType{
     return SSDKPlatformSubTypeWechatTimeline;
 }
+
+- (void)setup{
+    SSDKWEAK
+    [self addListItemWithImage:MOBImageShareIcon name:@"相册图片" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        SSDKSTRONG
+        [self shareAssetImage];
+    }];
+
+}
+
 /**
  分享文字
  */
@@ -42,10 +52,26 @@
     
     [self shareWithParameters:parameters];
 }
+
 /**
  分享图片
  */
 - (void)shareImage
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //通用参数设置
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:nil
+                                       url:nil
+                                     title:nil
+                                      type:SSDKContentTypeImage];
+    [self shareWithParameters:parameters];
+}
+
+/**
+ 分享相册图片
+ */
+- (void)shareAssetImage
 {
     
     [SSDKImagePickerController initWithNavgationControllerConfigureBlock:^(SSDKImagePickerConfigure * _Nonnull configure) {

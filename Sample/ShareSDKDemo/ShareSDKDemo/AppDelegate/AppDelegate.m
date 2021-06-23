@@ -59,8 +59,8 @@
     
     [[MOBPolicyManager defaultManager] show];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(allowPolicyAction:) name:@"kMOBPolicyManagerAllowNofitication" object:nil];
-    [WXApi registerApp:@"wx617c77c82218ea2c" universalLink:@"https://bj2ks.share2dlink.com/"];
-    [WeiboSDK registerApp:@"568898243" universalLink:@"https://bj2ks.share2dlink.com/"];
+    [WXApi registerApp:@"wx617c77c82218ea2c" universalLink:@"https://70imc.share2dlink.com/"];
+    [WeiboSDK registerApp:@"568898243" universalLink:@"https://70imc.share2dlink.com/"];
 //    [WXApi checkUniversalLinkReady:^(WXULCheckStep step, WXCheckULStepResult * _Nonnull result) {
 //        NSLog(@"mmmmmmmmmmmm %@  %@  %@  %@",@(step),@(result.success),result.suggestion, result.errorInfo);
 //    }];
@@ -83,7 +83,7 @@
 //     [ShareSDK registPlatforms:^(SSDKRegister *platformsRegister) {
 
 //    #ifdef IMPORT_SINA_WEIBO
-//         [platformsRegister setupSinaWeiboWithAppkey:@"568898243" appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3" redirectUrl:@"http://www.sharesdk.cn" universalLink:@"https://bj2ks.share2dlink.com/"];
+//         [platformsRegister setupSinaWeiboWithAppkey:@"568898243" appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3" redirectUrl:@"http://www.sharesdk.cn" universalLink:@"https://70imc.share2dlink.com/"];
 
 //    #endif
 //
@@ -380,59 +380,59 @@
 }
 
 //
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
-    if( [WXApi handleOpenURL:url delegate:self]){
+//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+//    if( [WXApi handleOpenURL:url delegate:self]){
+//
+//    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
+//
+//    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
+//
+//    }
+//
+//    return YES;
+//}
 
-    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
+//- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
+//    if( [WXApi handleOpenURL:url delegate:self]){
+//
+//    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
+//
+//    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
+//
+//    }
+//    return YES;
+//}
 
-    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+//    if( [WXApi handleOpenURL:url delegate:self]){
+//
+//    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
+//
+//    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
+//
+//    }
+//    return YES;
+//}
 
-    }
+//- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{
+//    NSLog(@"mmmmmmmmmmmm web::::%@",userActivity.webpageURL);
+//    if( [WXApi handleOpenUniversalLink:userActivity delegate:self]){
+//
+//    }else if ([QQApiInterface handleOpenUniversallink:userActivity.webpageURL delegate:self]){
+//
+//    }else
+//    if ([WeiboSDK handleOpenUniversalLink:userActivity delegate:self]){
+//
+//    }
+//    return NO;
+//}
 
-    return YES;
-}
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
-    if( [WXApi handleOpenURL:url delegate:self]){
-
-    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
-
-    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
-
-    }
-    return YES;
-}
-
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-    if( [WXApi handleOpenURL:url delegate:self]){
-
-    }else if ([QQApiInterface handleOpenURL:url delegate:self]){
-
-    }else if ([WeiboSDK handleOpenURL:url delegate:self]) {
-
-    }
-    return YES;
-}
-
-
-- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{
-    NSLog(@"mmmmmmmmmmmm web::::%@",userActivity.webpageURL);
-    if( [WXApi handleOpenUniversalLink:userActivity delegate:self]){
-
-    }else if ([QQApiInterface handleOpenUniversallink:userActivity.webpageURL delegate:self]){
-
-    }else if ([WeiboSDK handleOpenUniversalLink:userActivity delegate:self]){
-
-    }
-    return NO;
-}
-
-- (void)onReq:(BaseReq *)req{
-    NSLog(@"qqqqqqq===============%@",req);
-}
-- (void)onResp:(BaseResp *)resp{
-    NSLog(@"ppppppp===============%@",resp);
-}
+//- (void)onReq:(BaseReq *)req{
+//    NSLog(@"qqqqqqq===============%@",req);
+//}
+//- (void)onResp:(BaseResp *)resp{
+//    NSLog(@"ppppppp===============%@",resp);
+//}
 //- (void)didReceiveWeiboRequest:(WBBaseRequest *)request{
 //    NSLog(@"wbqqqqq==============%@",request);
 //}

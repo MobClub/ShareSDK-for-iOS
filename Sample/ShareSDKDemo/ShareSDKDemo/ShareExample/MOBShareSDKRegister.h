@@ -113,7 +113,7 @@
     //RedirectUri
     #define MOBSSDKSinaWeiboRedirectUri @"http://www.sharesdk.cn"
 
-    #define MOBSSDKSinaWeiboUniversalLink @"https://bj2ks.share2dlink.com/"
+    #define MOBSSDKSinaWeiboUniversalLink @"https://70imc.share2dlink.com/"
 
     //AuthType 授权优先类型 web sso both
     #define MOBSSDKSinaWeiboAuthType SSDKAuthorizeTypeBoth
@@ -177,7 +177,7 @@
     #define MOBSSDKQQAppID @"1110451818"//@"100371282"
     //AppKey
     #define MOBSSDKQQAppKey @"OlbzvuSP3Hgj5yNS"//@"aed9b0303e3ed1e27bae87c33761161d"
-    #define MOBSSDKQQUniversalLink @"https://bj2ks.share2dlink.com/"
+    #define MOBSSDKQQUniversalLink @"https://70imc.share2dlink.com/"
     #define MOBSSDKQQEnableUniversalLink NO
     //AuthType
     #define MOBSSDKQQAuthType SSDKAuthorizeTypeBoth
@@ -215,7 +215,7 @@
     #define MOBSSDKWeChatAppID @"wx617c77c82218ea2c"
     //AppSecret
     #define MOBSSDKWeChatAppSecret @"c7253e5289986cf4c4c74d1ccc185fb1"
-    #define MOBSSDKWeChatuniversalLink @"https://bj2ks.share2dlink.com/"
+    #define MOBSSDKWeChatuniversalLink @"https://70imc.share2dlink.com/"
 #endif
 
 
@@ -857,7 +857,7 @@
 #ifdef IMPORT_KuaiShou
 #define MOBSSDKKuaiShouAppKey @"ks705657770555308030"
 #define MOBSSDKKuaiShouAppSecret @"RQ17enXUOioeoDMrwk3j2Q"
-#define MOBSSDKKuaiShouUniversalLink @"https://bj2ks.share2dlink.com/"
+#define MOBSSDKKuaiShouUniversalLink @"https://70imc.share2dlink.com/"
 #endif
 
 #pragma mark - 企业微信平台配置信息
@@ -871,9 +871,9 @@
 #pragma mark - 绿洲平台配置信息 -
 
 #ifdef IMPORT_Snapchat
-#define MOBSSDKSnapchatClientId @"dbe54b15-1939-4bfc-b6a0-c30a4af426a6"
+#define MOBSSDKSnapchatClientId @"dc8e6068-0578-41b8-8392-4da009519725"
 #define MOBSSDKSnapchatClientSecret @""
-#define MOBSSDKSnapchatRedirectUrl @"ssdk2c574691c6986://mob"
+#define MOBSSDKSnapchatRedirectUrl @"ssdkmoba0b0c0d0://mob"
 #endif
 
 #ifdef IMPORT_Oasis
