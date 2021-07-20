@@ -19,12 +19,11 @@
 #import <MOBFoundation/MOBFoundation.h>
 #import "NSString+SSDKCategory.h"
 #import "WWKApi.h"
-#import <TencentOpenAPI/QQApiInterface.h>
 #import "WXApi.h"
 #import <ShareSDK/SSDKAuthViewManager.h>
 #import "MOBShareCommandDetailView.h"
 #import <WeiboSDK.h>
-@interface AppDelegate () <ISSERestoreSceneDelegate,QQApiInterfaceDelegate,WeiboSDKDelegate, LineSDKLoginDelegate,WXApiDelegate>
+@interface AppDelegate () <ISSERestoreSceneDelegate,WeiboSDKDelegate,LineSDKLoginDelegate,WXApiDelegate>
 
 @property (strong, nonatomic) NSDictionary *parameters;
 
@@ -41,6 +40,8 @@
     [[LineSDKLogin sharedInstance]setDelegate:self];
     [ShareSDK setRestoreSceneDelegate:self];
     [ShareSDK setShareVideoEnable:YES];
+    [ShareSDK setAutoLogAppEventsEnabled:YES];
+    [ShareSDK setBanGetIdfa:YES];
     
     //开启截屏分享监听 与ShareSDK本身无关
     [[MobScreenshotCenter shareInstance] start];

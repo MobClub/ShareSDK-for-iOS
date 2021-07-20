@@ -61,6 +61,11 @@ typedef NS_ENUM(NSUInteger, SSDKGender)
 @property (nonatomic, copy) NSString *icon;
 
 /**
+ *  大头像
+ */
+@property (nonatomic, copy) NSString *bigIcon;
+
+/**
  *  性别 男-0 女-1 未知-2
  */
 @property (nonatomic) NSInteger gender;

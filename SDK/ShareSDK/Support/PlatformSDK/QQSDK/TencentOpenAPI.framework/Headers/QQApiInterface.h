@@ -77,6 +77,8 @@ typedef void (^sendResultBlock)(NSDictionary *result);
  */
 + (QQApiSendResultCode)sendMessageToQQAvatarWithReq:(QQBaseReq*)req;
 
+
++ (QQApiSendResultCode)sendMessageToQQAuthWithReq:(QQBaseReq*)req;
 /**
  向手Q发起组图分享到表情收藏
  \param req 分享内容的请求

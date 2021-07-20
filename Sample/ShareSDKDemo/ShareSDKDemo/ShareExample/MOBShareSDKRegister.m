@@ -174,7 +174,7 @@
 #endif
         
 #ifdef IMPORT_WeWork
-        [platformsRegister setupWeWorkByAppKey:MOBSSDKWeWorkAppKey corpId:MOBSSDKWeWorkCorpId agentId:MOBSSDKWeWorkAgentId appSecret:MOBSSDKWeWorkAppSecret];
+        [platformsRegister setupWeWorkBySchema:MOBSSDKWeWorkSchema appKey:MOBSSDKWeWorkAppkey agentId:MOBSSDKWeWorkAgentId appSecret:MOBSSDKWeWorkAppSecret];
 #endif
     
 

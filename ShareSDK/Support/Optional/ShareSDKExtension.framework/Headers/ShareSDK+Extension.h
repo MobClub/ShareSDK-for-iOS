@@ -144,4 +144,10 @@
  @param enable 开启/禁用
  */
 + (void)setAutoLogAppEventsEnabled:(BOOL)enable;
+
+/**
+ 设置WeiboSDK是否获取idfa 默认获取
+ @param isBan 是否禁用
+ */
++ (void)setBanGetIdfa:(BOOL)isBan;
 @end

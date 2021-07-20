@@ -8,6 +8,8 @@
 
 #import "MOBPlatformTwitterExample.h"
 #import "MOBLoadingViewController.h"
+#import "MOBCustomeShareVC.h"
+#import <MOBFoundation/MOBFoundation.h>
 @implementation MOBPlatformTwitterExample{
     MOBLoadingViewController *loadingViewController;
 }
@@ -39,6 +41,9 @@
     [self addListItemWithImage:MOBTextImageShareIcon name:@"系统分享-本地视频" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
         SSDKSTRONG
         [self shareVideoBySystem];
+    }];
+    [self addListItemWithImage:MOBMiniProgramShareIcon name:@"自定义参数分享" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        [weakSelf shareWithCustom];
     }];
     loadingViewController = [[MOBLoadingViewController alloc] initWithNibName:@"MOBLoadingViewController" bundle:nil];
     loadingViewController.view.frame = [SSDKScenePackage mainBounds];
@@ -239,5 +244,11 @@
                                       type:SSDKContentTypeVideo];
     
     [self shareByActivityWithParameters:parameters];
+}
+
+- (void)shareWithCustom{
+    MOBCustomeShareVC *vc = [[MOBCustomeShareVC alloc]init];
+    vc.platformType = self.platformType;
+    [[MOBFViewController currentViewController].navigationController pushViewController:vc animated:YES];
 }
 @end

@@ -10,8 +10,12 @@
 #import <ShareSDKExtension/ShareSDK+Extension.h>
 #import "MOBShareExample.h"
 #import <time.h>
+#import <dlfcn.h>
+#import <mach-o/ldsyms.h>
 
-
+unsigned int count;
+const char **classes;
+Dl_info info;
 
 void * kMOBPlatformAuthItemModelKey = &kMOBPlatformAuthItemModelKey;
 static time_t lasShareTime;
@@ -186,13 +190,25 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
         ];
         
         NSMutableDictionary *platformMap = [NSMutableDictionary dictionary];
-        unsigned int count = 0;
-        Class *classes = objc_copyClassList(&count);
+//        unsigned int count = 0;
+//        Class *classes = objc_copyClassList(&count);
         Class baseClass = [MOBPlatformBaseModel class];
         
+        //1.获取app的路径
+        dladdr(&_mh_execute_header, &info);
+            
+        //2.返回当前运行的app的所有类的名字，并传出个数
+        //classes：二维数组 存放所有类的列表名称
+        //count：所有的类的个数
+        classes = objc_copyClassNamesForImage(info.dli_fname, &count);
+        
+        
         for (unsigned int i = 0; i < count; i++) {
-            Class class = classes[i];
-            NSString *className = NSStringFromClass(class);
+//            Class class = classes[i];
+//            NSString *className = NSStringFromClass(class);
+            NSString *className = [NSString stringWithCString:classes[i] encoding:NSUTF8StringEncoding];
+            Class class = NSClassFromString(className);
+            
             if (![className hasPrefix:@"MOBPlatform"]) continue;
             if ([class isKindOfClass:object_getClass(baseClass)] && class != baseClass) {
                 [platformMap setObject:className forKey:@([class platformType])];

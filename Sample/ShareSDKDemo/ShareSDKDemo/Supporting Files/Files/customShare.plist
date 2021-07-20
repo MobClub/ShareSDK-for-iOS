@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>placeHolder</key>
+		<string>请输入text</string>
+		<key>index</key>
+		<integer>0</integer>
+		<key>title</key>
+		<string>text</string>
+	</dict>
+	<dict>
+		<key>placeHolder</key>
+		<string>请输入网络图片地址（多个图片以“,”分割）</string>
+		<key>index</key>
+		<integer>1</integer>
+		<key>title</key>
+		<string>图片网络地址</string>
+	</dict>
+	<dict>
+		<key>placeHolder</key>
+		<string>请输入链接地址</string>
+		<key>index</key>
+		<integer>2</integer>
+		<key>title</key>
+		<string>链接地址</string>
+	</dict>
+	<dict>
+		<key>placeHolder</key>
+		<string>请输入title</string>
+		<key>index</key>
+		<integer>3</integer>
+		<key>title</key>
+		<string>title</string>
+	</dict>
+	<dict>
+		<key>placeHolder</key>
+		<string>请输入stickr（Snapchat需要）</string>
+		<key>index</key>
+		<integer>4</integer>
+		<key>title</key>
+		<string>stickr</string>
+	</dict>
+	<dict>
+		<key>placeHolder</key>
+		<string>请输入templateId（KakaoTalk需要）</string>
+		<key>index</key>
+		<integer>5</integer>
+		<key>title</key>
+		<string>templateId</string>
+	</dict>
+	<dict>
+		<key>placeHolder</key>
+		<string>请输入facebookShareType（Facebook需要，请输入1/2）</string>
+		<key>index</key>
+		<integer>6</integer>
+		<key>title</key>
+		<string>facebookShareType（1-2输入一个，默认是1）</string>
+	</dict>
+</array>
+</plist>

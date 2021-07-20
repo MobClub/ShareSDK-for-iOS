@@ -2,6 +2,11 @@
 
 [论坛发版列表](http://bbs.mob.com/forum.php?mod=forumdisplay&fid=2&filter=typeid&typeid=36)  
 
+### v4.4.0[详情] 
+更新说明:
+>1、修复多个海外平台已知问题
+>2、升级微信、QQ、新浪微博等平台分享功能
+
 ### v4.3.17[详情]
 >1、 Facebook SDK升级为最新版本9.0
 >2、Facebook Messenger分享添加SDK分享，依赖于Facebook SDK

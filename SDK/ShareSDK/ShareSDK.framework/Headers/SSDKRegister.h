@@ -350,13 +350,13 @@
 /**
  设置企业微信应用信息
  
- @param appKey 应用appKey
- @param corpId 企业ID
+ @param schema schema
+ @param appKey 企业ID
  @param agentId 应用编号
  @param appSecret 应用密钥
  */
-- (void)setupWeWorkByAppKey:(NSString *)appKey
-                     corpId:(NSString *)corpId
+- (void)setupWeWorkBySchema:(NSString *)schema
+                     appKey:(NSString *)appKey
                     agentId:(NSString *)agentId
                   appSecret:(NSString *)appSecret;
 

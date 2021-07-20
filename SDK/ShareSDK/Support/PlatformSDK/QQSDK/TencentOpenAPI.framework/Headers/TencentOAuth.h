@@ -88,7 +88,6 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
 
 /** 第三方在授权登录/分享 时选择 QQ，还是TIM 。在授权前一定要指定其中一个类型*/
 @property(nonatomic, assign) TencentAuthShareType authShareType;
-
 /**
  * 获取上次登录得到的token
  *
@@ -148,19 +147,6 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
  **/
 
 + (TencentAuthorizeState *)authorizeState;
-
-/**
- * 用来获得当前手机qq的版本号
- * \return 返回手机qq版本号
- **/
-+ (int)iphoneQQVersion __attribute__((deprecated("已过期, 建议删除调用")));
-
-
-/**
- * 用来获得当前手机TIM的版本号
- * \return 返回手机qq版本号
- **/
-+ (int)iphoneTIMVersion __attribute__((deprecated("已过期, 建议删除调用")));
 
 /**
  * 初始化TencentOAuth对象
@@ -226,18 +212,6 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
 + (BOOL)iphoneTIMInstalled;
  
 /**
- * 判断用户手机上的手机QQ是否支持SSO登录
- * \return YES:支持 NO:不支持
- */
-+ (BOOL)iphoneQQSupportSSOLogin __attribute__((deprecated("QQ版本均支持SSO登录。该接口已过期, 建议删除调用")));
-
-/**
- * 判断用户手机上的手机TIM是否支持SSO登录
- * \return YES:支持 NO:不支持
- */
-+ (BOOL)iphoneTIMSupportSSOLogin __attribute__((deprecated("TIM版本均支持SSO登录。该接口已过期, 建议删除调用")));
-
-/**
  * 登录授权
  *
  * \param permissions 授权信息列
@@ -247,20 +221,10 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
 /**
  * 登录授权
  * \param permissions 授权信息列表
- * \param bInSafari 是否使用safari进行登录.<b>IOS SDK 1.3版本开始此参数废除</b>
- */
-- (BOOL)authorize:(NSArray *)permissions
-		 inSafari:(BOOL)bInSafari;
-
-/**
- * 登录授权
- * \param permissions 授权信息列表
  * \param localAppId 应用APPID
- * \param bInSafari 是否使用safari进行登录.<b>IOS SDK 1.3版本开始此参数废除</b>
  */
 - (BOOL)authorize:(NSArray *)permissions
-       localAppId:(NSString *)localAppId
-		 inSafari:(BOOL)bInSafari;
+       localAppId:(NSString *)localAppId;
 
 /**
  * 登录授权<web为二维码扫码方式>
@@ -406,7 +370,7 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
 /**
  * 登录时权限信息的获得
  */
-- (NSArray *)getAuthorizedPermissions:(NSArray *)permissions withExtraParams:(NSDictionary *)extraParams;
+- (NSArray *)getAuthorizedPermissions:(NSArray *)permissions withExtraParams:(NSDictionary *)extraParams __attribute__((deprecated("该接口已过期, 建议删除调用")));
 
 /**
  * unionID获得

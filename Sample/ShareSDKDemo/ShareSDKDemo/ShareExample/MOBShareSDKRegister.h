@@ -862,8 +862,8 @@
 
 #pragma mark - 企业微信平台配置信息
 #ifdef IMPORT_WeWork
-#define MOBSSDKWeWorkAppKey @"wwautha21eaecf93f0e3ba000012"
-#define MOBSSDKWeWorkCorpId @"wwa21eaecf93f0e3ba"
+#define MOBSSDKWeWorkSchema @"wwautha21eaecf93f0e3ba000012"
+#define MOBSSDKWeWorkAppkey @"wwa21eaecf93f0e3ba"
 #define MOBSSDKWeWorkAgentId @"1000012"
 #define MOBSSDKWeWorkAppSecret @"dW7e27P7Hc8NiYdRxnbTeOLgfI1ugR72e-PM8uusq2s"
 #endif

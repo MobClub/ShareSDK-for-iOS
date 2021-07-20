@@ -453,6 +453,18 @@ typedef NS_ENUM(NSUInteger, SSDKFacebookShareType){
     SSDKFacebookShareTypeFeedWeb
 };
 
+typedef NS_ENUM(NSUInteger, SSDKFBSDKProfilePictureMode)
+{
+  /**
+    A square cropped version of the image will be included in the view.
+   */
+  SSDKFBSDKProfilePictureModeSquare,
+  /**
+    The original picture's aspect ratio will be used for the source image in the view.
+   */
+  SSDKFBSDKProfilePictureModeNormal,
+};
+
 /**
  *  授权状态变化回调处理器
  *
@@ -496,5 +508,8 @@ extern NSString * SSDKShareFacebookAutoLogEnableNotification;
 //Facebook自动记录事件开启/禁用
 extern NSString * SSDKShareFacebookAutoLogEnableKey;
 
-
+//设置WeiboSDK是否获取idfa的通知
+extern NSString *SSDKShareWeiboBanGetIdfaNotification;
+//设置WeiboSDK是否获取idfa的key
+extern NSString *SSDKShareWeiboBanGetIdfaKey;
 #endif

@@ -410,7 +410,7 @@
 	<key>MOBAppSecret</key>
 	<string>4280a3a6df667cfce37528dec03fd9c3</string>
 	<key>MOBNetLater</key>
-	<string>2</string>
+	<integer>2</integer>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -418,6 +418,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>分享拍照内容</string>
+	<key>NSHumanReadableCopyright</key>
+	<string></string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>分享拍照视频</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>

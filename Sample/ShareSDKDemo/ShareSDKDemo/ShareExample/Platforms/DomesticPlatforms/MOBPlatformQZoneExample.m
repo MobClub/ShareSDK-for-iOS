@@ -9,6 +9,8 @@
 #import "MOBPlatformQZoneExample.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <Photos/Photos.h>
+#import "MOBCustomeShareVC.h"
+#import <MOBFoundation/MOBFoundation.h>
 @implementation MOBPlatformQZoneExample
 
 + (SSDKPlatformType)platformType{
@@ -54,6 +56,10 @@
                 .present();
             }
         }];
+    }];
+    
+    [self addListItemWithImage:MOBMiniProgramShareIcon name:@"自定义参数分享" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        [weakSelf shareWithCustom];
     }];
 }
 
@@ -106,10 +112,6 @@
     //                                   type:SSDKContentTypeImage
     //                     forPlatformSubType:SSDKPlatformSubTypeQZone];
     [self shareWithParameters:parameters];
-}
-
-- (void)shareTextImage{
-    [self shareMutiImage];
 }
 
 /**
@@ -233,4 +235,10 @@
 //    [self shareWithParameters:parameters];
 //
 //}
+
+- (void)shareWithCustom{
+    MOBCustomeShareVC *vc = [[MOBCustomeShareVC alloc]init];
+    vc.platformType = self.platformType;
+    [[MOBFViewController currentViewController].navigationController pushViewController:vc animated:YES];
+}
 @end

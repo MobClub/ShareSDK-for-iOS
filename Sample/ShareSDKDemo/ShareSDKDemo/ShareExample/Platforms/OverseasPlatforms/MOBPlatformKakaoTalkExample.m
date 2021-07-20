@@ -7,7 +7,8 @@
 //  文档地址:https://www.mob.com/wiki/detailed?wiki=ShareSDK_chanpinjianjie&id=14
 
 #import "MOBPlatformKakaoTalkExample.h"
-
+#import "MOBCustomeShareVC.h"
+#import <MOBFoundation/MOBFoundation.h>
 @implementation MOBPlatformKakaoTalkExample
 + (SSDKPlatformType)platformType{
     return SSDKPlatformSubTypeKakaoTalk;
@@ -43,6 +44,9 @@
     [self addListItemWithImage:MOBApplicationShareIcon name:@"系统分享-文件（仅支持本地文件）" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
         SSDKSTRONG
         [self shareFileBySystem];
+    }];
+    [self addListItemWithImage:MOBMiniProgramShareIcon name:@"自定义参数分享" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        [weakSelf shareWithCustom];
     }];
 }
 
@@ -168,5 +172,11 @@
                                       type:SSDKContentTypeFile];
     
     [self shareByActivityWithParameters:parameters];
+}
+
+- (void)shareWithCustom{
+    MOBCustomeShareVC *vc = [[MOBCustomeShareVC alloc]init];
+    vc.platformType = self.platformType;
+    [[MOBFViewController currentViewController].navigationController pushViewController:vc animated:YES];
 }
 @end

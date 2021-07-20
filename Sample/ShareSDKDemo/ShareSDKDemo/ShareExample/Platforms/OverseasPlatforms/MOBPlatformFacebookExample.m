@@ -9,15 +9,15 @@
 #import "MOBPlatformFacebookExample.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <Photos/Photos.h>
-
+#import "MOBCustomeShareVC.h"
+#import <MOBFoundation/MOBFoundation.h>
 @implementation MOBPlatformFacebookExample
 
 + (SSDKPlatformType)platformType{
     return SSDKPlatformTypeFacebook;
 }
 - (void)setup{
-    //
-    [self setAuthSetting:@{@"isBrowser":@(YES)}];
+    [self setAuthSetting:@{@"isBrowser":@(YES),@"mode":@(SSDKFBSDKProfilePictureModeNormal),@"size":@(CGSizeMake(600, 600))}];
     SSDKWEAK
     [self addListItemWithImage:MOBApplicationShareIcon name:@"相册图片" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
         SSDKSTRONG
@@ -50,6 +50,9 @@
     [self addListItemWithImage:MOBApplicationShareIcon name:@"系统分享-相册视频" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
         SSDKSTRONG
         [self shareAssetVideoBySystem];
+    }];
+    [self addListItemWithImage:MOBMiniProgramShareIcon name:@"自定义参数分享" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
+        [weakSelf shareWithCustom];
     }];
 }
 
@@ -359,6 +362,12 @@
             }];
         }
     }].presentAnimated();
+}
+
+- (void)shareWithCustom{
+    MOBCustomeShareVC *vc = [[MOBCustomeShareVC alloc]init];
+    vc.platformType = self.platformType;
+    [[MOBFViewController currentViewController].navigationController pushViewController:vc animated:YES];
 }
 
 @end
