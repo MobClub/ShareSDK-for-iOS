@@ -18,7 +18,8 @@ typedef NS_ENUM(NSInteger, TikTokOpenSDKErrorCode) {
 };
 
 NS_ASSUME_NONNULL_BEGIN
-typedef void (^TikTokOpenSDKRequestCompletedBlock) (TikTokOpenSDKBaseResponse *resp);
+typedef void (^TikTokOpenSDKRequestCompletionBlock) (TikTokOpenSDKBaseResponse *resp);
+typedef void (^TikTokOpenSDKRequestCompletedBlock) (TikTokOpenSDKBaseResponse *resp) DEPRECATED_MSG_ATTRIBUTE("Use 'TikTokOpenSDKRequestCompletionBlock' instead");
 
 @interface TikTokOpenSDKBaseRequest : NSObject
 /**

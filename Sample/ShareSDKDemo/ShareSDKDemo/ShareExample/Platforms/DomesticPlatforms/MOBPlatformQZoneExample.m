@@ -236,6 +236,22 @@
 //
 //}
 
+- (void)shareMiniProgram{
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    [parameters SSDKSetupQQMiniProgramShareParamsByTitle:SHARESDKDEMO_TITLE
+                                             description:@""
+                                              webpageUrl:[NSURL URLWithString:SHARESDKDEMO_VIDEO_AD_STRING]
+                                            hdThumbImage:@"http://yjmf.bs2dl.yy.com/NzFmYzRiMjUtZjYzMS00ZjEwLWExZTUtMTYyYWJiMWMyNmM5.jpg"//SHARESDKDEMO_IMAGE_LOCALPATH
+                                               miniAppID:@"1109762672"
+                                                miniPath:@"pages/index/index"
+                                          miniWebpageUrl:@"www.qq.com"
+                                         miniProgramType:3
+                                      forPlatformSubType:SSDKPlatformSubTypeQZone];
+    [self shareWithParameters:parameters];
+}
+
 - (void)shareWithCustom{
     MOBCustomeShareVC *vc = [[MOBCustomeShareVC alloc]init];
     vc.platformType = self.platformType;

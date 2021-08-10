@@ -22,6 +22,7 @@
         SSDKSTRONG
         [self shareMulVideos];
     }];
+    [self setAuthSetting:@{@"scopes":@[@"user.info.basic"]}];
 }
 
 ////tiktok不支持单图分享

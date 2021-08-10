@@ -3992,7 +3992,7 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.4.0;
+				MARKETING_VERSION = 4.4.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -4000,7 +4000,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.MobTech.allkeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Mobtech-Dev";
+				PROVISIONING_PROFILE_SPECIFIER = com.MobTech.allkeysDevelop;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4016,7 +4016,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = deep;
 				CODE_SIGN_ENTITLEMENTS = ShareSDKDemo/ShareSDKDemoRelease.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -4044,14 +4044,14 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.4.0;
+				MARKETING_VERSION = 4.4.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MobTech.allkeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Mobtech-Dev";
+				PROVISIONING_PROFILE_SPECIFIER = comMobTechallkeysDevelopadhoc;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

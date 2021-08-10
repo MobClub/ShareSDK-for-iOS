@@ -270,8 +270,8 @@
 //钉钉授权
 #ifdef IMPORT_DingTalkAuth
     //AppId
-    #define MOBSSDKDingTalkAuthAppId @"dingoacafcjgm0etysbv6r"
-    #define MOBSSDKDingTalkAuthAppSecret @"AMDCSN0sgQt2Gzx_xFU0og9cE_P9fDTumRUg3nYdxKrqL-2bgVIlM6Xj4sRzZMTC"
+    #define MOBSSDKDingTalkAuthAppId @"dingoax9s2mdekb7a6748n"
+    #define MOBSSDKDingTalkAuthAppSecret @"dxx9KwP4BYN975umF6Mi2QW3jL7O3k3qHCSvcCbes5Y5R7mFF1ocd19p4NdzOKD4"
     #define MOBSSDKDingTalkAuthRedirectUri @"https://www.mob.com/sharesdk/dingding"
 #endif
 
@@ -764,7 +764,7 @@
     //SecretKey
     #define MOBSSDKLinkedInSecretKey @"uiS3nlE7XBGmTL3P"
     //RedirectUrl
-    #define MOBSSDKLinkedInRedirectUrl @"http://mob.com"
+    #define MOBSSDKLinkedInRedirectUrl @"https:www.//mob.com/"
 #endif
 
 #pragma mark - VKontakte平台配置信息

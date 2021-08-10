@@ -48,7 +48,8 @@ TikTokOpenSDKShareRespState TikTokOpenSDKStringToShareState(NSString *string);
 
 @class TikTokOpenSDKShareResponse;
 
-typedef void (^TikTokOpenSDKShareCompleteBlock)(TikTokOpenSDKShareResponse *Response);
+typedef void (^TikTokOpenSDKShareCompletionBlock)(TikTokOpenSDKShareResponse *Response);
+typedef void (^TikTokOpenSDKShareCompleteBlock)(TikTokOpenSDKShareResponse *Response) DEPRECATED_MSG_ATTRIBUTE("Use 'TikTokOpenSDKShareCompletionBlock' instead");
 
 @interface TikTokOpenSDKShareRequest : TikTokOpenSDKBaseRequest
 
@@ -71,8 +72,9 @@ typedef void (^TikTokOpenSDKShareCompleteBlock)(TikTokOpenSDKShareResponse *Resp
  */
 
 @property (nonatomic, assign) TikTokOpenSDKLandedPageType landedPageType;
+
 /**
-   To associate your video with a hashtag, set the hashtag property on the request. The length cannot exceed 35
+   To associate your video with a hashtag, set the hashtag property on the request. The length cannot exceed 35. You app needs to have access to this feature.
  */
 @property (nonatomic, copy) NSString *hashtag;
 
@@ -89,11 +91,15 @@ typedef void (^TikTokOpenSDKShareCompleteBlock)(TikTokOpenSDKShareResponse *Resp
 /**
  * @brief Send share request to Open Platform.
  *
- * @param completed  The async result call back. You can get result in share response.isSucceed;
+ * @param completion The async result call back. You can get result in share response.isSucceed;
  *
  * @return Share request is valid will return YES;
  */
-- (BOOL)sendShareRequestWithCompleteBlock:(TikTokOpenSDKShareCompleteBlock)completed;
+- (BOOL)sendShareRequestWithCompletionBlock:(TikTokOpenSDKShareCompletionBlock)completion;
+
+#pragma mark - Deprecated
+
+- (BOOL)sendShareRequestWithCompleteBlock:(TikTokOpenSDKShareCompleteBlock)completed DEPRECATED_MSG_ATTRIBUTE("Use 'sendShareRequestWithCompletionBlock:' instead");
 
 @end
 

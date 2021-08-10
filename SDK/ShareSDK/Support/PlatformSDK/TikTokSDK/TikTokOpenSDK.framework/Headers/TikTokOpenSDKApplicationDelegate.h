@@ -30,13 +30,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)sharedInstance;
 
 /**
- * @brief iTunes Url to download app.
- *
- * @return iTunes iTunes Url if international it will return empty string
- */
-- (NSString *)iTunesUrl;
-
-/**
  * @brief Call when you application delegate receive UIApplication didFinishLaunchingWithOptions
  *
  * @param  application Your singleton app object.

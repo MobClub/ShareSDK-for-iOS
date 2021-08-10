@@ -465,6 +465,12 @@ typedef NS_ENUM(NSUInteger, SSDKFBSDKProfilePictureMode)
   SSDKFBSDKProfilePictureModeNormal,
 };
 
+typedef NS_ENUM(NSUInteger, SSDKDouYinShareActionMode)
+{
+    SSDKDouyinOpenSDKShareTypePublishMedia,
+    SSDKDouyinOpenSDKShareTypeShareContentToIM,
+};
+
 /**
  *  授权状态变化回调处理器
  *
@@ -512,4 +518,7 @@ extern NSString * SSDKShareFacebookAutoLogEnableKey;
 extern NSString *SSDKShareWeiboBanGetIdfaNotification;
 //设置WeiboSDK是否获取idfa的key
 extern NSString *SSDKShareWeiboBanGetIdfaKey;
+//设置抖音分享类型的key
+extern NSString *SSDKDouYinShareActionKey;
+
 #endif

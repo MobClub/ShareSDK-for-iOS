@@ -141,6 +141,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>dingoabcwtuab76wy0kyzo</string>
+				<string>dingoax9s2mdekb7a6748n</string>
 			</array>
 		</dict>
 		<dict>
@@ -330,6 +331,7 @@
 		<string>yixinfav</string>
 		<string>yixinopenapi</string>
 		<string>pocket-oauth-v1</string>
+		<string>dingtalk-sso</string>
 		<string>dingtalk-open</string>
 		<string>dingtalk</string>
 		<string>alipayshare</string>

@@ -2,6 +2,15 @@
 
 [论坛发版列表](http://bbs.mob.com/forum.php?mod=forumdisplay&fid=2&filter=typeid&typeid=36)  
 
+
+### v4.4.1[详情] 
+更新说明:
+>1、钉钉SDK更新，新增支持APP授权
+>2、Tik TokSDK更新，新增支持授权功能
+>3、新增支持分享图片、链接到抖音IM
+>4、微信授权新增state校验（以时间戳的形式设置state），防止被第三方伪造信息
+>5、口令分享功能问题修复
+
 ### v4.4.0[详情] 
 更新说明:
 >1、修复多个海外平台已知问题

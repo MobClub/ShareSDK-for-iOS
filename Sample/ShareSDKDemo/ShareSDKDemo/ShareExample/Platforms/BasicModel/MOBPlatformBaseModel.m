@@ -157,6 +157,7 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
             ]];
         mobAllowAuthPlatforms = @[
             @(SSDKPlatformTypeDouyin),
+            @(SSDKPlatformTypeTikTok),
             @(SSDKPlatformTypeQQ),
             @(SSDKPlatformTypeWechat),
             @(SSDKPlatformTypeSinaWeibo),

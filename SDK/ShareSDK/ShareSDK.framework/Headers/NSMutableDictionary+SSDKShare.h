@@ -1050,10 +1050,15 @@
  *  @param type  分享类型，仅支持Image、Video
  *  @param hashtag 唯一标识
  *  @param extraInfo 额外的数据
+ *  @param mode 分享给抖音好友/群还是发布到抖音（注：目前分享到IM只支持传入一个图片，传入多图会变成发布，分享IM只支持图片或链接，不支持视频  -cl 2021-7-5）
+
  */
+
+
 - (void)SSDKSetupDouyinParamesByAssetLocalIds:(NSArray<NSString *> *)assetLocalIds
                                       hashtag:(NSString *)hashtag
                                     extraInfo:(NSDictionary *)extraInfo
+                              shareActionMode:(SSDKDouYinShareActionMode)mode
                                          type:(SSDKContentType)type;
 
 /**

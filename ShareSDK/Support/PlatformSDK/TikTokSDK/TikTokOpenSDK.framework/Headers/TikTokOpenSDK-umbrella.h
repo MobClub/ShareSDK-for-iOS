@@ -11,6 +11,7 @@
 #endif
 
 #import "TikTokOpenSDKApplicationDelegate.h"
+#import "TikTokOpenSDKAuth.h"
 #import "TikTokOpenSDKObjects.h"
 #import "TikTokOpenSDKShare.h"
 
