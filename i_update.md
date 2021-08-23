@@ -2,6 +2,11 @@
 
 [论坛发版列表](http://bbs.mob.com/forum.php?mod=forumdisplay&fid=2&filter=typeid&typeid=36)  
 
+### v4.4.2[详情] 
+更新说明:
+>1、Line文字分享改为新的接口
+>2、Tumblr新增分享链接、音频、视频
+>3、Reddit新增分享图片
 
 ### v4.4.1[详情] 
 更新说明:

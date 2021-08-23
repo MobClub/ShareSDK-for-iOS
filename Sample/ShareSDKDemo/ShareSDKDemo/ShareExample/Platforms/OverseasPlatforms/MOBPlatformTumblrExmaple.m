@@ -71,13 +71,40 @@
                                        url:nil
                                      title:nil
                                       type:SSDKContentTypeImage];
-    //平台定制
-//    [parameters SSDKSetupTumblrParamsByText:nil
-//                                      image:[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
-//                                        url:nil
-//                                      title:@"Share SDK"
-//                                   blogName:nil
-//                                       type:SSDKContentTypeImage];
+    [self shareWithParameters:parameters];
+}
+
+- (void)shareLink
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //通用参数设置
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+                                    images:SHARESDKDEMO_IMAGE_LOCALPATH
+                                       url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
+                                     title:@"Share SDK"
+                                      type:SSDKContentTypeWebPage];
+    [self shareWithParameters:parameters];
+}
+
+- (void)shareAudio
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"music" ofType:@"mp3"];
+    [parameters SSDKSetupTumblrShareParamsByTitle:@"Share SDK"
+                                         dataPath:path
+                                             type:SSDKContentTypeAudio];
+    
+    [self shareWithParameters:parameters];
+}
+
+- (void)shareVideo
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"cat" ofType:@"mp4"];
+    [parameters SSDKSetupTumblrShareParamsByTitle:@"Share SDK"
+                                         dataPath:path
+                                             type:SSDKContentTypeVideo];
+    
     [self shareWithParameters:parameters];
 }
 

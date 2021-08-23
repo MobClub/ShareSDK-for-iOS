@@ -56,10 +56,22 @@
                                      title:@"mob"
                                       type:SSDKContentTypeWebPage];
     [self shareWithParameters:parameters];
-//
     
 }
 
-
-
+/**
+ 分享图片
+ */
+- (void)shareImage
+{
+    //通用参数设置
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters SSDKSetupShareParamsByText:nil
+                                    images:nil
+                                       url:[NSURL URLWithString:SHARESDKDEMO_IMAGE_STRING]
+                                     title:@"mob"
+                                      type:SSDKContentTypeImage];
+    [self shareWithParameters:parameters];
+    
+}
 @end

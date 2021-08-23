@@ -3263,6 +3263,7 @@
 				Base,
 				"zh-Hans",
 				en,
+				ru,
 			);
 			mainGroup = 446212561E6D8B5800C609C9;
 			productRefGroup = 446212601E6D8B5800C609C9 /* Products */;
@@ -3992,7 +3993,7 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.4.1;
+				MARKETING_VERSION = 4.4.2;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -4044,7 +4045,7 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.4.1;
+				MARKETING_VERSION = 4.4.2;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

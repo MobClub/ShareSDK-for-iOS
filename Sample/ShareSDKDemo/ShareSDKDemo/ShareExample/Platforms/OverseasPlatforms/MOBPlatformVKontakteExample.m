@@ -127,6 +127,19 @@
     [self shareWithParameters:parameters];
 }
 
+//- (void)shareVideo
+//{
+//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+//    //通用参数设置
+//    NSString *audio = [[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"];
+//    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+//                                    images:audio
+//                                       url:nil
+//                                     title:nil
+//                                      type:SSDKContentTypeVideo];
+//    [self shareWithParameters:parameters];
+//}
+
 #pragma mark - 系统分享
 - (void)shareTextBySystem
 {

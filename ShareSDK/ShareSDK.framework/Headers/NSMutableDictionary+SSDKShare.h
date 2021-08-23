@@ -1203,6 +1203,16 @@
                                   extraInfo:(NSString *)extraInfo
                                        type:(SSDKContentType)type;
 
+#pragma mark - Tumblr
+
+/** 设置快手分享参数
+ * @param text 标题
+ * @param dataPath 文件路径
+ * @param type 分享的类型
+*/
+- (void)SSDKSetupTumblrShareParamsByTitle:(NSString *)title
+                                 dataPath:(NSString *)dataPath
+                                     type:(SSDKContentType)type;
 #pragma mark - Deprecated
 
 - (void)SSDKEnableUseClientShare __deprecated_msg("Discard form v4.2.0");
