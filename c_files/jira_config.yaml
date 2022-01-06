@@ -1,7 +1,0 @@
-options:
-  :username: wanglijun
-  :password: 'Www.caoda.com1'
-  :site: http://j.mob.com
-  :context_path: ''
-  :auth_type: :basic
-  :use_ssl: false
