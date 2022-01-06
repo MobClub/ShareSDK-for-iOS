@@ -41,6 +41,10 @@ typedef NS_ENUM(NSUInteger, MOBFNetworkType)
      *  4G网络
      */
     MOBFNetworkTypeCellular4G   = 5,
+    /**
+     *  5G网络
+     */
+    MOBFNetworkTypeCellular5G   = 6,
 };
 
 

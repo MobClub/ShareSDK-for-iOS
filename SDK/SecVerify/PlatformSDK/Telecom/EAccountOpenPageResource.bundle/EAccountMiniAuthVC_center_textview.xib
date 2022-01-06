@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment version="2304" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OneXibViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" tag="41000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="du1-u6-S6o">
+                    <rect key="frame" x="41.333333333333343" y="264" width="331.33333333333326" height="368"/>
+                    <subviews>
+                        <view tag="31002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSM-Jp-fG1" userLabel="topView">
+                            <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="44"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" tag="31003" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="免密登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4M-e1-Jpi">
+                                    <rect key="frame" x="0.0" y="10" width="331.33333333333331" height="24"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" tag="21001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S04-90-cqQ">
+                                    <rect key="frame" x="291.33333333333337" y="0.0" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="Nhw-j5-liC"/>
+                                        <constraint firstAttribute="height" constant="40" id="fcs-eE-7SA"/>
+                                    </constraints>
+                                    <state key="normal" image="btn-close.png"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="S04-90-cqQ" secondAttribute="trailing" id="aOh-AR-PtS"/>
+                                <constraint firstAttribute="height" constant="44" id="aqL-mF-7TA"/>
+                                <constraint firstAttribute="trailing" secondItem="s4M-e1-Jpi" secondAttribute="trailing" id="b3G-sF-p5f"/>
+                                <constraint firstItem="s4M-e1-Jpi" firstAttribute="leading" secondItem="bSM-Jp-fG1" secondAttribute="leading" id="m6m-rb-7E1"/>
+                                <constraint firstItem="S04-90-cqQ" firstAttribute="top" secondItem="bSM-Jp-fG1" secondAttribute="top" id="nhh-2j-bFs"/>
+                                <constraint firstItem="s4M-e1-Jpi" firstAttribute="centerY" secondItem="bSM-Jp-fG1" secondAttribute="centerY" id="oQY-MC-ced"/>
+                                <constraint firstItem="s4M-e1-Jpi" firstAttribute="centerX" secondItem="bSM-Jp-fG1" secondAttribute="centerX" id="ueg-et-tUf"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" tag="21005" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wh-NB-9JJ">
+                            <rect key="frame" x="20" y="100" width="291.33333333333331" height="44"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="jgF-zL-Ct4"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="本机号码一键登录" backgroundImage="loginBtn_Nor.png">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="disabled" title=" " backgroundImage="loginBtn_Dis.png"/>
+                            <state key="selected" backgroundImage="loginBtn_Dis.png"/>
+                            <state key="highlighted" backgroundImage="loginBtn_Pre.png"/>
+                        </button>
+                        <button opaque="NO" alpha="0.65000000000000002" tag="21006" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jai-HK-LSZ">
+                            <rect key="frame" x="122.66666666666666" y="155" width="86" height="29"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="其他登录方式">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="21002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="以本机号码登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDV-zL-Gy7">
+                            <rect key="frame" x="0.0" y="60" width="331.33333333333331" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="EBH-4Y-W4e"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView hidden="YES" userInteractionEnabled="NO" tag="210051" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading.png" translatesAutoresizingMaskIntoConstraints="NO" id="KJ9-u3-YTW">
+                            <rect key="frame" x="155.66666666666666" y="112" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="CJC-je-rtX"/>
+                                <constraint firstAttribute="height" constant="20" id="WcC-mT-whZ"/>
+                            </constraints>
+                        </imageView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="41008" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KrE-29-dyq">
+                            <rect key="frame" x="20" y="309" width="291.33333333333331" height="49"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <attributedString key="attributedText">
+                                <fragment content="登录即同意">
+                                    <attributes>
+                                        <color key="NSColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="10" name="PingFangSC-Regular"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content=" ">
+                                    <attributes>
+                                        <color key="NSColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="10" name="HelveticaNeue"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="天翼账号服务与隐私协议">
+                                    <attributes>
+                                        <color key="NSColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="10" name="PingFangSC-Regular"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        <shadow key="NSShadow" blurRadius="10">
+                                            <size key="offset" width="0.0" height="1.5"/>
+                                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="0.33333333333333331" colorSpace="calibratedRGB"/>
+                                        </shadow>
+                                        <integer key="NSUnderline" value="1"/>
+                                        <color key="NSUnderlineColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content=" ">
+                                    <attributes>
+                                        <color key="NSColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="10" name="HelveticaNeue"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        <shadow key="NSShadow" blurRadius="10">
+                                            <size key="offset" width="0.0" height="1.5"/>
+                                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="0.33333333333333331" colorSpace="calibratedRGB"/>
+                                        </shadow>
+                                        <integer key="NSUnderline" value="1"/>
+                                        <color key="NSUnderlineColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="与">
+                                    <attributes>
+                                        <color key="NSColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="10" name="PingFangSC-Regular"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        <shadow key="NSShadow" blurRadius="10">
+                                            <size key="offset" width="0.0" height="1.5"/>
+                                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="0.33333333333333331" colorSpace="calibratedRGB"/>
+                                        </shadow>
+                                        <color key="NSUnderlineColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content=" ">
+                                    <attributes>
+                                        <color key="NSColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="10" name="HelveticaNeue"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        <shadow key="NSShadow" blurRadius="10">
+                                            <size key="offset" width="0.0" height="1.5"/>
+                                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="0.33333333333333331" colorSpace="calibratedRGB"/>
+                                        </shadow>
+                                        <color key="NSUnderlineColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="自定义协议">
+                                    <attributes>
+                                        <color key="NSColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="10" name="PingFangSC-Regular"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        <shadow key="NSShadow" blurRadius="10">
+                                            <size key="offset" width="0.0" height="1.5"/>
+                                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="0.33333333333333331" colorSpace="calibratedRGB"/>
+                                        </shadow>
+                                        <integer key="NSUnderline" value="1"/>
+                                        <color key="NSUnderlineColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content=" ">
+                                    <attributes>
+                                        <color key="NSColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="10" name="HelveticaNeue"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        <shadow key="NSShadow" blurRadius="10">
+                                            <size key="offset" width="0.0" height="1.5"/>
+                                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="0.33333333333333331" colorSpace="calibratedRGB"/>
+                                        </shadow>
+                                        <integer key="NSUnderline" value="1"/>
+                                        <color key="NSUnderlineColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="并">
+                                    <attributes>
+                                        <color key="NSColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="10" name="PingFangSC-Regular"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        <shadow key="NSShadow" blurRadius="10">
+                                            <size key="offset" width="0.0" height="1.5"/>
+                                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="0.33333333333333331" colorSpace="calibratedRGB"/>
+                                        </shadow>
+                                        <color key="NSUnderlineColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content=" ">
+                                    <attributes>
+                                        <color key="NSColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="10" name="HelveticaNeue"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        <shadow key="NSShadow" blurRadius="10">
+                                            <size key="offset" width="0.0" height="1.5"/>
+                                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="0.33333333333333331" colorSpace="calibratedRGB"/>
+                                        </shadow>
+                                        <color key="NSUnderlineColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="授权">
+                                    <attributes>
+                                        <color key="NSColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="10" name="PingFangSC-Regular"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        <shadow key="NSShadow" blurRadius="10">
+                                            <size key="offset" width="0.0" height="1.5"/>
+                                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="0.33333333333333331" colorSpace="calibratedRGB"/>
+                                        </shadow>
+                                        <color key="NSUnderlineColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="APP">
+                                    <attributes>
+                                        <color key="NSColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="10" name="HelveticaNeue"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        <shadow key="NSShadow" blurRadius="10">
+                                            <size key="offset" width="0.0" height="1.5"/>
+                                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="0.33333333333333331" colorSpace="calibratedRGB"/>
+                                        </shadow>
+                                        <color key="NSUnderlineColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="名称获取本机号码">
+                                    <attributes>
+                                        <color key="NSColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="10" name="PingFangSC-Regular"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        <shadow key="NSShadow" blurRadius="10">
+                                            <size key="offset" width="0.0" height="1.5"/>
+                                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="0.33333333333333331" colorSpace="calibratedRGB"/>
+                                        </shadow>
+                                        <color key="NSUnderlineColor" red="0.69796000000000002" green="0.69808000000000003" blue="0.69794999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="bSM-Jp-fG1" firstAttribute="top" secondItem="du1-u6-S6o" secondAttribute="top" id="303-n1-OGF"/>
+                        <constraint firstItem="jai-HK-LSZ" firstAttribute="top" secondItem="du1-u6-S6o" secondAttribute="top" constant="155" id="76P-By-2Sn"/>
+                        <constraint firstItem="WDV-zL-Gy7" firstAttribute="leading" secondItem="du1-u6-S6o" secondAttribute="leading" id="CY9-oV-tWC"/>
+                        <constraint firstAttribute="trailing" secondItem="WDV-zL-Gy7" secondAttribute="trailing" id="GBP-UG-tof"/>
+                        <constraint firstItem="5wh-NB-9JJ" firstAttribute="leading" secondItem="du1-u6-S6o" secondAttribute="leading" constant="20" id="Nib-qU-CMY"/>
+                        <constraint firstItem="jai-HK-LSZ" firstAttribute="centerX" secondItem="du1-u6-S6o" secondAttribute="centerX" id="OFa-kz-giq"/>
+                        <constraint firstItem="WDV-zL-Gy7" firstAttribute="top" secondItem="du1-u6-S6o" secondAttribute="top" constant="60" id="WVB-om-yYQ"/>
+                        <constraint firstItem="bSM-Jp-fG1" firstAttribute="leading" secondItem="du1-u6-S6o" secondAttribute="leading" id="c8P-CO-fP9"/>
+                        <constraint firstAttribute="bottom" secondItem="KrE-29-dyq" secondAttribute="bottom" constant="10" id="f40-L6-I2C"/>
+                        <constraint firstItem="KJ9-u3-YTW" firstAttribute="centerX" secondItem="5wh-NB-9JJ" secondAttribute="centerX" id="fjO-Vu-cZM"/>
+                        <constraint firstItem="5wh-NB-9JJ" firstAttribute="top" secondItem="du1-u6-S6o" secondAttribute="top" constant="100" id="lgh-az-Q9S"/>
+                        <constraint firstAttribute="trailing" secondItem="5wh-NB-9JJ" secondAttribute="trailing" constant="20" id="nAl-mK-iNf"/>
+                        <constraint firstItem="KJ9-u3-YTW" firstAttribute="centerY" secondItem="5wh-NB-9JJ" secondAttribute="centerY" id="pYR-gB-E0v"/>
+                        <constraint firstAttribute="trailing" secondItem="KrE-29-dyq" secondAttribute="trailing" constant="20" id="scm-Ur-uHs"/>
+                        <constraint firstItem="KrE-29-dyq" firstAttribute="leading" secondItem="du1-u6-S6o" secondAttribute="leading" constant="20" id="tv4-JG-Er4"/>
+                        <constraint firstAttribute="trailing" secondItem="bSM-Jp-fG1" secondAttribute="trailing" id="xwO-aY-0vs"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds ," value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="du1-u6-S6o" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="J5L-R3-Gk7"/>
+                <constraint firstItem="du1-u6-S6o" firstAttribute="height" secondItem="Q5M-cg-NOt" secondAttribute="height" multiplier="300:667" id="OGm-wl-IvM"/>
+                <constraint firstItem="du1-u6-S6o" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="300:375" id="aCI-a5-v59"/>
+                <constraint firstItem="du1-u6-S6o" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="w2y-DP-zI2"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="-480" y="-58.098591549295776"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn-close.png" width="80" height="80"/>
+        <image name="loading.png" width="32" height="32"/>
+        <image name="loginBtn_Dis.png" width="335" height="50"/>
+        <image name="loginBtn_Nor.png" width="335" height="50"/>
+        <image name="loginBtn_Pre.png" width="335" height="50"/>
+    </resources>
+</document>
