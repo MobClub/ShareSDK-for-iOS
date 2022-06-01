@@ -275,12 +275,20 @@
 	<string>1412473428822331</string>
 	<key>FacebookAutoLogAppEventsEnabled</key>
 	<false/>
+	<key>FacebookClientToken</key>
+	<string>69328ee535a48e58af22bc42ecdb7174</string>
+	<key>FacebookDisplayName</key>
+	<string>shareSDK</string>
 	<key>KAKAO_APP_KEY</key>
 	<string>9c17eb03317e0e627ec95a400f5785fb</string>
 	<key>LSApplicationCategoryType</key>
 	<string>weibosdk</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>fbauth2</string>
+		<string>fbauth</string>
+		<string>fb-messenger-share-api</string>
+		<string>whatsapp</string>
 		<string>weibosdk3.3</string>
 		<string>weibosdk2.5</string>
 		<string>weibosdk</string>
@@ -328,13 +336,19 @@
 		<string>mingdao</string>
 		<string>snssdk32</string>
 		<string>fbapi</string>
-		<string>fb-messenger-share-api</string>
-		<string>fbauth</string>
-		<string>fbauth2</string>
+		<string>fbapi20130214</string>
+		<string>fbapi20130410</string>
+		<string>fbapi20130702</string>
+		<string>fbapi20131010</string>
+		<string>fbapi20131219</string>
+		<string>fbapi20140410</string>
+		<string>fbapi20140116</string>
+		<string>fbapi20150313</string>
+		<string>fbapi20150629</string>
+		<string>fbapi20160328</string>
 		<string>fbshareextension</string>
 		<string>instagram</string>
 		<string>instagram-stories</string>
-		<string>whatsapp</string>
 		<string>line</string>
 		<string>lineauth2</string>
 		<string>snapchat</string>

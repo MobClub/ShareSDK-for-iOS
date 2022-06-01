@@ -548,7 +548,6 @@
 		D5A9C8F72367E2D8008040DD /* TelegramConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C87E2367E2D7008040DD /* TelegramConnector.framework */; };
 		D5A9C8F92367E2D8008040DD /* EasyChatConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C87F2367E2D7008040DD /* EasyChatConnector.framework */; };
 		D5A9C8FD2367E2D8008040DD /* AliSocialConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C8812367E2D7008040DD /* AliSocialConnector.framework */; };
-		D5A9C8FF2367E2D8008040DD /* KaiXinConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C8822367E2D7008040DD /* KaiXinConnector.framework */; };
 		D5A9C9012367E2D8008040DD /* MailConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C8832367E2D7008040DD /* MailConnector.framework */; };
 		D5A9C9032367E2D8008040DD /* QQConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C8842367E2D7008040DD /* QQConnector.framework */; };
 		D5A9C9052367E2D8008040DD /* TumblrConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C8852367E2D7008040DD /* TumblrConnector.framework */; };
@@ -1402,7 +1401,6 @@
 		D5A9C87E2367E2D7008040DD /* TelegramConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TelegramConnector.framework; sourceTree = "<group>"; };
 		D5A9C87F2367E2D7008040DD /* EasyChatConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EasyChatConnector.framework; sourceTree = "<group>"; };
 		D5A9C8812367E2D7008040DD /* AliSocialConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliSocialConnector.framework; sourceTree = "<group>"; };
-		D5A9C8822367E2D7008040DD /* KaiXinConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KaiXinConnector.framework; sourceTree = "<group>"; };
 		D5A9C8832367E2D7008040DD /* MailConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MailConnector.framework; sourceTree = "<group>"; };
 		D5A9C8842367E2D7008040DD /* QQConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QQConnector.framework; sourceTree = "<group>"; };
 		D5A9C8852367E2D7008040DD /* TumblrConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TumblrConnector.framework; sourceTree = "<group>"; };
@@ -1483,7 +1481,6 @@
 				D52E4EFE243D881400652916 /* SnapChatConnector.framework in Frameworks */,
 				D5A9C9072367E2D8008040DD /* VKontakteConnector.framework in Frameworks */,
 				D5A9C9092367E2D8008040DD /* PocketConnector.framework in Frameworks */,
-				D5A9C8FF2367E2D8008040DD /* KaiXinConnector.framework in Frameworks */,
 				5058A009214F9928000B750B /* libc++.tbd in Frameworks */,
 				D5A9C9032367E2D8008040DD /* QQConnector.framework in Frameworks */,
 				D53B2C0D241B5F7E009E13A3 /* SafariServices.framework in Frameworks */,
@@ -3135,7 +3132,6 @@
 				D5A9C8892367E2D7008040DD /* GooglePlusConnector.framework */,
 				D5A9C89B2367E2D7008040DD /* InstagramConnector.framework */,
 				D5A9C8902367E2D7008040DD /* InstapaperConnector.framework */,
-				D5A9C8822367E2D7008040DD /* KaiXinConnector.framework */,
 				D5A9C89C2367E2D7008040DD /* KakaoConnector.framework */,
 				D5AEC35E246EA6EF006E8B2B /* KuaiShouConnector.framework */,
 				D5A9C88B2367E2D7008040DD /* LineConnector.framework */,
@@ -4027,7 +4023,7 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.4.3;
+				MARKETING_VERSION = 4.4.5;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -4079,7 +4075,7 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.4.3;
+				MARKETING_VERSION = 4.4.5;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

@@ -28,7 +28,6 @@
 #define IMPORT_YinXiang //注释此行则 不开启【 印象笔记 】平台
 #define IMPORT_YouDaoNote //注释此行则 不开启【 有道云笔记 】平台
 #define IMPORT_Mingdao //注释此行则 不开启【 明道 】平台
-#define IMPORT_Kaixin //注释此行则 不开启【 开心网 】平台
 #define IMPORT_SUB_YiXinSession //注释此行则 不开启【 易信好友 】平台
 #define IMPORT_SUB_YiXinTimeline //注释此行则 不开启【 易信朋友圈 】平台
 #define IMPORT_SUB_YiXinFav //注释此行则 不开启【 易信收藏 】平台
