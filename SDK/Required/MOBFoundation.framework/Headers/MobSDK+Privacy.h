@@ -19,7 +19,7 @@
  获取MobTech用户隐私协议
  
  @param type 协议类型 (1= url类型, 2=  富文本类型)
- @param completion 返回回调（data：字典类型 title=标题,content=内容(type=1，返回url,type = 2时返回富文本)       error:详细错误信息）
+ @param result 返回回调（data：字典类型 title=标题,content=内容(type=1，返回url,type = 2时返回富文本)       error:详细错误信息）
  */
 + (void)getPrivacyPolicy:(NSString * _Nullable)type
              compeletion:(void (^ _Nullable)(NSDictionary * _Nullable data,NSError * _Nullable error))result DEPRECATED_MSG_ATTRIBUTE("use -[getPrivacyPolicy:language:compeletion:] method instead.");
@@ -29,7 +29,7 @@
  
  @param type 协议类型 (1= url类型, 2=  富文本类型)
  @param language 隐私协议支持语言（）
- @param completion 返回回调（data：字典类型 title=标题,content=内容(type=1，返回url,type = 2时返回富文本)       error:详细错误信息）
+ @param result 返回回调（data：字典类型 title=标题,content=内容(type=1，返回url,type = 2时返回富文本)       error:详细错误信息）
  */
 + (void)getPrivacyPolicy:(NSString * _Nullable)type
                 language:(NSString * _Nullable)language
@@ -38,6 +38,7 @@
 /**
  上传隐私协议授权状态
  @param isAgree 是否同意（用户授权后的结果）
+ @param handler 回掉
  */
 + (void)uploadPrivacyPermissionStatus:(BOOL)isAgree
                              onResult:(void (^_Nullable)(BOOL success))handler;
@@ -50,7 +51,7 @@
 
 /**
  设置隐私协议弹窗色调
- @param backColorb 弹窗背景色调
+ @param backColor 弹窗背景色调
  @param colors 弹窗按钮色调数组（首个元素为拒绝按钮色调，第二个元素为同意按钮色调）
  */
 + (void)setPrivacyBackgroundColor:(UIColor *_Nullable)backColor

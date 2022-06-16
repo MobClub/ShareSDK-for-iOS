@@ -7,7 +7,7 @@
 //
 
 #import "MOBFImageObserver.h"
-#import "MOBFImageServiceTypeDef.h"
+#import <MOBFoundation/MOBFImageServiceTypeDef.h>
 #import <Foundation/Foundation.h>
 
 @class MOBFImageCachePolicy;

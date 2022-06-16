@@ -14,7 +14,7 @@
  *
  *  @return 插件对象
  */
-typedef id<IMOBFPlugin>(^MOBFPluginConstructHandler) ();
+typedef id<IMOBFPlugin>(^MOBFPluginConstructHandler) (void);
 
 /**
  *  插件管理器

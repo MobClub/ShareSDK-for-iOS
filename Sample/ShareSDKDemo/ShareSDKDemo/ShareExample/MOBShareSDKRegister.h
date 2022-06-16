@@ -564,7 +564,9 @@
     //ClientSecret
     #define MOBSSDKGooglePlusClientSecret @""
     //RedirectUri
-    #define MOBSSDKGooglePlusRedirectUri @"http://localhost"
+//    #define MOBSSDKGooglePlusRedirectUri @"http://localhost"
+    #define MOBSSDKGooglePlusRedirectUri @"com.googleusercontent.apps.232554794995-4m0c7j0f289fkq05ee0abkso4p9d904i:/oauthredirect"
+
 #endif
 
 

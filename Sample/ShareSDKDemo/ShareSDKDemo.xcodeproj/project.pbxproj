@@ -14,6 +14,9 @@
 		5058A009214F9928000B750B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5058A008214F9928000B750B /* libc++.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		50968813213FC8550098E76E /* ShareSDKDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50968812213FC8550098E76E /* ShareSDKDemoUITests.swift */; };
 		509A48EE212BF04700D4F518 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509A48ED212BF04600D4F518 /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6B962E1A2840B58300866D56 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B962E172840B58300866D56 /* GTMSessionFetcher.framework */; };
+		6B962E1B2840B58300866D56 /* GTMAppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B962E182840B58300866D56 /* GTMAppAuth.framework */; };
+		6B962E1C2840B58300866D56 /* AppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B962E192840B58300866D56 /* AppAuth.framework */; };
 		7367F15123FD58D6000E5224 /* NSIndexSet+SSDKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367F15023FD58D6000E5224 /* NSIndexSet+SSDKCategory.m */; };
 		738C363623FCD511006683C0 /* SSDKBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 738C363523FCD511006683C0 /* SSDKBaseCollectionViewCell.m */; };
 		9101AE5D24D42F0300C88394 /* MOBCommandShareContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9101AE5C24D42F0300C88394 /* MOBCommandShareContentView.m */; };
@@ -639,6 +642,9 @@
 		50968812213FC8550098E76E /* ShareSDKDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSDKDemoUITests.swift; sourceTree = "<group>"; };
 		50968814213FC8550098E76E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		509A48ED212BF04600D4F518 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		6B962E172840B58300866D56 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = "<group>"; };
+		6B962E182840B58300866D56 /* GTMAppAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMAppAuth.framework; sourceTree = "<group>"; };
+		6B962E192840B58300866D56 /* AppAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppAuth.framework; sourceTree = "<group>"; };
 		7367F14F23FD58D6000E5224 /* NSIndexSet+SSDKCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSIndexSet+SSDKCategory.h"; sourceTree = "<group>"; };
 		7367F15023FD58D6000E5224 /* NSIndexSet+SSDKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSIndexSet+SSDKCategory.m"; sourceTree = "<group>"; };
 		738C363423FCD511006683C0 /* SSDKBaseCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDKBaseCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1506,6 +1512,7 @@
 				D5A9C9312367E2D8008040DD /* InstagramConnector.framework in Frameworks */,
 				D568BC712458306E006A257B /* libWeiboSDK.a in Frameworks */,
 				D5A9C8E12367E2D8008040DD /* ShareSDKUI.framework in Frameworks */,
+				6B962E1B2840B58300866D56 /* GTMAppAuth.framework in Frameworks */,
 				9141B83E270FE6B200CCF51B /* FBSDKCoreKit_Basics.framework in Frameworks */,
 				D5A9C91D2367E2D8008040DD /* LinkedInConnector.framework in Frameworks */,
 				D5A9C9372367E2D8008040DD /* WeworkConnector.framework in Frameworks */,
@@ -1522,6 +1529,7 @@
 				D5A9C9252367E2D8008040DD /* TwitterConnector.framework in Frameworks */,
 				D5A9C9412367E2D8008040DD /* MOBFoundation.framework in Frameworks */,
 				D5A9C8C12367E2D8008040DD /* libWXWorkApi.a in Frameworks */,
+				6B962E1C2840B58300866D56 /* AppAuth.framework in Frameworks */,
 				D5A9C90D2367E2D8008040DD /* GooglePlusConnector.framework in Frameworks */,
 				D5A9C8EB2367E2D8008040DD /* RedditConnector.framework in Frameworks */,
 				D5A9C9192367E2D8008040DD /* EvernoteConnector.framework in Frameworks */,
@@ -1537,6 +1545,7 @@
 				D5A9C8F32367E2D8008040DD /* WhatsAppConnector.framework in Frameworks */,
 				91EE1A082758662E00EEE2A4 /* libKwaiSDK.a in Frameworks */,
 				D5A9C8FD2367E2D8008040DD /* AliSocialConnector.framework in Frameworks */,
+				6B962E1A2840B58300866D56 /* GTMSessionFetcher.framework in Frameworks */,
 				D52AD523247FA26E003E1CDD /* SCSDKLoginKit.framework in Frameworks */,
 				446212FC1E6D8C3000C609C9 /* libz.tbd in Frameworks */,
 				D5A9C8F72367E2D8008040DD /* TelegramConnector.framework in Frameworks */,
@@ -1646,6 +1655,16 @@
 				50968814213FC8550098E76E /* Info.plist */,
 			);
 			path = ShareSDKDemoUITests;
+			sourceTree = "<group>";
+		};
+		6B962E162840B58300866D56 /* GoogleSDK */ = {
+			isa = PBXGroup;
+			children = (
+				6B962E172840B58300866D56 /* GTMSessionFetcher.framework */,
+				6B962E182840B58300866D56 /* GTMAppAuth.framework */,
+				6B962E192840B58300866D56 /* AppAuth.framework */,
+			);
+			path = GoogleSDK;
 			sourceTree = "<group>";
 		};
 		730BFFB923FF897C009D4E3D /* LineSDK */ = {
@@ -3024,6 +3043,7 @@
 		D5A9C8372367E2D7008040DD /* PlatformSDK */ = {
 			isa = PBXGroup;
 			children = (
+				6B962E162840B58300866D56 /* GoogleSDK */,
 				91B9B50D273E441C00DAE195 /* WeChatSDK */,
 				9141B82B270FE6B100CCF51B /* FacebookSDK */,
 				9141B832270FE6B100CCF51B /* KwaiSDKLibrary */,
@@ -4023,7 +4043,7 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.4.5;
+				MARKETING_VERSION = 4.4.6;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -4075,7 +4095,7 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.4.5;
+				MARKETING_VERSION = 4.4.6;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

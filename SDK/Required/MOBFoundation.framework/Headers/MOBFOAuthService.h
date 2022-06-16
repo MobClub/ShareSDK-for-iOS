@@ -46,7 +46,7 @@
  *  @param headers               请求头集合
  *  @param oauthParameters       OAuth请求参数
  *  @param consumerSecret        消费者密钥
- *  @param oauthSecret           OAuth令牌密钥
+ *  @param oauthTokenSecret           OAuth令牌密钥
  *  @param resultHandler         返回回调
  *  @param faultHandler          错误回调
  *  @param uploadProgressHandler 上传数据进度回调

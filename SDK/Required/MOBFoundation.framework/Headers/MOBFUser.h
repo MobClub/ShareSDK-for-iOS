@@ -78,6 +78,7 @@
  @param avatar 用户头像地址
  @param nickname 用户名称
  @param userdata 用户自定义数据
+ @param sign 签名
  @return 用户信息
  */
 + (MOBFUser* _Nullable)userWithAppUid:(NSString * _Nonnull )appUid

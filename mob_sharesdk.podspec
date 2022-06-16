@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.4.5"
+  s.version          = "4.4.6"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
 
   s.homepage         = 'http://www.mob.com'
 
-  s.source           = { :http => 'https://sdk-dev-ios.oss-cn-hangzhou.aliyuncs.com/files/download/sharesdk/ShareSDK_For_iOS_v4.4.5.zip' }
+  s.source           = { :http => 'https://sdk-dev-ios.oss-cn-hangzhou.aliyuncs.com/files/download/sharesdk/ShareSDK_For_iOS_v4.4.6.zip' }
 
   s.platform         = :ios
   s.ios.deployment_target = "8.0"
@@ -198,7 +198,8 @@ Pod::Spec.new do |s|
 
         # GooglePlus
         sp.subspec 'GooglePlus' do |ssp|
-            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformConnector/GooglePlusConnector.framework'
+            ssp.vendored_frameworks =  'ShareSDK/Support/PlatformSDK/GoogleSDK/GTMSessionFetcher.framework','ShareSDK/Support/PlatformSDK/GoogleSDK/AppAuth.framework','ShareSDK/Support/PlatformSDK/GoogleSDK/GTMAppAuth.framework','ShareSDK/Support/PlatformConnector/GooglePlusConnector.framework'
+            ssp.frameworks = 'SafariServices','AuthenticationServices'
             ssp.dependency 'mob_sharesdk/ShareSDK'
             ssp.resource_bundles = {
                 'ShareSDK_JS_GooglePlus' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/GooglePlus.js']

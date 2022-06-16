@@ -6,7 +6,32 @@
 >集成本组件将大大缩短开发者的开发时间。同时还提供的专业的后台统计等丰富的扩展功能，助力App的推广运营。
 
 - - - - -
+### 当前版本更新（4.4.6）
+
+更新说明:
+
+1.修复google+新用户授权异常问题
+
+
+
+### 当前版本更新（4.4.5）
+
+更新说明:
+
+1.修复messenger，whatsapp分享bug
+
+
+
+### 当前版本更新（4.4.4）
+
+更新说明:
+
+1.修复Facebook首次分享不成功的bug
+
+
+
 ### 当前版本更新（4.4.3）
+
 更新说明:
 1.修复facebook，钉钉，evernote，Youtube，Telegram，LinkedIn，VK平台分享异常问题
 2.修复5G网络报错问题
@@ -66,7 +91,7 @@
 
 [更多版本更新说明](i_update.md)  
 
-- - - - - 
+- - - - -
 ### 一、获取AppKey
 如何在我们的官网注册应用得到appkey，请点击 [链接](http://bbs.mob.com/forum.php?mod=viewthread&tid=8212&extra=page%3D1) 看里面的操作步骤。
 
@@ -295,7 +320,7 @@ pod 'mob_sharesdk/ShareSDKExtension'
 
 #### 第二步：添加实现代码 打开需要集成分享功能的视图源码，把如下代码复制并粘贴到你要分享的位置，例如到响应分享按钮的方法中。并且修改相应的参数即可。
 1.需要在分享的试图中导入的头文件
- 
+
 ```objc
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>
@@ -432,9 +457,9 @@ pod 'mob_sharesdk/ShareSDKExtension'
 根据自身项目配置分享/授权平台来添加白名单，如项目中使用了微博、新浪、QQ分享只需添加与之相关的值，下图是因为ShareSDK提供的Demo，它集成了所有平台。  
 ![](images/sharesdk_ios_queriesSchemes.png)  
 ![](images/sharesdk_ios_queriesSchemes_other.png)
+
   
-  
-  
+
 **URL Schemes 配置:**  
 可选：支持微信所需的相关配置及代码 在微信开放平台[http://open.weixin.qq.com](http://open.weixin.qq.com/)注册应用并取得应用的AppID，然后打开下图位置，在URL Types中添加微信AppID  
 ![](images/sharesdk_ios_urlschemes01.png)
@@ -453,7 +478,7 @@ pod 'mob_sharesdk/ShareSDKExtension'
 可选：支持QQ所需的相关配置及代码 登录腾讯开放平台（http://open.qq.com/ ）注册成为开发者并登记应用取得AppId，然后打开下图位置，在URL Types中添加QQ的AppID，其格式为：”QQ” ＋ AppId的16进制（如果appId转换的16进制数不够8位则在前面补0，如转换的是：5FB8B52，则最终填入为：QQ05FB8B52 注意：转换后的字母要大写） 转换16进制的方法：echo ‘ibase=10;obase=16;801312852’ |bc，其中801312852为QQ的AppID，见下图  
 ![](images/sharesdk_ios_project_qqappid.png)  
 ![](images/sharesdk_ios_urlschemes02.png)  
-  
+
 然后打开工程中的 \*AppDelegate.m (\*代表你的工程名字)文件，导入QQSDK的头文件并初始化：  
 
 ```objc
@@ -481,5 +506,4 @@ pod 'mob_sharesdk/ShareSDKExtension'
     [platformsRegister setupSinaWeiboWithAppkey:@"568898243" appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3" redirectUrl:@"http://www.sharesdk.cn"];
 }];
 ```
-
 

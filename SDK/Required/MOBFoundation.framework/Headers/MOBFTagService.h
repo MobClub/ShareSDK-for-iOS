@@ -56,7 +56,7 @@ typedef NS_ENUM(NSUInteger, MOBFErrorTagMsgType){
  @param latitude 纬度
  @param longitude 经度
  @param tag 完整地理信息JSON数据
- @param handler 回调信息
+ @param result 回调信息
  */
 + (void)uploadLocation:(CGFloat)accuracy
               latitude:(CGFloat)latitude

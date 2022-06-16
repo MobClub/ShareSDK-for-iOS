@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MOBFJSTypeDefine.h"
+#import <MOBFoundation/MOBFJSTypeDefine.h>
 
 @class JSContext;
 

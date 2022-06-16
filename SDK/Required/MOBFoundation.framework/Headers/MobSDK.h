@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MOBSDKDef.h"
+#import <MOBFoundation/MOBSDKDef.h>
 
 /**
  MobSDK
@@ -84,9 +84,10 @@
 /**
  设置用户
  
- @param uid 用户标识，对应应用自身用户系统的用户唯一标志，不一定是实际的用户ID，可以通过数据变换的方式（如：MD5（userID））来生成该ID，但一定要能够唯一标识用户。设置nil表示注销用户，解除绑定
+ @param uid 用户ID 用户标识，对应应用自身用户系统的用户唯一标志，不一定是实际的用户ID，可以通过数据变换的方式（如：MD5（userID））来生成该ID，但一定要能够唯一标识用户。设置nil表示注销用户，解除绑定
  @param nickname 昵称
  @param avatar 头像
+ @param sign 签名
  @param userData 用户自定义数据
  */
 + (void)setUserWithUid:(NSString * _Nullable)uid

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MOBFImageServiceTypeDef.h"
+#import <MOBFoundation/MOBFImageServiceTypeDef.h>
 
 @interface MOBFImageCachePolicy : NSObject
 

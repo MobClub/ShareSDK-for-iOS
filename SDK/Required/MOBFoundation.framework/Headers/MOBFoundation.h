@@ -9,13 +9,15 @@
 #ifndef MOBFoundation_MOBFoundation_h
 #define MOBFoundation_MOBFoundation_h
 
+#import <MOBFoundation/MOBSDKDef.h>
+#import <MOBFoundation/MOBFImageServiceTypeDef.h>
+
 #import <MOBFoundation/MOBFApplication.h>
 #import <MOBFoundation/MOBFColor.h>
 #import <MOBFoundation/MOBFData.h>
 #import <MOBFoundation/MOBFDate.h>
 #import <MOBFoundation/MOBFDebug.h>
 #import <MOBFoundation/MOBFDevice.h>
-#import <MOBFoundation/MOBFImage.h>
 #import <MOBFoundation/MOBFImage.h>
 #import <MOBFoundation/MOBFJson.h>
 #import <MOBFoundation/MOBFNumber.h>
@@ -27,9 +29,9 @@
 #import <MOBFoundation/MOBFHttpService.h>
 #import <MOBFoundation/MOBFImageGetter.h>
 #import <MOBFoundation/MOBFImageCachePolicy.h>
-
 #import <MOBFoundation/MOBFNotificationCenter.h>
 
 #import <MOBFoundation/MobSDK.h>
+#import <MOBFoundation/MobSDK+Privacy.h>
 
 #endif

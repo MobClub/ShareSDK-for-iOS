@@ -1,0 +1,6 @@
+framework module MOBFoundation {
+    umbrella header "MOBFoundation.h"
+    
+    export *
+    module * { export * }
+}
