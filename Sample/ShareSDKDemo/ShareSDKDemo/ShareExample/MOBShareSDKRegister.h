@@ -514,6 +514,13 @@
     #define MOBSSDKTwitterConsumerSecret @"NJEglQUy2rqZ9Io9FcAU9p17omFqbORknUpRrCDOK46aAbIiey"
     //RedirectUri
     #define MOBSSDKTwitterRedirectUri @"http://mob.com"
+
+//    //ConsumerKey
+//    #define MOBSSDKTwitterConsumerKey @"WjmQNOqQB5YwPTs3AcZXVXYn3"
+//    //ConsumerSecret
+//    #define MOBSSDKTwitterConsumerSecret @"CWEkJUeq1sTMt4OzKMo08iRe1OlK468NAVh0XBxNtFgvvjbRl4"
+//    //RedirectUri
+//    #define MOBSSDKTwitterRedirectUri @"https://www.mob.com"
 #endif
 
 #pragma mark - Line平台配置信息

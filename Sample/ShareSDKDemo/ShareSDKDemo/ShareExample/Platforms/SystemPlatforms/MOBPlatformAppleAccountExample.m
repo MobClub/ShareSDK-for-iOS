@@ -8,6 +8,7 @@
 
 #import "MOBPlatformAppleAccountExample.h"
 #import <AppleAccountConnector/AppleAccountConnector.h>
+#import <MOBFoundation/MOBFoundation.h>
 
 /**
  
@@ -19,6 +20,36 @@
 
 @implementation MOBPlatformAppleAccountExample
 
+static NSDictionary *accessTokenDict = nil;
+//具体的本地苹果登录成功后，和后台的对接，需要客户自行编写逻辑，本demo只是简单的将数据存储到临时变量中，用于revoke使用!
+- (void)getAccessToken:(NSString *)code token:(NSString *)token
+{
+
+    
+    NSString *url = @"http://47.101.164.72:8080/token";
+    url=[NSString stringWithFormat:@"%@?code=%@&id_token=%@",url,code,token];
+    [MOBFHttpService sendHttpRequestByURLString:url
+                                         method:kMOBFHttpMethodPost
+                                     parameters:nil
+                                        headers:@{@"Content-Type":@"application/json"}
+                                       onResult:^(NSHTTPURLResponse *response, NSData *responseData) {
+
+                                            NSDictionary *dict = [MOBFJson objectFromJSONData:responseData];
+                                            if(dict && dict[@"access_token"])
+                                            {
+                                                //进行存储
+                                                accessTokenDict = dict;
+                                            } else {
+
+                                            }
+
+
+                                       }
+                                        onFault:^(NSError *error) {
+                                            
+                                        }
+                               onUploadProgress:nil];
+}
 
 - (void)setup{
     //在观察者销毁时，移除监听
@@ -54,11 +85,16 @@
 
     }];
     
+    __weak typeof(self) weakSelf = self;
     self.authHandler = ^(SSDKResponseState state, SSDKUser * _Nonnull user, NSError * _Nonnull error) {
         NSLog(@"授权回调: %@  \n用户信息: %@ \n  失败信息: %@",@(state), user.dictionaryValue, error);
+        
     };
     self.getUserInfoHandler = ^(SSDKResponseState state, SSDKUser * _Nonnull user, NSError * _Nonnull error) {
         NSLog(@"获取用户信息回调: %@  \n用户信息: %@ \n  失败信息: %@",@(state), user.dictionaryValue, error);
+    };
+    
+    self.revokeUserHandler = ^(SSDKResponseState state, NSError * _Nonnull error){
     };
 }
 

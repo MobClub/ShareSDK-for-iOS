@@ -1,0 +1,6 @@
+framework module ShareSDKExtension {
+    umbrella header "ShareSDKExtension_H.h"
+    
+    export *
+    module * { export * }
+}

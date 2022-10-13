@@ -9,6 +9,8 @@
 #ifndef SSUITypeDef_h
 #define SSUITypeDef_h
 
+#import <ShareSDK/ShareSDK.h>
+
 /**
  *  分享状态变更
  *

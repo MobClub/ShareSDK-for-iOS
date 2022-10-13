@@ -7,8 +7,9 @@
 //
 
 #import <ShareSDK/ShareSDK.h>
-#import "ShareSDK+SSUIDeprecated.h"
-#import "SSUITypeDef.h"
+#import <ShareSDKUI/ShareSDK+SSUIDeprecated.h>
+#import <ShareSDKUI/SSUITypeDef.h>
+
 @class SSUIShareSheetConfiguration;
 @class SSUIEditorConfiguration;
 

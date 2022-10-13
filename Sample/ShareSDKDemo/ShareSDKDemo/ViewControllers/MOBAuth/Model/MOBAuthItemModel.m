@@ -9,6 +9,7 @@
 #import "MOBAuthItemModel.h"
 #import "MobUserInfoShowViewController.h"
 #import <time.h>
+#import <MOBFoundation/MOBFoundation.h>
 
 static time_t lasAuthTime;
 @interface MOBAuthItemModel ()
@@ -54,6 +55,8 @@ static time_t lasAuthTime;
             if (!self.user) {
                 self.user = user;
             }
+            
+            //通过token接口，获取revoketoken接口需要的参数,再展示页面
             MobUserInfoShowViewController *  userInfoShowViewController = [[MobUserInfoShowViewController alloc] init];
             userInfoShowViewController.isCancelAuth = ^{
                 self.handler(NO);
@@ -112,6 +115,25 @@ static time_t lasAuthTime;
         self.handler([ShareSDK hasAuthorized:self.model.platformType]?MOBAuthStatusAuthored:MOBAuthStatusUnAuthor);
     }
 }
+
+//具体的revoke逻辑需要和自己的后台进行对接,我们也开源了服务端的部分demo代码
+
+- (void)revokeUser
+{
+    if (![ShareSDK hasAuthorized:self.model.platformType]) return;
+    
+    SSDKWEAK
+    self.model.revokeUserHandler = ^(SSDKResponseState state, NSError * _Nonnull error) {
+        
+        if (state == SSDKResponseStateSuccess && weakSelf.handler) {
+            weakSelf.handler(MOBAuthStatusUnAuthor);
+        }
+        
+    };
+    
+    [self.model revokeUser];
+}
+
 
 - (void)cancelAuth{
     if (![ShareSDK hasAuthorized:self.model.platformType]) return;

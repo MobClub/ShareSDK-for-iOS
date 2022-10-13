@@ -7,7 +7,7 @@
 ///
 
 #import <UIKit/UIKit.h>
-#import "sdkdef.h"
+#import "SDKDef.h"
 
 @protocol TencentSessionDelegate;
 @protocol TencentLoginDelegate;
@@ -37,57 +37,58 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
  */
 @interface TencentOAuth : NSObject
 {
-    NSMutableDictionary* _apiRequests;
-	NSString* _accessToken;
-	NSDate* _expirationDate;
+    NSMutableDictionary *_apiRequests;
+	NSString *_accessToken;
+	NSDate *_expirationDate;
 	id<TencentSessionDelegate> _sessionDelegate;
-	NSString* _localAppId;
-	NSString* _openId;
-	NSString* _redirectURI;
-	NSArray* _permissions;
+	NSString *_localAppId;
+	NSString *_openId;
+	NSString *_redirectURI;
+	NSArray *_permissions;
 }
 
 /** Access Token凭证，用于后续访问各开放接口 */
-@property(nonatomic, copy) NSString* accessToken;
+@property(nonatomic, copy) NSString *accessToken;
 
 /** Access Token的失效期 */
-@property(nonatomic, copy) NSDate* expirationDate;
+@property(nonatomic, copy) NSDate *expirationDate;
 
 /** 已实现的开放接口的回调委托对象 */
-@property(nonatomic, assign) id<TencentSessionDelegate> sessionDelegate;
+@property(nonatomic, weak) id<TencentSessionDelegate> sessionDelegate;
 
 /** 第三方应用在开发过程中设置的URLSchema，用于浏览器登录后后跳到第三方应用 */
-@property(nonatomic, copy) NSString* localAppId;
+@property(nonatomic, copy) NSString *localAppId;
 
 /** 用户授权登录后对该用户的唯一标识 */
-@property(nonatomic, copy) NSString* openId;
+@property(nonatomic, copy) NSString *openId;
 
 /** 用户登录成功过后的跳转页面地址 */
-@property(nonatomic, copy) NSString* redirectURI;
+@property(nonatomic, copy) NSString *redirectURI;
 
 /** 第三方应用在互联开放平台申请的appID */
-@property(nonatomic, retain) NSString* appId;
+@property(nonatomic, retain) NSString *appId;
 
 /** 第三方应用在互联开放平台注册的UniversalLink */
-@property(nonatomic, retain) NSString* universalLink;
+@property(nonatomic, retain) NSString *universalLink;
 
 /** 主要是互娱的游戏设置uin */
-@property(nonatomic, retain) NSString* uin;
+@property(nonatomic, retain) NSString *uin;
 
 /** 主要是互娱的游戏设置鉴定票据 */
-@property(nonatomic, retain) NSString* skey;
+@property(nonatomic, retain) NSString *skey;
 
 /** 登陆透传的数据 */
-@property(nonatomic, copy) NSDictionary* passData;
+@property(nonatomic, copy) NSDictionary *passData;
 
 /** 授权方式(Client Side Token或者Server Side Code) */
 @property(nonatomic, assign) TencentAuthMode authMode;
 
 /** union id */
-@property(nonatomic, retain) NSString* unionid;
+@property(nonatomic, retain) NSString *unionid;
 
 /** 第三方在授权登录/分享 时选择 QQ，还是TIM 。在授权前一定要指定其中一个类型*/
 @property(nonatomic, assign) TencentAuthShareType authShareType;
+
 /**
  * 获取上次登录得到的token
  *
@@ -122,14 +123,14 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
  * \return 返回sdk版本号
  **/
 
-+ (NSString*)sdkVersion;
++ (NSString *)sdkVersion;
 
 /**
  * 用来获得当前sdk的小版本号
  * \return 返回sdk小版本号
  **/
 
-+ (NSString*)sdkSubVersion;
++ (NSString *)sdkSubVersion;
 
 /**
  * 用来获得当前sdk的是否精简版
@@ -190,6 +191,21 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
  enableUniveralLink:(BOOL)enabled
       universalLink:(NSString *)universalLink
            delegate:(id<TencentSessionDelegate>)delegate;
+
+/**
+ * 设置用户是否已经授权同意授权隐私协议，在主体应用中，用户同意授权隐私协议后再初始化互联SDK，默认未同意授权
+ * 注意：如未同意授权隐私协议，则互联SDK的所有功能都无法使用，包括初始化！！！
+ * 从3.5.7版本开始支持该方法
+ *
+ * @param isAgreedAuthorization 是否已经授权，isAgreedAuthorization=YES, 表示已经同意授权；isAgreedAuthorization=NO，表示未同意授权，互联SDK的所有功能都无法使用
+ */
++ (void)setIsUserAgreedAuthorization:(BOOL)isUserAgreedAuthorization;
+
+/**
+ * 获取当前用户是否已经同意授权隐私协议
+ * 从3.5.7版本开始支持该方法
+ */
++ (BOOL)isUserAgreedAuthorization;
 
 /**
  * 判断用户手机上是否安装手机QQ

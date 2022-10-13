@@ -7,7 +7,7 @@
 //
 
 #import <ShareSDK/ShareSDK.h>
-#import "SSETypeDefine.h"
+#import <ShareSDKExtension/SSETypeDefine.h>
 #import <ShareSDKExtension/SSERestoreSceneHeader.h>
 
 /**

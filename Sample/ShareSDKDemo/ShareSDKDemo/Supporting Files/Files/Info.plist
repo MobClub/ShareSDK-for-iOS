@@ -285,15 +285,13 @@
 	<string>weibosdk</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>fbauth2</string>
-		<string>fbauth</string>
-		<string>fb-messenger-share-api</string>
-		<string>whatsapp</string>
 		<string>weibosdk3.3</string>
 		<string>weibosdk2.5</string>
 		<string>weibosdk</string>
 		<string>sinaweibo</string>
 		<string>sinaweibohd</string>
+		<string>mqqopensdknopasteboardios16</string>
+		<string>mqqopensdknopasteboard</string>
 		<string>mqq</string>
 		<string>mqqopensdkminiapp</string>
 		<string>mqzone</string>
@@ -335,6 +333,7 @@
 		<string>youdaonote</string>
 		<string>mingdao</string>
 		<string>snssdk32</string>
+		<string>twitterauth</string>
 		<string>fbapi</string>
 		<string>fbapi20130214</string>
 		<string>fbapi20130410</string>
@@ -346,9 +345,13 @@
 		<string>fbapi20150313</string>
 		<string>fbapi20150629</string>
 		<string>fbapi20160328</string>
+		<string>fbauth</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
 		<string>fbshareextension</string>
 		<string>instagram</string>
 		<string>instagram-stories</string>
+		<string>whatsapp</string>
 		<string>line</string>
 		<string>lineauth2</string>
 		<string>snapchat</string>
@@ -381,9 +384,9 @@
 		<string>https://70imc.share2dlink.com/line-auth</string>
 	</dict>
 	<key>MOBAppKey</key>
-	<string>3276d3e413040</string>
+	<string>366d974afb92f</string>
 	<key>MOBAppSecret</key>
-	<string>4280a3a6df667cfce37528dec03fd9c3</string>
+	<string>1ef3994ddeab7d2ceafe45c47553e620</string>
 	<key>MOBNetLater</key>
 	<integer>2</integer>
 	<key>NSAppTransportSecurity</key>

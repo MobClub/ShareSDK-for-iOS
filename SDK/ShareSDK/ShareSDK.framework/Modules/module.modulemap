@@ -1,0 +1,6 @@
+framework module ShareSDK {
+    umbrella header "ShareSDK_H.h"
+    
+    export *
+    module * { export * }
+}

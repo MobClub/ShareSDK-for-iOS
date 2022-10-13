@@ -79,7 +79,8 @@ extern void * kMOBPlatformAuthItemModelKey;
 
 - (void)getUserInfo;
 
-
+//revoke用户
+- (void)revokeUser;
 
 //授权回调
 
@@ -90,6 +91,10 @@ extern void * kMOBPlatformAuthItemModelKey;
 
 
 - (void)setGetUserInfoHandler:(void (^ _Nonnull)(SSDKResponseState state, SSDKUser * _Nonnull user, NSError * _Nonnull error))getUserInfoHandler;
+
+//revoke用户，回调
+- (void)setRevokeUserHandler:(void (^ _Nonnull)(SSDKResponseState state, NSError * _Nonnull error))revokeHandler;
+
 
 //平台是否允许授权
 @property (nonatomic, assign, readonly) BOOL isAllowAuth;

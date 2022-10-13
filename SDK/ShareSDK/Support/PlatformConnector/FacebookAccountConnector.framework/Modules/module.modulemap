@@ -1,0 +1,6 @@
+framework module FacebookAccountConnector {
+    umbrella header "FacebookAccountConnector.h"
+    
+    export *
+    module * { export * }
+}

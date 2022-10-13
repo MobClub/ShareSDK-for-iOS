@@ -23,6 +23,8 @@
 #import <ShareSDK/SSDKAuthViewManager.h>
 #import "MOBShareCommandDetailView.h"
 #import <WeiboSDK.h>
+
+#import <TwitterConnector/TwitterConnector.h>
 @interface AppDelegate () <ISSERestoreSceneDelegate,WeiboSDKDelegate,LineSDKLoginDelegate,WXApiDelegate>
 
 @property (strong, nonatomic) NSDictionary *parameters;
@@ -36,6 +38,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //在MOBShareSDKRegister注册第三方平台信息
+//    [TwitterConnector setAuthVersion:@"2"];
     
     [[LineSDKLogin sharedInstance]setDelegate:self];
     [ShareSDK setRestoreSceneDelegate:self];

@@ -1,0 +1,6 @@
+framework module ShareSDKConfigFile {
+    umbrella header "ShareSDK+XML.h"
+    
+    export *
+    module * { export * }
+}

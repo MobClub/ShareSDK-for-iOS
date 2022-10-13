@@ -57,8 +57,11 @@
 -(void)shareText
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+     NSInteger tmpInt = [MOBFNumber randomInteger:100000];
+    NSString *txt = [NSString stringWithFormat:@"%@_%ld",SHARESDKDEMO_TEXT,tmpInt];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+    [parameters SSDKSetupShareParamsByText:txt
                                     images:nil
                                        url:nil
                                      title:nil

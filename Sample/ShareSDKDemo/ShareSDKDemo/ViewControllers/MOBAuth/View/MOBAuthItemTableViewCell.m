@@ -20,6 +20,8 @@
 @property (nonatomic, strong) CAGradientLayer *gradientLayer;
 
 @property (nonatomic, strong) UIView *line;
+@property (nonatomic, strong) UIButton *revokeButton;
+@property (nonatomic, strong) CAGradientLayer *revokeGradientLayer;
 
 
 @end
@@ -67,6 +69,23 @@
         make.centerY.equalTo(self.contentView);
     });
     
+    UIButtonModelCreate()
+    .addToSuperView(self.contentView)
+    .cornerRadius(14)
+    .masksToBounds(YES)
+    .font(Font(PingFangReguler, 14))
+    .addTarget(self, @selector(revokeSelected:), UIControlEventTouchUpInside)
+    .assignTo(^(__kindof UIView * _Nonnull view) {
+        _revokeButton = view;
+    })
+    .makeMasonry(^(MASConstraintMaker * _Nonnull make) {
+        make.right.mas_offset(-22);
+        make.height.mas_equalTo(28);
+        make.width.mas_equalTo(75);
+        make.centerY.equalTo(self.contentView);
+    });
+    _revokeButton.hidden = YES;
+    
     UIViewModelCreate()
     .addToSuperView(self.contentView)
     .backgroundColor(UIColorHexString(@"#D6D9DD"))
@@ -92,6 +111,18 @@
     [self.authButton.layer insertSublayer:_gradientLayer above:self.authButton.imageView.layer];
     
     
+    CAGradientLayerModelCreate().endPoint(CGPointMake(0, 0))
+    .startPoint(CGPointMake(1, 1))
+    .colors(@[(__bridge id)SSDKRGBAlpha(9,146,242,1).CGColor, (__bridge id)SSDKRGBAlpha(72, 172, 242, 1).CGColor])
+    .locations(@[@(0), @(1.0f)])
+    .assignTo(^(__kindof CALayer * _Nonnull layer) {
+        _revokeGradientLayer = layer;
+    })
+    .cornerRadius(14)
+    .addToSuperLayer(self.revokeButton.layer)
+    .hidden(YES);
+    [self.revokeButton.layer insertSublayer:_revokeGradientLayer above:self.revokeButton.imageView.layer];
+    
 }
 
 
@@ -105,6 +136,11 @@
     model.handler = ^(MOBAuthStatus authorStatus) {
         SSDKSTRONG
         if (!self) return;
+        if(authorStatus == MOBAuthStatusAuthored)
+        {
+            //模拟上传token,code到服务端，获取accesstoken,refreshtoken,id_token等信息,存储，用于revoke接口使用
+            
+        }
         switch (authorStatus) {
             case MOBAuthStatusUnAuthor:
             {
@@ -139,6 +175,12 @@
                 .borderWidth(1)
                 .textColor(UIColorHexString(@"ffffff"), UIControlStateNormal)
                 .text(@"查看用户信息", UIControlStateNormal);
+                
+                self.revokeButton.makeChain
+                .borderColor(UIColorHexString(@"ffffff").CGColor)
+                .borderWidth(1)
+                .textColor(UIColorHexString(@"ffffff"), UIControlStateNormal)
+                .text(@"撤销用户", UIControlStateNormal);
             }
                 break;
             default:
@@ -147,12 +189,35 @@
         BOOL isAuthored = authorStatus == MOBAuthStatusAuthored || authorStatus == MOBAuthStatusUserInfoing;
         
         self.gradientLayer.hidden = !isAuthored;
-        [self.authButton mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(isAuthored?110:75);
-        }];
+        self.revokeGradientLayer.hidden = !isAuthored;
+
+        if(model.model.platformType == SSDKPlatformTypeAppleAccount && [self.authButton.titleLabel.text containsString:@"用户"])
+        {
+            [self.authButton mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(isAuthored?110:75);
+                make.centerY.equalTo(self.contentView).mas_offset(-20);
+            }];
+            [self.revokeButton mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(isAuthored?110:75);
+                make.centerY.equalTo(self.contentView).mas_offset(20);
+            }];
+            _revokeButton.hidden = NO;
+        }
+        else
+        {
+            _revokeButton.hidden = YES;
+            [self.authButton mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(isAuthored?110:75);
+                make.centerY.equalTo(self.contentView);
+            }];
+        }
+
         [self.authButton layoutIfNeeded];
+        [self.revokeButton layoutIfNeeded];
+
         SSDKTansactionDisableActions(
         self.gradientLayer.frame = self.authButton.bounds;
+        self.revokeGradientLayer.frame = self.revokeButton.bounds;
         )
     };
     [model changeView];
@@ -160,6 +225,10 @@
 
 - (void)authorSelected:(UIButton *)button{
     [self.model author];
+}
+
+- (void)revokeSelected:(UIButton *)button{
+    [self.model revokeUser];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

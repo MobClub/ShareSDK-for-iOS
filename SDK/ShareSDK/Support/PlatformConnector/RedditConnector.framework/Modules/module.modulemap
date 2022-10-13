@@ -1,0 +1,6 @@
+framework module RedditConnector {
+    umbrella header "RedditConnector.h"
+    
+    export *
+    module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module KuaiShouConnector {
+    umbrella header "KuaiShouConnector.h"
+    
+    export *
+    module * { export * }
+}

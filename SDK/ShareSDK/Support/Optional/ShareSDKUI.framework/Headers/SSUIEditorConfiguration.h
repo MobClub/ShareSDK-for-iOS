@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ShareSDKUI/SSUITypeDef.h>
 
 
 @interface SSUIEditorConfiguration : NSObject

@@ -29,6 +29,7 @@ typedef NS_ENUM(NSUInteger, MOBAuthStatus) {
 - (void)author;
 
 - (void)changeView;
+- (void)revokeUser;
 
 @end
 

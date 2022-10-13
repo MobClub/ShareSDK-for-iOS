@@ -12,6 +12,7 @@
 #import <time.h>
 #import <dlfcn.h>
 #import <mach-o/ldsyms.h>
+#import <MOBFoundation/MOBFoundation.h>
 
 unsigned int count;
 const char **classes;
@@ -93,6 +94,9 @@ NSBundle * const MOBPlatformBundle (void){
 @property (nonatomic, strong) NSMutableArray <void (^) (SSDKResponseState state, SSDKUser* user, NSError *error)>* authBlocks;
 
 @property (nonatomic, strong) NSMutableArray <void (^) (SSDKResponseState state, SSDKUser* user, NSError *error)>* getuserBlocks;
+
+@property (nonatomic, strong) NSMutableArray <void (^) (SSDKResponseState state, NSError *error)>* revokeUserBlocks;
+
 @end
 
 //platformType与class对应的map
@@ -308,6 +312,13 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
     return _getuserBlocks;
 }
 
+- (NSMutableArray<void (^)(SSDKResponseState, NSError *)> *)revokeUserBlocks{
+    if (!_revokeUserBlocks) {
+        _revokeUserBlocks = [NSMutableArray array];
+    }
+    return _revokeUserBlocks;
+}
+
 - (void)dataInit{
     _typesMap = [NSMutableDictionary dictionary];
     
@@ -471,12 +482,101 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
     self.settings = setting.mutableCopy;
 }
 
+//具体的本地苹果登录成功后，和后台的对接，需要客户自行编写逻辑，本demo只是简单的将数据存储到userdefaults中，用于revoke使用!
+- (void)getAccessToken:(NSString *)code token:(NSString *)token completion:(void(^)(SSDKResponseState state,NSDictionary *rstData,NSError *error))completion
+{
+    
+    NSString *url = @"http://47.101.164.72:8080/token";
+    url=[NSString stringWithFormat:@"%@?code=%@&id_token=%@",url,code,token];
+    [MOBFHttpService sendHttpRequestByURLString:url
+                                         method:kMOBFHttpMethodPost
+                                     parameters:nil
+                                        headers:@{@"Content-Type":@"application/json"}
+                                       onResult:^(NSHTTPURLResponse *response, NSData *responseData) {
+
+                                            NSDictionary *dict = [MOBFJson objectFromJSONData:responseData];
+                                            if(dict && dict[@"access_token"])
+                                            {
+                                                //进行存储
+                                                //accessTokenDict = dict;
+                                                [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"apple_access_token"];
+                                                [[NSUserDefaults standardUserDefaults] synchronize];
+                                                
+                                                if(completion)
+                                                {
+                                                    completion(SSDKResponseStateFail,dict,nil);
+                                                }
+                                            } else {
+                                                
+                                                if(completion)
+                                                {
+                                                    completion(SSDKResponseStateFail,dict,nil);
+                                                }
+                                            }
+
+
+                                       }
+                                        onFault:^(NSError *error) {
+                                            if(completion)
+                                            {
+                                                completion(SSDKResponseStateFail,nil,error);
+                                            }
+                                        }
+                               onUploadProgress:nil];
+}
+
+- (void)revokeUserByAccToken:(void(^)(SSDKResponseState state,NSError *error))completion
+{
+    //revoke接口,传递网络数据
+    
+    //通过token接口获取到的user refresh token or access token
+    //jwt由服务端token接口返回的id_token
+    //client_secret
+    NSDictionary *accessTokenDict =                                                 [[NSUserDefaults standardUserDefaults] objectForKey:@"apple_access_token"];
+
+    
+    NSString *url = @"http://47.101.164.72:8080/revoke";
+    url=[NSString stringWithFormat:@"%@?token=%@&id_token=%@",url,accessTokenDict[@"access_token"]   ,accessTokenDict[@"id_token"]];
+    [MOBFHttpService sendHttpRequestByURLString:url
+                                         method:kMOBFHttpMethodPost
+                                     parameters:nil
+                                        headers:@{@"Content-Type":@"application/json"}
+                                       onResult:^(NSHTTPURLResponse *response, NSData *responseData) {
+
+                                            if(response.statusCode == 200)
+                                            {
+                                                if(completion)
+                                                {
+                                                    completion(SSDKResponseStateSuccess,nil);
+                                                }
+                                            } else {
+                                                if(completion)
+                                                {
+                                                    completion(SSDKResponseStateFail,nil);
+                                                }
+                                            }
+
+                                       }
+                                        onFault:^(NSError *error) {
+                                            if(completion)
+                                            {
+                                                completion(SSDKResponseStateFail,error);
+                                            }
+                                        }
+                               onUploadProgress:nil];
+}
+
 - (void)auth{
     [[SSDKScenePackage defaultPackage] recordWindowKey:@"key"];
     [ShareSDK authorize:self.platformType settings:self.settings onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [[MOBShareExample defaultExample] authResponseStatus:state error:error];
-            [self.authBlocks.copy enumerateObjectsUsingBlock:^(void (^ _Nonnull obj)(SSDKResponseState, SSDKUser *, NSError *), NSUInteger idx, BOOL * _Nonnull stop) {
+            [self.authBlocks.copy enumerateObjectsUsingBlock:^(void (^ _Nonnull obj)(SSDKResponseState, SSDKUser *, NSError *), NSUInteger idx, BOOL
+                                                               * _Nonnull stop) {
+                [self getAccessToken:user.credential.authCode token:user.credential.token completion:^(SSDKResponseState state, NSDictionary *rstData, NSError *error) {
+                    
+                }];
+                
                 obj(state, user, error);
             }];
         });
@@ -503,7 +603,28 @@ static NSDictionary <NSNumber *,NSString *>* _platformMap = nil;
     }];
 }
 
+- (void)setRevokeUserHandler:(void (^ _Nonnull)(SSDKResponseState state, NSError * _Nonnull error))revokeHandler
+{
+    if(self.revokeUserBlocks)
+    {
+        [self.revokeUserBlocks addObject:[revokeHandler copy]];
+    }
+}
 
+//revoke用户
+- (void)revokeUser
+{
+    [self revokeUserByAccToken:^(SSDKResponseState state, NSError *error) {
+        
+        [self.revokeUserBlocks.copy enumerateObjectsUsingBlock:^(void (^ _Nonnull obj)(SSDKResponseState, NSError *), NSUInteger idx, BOOL * _Nonnull stop) {
+                if(state == SSDKResponseStateSuccess)
+                    [self cancelAuth];
+                obj(state, nil);
+        }];
+    }];
+    
+
+}
 
 
 #pragma mark - 添加自定义的分享选项 -

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ShareSDKUI/SSUITypeDef.h>
 
 /**
  *  ShareSDK UI风格

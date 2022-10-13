@@ -95,6 +95,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    MOBAuthItemModel *model = self.dataSource[indexPath.section][indexPath.row];
+    if(model.model.platformType == SSDKPlatformTypeAppleAccount)
+    {
+        return 93;
+    }
+
     return 53;
 }
 

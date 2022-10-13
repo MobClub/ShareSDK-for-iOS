@@ -16,7 +16,7 @@ FOUNDATION_EXPORT const unsigned char StaticLibraryModuleVersionString[];
 
 #import "QQApiInterface.h"
 #import "QQApiInterfaceObject.h"
-#import "sdkdef.h"
+#import "SDKDef.h"
 #import "TencentOAuth.h"
 
 
