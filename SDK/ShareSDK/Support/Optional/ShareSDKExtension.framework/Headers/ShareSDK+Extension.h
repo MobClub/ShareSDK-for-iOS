@@ -8,7 +8,6 @@
 
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKExtension/SSETypeDefine.h>
-#import <ShareSDKExtension/SSERestoreSceneHeader.h>
 
 /**
  * ShareSDK扩展类目
@@ -103,29 +102,12 @@
  onStateChanged:(SSDKCallApiStateChangedHandler)stateChangedHandler;
 
 
-
-
-/**
- 场景还原功能
-
- @param delegate 场景还原设置代理
- */
-+ (void)setRestoreSceneDelegate:(id<ISSERestoreSceneDelegate>)delegate;
-
 /**
  开启视频分享功能
 
  @param shareVideoEnable 是否开启（默认关闭）
  */
 + (void)setShareVideoEnable:(BOOL)shareVideoEnable;
-
-/**
- *  口令分享功能
- *
- *  @param paramters 口令分享参数
- *  @param completeHandler 完成回调处理
- */
-+ (void)getCommandText:(NSDictionary *_Nullable)paramters withComplete:(void (^_Nullable) (NSString * _Nullable text, NSError *_Nullable error, void (^ _Nullable complete)(NSString * _Nullable text)))completeHandler;
 
 /**
  视频分享功能

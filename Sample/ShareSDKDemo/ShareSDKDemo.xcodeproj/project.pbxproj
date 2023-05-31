@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,23 @@
 		6BF0DFED28C7299200754C6B /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF0DFEC28C7299200754C6B /* TencentOpenApi_IOS_Bundle.bundle */; };
 		7367F15123FD58D6000E5224 /* NSIndexSet+SSDKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367F15023FD58D6000E5224 /* NSIndexSet+SSDKCategory.m */; };
 		738C363623FCD511006683C0 /* SSDKBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 738C363523FCD511006683C0 /* SSDKBaseCollectionViewCell.m */; };
+		8DD48F9229D2C042007EE403 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DD48F9129D2C042007EE403 /* GoogleService-Info.plist */; };
+		8DD48FA229D2C092007EE403 /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD48F9529D2C092007EE403 /* FirebaseCrashlytics.xcframework */; };
+		8DD48FA329D2C092007EE403 /* GoogleDataTransport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD48F9629D2C092007EE403 /* GoogleDataTransport.xcframework */; };
+		8DD48FA429D2C092007EE403 /* run in Resources */ = {isa = PBXBuildFile; fileRef = 8DD48F9729D2C092007EE403 /* run */; };
+		8DD48FA529D2C092007EE403 /* upload-symbols in Resources */ = {isa = PBXBuildFile; fileRef = 8DD48F9829D2C092007EE403 /* upload-symbols */; };
+		8DD48FA629D2C092007EE403 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD48F9929D2C092007EE403 /* nanopb.xcframework */; };
+		8DD48FA729D2C092007EE403 /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD48F9A29D2C092007EE403 /* GoogleAppMeasurementIdentitySupport.xcframework */; };
+		8DD48FA829D2C092007EE403 /* FirebaseAnalytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD48F9B29D2C092007EE403 /* FirebaseAnalytics.xcframework */; };
+		8DD48FA929D2C092007EE403 /* FirebaseInstallations.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD48F9C29D2C092007EE403 /* FirebaseInstallations.xcframework */; };
+		8DD48FAA29D2C092007EE403 /* FBLPromises.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD48F9D29D2C092007EE403 /* FBLPromises.xcframework */; };
+		8DD48FAB29D2C092007EE403 /* FirebaseCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD48F9E29D2C092007EE403 /* FirebaseCore.xcframework */; };
+		8DD48FAC29D2C092007EE403 /* FirebaseCoreInternal.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD48F9F29D2C092007EE403 /* FirebaseCoreInternal.xcframework */; };
+		8DD48FAD29D2C092007EE403 /* GoogleAppMeasurement.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD48FA029D2C092007EE403 /* GoogleAppMeasurement.xcframework */; };
+		8DD48FAE29D2C092007EE403 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD48FA129D2C092007EE403 /* GoogleUtilities.xcframework */; };
+		8DD48FB129D2C305007EE403 /* ShareSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48FB029D2C305007EE403 /* ShareSwift.swift */; };
+		8DD48FB329D2C345007EE403 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD48FB229D2C345007EE403 /* libresolv.tbd */; };
+		8DE6345529484F6F006FD35E /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE6345429484F6F006FD35E /* MOBFoundation.framework */; };
 		9101AE5D24D42F0300C88394 /* MOBCommandShareContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9101AE5C24D42F0300C88394 /* MOBCommandShareContentView.m */; };
 		911CF5D224F93C970059C69A /* TikTokConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 911CF5D124F93C970059C69A /* TikTokConnector.framework */; };
 		912F465125087F9F004D64AB /* ShareSDK.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F465025087F9E004D64AB /* ShareSDK.png */; };
@@ -97,8 +114,7 @@
 		D530A50723B0AFF200C72A73 /* sns_icon_64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D530A50523B0AFF100C72A73 /* sns_icon_64@2x.png */; };
 		D530A50823B0AFF200C72A73 /* sns_icon_64@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D530A50623B0AFF200C72A73 /* sns_icon_64@3x.png */; };
 		D530A50B23B0DBC000C72A73 /* MOBPlatformAppleAccountExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D530A50A23B0DBC000C72A73 /* MOBPlatformAppleAccountExample.m */; };
-		D530EA322434C66D001E177B /* OasisSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D537C86D23B9A3C7001B1CD5 /* OasisSDK.framework */; };
-		D530EA332434C66D001E177B /* OasisSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D537C86D23B9A3C7001B1CD5 /* OasisSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D530EA322434C66D001E177B /* OasisSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D537C86D23B9A3C7001B1CD5 /* OasisSDK.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D531C6E523AB290E00A56285 /* MobUserInfoShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D531C6E323AB290E00A56285 /* MobUserInfoShowViewController.m */; };
 		D531C6E623AB290E00A56285 /* MOBAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D531C6E423AB290E00A56285 /* MOBAuthViewController.m */; };
 		D531C6F223AB333300A56285 /* MOBPlatformQQExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D531C6F123AB333300A56285 /* MOBPlatformQQExample.m */; };
@@ -166,7 +182,6 @@
 		D535952723A62591000C8AAF /* MOBNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D535952623A62591000C8AAF /* MOBNavigationViewController.m */; };
 		D535953323A62C37000C8AAF /* MOBAuthItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D535953223A62C37000C8AAF /* MOBAuthItemModel.m */; };
 		D535953623A62C4C000C8AAF /* MOBAuthItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D535953523A62C4C000C8AAF /* MOBAuthItemTableViewCell.m */; };
-		D535AF14238B8EFA00039AE0 /* MOBAboutMobLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D535AE82238B8EFA00039AE0 /* MOBAboutMobLinkViewController.m */; };
 		D535AF35238B8EFA00039AE0 /* MOBLoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D535AEE0238B8EFA00039AE0 /* MOBLoadingViewController.xib */; };
 		D535AF37238B8EFA00039AE0 /* MOBLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D535AEE3238B8EFA00039AE0 /* MOBLoadingViewController.m */; };
 		D535AF3A238B8EFA00039AE0 /* MOBUIScreenshotShareCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D535AEF6238B8EFA00039AE0 /* MOBUIScreenshotShareCollectionViewCell.m */; };
@@ -537,7 +552,6 @@
 		D5A9C8D32367E2D8008040DD /* libYixinSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C8672367E2D7008040DD /* libYixinSDK.a */; };
 		D5A9C8D52367E2D8008040DD /* ShareSDKConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C86B2367E2D7008040DD /* ShareSDKConnector.framework */; };
 		D5A9C8D92367E2D8008040DD /* ShareSDKUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D5A9C86E2367E2D7008040DD /* ShareSDKUI.bundle */; };
-		D5A9C8DB2367E2D8008040DD /* ShareSDKLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C86F2367E2D7008040DD /* ShareSDKLink.framework */; };
 		D5A9C8DD2367E2D8008040DD /* ShareSDKConfigFile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C8702367E2D7008040DD /* ShareSDKConfigFile.framework */; };
 		D5A9C8DF2367E2D8008040DD /* ShareSDKExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C8712367E2D7008040DD /* ShareSDKExtension.framework */; };
 		D5A9C8E12367E2D8008040DD /* ShareSDKUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C8722367E2D7008040DD /* ShareSDKUI.framework */; };
@@ -576,7 +590,6 @@
 		D5A9C9332367E2D8008040DD /* KakaoConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C89C2367E2D7008040DD /* KakaoConnector.framework */; };
 		D5A9C9352367E2D8008040DD /* SinaWeiboConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C89D2367E2D7008040DD /* SinaWeiboConnector.framework */; };
 		D5A9C9372367E2D8008040DD /* WeworkConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C89E2367E2D7008040DD /* WeworkConnector.framework */; };
-		D5A9C9412367E2D8008040DD /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A9C8A42367E2D8008040DD /* MOBFoundation.framework */; };
 		D5A9C94E2367E853008040DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5A9C94C2367E853008040DD /* LaunchScreen.storyboard */; };
 		D5A9C9502367E853008040DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5A9C94D2367E853008040DD /* Main.storyboard */; };
 		D5AEC2AC246E36BA006E8B2B /* MOBPlatformWartermelonVideoExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D5AEC2AB246E36BA006E8B2B /* MOBPlatformWartermelonVideoExample.m */; };
@@ -619,7 +632,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D52AD524247FA26E003E1CDD /* SCSDKLoginKit.framework in Embed Frameworks */,
-				D530EA332434C66D001E177B /* OasisSDK.framework in Embed Frameworks */,
 				D52AD526247FA26F003E1CDD /* SCSDKCreativeKit.framework in Embed Frameworks */,
 				D52AD528247FA271003E1CDD /* SCSDKCoreKit.framework in Embed Frameworks */,
 			);
@@ -651,6 +663,24 @@
 		7367F15023FD58D6000E5224 /* NSIndexSet+SSDKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSIndexSet+SSDKCategory.m"; sourceTree = "<group>"; };
 		738C363423FCD511006683C0 /* SSDKBaseCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDKBaseCollectionViewCell.h; sourceTree = "<group>"; };
 		738C363523FCD511006683C0 /* SSDKBaseCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDKBaseCollectionViewCell.m; sourceTree = "<group>"; };
+		8DD48F9129D2C042007EE403 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8DD48F9529D2C092007EE403 /* FirebaseCrashlytics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseCrashlytics.xcframework; sourceTree = "<group>"; };
+		8DD48F9629D2C092007EE403 /* GoogleDataTransport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleDataTransport.xcframework; sourceTree = "<group>"; };
+		8DD48F9729D2C092007EE403 /* run */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = run; sourceTree = "<group>"; };
+		8DD48F9829D2C092007EE403 /* upload-symbols */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "upload-symbols"; sourceTree = "<group>"; };
+		8DD48F9929D2C092007EE403 /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = nanopb.xcframework; sourceTree = "<group>"; };
+		8DD48F9A29D2C092007EE403 /* GoogleAppMeasurementIdentitySupport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleAppMeasurementIdentitySupport.xcframework; sourceTree = "<group>"; };
+		8DD48F9B29D2C092007EE403 /* FirebaseAnalytics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseAnalytics.xcframework; sourceTree = "<group>"; };
+		8DD48F9C29D2C092007EE403 /* FirebaseInstallations.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseInstallations.xcframework; sourceTree = "<group>"; };
+		8DD48F9D29D2C092007EE403 /* FBLPromises.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FBLPromises.xcframework; sourceTree = "<group>"; };
+		8DD48F9E29D2C092007EE403 /* FirebaseCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseCore.xcframework; sourceTree = "<group>"; };
+		8DD48F9F29D2C092007EE403 /* FirebaseCoreInternal.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseCoreInternal.xcframework; sourceTree = "<group>"; };
+		8DD48FA029D2C092007EE403 /* GoogleAppMeasurement.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleAppMeasurement.xcframework; sourceTree = "<group>"; };
+		8DD48FA129D2C092007EE403 /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleUtilities.xcframework; sourceTree = "<group>"; };
+		8DD48FAF29D2C304007EE403 /* ShareSDKDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShareSDKDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		8DD48FB029D2C305007EE403 /* ShareSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSwift.swift; sourceTree = "<group>"; };
+		8DD48FB229D2C345007EE403 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		8DE6345429484F6F006FD35E /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		9101AE5B24D42F0300C88394 /* MOBCommandShareContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOBCommandShareContentView.h; sourceTree = "<group>"; };
 		9101AE5C24D42F0300C88394 /* MOBCommandShareContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOBCommandShareContentView.m; sourceTree = "<group>"; };
 		911CF5D124F93C970059C69A /* TikTokConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TikTokConnector.framework; sourceTree = "<group>"; };
@@ -897,8 +927,6 @@
 		D535953223A62C37000C8AAF /* MOBAuthItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOBAuthItemModel.m; sourceTree = "<group>"; };
 		D535953423A62C4C000C8AAF /* MOBAuthItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOBAuthItemTableViewCell.h; sourceTree = "<group>"; };
 		D535953523A62C4C000C8AAF /* MOBAuthItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOBAuthItemTableViewCell.m; sourceTree = "<group>"; };
-		D535AE82238B8EFA00039AE0 /* MOBAboutMobLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBAboutMobLinkViewController.m; sourceTree = "<group>"; };
-		D535AE83238B8EFA00039AE0 /* MOBAboutMobLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBAboutMobLinkViewController.h; sourceTree = "<group>"; };
 		D535AEE0238B8EFA00039AE0 /* MOBLoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MOBLoadingViewController.xib; sourceTree = "<group>"; };
 		D535AEE1238B8EFA00039AE0 /* MOBLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBLoadingViewController.h; sourceTree = "<group>"; };
 		D535AEE3238B8EFA00039AE0 /* MOBLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBLoadingViewController.m; sourceTree = "<group>"; };
@@ -1393,7 +1421,6 @@
 		D5A9C8692367E2D7008040DD /* YXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXApi.h; sourceTree = "<group>"; };
 		D5A9C86B2367E2D7008040DD /* ShareSDKConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKConnector.framework; sourceTree = "<group>"; };
 		D5A9C86E2367E2D7008040DD /* ShareSDKUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKUI.bundle; sourceTree = "<group>"; };
-		D5A9C86F2367E2D7008040DD /* ShareSDKLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKLink.framework; sourceTree = "<group>"; };
 		D5A9C8702367E2D7008040DD /* ShareSDKConfigFile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKConfigFile.framework; sourceTree = "<group>"; };
 		D5A9C8712367E2D7008040DD /* ShareSDKExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKExtension.framework; sourceTree = "<group>"; };
 		D5A9C8722367E2D7008040DD /* ShareSDKUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKUI.framework; sourceTree = "<group>"; };
@@ -1434,7 +1461,6 @@
 		D5A9C89C2367E2D7008040DD /* KakaoConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoConnector.framework; sourceTree = "<group>"; };
 		D5A9C89D2367E2D7008040DD /* SinaWeiboConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnector.framework; sourceTree = "<group>"; };
 		D5A9C89E2367E2D7008040DD /* WeworkConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WeworkConnector.framework; sourceTree = "<group>"; };
-		D5A9C8A42367E2D8008040DD /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		D5A9C94C2367E853008040DD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5A9C94D2367E853008040DD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D5AEC2AA246E36BA006E8B2B /* MOBPlatformWartermelonVideoExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOBPlatformWartermelonVideoExample.h; sourceTree = "<group>"; };
@@ -1463,6 +1489,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DD48FB329D2C345007EE403 /* libresolv.tbd in Frameworks */,
 				9133DA5926E75DFD00A60948 /* KakaoLink.framework in Frameworks */,
 				911CF5D224F93C970059C69A /* TikTokConnector.framework in Frameworks */,
 				D52AD51B247F745F003E1CDD /* WebKit.framework in Frameworks */,
@@ -1476,7 +1503,6 @@
 				D590918023CC4A340026271F /* Accelerate.framework in Frameworks */,
 				D528FBA923CD958D0035D34D /* CoreServices.framework in Frameworks */,
 				D528FBA723CD95440035D34D /* AuthenticationServices.framework in Frameworks */,
-				D5A9C8DB2367E2D8008040DD /* ShareSDKLink.framework in Frameworks */,
 				D5A9C8E52367E2D8008040DD /* PrintConnector.framework in Frameworks */,
 				D5A9C91B2367E2D8008040DD /* InstapaperConnector.framework in Frameworks */,
 				9141B83C270FE6B200CCF51B /* FBAEMKit.framework in Frameworks */,
@@ -1489,13 +1515,17 @@
 				D52E4EFE243D881400652916 /* SnapChatConnector.framework in Frameworks */,
 				D5A9C9072367E2D8008040DD /* VKontakteConnector.framework in Frameworks */,
 				D5A9C9092367E2D8008040DD /* PocketConnector.framework in Frameworks */,
+				8DD48FAB29D2C092007EE403 /* FirebaseCore.xcframework in Frameworks */,
 				5058A009214F9928000B750B /* libc++.tbd in Frameworks */,
 				D5A9C9032367E2D8008040DD /* QQConnector.framework in Frameworks */,
 				D53B2C0D241B5F7E009E13A3 /* SafariServices.framework in Frameworks */,
 				D5A9C8F52367E2D8008040DD /* AppleAccountConnector.framework in Frameworks */,
 				D52AD527247FA271003E1CDD /* SCSDKCoreKit.framework in Frameworks */,
 				D5A9C9212367E2D8008040DD /* DingTalkConnector.framework in Frameworks */,
+				8DD48FA229D2C092007EE403 /* FirebaseCrashlytics.xcframework in Frameworks */,
+				8DD48FA929D2C092007EE403 /* FirebaseInstallations.xcframework in Frameworks */,
 				D5A9C8D32367E2D8008040DD /* libYixinSDK.a in Frameworks */,
+				8DD48FAC29D2C092007EE403 /* FirebaseCoreInternal.xcframework in Frameworks */,
 				D5F9331024068E35008B2699 /* AccountKit.framework in Frameworks */,
 				D5A9C9292367E2D8008040DD /* WechatConnector.framework in Frameworks */,
 				9141B83A270FE6B200CCF51B /* FBSDKShareKit.framework in Frameworks */,
@@ -1519,9 +1549,13 @@
 				D5A9C91D2367E2D8008040DD /* LinkedInConnector.framework in Frameworks */,
 				D5A9C9372367E2D8008040DD /* WeworkConnector.framework in Frameworks */,
 				D5A9C8B32367E2D8008040DD /* libAPOpenSdk.a in Frameworks */,
+				8DD48FAE29D2C092007EE403 /* GoogleUtilities.xcframework in Frameworks */,
 				509A48EE212BF04700D4F518 /* CoreFoundation.framework in Frameworks */,
+				8DE6345529484F6F006FD35E /* MOBFoundation.framework in Frameworks */,
 				D54945AC23BB1B7000E1DC22 /* MingDaoConnector.framework in Frameworks */,
 				D5A9C8E92367E2D8008040DD /* DropboxConnector.framework in Frameworks */,
+				8DD48FA329D2C092007EE403 /* GoogleDataTransport.xcframework in Frameworks */,
+				8DD48FA729D2C092007EE403 /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */,
 				D5A9C8DD2367E2D8008040DD /* ShareSDKConfigFile.framework in Frameworks */,
 				913B2D262511F55100D7FA83 /* SMSConnector.framework in Frameworks */,
 				D5A9C8EF2367E2D8008040DD /* FacebookAccountConnector.framework in Frameworks */,
@@ -1529,9 +1563,10 @@
 				D5A9C8D12367E2D8008040DD /* DTShareKit.framework in Frameworks */,
 				D5A9C9172367E2D8008040DD /* CopyConnector.framework in Frameworks */,
 				D5A9C9252367E2D8008040DD /* TwitterConnector.framework in Frameworks */,
-				D5A9C9412367E2D8008040DD /* MOBFoundation.framework in Frameworks */,
 				D5A9C8C12367E2D8008040DD /* libWXWorkApi.a in Frameworks */,
+				8DD48FA629D2C092007EE403 /* nanopb.xcframework in Frameworks */,
 				6B962E1C2840B58300866D56 /* AppAuth.framework in Frameworks */,
+				8DD48FAA29D2C092007EE403 /* FBLPromises.xcframework in Frameworks */,
 				D5A9C90D2367E2D8008040DD /* GooglePlusConnector.framework in Frameworks */,
 				D5A9C8EB2367E2D8008040DD /* RedditConnector.framework in Frameworks */,
 				D5A9C9192367E2D8008040DD /* EvernoteConnector.framework in Frameworks */,
@@ -1540,9 +1575,11 @@
 				D5A9C9052367E2D8008040DD /* TumblrConnector.framework in Frameworks */,
 				D5A9C92F2367E2D8008040DD /* PinterestConnector.framework in Frameworks */,
 				44B071CF1F7910150087CE45 /* libsqlite3.tbd in Frameworks */,
+				8DD48FAD29D2C092007EE403 /* GoogleAppMeasurement.xcframework in Frameworks */,
 				D5A9C9112367E2D8008040DD /* LineConnector.framework in Frameworks */,
 				914371352668CF84000C651D /* TencentOpenAPI.framework in Frameworks */,
 				D5A9C8F92367E2D8008040DD /* EasyChatConnector.framework in Frameworks */,
+				8DD48FA829D2C092007EE403 /* FirebaseAnalytics.xcframework in Frameworks */,
 				D5A9C9352367E2D8008040DD /* SinaWeiboConnector.framework in Frameworks */,
 				D5A9C8F32367E2D8008040DD /* WhatsAppConnector.framework in Frameworks */,
 				91EE1A082758662E00EEE2A4 /* libKwaiSDK.a in Frameworks */,
@@ -1575,6 +1612,7 @@
 		0B75BAD92313D94000841909 /* ThirdSDK */ = {
 			isa = PBXGroup;
 			children = (
+				8DD48F9329D2C092007EE403 /* Firebase */,
 				9192602024FFA34A0075F352 /* MBProgressHUD.h */,
 				9192601F24FFA34A0075F352 /* MBProgressHUD.m */,
 				D529C9C523C8120700BE847D /* Bugly.framework */,
@@ -1605,6 +1643,7 @@
 		446212611E6D8B5800C609C9 /* ShareSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8DD48F9129D2C042007EE403 /* GoogleService-Info.plist */,
 				9171216924EBD64200CAF582 /* ShareSDKDemoRelease.entitlements */,
 				D5A9C6DD2367DCB6008040DD /* ShareSDKDemo.entitlements */,
 				D5A9C8342367E2D7008040DD /* SDK */,
@@ -1614,6 +1653,8 @@
 				D5E5E68C232638A3006F61EE /* Tools */,
 				0B75BAD92313D94000841909 /* ThirdSDK */,
 				D5A9C5222367D8A1008040DD /* Supporting Files */,
+				8DD48FB029D2C305007EE403 /* ShareSwift.swift */,
+				8DD48FAF29D2C304007EE403 /* ShareSDKDemo-Bridging-Header.h */,
 			);
 			path = ShareSDKDemo;
 			sourceTree = "<group>";
@@ -1621,6 +1662,7 @@
 		446212F81E6D8C2200C609C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8DD48FB229D2C345007EE403 /* libresolv.tbd */,
 				44F1FD251F8F60D100366259 /* ShareSDKDemoTests */,
 				D52AD51A247F745F003E1CDD /* WebKit.framework */,
 				D53B2C10241B61A2009E13A3 /* CFNetwork.framework */,
@@ -1676,6 +1718,34 @@
 				D53B2C09241B5F2A009E13A3 /* LineSDKResource.bundle */,
 			);
 			path = LineSDK;
+			sourceTree = "<group>";
+		};
+		8DD48F9329D2C092007EE403 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				8DD48F9429D2C092007EE403 /* FirebaseCrashlytics */,
+				8DD48F9929D2C092007EE403 /* nanopb.xcframework */,
+				8DD48F9A29D2C092007EE403 /* GoogleAppMeasurementIdentitySupport.xcframework */,
+				8DD48F9B29D2C092007EE403 /* FirebaseAnalytics.xcframework */,
+				8DD48F9C29D2C092007EE403 /* FirebaseInstallations.xcframework */,
+				8DD48F9D29D2C092007EE403 /* FBLPromises.xcframework */,
+				8DD48F9E29D2C092007EE403 /* FirebaseCore.xcframework */,
+				8DD48F9F29D2C092007EE403 /* FirebaseCoreInternal.xcframework */,
+				8DD48FA029D2C092007EE403 /* GoogleAppMeasurement.xcframework */,
+				8DD48FA129D2C092007EE403 /* GoogleUtilities.xcframework */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		8DD48F9429D2C092007EE403 /* FirebaseCrashlytics */ = {
+			isa = PBXGroup;
+			children = (
+				8DD48F9529D2C092007EE403 /* FirebaseCrashlytics.xcframework */,
+				8DD48F9629D2C092007EE403 /* GoogleDataTransport.xcframework */,
+				8DD48F9729D2C092007EE403 /* run */,
+				8DD48F9829D2C092007EE403 /* upload-symbols */,
+			);
+			path = FirebaseCrashlytics;
 			sourceTree = "<group>";
 		};
 		913369F1265B84E70098B875 /* CustomShare */ = {
@@ -2130,8 +2200,6 @@
 		D535AE81238B8EFA00039AE0 /* ShareSDKLink */ = {
 			isa = PBXGroup;
 			children = (
-				D535AE83238B8EFA00039AE0 /* MOBAboutMobLinkViewController.h */,
-				D535AE82238B8EFA00039AE0 /* MOBAboutMobLinkViewController.m */,
 			);
 			path = ShareSDKLink;
 			sourceTree = "<group>";
@@ -3127,7 +3195,6 @@
 			isa = PBXGroup;
 			children = (
 				D5A9C86E2367E2D7008040DD /* ShareSDKUI.bundle */,
-				D5A9C86F2367E2D7008040DD /* ShareSDKLink.framework */,
 				D5A9C8702367E2D7008040DD /* ShareSDKConfigFile.framework */,
 				D5A9C8712367E2D7008040DD /* ShareSDKExtension.framework */,
 				D5A9C8722367E2D7008040DD /* ShareSDKUI.framework */,
@@ -3187,7 +3254,7 @@
 		D5A9C8A22367E2D8008040DD /* Required */ = {
 			isa = PBXGroup;
 			children = (
-				D5A9C8A42367E2D8008040DD /* MOBFoundation.framework */,
+				8DE6345429484F6F006FD35E /* MOBFoundation.framework */,
 			);
 			path = Required;
 			sourceTree = "<group>";
@@ -3284,6 +3351,7 @@
 					4462125E1E6D8B5800C609C9 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = Q87QUX3533;
+						LastSwiftMigration = 1340;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -3404,6 +3472,7 @@
 				D575A8BF23A8B6F800C4DC21 /* sns_icon_16@3x.png in Resources */,
 				D5394B4323951FA500A9F716 /* content_icon_emoji_sel@3x.png in Resources */,
 				91B9B513273E441C00DAE195 /* README.txt in Resources */,
+				8DD48FA529D2C092007EE403 /* upload-symbols in Resources */,
 				D5394B9023951FA500A9F716 /* content_icon_link_sel@3x.png in Resources */,
 				D5394B4823951FA500A9F716 /* content_icon_imgs_sel@2x.png in Resources */,
 				D575A88B23A8B6F800C4DC21 /* sns_icon_17@2x.png in Resources */,
@@ -3577,6 +3646,7 @@
 				D575A89C23A8B6F800C4DC21 /* sns_icon_26@2x.png in Resources */,
 				91A1AE8325078D060056ED7B /* play@2x.png in Resources */,
 				D575A8C023A8B6F800C4DC21 /* sns_icon_23@3x.png in Resources */,
+				8DD48FA429D2C092007EE403 /* run in Resources */,
 				D5A9C6332367D8A1008040DD /* grzx_2@2x.png in Resources */,
 				D5394B9123951FA500A9F716 /* content_icon_applets_sel@3x.png in Resources */,
 				D5A9C6992367D8A1008040DD /* Icon@2x.png in Resources */,
@@ -3616,6 +3686,7 @@
 				D575A87123A8B6F800C4DC21 /* sns_icon_60@2x.png in Resources */,
 				D5A9C68F2367D8A1008040DD /* Icon-72.png in Resources */,
 				D575A88223A8B6F800C4DC21 /* sns_icon_16@2x.png in Resources */,
+				8DD48F9229D2C042007EE403 /* GoogleService-Info.plist in Resources */,
 				D575A8AF23A8B6F800C4DC21 /* sns_icon_53@2x.png in Resources */,
 				D5A9C63B2367D8A1008040DD /* imageIcon@2x.png in Resources */,
 				D5A9C64B2367D8A1008040DD /* emoIcon@2x.png in Resources */,
@@ -3748,6 +3819,7 @@
 				D537CF712396089900B5DB26 /* SSDKTapGestureChainModel.m in Sources */,
 				D535953323A62C37000C8AAF /* MOBAuthItemModel.m in Sources */,
 				D5555655239CE8FE0031BD63 /* MASViewAttribute.m in Sources */,
+				8DD48FB129D2C305007EE403 /* ShareSwift.swift in Sources */,
 				D532519C239E205A00DCD90D /* SSDKBaseTableViewCell.m in Sources */,
 				D537CF7C2396089900B5DB26 /* UIButton+SSDKCategory.m in Sources */,
 				D537CF662396089900B5DB26 /* CALayer+SSDKChain.m in Sources */,
@@ -3769,7 +3841,6 @@
 				D53306FC23AC7EA900C46620 /* MOBPlatformRedditExample.m in Sources */,
 				D569B14723D00C1D00A04A9E /* SSDKCommonNavigationBar.m in Sources */,
 				D535AF3C238B8EFA00039AE0 /* MobUIScreenshotShare.m in Sources */,
-				D535AF14238B8EFA00039AE0 /* MOBAboutMobLinkViewController.m in Sources */,
 				913369FE265B89740098B875 /* MOBCustomeShareCell.m in Sources */,
 				D537CF7E2396089900B5DB26 /* UIAlertController+SSDKCategory.m in Sources */,
 				D53306FF23AC7EDF00C46620 /* MOBPlatformVKontakteExample.m in Sources */,
@@ -4016,7 +4087,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = deep;
 				CODE_SIGN_ENTITLEMENTS = ShareSDKDemo/ShareSDKDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -4042,12 +4115,15 @@
 				);
 				INFOPLIST_FILE = "ShareSDKDemo/Supporting Files/Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.4.8;
+				MARKETING_VERSION = 4.4.13;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -4057,6 +4133,8 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = com.MobTech.allkeysDevelop;
 				RUN_CLANG_STATIC_ANALYZER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "ShareSDKDemo/ShareSDKDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_WORKSPACE = NO;
@@ -4068,10 +4146,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = deep;
 				CODE_SIGN_ENTITLEMENTS = ShareSDKDemo/ShareSDKDemoRelease.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -4094,20 +4174,24 @@
 				);
 				INFOPLIST_FILE = "ShareSDKDemo/Supporting Files/Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.4.8;
+				MARKETING_VERSION = 4.4.13;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MobTech.allkeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = comMobTechallkeysDevelopadhoc;
+				PROVISIONING_PROFILE_SPECIFIER = com.MobTech.allkeysDevelop;
 				RUN_CLANG_STATIC_ANALYZER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "ShareSDKDemo/ShareSDKDemo-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_WORKSPACE = NO;
@@ -4118,6 +4202,7 @@
 		44F1FD2C1F8F60D100366259 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -4138,7 +4223,11 @@
 				GCC_PREFIX_HEADER = ShareSDKDemoTests/ShareSDKDemoTestsPrefixHeader.pch;
 				INFOPLIST_FILE = ShareSDKDemoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = youzu.ShareSDKDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4150,6 +4239,7 @@
 		44F1FD2D1F8F60D100366259 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -4169,7 +4259,11 @@
 				GCC_PREFIX_HEADER = ShareSDKDemoTests/ShareSDKDemoTestsPrefixHeader.pch;
 				INFOPLIST_FILE = ShareSDKDemoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = youzu.ShareSDKDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4181,6 +4275,7 @@
 		50968817213FC8550098E76E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_MODULES = YES;
@@ -4194,7 +4289,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ShareSDKDemoUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mob.product.ShareSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4211,6 +4310,7 @@
 		50968818213FC8550098E76E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_MODULES = YES;
@@ -4224,13 +4324,18 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ShareSDKDemoUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mob.product.ShareSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = ShareSDKDomainDev;
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ShareSDKDemo;

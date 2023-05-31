@@ -2,7 +2,7 @@
 
 [论坛发版列表](http://bbs.mob.com/forum.php?mod=forumdisplay&fid=2&filter=typeid&typeid=36)  
 
-### v4.4.3[详情] 
+### v4.4.3[详情]  
 更新说明:
 >1、修复facebook，钉钉，evernote，Youtube，Telegram，LinkedIn，VK平台分享异常问题
 >2、修复5G网络报错问题

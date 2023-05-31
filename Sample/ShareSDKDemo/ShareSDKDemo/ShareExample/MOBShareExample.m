@@ -11,7 +11,6 @@
 #import <ShareSDKUI/ShareSDKUI.h>
 #import <ShareSDKExtension/SSEShareHelper.h>
 #import "MOBShakeView.h"
-#import "MOBAboutMobLinkViewController.h"
 #import "MOBPolicyManager.h"
 #import "SSDKImagePicker.h"
 #import "MOBShareCommandAlertView.h"
@@ -187,46 +186,6 @@
     
 }
 
-#pragma mark - 分享到linkCard -
-- (void)sinaLinkCardShare{
-//    //图片必须为网络地址图片
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-
-    [parameters SSDKSetupSinaWeiboLinkCardShareParamsByText:@"我是Text"
-                                                  cardTitle:@"cardTitle"
-                                                cardSummary:@"summary"
-                                                     images:@"http://download.sdk.mob.com/web/images/2019/06/20/10/1560998253715/635_635_42.62.png"
-                                                        url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]];
-
-    [ShareSDK share:SSDKPlatformTypeSinaWeibo parameters:parameters onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
-        [self sharePlatType:SSDKPlatformTypeSinaWeibo userData:userData state:state error:error];
-    }];
-}
-
-#pragma mark - 口令分享
-- (void)commandShareWithModelView:(UIView *)modelView{
-    NSDictionary *parameters = @{@"command":@"commandText",@"shareTitle":@"国家卫健委：昨日新增确诊病例5例,其中本土2例在北京,其中本土2例在北京",@"shareAccount":@"小明"};
-    
-    [ShareSDK getCommandText:parameters withComplete:^(NSString * _Nullable text, NSError * _Nullable error, void (^ _Nullable complete)(NSString * _Nullable)) {
-        NSString *command = [NSString stringWithFormat:@"【复制本段内容%@打开👉页面关键字👈去粘贴给好友】",text];
-        if(!error){
-            complete(command);
-            
-            MOBShareCommandAlertView *alertView = [[MOBShareCommandAlertView alloc]initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 270) * 0.5, 125 + (self.isPhoneX ? 24 : 0), 270, 170)];
-            [alertView showWithCommand:command modelView:modelView];
-        }else{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertControllerAlertCreate(@"分享失败", [NSString stringWithFormat:@"%@",error])
-                .addCancelAction(@"确定")
-                .showAnimated(YES)
-                .present();
-                
-            });
-        }
-    }];
-
-}
-
 #pragma mark - 视频二维码分享
 - (void)videoShareWithModelView:(UIView *)modelView{
     NSString *path = [[NSBundle mainBundle]pathForResource:@"shareVideo" ofType:@"mp4"];
@@ -387,14 +346,6 @@
         .present();
         
     });
-}
-
-
-#pragma mark - 闭环分享 -
-
-- (void)shareLink{
-    MOBAboutMobLinkViewController *vc = [MOBAboutMobLinkViewController new];
-    vc.showType(SSDKControllerShowTypeNavigationVC).push();
 }
 
 

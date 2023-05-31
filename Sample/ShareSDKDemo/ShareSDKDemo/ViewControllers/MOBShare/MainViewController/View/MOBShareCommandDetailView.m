@@ -7,7 +7,6 @@
 //
 
 #import "MOBShareCommandDetailView.h"
-#import "MOBAboutMobLinkViewController.h"
 #import "MOBPolicyWebViewController.h"
 @interface MOBShareCommandDetailView ()
 
@@ -107,8 +106,7 @@
         webVC.extraInfo = [NSMutableDictionary dictionaryWithDictionary:@{@"url":url}];
         webVC.showType(SSDKControllerShowTypeNavigationVC).push();
     }else{
-        MOBAboutMobLinkViewController *vc = [MOBAboutMobLinkViewController new];
-        vc.showType(SSDKControllerShowTypeNavigationVC).push();
+
     }
 
 }

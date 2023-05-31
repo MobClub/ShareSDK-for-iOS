@@ -508,19 +508,14 @@
      开放平台地址： https://dev.twitter.com
  */
 #ifdef IMPORT_Twitter
-    //ConsumerKey
-    #define MOBSSDKTwitterConsumerKey @"viOnkeLpHBKs6KXV7MPpeGyzE"
-    //ConsumerSecret
-    #define MOBSSDKTwitterConsumerSecret @"NJEglQUy2rqZ9Io9FcAU9p17omFqbORknUpRrCDOK46aAbIiey"
-    //RedirectUri
-    #define MOBSSDKTwitterRedirectUri @"http://mob.com"
 
-//    //ConsumerKey
-//    #define MOBSSDKTwitterConsumerKey @"WjmQNOqQB5YwPTs3AcZXVXYn3"
-//    //ConsumerSecret
-//    #define MOBSSDKTwitterConsumerSecret @"CWEkJUeq1sTMt4OzKMo08iRe1OlK468NAVh0XBxNtFgvvjbRl4"
-//    //RedirectUri
-//    #define MOBSSDKTwitterRedirectUri @"https://www.mob.com"
+//ConsumerKey
+#define MOBSSDKTwitterConsumerKey @"YUJMMTFOcE93MGI4Zi1aRTlHQnM6MTpjaQ"
+//ConsumerSecret
+#define MOBSSDKTwitterConsumerSecret @"ppuG1yR5Sb7PXn2IZAu-4nJwbhh1mLq3ieJXOkC5wOJpVxmWli"
+//RedirectUri
+#define MOBSSDKTwitterRedirectUri @"https://www.mob.com"
+
 #endif
 
 #pragma mark - Line平台配置信息
@@ -651,7 +646,7 @@
     //ClientSecret
     #define MOBSSDKYouTubeClientSecret @""
     //RedirectUri
-    #define MOBSSDKYouTubeRedirectUri @"http://localhost"
+    #define MOBSSDKYouTubeRedirectUri @"com.googleusercontent.apps.38953271415-cdrhbq1577a211o0569475gb0hf1f7i3:/oauthredirect"
 #endif
 
 #pragma mark - Flickr平台配置信息
@@ -859,7 +854,7 @@
 #pragma mark - 绿洲平台配置信息 -
 
 #ifdef IMPORT_Snapchat
-#define MOBSSDKSnapchatClientId @"dc8e6068-0578-41b8-8392-4da009519725"
+#define MOBSSDKSnapchatClientId @"d8f03743-ce0c-433b-a49b-50b4fb0dbd55"
 #define MOBSSDKSnapchatClientSecret @""
 #define MOBSSDKSnapchatRedirectUrl @"ssdkmoba0b0c0d0://mob"
 #endif

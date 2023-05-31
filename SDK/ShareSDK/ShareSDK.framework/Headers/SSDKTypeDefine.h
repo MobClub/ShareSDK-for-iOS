@@ -467,6 +467,13 @@ typedef NS_ENUM(NSUInteger, SSDKDouYinShareActionMode)
     SSDKDouyinOpenSDKShareTypeShareContentToIM,
 };
 
+typedef NS_ENUM(NSUInteger, SSDKDouyinLandedPageType)
+{
+    SSDKDouyinOpenSDKLandedPageClip = 0,//!< Landed to Clip ViewController
+    SSDKDouyinOpenSDKLandedPageEdit,//!< Landed to Edit ViewController
+    SSDKDouyinOpenSDKLandedPagePublish,//!< Landed to Edit ViewController
+};
+
 /**
  *  授权状态变化回调处理器
  *
@@ -516,5 +523,7 @@ extern NSString *SSDKShareWeiboBanGetIdfaNotification;
 extern NSString *SSDKShareWeiboBanGetIdfaKey;
 //设置抖音分享类型的key
 extern NSString *SSDKDouYinShareActionKey;
+//设置抖音分享跳转页面类型的key
+extern NSString *SSDKDouyinLandedPageTypeKey;
 
 #endif

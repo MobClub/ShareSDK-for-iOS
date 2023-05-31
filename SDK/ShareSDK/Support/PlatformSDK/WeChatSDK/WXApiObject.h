@@ -164,6 +164,8 @@ typedef void(^WXCheckULCompletion)(WXULCheckStep step, WXCheckULStepResult* resu
 #pragma mark - WXMediaMessage
 @class WXMediaMessage;
 
+
+
 #pragma mark - SendAuthReq
 /*! @brief 第三方程序向微信终端请求认证的消息结构
  *
@@ -183,6 +185,11 @@ typedef void(^WXCheckULCompletion)(WXULCheckStep step, WXCheckULStepResult* resu
 @property (nonatomic, copy) NSString *state;
 
 @property (nonatomic, assign) BOOL isOption1;
+
+/** 是否关闭自动授权
+ * @note YES为关闭自动授权，每次登陆都需要用户手动授权；NO为允许自动授权
+ */
+@property (nonatomic, assign) BOOL nonautomatic;
 
 @property (nonatomic, copy) NSString *extData;
 
@@ -698,10 +705,21 @@ typedef void(^WXCheckULCompletion)(WXULCheckStep step, WXCheckULStepResult* resu
  */
 @property (nonatomic, strong) id mediaObject;
 
+/** 缩略图的hash值
+ * @note 使用sha256得到，用于计算签名
+ */
+@property (nonatomic, copy, nullable) NSString *thumbDataHash;
+
+/** 消息签名
+ * @note 用于校验消息体是否被篡改过
+ */
+@property (nonatomic, copy, nullable) NSString *msgSignature;
+
+
 /*! @brief 设置消息缩略图的方法
  *
  * @param image 缩略图
- * @note 大小不能超过64K
+ * @note 大小不能超过256K
  */
 - (void)setThumbImage:(UIImage *)image;
 
@@ -727,6 +745,11 @@ typedef void(^WXCheckULCompletion)(WXULCheckStep step, WXCheckULStepResult* resu
  * @note 大小不能超过25M
  */
 @property (nonatomic, strong) NSData *imageData;
+
+/** 图片数据的hash值
+ * @note 使用sha256得到，用于计算签名
+ */
+@property (nonatomic, copy, nullable) NSString *imgDataHash;
 
 @end
 
@@ -825,6 +848,11 @@ typedef void(^WXCheckULCompletion)(WXULCheckStep step, WXCheckULStepResult* resu
  * @note 大小不能超过1M
  */
 @property (nonatomic, strong) NSData *hdAlbumThumbData;
+
+/** 高清封面图数据的hash值
+ * @note 使用sha256得到，用于计算签名
+ */
+@property (nonatomic, copy, nullable) NSString *hdAlbumThumbFileHash;
 
 /**音乐专辑名称
  * @note 长度不能超过1k
@@ -1102,6 +1130,31 @@ typedef void(^WXCheckULCompletion)(WXULCheckStep step, WXCheckULStepResult* resu
 
 /** 业务所需的额外信息 */
 @property (nonatomic, strong, nullable) NSDictionary *extraInfoDic;
+
+@end
+
+@interface WXNativeGamePageObject : NSObject
+
+/** 是否为视频类型
+ */
+@property (nonatomic, assign) BOOL isVideo;
+
+/** 视频时长
+ @note 当为视频类型时，必填；单位为秒
+ */
+@property (nonatomic, assign) UInt32 videoDuration;
+
+/** 透传字段
+ @note 长度限制为100K
+ */
+@property (nonatomic, copy) NSString *shareData;
+
+/** 缩略图
+ @note 大小限制为256K
+ */
+@property (nonatomic, strong) NSData *gameThumbData;
+
++ (WXNativeGamePageObject *)object;
 
 @end
 

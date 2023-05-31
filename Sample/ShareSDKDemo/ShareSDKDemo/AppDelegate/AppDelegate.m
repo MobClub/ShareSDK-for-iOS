@@ -25,7 +25,9 @@
 #import <WeiboSDK.h>
 
 #import <TwitterConnector/TwitterConnector.h>
-@interface AppDelegate () <ISSERestoreSceneDelegate,WeiboSDKDelegate,LineSDKLoginDelegate,WXApiDelegate>
+@import FirebaseCore;
+
+@interface AppDelegate () <WeiboSDKDelegate,LineSDKLoginDelegate,WXApiDelegate>
 
 @property (strong, nonatomic) NSDictionary *parameters;
 
@@ -39,9 +41,11 @@
 {
     //在MOBShareSDKRegister注册第三方平台信息
 //    [TwitterConnector setAuthVersion:@"2"];
+    [FIRApp configure];
     
+
+
     [[LineSDKLogin sharedInstance]setDelegate:self];
-    [ShareSDK setRestoreSceneDelegate:self];
     [ShareSDK setShareVideoEnable:YES];
     [ShareSDK setAutoLogAppEventsEnabled:YES];
     [ShareSDK setBanGetIdfa:YES];
@@ -310,74 +314,6 @@
     }
 }
 
-#pragma mark - ISSERestoreSceneDelegate
-/**
- 口令分享代理回调
- */
-- (void)ISSEWillAlertCommand:(NSDictionary *)parameters error:(NSError *)error{
-    if(parameters){
-        if([[UIApplication sharedApplication].keyWindow.rootViewController.clasName isEqualToString:@"SSDKScenePackageRootViewController"] && [[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController isKindOfClass:[UIAlertController class]]){
-            return;
-        }
-        if([[UIApplication sharedApplication].keyWindow.rootViewController.clasName isEqualToString:@"MOBTabBarController"] && [UIApplication sharedApplication].windows.count > 2){
-            return;
-        }
-        self.parameters = parameters;
-        id cacheKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"kMOBPolicyManagerSaveKey"];
-        if ([cacheKey boolValue]) {
-            MOBShareCommandDetailView *detailView = [[MOBShareCommandDetailView alloc]initWithFrame:[UIApplication sharedApplication].keyWindow.bounds];
-            [detailView showWithParams:parameters];
-        }
-    }
-    
-}
-
-/**
- 视频分享代理回调
- */
-- (void)ISSEWillAlertVideoInfo:(NSDictionary *)parameters{
-    if(parameters){
-        if([[UIApplication sharedApplication].keyWindow.rootViewController.clasName isEqualToString:@"SSDKScenePackageRootViewController"] && [[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController isKindOfClass:[UIAlertController class]]){
-            return;
-        }
-        if([[UIApplication sharedApplication].keyWindow.rootViewController.clasName isEqualToString:@"MOBTabBarController"] && [UIApplication sharedApplication].windows.count > 2){
-            return;
-        }
-        self.parameters = parameters;
-    
-        id cacheKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"kMOBPolicyManagerSaveKey"];
-        if ([cacheKey boolValue]) {
-            NSString *str = [parameters yy_modelToJSONString];
-            //判断是否已经解析过此二维码,如果解析过就不再弹框
-            NSString *cacheStr = [[NSUserDefaults standardUserDefaults]objectForKey:@"videoParams"];
-            if(![cacheStr isEqualToString:str]){
-                [[NSUserDefaults standardUserDefaults]setObject:str forKey:@"videoParams"];
-                [[NSUserDefaults standardUserDefaults]synchronize];
-                MOBShareCommandDetailView *detailView = [[MOBShareCommandDetailView alloc]initWithFrame:[UIApplication sharedApplication].keyWindow.bounds];
-                [detailView showWithParams:parameters];
-            }
-        }
-    }
-    
-}
-
-/**
- 闭环分享代理回调
- 
- */
-- (void)ISSEWillRestoreScene:(SSERestoreScene *)scene error:(NSError *)error{
-    
-    Class sceneClass = NSClassFromString(scene.className);
-    if (sceneClass) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        UIViewController *sceneVC = [[sceneClass alloc] performSelector:sel_registerName("initWithShareSDKScene:") withObject:scene];
-#pragma clang diagnostic pop
-        [[SSDKScenePackage defaultPackage] addBeforeWindowEvent:^(SSDKScenePackage * _Nonnull application) {
-            [[UIApplication currentToNavgationController] pushViewController:sceneVC animated:YES];
-        }];
-    }
-}
 
 //
 //- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{

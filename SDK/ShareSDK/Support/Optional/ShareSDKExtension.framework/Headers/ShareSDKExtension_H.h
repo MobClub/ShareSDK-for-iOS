@@ -18,11 +18,6 @@ FOUNDATION_EXPORT double ShareSDKExtensionVersionNumber;
 FOUNDATION_EXPORT const unsigned char ShareSDKExtensionVersionString[];
 
 #import <ShareSDKExtension/SSETypeDefine.h>
-#import <ShareSDKExtension/SSERestoreSceneHeader.h>
-#import <ShareSDKExtension/NSMutableDictionary+SSERestoreScene.h>
-#import <ShareSDKExtension/UIViewController+SSERestoreScene.h>
-#import <ShareSDKExtension/ISSERestoreSceneDelegate.h>
-#import <ShareSDKExtension/SSERestoreScene.h>
 #import <ShareSDKExtension/ShareSDK+Extension.h>
 #import <ShareSDKExtension/SSEThirdPartyLoginHelper.h>
 #import <ShareSDKExtension/SSEFriendsPaging.h>

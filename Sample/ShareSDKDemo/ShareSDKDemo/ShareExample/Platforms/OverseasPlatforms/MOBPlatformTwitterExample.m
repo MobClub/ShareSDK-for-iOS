@@ -83,8 +83,11 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //图片最多4张 GIF只能1张
     NSString *path1 = SHARESDKDEMO_IMAGE_LOCALPATH;
+    //文本,避免报重复错误
+    NSInteger tmpInt = [MOBFNumber randomInteger:100000];
+    NSString *txt = [NSString stringWithFormat:@"%@_%ld",SHARESDKDEMO_TEXT,tmpInt];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+    [parameters SSDKSetupShareParamsByText:txt
                                     images:@[path1]
                                        url:nil
                                      title:nil
@@ -100,18 +103,21 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //图片最多4张 GIF只能1张
     NSString *path1 = SHARESDKDEMO_IMAGE_LOCALPATH;
+    //文本,避免报重复错误
+    NSInteger tmpInt = [MOBFNumber randomInteger:100000];
+    NSString *txt = [NSString stringWithFormat:@"%@_%ld",@"Share SDK",tmpInt];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:nil
-                                    images:@[path1]
-                                       url:nil
-                                     title:nil
-                                      type:SSDKContentTypeImage];
+//    [parameters SSDKSetupShareParamsByText:nil
+//                                    images:@[path1]
+//                                       url:nil
+//                                     title:nil
+//                                      type:SSDKContentTypeImage];
     //平台定制
-    //        [parameters SSDKSetupTwitterParamsByText:@"Share SDK"
-    //                                          images:path4
-    //                                        latitude:0
-    //                                       longitude:0
-    //                                            type:SSDKContentTypeImage];
+            [parameters SSDKSetupTwitterParamsByText:txt
+                                              images:@[path1]
+                                            latitude:113.27599
+                                           longitude:23.11705
+                                                type:SSDKContentTypeImage];
     [self shareWithParameters:parameters];
 }
 
@@ -125,8 +131,13 @@
     NSString *path1 = SHARESDKDEMO_IMAGE_LOCALPATH;
     NSString *path2 = [[NSBundle mainBundle] pathForResource:@"D11" ofType:@"jpg"];
     NSString *path3 = [[NSBundle mainBundle] pathForResource:@"D45" ofType:@"jpg"];
+    
+    //文本,避免报重复错误
+    NSInteger tmpInt = [MOBFNumber randomInteger:100000];
+    NSString *txt = [NSString stringWithFormat:@"%@_%ld",@"Share SDK",tmpInt];
+
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:nil
+    [parameters SSDKSetupShareParamsByText:txt
                                     images:@[path1,path2,path3]
                                        url:nil
                                      title:nil
@@ -146,8 +157,11 @@
     // 注意：如果你的链接已经根据"Twitter官方API卡片效果文档"对网址内容进行改造 以下images参数请一定设置为nil 否则展示的是内容含有链接的图片分享。
     // 如Demo地址 http://f.moblink.mob.com/twitter/bigcard/ 和 http://f.moblink.mob.com/twitter/smallcard/ 网址内容html中head已经改造过
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //文本,避免报重复错误
+    NSInteger tmpInt = [MOBFNumber randomInteger:100000];
+    NSString *txt = [NSString stringWithFormat:@"%@_%ld",@"Share SDK",tmpInt];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:txt
                                     images:nil//[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
                                        url:[NSURL URLWithString:@"http://tech.diary.support.mob.com/sharesdk/demo/index.html"]
                                      title:nil
@@ -163,8 +177,11 @@
 - (void)shareVideo
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //文本,避免报重复错误
+    NSInteger tmpInt = [MOBFNumber randomInteger:100000];
+    NSString *txt = [NSString stringWithFormat:@"%@_%ld",@"Share SDK",tmpInt];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:txt
                                     images:nil
                                        url:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"]]
                                      title:nil
@@ -184,8 +201,12 @@
 - (void)shareTextBySystem
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //文本,避免报重复错误
+    NSInteger tmpInt = [MOBFNumber randomInteger:100000];
+    NSString *txt = [NSString stringWithFormat:@"%@_%ld",SHARESDKDEMO_TEXT,tmpInt];
+    
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+    [parameters SSDKSetupShareParamsByText:txt
                                     images:nil
                                        url:nil
                                      title:nil
@@ -212,8 +233,11 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     //图片最多4张 GIF只能1张
     NSString *path1 = SHARESDKDEMO_IMAGE_LOCALPATH;
+    //文本,避免报重复错误
+    NSInteger tmpInt = [MOBFNumber randomInteger:100000];
+    NSString *txt = [NSString stringWithFormat:@"%@_%ld",SHARESDKDEMO_TEXT,tmpInt];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+    [parameters SSDKSetupShareParamsByText:txt
                                     images:@[path1]
                                        url:nil
                                      title:nil
@@ -227,8 +251,11 @@
     // 注意：如果你的链接已经根据"Twitter官方API卡片效果文档"对网址内容进行改造 以下images参数请一定设置为nil 否则展示的是内容含有链接的图片分享。
     // 如Demo地址 http://f.moblink.mob.com/twitter/bigcard/ 和 http://f.moblink.mob.com/twitter/smallcard/ 网址内容html中head已经改造过
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //文本,避免报重复错误
+    NSInteger tmpInt = [MOBFNumber randomInteger:100000];
+    NSString *txt = [NSString stringWithFormat:@"%@_%ld",@"Share SDK",tmpInt];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:txt
                                     images:nil//[[NSBundle mainBundle] pathForResource:@"COD13" ofType:@"jpg"]
                                        url:[NSURL URLWithString:@"http://tech.diary.support.mob.com/sharesdk/demo/index.html"]
                                      title:nil
@@ -239,8 +266,11 @@
 - (void)shareVideoBySystem
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    //文本,避免报重复错误
+    NSInteger tmpInt = [MOBFNumber randomInteger:100000];
+    NSString *txt = [NSString stringWithFormat:@"%@_%ld",@"Share SDK",tmpInt];
     //通用参数设置
-    [parameters SSDKSetupShareParamsByText:@"Share SDK"
+    [parameters SSDKSetupShareParamsByText:txt
                                     images:nil
                                        url:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"cat" ofType:@"mp4"]]
                                      title:nil

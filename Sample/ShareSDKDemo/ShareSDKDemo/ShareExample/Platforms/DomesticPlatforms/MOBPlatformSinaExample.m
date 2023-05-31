@@ -18,10 +18,6 @@
 
 - (void)setup{
     SSDKWEAK
-    [self addListItemWithImage:MOBLinkShareIcon name:@"分享LinkCard" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
-        SSDKSTRONG
-        [self shareLinkCard];
-    }];
     
     [self addListItemWithImage:MOBApplicationShareIcon name:@"系统分享-图片（单图）" method:^(MOBPlatformBaseModel * _Nonnull model, NSMutableDictionary * _Nonnull parameters) {
         SSDKSTRONG
@@ -150,20 +146,6 @@
     [self shareWithParameters:parameters];
 }
 
-// LinkCard功能需要去管理后台申请
-- (void)shareLinkCard
-{
-    //图片必须为网络地址图片
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    
-    [parameters SSDKSetupSinaWeiboLinkCardShareParamsByText:@"我是Text"
-                                                  cardTitle:@"cardTitle"
-                                                cardSummary:@"summary"
-                                                     images:@"http://download.sdk.mob.com/web/images/2019/06/20/10/1560998253715/635_635_42.62.png"
-                                                        url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]];
-    
-    [self shareWithParameters:parameters];
-}
 
 - (void)shareVideo
 {

@@ -37,11 +37,14 @@
     [self shareWithParameters:parameters];
 }
 
+#define SHARESDKDEMO_TEXT_NEW @"分享是一个 非常https://www.okx.com/join/12887156好用的功能"    //通用参数设置
+
+//#define SHARESDKDEMO_TEXT_NEW @"Download the OKX App via https://www.okx.com/join/12887156 and sign up. Get Mystery Boxes up to $10,000 in crypto."    //通用参数设置
+
 -(void)shareLink
 {
-    //通用参数设置
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT
+    [parameters SSDKSetupShareParamsByText:SHARESDKDEMO_TEXT_NEW
                                     images:nil
                                        url:[NSURL URLWithString:SHARESDKDEMO_URLSTRING]
                                      title:nil

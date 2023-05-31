@@ -189,7 +189,7 @@
 			<string>twitter</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>twitterkit-viOnkeLpHBKs6KXV7MPpeGyzE</string>
+				<string>twitterkit-YUJMMTFOcE93MGI4Zi1aRTlHQnM6MTpjaQ</string>
 			</array>
 		</dict>
 		<dict>
@@ -285,6 +285,9 @@
 	<string>weibosdk</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>tg</string>
+		<string>twitterauth</string>
+		<string>youtube</string>
 		<string>weibosdk3.3</string>
 		<string>weibosdk2.5</string>
 		<string>weibosdk</string>
@@ -333,7 +336,6 @@
 		<string>youdaonote</string>
 		<string>mingdao</string>
 		<string>snssdk32</string>
-		<string>twitterauth</string>
 		<string>fbapi</string>
 		<string>fbapi20130214</string>
 		<string>fbapi20130410</string>
@@ -361,7 +363,6 @@
 		<string>storylink</string>
 		<string>kakaotalk-5.9.7</string>
 		<string>kakao9c17eb03317e0e627ec95a400f5785fb</string>
-		<string>youtube</string>
 		<string>flickr</string>
 		<string>db-auth</string>
 		<string>pinterest</string>
@@ -372,7 +373,6 @@
 		<string>vkauthorize</string>
 		<string>instapaper</string>
 		<string>tumblr</string>
-		<string>tg</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -389,6 +389,8 @@
 	<string>1ef3994ddeab7d2ceafe45c47553e620</string>
 	<key>MOBNetLater</key>
 	<integer>2</integer>
+	<key>MOBTwitterVer</key>
+	<string>2</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -407,12 +409,11 @@
 	<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
 	<true/>
 	<key>SCSDKClientId</key>
-	<string>dc8e6068-0578-41b8-8392-4da009519725</string>
+	<string>d8f03743-ce0c-433b-a49b-50b4fb0dbd55</string>
 	<key>SCSDKRedirectUrl</key>
 	<string>ssdkmoba0b0c0d0://mob</string>
 	<key>SCSDKScopes</key>
 	<array>
-		<string>https://auth.snapchat.com/oauth2/api/user.external_id</string>
 		<string>https://auth.snapchat.com/oauth2/api/user.display_name</string>
 		<string>https://auth.snapchat.com/oauth2/api/user.bitmoji.avatar</string>
 	</array>

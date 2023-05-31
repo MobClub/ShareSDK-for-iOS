@@ -185,4 +185,13 @@
 *  @return 本地国家码
 */
 + (NSString * _Nullable)localecountryCode;
+
+
+/**
+*  获取 app首次安装时间
+*
+*  @return app首次安装时间
+*/
++ (NSDate * _Nullable)installDate;
+
 @end

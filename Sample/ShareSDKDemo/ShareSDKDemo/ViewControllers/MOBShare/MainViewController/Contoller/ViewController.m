@@ -32,7 +32,7 @@
     UIView *_tableViewBackgroundShadow;
 }
 
-@property (nonatomic, strong) MOBShareMainHeaderView *headerView;
+//@property (nonatomic, strong) MOBShareMainHeaderView *headerView;
 
 @property (nonatomic, copy) NSArray *dataSource;
 
@@ -86,16 +86,6 @@
                 [[MOBShareExample defaultExample] shakeShare];
             }
                 break;
-            //新浪LinkCard分享
-            case MobSharePlatformStyleLinkCardShare:{
-                [[MOBShareExample defaultExample] sinaLinkCardShare];
-            }
-                break;
-            //口令分享
-            case MobSharePlatformStyleCommandShare:{
-                [[MOBShareExample defaultExample] commandShareWithModelView:model.view];
-            }
-                break;
             //视频二维码分享
             case MobSharePlatformStyleVideoShare:{
                 [[MOBShareExample defaultExample] videoShareWithModelView:model.view];
@@ -117,9 +107,9 @@
     self.tableView.makeChain
     .registerCellClass([MOBMainShareNormalTableViewCell class], @"normalCell")
     .registerCellClass([MOBMainShareUniqueTableViewCell class], @"uniqueCell")
-    .registerViewClass([MOBMainTableHeaderFooterView class], @"headerView")
-    .backgroundColor(UIColorHexString(@"F7F8F9"))
-    .tableHeaderView(self.headerView);
+//    .registerViewClass([MOBMainTableHeaderFooterView class], @"headerView")
+    .backgroundColor(UIColorHexString(@"F7F8F9"));
+//    .tableHeaderView(self.headerView);
     self.navigationBar.line.hidden = YES;
     
     _tableViewBackgroundShadow = [UIView new];
@@ -135,21 +125,21 @@
 
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    if (self.headerView.text.length == 0) {
-        self.headerView.text = @"好消息：闭环分享重磅上线！一键实现闭环分享！错过它，就错过了全世界~  ";
-    }
+//    if (self.headerView.text.length == 0) {
+//        self.headerView.text = @"好消息：闭环分享重磅上线！一键实现闭环分享！错过它，就错过了全世界~  ";
+//    }
     _tableViewBackgroundShadow.frame = CGRectMake(0, 0, self.view.width, 0);
 }
 
-- (MOBShareMainHeaderView *)headerView{
-    if (!_headerView) {
-        _headerView  =[[MOBShareMainHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 36)];
-        _headerView.rollClick = ^{
-            [[MOBShareExample defaultExample] shareLink];
-        };
-    }
-    return _headerView;
-}
+//- (MOBShareMainHeaderView *)headerView{
+//    if (!_headerView) {
+//        _headerView  =[[MOBShareMainHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 36)];
+//        _headerView.rollClick = ^{
+//            [[MOBShareExample defaultExample] shareLink];
+//        };
+//    }
+//    return _headerView;
+//}
 
 #pragma mark - tableView Delegate/dataSource -
 

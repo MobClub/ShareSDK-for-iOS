@@ -214,22 +214,6 @@
                                        type:(SSDKContentType)type;
 
 
-/**
- 新浪微博设置linkcard分享方式
- 
- @param text 描述
- @param cardTitle 卡片标题
- @param cardSummary 卡片摘要
- @param images 图片，只支持网络图片
- @param url 跳转链接
- */
-- (void)SSDKSetupSinaWeiboLinkCardShareParamsByText:(NSString *)text
-                                          cardTitle:(NSString *)cardTitle
-                                        cardSummary:(NSString *)cardSummary
-                                             images:(id)images
-                                                url:(NSURL *)url;
-
-
 #pragma mark - Facebook
 
 /**

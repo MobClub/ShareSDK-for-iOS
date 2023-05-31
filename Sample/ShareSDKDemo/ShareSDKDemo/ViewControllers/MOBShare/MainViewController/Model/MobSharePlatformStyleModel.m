@@ -43,8 +43,6 @@
     [array addObject:[MobSharePlatformStyleModel shareMenu].configureHandle(handle)];
     [array addObject:[MobSharePlatformStyleModel shareShot].configureHandle(handle)];
     [array addObject:[MobSharePlatformStyleModel shareShake].configureHandle(handle)];
-    [array addObject:[MobSharePlatformStyleModel shareLinkCard].configureHandle(handle)];
-    [array addObject:[MobSharePlatformStyleModel shareCommand].configureHandle(handle)];
     [array addObject:[MobSharePlatformStyleModel shareVideo].configureHandle(handle)];
 
     model.dataSource = array.copy;
@@ -68,12 +66,7 @@
 + (instancetype)shareShake{
     return [MobSharePlatformStyleModel modelWithStyle:MobSharePlatformStyleShakeShare name:@"摇一摇分享" inroduction:@"" image:@"icon_shake" backgroundImage:@""];
 }
-+ (instancetype)shareLinkCard{
-    return [MobSharePlatformStyleModel modelWithStyle:MobSharePlatformStyleLinkCardShare name:@"新浪LinkCard分享" inroduction:@"" image:@"icon_sina" backgroundImage:@""];
-}
-+ (instancetype)shareCommand{
-    return [MobSharePlatformStyleModel modelWithStyle:MobSharePlatformStyleCommandShare name:@"口令分享" inroduction:@"" image:@"icon_command" backgroundImage:@""];
-}
+
 + (instancetype)shareVideo{
     return [MobSharePlatformStyleModel modelWithStyle:MobSharePlatformStyleVideoShare name:@"视频二维码" inroduction:@"" image:@"icon_video" backgroundImage:@""];
 }

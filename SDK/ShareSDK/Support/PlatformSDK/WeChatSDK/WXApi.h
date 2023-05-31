@@ -126,6 +126,7 @@ typedef BOOL(^WXGrantReadPasteBoardPermissionCompletion)(void);
 + (BOOL)isWXAppSupportStateAPI;
 
 
+
 /*! @brief 获取微信的itunes安装地址
  *
  * @return 微信的安装地址字符串。
