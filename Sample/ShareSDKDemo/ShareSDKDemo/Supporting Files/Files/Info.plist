@@ -57,7 +57,7 @@
 			<string>facebook</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1412473428822331</string>
+				<string>fb1026597855393446</string>
 			</array>
 		</dict>
 		<dict>
@@ -108,7 +108,7 @@
 			<string>weibo</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wb568898243</string>
+				<string>wb1556465402</string>
 			</array>
 		</dict>
 		<dict>
@@ -272,11 +272,11 @@
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<true/>
 	<key>FacebookAppID</key>
-	<string>1412473428822331</string>
+	<string>1026597855393446</string>
 	<key>FacebookAutoLogAppEventsEnabled</key>
 	<false/>
 	<key>FacebookClientToken</key>
-	<string>69328ee535a48e58af22bc42ecdb7174</string>
+	<string>807754a71d62e42df8302fdaf7564b9f</string>
 	<key>FacebookDisplayName</key>
 	<string>shareSDK</string>
 	<key>KAKAO_APP_KEY</key>
@@ -285,6 +285,11 @@
 	<string>weibosdk</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>fbshareextension</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth</string>
+		<string>fbauth2</string>
+		<string>fbapi</string>
 		<string>tg</string>
 		<string>twitterauth</string>
 		<string>youtube</string>
@@ -336,7 +341,6 @@
 		<string>youdaonote</string>
 		<string>mingdao</string>
 		<string>snssdk32</string>
-		<string>fbapi</string>
 		<string>fbapi20130214</string>
 		<string>fbapi20130410</string>
 		<string>fbapi20130702</string>
@@ -347,10 +351,6 @@
 		<string>fbapi20150313</string>
 		<string>fbapi20150629</string>
 		<string>fbapi20160328</string>
-		<string>fbauth</string>
-		<string>fb-messenger-share-api</string>
-		<string>fbauth2</string>
-		<string>fbshareextension</string>
 		<string>instagram</string>
 		<string>instagram-stories</string>
 		<string>whatsapp</string>

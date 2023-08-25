@@ -4,3 +4,8 @@ framework module FBSDKShareKit {
     export *
     module * { export * }
 }
+
+module FBSDKShareKit.Swift {
+    header "FBSDKShareKit-Swift.h"
+    requires objc
+}

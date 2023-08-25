@@ -4,3 +4,8 @@ framework module FBSDKCoreKit {
     export *
     module * { export * }
 }
+
+module FBSDKCoreKit.Swift {
+    header "FBSDKCoreKit-Swift.h"
+    requires objc
+}

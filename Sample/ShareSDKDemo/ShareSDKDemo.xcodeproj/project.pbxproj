@@ -2145,7 +2145,6 @@
 		D535950E23A5F6D6000C8AAF /* Platforms */ = {
 			isa = PBXGroup;
 			children = (
-				D535AE81238B8EFA00039AE0 /* ShareSDKLink */,
 				D535950623A5F305000C8AAF /* BasicModel */,
 				D52C206323B4A5800015A154 /* DomesticPlatforms */,
 				D52C206423B4A5940015A154 /* OverseasPlatforms */,
@@ -2195,13 +2194,6 @@
 				D535AEE9238B8EFA00039AE0 /* ShowWithContent */,
 			);
 			path = SubViewController;
-			sourceTree = "<group>";
-		};
-		D535AE81238B8EFA00039AE0 /* ShareSDKLink */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ShareSDKLink;
 			sourceTree = "<group>";
 		};
 		D535AEDF238B8EFA00039AE0 /* MOBHelpViewController */ = {
@@ -4123,10 +4115,11 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.4.13;
+				MARKETING_VERSION = 4.4.17;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"-fprofile-instr-generate",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MobTech.allkeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4135,7 +4128,7 @@
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "ShareSDKDemo/ShareSDKDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_WORKSPACE = NO;
 				VALID_ARCHS = "arm64 arm64e armv7s armv7 x86_64";
@@ -4182,17 +4175,18 @@
 					"$(SRCROOT)/../../SDK/**",
 					"$(PROJECT_DIR)/ShareSDKDemo/ThirdSDK",
 				);
-				MARKETING_VERSION = 4.4.13;
+				MARKETING_VERSION = 4.4.17;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"-fprofile-instr-generate",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MobTech.allkeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = com.MobTech.allkeysDevelop;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "ShareSDKDemo/ShareSDKDemo-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_WORKSPACE = NO;
 				VALID_ARCHS = "arm64 arm64e armv7s armv7 x86_64";

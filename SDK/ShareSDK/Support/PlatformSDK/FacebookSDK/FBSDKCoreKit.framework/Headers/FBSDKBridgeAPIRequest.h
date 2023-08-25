@@ -1,20 +1,10 @@
-// Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
-//
-// You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
-// copy, modify, and distribute this software in source code or binary form for use
-// in connection with the web services and APIs provided by Facebook.
-//
-// As with any software that integrates with the Facebook platform, your use of
-// this software is subject to the Facebook Developer Principles and Policies
-// [http://developers.facebook.com/policy/]. This copyright notice shall be
-// included in all copies or substantial portions of the software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-// IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+/*
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
 #if !TARGET_OS_TV
 
@@ -23,6 +13,11 @@
 #import <FBSDKCoreKit/FBSDKBridgeAPIProtocolType.h>
 #import <FBSDKCoreKit/FBSDKBridgeAPIRequest.h>
 #import <FBSDKCoreKit/FBSDKBridgeAPIRequestProtocol.h>
+#import <FBSDKCoreKit/FBSDKURLScheme.h>
+
+@protocol FBSDKInternalURLOpener;
+@protocol FBSDKInternalUtility;
+@protocol FBSDKSettings;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -30,32 +25,41 @@ NS_ASSUME_NONNULL_BEGIN
  Internal Type exposed to facilitate transition to Swift.
  API Subject to change or removal without warning. Do not use.
 
- @warning UNSAFE - DO NOT USE
+ @warning INTERNAL - DO NOT USE
  */
-NS_SWIFT_NAME(BridgeAPIRequest)
+NS_SWIFT_NAME(_BridgeAPIRequest)
 @interface FBSDKBridgeAPIRequest : NSObject <NSCopying, FBSDKBridgeAPIRequest>
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
-+ (nullable instancetype)bridgeAPIRequestWithProtocolType:( FBSDKBridgeAPIProtocolType)protocolType
-                                          scheme:(NSString *)scheme
-                                      methodName:(nullable NSString *)methodName
-                                   methodVersion:(nullable NSString *)methodVersion
-                                      parameters:(nullable NSDictionary<NSString *, id> *)parameters
-                                        userInfo:(nullable NSDictionary<NSString *, id> *)userInfo;
++ (nullable instancetype)bridgeAPIRequestWithProtocolType:(FBSDKBridgeAPIProtocolType)protocolType
+                                                   scheme:(FBSDKURLScheme)scheme
+                                               methodName:(nullable NSString *)methodName
+                                               parameters:(nullable NSDictionary<NSString *, id> *)parameters
+                                                 userInfo:(nullable NSDictionary<NSString *, id> *)userInfo;
 
-@property (nonatomic, copy, readonly) NSString *actionID;
-@property (nonatomic, nullable, copy, readonly) NSString *methodName;
-@property (nonatomic, nullable, copy, readonly) NSString *methodVersion;
-@property (nonatomic, nullable, copy, readonly) NSDictionary<NSString *, id> *parameters;
-@property (nonatomic, assign, readonly) FBSDKBridgeAPIProtocolType protocolType;
-@property (nonatomic, copy, readonly) NSString *scheme;
-@property (nonatomic, nullable, copy, readonly) NSDictionary<NSString *, id> *userInfo;
+@property (nonatomic, readonly, copy) NSString *actionID;
+@property (nullable, nonatomic, readonly, copy) NSString *methodName;
+@property (nullable, nonatomic, readonly, copy) NSDictionary<NSString *, id> *parameters;
+@property (nonatomic, readonly, assign) FBSDKBridgeAPIProtocolType protocolType;
+@property (nonatomic, readonly, copy) FBSDKURLScheme scheme;
+@property (nullable, nonatomic, readonly, copy) NSDictionary<NSString *, id> *userInfo;
 
 - (nullable NSURL *)requestURL:(NSError *_Nullable *)errorRef;
 
+/**
+ Internal method exposed to facilitate transition to Swift.
+ API Subject to change or removal without warning. Do not use.
+
+ @warning INTERNAL - DO NOT USE
+ */
++ (void)configureWithInternalURLOpener:(id<FBSDKInternalURLOpener>)internalURLOpener
+                       internalUtility:(id<FBSDKInternalUtility>)internalUtility
+                              settings:(id<FBSDKSettings>)settings
+NS_SWIFT_NAME(configure(internalURLOpener:internalUtility:settings:));
+
 @end
 
-#endif
-
 NS_ASSUME_NONNULL_END
+
+#endif

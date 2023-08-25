@@ -1,25 +1,15 @@
-// Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
-//
-// You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
-// copy, modify, and distribute this software in source code or binary form for use
-// in connection with the web services and APIs provided by Facebook.
-//
-// As with any software that integrates with the Facebook platform, your use of
-// this software is subject to the Facebook Developer Principles and Policies
-// [http://developers.facebook.com/policy/]. This copyright notice shall be
-// included in all copies or substantial portions of the software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-// IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+/*
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
 #import <Foundation/Foundation.h>
 
-#import <FBSDKCoreKit/FBSDKGraphRequestHTTPMethod.h>
 #import <FBSDKCoreKit/FBSDKGraphRequestFlags.h>
+#import <FBSDKCoreKit/FBSDKGraphRequestHTTPMethod.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -38,55 +28,37 @@ typedef void (^FBSDKGraphRequestBlock)(FBSDKGraphRequestConnection *_Nullable co
 NS_SWIFT_NAME(GraphRequestProtocol)
 @protocol FBSDKGraphRequest
 
-/**
-  The request parameters.
- */
+/// The request parameters.
 @property (nonatomic, copy) NSDictionary<NSString *, id> *parameters;
 
-/**
-  The access token string used by the request.
- */
-@property (nonatomic, copy, readonly, nullable) NSString *tokenString;
+/// The access token string used by the request.
+@property (nullable, nonatomic, readonly, copy) NSString *tokenString;
 
-/**
-  The Graph API endpoint to use for the request, for example "me".
- */
-@property (nonatomic, copy, readonly) NSString *graphPath;
+/// The Graph API endpoint to use for the request, for example "me".
+@property (nonatomic, readonly, copy) NSString *graphPath;
 
-/**
-  The HTTPMethod to use for the request, for example "GET" or "POST".
- */
-@property (nonatomic, copy, readonly) FBSDKHTTPMethod HTTPMethod;
+/// The HTTPMethod to use for the request, for example "GET" or "POST".
+@property (nonatomic, readonly, copy) FBSDKHTTPMethod HTTPMethod;
 
-/**
-  The Graph API version to use (e.g., "v2.0")
- */
-@property (nonatomic, copy, readonly) NSString *version;
+/// The Graph API version to use (e.g., "v2.0")
+@property (nonatomic, readonly, copy) NSString *version;
 
-/**
-   The graph request flags to use
- */
-@property (nonatomic, assign, readonly) FBSDKGraphRequestFlags flags;
+/// The graph request flags to use
+@property (nonatomic, readonly, assign) FBSDKGraphRequestFlags flags;
 
-/**
- Convenience property to determine if graph error recover is disabled
- */
+/// Convenience property to determine if graph error recover is disabled
 @property (nonatomic, getter = isGraphErrorRecoveryDisabled) BOOL graphErrorRecoveryDisabled;
 
-/**
-  Convenience property to determine if the request has attachments
- */
+/// Convenience property to determine if the request has attachments
 @property (nonatomic, readonly) BOOL hasAttachments;
 
 /**
-  Starts a connection to the Graph API.
+ Starts a connection to the Graph API.
  @param completion The handler block to call when the request completes.
  */
 - (id<FBSDKGraphRequestConnecting>)startWithCompletion:(nullable FBSDKGraphRequestCompletion)completion;
 
-/**
-  A formatted description of the graph request
- */
+/// A formatted description of the graph request
 - (NSString *)formattedDescription;
 
 @end

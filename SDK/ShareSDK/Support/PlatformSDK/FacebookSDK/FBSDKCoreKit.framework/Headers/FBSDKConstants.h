@@ -1,20 +1,10 @@
-// Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
-//
-// You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
-// copy, modify, and distribute this software in source code or binary form for use
-// in connection with the web services and APIs provided by Facebook.
-//
-// As with any software that integrates with the Facebook platform, your use of
-// this software is subject to the Facebook Developer Principles and Policies
-// [http://developers.facebook.com/policy/]. This copyright notice shall be
-// included in all copies or substantial portions of the software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-// IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+/*
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
 #import <Foundation/Foundation.h>
 
@@ -41,15 +31,11 @@ NS_SWIFT_NAME(ErrorDomain);
 FOUNDATION_EXPORT NSErrorUserInfoKey const FBSDKErrorArgumentCollectionKey
 NS_SWIFT_NAME(ErrorArgumentCollectionKey);
 
-/**
- The userInfo key for the invalid argument name for errors with FBSDKErrorInvalidArgument.
- */
+/// The userInfo key for the invalid argument name for errors with FBSDKErrorInvalidArgument.
 FOUNDATION_EXPORT NSErrorUserInfoKey const FBSDKErrorArgumentNameKey
 NS_SWIFT_NAME(ErrorArgumentNameKey);
 
-/**
- The userInfo key for the invalid argument value for errors with FBSDKErrorInvalidArgument.
- */
+/// The userInfo key for the invalid argument value for errors with FBSDKErrorInvalidArgument.
 FOUNDATION_EXPORT NSErrorUserInfoKey const FBSDKErrorArgumentValueKey
 NS_SWIFT_NAME(ErrorArgumentValueKey);
 
@@ -61,15 +47,11 @@ NS_SWIFT_NAME(ErrorArgumentValueKey);
 FOUNDATION_EXPORT NSErrorUserInfoKey const FBSDKErrorDeveloperMessageKey
 NS_SWIFT_NAME(ErrorDeveloperMessageKey);
 
-/**
- The userInfo key describing a localized description that can be presented to the user.
- */
+/// The userInfo key describing a localized description that can be presented to the user.
 FOUNDATION_EXPORT NSErrorUserInfoKey const FBSDKErrorLocalizedDescriptionKey
 NS_SWIFT_NAME(ErrorLocalizedDescriptionKey);
 
-/**
- The userInfo key describing a localized title that can be presented to the user, used with `FBSDKLocalizedErrorDescriptionKey`.
- */
+/// The userInfo key describing a localized title that can be presented to the user, used with `FBSDKLocalizedErrorDescriptionKey`.
 FOUNDATION_EXPORT NSErrorUserInfoKey const FBSDKErrorLocalizedTitleKey
 NS_SWIFT_NAME(ErrorLocalizedTitleKey);
 
@@ -113,22 +95,16 @@ NS_SWIFT_NAME(GraphRequestErrorParsedJSONResponseKey);
  @methodgroup Common Code Block typedefs
  */
 
-/**
- Success Block
- */
-typedef void (^FBSDKCodeBlock)(void)
+/// Success Block
+typedef void (^ FBSDKCodeBlock)(void)
 NS_SWIFT_NAME(CodeBlock);
 
-/**
- Error Block
- */
-typedef void (^FBSDKErrorBlock)(NSError *_Nullable error)
+/// Error Block
+typedef void (^ FBSDKErrorBlock)(NSError *_Nullable error)
 NS_SWIFT_NAME(ErrorBlock);
 
-/**
- Success Block
- */
-typedef void (^FBSDKSuccessBlock)(BOOL success, NSError *_Nullable error)
+/// Success Block
+typedef void (^ FBSDKSuccessBlock)(BOOL success, NSError *_Nullable error)
 NS_SWIFT_NAME(SuccessBlock);
 
 /*
@@ -136,35 +112,27 @@ NS_SWIFT_NAME(SuccessBlock);
  */
 
 #ifndef NS_ERROR_ENUM
-#define NS_ERROR_ENUM(_domain, _name) \
-enum _name: NSInteger _name; \
-enum __attribute__((ns_error_domain(_domain))) _name: NSInteger
+ #define NS_ERROR_ENUM(_domain, _name) \
+  enum _name : NSInteger _name; \
+  enum __attribute__((ns_error_domain(_domain))) _name: NSInteger
 #endif
 
 /**
  FBSDKCoreError
  Error codes for FBSDKErrorDomain.
  */
-typedef NS_ERROR_ENUM(FBSDKErrorDomain, FBSDKCoreError)
+typedef NS_ERROR_ENUM (FBSDKErrorDomain, FBSDKCoreError)
 {
-  /**
-   Reserved.
-   */
+  /// Reserved.
   FBSDKErrorReserved = 0,
 
-  /**
-   The error code for errors from invalid encryption on incoming encryption URLs.
-   */
+  /// The error code for errors from invalid encryption on incoming encryption URLs.
   FBSDKErrorEncryption,
 
-  /**
-   The error code for errors from invalid arguments to SDK methods.
-   */
+  /// The error code for errors from invalid arguments to SDK methods.
   FBSDKErrorInvalidArgument,
 
-  /**
-   The error code for unknown errors.
-   */
+  /// The error code for unknown errors.
   FBSDKErrorUnknown,
 
   /**
@@ -173,9 +141,7 @@ typedef NS_ERROR_ENUM(FBSDKErrorDomain, FBSDKCoreError)
    */
   FBSDKErrorNetwork,
 
-  /**
-   The error code for errors encountered during an App Events flush.
-   */
+  /// The error code for errors encountered during an App Events flush.
   FBSDKErrorAppEventsFlush,
 
   /**
@@ -208,29 +174,19 @@ typedef NS_ERROR_ENUM(FBSDKErrorDomain, FBSDKCoreError)
    */
   FBSDKErrorDialogUnavailable,
 
-  /**
-   Indicates an operation failed because a required access token was not found.
-   */
+  /// Indicates an operation failed because a required access token was not found.
   FBSDKErrorAccessTokenRequired,
 
-  /**
-   Indicates an app switch (typically for a dialog) failed because the destination app is out of date.
-   */
+  /// Indicates an app switch (typically for a dialog) failed because the destination app is out of date.
   FBSDKErrorAppVersionUnsupported,
 
-  /**
-   Indicates an app switch to the browser (typically for a dialog) failed.
-   */
+  /// Indicates an app switch to the browser (typically for a dialog) failed.
   FBSDKErrorBrowserUnavailable,
 
-  /**
-   Indicates that a bridge api interaction was interrupted.
-   */
+  /// Indicates that a bridge api interaction was interrupted.
   FBSDKErrorBridgeAPIInterruption,
 
-  /**
-   Indicates that a bridge api response creation failed.
-   */
+  /// Indicates that a bridge api response creation failed.
   FBSDKErrorBridgeAPIResponse,
 } NS_SWIFT_NAME(CoreError);
 
@@ -238,33 +194,21 @@ typedef NS_ERROR_ENUM(FBSDKErrorDomain, FBSDKCoreError)
  FBSDKGraphRequestError
  Describes the category of Facebook error. See `FBSDKGraphRequestErrorKey`.
  */
-typedef NS_ENUM(NSUInteger, FBSDKGraphRequestError)
-{
-  /** The default error category that is not known to be recoverable. Check `FBSDKLocalizedErrorDescriptionKey` for a user facing message. */
+typedef NS_ENUM(NSUInteger, FBSDKGraphRequestError) {
+  /// The default error category that is not known to be recoverable. Check `FBSDKLocalizedErrorDescriptionKey` for a user facing message.
   FBSDKGraphRequestErrorOther = 0,
-  /** Indicates the error is temporary (such as server throttling). While a recoveryAttempter will be provided with the error instance, the attempt is guaranteed to succeed so you can simply retry the operation if you do not want to present an alert.  */
+  /// Indicates the error is temporary (such as server throttling). While a recoveryAttempter will be provided with the error instance, the attempt is guaranteed to succeed so you can simply retry the operation if you do not want to present an alert.
   FBSDKGraphRequestErrorTransient = 1,
-  /** Indicates the error can be recovered (such as requiring a login). A recoveryAttempter will be provided with the error instance that can take UI action. */
-  FBSDKGraphRequestErrorRecoverable = 2
+  /// Indicates the error can be recovered (such as requiring a login). A recoveryAttempter will be provided with the error instance that can take UI action.
+  FBSDKGraphRequestErrorRecoverable = 2,
 } NS_SWIFT_NAME(GraphRequestError);
 
 /**
- a formal protocol very similar to the informal protocol NSErrorRecoveryAttempting
- */
-NS_SWIFT_UNAVAILABLE("")
-@protocol FBSDKErrorRecoveryAttempting<NSObject>
+ Internal value exposed to facilitate transition to Swift.
+ API Subject to change or removal without warning. Do not use.
 
-/**
- attempt the recovery
- @param error the error
- @param recoveryOptionIndex the selected option index
- @param completionHandler the handler called upon completion of error recovery
-
- Given that an error alert has been presented document-modally to the user, and the user has chosen one of the error's recovery options, attempt recovery from the error, and call the completion handler. The option index is an index into the error's array of localized recovery options. The value passed for didRecover must be YES if error recovery was completely successful, NO otherwise.
+ @warning INTERNAL - DO NOT USE
  */
-- (void)attemptRecoveryFromError:(NSError *)error
-                     optionIndex:(NSUInteger)recoveryOptionIndex
-               completionHandler:(void (^)(BOOL didRecover))completionHandler;
-@end
+FOUNDATION_EXPORT NSString *const DefaultKeychainServicePrefix;
 
 NS_ASSUME_NONNULL_END

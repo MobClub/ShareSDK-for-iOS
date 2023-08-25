@@ -1,20 +1,10 @@
-// Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
-//
-// You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
-// copy, modify, and distribute this software in source code or binary form for use
-// in connection with the web services and APIs provided by Facebook.
-//
-// As with any software that integrates with the Facebook platform, your use of
-// this software is subject to the Facebook Developer Principles and Policies
-// [http://developers.facebook.com/policy/]. This copyright notice shall be
-// included in all copies or substantial portions of the software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-// IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+/*
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
 #if !TARGET_OS_TV
 
@@ -27,14 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 @class FBSDKGraphErrorRecoveryProcessor;
 @protocol FBSDKGraphRequest;
 
-/**
-  Defines a delegate for `FBSDKGraphErrorRecoveryProcessor`.
- */
+/// Defines a delegate for `FBSDKGraphErrorRecoveryProcessor`.
 NS_SWIFT_NAME(GraphErrorRecoveryProcessorDelegate)
-@protocol FBSDKGraphErrorRecoveryProcessorDelegate<NSObject>
+@protocol FBSDKGraphErrorRecoveryProcessorDelegate <NSObject>
 
 /**
-  Indicates the error recovery has been attempted.
+ Indicates the error recovery has been attempted.
  @param processor the processor instance.
  @param didRecover YES if the recovery was successful.
  @param error the error that that was attempted to be recovered from.
@@ -45,7 +33,7 @@ NS_SWIFT_NAME(GraphErrorRecoveryProcessorDelegate)
 
 @optional
 /**
-  Indicates the processor is about to process the error.
+ Indicates the processor is about to process the error.
  @param processor the processor instance.
  @param error the error is about to be processed.
 
@@ -58,12 +46,8 @@ NS_SWIFT_NAME(GraphErrorRecoveryProcessorDelegate)
 
 @end
 
-NS_ASSUME_NONNULL_END
-
-NS_ASSUME_NONNULL_BEGIN
-
 /**
-  Defines a type that can process Facebook NSErrors with best practices.
+ Defines a type that can process Facebook NSErrors with best practices.
 
  Facebook NSErrors can contain FBSDKErrorRecoveryAttempting instances to recover from errors, or
  localized messages to present to the user. This class will process the instances as follows:
@@ -71,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
  1. If the error is temporary as indicated by FBSDKGraphRequestErrorKey, assume the recovery succeeded and
  notify the delegate.
  2. If a FBSDKErrorRecoveryAttempting instance is available, display an alert (dispatched to main thread)
- with the recovery options and call the instance's [ attemptRecoveryFromError:optionIndex:...].
+ with the recovery options and call the instance's attemptRecoveryFromError method.
  3. If a FBSDKErrorRecoveryAttempting is not available, check the userInfo for FBSDKLocalizedErrorDescriptionKey
  and present that in an alert (dispatched to main thread).
 
@@ -89,13 +73,11 @@ NS_ASSUME_NONNULL_BEGIN
 NS_SWIFT_NAME(GraphErrorRecoveryProcessor)
 @interface FBSDKGraphErrorRecoveryProcessor : NSObject
 
-/**
- Initializes a GraphErrorRecoveryProcessor with an access token string.
- */
+/// Initializes a GraphErrorRecoveryProcessor with an access token string.
 - (instancetype)initWithAccessTokenString:(NSString *)accessTokenString;
 
 /**
-  Attempts to process the error, return YES if the error can be processed.
+ Attempts to process the error, return YES if the error can be processed.
  @param error the error to process.
  @param request the related request that may be reissued.
  @param delegate the delegate that will be retained until recovery is complete.

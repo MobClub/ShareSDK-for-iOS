@@ -24,7 +24,7 @@
 #import "MOBShareCommandDetailView.h"
 #import <WeiboSDK.h>
 
-#import <TwitterConnector/TwitterConnector.h>
+//#import <TwitterConnector/TwitterConnector.h>
 @import FirebaseCore;
 
 @interface AppDelegate () <WeiboSDKDelegate,LineSDKLoginDelegate,WXApiDelegate>

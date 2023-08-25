@@ -1,20 +1,10 @@
-// Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
-//
-// You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
-// copy, modify, and distribute this software in source code or binary form for use
-// in connection with the web services and APIs provided by Facebook.
-//
-// As with any software that integrates with the Facebook platform, your use of
-// this software is subject to the Facebook Developer Principles and Policies
-// [http://developers.facebook.com/policy/]. This copyright notice shall be
-// included in all copies or substantial portions of the software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-// IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+/*
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
 #import <Foundation/Foundation.h>
 
@@ -27,14 +17,14 @@ NS_SWIFT_NAME(TypeUtility)
 + (instancetype)new NS_UNAVAILABLE;
 
 /// Returns an NSArray if the provided object is an NSArray, otherwise returns nil.
-+ (nullable NSArray *)arrayValue:(id)object;
++ (nullable NSArray<id> *)arrayValue:(nullable id)object;
 
 /**
  Return an object at a given index if the index is valid, otherwise return nil
  @param array The array to retrieve the object from.
  @param index The index to retrieve the object from.
  */
-+ (nullable id)array:(NSArray *)array objectAtIndex:(NSUInteger)index;
++ (nullable id)array:(NSArray<id> *)array objectAtIndex:(NSUInteger)index;
 
 /**
  Adds an object to an array if it is not nil.
@@ -43,20 +33,11 @@ NS_SWIFT_NAME(TypeUtility)
  */
 + (void)array:(NSMutableArray *)array addObject:(nullable id)object;
 
-/**
- Adds an object to an array at a given index if the object is not nil and the index is available.
- Will override objects if  they exist.
- @param array The array to add the object to.
- @param object The object to add to the array.
- @param index The index to try and insert the object into
- */
-+ (void)array:(NSMutableArray *)array addObject:(nullable id)object atIndex:(NSUInteger)index;
-
 /// Returns a BOOL if the provided object is a BOOL, otherwise returns nil.
 + (BOOL)boolValue:(id)object;
 
 /// Returns an NSDictionary<NSString *, id> if the provided object is an NSDictionary, otherwise returns nil.
-+ (nullable NSDictionary<NSString *, id> *)dictionaryValue:(id)object;
++ (nullable NSDictionary<NSString *, id> *)dictionaryValue:(nullable id)object;
 
 /// Returns an object for a given key in the provided dictionary if it matches the stated type
 + (nullable id)dictionary:(NSDictionary<NSString *, id> *)dictionary objectForKey:(NSString *)key ofType:(Class)type;
@@ -72,7 +53,7 @@ NS_SWIFT_NAME(TypeUtility)
             forKey:(nullable id<NSCopying>)key;
 
 /// Checks if an object is a valid dictionary type before enumerating its keys and objects
-+ (void)dictionary:(NSDictionary<NSString *, id> *)dictionary enumerateKeysAndObjectsUsingBlock:(void (NS_NOESCAPE ^)(id key, id obj, BOOL *stop))block;
++ (void)dictionary:(NSDictionary<NSString *, id> *)dictionary enumerateKeysAndObjectsUsingBlock:(void(NS_NOESCAPE ^)(id key, id obj, BOOL *stop))block;
 
 /// Returns an NSInteger if the provided object is an NSInteger, otherwise returns nil.
 + (NSInteger)integerValue:(id)object;
@@ -98,16 +79,8 @@ NS_SWIFT_NAME(TypeUtility)
 /// Returns an NSUInteger if the provided object is an NSUInteger, otherwise returns nil.
 + (NSUInteger)unsignedIntegerValue:(id)object;
 
-/// Returns an NSURL if the provided object is an NSURL, otherwise returns nil.
-+ (nullable NSURL *)URLValue:(id)object;
-
-/*
- Lightweight wrapper around Foundation's isValidJSONObject:
-
- Returns YES if the given object can be converted to JSON data, NO otherwise.
- Calling this method or attempting a conversion are the definitive ways to tell if a given object can be converted to JSON data.
- */
-+ (BOOL)isValidJSONObject:(id)obj;
+/// Returns an NSURL if the provided object is an NSURL; will attempt to create an NSURL if the object is an NSString; returns nil otherwise.
++ (nullable NSURL *)coercedToURLValue:(id)object;
 
 /*
  Lightweight safety wrapper around Foundation's NSJSONSerialization:dataWithJSONObject:options:error:
@@ -134,7 +107,6 @@ NS_SWIFT_NAME(TypeUtility)
  The most efficient encoding to use for parsing is UTF-8, so if you have a choice in encoding the data passed to this method, use UTF-8.
  */
 + (nullable id)JSONObjectWithData:(NSData *)data options:(NSJSONReadingOptions)opt error:(NSError **)error;
-
 
 @end
 

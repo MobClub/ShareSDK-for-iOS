@@ -106,11 +106,11 @@
 */
 #ifdef IMPORT_SINA_WEIBO
     //AppKey
-    #define MOBSSDKSinaWeiboAppKey @"568898243"
+    #define MOBSSDKSinaWeiboAppKey @"1556465402"
     //AppSecret
-    #define MOBSSDKSinaWeiboAppSecret @"38a4f8204cc784f81f9f0daaf31e02e3"
+    #define MOBSSDKSinaWeiboAppSecret @"d40c0a5436156e2604a30851df6434bf"
     //RedirectUri
-    #define MOBSSDKSinaWeiboRedirectUri @"http://www.sharesdk.cn"
+    #define MOBSSDKSinaWeiboRedirectUri @"https://www.mob.com/"
 
     #define MOBSSDKSinaWeiboUniversalLink @"https://70imc.share2dlink.com/"
 
@@ -400,9 +400,9 @@
 */
 #ifdef IMPORT_Facebook
     //AppID
-    #define MOBSSDKFacebookAppID @"1412473428822331"
+    #define MOBSSDKFacebookAppID @"1026597855393446"
     //AppSecret
-    #define MOBSSDKFacebookAppSecret @"a42f4f3f867dc947b9ed6020c2e93558"
+    #define MOBSSDKFacebookAppSecret @"b308bc427365fe632b2d852432b88756"
     //displayName facebook客户端分享必须
     #define MOBSSDKFacebookDisplayName @"shareSDK"
     //AuthType 授权优先类型 web sso both

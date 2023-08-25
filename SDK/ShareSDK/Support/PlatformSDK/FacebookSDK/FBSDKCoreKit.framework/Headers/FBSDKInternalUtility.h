@@ -1,39 +1,42 @@
-// Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
-//
-// You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
-// copy, modify, and distribute this software in source code or binary form for use
-// in connection with the web services and APIs provided by Facebook.
-//
-// As with any software that integrates with the Facebook platform, your use of
-// this software is subject to the Facebook Developer Principles and Policies
-// [http://developers.facebook.com/policy/]. This copyright notice shall be
-// included in all copies or substantial portions of the software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-// IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+/*
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import <FBSDKCoreKit/FBSDKAppAvailabilityChecker.h>
+#import <FBSDKCoreKit/FBSDKAppURLSchemeProviding.h>
 #import <FBSDKCoreKit/FBSDKInternalUtilityProtocol.h>
+#import <FBSDKCoreKit/_FBSDKWindowFinding.h>
+
+#if !TARGET_OS_TV
+ #import <FBSDKCoreKit/FBSDKURLHosting.h>
+#endif
+
+@protocol FBSDKErrorCreating;
+@protocol FBSDKInfoDictionaryProviding;
+@protocol FBSDKSettings;
+@protocol __FBSDKLoggerCreating;
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define FBSDK_CANOPENURL_FACEBOOK @"fbauth2"
-#define FBSDK_CANOPENURL_FBAPI @"fbapi"
-#define FBSDK_CANOPENURL_MESSENGER @"fb-messenger-share-api"
-#define FBSDK_CANOPENURL_MSQRD_PLAYER @"msqrdplayer"
-#define FBSDK_CANOPENURL_SHARE_EXTENSION @"fbshareextension"
-
 NS_SWIFT_NAME(InternalUtility)
-@interface FBSDKInternalUtility : NSObject <FBSDKInternalUtility>
+@interface FBSDKInternalUtility : NSObject
+#if !TARGET_OS_TV
+  <FBSDKAppAvailabilityChecker, FBSDKAppURLSchemeProviding, FBSDKInternalUtility, FBSDKURLHosting, _FBSDKWindowFinding>
+#else
+  <FBSDKAppAvailabilityChecker, FBSDKAppURLSchemeProviding, FBSDKInternalUtility>
+#endif
 
+#if !DEBUG
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
+#endif
 
 @property (class, nonnull, readonly) FBSDKInternalUtility *sharedUtility;
 
@@ -43,50 +46,17 @@ NS_SWIFT_NAME(InternalUtility)
  We assume a convention of a bundle named FBSDKStrings.bundle, otherwise we
  return the main bundle.
  */
-@property (nonatomic, strong, readonly) NSBundle *bundleForStrings;
+@property (nonatomic, readonly, strong) NSBundle *bundleForStrings;
 
 /**
-  Constructs an URL for the current app.
- @param host The host for the URL.
- @param path The path for the URL.
- @param queryParameters The query parameters for the URL.  This will be converted into a query string.
- @param errorRef If an error occurs, upon return contains an NSError object that describes the problem.
- @return The app URL.
- */
-- (NSURL *)appURLWithHost:(NSString *)host
-                     path:(NSString *)path
-          queryParameters:(NSDictionary<NSString *, NSString *> *)queryParameters
-                    error:(NSError *__autoreleasing *)errorRef;
-
-/**
-  Parses an FB url's query params (and potentially fragment) into a dictionary.
- @param url The FB url.
- @return A dictionary with the key/value pairs.
- */
-- (NSDictionary<NSString *, id> *)parametersFromFBURL:(NSURL *)url;
-
-/**
-  Constructs a Facebook URL.
- @param hostPrefix The prefix for the host, such as 'm', 'graph', etc.
- @param path The path for the URL.  This may or may not include a version.
- @param queryParameters The query parameters for the URL.  This will be converted into a query string.
- @param errorRef If an error occurs, upon return contains an NSError object that describes the problem.
- @return The Facebook URL.
- */
-- (NSURL *)facebookURLWithHostPrefix:(NSString *)hostPrefix
-                                path:(NSString *)path
-                     queryParameters:(NSDictionary<NSString *, NSString *> *)queryParameters
-                               error:(NSError *__autoreleasing *)errorRef;
-
-/**
-  Tests whether the supplied URL is a valid URL for opening in the browser.
+ Tests whether the supplied URL is a valid URL for opening in the browser.
  @param URL The URL to test.
  @return YES if the URL refers to an http or https resource, otherwise NO.
  */
 - (BOOL)isBrowserURL:(NSURL *)URL;
 
 /**
-  Checks equality between 2 objects.
+ Checks equality between 2 objects.
 
  Checks for pointer equality, nils, isEqual:.
  @param object The first object to compare.
@@ -95,53 +65,35 @@ NS_SWIFT_NAME(InternalUtility)
  */
 - (BOOL)object:(id)object isEqualToObject:(id)other;
 
-/**
-  Extracts permissions from a response fetched from me/permissions
- @param responseObject the response
- @param grantedPermissions the set to add granted permissions to
- @param declinedPermissions the set to add declined permissions to.
- */
-- (void)extractPermissionsFromResponse:(NSDictionary<NSString *, id> *)responseObject
-                    grantedPermissions:(NSMutableSet *)grantedPermissions
-                   declinedPermissions:(NSMutableSet *)declinedPermissions
-                    expiredPermissions:(NSMutableSet *)expiredPermissions;
-
-/**
-  validates that the app ID is non-nil, throws an NSException if nil.
- */
-- (void)validateAppID;
-
-/**
- Validates that the client access token is non-nil, otherwise - throws an NSException otherwise.
- Returns the composed client access token.
- */
-- (NSString *)validateRequiredClientAccessToken;
-
-/**
-  Attempts to find the first UIViewController in the view's responder chain. Returns nil if not found.
- */
+/// Attempts to find the first UIViewController in the view's responder chain. Returns nil if not found.
 - (nullable UIViewController *)viewControllerForView:(UIView *)view;
 
-/**
-  returns true if the url scheme is registered in the CFBundleURLTypes
- */
+/// returns true if the url scheme is registered in the CFBundleURLTypes
 - (BOOL)isRegisteredURLScheme:(NSString *)urlScheme;
 
-/**
-  returns currently displayed top view controller.
- */
+/// returns currently displayed top view controller.
 - (nullable UIViewController *)topMostViewController;
 
-/**
- returns the current key window
- */
+/// returns the current key window
 - (nullable UIWindow *)findWindow;
 
 #pragma mark - FB Apps Installed
 
-@property (nonatomic, assign, readonly) BOOL isMessengerAppInstalled;
+@property (nonatomic, readonly, assign) BOOL isMessengerAppInstalled;
 
 - (BOOL)isRegisteredCanOpenURLScheme:(NSString *)urlScheme;
+
+/**
+ Internal method exposed to facilitate transition to Swift.
+ API Subject to change or removal without warning. Do not use.
+
+ @warning INTERNAL - DO NOT USE
+ */
+- (void)configureWithInfoDictionaryProvider:(id<FBSDKInfoDictionaryProviding>)infoDictionaryProvider
+                              loggerFactory:(id<__FBSDKLoggerCreating>)loggerFactory
+                                   settings:(id<FBSDKSettings>)settings
+                               errorFactory:(id<FBSDKErrorCreating>)errorFactory
+NS_SWIFT_NAME(configure(infoDictionaryProvider:loggerFactory:settings:errorFactory:));
 
 @end
 

@@ -4,3 +4,8 @@ framework module FBSDKLoginKit {
     export *
     module * { export * }
 }
+
+module FBSDKLoginKit.Swift {
+    header "FBSDKLoginKit-Swift.h"
+    requires objc
+}

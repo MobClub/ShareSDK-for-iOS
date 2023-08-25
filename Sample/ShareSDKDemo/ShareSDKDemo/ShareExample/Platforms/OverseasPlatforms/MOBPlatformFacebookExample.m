@@ -230,6 +230,8 @@
         configure.operationConfigure.minimumNumberOfVideoSelection = 1;
         configure.operationConfigure.maximumNumberOfVideoSelection = 1;
     } result:^(SSDKImagePickerCompleteStatus status, SSDKImagePickerResult * _Nullable result) {
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (status == SSDKImagePickerCompleteStatusCancel) {
             
         }else{
@@ -237,6 +239,8 @@
             [parameters SSDKSetupFacebookParamsByImagePHAsset:nil videoPHAsset:result.selectedElements.lastObject];
             [self shareWithParameters:parameters];
         }
+        });
+
     }].presentAnimated();
     
 }
@@ -357,6 +361,7 @@
         configure.operationConfigure.minimumNumberOfVideoSelection = 1;
         configure.operationConfigure.maximumNumberOfVideoSelection = 1;
     } result:^(SSDKImagePickerCompleteStatus status, SSDKImagePickerResult * _Nullable result) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (status == SSDKImagePickerCompleteStatusCancel) {
             
         }else{
@@ -367,6 +372,8 @@
                 }
             }];
         }
+        });
+
     }].presentAnimated();
 }
 
