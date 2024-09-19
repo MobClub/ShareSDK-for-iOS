@@ -153,15 +153,15 @@
 
 - (void)loadData{
     
-    NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc] initWithString:@"    欢迎您使用MobTech提供的演示DEMO，ShareSDK为开发者提供的社交分享SDK，支持微信、抖音、QQ、微博、Facebook、Twitter等全球40+主流社交平台账号内的一键分享、第三方登录授权以及闭环分享服务，不仅极大地方便了您的终端用户的服务体验，更为您实时了解终端用户的分享数、回流数、意向分享等数据进行了统计分析。为了对您的闭环分享功能进行来源追溯并帮助您更精细化运营，我们将依据MobTech的《隐私政策》来帮助你了解我们需要收集哪些数据。\n\n\n详情点击:" attributes:@{
+    NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc] initWithString:@"    欢迎您使用ShareSDK提供的演示DEMO，ShareSDK为开发者提供的社交分享SDK，支持微信、抖音、QQ、微博、Facebook、Twitter等全球40+主流社交平台账号内的一键分享、第三方登录授权以及闭环分享服务，不仅极大地方便了您的终端用户的服务体验，更为您实时了解终端用户的分享数、回流数、意向分享等数据进行了统计分析。为了对您的闭环分享功能进行来源追溯并帮助您更精细化运营，我们将依据ShareSDK的《隐私政策》来帮助你了解我们需要收集哪些数据。\n\n\n详情点击:" attributes:@{
         NSFontAttributeName :Font(PingFangReguler, 13),
         NSForegroundColorAttributeName:UIColorHexString(@"000000")
     }];
     
     _contentTextView.linkTextAttributes = @{NSForegroundColorAttributeName:UIColorHexString(@"FF7800")};
     
-    NSString *linkText = @"http://download.sdk.mob.com/2021/03/03/21/161477643974880.38.html";
-    NSString *urlDescription = @"《MobService隐私条款》";
+    NSString *linkText = @"https://policy.zztfly.com/sdk/share/privacy";
+    NSString *urlDescription = @"《ShareSDK隐私条款》";
     [attribute appendAttributedString:[[NSAttributedString alloc] initWithString:urlDescription attributes:@{
         NSFontAttributeName :Font(PingFangReguler, 13),NSLinkAttributeName:linkText}]];
     self.contentTextView.attributedText = attribute;
@@ -186,7 +186,7 @@
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange{
     MOBPolicyWebViewController *vc = [MOBPolicyWebViewController new];
-    vc.title = @"《MobTech隐私政策》";
+    vc.title = @"《ShareSDK隐私政策》";
     vc.extraInfo[@"url"] = URL;
     vc.showAnimated(YES).push();
     return NO;

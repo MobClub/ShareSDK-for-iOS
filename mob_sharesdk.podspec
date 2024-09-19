@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name             = 'mob_sharesdk'
-  s.version          = "4.4.17"
+  s.version          = "4.4.23"
   s.summary          = 'ShareSDK is the most comprehensive Social SDK in the world,which share easily with 40+ platforms.'
   s.license          = 'MIT'
   s.author           = { "mob" => "mobproducts@163.com" }
 
   s.homepage         = 'http://www.mob.com'
 
-  s.source           = { :http => 'https://sdk-dev-ios.oss-cn-hangzhou.aliyuncs.com/files/download/sharesdk/ShareSDK_For_iOS_v4.4.17.zip' }
+  s.source           = { :http => 'https://sdk-dev-ios.oss-cn-hangzhou.aliyuncs.com/files/download/sharesdk/ShareSDK_For_iOS_v4.4.24.zip' }
 
   s.platform         = :ios
   s.ios.deployment_target = "8.0"
@@ -126,8 +126,9 @@ Pod::Spec.new do |s|
 
         # Kakao
         sp.subspec 'Kakao' do |ssp|
-            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/KaKaoSDK/KakaoOpenSDK.framework','ShareSDK/Support/PlatformSDK/KaKaoSDK/KakaoCommon.framework','ShareSDK/Support/PlatformSDK/KaKaoSDK/KakaoLink.framework','ShareSDK/Support/PlatformConnector/KakaoConnector.framework'
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/KaKaoSDK/KakaoSDKAuth.framework','ShareSDK/Support/PlatformSDK/KaKaoSDK/KakaoSDKCommon.framework','ShareSDK/Support/PlatformSDK/KaKaoSDK/KakaoSDKShare.framework','ShareSDK/Support/PlatformSDK/KaKaoSDK/KakaoSDKStory.framework','ShareSDK/Support/PlatformSDK/KaKaoSDK/KakaoSDKTalk.framework','ShareSDK/Support/PlatformSDK/KaKaoSDK/KakaoSDKTemplate.framework','ShareSDK/Support/PlatformSDK/KaKaoSDK/KakaoSDKUser.framework','ShareSDK/Support/PlatformSDK/KaKaoSDK/MKakaoConnector.framework','ShareSDK/Support/PlatformConnector/KakaoConnector.framework'
             ssp.dependency 'mob_sharesdk/ShareSDK'
+            ssp.dependency 'Alamofire'
             ssp.resource_bundles = {
                 'ShareSDK_JS_KaKao' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/KaKao.js']
             }
@@ -474,6 +475,15 @@ Pod::Spec.new do |s|
             ssp.dependency 'mob_sharesdk/ShareSDK'
             ssp.resource_bundles = {
                 'ShareSDK_JS_KuaiShou' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/KuaiShou.js']
+            }
+        end
+
+        # XHS(小红书)
+        sp.subspec 'XHS' do |ssp|
+            ssp.vendored_frameworks = 'ShareSDK/Support/PlatformSDK/XiaoHongShu/XiaoHongShuOpenSDK.framework','ShareSDK/Support/PlatformConnector/XHSConnector.framework'
+            ssp.dependency 'mob_sharesdk/ShareSDK'
+            ssp.resource_bundles = {
+                'ShareSDK_JS_XHS' => ['ShareSDK/Support/Required/ShareSDK.bundle/ScriptCore/platforms/XHS.js']
             }
         end
         
